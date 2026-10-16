@@ -1,0 +1,13 @@
+<!-- Pagina generata da Fejalog (ScriviSito) dai testi dell'app: non modificare qui. -->
+
+# Regia e palmari
+
+- La Regia (di solito il tablet, in orizzontale) crea o riapre il risanamento, apre la rete e mostra il QR, fa entrare gli altri, ha lo schema dei plateau, cambia le impostazioni del risanamento e fa il backup.
+- I palmari (i telefoni dei veterinari che si muovono nel gregge) prelevano: cercano il capo, confermano e scrivono il numero. Hanno sempre il registro intero, allineato con gli altri.
+- Ogni device prenota in anticipo i suoi numeri: due provette con lo stesso numero non esistono mai e un numero mostrato è definitivo. Si lavora anche se la Regia si spegne.
+
+## La regia si sposta
+
+- Chi ha la regia la può affidare a un device al lavoro che si vede (Rete › «Affida la regia a»), per esempio quando il tablet si scarica.
+- Si prende solo se è libera: chi ce l'aveva l'ha lasciata, ha finito, è uscito o non risponde da 2 minuti.
+- Sotto il titolo di ogni pagina c'è lo stato della rete e chi ha la regia.

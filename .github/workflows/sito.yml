@@ -1,0 +1,42 @@
+# Il sito di Fejalog su GitHub Pages (repository pubblico uvesco/fejalog-sito). I sorgenti arrivano da fejalog/sito con
+# strumenti/pubblica_sito.sh; qui si costruiscono (MkDocs Material, in modo rigoroso) e si pubblicano.
+# Impostazioni del repository › Pages › Source: «GitHub Actions».
+name: Sito
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  costruisci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: mkdocs build --strict
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  pubblica:
+    needs: costruisci
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.pubblicazione.outputs.page_url }}
+    steps:
+      - id: pubblicazione
+        uses: actions/deploy-pages@v4

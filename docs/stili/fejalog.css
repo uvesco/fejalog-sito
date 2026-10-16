@@ -1,0 +1,64 @@
+/* I colori di Fejalog (androidApp/.../ui/Tema.kt): verde salvia; viola dei ricercati, giallo e rosso degli avvisi. */
+:root,
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #3b6e62;
+  --md-primary-fg-color--light: #cde8df;
+  --md-primary-fg-color--dark: #0e2f27;
+  --md-accent-fg-color: #1b8a3a;
+  --md-typeset-a-color: #2f5c51;
+}
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #2f5c51;
+  --md-primary-fg-color--light: #3b6e62;
+  --md-primary-fg-color--dark: #0e2f27;
+  --md-accent-fg-color: #7fc79a;
+  --md-typeset-a-color: #9fd3c2;
+}
+
+/* «Cosa devi vedere»: il risultato atteso di un passo del tutorial */
+.md-typeset .admonition.atteso,
+.md-typeset details.atteso {
+  border-color: #1b8a3a;
+}
+.md-typeset .atteso > .admonition-title,
+.md-typeset .atteso > summary {
+  background-color: rgba(27, 138, 58, 0.1);
+}
+.md-typeset .atteso > .admonition-title::before,
+.md-typeset .atteso > summary::before {
+  background-color: #1b8a3a;
+  -webkit-mask-image: var(--md-admonition-icon--success);
+  mask-image: var(--md-admonition-icon--success);
+}
+
+/* le schede del kit nelle tabelle: contrassegno con le ultime cifre in evidenza */
+.md-typeset .cifre {
+  font-family: var(--md-code-font-family, monospace);
+  font-weight: 700;
+}
+
+/* le schermate del tutorial (telefono, dal kit di prova): affiancate, con la didascalia sotto */
+.md-typeset .schermate {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1em 0;
+}
+.md-typeset .schermate figure {
+  margin: 0;
+  width: 13rem;
+  max-width: calc(50% - 0.4rem);
+}
+.md-typeset .schermate img {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.4rem;
+}
+.md-typeset .schermate figcaption {
+  font-size: 0.7rem;
+  font-style: normal;
+  margin-top: 0.3rem;
+  max-width: none;
+}
+.md-typeset .schermate figure > br {
+  display: none;
+}

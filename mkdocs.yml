@@ -1,0 +1,115 @@
+# Il sito di appoggio di Fejalog: sorgenti qui, in fejalog/sito; pubblicato dal repository
+# pubblico uvesco/fejalog-sito con strumenti/pubblica_sito.sh. Le pagine della guida di riferimento, le Novità e il
+# foglio per gli operatori li scrive `./gradlew :shared:scriviSito` dai testi dell'app (anche il pezzo di menu fra i
+# marcatori qui sotto). Prova in locale: sito/.venv/bin/mkdocs serve -f sito/mkdocs.yml
+site_name: Fejalog
+site_description: Le provette della profilassi brucellosi ovicaprina, registrate in campo con più device, fino ad ARVET.
+site_url: https://uvesco.github.io/fejalog-sito/
+repo_url: https://github.com/uvesco/fejalog-sito
+repo_name: uvesco/fejalog-sito
+copyright: Fejalog · Umberto Vesco · dati di esempio inventati (stabilimento 888TO999)
+
+theme:
+  name: material
+  language: it
+  font: false            # niente Google Fonts: caratteri del sistema
+  logo: img/icona.png
+  favicon: img/icona.png
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Tema scuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Tema chiaro
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - search.highlight
+    - toc.follow
+    - content.code.copy
+
+extra_css:
+  - stili/fejalog.css
+
+plugins:
+  - search:
+      lang: it
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.keys
+
+nav:
+  - Fejalog: index.md
+  - Scarica: scarica.md
+  - Tutorial col kit di prova:
+      - tutorial/index.md
+      - "0 · Prepara": tutorial/00-prepara.md
+      - "1 · Chi usa il device": tutorial/01-utente.md
+      - "2 · Il risanamento": tutorial/02-risanamento.md
+      - "3 · Registri e regole": tutorial/03-registri-regole.md
+      - "4 · La rete": tutorial/04-rete.md
+      - "5 · I ricercati": tutorial/05-ricercati.md
+      - "6 · Il primo prelievo": tutorial/06-prelievo.md
+      - "7 · Le fattispecie": tutorial/07-fattispecie.md
+      - "8 · Doppi e rete difficile": tutorial/08-doppi-rete.md
+      - "9 · Registri in corsa": tutorial/09-registri-in-corsa.md
+      - "10 · Statistiche e provette perse": tutorial/10-statistiche.md
+      - "11 · Soluzione problemi": tutorial/11-problemi.md
+      - "12 · Riordino dei plateau": tutorial/12-riordino.md
+      - "13 · Backup, uscita, ripresa": tutorial/13-backup.md
+      - "14 · Fine lavori": tutorial/14-fine-lavori.md
+      - "15 · ARVET": tutorial/15-arvet.md
+  - Il kit di prova: kit.md
+  - ARVET e gli snippet: arvet.md
+  - Per gli operatori: operatori.md
+  # >>> riferimento (scritto da ScriviSito: non modificare)
+  - Guida di riferimento:
+      - riferimento/index.md
+      - "Avvio rapido: i passi di un risanamento": riferimento/percorso.md
+      - "Regia e palmari": riferimento/ruoli.md
+      - "Prima di tutto: l'utente del device": riferimento/utente.md
+      - "Il risanamento: nuovo, apri, recenti, chiudi": riferimento/seduta.md
+      - "Registri di stalla": riferimento/registri.md
+      - "Lavorare in rete": riferimento/rete.md
+      - "Prima della prima provetta (Regia)": riferimento/inizio.md
+      - "Campionamento: registrare una provetta": riferimento/lavoro.md
+      - "Avvisi sul capo": riferimento/avvisi.md
+      - "Correggere: le ultime provette": riferimento/ultime.md
+      - "Provette perse e ritrovate": riferimento/perse.md
+      - "Lo stato della rete in alto": riferimento/banner.md
+      - "Statistiche": riferimento/statistiche.md
+      - "Soluzione problemi": riferimento/problemi.md
+      - "Riordino dei plateau": riferimento/riordino.md
+      - "Backup e ripristino": riferimento/backup.md
+      - "Fine lavori in Fejalog": riferimento/fine.md
+      - "Rifinitura in svet-tools": riferimento/svettools.md
+      - "Pausa, chiusura e uscita": riferimento/uscita.md
+      - "Se qualcosa va storto": riferimento/guasti.md
+      - "Le parole": riferimento/parole.md
+      - "Crediti": riferimento/crediti.md
+  # <<< riferimento
+  - Novità: novita.md
+  - Domande: domande.md
