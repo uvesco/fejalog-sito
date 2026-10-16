@@ -31,7 +31,9 @@ plateau da 100.
 </div>
 
 !!! atteso "Cosa devi vedere"
-    - I **maschi in testa**, poi la serie; i problematici, le provvisorie e i buchi si sistemano; i problematici in coda.
+    - I **maschi ovini in testa**, poi la serie delle femmine e le capre.
+    - La **chiusura dei buchi** sui prenumerati avviene prima dei problematici, tranne per i maschi ovini che si compattano dopo i problematici maschi.
+    - I **problematici** vanno in coda alla rispettiva serie; i codici operatore (`CA1`…) e le etichette con lettere operatore ricevono il numero sequenziale finale.
     - Le spunte sono nel registro: le vedono tutti.
     - Gli spostamenti a mano entrano nella guida e nei file di fine lavori.
 

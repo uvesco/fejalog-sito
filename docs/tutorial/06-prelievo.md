@@ -38,21 +38,24 @@ basta scrivere il numero sulla scheda (o su un foglio).
 </div>
 
 !!! atteso "Cosa devi vedere"
-    - Le pecore presenti sono **verdi** e prendono un **numero della serie** delle pecore.
-    - I montoni prendono un numero della **riserva maschi**, in testa alla serie. Nel kit i maschi presenti sono 12:
-      la riserva va da 1 a 12 e la prima pecora prende il **13**.
-    - Le capre hanno la loro serie.
-    - La provetta si vede salvata (**✓**) solo quando è sul disco; in basso, **Ultime** la mostra.
+    - I capi presenti in età diagnostica hanno il **numero assegnato fin dal caricamento**:
+        - I **montoni** (maschi ovini) prendono i primi numeri (da 1 a 12 nel kit, in ordine alfabetico di contrassegno).
+        - Le **pecore** proseguono dal numero 13 in poi.
+        - Le **capre** prendono la loro serie con la lettera di specie (es. `C1`, `C2`… se impostata `C` sulla specie meno numerosa).
+    - L'etichetta da scrivere sulla provetta compare grande in testa al foglio di conferma.
+    - Se l'operatore lavora **da isolato** (senza rete o colleghi scollegati), l'etichetta aggiunge in coda la lettera dell'operatore (es. `13U` o `C1U`).
+    - I capi **non prenumerati** (fuori età diagnostica, marche disponibili, altri stabilimenti, forzati) prendono il codice operatore (es. `CA1`) e vanno nei problematici.
+    - La provetta si vede salvata (**✓**) solo quando è sul disco; in cima a Campionamento, **Ultime** la mostra.
     - Il foglio dice come è stato identificato il capo: col lettore (codice intero) è certo, con le cifre digitate
       dice fra quanti capi hai scelto.
 
 !!! info "Il numero è definitivo"
     Un numero mostrato non cambia più: la provetta va nel plateau a quel numero. Due palmari non danno mai lo stesso
-    numero, perché ognuno usa i numeri che ha prenotato.
+    numero sui prenumerati perché ogni capo ha già il suo numero univoco assegnato nel registro.
 
 ??? failure "Se non va"
-    - **Il numero è A•1 (provvisorio)**: il palmare non ha numeri confermati (fuori rete, o un collega che non
-      risponde). Va bene lo stesso: si riscrive col numero definitivo in sistemazione.
+    - **L'etichetta ha una lettera in coda (es. 13U)**: sei da isolato (doppi non controllati). La provetta tiene quel numero e la Regia la verifica al rientro.
+    - **Il codice è del tipo CA1**: il capo non era prenumerato (es. fuori età o marca nuova); andrà risolto in rifinitura.
     - **Il capo sbagliato**: in Ultime, Modifica o Elimina (un nuovo evento: niente si cancella davvero).
 
 ## Fatto?
