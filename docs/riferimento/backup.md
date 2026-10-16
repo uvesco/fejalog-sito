@@ -4,7 +4,7 @@
 
 ## Cos'è il backup
 
-- Uno zip col risanamento intero (pacchetto e registro di tutti i device) e l'export di ogni stabilimento per svet-tools.
+- Uno zip col risanamento intero (pacchetto e registro di tutti i device) e l'export di ogni stabilimento.
 - Il nome dice tutto: fejalog\_backup\_888TO999\_20261008-103215\_\<codice fiscale\>\_R.zip, cioè stabilimento, data e ora al secondo, codice fiscale di chi l'ha salvato e R (Regia) o P (palmare).
 
 ## Chi lo fa e quando

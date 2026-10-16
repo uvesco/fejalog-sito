@@ -7,12 +7,12 @@
 
 ## I passi, in ordine
 
-- 1. Chi usa questo device: una volta sola, in Impostazioni.
-- 2. Il risanamento: lo crea o lo riapre la Regia (Risanamento › Nuovo, Apri, Recenti). I palmari lo ricevono entrando in rete.
-- 3. La rete (se non si lavora da soli): la Regia la apre e mostra il QR, i palmari lo inquadrano.
-- 4. Prima della prima provetta, la Regia sceglie le regole per i problematici e carica i ricercati, se ce ne sono (Risanamento › Impostazioni).
-- 5. Il campionamento: si cerca il capo, si conferma, si scrive il numero sulla provetta.
-- 6. I problemi, per tipologia e provetta per provetta (Soluzione problemi).
-- 7. Il riordino dei plateau con la guida a spunta (Riordino).
-- 8. La fine lavori: snippet ARVET e report in Fejalog, oppure il backup portato in svet-tools.
-- 9. La chiusura: Risanamento › Chiudi (backup e uscita dalla rete); la Regia per ultima.
+- 1. Chi usa questo device: una volta sola, in ⚙️ Impostazioni.
+- 2. Il risanamento: lo crea o lo riapre la Regia (🏷️ Risanamento › Nuovo, Apri, Recenti). I palmari lo ricevono entrando in rete.
+- 3. La rete (se non si lavora da soli): la Regia la apre (📶 Rete) e mostra il QR, i palmari lo inquadrano.
+- 4. Prima della prima provetta, la Regia sceglie le regole per i problematici e carica i ricercati, se ce ne sono (🏷️ Risanamento › Impostazioni).
+- 5. Il campionamento (💉 Campionamento): si cerca il capo, si conferma, si scrive il numero sulla provetta.
+- 6. I problemi, per tipologia e provetta per provetta (⚠️ Soluzione problemi).
+- 7. Il riordino dei plateau con la guida a spunta (📋 Riordino).
+- 8. La fine lavori: snippet ARVET e report in 📁 Import/Export, oppure con i file del backup.
+- 9. La chiusura: 🏷️ Risanamento › Chiudi (backup e uscita dalla rete); la Regia per ultima.

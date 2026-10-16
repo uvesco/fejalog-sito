@@ -38,13 +38,9 @@
         - il report per l'allevatore;
         - i capi senza transponder e i ricercati;
         - le anomalie;
-        - l'export per svet-tools e il registro completo.
+        - l'export per stabilimento e il registro completo.
     - Nella pagina degli snippet, per ogni invio quante provette ci sono e quante **non sono nell'elenco di ARVET**: lo
       snippet le aggiunge con «Inserisci capo». A mano restano solo i doppi di contrassegno.
-
-!!! info "In alternativa: svet-tools"
-    Lo zip del backup si carica così com'è in svet-tools, «Ciclo completo: BDN → campo → ARVET» › «Dopo il campo»:
-    stessa sistemazione, stessi snippet.
 
 ## Fatto?
 

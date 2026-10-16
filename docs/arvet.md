@@ -68,5 +68,3 @@ incolla senza problemi.
 **Si può rifare?** Sì: lo snippet scrive solo i numeri che mancano o sono diversi, e non aggiunge due volte lo stesso
 capo.
 
-**E in svet-tools?** Lo stesso snippet c'è in svet-tools, «Ciclo completo: BDN → campo → ARVET» › «3 · Registra in
-ARVET».

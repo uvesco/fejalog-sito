@@ -2,7 +2,7 @@
 
 # Registri di stalla
 
-- Risanamento › Registri: la tabella di tutti i registri caricati, da dovunque arrivino (file BDN, pacchetto di svet-tools, caricati dopo): in riga gli allevamenti (o gli stabilimenti), in colonna pecore e capre presenti e contrassegni disponibili di pecore e capre, in fondo il totale. «—»: il file non è stato caricato.
+- Risanamento › Registri: la tabella di tutti i registri caricati, da dovunque arrivino (file BDN, pacchetto, caricati dopo): in riga gli allevamenti (o gli stabilimenti), in colonna pecore e capre presenti e contrassegni disponibili di pecore e capre, in fondo il totale. «—»: il file non è stato caricato.
 
 ## Caricare registri a lavori in corsa (Regia)
 

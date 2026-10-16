@@ -7,7 +7,7 @@ plateau da 100.
 
 ## Fai
 
-1. Menu ☰ › **Riordino**: la sistemazione si calcola da sola, col motore di svet-tools. Se il lavoro cambia dopo, una
+1. Menu ☰ › **Riordino**: la sistemazione si calcola da sola, col motore di Fejalog. Se il lavoro cambia dopo, una
    banda gialla propone **«Ricalcola»**.
 2. Segui la **guida**: ogni provetta va **direttamente al numero finale, una volta sola**. Spunta ogni spostamento
    fatto.

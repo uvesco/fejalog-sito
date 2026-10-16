@@ -20,7 +20,7 @@
 ## Numeri e plateau
 
 - Un numero mostrato è definitivo: la provetta va nel plateau a quel numero.
-- I problematici (usciti, altro stabilimento, doppi…) prendono la tua lettera, A1, A2…, e vanno nei plateau problematici.
+- I problematici (usciti, altro stabilimento, doppi, fuori età…) prendono il codice operatore (es. A1, CA1…) e vanno nei plateau problematici. Su queste provette si consiglia di scrivere anche il contrassegno del capo oltre alla sigla della provetta, per facilitare il riordino.
 - Montoni e becchi prendono un numero dalla riserva maschi, in testa; se non ce n'è, il foglio lo dice e si sistemano a fine lavoro.
 - Senza numeri confermati (fuori rete, o un collega che non risponde) la provetta è provvisoria, A•1: si riscrive col numero definitivo in sistemazione.
 - Il numero di campo resta sempre leggibile: in sistemazione non si cancella e non si copre; si barra con una riga sola e si scrive accanto il numero finale (vedi Riordino dei plateau).

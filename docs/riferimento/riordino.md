@@ -7,5 +7,5 @@
 - Guida a spunta: si spunta ogni spostamento fatto; le spunte sono nel registro e le vedono tutti.
 - «Messa altrove»: la provetta non è andata dove diceva la guida; si scrive il numero dove sta.
 - «A mano»: spostamenti fatti senza la guida, prima (o al posto) o dopo, anche più volte: «Sposta una provetta» (se al numero c'era un'altra provetta della serie, prende il numero lasciato libero) o «Scambia due provette».
-- Guida e file di fine lavori si ricalcolano con gli spostamenti; li legge anche svet-tools.
+- Guida e file di fine lavori si ricalcolano con gli spostamenti.
 - Le provette eliminate (Soluzione problemi) non hanno numero finale: la pagina le elenca, da togliere dai plateau e mettere da parte.

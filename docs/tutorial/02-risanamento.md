@@ -47,8 +47,7 @@
       disponibili**; 888TO888 ha 6 pecore.
 
 ??? tip "In alternativa: il pacchetto"
-    Nuovo › dal pacchetto, con `kit_prova/pacchetto_888TO999_kit.json`: è lo stesso risanamento, già coi ricercati.
-    È il file che produce svet-tools («Ciclo completo: BDN → campo → ARVET» › «Pacchetto per Fejalog»).
+    Nuovo › Dal pacchetto, con `kit_prova/pacchetto_888TO999_kit.json`: è lo stesso risanamento, già coi ricercati.
 
 ??? failure "Se non va"
     - **Un file non viene riconosciuto**: deve essere uno dei file `.txt` del kit così com'è, senza modifiche.

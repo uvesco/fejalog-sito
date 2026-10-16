@@ -21,7 +21,6 @@ Gli stessi testi di «Come si usa» nell'app (menu ☰ › Come si usa; il **?**
 - [Riordino dei plateau](riordino.md)
 - [Backup e ripristino](backup.md)
 - [Fine lavori in Fejalog](fine.md)
-- [Rifinitura in svet-tools](svettools.md)
 - [Pausa, chiusura e uscita](uscita.md)
 - [Se qualcosa va storto](guasti.md)
 - [Le parole](parole.md)

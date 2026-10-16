@@ -2,12 +2,12 @@
 
 # Il risanamento: nuovo, apri, recenti, chiudi
 
-- Come i file nei programmi: menu ☰ › Risanamento › «Apertura e chiusura». Uno alla volta: per aprirne un altro si chiude prima quello aperto. Solo chi farà da Regia crea e apre; i palmari entrano da Rete.
+- Come i file nei programmi: menu ☰ › 🏷️ Risanamento › «Apertura e chiusura». Uno alla volta: per aprirne un altro si chiude prima quello aperto. Solo chi farà da Regia crea e apre; i palmari entrano da 📶 Rete.
 
 ## Nuovo
 
 - Dai file della BDN: si scelgono i registri di stalla («Registro storico capi identificati singolarmente», ASCII) e i contrassegni disponibili di pecore e capre, dall'archivio del device, da Drive o da OneDrive, anche tutti insieme o in uno zip (l'app capisce da sola cosa sono), si controlla la tabella, si sceglie lo stabilimento di lavoro e si crea il risanamento sul tablet. L'elenco dei veterinari si carica una volta e resta.
-- Dal pacchetto di svet-tools: in svet-tools, «Ciclo completo: BDN → campo → ARVET» › «Pacchetto per Fejalog».
+- Da un pacchetto (.json) già pronto, se ne hai uno.
 - Appena creato si sceglie come lavorerà: da solo, o in rete (Wi-Fi locale o hotspot di questo device).
 
 ## Apri, Recenti, Chiudi

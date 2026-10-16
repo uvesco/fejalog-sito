@@ -13,6 +13,31 @@ Ogni lezione ha lo stesso schema:
 - **se non va**;
 - **fatto?**: la lista di controllo prima di passare alla lezione dopo.
 
+```mermaid
+flowchart TD
+    subgraph Preparazione ["1. Preparazione & Rete"]
+        L0["0 · Prepara kit"] --> L1["1 · Utente"]
+        L1 --> L2["2 · Risanamento"]
+        L2 --> L3["3 · Registri & Regole"]
+        L3 --> L4["4 · Connessione Rete"]
+        L4 --> L5["5 · Capi Ricercati"]
+    end
+    subgraph Campo ["2. Il Lavoro in Campo"]
+        L5 --> L6["6 · Primo Prelievo"]
+        L6 --> L7["7 · Fattispecie Capi"]
+        L7 --> L8["8 · Doppi & Fuori Rete"]
+        L8 --> L9["9 · Registri in Corsa"]
+        L9 --> L10["10 · Statistiche"]
+    end
+    subgraph Chiusura ["3. Risoluzione & Fine Lavori"]
+        L10 --> L11["11 · Soluzione Problemi"]
+        L11 --> L12["12 · Riordino Plateau"]
+        L12 --> L13["13 · Backup & Uscita"]
+        L13 --> L14["14 · Fine Lavori"]
+        L14 --> L15["15 · Snippet ARVET"]
+    end
+```
+
 | Lezione | Chi | Durata |
 |---|---|---|
 | [0 · Prepara](00-prepara.md) | tutti | 20 min |
