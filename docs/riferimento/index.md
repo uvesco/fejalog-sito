@@ -4,13 +4,16 @@
 
 Gli stessi testi di «Come si usa» nell'app (menu ☰ › Come si usa; il **?** in alto a destra di ogni pagina apre quello della pagina).
 
-- [Avvio rapido: i passi di un risanamento](percorso.md)
+- [Inizio: i passi di un progetto](percorso.md)
 - [Regia e palmari](ruoli.md)
 - [Prima di tutto: l'utente del device](utente.md)
-- [Il risanamento: nuovo, apri, recenti, chiudi](seduta.md)
-- [Registri di stalla](registri.md)
+- [Conservare le impostazioni dell'app](impostazioniportabili.md)
+- [Il progetto: nuovo, apri, recenti, chiudi](seduta.md)
+- [Archivio e copie del progetto](archivio.md)
+- [Registri BDN](registri.md)
 - [Lavorare in rete](rete.md)
 - [Prima della prima provetta (Regia)](inizio.md)
+- [Capi ricercati](ricercati.md)
 - [Campionamento: registrare una provetta](lavoro.md)
 - [Avvisi sul capo](avvisi.md)
 - [Correggere: le ultime provette](ultime.md)

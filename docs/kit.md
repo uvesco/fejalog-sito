@@ -1,6 +1,6 @@
 # Il kit di prova
 
-Un **gregge inventato** per provare Fejalog con più device, dal risanamento fino agli snippet ARVET. Si scarica da
+Un **gregge inventato** per provare Fejalog con più device, dal progetto fino agli snippet ARVET. Si scarica da
 [Scarica](scarica.md) (`kit_prova_888TO999.zip`); il percorso passo passo è il [tutorial](tutorial/index.md).
 
 Tutto è inventato: stabilimento **888TO999 «AZ. AGR. ESEMPIO»**, contrassegni `IT066000000NNN` e un `FR…`.
@@ -12,7 +12,7 @@ Tutto è inventato: stabilimento **888TO999 «AZ. AGR. ESEMPIO»**, contrassegni
 | `bdn/registri/888TO999_pecore_…txt`, `888TO999_capre_…txt` | i registri di stalla dello stabilimento di lavoro: presenti e usciti, con tutti i codici di uscita |
 | `bdn/registri/888TO888_pecore_…txt` | il registro del pascolo condiviso: i suoi capi sono «altro stabilimento» |
 | `bdn/contrassegni/888TO999_pecore_contrassegni_…txt`, `…_capre_…` | i contrassegni disponibili (marche mai messe su un capo) |
-| `pacchetto_888TO999_kit.json` | lo stesso risanamento come pacchetto, in alternativa ai file della BDN |
+| `pacchetto_888TO999_kit.json` | lo stesso progetto come pacchetto, in alternativa ai file della BDN |
 | `ricercati_888TO999.csv` | quattro capi ricercati |
 | `in_corsa/888TO777_pecore_…txt` | il registro del **venditore**, da caricare a lavoro in corso come **acquisto con DDA** |
 | `in_corsa/888TO999_pecore_…_1100.txt` | il registro di 888TO999 **aggiornato**: …010 risulta venduto |

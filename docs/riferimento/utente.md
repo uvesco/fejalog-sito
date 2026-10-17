@@ -2,10 +2,10 @@
 
 # Prima di tutto: l'utente del device
 
-- Il device è personale: in ⚙️ Impostazioni si scrivono una volta nome, cognome, codice fiscale e nome del device («Tablet Regia», «A55 Mario»). Vale per tutti i risanamenti.
+- Il device è personale: in ⚙️ Impostazioni si scrivono una volta nome, cognome, codice fiscale e nome del device («Tablet Regia», «A55 Mario»). Vale per tutti i progetti.
 - Con «Scegli dall'elenco dei veterinari» nome, cognome e codice fiscale si prendono dall'elenco dell'ASL, senza errori.
 - Il codice fiscale riconosce il veterinario nell'elenco; non va mai sulle provette né negli export. Va nel nome dei file di backup, per sapere chi li ha salvati.
-- Nel risanamento ognuno ha una lettera (A, C…): i suoi problematici sono A1, A2… I nomi si mostrano corti, «Mario R».
+- Nel progetto ognuno ha una lettera (A, C…): i suoi problematici sono A1, A2… I nomi si mostrano corti, «Mario R».
 
 ## Le altre impostazioni del device
 

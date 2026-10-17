@@ -1,6 +1,6 @@
 <!-- Pagina generata da Fejalog (ScriviSito) dai testi dell'app: non modificare qui. -->
 
-# SVET Log (Fejalog) · Guida operativa e palmare pronto
+# Fejalog · Guida operativa e palmare pronto
 
 Il foglio per chi usa i palmari, da stampare o mandare su WhatsApp. Lo stesso testo si manda dall'app: «Prima di cominciare» › «Manda le istruzioni».
 
@@ -24,10 +24,10 @@ Per configurare il lettore Allflex AWR250 in modalità tastiera Bluetooth con i 
 
 Provette problematiche e contrassegno sulla provetta
 I capi che non rientrano nella numerazione prenumerata (animali fuori età diagnostica, doppi contrassegni, inserimenti forzati di capi non in anagrafe, stabilimenti secondari):
-- Prendono una sigla problematica col codice operatore (es. CA1, C17U).
+- Prendono una sigla problematica col codice veterinario (es. CA1, C17U).
 - REGOLA PRATICA: su tutte le provette problematiche si raccomanda caldamente di scrivere con il pennarello sulla provetta ANCHE IL CONTRASSEGNO completo del capo oltre alla sigla della provetta, per garantire la rintracciabilità visiva immediata durante il riordino e la successiva sistemazione.
 
-La Wi-Fi del risanamento
+La Wi-Fi del progetto
 La Wi-Fi (router da viaggio, Wi-Fi aziendale o hotspot del tablet) di norma NON ha connessione internet: è normale.
 Il telefono deve restare stabilmente collegato.
 
@@ -36,8 +36,8 @@ Configurazione iniziale (una volta sola)
 
 ## Per entrare nella seduta
 
-1. ☰ Menu → 📶 Rete → «Inquadra il QR della Regia»: il telefono si collega alla Wi-Fi e riceve il risanamento.
-2. Oppure, già sulla Wi-Fi della Regia: il risanamento compare da solo in 📶 Rete; «Chiedi di entrare» e la Regia ti fa entrare.
+1. ☰ Menu → 📶 Rete → «Inquadra il QR della Regia»: il telefono si collega alla Wi-Fi e riceve il progetto.
+2. Oppure, già sulla Wi-Fi della Regia: il progetto compare da solo in 📶 Rete; «Chiedi di entrare» e la Regia ti fa entrare.
 3. Dopo un riavvio o riaprendo l'app: si rientra automaticamente.
 
 Prima di cominciare (impostazioni telefono)
@@ -45,7 +45,7 @@ Prima di cominciare (impostazioni telefono)
 2. Samsung: Impostazioni → Connessioni → Wi-Fi → ⋮ → Intelligent Wi-Fi → «Passa a dati mobili» SPENTO. Altri telefoni: spegnere il passaggio automatico ai dati mobili o la «connettività adattiva».
 3. Risparmio energetico SPENTO durante il lavoro.
 4. Impostazioni → App → Fejalog → Batteria → «Senza restrizioni» (Samsung: non inserire fra le «App in sospensione»).
-5. Notifiche di Fejalog consentite: la notifica «risanamento in corso» mantiene attivo il servizio e la Wi-Fi.
+5. Notifiche di Fejalog consentite: la notifica «progetto in corso» mantiene attivo il servizio e la Wi-Fi.
 
 ## Durante il lavoro
 
@@ -58,5 +58,5 @@ Prima di cominciare (impostazioni telefono)
 
 - ☰ Menu → 📶 Rete → «Esci»: il palmare verifica che la Regia abbia ricevuto tutti gli eventi; se manca qualcosa, avvicinarsi alla Regia e toccare «Riprova».
 - Se la Regia è spenta o caduta: il palmare consente di effettuare il salvataggio del backup autonomo tramite il tasto 💾 Salva per esportarlo su Google Drive o OneDrive.
-- ☰ Menu → 🚪 Esci: chiude l'app lasciando il risanamento aperto; alla riapertura riprende dallo stesso punto.
+- ☰ Menu → 🚪 Esci: chiude l'app lasciando il progetto aperto; alla riapertura riprende dallo stesso punto.
 - Provetta rotta o caduta: in alto a destra ✎ Ultime → «Persa», poi si ripete il prelievo.

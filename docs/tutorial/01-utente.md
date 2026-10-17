@@ -1,6 +1,6 @@
 # 1 · Chi usa il device
 
-**Obiettivo**: ogni device sa chi lo usa. Si fa una volta sola e vale per tutti i risanamenti.
+**Obiettivo**: ogni device sa chi lo usa. Si fa una volta sola e vale per tutti i progetti.
 
 **Ti serve**: ogni device, nelle mani di chi lo userà.
 
@@ -23,7 +23,7 @@
 </div>
 
 !!! atteso "Cosa devi vedere"
-    Nell'**Avvio rapido** il primo passo, «Chi usa questo device», è fatto. Nel risanamento i nomi si mostrano corti,
+    Nell'**Avvio rapido** il primo passo, «Chi usa questo device», è fatto. Nel progetto i nomi si mostrano corti,
     «Mario R».
 
 !!! info "Il codice fiscale"

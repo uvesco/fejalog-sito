@@ -15,7 +15,7 @@
 2. Apri uno snippet `.txt` col blocco note. Dentro ci sono due elenchi:
     - `__ARVET_DATI__`: numero e contrassegno dei capi nell'elenco;
     - `__ARVET_NUOVI__`: numero, contrassegno, sesso, razza e nascita dei capi da aggiungere.
-3. Leggi [ARVET e gli snippet](../arvet.md): come si usa con un risanamento vero.
+3. Leggi [ARVET e gli snippet](../arvet.md): come si usa con un progetto vero.
 
 !!! atteso "Cosa devi vedere"
     - In ogni invio i numeri di provetta finali formano una **sequenza lineare continua da 1 a n** senza buchi.
@@ -35,4 +35,4 @@
 - [ ] snippet aperti e capiti
 - [ ] letta la pagina [ARVET e gli snippet](../arvet.md)
 
-Fine del tutorial. Per un risanamento vero si rifanno gli stessi passi coi file della BDN dello stabilimento.
+Fine del tutorial. Per un progetto vero si rifanno gli stessi passi coi file della BDN dello stabilimento.

@@ -6,17 +6,17 @@
 
 ## La Regia
 
-- La rete si apre col risanamento (scelta «In rete» quando lo si crea) o da Rete › «Apri la rete».
+- La rete si apre col progetto (scelta «In rete» quando lo si crea) o da Rete › «Apri la rete».
 - Nome e password della Wi-Fi nel QR sono facoltativi: servono ai palmari non ancora collegati. Il tablet li ricorda.
 - La pagina Rete mostra il QR «Inquadra per entrare», i palmari col loro stato e «Affida la regia».
 - Quando un palmare chiede di entrare, in ogni pagina compare «Chiede di entrare»: «Fai entrare».
 
 ## I palmari
 
-- Rete › «Inquadra il QR della Regia»: il telefono si collega alla Wi-Fi e riceve il risanamento e il registro intero.
-- Se il telefono è già sulla Wi-Fi della Regia, il risanamento compare da solo: «Chiedi di entrare» e la Regia fa entrare.
+- Rete › «Inquadra il QR della Regia»: il telefono si collega alla Wi-Fi e riceve il progetto e il registro intero.
+- Se il telefono è già sulla Wi-Fi della Regia, il progetto compare da solo: «Chiedi di entrare» e la Regia fa entrare.
 - Dentro: «Pausa» (i numeri non usati tornano agli altri), «Riprendi», «Esci».
-- Si rientra da soli: riaprendo l'app il risanamento lasciato aperto riparte e la rete si ricollega, allineando il registro.
+- Si rientra da soli: riaprendo l'app il progetto lasciato aperto riparte e la rete si ricollega, allineando il registro.
 
 ## Strumenti (in fondo alla pagina Rete)
 

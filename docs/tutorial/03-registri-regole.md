@@ -1,47 +1,28 @@
-# 3 · Registri e regole
+# 3 · Regole e archivio del progetto
 
-**Obiettivo**: la Regia fissa le regole per i problematici prima della prima provetta e sa dove stanno i file della
-BDN.
+**Obiettivo:** sapere dove rivedere le scelte della profilassi e dove trovare gli input.
 
-**Ti serve**: il tablet della Regia.
+## Rivedi le regole
 
-## Fai
+1. Apri **Preparazione › Modalità e regole**. L’età diagnostica e le lettere sono in testa alla pagina.
+2. Apri **Regole per i problematici**: controlla come trattare smarriti, rubati e le altre tipologie. Il predefinito tiene gli smarriti nella serie e i rubati fra i problematici. I dettagli si aprono su richiesta.
+3. Controlla il **backup automatico**: di base un’istantanea ogni 25 eventi. Le scelte sono nel progetto e le cambia soltanto la Regia.
 
-1. Appena creato il risanamento, Fejalog chiede **«Smarriti e rubati dello stabilimento»**: capi usciti in BDN per
-   smarrimento (W) o furto (H) e ritrovati in campo. Lascia il predefinito, smarriti **nella serie** e rubati
-   **problematici**, e **Conferma**. La finestra non si chiude finché non si sceglie.
-2. Risanamento › **Impostazioni** › **Regole per i problematici**: per ogni **tipologia** (doppi, specie discordante,
-   altro stabilimento, usciti morti o trasferiti, marche disponibili…) che cosa fare a fine lavoro: **in coda** o
-   **eliminata**. Lascia «in coda».
-3. Sempre in Impostazioni, il **backup automatico**: di base un'istantanea ogni 25 eventi.
-4. Risanamento › **Registri** › «Fonti del risanamento»:
-    - **senza cartella di lavoro**, i file usati sono copiati in `Download/Fejalog/‹risanamento›/bdn`;
-    - **con una cartella di lavoro** (la cartella «Fejalog», meglio sul cloud), Fejalog ci crea la cartella del
-      risanamento con `bdn/registri` e `bdn/contrassegni`, dà ai file il **nome standard** e ne mostra lo stato.
+!!! info "Modifiche durante il lavoro"
+    Le regole possono cambiare anche dopo. Gli eventi precedenti e i numeri di campo restano ricostruibili; i cambiamenti della sistemazione vengono registrati.
 
-<div class="schermate" markdown>
+## Trova i file
 
-<figure markdown="span">
-  ![Smarriti e rubati](../img/tutorial/03a_smarriti.png)
-  <figcaption>Smarriti e rubati: si sceglie subito</figcaption>
-</figure>
+Da **Dati › Registri BDN e contrassegni › Fonti del progetto** controlli gli input e il loro stato: in uso, aggiornati da caricare o non ancora caricati.
 
-<figure markdown="span">
-  ![Regole per i problematici](../img/tutorial/03c_regole.png)
-  <figcaption>Le regole per tipologia</figcaption>
-</figure>
+- Con una cartella di lavoro disponibile, gli input vengono conservati nella cartella del progetto, sotto `bdn/registri` e `bdn/contrassegni`.
+- Senza cartella raggiungibile, restano sul dispositivo, anche in `Download/Fejalog`.
+- Gli aggiornamenti si controllano in anteprima e si applicano esplicitamente.
 
-</div>
-
-!!! atteso "Cosa devi vedere"
-    Le regole sono quelle predefinite, e sugli altri device (quando entreranno) si vedono ma non si cambiano. Le
-    impostazioni del risanamento le cambia solo la Regia.
-
-!!! info "Si possono cambiare dopo"
-    Scegliere all'inizio fa meno spostamenti a fine lavoro, ma le regole si possono cambiare anche dopo: le provette
-    già fatte seguono da sole in sistemazione.
+Le destinazioni si scelgono in **Preparazione › Cartelle e copie**. Qui trovi anche le copie pendenti e la seconda destinazione incrementale, eventualmente su USB. Le numerazioni delle pecore conservano fotografie distinte dopo assegnazioni e scambi.
 
 ## Fatto?
 
-- [ ] smarriti e rubati confermati
-- [ ] regole per i problematici viste
+- [ ] età diagnostica e regole controllate
+- [ ] individuati gli input in Dati
+- [ ] scelte le cartelle e le copie desiderate

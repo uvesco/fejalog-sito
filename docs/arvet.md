@@ -12,7 +12,7 @@ pagina di ARVET dove si inseriscono i numeri dei campioni. Lo snippet **scrive i
 | 2 · capre | profilassi brucellosi ovicaprina, accettazione delle capre | tutte le capre |
 | 3 · maschi *Brucella ovis* | «DIAGNOSI BRUCELLA OVIS ARIETI» | i montoni, con **gli stessi numeri** dell'invio delle pecore |
 
-Con più stabilimenti nello stesso risanamento, la lettera sulla provetta (X12) dice quale accettazione è: in ARVET va
+Con più stabilimenti nello stesso progetto, la lettera sulla provetta (X12) dice quale accettazione è: in ARVET va
 solo il numero (12).
 
 ## Come si usa

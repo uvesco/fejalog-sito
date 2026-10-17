@@ -20,7 +20,7 @@
    altro, le altre sezioni a turno.
 
 !!! atteso "Cosa devi vedere"
-    Aprendo Fejalog compare l'**Avvio rapido**, coi passi del risanamento da fare. La prima pagina delle schede ha la
+    Aprendo Fejalog compare l'**Avvio rapido**, coi passi del progetto da fare. La prima pagina delle schede ha la
     tabella delle sezioni: 362 schede, 359 capi.
 
 ??? failure "Se non va"

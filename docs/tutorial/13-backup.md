@@ -1,6 +1,6 @@
 # 13 · Backup, uscita, ripresa
 
-**Obiettivo**: salvare il risanamento, uscire e riprendere, anche su un altro device.
+**Obiettivo**: salvare il progetto, uscire e riprendere, anche su un altro device.
 
 **Ti serve**: il tablet della Regia, un palmare; facoltativo un secondo tablet o telefono che farà da Regia nuova.
 
@@ -10,9 +10,9 @@
    Impostazioni. In Import/Export, «Salva un backup in una cartella…» lo mette dove vuoi.
 2. **Esci dall'app** (menu ☰ › Esci, in fondo) su un palmare: backup, verifica dell'allineamento, pausa; riaprendo
    l'app si riprende da lì e la rete si ricollega da sola.
-3. **La Regia si rompe**: sul device nuovo, Risanamento › **Apri da un file** › il backup. Leggi l'anteprima e
+3. **La Regia si rompe**: sul device nuovo, Progetto › **Apri da un file** › il backup. Leggi l'anteprima e
    **subentra come Regia**; poi Rete › «Apri la rete». Se ci sono backup parziali su più telefoni, Fejalog può unire i backup superstiti recuperando tutti gli eventi.
-4. **Chiudi** (Risanamento › Chiudi, o Rete › Esci sul palmare): backup, uscita ordinata, il risanamento resta fra i
+4. **Chiudi** (Progetto › Chiudi, o Rete › Esci sul palmare): backup, uscita ordinata, il progetto resta fra i
    **Recenti**. La Regia chiude per ultima.
 
 <div class="schermate" markdown>

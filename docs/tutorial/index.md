@@ -1,6 +1,6 @@
 # Tutorial col kit di prova
 
-Si impara facendo: un risanamento intero su un **gregge inventato**, dal primo device fino ad ARVET. Lo stabilimento
+Si impara facendo: un progetto intero su un **gregge inventato**, dal primo device fino ad ARVET. Lo stabilimento
 è 888TO999 «AZ. AGR. ESEMPIO», con 275 capi presenti (233 pecore e 42 capre). Ci sono anche gli usciti per tutti i
 codici della BDN, un pascolo condiviso, le marche disponibili, i ricercati, i doppi e un venditore con DDA. Ogni capo
 ha una **scheda stampata**, col barcode del codice elettronico e le ultime cifre del contrassegno.
@@ -17,7 +17,7 @@ Ogni lezione ha lo stesso schema:
 flowchart TD
     subgraph Preparazione ["1. Preparazione & Rete"]
         L0["0 · Prepara kit"] --> L1["1 · Utente"]
-        L1 --> L2["2 · Risanamento"]
+        L1 --> L2["2 · Progetto"]
         L2 --> L3["3 · Registri & Regole"]
         L3 --> L4["4 · Connessione Rete"]
         L4 --> L5["5 · Capi Ricercati"]
@@ -42,7 +42,7 @@ flowchart TD
 |---|---|---|
 | [0 · Prepara](00-prepara.md) | tutti | 20 min |
 | [1 · Chi usa il device](01-utente.md) | tutti | 2 min |
-| [2 · Il risanamento](02-risanamento.md) | Regia | 5 min |
+| [2 · Il progetto](02-progetto.md) | Regia | 5 min |
 | [3 · Registri e regole](03-registri-regole.md) | Regia | 5 min |
 | [4 · La rete](04-rete.md) | tutti | 10 min |
 | [5 · I ricercati](05-ricercati.md) | Regia | 2 min |
@@ -60,4 +60,4 @@ flowchart TD
 !!! tip "Da soli o in tanti"
     Il tutorial si può fare con un solo device (la Regia lavora da sola). Con un tablet e due o tre telefoni però si
     provano anche la rete, i doppi e la Regia che si spegne. Prelevare tutto il gregge, diviso fra più palmari, è la
-    prova più vicina a un risanamento vero.
+    prova più vicina a un progetto vero.

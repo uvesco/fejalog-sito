@@ -27,9 +27,5 @@ Fejalog non è sul Play Store: si installa dal file («sideload»).
 
 ## Aggiornare
 
-La versione nuova si installa **sopra** quella vecchia: i risanamenti restano. Conviene aggiornare tutti i device
-dello stesso risanamento, a lavoro fermo.
-
-!!! warning "Chi ha installato la versione provvisoria SVET Log"
-    Se sui tuoi dispositivi è ancora installata la versione provvisoria sperimentale **SVET Log** (`io.github.uvesco.svetlog`),
-    disinstallala per evitare confusioni con Fejalog. I risanamenti possono essere esportati tramite backup zip e riaperti in Fejalog.
+La versione nuova si installa **sopra** quella vecchia: i progetti restano. Conviene aggiornare tutti i device
+dello stesso progetto, a lavoro fermo.

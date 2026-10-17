@@ -1,60 +1,31 @@
-# 9 · Registri in corsa
+# 9 · Aggiornare i registri durante il lavoro
 
-**Obiettivo**: caricare registri nuovi a lavoro iniziato: un **acquisto con DDA** e il registro **aggiornato** dello
-stabilimento.
+**Obiettivo:** aggiornare gli input e dichiarare gli acquisti con DDA capo per capo.
 
-**Ti serve**: il tablet della Regia, i file di `kit_prova/in_corsa/`; le schede «Acquisto con DDA».
+## Carica un altro stabilimento
 
-## Fai
-
-1. **Prima** del caricamento, un palmare cerca una scheda «Acquisto con DDA» (per esempio
-   <span class="cifre">801</span>): non si trova, è in nessun registro.
-2. Regia: Risanamento › **Registri** › «Scegli i file (anche uno zip)» › `in_corsa/888TO777_pecore_….txt`. Per
-   888TO777 scegli **Acquisto con DDA** e scrivi il motivo («DDA n. 1 del 14/10/2026, prova»). **«Carica per tutti»**.
-3. Ora preleva le schede «Acquisto con DDA».
-4. Regia: «Scegli i file» › `in_corsa/888TO999_pecore_…_1100.txt`: è il registro aggiornato dello **stabilimento di
-   lavoro**, che **sostituisce** quello di prima: «Sostituisci», motivo «BDN aggiornata», «Carica per tutti».
-
-<div class="schermate" markdown>
-
-<figure markdown="span">
-  ![Prima del caricamento 801 non si trova](../img/tutorial/09a_prima.png)
-  <figcaption>Prima del caricamento 801 non si trova</figcaption>
-</figure>
-
-<figure markdown="span">
-  ![Dopo: acquisto con DDA, nella serie](../img/tutorial/09d_dda_campo.png)
-  <figcaption>Dopo: acquisto con DDA, nella serie</figcaption>
-</figure>
-
-<figure markdown="span">
-  ![La tabella coi registri caricati](../img/tutorial/09e_aggiornato.png)
-  <figcaption>La tabella coi registri caricati</figcaption>
-</figure>
-
-</div>
+1. Sulla Regia: **Dati › Registri BDN e contrassegni › Scegli i file**.
+2. Dal kit scegli `in_corsa/888TO777_pecore_….txt`. È un **altro stabilimento**, utile per riconoscere i capi. Controlla l’anteprima, indica il motivo e carica per tutti.
+3. Sul palmare cerca un capo di quel registro. Se l’operatore (allevatore) lo dichiara acquistato con DDA, spunta **Acquisto con DDA** nella conferma di quel singolo prelievo. La casella parte sempre non selezionata.
 
 !!! atteso "Cosa devi vedere"
-    - I capi del venditore vanno **nella serie**, con l'ARVET automatico; nelle cose da fare per l'allevatore c'è da
-      registrare l'ingresso in BDN.
-    - Nel registro aggiornato **IT066000000010** risulta **venduto** (V). Se era già stato prelevato, la provetta
-      resta al suo numero e in sistemazione va **in coda**; il capo ora è un problematico.
-    - Il registro aggiornato è delle sole **pecore**: le **capre** di 888TO999 restano quelle di prima (42).
-    - Risanamento › Registri: la tabella ha anche 888TO777, «acquisto con DDA → 888TO999».
+    La dichiarazione resta una problematica da verificare. Non autorizza gli altri capi del venditore e non rende automatico l’ingresso.
 
-!!! info "Il ruolo di un registro"
-    Un registro di un altro stabilimento si ritira finché nessuna provetta l'ha usato; poi il suo ruolo non cambia più.
+## Verifica il DDA
 
-<div class="schermate" markdown>
+In **Lavoro › Problemi da risolvere**, la Regia indica se il DDA è valido oppure da rifare e annota la verifica. Con DDA valido, l’operatore o il delegato deve registrare/forzare l’ingresso: solo dopo averne confermato l’avvenuta registrazione la provetta può essere normalizzata.
+Le attività restano nello specchietto per l’operatore. Fejalog non scrive nella BDN.
 
-<figure markdown="span">
-  ![Ricaricato dopo una provetta: il ruolo resta](../img/tutorial/09b_dda.png)
-  <figcaption>Ricaricato dopo una provetta: il ruolo resta</figcaption>
-</figure>
+## Sostituisci un registro
 
-</div>
+1. Scegli il registro aggiornato di **888TO999** dal kit.
+2. Controlla l’anteprima: lo stabilimento di lavoro viene aggiornato; una specie assente dal nuovo file conserva i propri dati precedenti.
+3. Indica il motivo e conferma. Le nuove informazioni riclassificano i prelievi, conservando registro eventi, assegnazioni e numeri già mostrati.
+
+Un capo già prelevato che ora risulta uscito può diventare problematico: resta ricostruibile la sua assegnazione iniziale. L’archivio delle numerazioni conserva un nuovo file a ogni aggiornamento pertinente.
 
 ## Fatto?
 
-- [ ] DDA caricato e capi del venditore nella serie
-- [ ] registro aggiornato: …010 venduto
+- [ ] altro stabilimento caricato come riferimento
+- [ ] DDA dichiarato sul singolo capo e verifica visibile
+- [ ] registro aggiornato con assegnazioni precedenti conservate

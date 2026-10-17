@@ -63,12 +63,14 @@ markdown_extensions:
 
 nav:
   - Fejalog: index.md
+  - Caratteristiche: caratteristiche.md
   - Scarica: scarica.md
   - Tutorial col kit di prova:
       - tutorial/index.md
       - "0 · Prepara": tutorial/00-prepara.md
+      - Reperire i file BDN: tutorial/file-bdn.md
       - "1 · Chi usa il device": tutorial/01-utente.md
-      - "2 · Il risanamento": tutorial/02-risanamento.md
+      - "2 · Il progetto": tutorial/02-progetto.md
       - "3 · Registri e regole": tutorial/03-registri-regole.md
       - "4 · La rete": tutorial/04-rete.md
       - "5 · I ricercati": tutorial/05-ricercati.md
@@ -88,13 +90,16 @@ nav:
   # >>> riferimento (scritto da ScriviSito: non modificare)
   - Guida di riferimento:
       - riferimento/index.md
-      - "Avvio rapido: i passi di un risanamento": riferimento/percorso.md
+      - "Inizio: i passi di un progetto": riferimento/percorso.md
       - "Regia e palmari": riferimento/ruoli.md
       - "Prima di tutto: l'utente del device": riferimento/utente.md
-      - "Il risanamento: nuovo, apri, recenti, chiudi": riferimento/seduta.md
-      - "Registri di stalla": riferimento/registri.md
+      - "Conservare le impostazioni dell'app": riferimento/impostazioniportabili.md
+      - "Il progetto: nuovo, apri, recenti, chiudi": riferimento/seduta.md
+      - "Archivio e copie del progetto": riferimento/archivio.md
+      - "Registri BDN": riferimento/registri.md
       - "Lavorare in rete": riferimento/rete.md
       - "Prima della prima provetta (Regia)": riferimento/inizio.md
+      - "Capi ricercati": riferimento/ricercati.md
       - "Campionamento: registrare una provetta": riferimento/lavoro.md
       - "Avvisi sul capo": riferimento/avvisi.md
       - "Correggere: le ultime provette": riferimento/ultime.md

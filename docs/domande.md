@@ -13,7 +13,7 @@ elettronico (`380`/`0380` più 12 cifre, anche di altri paesi).
 
 ## Privacy
 
-**Dove vanno i dati?** Restano sui device del risanamento, passano solo sulla Wi-Fi locale e finiscono nei backup che
+**Dove vanno i dati?** Restano sui device del progetto, passano solo sulla Wi-Fi locale e finiscono nei backup che
 salva chi li fa. Fejalog non manda niente su internet, non ha pubblicità né statistiche d'uso.
 
 **Il codice fiscale?** Serve a riconoscere il veterinario e sta nel nome dei backup. Non va sulle provette né negli
@@ -25,7 +25,7 @@ La guida di riferimento ha la pagina [Se qualcosa va storto](riferimento/guasti.
 
 - **Wi-Fi persa** (banda rossa): «Ricollegati». Intanto si lavora coi numeri pronti e poi con le provvisorie.
 - **La Regia si spegne**: gli altri continuano. Dopo 2 minuti la regia è libera e un palmare la prende.
-- **Il tablet si rompe**: su un altro device Risanamento › Apri da un file (il backup) e subentra come Regia.
+- **Il tablet si rompe**: su un altro device Progetto › Apri da un file (il backup) e subentra come Regia.
 - **Impronte diverse** fra i device: aspettare l'allineamento prima della fine lavori.
 
 ## Segnalare un problema

@@ -4,9 +4,15 @@
 
 **Ti serve**: il tablet della Regia, `kit_prova/ricercati_888TO999.csv`.
 
-## Fai
+Un **capo ricercato** è un animale per cui vuoi mostrare una segnalazione quando viene incontrato: per esempio marcarlo, isolarlo o controllare un’anomalia. Non è l’elenco dei capi mancanti al campionamento e il motivo può essere indipendente dalla profilassi.
 
-1. Risanamento › **Impostazioni** › Capi ricercati › carica `ricercati_888TO999.csv`. Se hai creato il risanamento
+## Aggiungi un capo durante il lavoro
+
+Dalla Regia apri **Dati › Capi ricercati › Aggiungi capo**. Cerca nei registri e nei contrassegni con le ultime cifre, oppure scrivi a mano il codice completo. Indica il motivo e l’azione richiesta, poi salva. Attendi l’allineamento dei palmari: quelli scollegati riceveranno la segnalazione quando rientrano.
+
+## Importa un elenco
+
+1. Dati › **Capi ricercati** › Importa CSV: carica `ricercati_888TO999.csv`. Se hai creato il progetto
    dal pacchetto, ci sono già.
 2. Il CSV ha quattro capi (`codice;nota;azione;segno`):
 
