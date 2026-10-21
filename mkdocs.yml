@@ -64,6 +64,7 @@ markdown_extensions:
 nav:
   - Fejalog: index.md
   - Caratteristiche: caratteristiche.md
+  - Problemi affrontati e architettura: problemi-affrontati.md
   - Scarica: scarica.md
   - Tutorial col kit di prova:
       - tutorial/index.md
@@ -79,6 +80,7 @@ nav:
       - "8 · Doppi e rete difficile": tutorial/08-doppi-rete.md
       - "9 · Registri in corsa": tutorial/09-registri-in-corsa.md
       - "10 · Statistiche e provette perse": tutorial/10-statistiche.md
+      - "10 bis · Il Plateau della Regia": tutorial/10b-plateau.md
       - "11 · Soluzione problemi": tutorial/11-problemi.md
       - "12 · Riordino dei plateau": tutorial/12-riordino.md
       - "13 · Backup, uscita, ripresa": tutorial/13-backup.md
@@ -106,6 +108,7 @@ nav:
       - "Provette perse e ritrovate": riferimento/perse.md
       - "Lo stato della rete in alto": riferimento/banner.md
       - "Statistiche": riferimento/statistiche.md
+      - "Il Plateau della Regia": riferimento/plateau.md
       - "Soluzione problemi": riferimento/problemi.md
       - "Riordino dei plateau": riferimento/riordino.md
       - "Backup e ripristino": riferimento/backup.md

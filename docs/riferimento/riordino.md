@@ -2,7 +2,9 @@
 
 # Riordino dei plateau
 
-- Alla fine del prelievo, sul tablet: «Calcola la sistemazione» dà la guida per spostare le provette ai numeri finali (problematici, provvisorie, buchi). Se il lavoro cambia dopo il calcolo, «Ricalcola».
+- Solo a campionamento chiuso (Checklist › Chiudi campionamento), sul tablet: «Calcola la sistemazione» dà la guida per spostare le provette ai numeri finali (problematici, isolati, provvisorie, buchi). Se il lavoro cambia dopo il calcolo, «Ricalcola».
+- Ogni riga dice l'etichetta scritta sulla provetta, da dove prenderla come nel Plateau («Plat. 1 · Pozz. 11 (Problematici)») e a che pozzetto portarla.
+- Dalla prima spunta (o dal primo spostamento a mano) il campionamento è chiuso per sempre: non si riapre più.
 - Ogni provetta va direttamente al numero finale, una volta sola. Non cancellare e non coprire il numero di campo: barralo con una riga sola, che resti leggibile, e scrivi accanto il numero finale. Il numero di campo è registrato a parte dal finale: da lì si risale sempre al capo, qualunque spostamento ci sia stato.
 - Guida a spunta: si spunta ogni spostamento fatto; le spunte sono nel registro e le vedono tutti.
 - «Messa altrove»: la provetta non è andata dove diceva la guida; si scrive il numero dove sta.

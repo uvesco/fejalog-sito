@@ -20,6 +20,7 @@ Gli stessi testi di «Come si usa» nell'app (menu ☰ › Come si usa; il **?**
 - [Provette perse e ritrovate](perse.md)
 - [Lo stato della rete in alto](banner.md)
 - [Statistiche](statistiche.md)
+- [Il Plateau della Regia](plateau.md)
 - [Soluzione problemi](problemi.md)
 - [Riordino dei plateau](riordino.md)
 - [Backup e ripristino](backup.md)

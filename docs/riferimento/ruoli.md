@@ -2,9 +2,9 @@
 
 # Regia e palmari
 
-- La Regia (di solito il tablet, in orizzontale) crea o riapre il progetto, apre la rete e mostra il QR, fa entrare gli altri, ha lo schema dei plateau, cambia le impostazioni del progetto e fa il backup.
+- La Regia (di solito il tablet, in orizzontale) crea o riapre il progetto, apre la rete e mostra il QR, fa entrare gli altri, riceve le provette e le mette nei plateau, cambia le impostazioni del progetto e fa il backup.
 - I palmari (i telefoni dei veterinari che si muovono nel gregge) prelevano: cercano il capo, confermano e scrivono il numero. Hanno sempre il registro intero, allineato con gli altri.
-- Ogni device prenota in anticipo i suoi numeri: due provette con lo stesso numero non esistono mai e un numero mostrato è definitivo. Si lavora anche se la Regia si spegne.
+- Ogni capo ha il suo numero dal caricamento dei registri: due provette con la stessa scritta non devono esistere mai e un numero mostrato è definitivo. Si lavora anche se la Regia si spegne.
 
 ## La regia si sposta
 

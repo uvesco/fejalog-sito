@@ -5,8 +5,9 @@
 ## Rivedi le regole
 
 1. Apri **Preparazione › Modalità e regole**. L’età diagnostica e le lettere sono in testa alla pagina.
-2. Apri **Regole per i problematici**: controlla come trattare smarriti, rubati e le altre tipologie. Il predefinito tiene gli smarriti nella serie e i rubati fra i problematici. I dettagli si aprono su richiesta.
-3. Controlla il **backup automatico**: di base un’istantanea ogni 25 eventi. Le scelte sono nel progetto e le cambia soltanto la Regia.
+2. Apri **Regole per i problematici**: controlla la soluzione di fine lavoro di ogni tipologia. Smarriti e rubati dello stabilimento vanno **sempre** fra i problematici. I dettagli si aprono su richiesta.
+3. **Lettera di specie**: con pecore e capre almeno una delle due ha la lettera (C o P); «Nessuna» non si può scegliere, così una pecora e una capra non hanno mai la stessa scritta.
+4. Controlla il **backup automatico**: di base un’istantanea ogni 25 eventi. Le scelte sono nel progetto e le cambia soltanto la Regia.
 
 !!! info "Modifiche durante il lavoro"
     Le regole possono cambiare anche dopo. Gli eventi precedenti e i numeri di campo restano ricostruibili; i cambiamenti della sistemazione vengono registrati.

@@ -34,7 +34,7 @@
 !!! atteso "Cosa devi vedere"
     - Sotto il titolo di ogni pagina, il **pallino verde** e chi ha la regia.
     - Sulla Regia, in Rete, i palmari coi loro nomi e il loro stato.
-    - Ogni operatore ha una **lettera** (A, C…).
+    - Ogni veterinario ha una **lettera** (A, D, E…, mai C e P), che riprende anche se cambia device.
     - Sui palmari, al posto di Salva, **«✓ Allineato»**: il registro è uguale a quello della Regia.
 
 ??? failure "Se non va"

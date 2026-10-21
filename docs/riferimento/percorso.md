@@ -11,8 +11,8 @@
 - 2. Il progetto: lo crea o lo riapre la Regia (🏷️ Progetto › Nuovo, Apri, Recenti). I palmari lo ricevono entrando in rete.
 - 3. Configura il progetto (Preparazione): cartelle, modalità, rete e regole della profilassi.
 - 4. Carica gli input da Dati: registri BDN, contrassegni ed eventuali ricercati. Se si lavora in rete, i palmari entrano col QR della Regia.
-- 5. Il campionamento (💉 Campionamento): si cerca il capo, si conferma, si scrive il numero sulla provetta.
+- 5. Il campionamento (💉 Campionamento): si cerca il capo, si conferma, si scrive il numero sulla provetta. La Regia riceve le provette e le mette nei plateau (Plateau).
 - 6. I problemi, per tipologia e provetta per provetta (⚠️ Soluzione problemi).
-- 7. Il riordino dei plateau con la guida a spunta (📋 Riordino).
+- 7. Chiuso il campionamento, il riordino dei plateau con la guida a spunta (📋 Riordino): dalla prima spunta il campionamento non si riapre più.
 - 8. La fine lavori: snippet ARVET e report in 📁 Import/Export, oppure con i file del backup.
 - 9. La chiusura: 🏷️ Progetto › Chiudi (backup e uscita dalla rete); la Regia per ultima.

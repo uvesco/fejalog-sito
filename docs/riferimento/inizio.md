@@ -4,8 +4,8 @@
 
 ## Regole per i problematici
 
-- All'apertura la Regia sceglie se i capi smarriti (W) e quelli rubati (H) dello stabilimento, trovati in campo, vanno nella serie o fra i problematici. Predefinito: smarriti nella serie, rubati fra i problematici.
-- Nella serie tengono il numero di campo come gli altri e in ARVET li aggiunge lo snippet di fine lavori, dopo la denuncia di ritrovamento. Fra i problematici vanno nei plateau problematici, in coda a fine lavoro. «F» (furto/smarrimento, causale vecchia) va nella serie solo se ci vanno sia gli smarriti sia i rubati.
+- I capi smarriti (W) e rubati (H, F) dello stabilimento, trovati in campo, vanno sempre fra i problematici: nessun numero preassegnato, plateau problematici e coda a fine lavoro (dopo la denuncia di ritrovamento).
+- Lettera di specie: con pecore e capre nello stesso progetto almeno una delle due ha la lettera (C o P), di base la meno numerosa; «Nessuna» non si può scegliere, così una pecora e una capra non hanno mai la stessa scritta. Si fissa all'avvio del campionamento.
 - In Preparazione › Modalità e regole sceglie anche cosa fare a fine lavoro di ogni tipologia di problematiche: in coda (in ARVET le aggiunge lo snippet), o eliminate (messe da parte: niente numero finale, niente ARVET).
 - Meglio scegliere all'inizio: dopo ci sono meno spostamenti. Si possono cambiare anche dopo, e le provette già fatte seguono da sole in sistemazione. Valgono per tutti i device.
 

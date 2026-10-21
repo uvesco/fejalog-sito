@@ -11,7 +11,7 @@ Preleva almeno una scheda per sezione e confronta con la tabella.
 
 | Sezione delle schede | Che cosa fare | Cosa devi vedere |
 |---|---|---|
-| Usciti · smarriti e rubati (W, H, F) | come un presente | avviso **USCITO** (giallo). Con le regole predefinite W va nella serie, H fra i problematici, F nella serie solo se lo sono tutti e due |
+| Usciti · smarriti e rubati (W, H, F) | come un presente | avviso **USCITO** (giallo): sempre fra i problematici (codice operatore) |
 | Usciti · morti (D, N, Q, Y) | come un presente | **USCITO**: fra i problematici (codice operatore CA1, CA2…) |
 | Usciti · trasferiti (V, E, G, I, J, K, P, R, S, T, U) | come un presente | **USCITO**: fra i problematici |
 | Usciti · macello (M, A) | come un presente | **USCITO**: fra i problematici |
@@ -72,7 +72,7 @@ Preleva almeno una scheda per sezione e confronta con la tabella.
 </div>
 
 !!! info "Problematici e lettere"
-    I problematici prendono la **lettera di chi li preleva** (A1, A2…) e vanno nei **plateau problematici**. A fine
+    I problematici prendono la **lettera di chi li preleva** (PA1, PA2…; senza lettera di specie A1, A2…) e vanno nei **plateau problematici**. A fine
     lavoro la sistemazione li porta in coda alla serie, col numero finale.
 
 ## Fatto?

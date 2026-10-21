@@ -50,8 +50,10 @@ basta scrivere il numero sulla scheda (o su un foglio).
       dice fra quanti capi hai scelto.
 
 !!! info "Il numero è definitivo"
-    Un numero mostrato non cambia più: la provetta va nel plateau a quel numero. Due palmari non danno mai lo stesso
-    numero sui prenumerati perché ogni capo ha già il suo numero univoco assegnato nel registro.
+    Un numero mostrato non cambia più. Ogni capo ha già il suo numero assegnato nel registro; se un collega registra
+    lo stesso capo mentre il tuo foglio è aperto, compare **«Controlla subito il capo»** prima che tu possa confermare.
+    Se due palmari confermano insieme lo stesso capo, a tutti e due arriva la **rinomina obbligatoria**, con la
+    provetta ancora in mano.
 
 ??? failure "Se non va"
     - **L'etichetta ha una lettera in coda (es. 13U)**: sei da isolato (doppi non controllati). La provetta tiene quel numero e la Regia la verifica al rientro.

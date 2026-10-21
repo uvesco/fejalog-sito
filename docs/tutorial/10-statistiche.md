@@ -8,7 +8,7 @@
 
 1. Menu ☰ › **Statistiche**: copertura per specie (fatti, attesi, mancanti), letti elettronicamente, andamento del
    lavoro per operatore con la stima della fine, problematici per motivo.
-2. **Plateau**: un plateau alla volta, con le coordinate; i plateau con buchi o perse hanno il bordo rosso.
+2. **Classifica**: provette, ritmi e problematiche di ogni veterinario, per persona: chi cambia device tiene le sue provette. Il Plateau è nella [tappa seguente](10b-plateau.md).
 3. **Provette**: l'elenco in parole, con ricerca e filtri.
 4. **Una provetta rotta**: Campionamento › **Ultime** › una provetta › **«Persa»**, motivo «Rotta», «Segna persa».
    Poi preleva di nuovo lo stesso capo.
@@ -26,8 +26,8 @@
 </figure>
 
 <figure markdown="span">
-  ![Plateau: maschi in testa, i numeri che arriveranno](../img/tutorial/10c_plateau.png)
-  <figcaption>Plateau: maschi in testa, i numeri che arriveranno</figcaption>
+  ![Classifica per persona: due device della stessa veterinaria contano insieme](../img/release-0.2/classifica_per_persona.png)
+  <figcaption>Classifica per persona; gli omonimi si distinguono col device</figcaption>
 </figure>
 
 <figure markdown="span">

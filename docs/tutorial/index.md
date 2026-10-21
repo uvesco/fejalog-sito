@@ -28,9 +28,10 @@ flowchart TD
         L7 --> L8["8 · Doppi & Fuori Rete"]
         L8 --> L9["9 · Registri in Corsa"]
         L9 --> L10["10 · Statistiche"]
+        L10 --> L10b["10 bis · Plateau della Regia"]
     end
     subgraph Chiusura ["3. Risoluzione & Fine Lavori"]
-        L10 --> L11["11 · Soluzione Problemi"]
+        L10b --> L11["11 · Soluzione Problemi"]
         L11 --> L12["12 · Riordino Plateau"]
         L12 --> L13["13 · Backup & Uscita"]
         L13 --> L14["14 · Fine Lavori"]
@@ -51,6 +52,7 @@ flowchart TD
 | [8 · Doppi e rete difficile](08-doppi-rete.md) | tutti | 15 min |
 | [9 · Registri in corsa](09-registri-in-corsa.md) | Regia | 5 min |
 | [10 · Statistiche e provette perse](10-statistiche.md) | tutti | 5 min |
+| [10 bis · Il Plateau della Regia](10b-plateau.md) | Regia | 10 min |
 | [11 · Soluzione problemi](11-problemi.md) | Regia | 10 min |
 | [12 · Riordino dei plateau](12-riordino.md) | Regia | 15 min |
 | [13 · Backup, uscita, ripresa](13-backup.md) | tutti | 10 min |
