@@ -4,6 +4,9 @@
 
 **Ti serve**: il tablet della Regia, col riordino fatto e tutti i device allineati (stessa impronta) o usciti.
 
+!!! tip "Sul computer"
+    Le stesse azioni si possono fare dal backup nel browser: [Strumenti on line](../strumenti/index.md). Il sito non manda i dati a nessuno e può riportare le modifiche nell'app.
+
 ## Fai
 
 1. Menu ☰ › **Import/Export** › **«Prepara i file (allevatore e fine lavori)»**.

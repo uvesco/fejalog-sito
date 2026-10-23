@@ -41,6 +41,7 @@ theme:
 
 extra_css:
   - stili/fejalog.css
+  - strumenti/css/strumenti.css
 
 plugins:
   - search:
@@ -89,6 +90,9 @@ nav:
   - Il kit di prova: kit.md
   - ARVET e gli snippet: arvet.md
   - Per gli operatori: operatori.md
+  - Strumenti on line:
+      - strumenti/index.md
+      - "Fine lavori sul computer": strumenti/fine-lavori.md
   # >>> riferimento (scritto da ScriviSito: non modificare)
   - Guida di riferimento:
       - riferimento/index.md

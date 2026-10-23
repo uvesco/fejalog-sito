@@ -1,0 +1,22 @@
+/* Strumenti «dopo il campo»: schede, righe, tabelle e avvisi, coi colori del tema del sito. */
+.fej-tabs { display: flex; flex-wrap: wrap; gap: .25rem; margin: .5rem 0; border-bottom: 1px solid var(--md-default-fg-color--lighter); }
+.fej-tab { border: 0; background: transparent; padding: .5rem .8rem; cursor: pointer; font: inherit; color: var(--md-default-fg-color); border-bottom: 3px solid transparent; }
+.fej-tab:disabled { opacity: .4; cursor: not-allowed; }
+.fej-attiva { border-bottom-color: var(--md-primary-fg-color); font-weight: 600; }
+.fej-msg { min-height: 1.4em; margin: .4rem 0; color: var(--md-primary-fg-color); font-size: .85em; }
+.fej-corpo button, .fej-corpo select, .fej-corpo input[type=text], .fej-corpo input[type=search] { font: inherit; padding: .25rem .5rem; margin: .1rem; }
+.fej-corpo input[type=search] { width: 100%; box-sizing: border-box; }
+.fej-copia { cursor: pointer; }
+.fej-riga { padding: .35rem 0; border-bottom: 1px solid var(--md-default-fg-color--lightest); overflow-wrap: anywhere; }
+.fej-tenue { color: var(--md-default-fg-color--light); font-size: .85em; }
+.fej-motivi { color: var(--md-accent-fg-color); font-size: .85em; }
+.fej-ok { color: #1b8a3a; font-weight: 600; }
+.fej-errore { color: #c0392b; font-weight: 600; }
+.fej-avviso { border-left: 4px solid #d99a00; padding: .4rem .8rem; background: rgba(217, 154, 0, .1); }
+.fej-form label { display: inline-block; margin-right: .6rem; }
+.fej-attribuisci { margin: .4rem 0; padding: .5rem; background: var(--md-code-bg-color); }
+.fej-scheda { margin: .4rem 0; padding: .5rem; background: var(--md-code-bg-color); font-size: .85em; overflow-x: auto; }
+.fej-scheda th { text-align: left; padding-right: 1rem; white-space: nowrap; }
+.fej-guida { font-size: .85em; }
+.fej-snippet { width: 100%; box-sizing: border-box; font-family: var(--md-code-font-family, monospace); font-size: .75em; }
+@media (max-width: 600px) { .fej-tab { padding: .4rem .5rem; font-size: .9em; } }

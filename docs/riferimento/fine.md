@@ -13,4 +13,5 @@
 - Lo snippet scrive i numeri e aggiunge in ARVET i capi che non sono nell'elenco, come «Inserisci capo» (sesso, razza e nascita solo se ARVET non li conosce). Poi «Ricarica la pagina coi capi aggiunti» e si incolla di nuovo lo stesso snippet, che controlla i numeri. A mano restano i doppi di contrassegno.
 - Guida al riposizionamento, schede dei problematici, capi senza transponder, ricercati, anomalie per l'analisi.
 - Lo zip completo di fine lavori: tutto insieme, da salvare o condividere.
+- Sul computer: gli strumenti on line del sito (Strumenti on line) fanno le stesse cose dal backup, nel browser, senza mandare dati a nessuno, e il file «Esporta per l'app» si importa qui («Importa dal sito»).
 - Export per stabilimento: un file per stabilimento (formato 4); le provette perse non ci sono, le provvisorie ancora senza numero vanno nel plateau problematici come A1001, A1002…
