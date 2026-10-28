@@ -1,40 +1,98 @@
 # Fejalog
 
-**Dal capo alla provetta, fino ai file per il laboratorio.** Fejalog accompagna i veterinari nella profilassi della brucellosi ovicaprina, anche dove internet non arriva.
+> **A chi serve**: a tutti · **Tempo di lettura**: 1 minuto
 
-## Quali problemi risolve
+**Dal capo alla provetta, fino ai file per il laboratorio.** Fejalog accompagna i veterinari nella profilassi della brucellosi ovicaprina, su rete Wi-Fi locale autonoma, **anche dove internet non arriva**.
 
-### Più veterinari stanno prelevando insieme
+---
 
-Un tablet coordina il lavoro, i palmari registrano i prelievi. Tutti condividono il registro sulla rete locale: ciascuna provetta ha un'etichetta univoca, e la Regia sa in che pozzetto ha messo ognuna.
+## Cos'è Fejalog in un minuto
 
-### Bisogna trovare il capo giusto senza sfogliare elenchi
+- **Cosa fa**: organizza la registrazione in campo delle provette di sangue. I veterinari cercano i capi con il lettore di microchip Bluetooth o digitando poche cifre sul palmare; un tablet (**la Regia**) coordina la squadra, riceve le provette e guida il riempimento dei plateau (rack da 100 pozzetti). A fine giornata produce il modello 2/33, le statistiche per persona e gli **snippet ARVET** per preparare l’inserimento dei campioni dal PC, da controllare prima del salvataggio in ARVET.
+- **Per chi è**: per i veterinari dei Servizi Veterinari (ASL del Piemonte e ovunque si svolga profilassi ovicaprina) che lavorano in stabilimento, al pascolo o in alpeggio.
+- **Cosa NON fa**: **non richiede internet** in campo; non richiede un servizio cloud per campionare; i backup possono andare nella cartella, anche cloud, scelta dalla Regia; **non scrive direttamente in ARVET** (produce gli snippet che il veterinario incolla su PC).
 
-Cerca con le ultime cifre del contrassegno oppure usa un lettore Bluetooth. La conferma segnala capi già prelevati, usciti, di altro stabilimento o da cercare per un motivo specifico.
+---
 
-### Il collegamento può interrompersi
+## Quando il gregge non coincide con i registri
 
-Il lavoro resta salvato sul dispositivo. L'app indica quando il controllo dei doppi è incompleto; quando i dispositivi si ritrovano riuniscono gli eventi. Puoi predisporre una rete di riserva prima di partire.
+**Smarriti o rubati ritrovati, capi che risultano morti o trasferiti, marche non registrate, animali di stabilimenti non campionati:** Fejalog li segnala e distingue le provette problematiche dalle ordinarie. Gestisce anche acquisti con DDA da verificare, fuori età, specie discordante, doppi, capi senza contrassegno e provette perse o non confermate.
 
-### I problemi emersi in campo devono arrivare a chi li risolve
+!!! info "Dalla segnalazione alla soluzione"
+    Il prelievo resta tracciato; la Regia verifica il caso prima del riordino e decide inclusione, esclusione o normalizzazione quando ammessa. **Fejalog non corregge la BDN.**
 
-Le segnalazioni restano associate al capo e alla provetta. A fine lavoro ottieni lo specchietto delle attività per l'operatore, cioè l'allevatore, o il suo delegato.
+[**Tutte le anomalie: come riconoscerle e cosa fare**](anomalie.md) · [Provale col kit fittizio](kit.md#quali-anomalie-provare)
 
-### Dopo i prelievi resta molto lavoro di preparazione
+---
 
-Fejalog guida il riordino e prepara report e file per le accettazioni: pecore, capre e maschi per *Brucella ovis*.
+## Tre percorsi: scegli il tuo ruolo
 
-## Novità della versione 0.2.0
+<div class="grid cards" markdown>
 
-Fasi del lavoro, Plateau della Regia con le consegne, riordino guidato dal pozzetto vero, lettere e statistiche per
-persona, mai provette con la stessa scritta. Tutto in [Novità](novita.md); provalo nel [tutorial](tutorial/10b-plateau.md).
+-   :material-needle: **Sono un veterinario**
 
-## Vuoi capire meglio?
+    ---
 
-- [Le caratteristiche](caratteristiche.md): cosa offre l'app e cosa serve per usarla.
-- [Problemi affrontati e architettura](problemi-affrontati.md): documento tecnico sulle sfide di campo e le soluzioni ingegneristiche dell'app.
-- [Il primo progetto](tutorial/index.md): prova il percorso con dati inventati.
-- [Reperire i file BDN](tutorial/file-bdn.md): registri storici ASCII e contrassegni, con schermate guidate.
-- [Scarica Fejalog](scarica.md): APK e kit di prova.
+    Usi il palmare in campo, cerchi i capi con il lettore o col tastierino, scrivi l'etichetta sulla provetta e consegni al tavolo.
 
-Per una funzione precisa consulta la [guida di riferimento](riferimento/index.md), disponibile anche nell'app.
+    [:octicons-arrow-right-24: Vai alla scheda in campo](chi-preleva/in-campo.md)
+
+-   :material-tablet-dashboard: **Dirigo la Regia**
+
+    ---
+
+    Coordini la seduta sul tablet, configuri i parametri, ricevi le provette dai colleghi, riempi i plateau e calcoli il fine lavori.
+
+    [:octicons-arrow-right-24: Vai alla checklist responsabile](checklist-responsabile.md)
+
+-   :material-shield-check: **Devo decidere**
+
+    ---
+
+    Valuti l'adozione per il servizio veterinario: garanzie di integrità del dato, destinazione dei backup e limiti operativi da verificare prima dell’adozione.
+
+    [:octicons-arrow-right-24: Leggi la guida per decisori](inizia-qui/ruoli.md)
+
+</div>
+
+---
+
+## Video di introduzione
+
+<div class="fej-scheda" style="padding: 18px 24px; background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px;" markdown>
+:material-video: **Guarda il video introduttivo di 3–4 minuti** con voce sintetica e sottotitoli sulle tre fasi operative e le cinque garanzie:<br>
+[:octicons-arrow-right-24: **Apri la pagina dei video e delle micro-guide**](inizia-qui/video.md) · [:material-file-pdf-box: Scarica le diapositive del briefing in PDF (74 KiB)](video/it/briefing_diapositive.pdf).
+</div>
+
+---
+
+## I requisiti essenziali
+
+- **Hardware**: telefoni Android 11 o più recente per i veterinari; tablet per la Regia; lettore di microchip Bluetooth (facoltativo); power bank e cavi da 1 m.
+- **Rete**: una rete Wi-Fi locale autonoma (hotspot del tablet o router portatile da viaggio), **senza connessione internet**.
+- **Materiale da campo**: plateau da 100 pozzetti (10 × 10), provette con margini scelti dalla Regia (valori iniziali 10% + 5% di scorta), aghi, pennarelli indelebili a punta fine, tavolo da lavoro.
+
+Tutti i dettagli e le quantità raccomandate sono descritti in [I requisiti in breve](inizia-qui/requisiti.md) e nelle [Checklist](checklist-veterinari.md).
+
+---
+
+## Le cinque garanzie
+
+Fejalog è progettato attorno a cinque principi architetturali irrinunciabili:
+
+1. **Un numero non si ripete mai**: etichette distinte e allarme con rinomina per le collisioni simultanee.
+2. **Niente si cancella**: ogni correzione è un evento nuovo concatenato nel registro.
+3. **Tutti i telefoni hanno la stessa storia**: sincronizzazione deterministica tra dispositivi.
+4. **Ogni doppio si ritrova a fine lavori**: controllo in rete e verifica finale sui registri riuniti di tutti i palmari.
+5. **Rete locale senza internet**: i dati restano protetti nelle mani della squadra.
+
+Approfondisci significati pratici, indicatori a schermo e limiti dichiarati in [Le cinque garanzie](inizia-qui/cinque-garanzie.md).
+
+---
+
+## Collegamenti rapidi
+
+- [Le caratteristiche dettagliate](caratteristiche.md)
+- [Scarica l'applicazione e il kit](scarica.md)
+- [Sotto il cofano: problemi affrontati e architettura](riferimento/sotto-il-cofano/index.md)
+- [Guida di riferimento completa](riferimento/index.md)

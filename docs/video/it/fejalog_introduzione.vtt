@@ -1,0 +1,183 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:10.782
+Benvenuti in Fejalog, l'applicazione progettata per supportare
+la profilassi della brucellosi ovicaprina in campo per i servizi
+veterinari del Piemonte.
+
+2
+00:00:10.782 --> 00:00:21.898
+Fejalog permette a una squadra di veterinari di registrare i
+campioni direttamente nello stabilimento, lavorando su una rete
+Wi-Fi locale senza connessione internet.
+
+3
+00:00:21.898 --> 00:00:28.807
+Un tablet per la Regia e i telefoni palmari condividono un
+registro a eventi sincronizzato in tempo reale.
+
+4
+00:00:28.807 --> 00:00:32.051
+Il lavoro si articola in tre fasi precise.
+
+5
+00:00:32.051 --> 00:00:41.964
+Prima del campo: la Regia prepara il progetto importando
+l'anagrafica dello stabilimento dalla Banca Dati Nazionale e
+stampa le schede di supporto.
+
+6
+00:00:41.964 --> 00:00:53.649
+In campo: i veterinari prelevano i campioni, verificano il
+foglio di conferma e consegnano le provette al tavolo della
+Regia, che le colloca nei plateau da cento posti.
+
+7
+00:00:53.649 --> 00:01:02.676
+Dopo il campo: a campionamento chiuso, si riordinano i plateau e
+sul computer si generano i documenti e gli snippet per ARVET.
+
+8
+00:01:02.676 --> 00:01:05.440
+Cinque garanzie guidano il lavoro.
+
+9
+00:01:05.440 --> 00:01:10.401
+Un numero mostrato è definitivo: copia sempre l'etichetta
+completa.
+
+10
+00:01:10.401 --> 00:01:17.657
+Se compare un avviso di collisione, controlla il capo e segui la
+richiesta di rinomina prima di continuare.
+
+11
+00:01:17.657 --> 00:01:23.801
+Niente si cancella: correzioni e annulli aggiungono eventi e
+conservano la storia.
+
+12
+00:01:23.801 --> 00:01:28.324
+I telefoni riuniscono gli stessi eventi quando tornano
+collegati.
+
+13
+00:01:28.324 --> 00:01:36.481
+Il confronto finale trova i doppi presenti nel registro riunito:
+un telefono mai recuperato può lasciare dati mancanti.
+
+14
+00:01:36.481 --> 00:01:39.184
+La rete di campo è locale e protetta.
+
+15
+00:01:39.184 --> 00:01:46.631
+Non serve internet per registrare, ma il caricamento in ARVET
+richiede un passaggio separato dal computer.
+
+16
+00:01:46.631 --> 00:01:54.452
+Durante il campionamento, identifica il capo con il lettore di
+microchip o con le ultime cifre del contrassegno.
+
+17
+00:01:54.452 --> 00:01:57.419
+Controlla i dati nel foglio di conferma.
+
+18
+00:01:57.419 --> 00:02:02.061
+Il riquadro neutro indica un capo ordinario con tutti collegati.
+
+19
+00:02:02.061 --> 00:02:08.146
+Il blu indica un ordinario preso senza tutti collegati: copia
+l'etichetta completa.
+
+20
+00:02:08.146 --> 00:02:14.503
+Con il riquadro rosso copia anche il contrassegno completo,
+oltre al codice problematico.
+
+21
+00:02:14.503 --> 00:02:19.486
+Attendi sempre l'esito verde Registrata prima di scrivere la
+provetta.
+
+22
+00:02:19.486 --> 00:02:24.217
+Dopo la conferma, controlla sempre l'esito della registrazione.
+
+23
+00:02:24.217 --> 00:02:29.654
+Verde «Registrata» o rosso «Non registrata», con vibrazioni
+diverse.
+
+24
+00:02:29.654 --> 00:02:33.522
+Non scrivere la provetta finché non vedi l'esito verde.
+
+25
+00:02:33.522 --> 00:02:37.721
+L'app avvisa quando il contrassegno risulta già prelevato.
+
+26
+00:02:37.721 --> 00:02:42.569
+Scegli «Già fatto: non prelevare» se il capo è già stato fatto.
+
+27
+00:02:42.569 --> 00:02:49.653
+Scegli «Preleva come doppio» solo dopo aver controllato il capo:
+evita una doppia per sbaglio.
+
+28
+00:02:49.653 --> 00:02:53.615
+Tieni d'occhio gli avvisi di batteria durante il lavoro.
+
+29
+00:02:53.615 --> 00:02:58.517
+Le soglie iniziali degli avvisi sono 20% e 10%.
+
+30
+00:02:58.517 --> 00:03:05.036
+Al 5%, se non è in carica, il telefono va in pausa da solo e
+avvisa la Regia.
+
+31
+00:03:05.036 --> 00:03:09.606
+La Regia può cambiare le soglie nelle impostazioni del progetto.
+
+32
+00:03:09.606 --> 00:03:13.149
+Consegna periodicamente le provette alla Regia.
+
+33
+00:03:13.149 --> 00:03:18.469
+Il responsabile le riceve con Ricevi e le mette nei plateau
+seguendo lo schermo.
+
+34
+00:03:18.469 --> 00:03:21.160
+Il posto fisico resta registrato.
+
+35
+00:03:21.160 --> 00:03:24.514
+A fine seduta la Regia chiude il campionamento.
+
+36
+00:03:24.514 --> 00:03:28.571
+Dal primo evento del Riordino la chiusura diventa definitiva.
+
+37
+00:03:28.571 --> 00:03:31.961
+La guida indica i movimenti dai pozzetti reali.
+
+38
+00:03:31.961 --> 00:03:37.952
+Sul sito i calcoli avvengono nel browser: i dati caricati
+restano sul computer.
+
+39
+00:03:37.952 --> 00:03:45.507
+Gli snippet preparano i campi in ARVET, dove il veterinario deve
+controllare il risultato prima di salvare.

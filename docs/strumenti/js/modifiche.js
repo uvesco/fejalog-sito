@@ -6,10 +6,10 @@
 })(typeof self !== 'undefined' ? self : this, function () {
 'use strict';
 
-var FORMATO = 'fejalog-modifiche', VERSIONE = 1;
-/* le sole azioni che l'app sa tradurre in eventi del registro; le spunte della guida sono avanzamento locale e vanno
-   come `spunta` (PROVETTA_SPOSTATA) */
-var TIPI = ['soluzione', 'tardiva', 'spostamento', 'scambio', 'spunta'];
+var FORMATO = 'fejalog-modifiche', VERSIONE = 4;
+/* le sole azioni che l'app sa tradurre in eventi del registro; le spunte della guida restano avanzamento locale del sito (le spunte
+   si fanno nell'app, che sa quale passo della guida giustificano) */
+var TIPI = ['riattribuzione', 'scarto', 'annulla_scarto', 'riordino', 'soluzione', 'tardiva', 'spostamento', 'scambio', 'chiudi_buchi', 'modifica_provetta', 'annulla_provetta', 'rinomina_provetta', 'sposta_stabilimento', 'visto_doppio', 'visto_ricercato', 'persa', 'ritrovata', 'verifica_dda', 'ricollocazione', 'regola_problemi'];
 
 function esporta(P, azioni, nome, ora) {
   return {

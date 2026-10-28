@@ -2,14 +2,36 @@
    numerazione assegnata. Dà anche la distinta dei capi non prelevati e la scheda di una provetta (chi, quando, come è
    stata letta). Tutto in memoria, nel browser: niente parte verso nessun server. Niente ?. e ?? */
 (function (root, factory) {
-  if (typeof module === 'object' && module.exports) module.exports = factory(require('./zip.js'), require('./registro.js'));
-  else root.FejProgetto = factory(root.FejZip, root.FejRegistro);
-})(typeof self !== 'undefined' ? self : this, function (Zip, Reg) {
+  if (typeof module === 'object' && module.exports) module.exports = factory(require('./zip.js'), require('./registro.js'), require('./dominio.js'));
+  else root.FejProgetto = factory(root.FejZip, root.FejRegistro, root.FejDominio);
+})(typeof self !== 'undefined' ? self : this, function (Zip, Reg, Dominio) {
 'use strict';
 
 function json(files, nome) {
   if (!files[nome]) throw new Error('Nel backup manca ' + nome + ': è proprio uno zip di backup di Fejalog?');
   return JSON.parse(Zip.testo(files[nome]));
+}
+
+function costruisciProgetto(manifesto, pacchetto, eventi, esporti, files) {
+  var P = {
+    manifesto: manifesto, pacchetto: pacchetto, eventi: eventi, esporti: esporti,
+    numerazioneCsv: files && files['numerazione_chiave.csv'] ? (typeof files['numerazione_chiave.csv'] === 'string' ? files['numerazione_chiave.csv'] : Zip.testo(files['numerazione_chiave.csv'])) : '',
+    verifica: Reg.verifica(eventi, manifesto, pacchetto),
+    modifichePendenti: files && files['fejalog-modifiche.json'] ? JSON.parse(typeof files['fejalog-modifiche.json'] === 'string' ? files['fejalog-modifiche.json'] : Zip.testo(files['fejalog-modifiche.json'])) : null,
+    chiave: String(pacchetto.sha256) + ':' + String(manifesto.registro && manifesto.registro.impronta),
+  };
+  var stato = Dominio.applica(P, []);
+  P.esporti = stato.esporti;
+  P.etaMesi = stato.impostazioni.eta_diagnostica_mesi;
+  P.chiudiBuchi = stato.impostazioni.chiudi_buchi;
+  P.riordinoIniziato = stato.impostazioni.riordino_iniziato;
+  P.regole = stato.impostazioni.regole;
+  P.eventiEfficaci = stato.eventiEfficaci;
+  P.etichetteStoriche = {};
+  stato.etichette.forEach(function (et) { P.etichetteStoriche[et.toUpperCase()] = true; });
+  P.spunteBackup = stato.spunte;
+  P.stabilimenti = stato.stabilimenti;
+  return P;
 }
 
 /* buf: il file zip → Promise<P> */
@@ -28,22 +50,76 @@ function leggiBackup(buf) {
       var meta = e.meta || {};
       return { file: n, codice: voce ? voce.stabilimento : meta.azienda || meta.codice_lavorazione || n, export: e };
     });
-    if (!esporti.length) throw new Error('Nel backup non c\'è nessun export: nessuna provetta registrata?');
-    return {
-      manifesto: manifesto, pacchetto: pacchetto, eventi: eventi, esporti: esporti,
-      numerazioneCsv: files['numerazione_chiave.csv'] ? Zip.testo(files['numerazione_chiave.csv']) : '',
-      verifica: Reg.verifica(eventi, manifesto, pacchetto),
-      chiave: String(pacchetto.sha256) + ':' + String(manifesto.registro && manifesto.registro.impronta),
+    return costruisciProgetto(manifesto, pacchetto, eventi, esporti, files);
+  });
+}
+
+/* buffers: Array di ArrayBuffer o Uint8Array di più backup dello stesso progetto → Promise<{ P, files, zipBytes, resoconto }> */
+function riconciliaBackup(buffers, opz) {
+  if (!buffers || !buffers.length) return Promise.reject(new Error('Nessun file fornito per la riconciliazione.'));
+  opz = opz || {};
+  return Promise.all(buffers.map(function (b) { return Zip.leggi(b); })).then(function (listaFiles) {
+    var ingressi = listaFiles.map(function (files, i) {
+      if (!files['pacchetto.json']) throw new Error('Nel file #' + (i + 1) + ' manca pacchetto.json');
+      var manifesto = files['backup.json'] ? JSON.parse(Zip.testo(files['backup.json'])) : {};
+      if (manifesto.formato && manifesto.formato !== 'fejalog-backup') throw new Error('Il file #' + (i + 1) + ' non è un backup di Fejalog.');
+      var ev = [];
+      Object.keys(files).filter(function (n) { return /^registro\/[^/]+\.jsonl$/.test(n); }).sort().forEach(function (n) {
+        Zip.testo(files[n]).split('\n').forEach(function (r) { if (r.trim()) ev.push(JSON.parse(r)); });
+      });
+      return {
+        pacchetto: Zip.testo(files['pacchetto.json']),
+        eventi: ev,
+        manifesto: manifesto,
+        avvisi: Reg.verifica(ev, manifesto, JSON.parse(Zip.testo(files['pacchetto.json']))).errori,
+        rete: manifesto.rete || null
+      };
+    });
+    var adesso = (opz.adesso && opz.adesso.toISOString()) || new Date().toISOString();
+    var ris = Dominio.riconciliaBackup(ingressi, {
+      nome: opz.nome || 'Sito',
+      codice_fiscale: opz.codice_fiscale || null,
+      dispositivo: opz.dispositivo || 'Browser',
+      device: opz.device || 'sito'
+    }, adesso, opz.ora || '', 'sito');
+
+    var pendenti = [], perId = Object.create(null);
+    listaFiles.forEach(function (files) {
+      if (!files['fejalog-modifiche.json']) return;
+      var f = JSON.parse(Zip.testo(files['fejalog-modifiche.json']));
+      if (f.formato !== 'fejalog-modifiche' || !f.origine || f.origine.pacchetto_id !== ris.pacchetto.id || f.origine.pacchetto_sha256 !== ris.pacchetto.sha256) throw new Error('Le modifiche allegate sono di un altro progetto.');
+      (f.azioni || []).forEach(function (a) {
+        if (perId[a.id] && Reg.jcs(perId[a.id]) !== Reg.jcs(a)) throw new Error('Conflitto fra modifiche allegate con lo stesso identificativo.');
+        if (!perId[a.id]) { perId[a.id] = a; pendenti.push(a); }
+      });
+    });
+    if (pendenti.length) ris.files['fejalog-modifiche.json'] = JSON.stringify({formato:'fejalog-modifiche',versione:2,
+      origine:{pacchetto_id:ris.pacchetto.id,pacchetto_sha256:ris.pacchetto.sha256,impronta:ris.impronta,creato_il:adesso,nome:opz.nome || 'Sito'},azioni:pendenti});
+
+    var esporti = Object.keys(ris.files).filter(function (n) { return /^export\/export_accettazione_[^/]*\.json$/.test(n); }).sort().map(function (n) {
+      var e = JSON.parse(ris.files[n]);
+      var voce = (ris.manifesto.export || []).filter(function (x) { return x.file === n; })[0];
+      var meta = e.meta || {};
+      return { file: n, codice: voce ? voce.stabilimento : meta.azienda || meta.codice_lavorazione || n, export: e };
+    });
+
+    var P = costruisciProgetto(ris.manifesto, ris.pacchetto, ris.eventi, esporti, ris.files);
+    var vociZip = Object.keys(ris.files).sort().map(function (nome) {
+      return { name: nome, data: ris.files[nome] };
+    });
+    var zipBytes = Zip.scrivi(vociZip);
+    var resoconto = {
+      backupUniti: buffers.length,
+      eventiTotali: ris.eventi.length,
+      impronta: ris.impronta,
+      device: ris.manifesto.registro ? ris.manifesto.registro.device : 0
     };
+    return { P: P, files: ris.files, zipBytes: zipBytes, resoconto: resoconto };
   });
 }
 
 function stabilimento(P, codice) {
-  var l = ((P.pacchetto.config || {}).stabilimenti_lavoro || []).filter(function (s) { return s.codice === codice; })[0];
-  if (l) return { codice: l.codice, lettera: l.lettera || '', denominazione: l.denominazione || '' };
-  var e = P.esporti.filter(function (x) { return x.codice === codice; })[0];
-  var meta = (e && e.export.meta) || {};
-  return { codice: codice, lettera: '', denominazione: meta.denominazione || '' };
+  return (P.stabilimenti || Dominio.applica(P, []).stabilimenti).filter(function (s) { return s.codice === codice; })[0] || { codice: codice, lettera: '', denominazione: '' };
 }
 
 function righeCsv(testo) {
@@ -54,55 +130,18 @@ function righeCsv(testo) {
   });
 }
 
-/* I capi che hanno già una provetta valida (le eliminate non contano, come nella copertura dell'app). */
-function capiFatti(esporti) {
-  var fatti = {};
-  esporti.forEach(function (e) {
-    (e.export.records || []).forEach(function (r) {
-      if (r.contrassegno && r.soluzione !== 'esclusa') fatti[r.specie + '|' + r.contrassegno] = true;
-    });
-  });
-  return fatti;
-}
-
-/* I capi non prelevati secondo il backup: la numerazione assegnata (capi in età diagnostica), altrimenti i presenti
-   degli stabilimenti di lavoro. `esporti` sono quelli da considerare (con le tardive già dentro). */
-function nonPrelevati(P, esporti) {
-  var fatti = capiFatti(esporti || P.esporti), out = [];
-  var righe = righeCsv(P.numerazioneCsv);
-  if (righe.length) {
-    righe.forEach(function (r) {
-      if (!fatti[r.specie + '|' + r.contrassegno]) {
-        out.push({ contrassegno: r.contrassegno, specie: r.specie, sesso: r.sesso, razza: r.razza, dataNascita: r.dataNascita,
-          stabilimento: r.stabilimento, numeroAssegnato: isNaN(r.numero) ? null : r.numero });
-      }
-    });
-  } else {
-    var lavoro = ((P.pacchetto.config || {}).stabilimenti_lavoro || []).map(function (s) { return s.codice; });
-    ['pecore', 'capre'].forEach(function (sp) {
-      ((P.pacchetto.specie_dati[sp] || {}).presenti || []).forEach(function (c) {
-        if (lavoro.indexOf(c.codice_stabilimento) >= 0 && !fatti[sp + '|' + c.contrassegno]) {
-          out.push({ contrassegno: c.contrassegno, specie: sp, sesso: c.sesso || '', razza: c.razza || '', dataNascita: c.data_nascita || '',
-            stabilimento: c.codice_stabilimento, numeroAssegnato: null });
-        }
-      });
-    });
-  }
-  return out.sort(function (a, b) {
-    return a.specie < b.specie ? -1 : a.specie > b.specie ? 1 : a.stabilimento < b.stabilimento ? -1 : a.stabilimento > b.stabilimento ? 1 :
-      (a.numeroAssegnato == null ? 1e9 : a.numeroAssegnato) - (b.numeroAssegnato == null ? 1e9 : b.numeroAssegnato) ||
-      (a.contrassegno < b.contrassegno ? -1 : 1);
-  });
-}
+/* La distinta viene da NonTrovati; azioni applicate comprese. */
+function nonPrelevati(P, azioni) { return Dominio.applica(P, azioni || []).nonPrelevati; }
 
 var NOMI_IDENT = { elettronica: 'codice elettronico letto per intero (lettore di microchip)', completa: 'contrassegno digitato per intero',
   cifre: 'scelto fra i contrassegni con le cifre digitate', elenco: 'scelto dall\'elenco dei mancanti', a_mano: 'contrassegno scritto a mano' };
 
 /* La scheda di una provetta per i casi dubbi: [[etichetta, valore]…] e gli eventi del registro con quel uid. */
 function scheda(P, r) {
+  var identOp = r.sigla_veterinario ? ' (sigla ' + r.sigla_veterinario + ')' : (r.lettera ? ' (lettera ' + r.lettera + ')' : '');
   var campi = [
     ['Etichetta', r.etichetta], ['Contrassegno', r.contrassegno], ['Specie', r.specie], ['Stabilimento', r.codice_stabilimento],
-    ['Prelevata da', r.operatore + (r.lettera ? ' (lettera ' + r.lettera + ')' : '')], ['Quando', r.ts],
+    ['Prelevata da', r.operatore + identOp], ['Quando', r.ts],
     ['Come è stato letto', (NOMI_IDENT[r.identificazione] || r.identificazione || '') +
       (r.identificazione === 'cifre' && r.candidati ? ' (' + r.candidati + ' candidati)' : '')],
     ['Metodo d\'ingresso', r.metodo_ingresso], ['Codice letto', r.codice_letto || ''],
@@ -115,5 +154,12 @@ function scheda(P, r) {
   return { campi: campi.filter(function (c) { return c[1] !== '' && c[1] != null; }), storia: storia, eventi: eventi };
 }
 
-return { leggiBackup: leggiBackup, stabilimento: stabilimento, nonPrelevati: nonPrelevati, scheda: scheda, capiFatti: capiFatti, righeCsv: righeCsv };
+/* Lo stabilimento di un capo, dai record degli export (per le azioni sul riordino con più stabilimenti). */
+function stabilimentoDi(P, specie, contrassegno, esporti) {
+  var trovato = null;
+  (esporti || P.esporti).forEach(function (e) { (e.export.records || []).forEach(function (r) { if (!trovato && r.specie === specie && r.contrassegno === contrassegno) trovato = e.codice; }); });
+  return trovato || (P.esporti[0] && P.esporti[0].codice) || '';
+}
+
+return { leggiBackup: leggiBackup, riconciliaBackup: riconciliaBackup, stabilimento: stabilimento, nonPrelevati: nonPrelevati, scheda: scheda, stabilimentoDi: stabilimentoDi, righeCsv: righeCsv, inEta: Dominio.inEta };
 });

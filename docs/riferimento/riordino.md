@@ -2,12 +2,9 @@
 
 # Riordino dei plateau
 
-- Solo a campionamento chiuso (Checklist › Chiudi campionamento), sul tablet: «Calcola la sistemazione» dà la guida per spostare le provette ai numeri finali (problematici, isolati, provvisorie, buchi). Se il lavoro cambia dopo il calcolo, «Ricalcola».
-- Ogni riga dice l'etichetta scritta sulla provetta, da dove prenderla come nel Plateau («Plat. 1 · Pozz. 11 (Problematici)») e a che pozzetto portarla.
-- Dalla prima spunta (o dal primo spostamento a mano) il campionamento è chiuso per sempre: non si riapre più.
-- Ogni provetta va direttamente al numero finale, una volta sola. Non cancellare e non coprire il numero di campo: barralo con una riga sola, che resti leggibile, e scrivi accanto il numero finale. Il numero di campo è registrato a parte dal finale: da lì si risale sempre al capo, qualunque spostamento ci sia stato.
-- Guida a spunta: si spunta ogni spostamento fatto; le spunte sono nel registro e le vedono tutti.
-- «Messa altrove»: la provetta non è andata dove diceva la guida; si scrive il numero dove sta.
-- «A mano»: spostamenti fatti senza la guida, prima (o al posto) o dopo, anche più volte: «Sposta una provetta» (se al numero c'era un'altra provetta della serie, prende il numero lasciato libero) o «Scambia due provette».
-- Guida e file di fine lavori si ricalcolano con gli spostamenti.
-- Le provette eliminate (Soluzione problemi) non hanno numero finale: la pagina le elenca, da togliere dai plateau e mettere da parte.
+- A campionamento chiuso, ogni riga mostra l'etichetta, la posizione di partenza, il numero finale suggerito e la fattispecie del problema.
+- Il campo A è modificabile. Ripristina riporta il suggerimento; le altre destinazioni suggerite restano ferme. Se il numero è occupato viene proposto uno scambio: senza conferma non si scrive niente.
+- Invia applica quella sola riga. La casella seleziona per Invia le selezionate, solo al numero suggerito: una destinazione modificata si invia singolarmente. Puoi selezionare tutte, nessuna o una fattispecie.
+- Lo stato fatta e il contatore vengono dalle azioni applicate, non dalla selezione. Il primo evento di gestione dopo la chiusura rende il campionamento definitivamente chiuso.
+- Chiudi i buchi si sceglie prima degli invii. Barra il numero di campo con una riga sola, lasciandolo leggibile, e scrivi accanto il finale.
+- Sul sito da backup il tasto Applica conserva il lavoro nel browser e accoda l'azione in fejalog-modifiche. Scarica il file e importalo sulla Regia. Via USB, accetta una volta la sessione sul tablet: gli invii validi vengono applicati subito; gli scarti mostrano il motivo.

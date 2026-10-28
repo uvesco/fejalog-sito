@@ -11,3 +11,4 @@
 - Chi ha la regia la può affidare a un device al lavoro che si vede (📶 Rete › «Affida la regia a»), per esempio quando il tablet si scarica.
 - Si prende solo se è libera: chi ce l'aveva l'ha lasciata, ha finito, è uscito o non risponde da 2 minuti.
 - Sotto il titolo di ogni pagina c'è lo stato della rete e chi ha la regia.
+- Il Briefing per i prelevatori si apre da Aiuto o da Come si usa; sul palmare è anche nel menu Campionamento.

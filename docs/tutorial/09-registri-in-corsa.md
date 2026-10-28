@@ -14,7 +14,7 @@
 ## Verifica il DDA
 
 In **Lavoro › Problemi da risolvere**, la Regia indica se il DDA è valido oppure da rifare e annota la verifica. Con DDA valido, l’operatore o il delegato deve registrare/forzare l’ingresso: solo dopo averne confermato l’avvenuta registrazione la provetta può essere normalizzata.
-Le attività restano nello specchietto per l’operatore. Fejalog non scrive nella BDN.
+Le attività restano nello specchietto per l’allevatore. Fejalog non scrive nella BDN.
 
 ## Sostituisci un registro
 

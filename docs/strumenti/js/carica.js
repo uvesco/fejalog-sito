@@ -2,7 +2,7 @@
    a parte, per gli indirizzi del sito). Uno solo da includere nella pagina. */
 (function () {
   var base = document.currentScript.src.replace(/[^/]*$/, '');
-  var elenco = ['vendor/motore.js', 'vendor/xlsx.js', 'vendor/fine_lavori.js', 'zip.js', 'registro.js', 'confronto.js', 'progetto.js', 'stato.js', 'modifiche.js', 'azioni.js', 'app.js'];
+  var elenco = ['vendor/fejalog-shared.js', 'dominio.js', 'vendor/motore.js', 'vendor/xlsx.js', 'vendor/fine_lavori.js', 'vendor/qrcode.js', 'vendor/stampe.js', 'zip.js', 'registro.js', 'confronto.js', 'plateau.js', 'progetto.js', 'stato.js', 'modifiche.js', 'azioni.js', 'regia-pc.js', 'app.js'];
   (function avanti(i) {
     if (i >= elenco.length) return;
     var s = document.createElement('script');

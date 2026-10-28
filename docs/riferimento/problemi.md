@@ -4,7 +4,9 @@
 
 ## Da risolvere a fine lavoro
 
-- Le provette che in sistemazione vanno fra i problematici, per tipologia: smarriti, rubati, usciti morti o macellati, usciti trasferiti, altro stabilimento, marche disponibili, non in elenco, doppi contrassegni, specie discordante, diventate problematiche o ora in lista coi registri nuovi.
+- Le provette problematiche per tipologia: acquisti con DDA, smarriti e rubati ritrovati, usciti morti o macellati, usciti trasferiti, altro stabilimento, marche disponibili, non in elenco, fuori età diagnostica, doppi contrassegni, specie discordante, attribuite da riattribuire, diventate problematiche o ora in lista coi registri nuovi, altre problematiche.
+- Smarriti e rubati sono sempre problematici finché i dati non ne consentono la normalizzazione. Un registro di riferimento non rende ordinari i capi di uno stabilimento non campionato. Marche disponibili e codici in nessun registro richiedono sesso, razza e nascita: i file caricati non sono necessariamente tutta la BDN.
+- Gli acquisti con DDA si dichiarano sul singolo prelievo: la Regia verifica il documento e conferma l'ingresso registrato prima della normalizzazione. Fejalog non scrive nella BDN. I fuori età hanno la soluzione predefinita Eliminata: niente numero finale né ARVET.
 - Per ogni tipologia la Regia sceglie la regola, che vale anche per quelle che verranno: «Tutte in coda» (in ARVET le aggiunge lo snippet), «Elimina tutte» (messe da parte: niente numero finale, niente ARVET), «Normalizza tutte» (solo per quelle ora in lista: trattate come normali, ARVET automatico).
 - Aprendo una tipologia, provetta per provetta: la soluzione scelta lì vale sulla regola; e poi persa o ritrovata, annulla, cerca il capo.
 

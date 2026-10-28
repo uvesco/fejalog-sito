@@ -920,13 +920,25 @@ function riordinaScambi(canon, specie, ordine, compatta) {
 
   if (hasCorsie(sub)) {
     /* MODALITÀ CORSIE: serie principale ferma; in fondo la corsia dei problematici e i
-       problematici legacy (coda ''). Gli smarriti dello stesso stabilimento restano nel mezzo. */
-    const toTail = sub.map((r, i) => lanceProb[i] || (!nz(codaOf(r)) && isProb[i]));
+       problematici legacy (coda ''). Gli smarriti dello stesso stabilimento restano nel mezzo.
+       ORDINE DELLA SISTEMAZIONE (si salta la fase se non ci sono casi):
+         1) problematici MASCHI in ARVET: entrano nel blocco dei maschi in testa (nei buchi del
+            blocco; se non ce ne sono si fa spazio: l'ordinaria che occupa il posto va in un buco
+            o in fondo alla serie);
+         2) problematici FEMMINE (e capre) in ARVET: nei buchi della serie, in ordine di gravità;
+            quelli che non trovano un buco si accodano alla serie;
+         3) i buchi che restano si chiudono tirando su le ULTIME ordinarie.
+       I problematici fuori da ARVET restano in fondo, per gravità. */
+    const entra = sub.map((r, i) => lanceProb[i] && eff[i]);
+    const toTail = sub.map((r, i) => !entra[i] && (lanceProb[i] || (!nz(codaOf(r)) && isProb[i])));
     const prov = nums.slice();
     const mainr = [];
-    toTail.forEach((t, i) => { if (!t) mainr.push(i); });
+    sub.forEach((r, i) => { if (!toTail[i] && !entra[i]) mainr.push(i); });
+    const serie = mainr.slice();                   // chi occupa numeri della serie
+    const occNums = () => numSort(serie.map((i) => prov[i]));
+    const nMaschi = () => serie.filter((i) => isM[i]).length;
     if (mainr.length) {
-      /* 1) maschi in testa, con scambio 1-a-1 */
+      /* a) maschi della serie in testa, con scambio 1-a-1 */
       const slots = numSort(mainr.map((i) => prov[i]));
       const male = orderIdx(mainr.length, (k) => nums[mainr[k]]).map((k) => mainr[k]).filter((i) => isM[i]);
       male.forEach((r, i) => {
@@ -936,25 +948,71 @@ function riordinaScambi(canon, specie, ordine, compatta) {
         other.forEach((o) => { prov[o] = prov[r]; });
         prov[r] = target;
       });
-      /* 2) chiusura buchi tirando su le ULTIME provette della serie */
-      const k = male.length;
-      const occ = numSort(mainr.map((i) => prov[i]));
-      let gaps = [];
-      if (compatta) {
-        gaps = setdiff(range(occ[0], occ[occ.length - 1]), occ);
-      } else if (k > 0) {
+    }
+    /* i buchi che si possono chiudere: tutti quelli interni con `compatta`, altrimenti solo quelli subito dopo i maschi */
+    const gapsAmmessi = () => {
+      const occ = occNums(), k = nMaschi();
+      if (!occ.length) return [];
+      if (compatta) return setdiff(range(occ[0], occ[occ.length - 1]), occ);
+      if (k > 0) {
         const dopo = occ.filter((v) => v > occ[k - 1]);
-        if (dopo.length) gaps = setdiff(range(occ[k - 1] + 1, Math.min.apply(null, dopo) - 1), occ);
+        if (dopo.length) return setdiff(range(occ[k - 1] + 1, Math.min.apply(null, dopo) - 1), occ);
       }
-      for (const g of numSort(gaps)) {
-        let mx = -Infinity; mainr.forEach((i) => { if (prov[i] > mx) mx = prov[i]; });
-        if (mx <= g) break;
-        const rmax = mainr.find((i) => prov[i] === mx);
-        prov[rmax] = g;
+      return [];
+    };
+    const perGravita = (lista) => orderIdx(lista.length, (k) => grav[lista[k]], (k) => nums[lista[k]]).map((k) => lista[k]);
+    const idx = sub.map((r, i) => i);
+    /* FASE 1: problematici maschi in ARVET, nel blocco dei maschi in testa */
+    perGravita(idx.filter((i) => entra[i] && isM[i])).forEach((e) => {
+      const occ = occNums();
+      const mx = occ.length ? occ[occ.length - 1] : 0;
+      const nonM = serie.filter((i) => !isM[i]);
+      const lowNon = nonM.length ? Math.min.apply(null, nonM.map((i) => prov[i])) : Infinity;
+      const holesM = occ.length ? setdiff(range(occ[0], Math.min(lowNon - 1, mx)), occ) : [];
+      if (holesM.length) {
+        prov[e] = numSort(holesM)[0];
+      } else if (nonM.length) {
+        const X = nonM.find((i) => prov[i] === lowNon);
+        const g = numSort(gapsAmmessi());
+        prov[X] = g.length ? g[0] : mx + 1;       // fa spazio: l'ordinaria va in un buco o in fondo
+        prov[e] = lowNon;
+      } else {
+        prov[e] = mx + 1;
+      }
+      serie.push(e);
+    });
+    /* con `compatta` i buchi dentro il blocco dei maschi si chiudono fra maschi (il più alto scende nel buco): i maschi restano in testa */
+    if (compatta) {
+      for (;;) {
+        const m = serie.filter((i) => isM[i]);
+        if (!m.length) break;
+        const occ = occNums();
+        const mxM = Math.max.apply(null, m.map((i) => prov[i]));
+        const h = setdiff(range(occ[0], mxM), occ);
+        if (!h.length) break;
+        prov[m.find((i) => prov[i] === mxM)] = numSort(h)[0];
       }
     }
-    /* 3) problematici in fondo, per gravità */
-    let base = 0; toTail.forEach((t, i) => { if (!t && prov[i] > base) base = prov[i]; });
+    /* FASE 2: problematici femmine (e capre) in ARVET, nei buchi della serie */
+    let restano = perGravita(idx.filter((i) => entra[i] && !isM[i]));
+    const bucoLibero = numSort(gapsAmmessi());
+    while (restano.length && bucoLibero.length) {
+      const f = restano.shift();
+      prov[f] = bucoLibero.shift();
+      serie.push(f);
+    }
+    /* FASE 3: chiusura dei buchi che restano, con le ULTIME ordinarie (un solo spostamento per buco) */
+    for (const g of numSort(gapsAmmessi())) {
+      let mx = -Infinity; mainr.forEach((i) => { if (prov[i] > mx) mx = prov[i]; });
+      if (mx <= g) break;
+      const rmax = mainr.find((i) => prov[i] === mx);
+      prov[rmax] = g;
+    }
+    /* i problematici in ARVET senza buco si accodano alla serie */
+    let fine = 0; serie.forEach((i) => { if (prov[i] > fine) fine = prov[i]; });
+    restano.forEach((f, pos) => { prov[f] = fine + pos + 1; serie.push(f); });
+    /* problematici fuori da ARVET in fondo, per gravità */
+    let base = 0; serie.forEach((i) => { if (prov[i] > base) base = prov[i]; });
     const tail = []; toTail.forEach((t, i) => { if (t) tail.push(i); });
     if (tail.length) {
       const op = orderIdx(tail.length, (k) => grav[tail[k]], (k) => nums[tail[k]]);

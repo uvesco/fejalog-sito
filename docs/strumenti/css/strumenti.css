@@ -1,4 +1,8 @@
 /* Strumenti «dopo il campo»: schede, righe, tabelle e avvisi, coi colori del tema del sito. */
+body.fej-regia-locale { --md-default-fg-color: #263238; --md-default-fg-color--light: #46565d; --md-default-fg-color--lighter: #b0bec5; --md-default-fg-color--lightest: #dce4e7; --md-primary-fg-color: #006b5b; --md-code-bg-color: #edf3f3; --md-accent-fg-color: #745600; margin: 0; padding: 1rem; background: #fafcfc; color: #263238; font: 1rem/1.5 system-ui, sans-serif; }
+body.fej-regia-locale main { max-width: 90rem; margin: auto; }
+body.fej-regia-locale button, body.fej-regia-locale input { min-height: 44px; box-sizing: border-box; }
+body.fej-regia-locale button:focus-visible, body.fej-regia-locale input:focus-visible { outline: 3px solid #006b5b; outline-offset: 2px; }
 .fej-tabs { display: flex; flex-wrap: wrap; gap: .25rem; margin: .5rem 0; border-bottom: 1px solid var(--md-default-fg-color--lighter); }
 .fej-tab { border: 0; background: transparent; padding: .5rem .8rem; cursor: pointer; font: inherit; color: var(--md-default-fg-color); border-bottom: 3px solid transparent; }
 .fej-tab:disabled { opacity: .4; cursor: not-allowed; }
@@ -6,12 +10,21 @@
 .fej-msg { min-height: 1.4em; margin: .4rem 0; color: var(--md-primary-fg-color); font-size: .85em; }
 .fej-corpo button, .fej-corpo select, .fej-corpo input[type=text], .fej-corpo input[type=search] { font: inherit; padding: .25rem .5rem; margin: .1rem; }
 .fej-corpo input[type=search] { width: 100%; box-sizing: border-box; }
+.fej-pin { display: flex; flex-wrap: wrap; gap: 1rem; border: 0; padding: .5rem 0; margin: 0; }
+.fej-pin label { display: flex; flex-direction: column; gap: .25rem; }
+.fej-corpo .fej-pin input { width: 6.5em; min-height: 44px; font: 1.5rem/1.5 monospace; letter-spacing: .15em; }
 .fej-copia { cursor: pointer; }
 .fej-riga { padding: .35rem 0; border-bottom: 1px solid var(--md-default-fg-color--lightest); overflow-wrap: anywhere; }
 .fej-tenue { color: var(--md-default-fg-color--light); font-size: .85em; }
 .fej-motivi { color: var(--md-accent-fg-color); font-size: .85em; }
 .fej-ok { color: #1b8a3a; font-weight: 600; }
 .fej-errore { color: #c0392b; font-weight: 600; }
+.fej-esito { font-weight: 600; font-size: .85em; }
+.fej-tono-VERDE { color: #1b8a3a; }
+.fej-tono-GIALLO { color: #d99a00; }
+.fej-tono-BLU { color: #2980b9; }
+.fej-tono-ROSSO { color: #c0392b; }
+.fej-tono-VIOLA { color: #8e44ad; }
 .fej-avviso { border-left: 4px solid #d99a00; padding: .4rem .8rem; background: rgba(217, 154, 0, .1); }
 .fej-form label { display: inline-block; margin-right: .6rem; }
 .fej-attribuisci { margin: .4rem 0; padding: .5rem; background: var(--md-code-bg-color); }
@@ -20,3 +33,46 @@
 .fej-guida { font-size: .85em; }
 .fej-snippet { width: 100%; box-sizing: border-box; font-family: var(--md-code-font-family, monospace); font-size: .75em; }
 @media (max-width: 600px) { .fej-tab { padding: .4rem .5rem; font-size: .9em; } }
+
+/* Simulatore del riempimento dei plateau */
+.fej-sim-barra { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin: .4rem 0; }
+.fej-sim-cursore { flex: 1 1 14rem; min-width: 10rem; }
+.fej-pl { display: inline-block; padding: .6rem; background: var(--md-code-bg-color, #f3f3f3); border-radius: .5rem; }
+.fej-pl-riga { display: flex; gap: .25rem; margin-bottom: .25rem; }
+.fej-pl-sfalsata { margin-left: 1.05rem; }
+.fej-poz { width: 1.9rem; height: 1.9rem; border-radius: 50%; border: 1px solid rgba(0, 0, 0, .35); cursor: pointer; padding: 0; color: #fff; font-weight: 700; line-height: 1; }
+.fej-poz-contesa { outline: 3px solid #c0392b; }
+.fej-sim-chiave i { display: inline-block; width: .8rem; height: .8rem; border-radius: 50%; vertical-align: middle; border: 1px solid rgba(0, 0, 0, .35); }
+@media (max-width: 600px) { .fej-poz { width: 1.5rem; height: 1.5rem; } .fej-pl-sfalsata { margin-left: .85rem; } }
+
+/* Il menu del sito (barra a sinistra) si può nascondere, per dare spazio alle tabelle: tasto in alto, ricordato dal browser */
+.fej-menu-toggle { display: none; background: transparent; border: 0; cursor: pointer; color: inherit; font-size: 1.3rem; padding: 0 .5rem; }
+@media (min-width: 76.25em) {
+  .fej-menu-toggle { display: inline-block; }
+  body.fej-senza-menu .md-sidebar--primary { display: none; }
+  body.fej-senza-menu .md-grid { max-width: none; }
+}
+
+/* Ogni tabella scorre nel proprio riquadro anche su telefono. */
+.fej-tabella-scorre { max-width: 100%; overflow-x: auto; margin-bottom: .6rem; }
+.fej-statistiche { min-width: 0; }
+
+/* Plateau attuale: controlli fermi, piano affiancato che scorre e si ingrandisce. */
+.fej-plateau-controlli { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.fej-plateau-controlli label { display: inline-flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
+.fej-plateau-controlli input[type=search] { width: 18rem; max-width: 100%; }
+.fej-plateau-controlli button, .fej-plateau-controlli input, .fej-plateau-controlli select { min-height: 44px; }
+.fej-plateau-risultati { flex-basis: 100%; max-height: 11rem; overflow: auto; }
+.fej-plateau-risultati button { display: block; text-align: left; }
+.fej-plateau-posizione, .fej-plateau-zoom { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; }
+.fej-plateau-viewport { max-width: 100%; height: 65vh; min-height: 18rem; overflow: auto; border: 1px solid #9aa0a6; cursor: grab; touch-action: none; }
+.fej-plateau-viewport:active { cursor: grabbing; }
+.fej-tavolo-attuale { display: grid; gap: 24px; width: max-content; padding: 12px; }
+.fej-plateau-attuale h3 { font: 600 1rem/1.5 system-ui, sans-serif; margin: 0 0 .5rem; }
+.fej-plateau-griglia { padding: 12px; background: #edf3f3; clip-path: polygon(0 0, 95% 0, 100% 5%, 100% 100%, 5% 100%, 0 95%); }
+.fej-plateau-fila { display: flex; }
+.fej-corpo .fej-plateau-pozzetto, .fej-plateau-pozzetto { flex: none; margin: 0; padding: 0; min-height: 0; border: 1px solid #75828a; border-radius: 50%; font-family: system-ui, sans-serif; line-height: 1; cursor: pointer; }
+.fej-plateau-pozzetto[aria-pressed=true] { outline: 4px solid #005fcc; outline-offset: 1px; position: relative; z-index: 1; }
+.fej-plateau-pozzetto:focus-visible { outline: 4px solid #005fcc; outline-offset: 1px; }
+.fej-plateau-legenda { display: flex; flex-wrap: wrap; gap: .8rem; }
+.fej-plateau-legenda i { display: inline-block; width: .9rem; height: .9rem; border: 1px solid #666; border-radius: 50%; margin-right: .3rem; }

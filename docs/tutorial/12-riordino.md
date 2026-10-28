@@ -1,6 +1,6 @@
 # 12 · Riordino dei plateau
 
-**Obiettivo**: portare ogni provetta al suo numero finale, con la guida a spunta.
+**Obiettivo**: portare ogni provetta al suo numero finale, con invii singoli o selezionati.
 
 **Ti serve**: il tablet della Regia; per la prova, le schede (o i fogli) con i numeri scritti in campo, disposte come
 plateau da 100.
@@ -9,13 +9,14 @@ plateau da 100.
 
 1. Chiudi il campionamento (**Checklist › Chiudi campionamento**): il riordino si fa solo a campionamento chiuso.
 2. Menu ☰ › **Gestione campioni › Riordino plateau**: la sistemazione si calcola da sola, col motore di Fejalog. Se il
-   lavoro cambia dopo, una banda gialla propone **«Ricalcola»**.
-3. Segui la **guida**: ogni riga dice l'etichetta scritta sulla provetta e **da dove prenderla**, come nel Plateau («Plat. 1 · Pozz. 11 (Problematici)»). Ogni provetta va **direttamente al numero finale, una volta sola**. Spunta ogni spostamento
-   fatto.
+   lavoro cambia dopo, la sistemazione si aggiorna; puoi usare anche **«Ricalcola»**.
+3. Segui la **guida**: ogni riga dice l'etichetta scritta sulla provetta e **da dove prenderla**, come nel Plateau («Plat. 1 · Pozz. 11 (Problematici)»). Ogni provetta va **direttamente al numero finale, una volta sola**. Ogni riga mostra la fattispecie. Premi **Invia** sulla singola riga, oppure seleziona le righe e premi **Invia le selezionate**.
 4. Il numero di campo non si cancella e non si copre: si **barra con una riga sola** e si scrive accanto il numero
    finale.
-5. Prova **«Messa altrove»** (la provetta non è andata dove diceva la guida) e **«A mano»** («Sposta una provetta» o
-   «Scambia due provette»).
+5. Modifica il campo **A**: la riga è segnata e la casella batch si disabilita. **Ripristina** riporta il suggerimento. Se il numero è occupato lo strumento propone lo scambio: annullando non scrive nulla. Invia le destinazioni modificate con il loro tasto.
+
+!!! info "Immagini della versione precedente"
+    Le immagini sotto mostrano ancora la spunta come azione e «Messa altrove». Ora la casella seleziona soltanto; destinazione e invio sono nella riga.
 
 <div class="schermate" markdown>
 
@@ -30,8 +31,8 @@ plateau da 100.
 </figure>
 
 <figure markdown="span">
-  ![Dopo la prima spunta la chiusura è definitiva](../img/release-0.2/chiusura_definitiva.png)
-  <figcaption>Dopo la prima spunta il campionamento non si riapre</figcaption>
+  ![Dopo il primo invio applicato la chiusura è definitiva](../img/release-0.2/chiusura_definitiva.png)
+  <figcaption>Dopo il primo invio applicato il campionamento non si riapre</figcaption>
 </figure>
 
 <figure markdown="span">
@@ -44,10 +45,9 @@ plateau da 100.
 !!! atteso "Cosa devi vedere"
     - I **maschi ovini in testa**, poi la serie delle femmine e le capre.
     - La **chiusura dei buchi** sui prenumerati avviene prima dei problematici, tranne per i maschi ovini che si compattano dopo i problematici maschi.
-    - I **problematici** vanno in coda alla rispettiva serie; i codici operatore (`CA1`…) e le etichette con lettere operatore ricevono il numero sequenziale finale.
-    - Le provette da isolato (`P17A`) e quelle nelle righe dei problematici hanno la loro riga nella guida, dal
-      loro pozzetto al numero finale.
-    - Le spunte sono nel registro: le vedono tutti. **Dalla prima spunta il campionamento è chiuso per sempre**: in
+    - I **problematici** vanno in coda alla rispettiva serie; i codici problematici mostrati e le etichette delle provette da isolato ricevono il numero sequenziale finale.
+    - Ogni provetta spostata ha la sua riga nella guida, dal suo pozzetto fisico registrato alla consegna al numero finale.
+    - Le azioni applicate sono nel registro: selezionare non equivale a fare. **Dal primo invio applicato il campionamento è chiuso per sempre**: in
       Checklist la riapertura non c'è più.
     - Gli spostamenti a mano entrano nella guida e nei file di fine lavori.
 
@@ -58,4 +58,5 @@ plateau da 100.
 ## Fatto?
 
 - [ ] sistemazione calcolata
-- [ ] guida spuntata fino in fondo
+- [ ] tutte le righe applicate; contatore coerente
+- [ ] invio singolo, batch e annullamento di uno scambio provati

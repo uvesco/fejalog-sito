@@ -7,11 +7,14 @@
 ## Fai
 
 1. Menu ☰ › **Statistiche**: copertura per specie (fatti, attesi, mancanti), letti elettronicamente, andamento del
-   lavoro per operatore con la stima della fine, problematici per motivo.
+   lavoro per veterinario con la stima della fine, problematici per motivo.
 2. **Classifica**: provette, ritmi e problematiche di ogni veterinario, per persona: chi cambia device tiene le sue provette. Il Plateau è nella [tappa seguente](10b-plateau.md).
 3. **Provette**: l'elenco in parole, con ricerca e filtri.
 4. **Una provetta rotta**: Campionamento › **Ultime** › una provetta › **«Persa»**, motivo «Rotta», «Segna persa».
    Poi preleva di nuovo lo stesso capo.
+5. **Una provetta ritrovata dopo la ripetizione**: usa una seconda prova con motivo «Non si trova», ripeti il prelievo,
+   poi segna **Ritrovata** sulla prima. Ora hai due campioni validi: verifica il doppio scoperto e le provette fisiche
+   con la Regia prima di decidere quale tenere.
 
 <div class="schermate" markdown>
 
@@ -52,3 +55,4 @@
 
 - [ ] copertura e andamento visti
 - [ ] una provetta persa e il prelievo ripetuto
+- [ ] una ritrovata dopo la ripetizione, con doppio da risolvere

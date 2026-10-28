@@ -12,7 +12,10 @@
      marche {pecore, capre} (contrassegni), decodifica, ordine (fattispecie, null = predefinito), compatta (chiudi tutti
      i buchi), stamp, data (gg/mm/aaaa), motoreArvet (testo di arvet_fill.min.js), soloDati (niente file: per la pagina
      Riordino e per le cose da fare in campo), ricercati [{contrassegno, specie, provetta, cosa}] (i ricercati trovati,
-     per le cose da fare), generatoIl (ora ISO del file delle anomalie).
+     per le cose da fare), generatoIl (ora ISO del file delle anomalie),
+     partenze {uid: {specie, etichetta, vista: "serie" | "problematici", plateau, pozzetto}}:
+     posti fisici dal dominio Kotlin (StatoPosati/SchemaPlateau), anche per le escluse. Se presenti devono coprire
+     tutte le provette della numerazione. Senza questo ingresso resta la guida del motore per i chiamanti pregressi.
    Uscita: {file: [{nome, mime, base64 | testo}], riepilogo, dati (numerazione, invii, guida per specie, esiti degli
    spostamenti fatti a mano)}.
    Niente ?. e ?? : deve girare anche su WebView vecchie.
@@ -31,12 +34,44 @@ var MIME_XLSX = 'application/vnd.openxmlformats-officedocument.spreadsheetml.she
 var COL_PC = ['provetta', 'contrassegno'];
 var COL_MARCHE = ['contrassegno', 'specie', 'orecchino_dx_elettronico', 'orecchino_sx_accessorio', 'bolo'];
 var COL_SENZA_TRANSPONDER = ['contrassegno', 'specie', 'provette', 'orecchino_dx_elettronico', 'bolo', 'note'];
-var COL_GUIDA = ['contrassegno', 'da', 'plateau_da', 'pos_da', 'a_n', 'plateau_a', 'pos_a', 'ruolo', 'motivo', 'fattispecie'];
+var COL_GUIDA = ['fatta', 'uid', 'contrassegno', 'da', 'vista_da', 'plateau_da', 'pos_da', 'a_n', 'plateau_a', 'pos_a', 'ruolo', 'motivo', 'fattispecie'];
 var COL_COPERTURA = ['voce', 'n', 'pct'];
 
 function str(x) { return x == null ? '' : String(x); }
 function esc(x) { return str(x).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 function foglio(nome, colonne, righe, testo) { return { nome: nome, colonne: colonne, righe: righe, testo: testo || [] }; }
+
+/* La numerazione del motore conserva l'UID: non si ricostruisce l'identità dal numero di campo, che è numerico
+   anche per PA1, né dal solo contrassegno, che può avere più provette. Si produce un solo passo per UID. */
+function partenza(inp, r) {
+  var p = Object.prototype.hasOwnProperty.call(inp.partenze, r.uid) ? inp.partenze[r.uid] : null;
+  if (!p || p.specie !== r.specie || (p.vista !== 'serie' && p.vista !== 'problematici') ||
+      p.plateau < 1 || p.plateau !== Math.floor(p.plateau) || p.pozzetto < 1 || p.pozzetto > M.PLATEAU_SIZE ||
+      p.pozzetto !== Math.floor(p.pozzetto) || !p.etichetta) throw new Error('Partenza fisica mancante o non valida per una provetta di ' + r.specie);
+  return p;
+}
+function guidaFisica(inp, numerazione, guidaMotore) {
+  var visti = Object.create(null);
+  return numerazione.map(function (r) {
+    var p = partenza(inp, r);
+    if (visti[r.uid]) throw new Error('UID ripetuto nella numerazione della guida');
+    visti[r.uid] = true;
+    if (p.vista === 'serie' && (p.plateau - 1) * M.PLATEAU_SIZE + p.pozzetto === r.provetta) return null;
+    var g = guidaMotore.filter(function (g) { return g.a_n === r.provetta; })[0];
+    // da_n/corsia_da restano l'origine letta dal motore: i resolver Kotlin pregressi le usano per l'abbinamento.
+    // La vista e i pozzetti fisici sono distinti e vengono soltanto dall'ingresso per UID.
+    return Object.assign({}, g || { da_n: r.provetta_campo, coda_da: '', corsia_da: '',
+      a_n: r.provetta, plateau_a: Math.floor((r.provetta - 1) / M.PLATEAU_SIZE) + 1,
+      pos_a: (r.provetta - 1) % M.PLATEAU_SIZE + 1, contrassegno: r.contrassegno, ruolo: r.gruppo,
+      motivo: p.vista === 'problematici' ? 'problematici' : 'riordino', fattispecie: r.fattispecie }, {
+        uid: r.uid, da: p.etichetta, campo: p.etichetta, fisica: true, vista_da: p.vista,
+        plateau_da: p.plateau, pos_da: p.pozzetto, motivo: p.tipologia || (p.vista === 'problematici' ? r.fattispecie : 'Ordinaria'), fattispecie: p.tipologia || r.fattispecie
+      });
+  }).filter(function (g) { return g != null; });
+}
+function daTesto(r, lettera) {
+  return (r.fisica || r.da) ? r.da : r.da_n == null ? '' : (r.coda_da === 'prob' ? r.corsia_da : (lettera || '')) + r.da_n;
+}
 
 /* base64 di un Uint8Array, senza Buffer né btoa sui byte grezzi (vale in WebView e in Node) */
 var B64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
@@ -145,11 +180,20 @@ function paginaSnippet(inp, invii, aMano) {
 function paginaGuida(inp, guida, escluse) {
   var s = inp.stabilimento, L = s.lettera || '';
   var tot = 0, corpo = '';
+  function chiaveRiga(sp, r, esclusa) {
+    return esc(JSON.stringify([s.codice, sp, esclusa ? 'esclusa' : 'spostamento', r.uid || r.contrassegno,
+      esclusa ? r.provetta_campo : r.a_n, r.vista_da || '', r.plateau_da, r.pos_da]));
+  }
+  function posto(r) {
+    return ' <span class="nota">(' + (r.vista_da === 'problematici' ? 'problematici, ' : '') +
+      'plateau ' + esc(r.plateau_da) + ', pos ' + esc(r.pos_da) + ')</span>';
+  }
   // le provette eliminate (formato 4): si tolgono dai plateau e si mettono da parte, senza numero finale
   if (escluse && escluse.length) corpo += '<h2>Da mettere da parte — ' + escluse.length + ' provette eliminate</h2><table><thead><tr>' +
-    '<th>Specie</th><th>Provetta (campo)</th><th>Contrassegno</th><th>Perché</th></tr></thead><tbody>' +
+    '<th>✓</th><th>Specie</th><th>Provetta (campo)</th><th>Contrassegno</th><th>Perché</th></tr></thead><tbody>' +
     escluse.map(function (r) {
-      return '<tr><td>' + esc(r.specie) + '</td><td><b>' + esc(r.provetta_campo) + '</b></td><td>' + esc(r.contrassegno) +
+      return '<tr data-k="' + chiaveRiga(r.specie, r, true) + '"><td class="spunta"><input type="checkbox" aria-label="messa da parte"></td><td>' + esc(r.specie) +
+        '</td><td><b>' + esc(r.provetta_campo) + '</b>' + (r.plateau_da != null ? posto(r) : '') + '</td><td>' + esc(r.contrassegno) +
         '</td><td class="nota">' + esc(r.fattispecie) + '</td></tr>';
     }).join('') + '</tbody></table>';
   SPECIE.forEach(function (sp) {
@@ -157,10 +201,10 @@ function paginaGuida(inp, guida, escluse) {
     corpo += '<h2>' + esc(sp) + ' — ' + g.length + ' provette da spostare</h2><table><thead><tr><th>✓</th><th>Contrassegno</th>' +
       '<th>Da (campo)</th><th></th><th>A (finale)</th><th>Perché</th></tr></thead><tbody>' +
       g.map(function (r) {
-        var da = r.da_n == null ? '— (provetta nuova)' : (r.coda_da === 'prob'
+        var da = (r.fisica || r.da) ? '<b>' + esc(r.da) + '</b>' + posto(r) : r.da_n == null ? '— (provetta nuova)' : (r.coda_da === 'prob'
           ? esc(r.corsia_da) + r.da_n + ' <span class="nota">(plateau problematici ' + esc(r.corsia_da) + ', pos ' + r.pos_da + ')</span>'
           : esc(L) + r.da_n + ' <span class="nota">(plateau ' + r.plateau_da + ', pos ' + r.pos_da + ')</span>');
-        var k = esc(sp + '|' + r.contrassegno + '|' + r.a_n);
+        var k = chiaveRiga(sp, r, false);
         return '<tr data-k="' + k + '"><td class="spunta"><input type="checkbox" aria-label="spostata"></td><td>' + esc(r.contrassegno) +
           '<div class="nota">' + esc(r.ruolo + (r.fattispecie ? ' · ' + r.fattispecie : '')) +
           '</div></td><td>' + da + '</td><td>→</td><td><b>' + esc(L) + r.a_n + '</b> <span class="nota">(plateau ' + r.plateau_a + ', pos ' + r.pos_a +
@@ -181,14 +225,14 @@ function paginaGuida(inp, guida, escluse) {
     '<div class="nota">' + esc(s.denominazione) + ' · ' + esc(inp.data) + ' · ' + tot + ' provette da spostare. Ogni provetta va ' +
     '<b>direttamente al numero finale, una volta sola</b>: non cancellare e non coprire il numero di campo, barralo con una riga sola ' +
     'che resti leggibile e scrivi accanto il numero finale (il numero di campo è registrato a parte: da lì si risale sempre al capo). ' +
-    'Quelle non elencate restano ferme. Plateau da ' +
+    'Metti da parte le provette eliminate elencate nella sezione dedicata. Le altre provette non elencate restano ferme. Plateau da ' +
     M.PLATEAU_SIZE + '. Spunta ogni riga quando la provetta è al suo posto: le spunte restano in questo browser.</div>' +
-    (tot ? '<div id="barra"><span id="conta"></span> · <label><input type="checkbox" id="nascondi"> nascondi le fatte</label></div>' : '') +
+    (tot || (escluse && escluse.length) ? '<div id="barra"><span id="conta"></span> · <label><input type="checkbox" id="nascondi"> nascondi le fatte</label></div>' : '') +
     '<div id="corpo">' + corpo + '</div>' +
     '<script>(function(){var K=' + JSON.stringify(chiave) + ',S={};try{S=JSON.parse(localStorage.getItem(K)||"{}")||{};}catch(e){S={};}' +
     'var righe=[].slice.call(document.querySelectorAll("tr[data-k]"));' +
     'function conta(){var f=righe.filter(function(r){return r.classList.contains("fatta");}).length;var c=document.getElementById("conta");' +
-    'if(c)c.textContent=f+" di "+righe.length+" spostate"+(f===righe.length?" ✓ finito":"");}' +
+    'if(c)c.textContent=f+" di "+righe.length+" completate"+(f===righe.length?" ✓ finito":"");}' +
     'righe.forEach(function(r){var b=r.querySelector("input");b.checked=!!S[r.getAttribute("data-k")];r.classList.toggle("fatta",b.checked);' +
     'b.addEventListener("change",function(){var k=r.getAttribute("data-k");if(b.checked)S[k]=1;else delete S[k];r.classList.toggle("fatta",b.checked);' +
     'try{localStorage.setItem(K,JSON.stringify(S));}catch(e){}conta();});});' +
@@ -279,8 +323,14 @@ function calcola(inp) {
       return !r.codice_stabilimento || r.codice_stabilimento === cod;
     }), sp, ordine, compatta, spost);
     guida[sp] = fin.some(function (r) { return r.specie === sp; }) ? M.guidaRiposizionamento(fin, sp, ordine, compatta, spost) : [];
+    if (inp.partenze != null) guida[sp] = guidaFisica(inp, nf[sp], guida[sp]);
     schede = schede.concat(M.schedeProblematici(fin, regs[sp], sp, ordine, compatta, decod));
     esitiSp = esitiSp.concat(M.esitiSpostamenti(fin, sp, ordine, compatta, spost));
+  });
+  if (inp.partenze != null) escluse = escluse.map(function (r, i) {
+    var originale = P.escluse[i], p = partenza(inp, originale);
+    return Object.assign({}, r, { uid: originale.uid, provetta_campo: p.etichetta,
+      vista_da: p.vista, plateau_da: p.plateau, pos_da: p.pozzetto, motivo: p.tipologia || (p.vista === 'problematici' ? r.fattispecie : 'Ordinaria'), fattispecie: p.tipologia || r.fattispecie });
   });
   var bo = M.brucellaOvisArvet(fin, ordine, compatta, spost);
   var cs = M.reportCorrezioniSesso(fin), np = M.reportNonProvati(presenti.pecore, presenti.capre, fin);
@@ -357,12 +407,14 @@ function calcola(inp) {
   SPECIE.forEach(function (sp) {
     if (!guida[sp].length) return;
     fogliGuida.push(foglio('guida_' + sp, COL_GUIDA, guida[sp].map(function (r) {
-      return { contrassegno: r.contrassegno, da: r.da_n == null ? '' : (r.coda_da === 'prob' ? r.corsia_da : (inp.stabilimento.lettera || '')) + r.da_n,
+      return { fatta: '☐', uid: r.uid || '', contrassegno: r.contrassegno, da: daTesto(r, inp.stabilimento.lettera),
+        vista_da: r.vista_da || (r.coda_da === 'prob' ? 'problematici' : 'serie'),
         plateau_da: r.plateau_da, pos_da: r.pos_da, a_n: r.a_n, plateau_a: r.plateau_a, pos_a: r.pos_a,
         ruolo: r.ruolo, motivo: r.motivo, fattispecie: r.fattispecie };
-    }), ['contrassegno', 'da']));
+    }), ['uid', 'contrassegno', 'da']));
   });
-  if (escluse.length) fogliGuida.push(foglio('da_mettere_da_parte', ['specie', 'provetta_campo', 'contrassegno', 'fattispecie'], escluse, ['contrassegno']));
+  if (escluse.length) fogliGuida.push(foglio('da_mettere_da_parte', ['fatta', 'uid', 'specie', 'provetta_campo', 'vista_da', 'plateau_da', 'pos_da', 'contrassegno', 'fattispecie'],
+    escluse.map(function (r) { return Object.assign({ fatta: '☐' }, r); }), ['uid', 'provetta_campo', 'contrassegno']));
   if (fogliGuida.length) xlsx('guida_riposizionamento' + suff + '.xlsx', fogliGuida);
   testo('guida_riposizionamento' + suff + '.html', 'text/html', paginaGuida(inp, guida, escluse));
   if (schede.length) testo('schede_problematici' + suff + '.html', 'text/html', M.renderSchedeProblematici(schede,
@@ -419,6 +471,17 @@ function calcola(inp) {
     }), []));
   });
   if (ignoti.length) fr.push(foglio('capi_senza_traccia', ['specie', 'contrassegno', 'provetta_campo', 'provetta', 'fattispecie'], ignoti, ['contrassegno']));
+  var gestione = inp.riepilogoGestione;
+  if (gestione) {
+    var righeGestione = [{voce: 'Problematici avuti nel progetto', numero: gestione.totaleProblematici},
+      {voce: 'Registrazioni tardive', numero: gestione.totaleRegistrazioniTardive},
+      {voce: 'Modifiche tardive', numero: gestione.totaleModificheTardive}];
+    Object.keys(gestione.perFattispecie || {}).forEach(function (t) { righeGestione.push({voce: t, numero: gestione.perFattispecie[t]}); });
+    Object.keys(gestione.perEsito || {}).forEach(function (t) { righeGestione.push({voce: t, numero: gestione.perEsito[t]}); });
+    (gestione.modificheGestione || []).forEach(function (t) { righeGestione.push({voce: t.titolo, numero: t.totale}); });
+    fr.push(foglio('gestione_progetto', ['voce', 'numero'], righeGestione, []));
+    fr.push(foglio('problematici_esiti', ['etichetta', 'contrassegno', 'specie', 'stabilimento', 'fattispecie', 'esitoFinale', 'siglaVeterinario'], gestione.problematici || [], ['contrassegno']));
+  }
   if (!fr.length) fr.push(foglio('vuoto', ['nota'], [{ nota: 'nessun dato' }], []));
   xlsx('riepilogo_accettazione' + suff + '.xlsx', fr);
 
@@ -445,6 +508,8 @@ function calcola(inp) {
     r.testo_senza_transponder = M.testoSenzaTransponder(r.senza_transponder, r.capi);
     riep.specie[sp] = r;
   });
+  if (gestione) riep.gestione_progetto = {problematici: gestione.totaleProblematici,
+    registrazioni_tardive: gestione.totaleRegistrazioniTardive, modifiche_tardive: gestione.totaleModificheTardive};
   // i dati della sistemazione, per l'app (guida a spunta) e per i test di parità con «Dopo il campo» di svet-tools
   var dati = { specie: {}, maschi: bo.map(function (r) { return { provetta: r.provetta, contrassegno: r.contrassegno }; }),
     spostamenti: esitiSp, allevatore: allevatore, anomalie: anomalie, escluse: escluse };
@@ -452,14 +517,16 @@ function calcola(inp) {
     if (!nf[sp].length) return;
     dati.specie[sp] = {
       numerazione: nf[sp].map(function (r) {
-        return { provetta: r.provetta, provetta_campo: r.provetta_campo, contrassegno: r.contrassegno, gruppo: r.gruppo,
+        return { uid: r.uid, provetta: r.provetta, provetta_campo: r.provetta_campo, contrassegno: r.contrassegno, gruppo: r.gruppo,
           fattispecie: r.fattispecie };
       }),
       arvet: arvet[sp].map(function (r) { return { provetta: r.provetta, contrassegno: r.contrassegno }; }),
       guida: guida[sp].map(function (r) {
-        return { da_n: r.da_n, coda_da: r.coda_da, corsia_da: r.corsia_da, plateau_da: r.plateau_da, pos_da: r.pos_da,
+        var g = { da_n: r.da_n, coda_da: r.coda_da, corsia_da: r.corsia_da, plateau_da: r.plateau_da, pos_da: r.pos_da,
           a_n: r.a_n, plateau_a: r.plateau_a, pos_a: r.pos_a, contrassegno: r.contrassegno, ruolo: r.ruolo, motivo: r.motivo,
           fattispecie: r.fattispecie };
+        if (r.fisica) Object.assign(g, { uid: r.uid, da: r.da, campo: r.campo, fisica: true, vista_da: r.vista_da });
+        return g;
       })
     };
   });

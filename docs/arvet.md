@@ -12,7 +12,7 @@ pagina di ARVET dove si inseriscono i numeri dei campioni. Lo snippet **scrive i
 | 2 · capre | profilassi brucellosi ovicaprina, accettazione delle capre | tutte le capre |
 | 3 · maschi *Brucella ovis* | «DIAGNOSI BRUCELLA OVIS ARIETI» | i montoni, con **gli stessi numeri** dell'invio delle pecore |
 
-Con più stabilimenti nello stesso progetto, la lettera sulla provetta (X12) dice quale accettazione è: in ARVET va
+Con più stabilimenti nello stesso progetto, l’identificazione dello stabilimento sull’etichetta della provetta dice quale accettazione è: in ARVET va
 solo il numero (12).
 
 ## Come si usa
@@ -35,7 +35,7 @@ solo il numero (12).
 ## I capi che non sono nell'elenco
 
 Sono i problematici della sistemazione: usciti, altro stabilimento, marche disponibili, capi in nessun registro. Per
-ognuno lo snippet fa quello che farebbe l'operatore con **«Inserisci capo»**:
+ognuno lo snippet fa quello che farebbe il veterinario con **«Inserisci capo»**:
 
 1. **Cerca** il contrassegno;
 2. se ARVET conosce il capo (lui o la BDN), tiene i **suoi** sesso, razza e nascita;
@@ -50,7 +50,7 @@ Quelli che non riesce ad aggiungere li elenca col motivo:
 - un contrassegno che ARVET rifiuta.
 
 Restano sempre **a mano** i **doppi di contrassegno**, perché il capo è già nell'elenco con l'altra provetta: decide
-l'operatore.
+il veterinario.
 
 !!! tip "Provare senza scrivere niente"
     Scrivendo nella console `window.__ARVET_PROVA__=true;` prima di incollare lo snippet, lo snippet fa Cerca e

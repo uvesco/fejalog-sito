@@ -1,12 +1,11 @@
 # Il sito di appoggio di Fejalog: sorgenti qui, in fejalog/sito; pubblicato dal repository
 # pubblico uvesco/fejalog-sito con strumenti/pubblica_sito.sh. Le pagine della guida di riferimento, le Novità e il
-# foglio per gli operatori li scrive `./gradlew :shared:scriviSito` dai testi dell'app (anche il pezzo di menu fra i
+# foglio per i veterinari li scrive `./gradlew :shared:scriviSito` dai testi dell'app (anche il pezzo di menu fra i
 # marcatori qui sotto). Prova in locale: sito/.venv/bin/mkdocs serve -f sito/mkdocs.yml
 site_name: Fejalog
 site_description: Le provette della profilassi brucellosi ovicaprina, registrate in campo con più device, fino ad ARVET.
 site_url: https://uvesco.github.io/fejalog-sito/
-repo_url: https://github.com/uvesco/fejalog-sito
-repo_name: uvesco/fejalog-sito
+# niente repo_url: il tema, con il collegamento al repository, chiede le statistiche a api.github.com (nessuna risorsa esterna nel sito)
 copyright: Fejalog · Umberto Vesco · dati di esempio inventati (stabilimento 888TO999)
 
 theme:
@@ -31,6 +30,7 @@ theme:
         icon: material/weather-sunny
         name: Tema chiaro
   features:
+    - navigation.tabs
     - navigation.sections
     - navigation.top
     - navigation.footer
@@ -42,6 +42,9 @@ theme:
 extra_css:
   - stili/fejalog.css
   - strumenti/css/strumenti.css
+
+extra_javascript:
+  - strumenti/js/barra.js
 
 plugins:
   - search:
@@ -63,64 +66,100 @@ markdown_extensions:
   - pymdownx.keys
 
 nav:
-  - Fejalog: index.md
-  - Caratteristiche: caratteristiche.md
-  - Problemi affrontati e architettura: problemi-affrontati.md
-  - Scarica: scarica.md
-  - Tutorial col kit di prova:
-      - tutorial/index.md
-      - "0 · Prepara": tutorial/00-prepara.md
-      - Reperire i file BDN: tutorial/file-bdn.md
-      - "1 · Chi usa il device": tutorial/01-utente.md
-      - "2 · Il progetto": tutorial/02-progetto.md
-      - "3 · Registri e regole": tutorial/03-registri-regole.md
-      - "4 · La rete": tutorial/04-rete.md
-      - "5 · I ricercati": tutorial/05-ricercati.md
-      - "6 · Il primo prelievo": tutorial/06-prelievo.md
-      - "7 · Le fattispecie": tutorial/07-fattispecie.md
-      - "8 · Doppi e rete difficile": tutorial/08-doppi-rete.md
-      - "9 · Registri in corsa": tutorial/09-registri-in-corsa.md
-      - "10 · Statistiche e provette perse": tutorial/10-statistiche.md
-      - "10 bis · Il Plateau della Regia": tutorial/10b-plateau.md
-      - "11 · Soluzione problemi": tutorial/11-problemi.md
-      - "12 · Riordino dei plateau": tutorial/12-riordino.md
-      - "13 · Backup, uscita, ripresa": tutorial/13-backup.md
-      - "14 · Fine lavori": tutorial/14-fine-lavori.md
-      - "15 · ARVET": tutorial/15-arvet.md
-  - Il kit di prova: kit.md
-  - ARVET e gli snippet: arvet.md
-  - Per gli operatori: operatori.md
-  - Strumenti on line:
-      - strumenti/index.md
+  - Inizia qui:
+      - "Cos'è Fejalog": index.md
+      - "Caratteristiche": caratteristiche.md
+      - "Anomalie: tutti i casi": anomalie.md
+      - "Le cinque garanzie": inizia-qui/cinque-garanzie.md
+      - "I requisiti in breve": inizia-qui/requisiti.md
+      - "A chi serve cosa": inizia-qui/ruoli.md
+      - "Scarica l'app": scarica.md
+      - "Video di introduzione": inizia-qui/video.md
+  - Chi preleva:
+      # >>> chi-preleva (scritto da ScriviSito: non modificare)
+      - "Checklist del veterinario": checklist-veterinari.md
+      - "Preparare il telefono": veterinari.md
+      - "Il briefing (11 diapositive)": briefing.md
+      # <<< chi-preleva
+      - "In campo (scheda pratica)": chi-preleva/in-campo.md
+      - "Cosa succede se…": chi-preleva/cosa-succede-se.md
+      - "Domande dei prelevatori": chi-preleva/domande.md
+  - Chi dirige (la Regia):
+      # >>> chi-dirige (scritto da ScriviSito: non modificare)
+      - "Checklist del responsabile": checklist-responsabile.md
+      # <<< chi-dirige
+      - "Requisiti hardware e software": chi-dirige/requisiti.md
+      - "Attrezzatura e materiale": chi-dirige/attrezzatura-materiale.md
+      - "Stampe pre-campo e QR": strumenti/prima-del-campo.md
+      - "Rete e connessione": chi-dirige/rete.md
+      - "Avvio della seduta": chi-dirige/avvio.md
+      - "Consegne e plateau": chi-dirige/consegne-plateau.md
+      - "Collegamento al PC Windows via USB": chi-dirige/tethering-pc.md
+      - "In campo (scheda responsabile)": chi-dirige/scheda-responsabile.md
+  - Dopo il campo:
+      - "Panoramica dopo il campo": strumenti/index.md
       - "Fine lavori sul computer": strumenti/fine-lavori.md
-  # >>> riferimento (scritto da ScriviSito: non modificare)
-  - Guida di riferimento:
-      - riferimento/index.md
-      - "Inizio: i passi di un progetto": riferimento/percorso.md
-      - "Regia e palmari": riferimento/ruoli.md
-      - "Prima di tutto: l'utente del device": riferimento/utente.md
-      - "Conservare le impostazioni dell'app": riferimento/impostazioniportabili.md
-      - "Il progetto: nuovo, apri, recenti, chiudi": riferimento/seduta.md
-      - "Archivio e copie del progetto": riferimento/archivio.md
-      - "Registri BDN": riferimento/registri.md
-      - "Lavorare in rete": riferimento/rete.md
-      - "Prima della prima provetta (Regia)": riferimento/inizio.md
-      - "Capi ricercati": riferimento/ricercati.md
-      - "Campionamento: registrare una provetta": riferimento/lavoro.md
-      - "Avvisi sul capo": riferimento/avvisi.md
-      - "Correggere: le ultime provette": riferimento/ultime.md
-      - "Provette perse e ritrovate": riferimento/perse.md
-      - "Lo stato della rete in alto": riferimento/banner.md
-      - "Statistiche": riferimento/statistiche.md
-      - "Il Plateau della Regia": riferimento/plateau.md
-      - "Soluzione problemi": riferimento/problemi.md
-      - "Riordino dei plateau": riferimento/riordino.md
-      - "Backup e ripristino": riferimento/backup.md
-      - "Fine lavori in Fejalog": riferimento/fine.md
-      - "Pausa, chiusura e uscita": riferimento/uscita.md
-      - "Se qualcosa va storto": riferimento/guasti.md
-      - "Le parole": riferimento/parole.md
-      - "Crediti": riferimento/crediti.md
-  # <<< riferimento
-  - Novità: novita.md
-  - Domande: domande.md
+      - "Riconciliazione dei backup": dopo-il-campo/riconcilia-backup.md
+      - "Controllo provette e statistiche": dopo-il-campo/provette-statistiche.md
+      - "Il 2/33 finale": dopo-il-campo/modello-233-finale.md
+      - "Gli snippet per ARVET": dopo-il-campo/snippet-arvet.md
+  - Provalo:
+      - "Il kit di prova": kit.md
+      - "Tre modalità di simulazione": provalo/tre-modalita.md
+      - "Incidenti programmati": provalo/incidenti-programmati.md
+      - "Tutorial passo per passo":
+          - tutorial/index.md
+          - "0 · Prepara": tutorial/00-prepara.md
+          - "Reperire i file BDN": tutorial/file-bdn.md
+          - "1 · Chi usa il device": tutorial/01-utente.md
+          - "2 · Il progetto": tutorial/02-progetto.md
+          - "3 · Registri e regole": tutorial/03-registri-regole.md
+          - "4 · La rete": tutorial/04-rete.md
+          - "5 · I ricercati": tutorial/05-ricercati.md
+          - "6 · Il primo prelievo": tutorial/06-prelievo.md
+          - "7 · Le fattispecie": tutorial/07-fattispecie.md
+          - "8 · Doppi e rete difficile": tutorial/08-doppi-rete.md
+          - "9 · Registri in corsa": tutorial/09-registri-in-corsa.md
+          - "10 · Statistiche e provette perse": tutorial/10-statistiche.md
+          - "10 bis · Il Plateau della Regia": tutorial/10b-plateau.md
+          - "11 · Soluzione problemi": tutorial/11-problemi.md
+          - "12 · Riordino dei plateau": tutorial/12-riordino.md
+          - "13 · Backup, uscita, ripresa": tutorial/13-backup.md
+          - "14 · Fine lavori": tutorial/14-fine-lavori.md
+          - "15 · ARVET": tutorial/15-arvet.md
+  - Riferimento:
+      # >>> riferimento (scritto da ScriviSito: non modificare)
+      - Guida di riferimento:
+          - riferimento/index.md
+          - "Inizio: i passi di un progetto": riferimento/percorso.md
+          - "Regia e palmari": riferimento/ruoli.md
+          - "Prima di tutto: l'utente del device": riferimento/utente.md
+          - "Conservare le impostazioni dell'app": riferimento/impostazioniportabili.md
+          - "Il progetto: nuovo, apri, recenti, chiudi": riferimento/seduta.md
+          - "Archivio e copie del progetto": riferimento/archivio.md
+          - "Registri BDN": riferimento/registri.md
+          - "Lavorare in rete": riferimento/rete.md
+          - "Prima della prima provetta (Regia)": riferimento/inizio.md
+          - "Capi ricercati": riferimento/ricercati.md
+          - "Campionamento: registrare una provetta": riferimento/lavoro.md
+          - "Capo senza contrassegno": riferimento/senzacontrassegno.md
+          - "Avvisi sul capo": riferimento/avvisi.md
+          - "Correggere: le ultime provette": riferimento/ultime.md
+          - "Provette perse e ritrovate": riferimento/perse.md
+          - "Lo stato della rete in alto": riferimento/banner.md
+          - "Statistiche": riferimento/statistiche.md
+          - "Il Plateau della Regia": riferimento/plateau.md
+          - "Soluzione problemi": riferimento/problemi.md
+          - "Riordino dei plateau": riferimento/riordino.md
+          - "Backup e ripristino": riferimento/backup.md
+          - "Fine lavori in Fejalog": riferimento/fine.md
+          - "Collegamento al PC Windows via USB": riferimento/pcusb.md
+          - "Pausa, chiusura e uscita": riferimento/uscita.md
+          - "Se qualcosa va storto": riferimento/guasti.md
+          - "Le parole": riferimento/parole.md
+          - "Crediti": riferimento/crediti.md
+      # <<< riferimento
+      - "ARVET e gli snippet": arvet.md
+      - "Novità e versioni": novita.md
+      - "Domande frequenti": domande.md
+      - "Sotto il cofano: problemi e architettura": riferimento/sotto-il-cofano/index.md

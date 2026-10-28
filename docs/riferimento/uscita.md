@@ -9,7 +9,7 @@
 ## Batteria scarica
 
 - Il telefono avvisa al 20% e al 10%. Al 5%, se non è in carica, si mette in pausa da solo e lo comunica alla Regia: il lavoro già fatto è al sicuro. Se si spegne, manda un ultimo segnale di pausa quando fa in tempo.
-- Con la pausa il telefono non conta più fra gli attivi: gli altri tornano a controllare i doppi senza aspettarlo. Ricaricato, rientri dalla pagina Rete e riprendi la tua lettera. La Regia può cambiare le soglie (pagina Messaggi).
+- Con la pausa il telefono non conta più fra gli attivi: gli altri tornano a controllare i doppi senza aspettarlo. Ricaricato, rientri dalla pagina Rete e usi la tua sigla. La Regia può cambiare le soglie (pagina Messaggi).
 - Prima di cominciare: telefono carico, e il caricabatterie nello zaino.
 
 ## Chiudere il progetto (Progetto › Chiudi, o Rete › Esci sul palmare)

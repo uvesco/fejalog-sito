@@ -12,11 +12,11 @@ basta scrivere il numero sulla scheda (o su un foglio).
    finiscono con quelle cifre, poi quelli che le contengono. Tocca quello giusto.
 3. **Col lettore**: leggi il barcode della scheda. Il codice entra da solo e, se il capo è uno solo, **Invio** lo
    sceglie.
-4. Nel **foglio di conferma**: in alto, grande, il **numero** da scrivere sulla provetta. Prova le caselle **DX**,
-   **SX** e **bolo** su qualche capo (da sostituire: DX o bolo = senza transponder, in rosso).
-5. **«CONFERMA»** e scrivi il numero.
-6. Ripeti con un **montone** (sezione «Presenti · montoni») e con una **capra** (pagina Capre in alto, o scorrendo di
-   lato).
+4. Nel **foglio di conferma**: in alto, grande, il **numero** da scrivere sulla provetta all'interno del riquadro colorato (neutro = solo l'etichetta; blu = ordinario da isolato, non scrivere tutto; rosso = problematico, contrassegno COMPLETO). Prova le caselle **DX**, **SX** e **bolo** su qualche capo (da sostituire: DX o bolo = senza transponder, in rosso).
+5. **«CONFERMA»** (oppure premi **Invio/OK** sulla tastiera/telecomando: conferma col focus su Conferma; se il focus è su un’opzione, attiva quell’opzione) e scrivi il numero sulla provetta.
+6. Prova il **cambio di specie**: se digiti o leggi un codice e cambi specie (scorrendo o con le frecce), il codice non si perde e la ricerca riparte da sola.
+7. Ripeti con un **montone** (sezione «Presenti · montoni») e con una **capra** (pagina Capre in alto, o scorrendo di
+lato).
 
 <div class="schermate" markdown>
 
@@ -42,9 +42,11 @@ basta scrivere il numero sulla scheda (o su un foglio).
         - I **montoni** (maschi ovini) prendono i primi numeri (da 1 a 12 nel kit, in ordine alfabetico di contrassegno).
         - Le **pecore** proseguono dal numero 13 in poi.
         - Le **capre** prendono la loro serie con la lettera di specie (es. `C1`, `C2`… se impostata `C` sulla specie meno numerosa).
-    - L'etichetta da scrivere sulla provetta compare grande in testa al foglio di conferma.
-    - Se l'operatore lavora **da isolato** (senza rete o colleghi scollegati), l'etichetta aggiunge in coda la lettera dell'operatore (es. `13U` o `C1U`).
-    - I capi **non prenumerati** (fuori età diagnostica, marche disponibili, altri stabilimenti, forzati) prendono il codice operatore (es. `CA1`) e vanno nei problematici.
+    - L'etichetta da scrivere sulla provetta compare grande in testa al foglio di conferma:
+        - **Riquadro neutro**: provetta ordinaria in rete (copia l’etichetta mostrata);
+        - **Riquadro blu**: ordinario prelevato **da isolato** (senza tutti i colleghi collegati, copia l’etichetta completa del suffisso): l'istruzione ricorda *«non scrivere tutto: solo l'etichetta»*; al tavolo la Regia la posiziona subito al pozzetto del suo numero;
+        - **Riquadro rosso**: capi **problematici** (fuori età diagnostica, marche nuove, altri stabilimenti, forzati): prendono il codice problematico mostrato e l'istruzione ricorda *«scrivi sempre il contrassegno COMPLETO»*.
+    - Per capi senza marche a fine risanamento c'è il tasto **«Senza contrassegno»**, che attribuisce un capo compatibile non prelevato.
     - La provetta si vede salvata (**✓**) solo quando è sul disco; in cima a Campionamento, **Ultime** la mostra.
     - Il foglio dice come è stato identificato il capo: col lettore (codice intero) è certo, con le cifre digitate
       dice fra quanti capi hai scelto.
@@ -56,8 +58,8 @@ basta scrivere il numero sulla scheda (o su un foglio).
     provetta ancora in mano.
 
 ??? failure "Se non va"
-    - **L'etichetta ha una lettera in coda (es. 13U)**: sei da isolato (doppi non controllati). La provetta tiene quel numero e la Regia la verifica al rientro.
-    - **Il codice è del tipo CA1**: il capo non era prenumerato (es. fuori età o marca nuova); andrà risolto in rifinitura.
+    - **L’etichetta ha un suffisso da isolato**: sei da isolato (doppi non controllati). La provetta tiene quel numero e la Regia la verifica al rientro.
+    - **Il riquadro è rosso**: il capo non era prenumerato (es. fuori età o marca nuova); andrà risolto in rifinitura.
     - **Il capo sbagliato**: in Ultime, Modifica o Elimina (un nuovo evento: niente si cancella davvero).
 
 ## Fatto?

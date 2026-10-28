@@ -20,7 +20,7 @@
     1. Menu ☰ › **Rete** › «Inquadra il QR della Regia»: il telefono si collega alla Wi-Fi e riceve il progetto.
     2. Se il telefono è già sulla Wi-Fi della Regia, il progetto compare da solo: **«Chiedi di entrare»**.
     3. In fondo alla pagina Rete, «**Controlla il telefono**»: Wi-Fi senza internet, batteria senza restrizioni,
-       notifiche (il [foglio per gli operatori](../operatori.md)).
+       notifiche (il [foglio per i veterinari](../veterinari.md)).
 
 <div class="schermate" markdown>
 

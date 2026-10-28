@@ -5,7 +5,7 @@
 - Il device è personale: in ⚙️ Impostazioni si scrivono una volta nome, cognome, codice fiscale e nome del device («Tablet Regia», «A55 Mario»). Vale per tutti i progetti.
 - Con «Scegli dall'elenco dei veterinari» nome, cognome e codice fiscale si prendono dall'elenco dell'ASL, senza errori.
 - Il codice fiscale riconosce il veterinario nell'elenco; non va mai sulle provette né negli export. Va nel nome dei file di backup, per sapere chi li ha salvati.
-- Nel progetto ogni veterinario ha una lettera (A, D, E…; fino a 15, mai C e P, che sono delle specie): i suoi problematici sono PA1, PA2…, le sue provette da isolato P17A. La lettera è della persona (codice fiscale): passando a un altro device la riprende, se il vecchio ha finito o è uscito.
+- Nei progetti nuovi ogni veterinario ha una sigla di due lettere confermata dalla Regia (per esempio UV). Sigla e progressivo dei problematici sono condivisi fra i suoi device. Se la Regia cambia la sigla, le etichette già scritte restano uguali. Nei progetti precedenti restano le lettere previste all'inizio.
 - I nomi si mostrano corti, «Mario R»; due veterinari con lo stesso nome si distinguono col nome del device. Le statistiche di chi cambia device restano sue.
 
 ## Le altre impostazioni del device
