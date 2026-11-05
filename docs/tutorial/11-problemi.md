@@ -6,7 +6,7 @@
 
 ## Fai
 
-1. Apri **Lavoro › Problemi da risolvere**: i problematici per tipologia (smarriti, rubati, usciti morti o macellati,
+1. Apri **Gestione campioni › Sul tablet › Problemi da risolvere**: i problematici per tipologia (smarriti, rubati, usciti morti o macellati,
    trasferiti, altro stabilimento, marche disponibili, non in elenco, fuori età, doppi, specie discordante, altre problematiche).
    Controlla anche **Acquisti con DDA**, **Attribuite da riattribuire**, **Diventate problematiche**
    (la …010 della [lezione 9](09-registri-in-corsa.md)) e **Ora in lista coi registri nuovi**.
@@ -29,7 +29,7 @@
 
 Un'**accantonata** non è ancora una provetta registrata: usa **Cerca e registra** oppure **Scarta**. Un **presente non prelevato** è invece un capo atteso per il quale non risulta il campione: non registrarlo solo per completare la distinta.
 
-Se hai davvero una provetta fisica non confermata, apri **Non trovati e tardive**, cerca anche usando la parte leggibile dell'etichetta e verifica il candidato. Solo la Regia usa **Attribuisci**, inserisce l'etichetta effettiva e una nota obbligatoria, poi registra senza riaprire il campionamento. La prova completa è negli [incidenti programmati](../provalo/incidenti-programmati.md).
+Se hai davvero una provetta fisica non confermata, apri **Gestione campioni › Sul tablet › Non trovati e tardive**, cerca anche usando la parte leggibile dell'etichetta e verifica il candidato. Solo la Regia usa **Attribuisci**, inserisce l'etichetta effettiva e una nota obbligatoria, poi registra senza riaprire il campionamento. La prova completa è negli [incidenti programmati](../provalo/incidenti-programmati.md).
 
 <div class="schermate" markdown>
 

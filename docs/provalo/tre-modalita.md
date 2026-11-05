@@ -3,7 +3,7 @@
 > **A chi serve**: a chi prova Fejalog prima del campo, da solo o con i colleghi.  
 > **Tempo di lettura**: 6 minuti.
 
-Tutte le prove usano i [kit fittizi `888TO999`](../kit.md). Le durate sono indicative: prepara i file e installa l'app prima di iniziare.
+Tutte le prove usano il [kit fittizio a cinque stabilimenti](../kit.md). Le durate sono indicative: prepara i file e installa l'app prima di iniziare.
 
 | Modalità | Tempo | Occorrente | Cosa provi |
 |---|---|---|---|
@@ -19,7 +19,6 @@ Scarica ed estrai [il kit a cinque stabilimenti, dati](kit/kit_cinque_stabilimen
 Usa il suo **`backup_esempio_cinque_stabilimenti.zip`** e conserva la cartella **`2-33/ingresso/`** per il passo 7.
 Il backup contiene pochi campioni già registrati e posati, una problematica e il campionamento chiuso: non serve campionare tutti i capi.
 
-Per una prova più piccola puoi usare il [backup singolo](kit/backup_esempio_888TO999.zip), derivato dal kit originale. I 2/33 del kit a cinque stabilimenti appartengono a un altro elenco di capi: usa il backup a cinque stabilimenti per il passo 7.
 
 ### 2. Carica il backup e controlla la numerazione
 
@@ -28,9 +27,10 @@ Controlla «Registro intatto», poi apri **Provette**: confronta etichetta, cont
 
 Il sito lavora sul computer e conserva le azioni nel browser. Il registro del backup di ingresso resta intatto. Per ripartire usa **Ricomincia da capo**; per conservare il lavoro scarica i file prima di cancellare i dati del browser.
 
-### 3. Rivedi il riempimento nei due versi
+### 3. Rivedi il riempimento nei due versi e lo stato dei plateau
 
 Apri **Plateau**. Il cursore **Passo** e i pulsanti avanti/indietro ripercorrono registrazioni e pose. Arriva all'ultimo passo, scegli una serie e tocca un pozzetto occupato per vedere la sua provetta.
+Puoi esaminare i bordi colorati dei plateau (verde per completo, giallo da completare, rosso per i problematici) e le azioni sulla singola provetta (spostamento con proposta di scambio, scarto con motivo o contrassegno modificato).
 
 Il simulatore usa il verso salvato nel progetto: **non si cambia dopo l'avvio**. Per confrontare i due versi apri [Stampe pre-campo](../strumenti/prima-del-campo.md), anche senza caricare dati, e apri i due fogli generici **1–100 alto→basso e basso→alto**. Il pozzetto 1 cambia lato; le file restano da sinistra a destra, senza serpente. È un confronto delle stampe, non una modifica al backup chiuso.
 
@@ -44,7 +44,7 @@ In **Non trovati**, scegli un capo non prelevato e usa **Attribuisci**. Inserisc
 
 ### 6. Riordina e scarica i file
 
-Apri **Riordino** e scegli **Chiudi i buchi** prima della prima spunta. Leggi etichetta e posto di partenza, poi il numero finale e la destinazione; nella prova spunta il passo dopo averlo eseguito sul tuo schema cartaceo. Dal primo passo il campionamento non è più riapribile.
+Apri **Riordino** e scegli **Chiudi i buchi** prima della prima spunta. Leggi etichetta e posto di partenza, poi il numero finale e la destinazione; puoi usare **Invia** sulla singola riga o selezionare le caselle per l'invio in batch di quelle al numero suggerito. Dal primo evento di gestione la chiusura del campionamento è definitiva.
 
 In **Uscite**, premi **Scarica tutto (zip)**. Apri report, guida fisica e snippet. Il 2/33 finale si produce separatamente al passo successivo.
 
@@ -124,6 +124,8 @@ Il comando `shot` salva il PNG intero e, se ImageMagick è installato, la copia 
 ### 3. Limiti e materiale per la formazione
 
 Le reti degli AVD sono virtuali: il solo avvio di due emulatori non crea la Wi-Fi locale condivisa della squadra. Per una prima acquisizione usa ciascun AVD **da solo**; usa telefoni veri per la prova di rete e QR. La connessione contemporanea dei due AVD richiede una configurazione di rete dedicata e non è verificata da questa guida.
+
+> **Collaudi di scala su PC ed emulatore**: l'infrastruttura di Fejalog è stata collaudata su PC ed emulatore simulando carichi fino a 12 palmari contemporanei e una giornata completa su un gregge fittizio di 1800 capi (oltre 1890 prelievi e plateau interamente riordinati sul tablet emulato senza blocchi dell'interfaccia). La prova sul campo con animali reali ha coinvolto 3 veterinari (22/10/2026).
 
 Usa nomi di fantasia, nessun codice fiscale reale e soltanto file del kit. Controlla ogni screenshot e video prima di condividerlo. Fotocamera, lettore fisico, carta stampata e spegnimenti reali si verificano sui dispositivi; gli emulatori non li certificano. I materiali video e le immagini aggiornate restano da preparare nella fase W5.
 

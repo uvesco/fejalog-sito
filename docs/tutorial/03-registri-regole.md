@@ -4,23 +4,23 @@
 
 ## Rivedi le regole
 
-1. Apri **Preparazione › Modalità e regole**. L’età diagnostica e le lettere sono in testa alla pagina.
+1. Apri **Configurazione › 1. Parametri e regole**. L’età diagnostica e le lettere sono in testa alla pagina.
 2. Apri **Regole per i problematici**: controlla la soluzione di fine lavoro di ogni tipologia. Smarriti e rubati dello stabilimento vanno **sempre** fra i problematici. I dettagli si aprono su richiesta.
 3. **Lettera di specie**: con pecore e capre almeno una delle due ha la lettera (C o P); «Nessuna» non si può scegliere, così una pecora e una capra non hanno mai la stessa scritta.
-4. Controlla il **backup automatico**: di base un’istantanea ogni 25 eventi. Le scelte sono nel progetto e le cambia soltanto la Regia.
+4. Controlla il **backup automatico**: di base un'istantanea ogni 25 eventi in rete (parametro di progetto della Regia) e ogni 10 eventi quando il dispositivo lavora da solo o isolato; tutti i dispositivi scattano inoltre istantanee locali automatiche a ogni pausa, ripresa o uscita dal progetto.
 
 !!! info "Modifiche durante il lavoro"
-    Le regole possono cambiare anche dopo. Gli eventi precedenti e i numeri di campo restano ricostruibili; i cambiamenti della sistemazione vengono registrati.
+    Le regole dei problematici e il backup possono cambiare anche durante il lavoro. I parametri fissi (lettere di specie, stabilimento principale, verso di riempimento e disposizione dei problematici) restano invece congelati dall'avvio; l'età diagnostica è visibile in sola lettura.
 
 ## Trova i file
 
-Da **Dati › Registri BDN e contrassegni › Fonti del progetto** controlli gli input e il loro stato: in uso, aggiornati da caricare o non ancora caricati.
+Da **Configurazione › 3. Dati input** (Fonti del progetto) controlli gli input e il loro stato: in uso, aggiornati da caricare o non ancora caricati.
 
 - Con una cartella di lavoro disponibile, gli input vengono conservati nella cartella del progetto, sotto `bdn/registri` e `bdn/contrassegni`.
 - Senza cartella raggiungibile, restano sul dispositivo, anche in `Download/Fejalog`.
 - Gli aggiornamenti si controllano in anteprima e si applicano esplicitamente.
 
-Le destinazioni si scelgono in **Preparazione › Cartelle e copie**. Qui trovi anche le copie pendenti e la seconda destinazione incrementale, eventualmente su USB. Le numerazioni delle pecore conservano fotografie distinte dopo assegnazioni e scambi.
+Le cartelle dell'app si configurano in **Impostazioni › Cartelle**, mentre in **Configurazione › 1. Parametri e regole** (sezione File del progetto e copie) controlli lo stato delle copie pendenti e l'eventuale seconda destinazione incrementale su USB. Le numerazioni delle pecore conservano fotografie distinte dopo assegnazioni e scambi.
 
 ## Fatto?
 

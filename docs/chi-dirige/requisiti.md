@@ -16,12 +16,15 @@ La Regia è il nodo centrale della profilassi in campo: apre il progetto partend
 
 ### La connettività Wi-Fi locale
 - **Router da viaggio a batteria** (consigliato) oppure **hotspot Wi-Fi** generato direttamente dal tablet o da un telefono ausiliario.
+  L'hotspot va bene con pochi palmari: telefoni e tablet accettano pochi dispositivi collegati insieme (dipende dal modello, spesso
+  8–10 e a volte meno: controlla nelle impostazioni dell'hotspot) e consumano più batteria. Con più di 5–6 palmari usa il router da
+  viaggio, che ne regge molti di più.
 - **Frequenza radio**: consigliata la banda a **2.4 GHz**, da verificare con una prova di copertura nei punti di lavoro.
 - **Nessuna connessione internet**: il router o l'hotspot operano esclusivamente come punto d'accesso locale protetto (WPA2-PSK). Nessun dato transita su internet né su server remoti durante il campionamento (vedi [Le cinque garanzie](../inizia-qui/cinque-garanzie.md)).
 
 ### Accessori per la chiusura dei lavori
-- **Cavo dati USB**: per il collegamento diretto tra il tablet e il computer dell'ASL o dell'ufficio a fine lavori, sfruttando il tethering USB protetto da PIN (vedi [Regia su PC e tethering](tethering-pc.md)).
-  > *Nota di trasparenza*: il collegamento USB è stato provato dall’utente sul PC dell’ASL; il nuovo accesso con PIN resta da provare sui dispositivi fisici.
+- **Cavo dati USB**: per il collegamento diretto tra il tablet e il computer dell'ASL o dell'ufficio a fine lavori, sfruttando il tethering USB protetto da PIN breve a 8 cifre numeriche generate dal tablet (vedi [Regia su PC e tethering](tethering-pc.md)).
+  > *Nota di trasparenza*: il collegamento USB è stato verificato via emulatore e provato dall’utente sul PC dell’ASL; il nuovo accesso con PIN a 8 cifre resta da provare sui dispositivi fisici.
 - **Lettore di microchip Bluetooth** (opzionale): doppio standard FDX-B / HDX (es. Allflex AWR250), utile se la Regia campiona o verifica direttamente al tavolo capi problematici o isolati.
 
 ---
@@ -38,7 +41,8 @@ Prima di uscire sul campo, verifica i seguenti parametri nelle impostazioni di s
 1. **Wi-Fi senza internet**: quando il tablet si collega alla rete locale del campo, Android rileva l'assenza di connessione a internet. Se compare la notifica di sistema «Rete senza accesso a Internet», seleziona «Mantieni sempre la connessione» ed escludi il passaggio automatico ai dati mobili.
 2. **Batteria senza restrizioni**: apri *Impostazioni › Applicazioni › Fejalog › Batteria* e imposta il profilo su **«Senza restrizioni»** (o «Nessuna ottimizzazione»). Disattiva qualsiasi modalità di risparmio energetico aggressivo del produttore che possa sospendere i servizi di rete in background.
 3. **Spegnimento schermo**: imposta il timeout dello schermo su un valore lungo (es. 10 o 30 minuti) oppure mantieni lo schermo attivo mentre il tablet è collegato al power bank, per non dover sbloccare il dispositivo a ogni consegna.
-4. **Archivio del progetto**: verifica lo spazio di memoria libero sul dispositivo e configura, se disponibile, una cartella cloud (es. OneDrive o Nextcloud) o una memoria USB per le copie di sicurezza automatiche.
+4. **Archivio del progetto**: in **Impostazioni › Cartelle** configura una volta sola la cartella locale dei backup e quella remota di lavoro (con permessi persistenti Android); all'uscita i dati si salvano senza dover selezionare nuovamente le cartelle.
+5. **Diagnostica locale**: Fejalog include un monitoraggio leggero integrato anche nella release (tempi, batteria, rete ed errori inclusi nei backup), disattivabile a piacere in **Impostazioni › App**.
 
 ---
 

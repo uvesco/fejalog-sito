@@ -74,8 +74,9 @@ Consegna le provette alla Regia.
 
 ## 10. Se un telefono sparisce
 
-Un telefono che non risponde rende incompleto il controllo dei doppi finché resta attivo.
+Se ti allontani dalla rete, mettiti in pausa dal menu Campionamento › Pausa e ripresa. Altrimenti tutti passano alla gestione provvisoria, con i doppi non controllati.
 
+- La Regia può comunque metterti in pausa. Dopo una pausa propria riprendi anche alla prima provetta. Dopo una pausa della Regia serve Riprendi esplicito.
 - Dopo 2 minuti viene escluso da chi vede la maggioranza; solo la Regia può escluderlo subito, con conferma e vedendo la maggioranza.
 - Il telefono che rientra usa la sigla del veterinario confermata dalla Regia.
 

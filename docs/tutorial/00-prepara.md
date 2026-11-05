@@ -13,15 +13,15 @@
 ## Fai
 
 1. Su ogni device installa **fejalog.apk** ([Scarica](../scarica.md)).
-2. Sul tablet scarica **kit_prova_888TO999.zip** e aprilo (Download, o la cartella di lavoro sul cloud).
-3. Stampa **schede_kit_prova_888TO999.pdf**: 29 pagine A4, una scheda per capo, divise per tipo.
+2. Sul tablet scarica **kit_cinque_stabilimenti_dati.zip** e aprilo (Download, o la cartella di lavoro sul cloud).
+3. Stampa **schede_kit_cinque_stabilimenti.pdf**: 307 pagine A4, divise per stabilimento e tipo, dal [pacchetto PDF](../provalo/kit/kit_cinque_stabilimenti_pdf.zip). Per una prova breve stampa solo le sezioni scelte.
 4. Se hai un lettore, abbinalo in Bluetooth al telefono che lo userà (come tastiera).
 5. Dividi le pagine delle schede fra chi farà da palmare: per esempio le pecore presenti a uno, montoni e capre a un
    altro, le altre sezioni a turno.
 
 !!! atteso "Cosa devi vedere"
     Aprendo Fejalog compare l'**Avvio rapido**, coi passi del progetto da fare. La prima pagina delle schede ha la
-    tabella delle sezioni: 362 schede, 359 capi.
+    tabella delle sezioni: 4265 schede, 4258 animali distinti.
 
 ??? failure "Se non va"
     - **L'APK non si installa**: serve Android 11 o più recente. Se c'era una versione di prova (debug), vedi

@@ -7,8 +7,8 @@ Tutto si scarica dall'**ultima versione** pubblicata. L'elenco di tutte le versi
 | File | Che cos'è |
 |---|---|
 | [**fejalog.apk**](https://github.com/uvesco/fejalog-sito/releases/latest/download/fejalog.apk) | l'app, firmata, per Android 11 o più recente |
-| [**kit_prova_888TO999.zip**](https://github.com/uvesco/fejalog-sito/releases/latest/download/kit_prova_888TO999.zip) | il [kit di prova](kit.md): file della BDN, pacchetto, ricercati, registri da caricare in corsa |
-| [**schede_kit_prova_888TO999.pdf**](https://github.com/uvesco/fejalog-sito/releases/latest/download/schede_kit_prova_888TO999.pdf) | le schede da stampare (A4, 29 pagine), anche dentro lo zip |
+| [**kit_prova_cinque_stabilimenti.zip**](https://github.com/uvesco/fejalog-sito/releases/latest/download/kit_prova_cinque_stabilimenti.zip) | il [kit di prova](kit.md): file della BDN, pacchetto, ricercati, registri da caricare in corsa |
+| [**schede_kit_cinque_stabilimenti.pdf**](https://github.com/uvesco/fejalog-sito/releases/latest/download/schede_kit_cinque_stabilimenti.pdf) | le schede da stampare (A4, 307 pagine); stampa solo le sezioni utili |
 
 ## Installare l'APK
 

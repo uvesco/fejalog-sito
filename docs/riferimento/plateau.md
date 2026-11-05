@@ -17,6 +17,7 @@
 
 - Campionamento › Regia è riservata a chi ha la regia: nella finestra larga mostra veterinari e plateau affiancati; sul telefono ci sono due schede.
 - I device al lavoro con più provette da consegnare sono in testa; gli altri restano in fondo, in grigio. Ogni riga mostra nome, sigla, provette, problematiche, batteria e stato.
+- Le problematiche non hanno un posto se non quello dato dall’app. Il posto non è critico, perché saranno spostate. Serve a ritrovarle con la ricerca per numero durante il riposizionamento.
 - Con «Ricevi (N)» confermi le provette: lampeggiano nei plateau e compaiono nell’elenco «Metti qui». Sul tavolo resta un solo plateau dei problematici alla volta: quando arriva a 100 pozzetti l'avviso «Plateau problematici N pieno: toglilo dal tavolo» indica di metterlo da parte e aprire il successivo. Cerca una provetta, tocca un pozzetto per i dettagli, ingrandisci con due dita e trascina lo schema.
 - «Registra campione» apre Registra campioni, quando il campionamento è attivo.
 

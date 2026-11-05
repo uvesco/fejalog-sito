@@ -49,10 +49,10 @@ Per le garanzie e i loro limiti leggi [Le cinque garanzie](../inizia-qui/cinque-
 
 ## 3. Regola tassativa per le simulazioni su ARVET
 
-Quando utilizzi gli strumenti per esercitazione, formazione o per testare il flusso con il gregge fittizio del [Kit di prova](../kit.md) (`888TO999`), rispetta la regola di sicurezza:
+Quando utilizzi gli strumenti per esercitazione, formazione o per testare il flusso con il kit fittizio a cinque stabilimenti del [Kit di prova](../kit.md), rispetta la regola di sicurezza:
 
 !!! warning "ARVET nelle prove"
-    Con il kit fittizio `888TO999`, prima dello snippet digita nella console `window.__ARVET_PROVA__ = true;`. Non premere mai «Salva» o «Invia» su ARVET durante una prova.
+    Con il kit fittizio a cinque stabilimenti, prima dello snippet digita nella console `window.__ARVET_PROVA__ = true;`. Non premere mai «Salva» o «Invia» su ARVET durante una prova.
 
 ---
 

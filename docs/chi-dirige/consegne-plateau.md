@@ -14,7 +14,7 @@ Il pannello sinistro mostra la squadra e le consegne; quello destro i plateau. L
 
 
 - **Pannello di sinistra (Squadra al lavoro)**: elenca tutti i veterinari attivi. I colleghi che hanno provette confermate ma non ancora consegnate compaiono in cima alla lista con il conteggio in evidenza.
-- **Pannello di destra (Plateau interattivo)**: riproduce fedelmente il rack fisico da 100 pozzetti, con file sfalsate a quinconce e smussi agli angoli. Supporta lo zoom a due dita (pinch-to-zoom) e il trascinamento con un dito. Toccando qualsiasi pozzetto si visualizzano i dettagli completi del capo (contrassegno, sesso, razza, note, identificazione).
+- **Pannello di destra (Plateau interattivo)**: riproduce fedelmente il rack fisico da 100 pozzetti, con file sfalsate a quinconce e smussi agli angoli. Supporta lo zoom a due dita (pinch-to-zoom) e il trascinamento con un dito. Toccando qualsiasi pozzetto si visualizzano i dettagli completi del capo (contrassegno, sesso, razza, note, identificazione ed eventuali foto scattate dal palmare).
 - **Riquadro di ricerca rapida**: digita il numero di provetta, l'etichetta o le ultime cifre del contrassegno: lo schema commuta istantaneamente al plateau pertinente e fa pulsare il pozzetto cercato.
 
 ---

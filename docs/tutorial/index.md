@@ -3,12 +3,14 @@
 > **A chi serve**: a chi vuole imparare ogni singolo aspetto del funzionamento di Fejalog passo per passo, affrontando in dettaglio ciascuna schermata e operazione sul gregge fittizio di prova.  
 > **Tempo di lettura**: 5 minuti (panoramica) · indice delle lezioni pratiche.
 
-Il tutorial è un percorso formativo organico basato sul principio dell'apprendimento pratico (*learning by doing*): un intero progetto di profilassi condotto sul **gregge fittizio di prova `888TO999`** («AZ. AGR. ESEMPIO»), dal primo accesso alla Regia fino all'estrazione degli snippet per ARVET.
+Il tutorial è un percorso formativo organico basato sul principio dell'apprendimento pratico (*learning by doing*): un intero progetto di profilassi condotto sul **kit fittizio a cinque stabilimenti, principale `888TO999`** («AZ. AGR. ESEMPIO»), dal primo accesso alla Regia fino all'estrazione degli snippet per ARVET.
 
-Tutto il gregge è inventato: 275 capi presenti (233 pecore e 42 capre), capi usciti per le causali alfabetiche BDN elencate nel kit, pascolo condiviso, marche disponibili, capi ricercati e un venditore esterno per la prova del documento di accompagnamento (DDA).
+Le immagini mostrano anche versioni e codici del kit storico; per la prova usa i codici delle schede scaricate.
+
+Tutti i dati sono inventati: 1522 presenti nei cinque stabilimenti di lavoro (1318 ovini e 204 capre), usciti per tutte le 32 causali BDN, giovani, stabilimenti chiusi, marche disponibili, ricercati e DDA individuale. Il principale ha 1200 presenti; il piccolo ne ha 10.
 
 !!! info "Percorso dedicato alle anomalie"
-    Parti dal [quadro completo dei casi](../anomalie.md), scegli le schede nella [tabella del kit](../kit.md#quali-anomalie-provare), poi esegui la [lezione 7](07-fattispecie.md) e verifica le soluzioni nella [lezione 11](11-problemi.md). Fuori età e stabilimenti chiusi si provano col kit a cinque stabilimenti; doppi, registri nuovi e provette perse nelle lezioni 8–10. La sola esercitazione di 60 minuti non copre tutte le fattispecie.
+    Parti dal [quadro completo dei casi](../anomalie.md), scegli le schede nella [tabella del kit](../kit.md#quali-anomalie-provare), poi esegui la [lezione 7](07-fattispecie.md) e verifica le soluzioni nella [lezione 11](11-problemi.md). Il kit comprende fuori età, stabilimenti chiusi, DDA e tutte le causali di uscita rappresentabili; doppi, registri nuovi e provette perse nelle lezioni 8–10. La sola esercitazione di 60 minuti non copre tutte le fattispecie.
 
 ---
 

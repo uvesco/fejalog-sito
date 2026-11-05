@@ -26,7 +26,7 @@ Per una seduta di profilassi tipo con più veterinari prelevatori occorrono:
 
 ## 2. Come si calcola il materiale
 
-Il calcolo esatto del fabbisogno si effettua direttamente in Fejalog (*Configurazione › Stampe prima del campo › Materiale*) oppure nello strumento on line [Prima del campo](../strumenti/prima-del-campo.md), partendo dai capi registrati in BDN in età diagnostica.
+Il calcolo esatto del fabbisogno si effettua direttamente in Fejalog (**Configurazione › Stampe › Materiale**) oppure nello strumento on line [Prima del campo](../strumenti/prima-del-campo.md), partendo dai capi registrati in BDN in età diagnostica.
 
 ### Che cosa conta il calcolo
 - **Plateau ordinari**: per ogni serie serve spazio fino al massimo numero assegnato, anche se ci sono buchi. Si arrotonda al centinaio successivo: con il solo numero 101 servono comunque due plateau.

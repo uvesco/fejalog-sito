@@ -12,7 +12,7 @@ Usa soltanto il kit fittizio. Installa l'app e prepara le schede prima del crono
 
 - Una Regia Android e uno o due palmari Android 11+, tutti con la stessa build di Fejalog.
 - Router Wi-Fi locale senza internet, oppure hotspot della Regia; alimentatori e power bank.
-- [Kit singolo `888TO999`](kit/kit_prova_888TO999.zip) estratto: pacchetto, schede PDF e CSV riepilogativo. Scegli poche schede di adulti ordinari di entrambe le specie, un montone e un capo non ancora prelevato per la tardiva.
+- [Kit a cinque stabilimenti](kit/kit_cinque_stabilimenti_dati.zip) estratto: pacchetto e CSV riepilogativo; [PDF separati](kit/kit_cinque_stabilimenti_pdf.zip). Scegli poche schede di adulti ordinari di entrambe le specie, un montone e un capo non ancora prelevato per la tardiva.
 - Provette vuote o oggetti etichettabili e schemi 10×10 **distinti per serie**, più uno per i problematici. Il cartone serve a simulare i passi; sul campo usa i plateau reali.
 - Un computer per scaricare e controllare i file finali.
 
@@ -20,11 +20,11 @@ Nessun nome o codice fiscale reale nei profili. Usa «Anna Esempio», «Daniele 
 
 ## Minuti 00–10 · Preparazione e ingresso
 
-1. Sulla Regia usa **Progetto › Apri progetto** per caricare `pacchetto_888TO999_kit.json`. Non aprire il backup già campionato: serve un progetto da avviare.
-2. In Preparazione controlla: principale `888TO999`, `888TO888` di riferimento, età diagnostica 12 mesi, lettera `C` sulle capre, verso dall'alto al basso. Il verso e le lettere di specie si scelgono prima dell'avvio.
-3. Prepara la rete locale. I palmari aprono **Rete**: entrano col QR della Regia o, se già sulla Wi-Fi, con **Chiedi di entrare** e **Fai entrare** sul tablet.
-4. Controlla l'impronta del pacchetto e **l'allineamento del registro** in Rete: l'impronta del pacchetto da sola non certifica gli eventi successivi.
-5. La Regia preme **Avvia campionamento**. Tutti devono vedere lo stato aperto.
+1. Sulla Regia usa **Progetto › Apri progetto** per caricare `pacchetto_888TO999_cinque_stabilimenti.json`. Non aprire il backup già campionato: serve un progetto da avviare.
+2. In **Configurazione** (sezioni 1. Parametri e regole e 2. Stabilimenti e sigle) controlla: principale `888TO999`, `888TO888`, `888TO777`, `888TO666` e `888TO555` di lavoro; `888TO222` di riferimento, età diagnostica 12 mesi, lettera `C` sulle capre, verso dall'alto al basso. Il verso e le lettere di specie si scelgono prima dell'avvio.
+3. Prepara la rete locale. I palmari usano **Progetto › Entra col QR** per inquadrare il QR mostrato dalla Regia (da **Configurazione › QR d'ingresso** o dall'icona della rete), oppure aprono la voce diretta **Rete** e toccano **Chiedi di entrare** (con **Fai entrare** sul tablet).
+4. Controlla l'impronta del pacchetto e **l'allineamento del registro** in **4. Rete del progetto**: l'impronta del pacchetto da sola non certifica gli eventi successivi.
+5. La Regia apre **5. Checklist e avvio** e tocca **Avvia campionamento**. Tutti devono vedere lo stato aperto.
 
 ## Minuti 10–20 · Prelievi ordinari e consegna
 
@@ -59,17 +59,19 @@ Nessun nome o codice fiscale reale nei profili. Usa «Anna Esempio», «Daniele 
 
 ## Minuti 40–48 · Incidente 4: Telefono spento ed esclusione dalla Regia
 
-**Cosa fare.** Con due palmari, spegni il Palmare 2 senza uscire prima dalla seduta. Lascia Regia e Palmare 1 collegati. In **Rete**, la Regia tocca il dispositivo spento e conferma **Escludi adesso**. Non serve aspettare due minuti, ma serve la maggioranza pesata degli attivi: Regia peso 3, ogni palmare peso 2.
+**Cosa fare.** Con due palmari, spegni il Palmare 2 senza uscire prima dalla seduta. Lascia Regia e Palmare 1 collegati. In **Configurazione › 4. Rete del progetto** (o in **Campionamento › Regia**), la Regia tocca il dispositivo spento e conferma **Escludi adesso**. Non serve aspettare due minuti, ma serve la maggioranza pesata degli attivi: Regia peso 3, ogni palmare peso 2.
 
 **Cosa si deve vedere nell'app.** Il dispositivo passa a escluso; il palmare superstite può tornare al controllo completo se tutti gli altri attivi sono raggiungibili e allineati. Riaccendi il telefono e verifica rientro, allineamento e avvisi prima di riprendere.
 
 **Cosa dimostra.** Solo la Regia può escludere a mano con la maggioranza richiesta. Le etichette già emesse restano impegnate: l'esclusione non rende riutilizzabili i numeri delle provette.
 
+**Variante: pausa e riattivazione dalla Regia.** Nella pagina **Campionamento › Regia** tocca «Pausa» sulla riga di un veterinario: il suo palmare smette di registrare. Riprendi da **Campionamento › Pausa e ripresa** toccando **Riprendi** sul palmare, oppure con **Riattiva** dalla Regia. Prova anche col palmare scollegato (Wi-Fi spenta): la pausa vale lo stesso, se la Regia vede la maggioranza dei device attivi.
+
 **Variante con un solo palmare.** La Regia rimasta sola ha peso 3 su 5 e dispone della maggioranza; l'esito può differire se il registro contiene altri dispositivi ancora attivi. Se non c'è maggioranza, verifica il rifiuto, riaccendi il telefono e riallinealo. Non aggiungere esclusioni per aggirare il controllo.
 
 ## Minuti 48–53 · Incidente 5: Provetta non confermata e registrazione tardiva
 
-**Cosa fare.** Scegli un capo ordinario non ancora prelevato, apri il foglio e copia l'etichetta su un oggetto, ma **non confermare**. Annota il contrassegno e chiudi il foglio. Controlla in Ultime che non esista già il campione; consegna l'oggetto alla Regia. La Regia chiude il campionamento, poi apre **Non trovati e tardive**, seleziona quel capo, usa **Attribuisci**, inserisce l'etichetta fisica e una **nota obbligatoria** sul riconoscimento, infine preme **Registra**.
+**Cosa fare.** Scegli un capo ordinario non ancora prelevato, apri il foglio e copia l'etichetta su un oggetto, ma **non confermare**. Annota il contrassegno e chiudi il foglio. Controlla in Ultime che non esista già il campione; consegna l'oggetto alla Regia. La Regia chiude il campionamento, poi apre **Gestione campioni › Sul tablet › Non trovati e tardive**, seleziona quel capo, usa **Attribuisci**, inserisce l'etichetta fisica e una **nota obbligatoria** sul riconoscimento, infine preme **Registra**.
 
 **Cosa si deve vedere nell'app.** Il campione compare con l'etichetta scritta e il capo esce dai non prelevati. L'app rifiuta un'etichetta già usata. Non si aggiunge un suffisso da isolato e non si riapre il campionamento.
 
@@ -77,7 +79,7 @@ Nessun nome o codice fiscale reale nei profili. Usa «Anna Esempio», «Daniele 
 
 ## Minuti 53–58 · Riordino e backup
 
-Completa le consegne, controlla i problemi e apri **Riordino** a campionamento chiuso. Se vuoi compattare, scegli **Chiudi i buchi** prima della prima spunta. Segui la guida dal posto fisico al numero finale, spuntando solo dopo l'operazione sugli oggetti. La prima spunta o il primo spostamento rende la chiusura definitiva; i prelievi ordinari erano già bloccati dalla chiusura.
+Completa le consegne, controlla i problemi e apri **Gestione campioni › Sul tablet › Riordino plateau** a campionamento chiuso. Se vuoi compattare, scegli **Chiudi i buchi** prima della prima spunta o del primo invio. Segui la guida dal posto fisico al numero finale, spuntando o inviando solo dopo l'operazione sugli oggetti. Il primo evento di gestione rende la chiusura definitiva; i prelievi ordinari erano già bloccati dalla chiusura.
 
 Salva un backup dalla Regia con **Salva**. Controlla l'esito del salvataggio e individua il file zip nella cartella di uscita scelta. [Backup e ripresa](../tutorial/13-backup.md).
 

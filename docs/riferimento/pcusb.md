@@ -4,7 +4,7 @@
 
 ## Prima: sulla Regia
 
-- Chiudi il campionamento dalla Checklist e apri Gestione campioni › Collegamento al PC via USB. Il dispositivo Android resta la Regia; il computer usa la pagina degli strumenti nel browser.
+- Chiudi il campionamento dalla Checklist e apri Gestione campioni › Dal PC via USB. Il dispositivo Android resta la Regia; il computer usa la pagina degli strumenti nel browser.
 - Collega Regia e PC Windows con un cavo dati USB. Un cavo solo ricarica non basta. Non occorrono debug USB, ADB o la modalità Trasferimento file: serve la connessione di rete Tethering USB.
 
 ## 1. Attiva Tethering USB su Android

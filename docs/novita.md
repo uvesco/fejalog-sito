@@ -4,6 +4,36 @@
 
 Le novità sono cumulative dall'ultima versione pubblicata.
 
+## Versione 0.4.0 · 05/11/2026 · release
+
+[Scarica](scarica.md)
+
+- Versione 0.4.0: menu riordinato, ogni funzione in un posto solo, e tenuta provata con greggi grandi e molti palmari.
+- Menu: Progetto con «Entra col QR» per tutti; Configurazione apribile dalla Regia anche a campionamento avviato, coi campi congelati in sola lettura; QR d'ingresso e Stampe come voci proprie; Gestione campioni divisa in «Sul tablet», «Dal PC via USB» e «Sul sito»; Impostazioni divise in Utente, Dispositivo, App, Cartelle e Reti salvate; Aiuto con Informazioni (versione, autore, crediti, avvertenze); in fondo «Esci dal progetto» ed «Esci dall'app».
+- Sul palmare: Rete è una voce diretta, sempre raggiungibile; la nuova pagina Campionamento › Pausa e ripresa si apre solo dal menu. Chi si allontana dalla rete si mette in pausa: altrimenti tutti passano alla gestione provvisoria. La Regia può sempre metterlo in pausa.
+- Ultime sulla Regia: si scelgono le provette di tutti, le proprie o di un veterinario. Gli stabilimenti stanno in fondo ad Avanzamento.
+- Una sola cartella locale dei backup, anche in modalità offline; la cartella offline scelta in passato resta come ripiego.
+- Greggi grandi: registrazione e viste con un costo per evento che non cresce più durante la giornata (prove sul PC e sull'emulatore col gregge fittizio da 1800 capi e 12 palmari). Ricerca del capo circa 20 volte più veloce, elenco delle provette e istantanee più leggeri, foglio di conferma senza blocchi.
+- Riordino: la guida non blocca più l'app con molti eventi, l'elenco resta al suo posto dopo ogni invio, il cambio di specie è immediato e un posto occupato si libera prima. La produttività della gestione distingue le provette in coda con ARVET a mano.
+- Fine lavori: una capra valida non esce più dagli snippet dopo lo scarto di una registrazione nella specie sbagliata; il CSV nello zip non ha più righe vuote; riepilogo per tipologia e bordi dei plateau corretti.
+- Diagnostica locale anche nella release: tempi, rete, batteria ed errori del telefono finiscono nei backup per migliorare l'app. È leggera e si spegne in Impostazioni › App.
+- Telecomando BLE-M3: il tasto dello scatto (che fa anche il volume) ora è sempre Indietro e non conferma più, qualunque sia l'ordine in cui il telecomando manda tocco e volume. Il tasto centrale resta OK.
+- La prova del telecomando dice da quale dispositivo arriva il volume e quanto dopo l'inizio del tocco.
+- Telecomando BLE-M3: frecce destra e sinistra cambiano specie; nel foglio su e giù scorrono le opzioni, il tasto centrale attiva quella selezionata e l'altro annulla.
+- Il tocco che accompagna Indietro viene scartato; un OK premuto subito dopo funziona. I tasti riaccendono lo schermo nero e funzionano anche entrando in Ultime.
+- Telecomando BLE-M3 (quello per i selfie con la croce): nel foglio di conferma e nella ricerca le frecce fanno da frecce, il tasto centrale è OK e l'altro è Indietro. I suoi tocchi non arrivano allo schermo.
+- La prova del telecomando dice in che cosa si traduce ogni gesto.
+- Prova del telecomando: registra anche la rotella e il cursore, il punto dello schermo e la durata di ogni gesto; legge solo i tocchi del telecomando, così «Chiudi» si tocca col dito.
+- Prova del telecomando a tutto schermo: mostra anche i clic e i trascinamenti dei telecomandi che fanno da mouse, come il BLE-M3, che non ha una modalità tastiera.
+- Salva e uscita scrivono il backup nelle cartelle locale e remota scelte una volta in Impostazioni: all'uscita non si chiede più la cartella.
+- Istantanee locali su tutti i device, anche sui palmari: ogni 10 eventi da soli, ogni N in rete, e sempre a pausa, ripresa e uscita.
+- Pagina Regia: «Pausa» e «Riattiva» per ogni veterinario, anche per un palmare scollegato, così gli altri escono dalla gestione provvisoria.
+- Foto del campione nel foglio di conferma (fino a 5) e in Ultime: arrivano alla Regia e vanno nei backup e nello zip di fine lavori.
+- Il motivo d'uscita Y3 (presunto morto) si legge intero dai registri della BDN.
+- Kit di prova a cinque stabilimenti: 1200 capi nel principale, 10 nel piccolo, tutti i motivi d'uscita.
+- Senza rete, un device rimasto senza lettera ne prende una libera; se una provetta non si può registrare, il foglio di conferma dice perché.
+- Impostazioni › Telecomando e tastiera: la prova mostra il nome di ogni tasto di un telecomando Bluetooth e che cosa fa.
+
 ## Versione 0.3.0 · 28/10/2026 · release
 
 [Scarica](scarica.md)

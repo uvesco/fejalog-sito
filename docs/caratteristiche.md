@@ -25,7 +25,8 @@ Il flusso operativo è governato da tre fasi tassative memorizzate nel registro 
 1. **`CONFIGURAZIONE`**: la Regia carica i dati BDN, assegna i ruoli e imposta le regole di seduta. I palmari attendono e non possono avviare prelievi.
 2. **`CAMPIONAMENTO_APERTO`**: una volta verificata la configurazione di partenza (età diagnostica e lettere di specie), si avviano i prelievi. I parametri strutturali si congelano per prevenire incoerenze sui progressivi.
    - *Modifica età diagnostica in corsa*: se durante il lavoro emerge la necessità di variare la soglia diagnostica (es. 6→12 mesi), la Regia può applicarla solo tramite un dialogo di conferma a due passaggi con **checkbox obbligatoria di sicurezza**. I numeri dei capi già assegnati restano immutabili.
-3. **`CAMPIONAMENTO_CHIUSO`**: la Regia chiude il campionamento sul campo. I palmari vengono bloccati e si sblocca la sezione **Gestione campioni** (risoluzione problemi, riordino e fine lavori).
+3. **`CAMPIONAMENTO_CHIUSO`**: la Regia chiude il campionamento alla partenza dal gregge (con verifica di chi è ancora al lavoro, provette non consegnate e parola di conferma). I palmari vengono bloccati e si sblocca la sezione **Gestione campioni** (risoluzione problemi, plateau, riordino e fine lavori). La seduta è riapribile solo fino al primo evento di gestione, poi la chiusura diventa definitiva.
+
 
 ![Sicurezza cambio età diagnostica](img/release-0.2/cambio_eta_sicurezza.png)
 *Dialogo di conferma a due passaggi con checkbox obbligatoria di sicurezza per la variazione dell'età diagnostica.*
@@ -35,7 +36,9 @@ Il flusso operativo è governato da tre fasi tassative memorizzate nel registro 
 ## 3. Registrazione campioni, ricerca rapida e lavoro offline
 
 - **Ricerca ad alta visibilità**: digitazione delle sole ultime cifre del contrassegno su tastierino a tasti grandi (utilizzabile anche con guanti) o acquisizione immediata tramite lettore Bluetooth in emulazione tastiera (HID). Il **cambio di specie non perde il codice** già digitato o letto col microchip.
-- **Tasti e comandi rapidi**: supporto a telecomandi Bluetooth o tastiere (frecce per navigare, frecce destra/sinistra per cambiare specie, barra spaziatrice per le spunte e **Invio/OK per confermare col focus su Conferma**; se il focus è su un’opzione, Invio attiva quell’opzione).
+- **Tasti e comandi rapidi**: supporto a telecomandi Bluetooth o tastiere (frecce per navigare, frecce destra/sinistra per cambiare specie, barra spaziatrice per le spunte e **Invio/OK per confermare col focus su Conferma**; se il focus è su un’opzione, Invio attiva quell’opzione). Mappatura specifica per telecomandi tipo BLE-M3 (anello o mouse Bluetooth con frecce, OK centrale e Indietro) e schermata «Prova del telecomando» in Impostazioni.
+- **Foto del campione**: tasto «Foto» nel foglio di conferma e in «Ultime» per associare immagini (fino a 5 foto per provetta, JPEG compresso senza dati EXIF), sincronizzate in rete verso la Regia e archiviate nei backup e nello zip finale.
+- **Diagnostica locale leggera**: monitoraggio interno trasparente di tempi, rete, batteria ed errori anche nella build di release, senza polling né timer aggiuntivi, spegnibile nelle impostazioni e conservato nei backup completi per l'assistenza tecnica.
 - **Riquadro della scritta sulla provetta**: neutro per campioni ordinari (*scrivi l'etichetta*); blu per ordinari presi da isolato (*non scrivere tutto: solo l'etichetta*); rosso per problematici (*scrivi sempre il contrassegno COMPLETO* oltre al codice mostrato).
 - **Tasto «Senza contrassegno»**: funzione di attribuzione rapida per gli animali non identificati rimasti a fine risanamento, filtrando per sesso, razza ed età compatibile dai registri.
 - **Codici colore immediati**: verde per capi presenti in età, ocra per capi usciti o doppi, blu per marche disponibili, viola per capi di altri stabilimenti, rosso per codici manuali forzati.
@@ -87,7 +90,12 @@ Per coordinare la squadra in stabilimento o al pascolo senza dover urlare tra i 
 ## 6. Risoluzione problemi, vista Plateau e riordino
 
 - **Plateau della Regia (riempimento)**: schema a quinconce da 100 pozzetti come il rack vero con verso configurabile (alto→basso default, o basso→alto); a campionamento aperto la Regia **riceve** le provette consegnate e le colloca nei pozzetti indicati. Gli isolati non doppi vanno subito al pozzetto del loro numero; nei progetti nuovi i problematici si alloggiano in una sequenza unica per l’intero progetto in ordine di consegna. I progetti già avviati conservano la disposizione precedente e, senza il parametro del verso, il riempimento basso→alto. Il posto si registra alla consegna e **non cambia più** fino al riordino; ricerca rapida con pozzetto che lampeggia.
-- **Riordino solo a campionamento chiuso**: la guida parte dal pozzetto vero di ogni provetta e ne mostra l'etichetta; dalla prima spunta la chiusura è **definitiva**.
+- **Bordi dei plateau colorati**: bordo verde per plateau completi (100 pozzetti occupati; l'ultimo plateau diventa verde quando non ha buchi e non restano problematici da ricollocare), giallo per plateau da completare, rosso per il plateau dei problematici da svuotare (diventa verde quando vuoto).
+- **Azioni sulla provetta nel plateau**: cliccando una provetta si può copiare il codice, riattribuire un altro contrassegno (digitato o scelto dai registri), spostare la provetta a un'altra posizione (con proposta di scambio se occupata), registrarne lo smarrimento o lo scarto con motivo.
+- **Scarto recuperabile**: una provetta scartata esce dai problematici e non compare negli snippet ARVET, ma resta recuperabile annullando lo scarto.
+- **Riordino a campionamento chiuso**: la guida parte dal pozzetto vero di ogni provetta e ne mostra l'etichetta. Ciascuna riga dispone del tasto «Invia» per la destinazione suggerita o digitata a mano; le caselle di spunta servono per l'invio in batch di quelle selezionate.
+- **Produttività della gestione**: oltre ai ritmi di campionamento individuali, la Regia e gli strumenti mostrano l'avanzamento della gestione nel tempo (azioni eseguite, stato dei plateau, problematici sistemati o scartati e stima della conclusione).
+- **Riepilogo finale problematici e tardive**: quadro consuntivo che elenca le anomalie riscontrate per fattispecie ed esito, evidenziando anche registrazioni e modifiche tardive.
 - **Mai provette con la stessa scritta**: lettera di specie obbligatoria con due specie, etichette delle annullate mai riusate, avviso bloccante «Controlla subito il capo» e rinomina obbligatoria nelle collisioni fra palmari.
 - **Soluzione anomalie guidata**: gestione guidata di capi ritrovati, acquisti con DDA approvata, capi fuori età ed esclusione motivata da ARVET.
 - **Compattazione automatica**: chiusura dei buchi sui prenumerati prima dei problematici, raggruppamento specifico dei maschi ovini (*Brucella ovis*) e produzione dello snippet ARVET lineare da `1..n`.
@@ -105,15 +113,27 @@ Per coordinare la squadra in stabilimento o al pascolo senza dover urlare tra i 
 
 ## 7. Riconciliazione backup e recupero da emergenza
 
-Se la Regia dovesse esaurire la batteria o guastarsi durante il lavoro:
-- I palmari continuano a registrare in memoria locale protetta (`fsync`).
-- Ciascun dispositivo può esportare un backup `.zip` crittograficamente verificabile.
-- La funzione di **Riconciliazione backup** su un'altra Regia unisce i file superstiti, verifica le catene crittografiche, ricostruisce l'assegnazione iniziale e rigenera tutti i file di export per tutti gli stabilimenti coinvolti.
+- **Cartelle scelte una volta**: cartella locale dei backup e remota di lavoro configurate nelle Impostazioni con permessi persistenti Android; nessun selettore da confermare all'uscita.
+- **Istantanee locali su tutti i device**: salvataggio automatico continuo (ogni 10 eventi isolati, ogni N in rete, a ogni pausa o ripresa e all'uscita con attesa di 5 secondi).
+- **Protezione dei dati offline**: i palmari registrano sempre in memoria locale protetta (`fsync`).
+- **Esportazione autonoma**: ciascun dispositivo può esportare un backup `.zip` crittograficamente verificabile.
+- **Riconciliazione backup**: se la Regia dovesse esaurire la batteria o guastarsi, un'altra Regia unisce i file superstiti, verifica le catene crittografiche, ricostruisce l'assegnazione iniziale e rigenera tutti i file di export per tutti gli stabilimenti coinvolti.
+
+---
+
+## 8. Tenuta e simulazione su larga scala
+
+La robustezza dell'architettura e la reattività dell'interfaccia sono state collaudate in simulazioni estensive su PC ed emulatore:
+- **Scala a 4, 8 e 12 palmari**: prove con lotti fuori ordine, riconnessioni e assenza di omonimie garantite.
+- **Simulazione gregge da 1800 capi**: oltre 1890 prelievi simulati con 12 palmari contemporanei, plateau compattati e riconciliazione finale identica.
+- **Riordino senza blocchi**: guida fisica al riordino eseguita interamente su tablet emulato senza blocchi dell'interfaccia (ANR).
+
+*(La prova sul campo con animali reali si è svolta con 3 veterinari il 22/10/2026).*
 
 ---
 
 ## Approfondimenti
 
 - [**Sotto il cofano: problemi affrontati e architettura**](riferimento/sotto-il-cofano/index.md): come Fejalog risponde ai vincoli del lavoro sul campo per garantire integrità, sincronizzazione e zero perdite di dati.
-- [**Tutorial col kit di prova**](tutorial/index.md): prova passo dopo passo con il gregge fittizio 888TO999.
+- [**Tutorial col kit di prova**](tutorial/index.md): prova passo dopo passo con il kit fittizio a cinque stabilimenti.
 - [**Guida di riferimento completa**](riferimento/index.md): consultazione esaustiva di tutte le schermate e comandi dell'app.

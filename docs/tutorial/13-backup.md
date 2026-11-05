@@ -6,13 +6,11 @@
 
 ## Fai
 
-1. **Salva** (💾, sulla Regia): lo zip del backup va in Documenti/Fejalog e all'app del cloud scelta in
-   Impostazioni. In Import/Export, «Salva un backup in una cartella…» lo mette dove vuoi.
-2. **Esci dall'app** (menu ☰ › Esci, in fondo) su un palmare: backup, verifica dell'allineamento, pausa; riaprendo
-   l'app si riprende da lì e la rete si ricollega da sola.
-3. **La Regia si rompe**: sul device nuovo, Progetto › **Apri da un file** › il backup. Leggi l'anteprima e
-   **subentra come Regia**; poi Rete › «Apri la rete». Se ci sono backup parziali su più telefoni, Fejalog può unire i backup superstiti recuperando tutti gli eventi.
-4. **Chiudi** (Progetto › Chiudi, o Rete › Esci sul palmare): backup, uscita ordinata, il progetto resta fra i
+1. **Salva** (💾, sulla Regia): lo zip del backup va nella cartella locale configurata in **Impostazioni › Cartelle** (con ripiego su Documenti/Fejalog) e nella cartella remota/cloud tramite la coda delle copie pendenti. Le cartelle si scelgono una volta sola e all'uscita non serve selezionarle nuovamente.
+2. **Esci dall'app** (menu ☰ › **Esci dall'app**, in fondo) su ciascun device: salvataggio dell'istantanea locale finale (con attesa fino a 5 secondi), verifica dell'allineamento e pausa; riaprendo l'app si riprende da dove si era rimasti e la rete si ricollega automaticamente.
+3. **La Regia si rompe**: sul device nuovo, **Progetto › Apri progetto** › il backup. Leggi l'anteprima e
+   **subentra come Regia**; poi apri **Configurazione › 4. Rete del progetto**. Se ci sono backup parziali su più telefoni, Fejalog può riconciliare i backup superstiti (**Progetto › Riconcilia backup**) recuperando tutti gli eventi.
+4. **Chiudi il progetto** (menu ☰ › **Esci dal progetto**): backup, uscita ordinata dalla rete, il progetto resta fra i
    **Recenti**. La Regia chiude per ultima.
 
 <div class="schermate" markdown>

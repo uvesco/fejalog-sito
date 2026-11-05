@@ -13,7 +13,7 @@
 Non occorrono debug USB, ADB, modalità Trasferimento file o programmi Fejalog da installare sul PC. La pagina locale non richiede internet; per accedere ad ARVET il PC deve invece conservare la sua normale connessione alla rete ASL.
 
 !!! info "La voce nell'app"
-    **Menu ☰ › Gestione campioni › Collegamento al PC via USB**, solo sulla Regia. Nella pagina trovi il pulsante per le impostazioni Android, il controllo della rete USB, **Avvia server**, l'indirizzo con IP e porta e il PIN. Il **?** apre lo stesso argomento nell'help dell'app. Dalla pagina Rete resta un collegamento alla pagina USB.
+    **Menu ☰ › Gestione campioni › Dal PC via USB**, solo sulla Regia. Nella pagina trovi il pulsante per le impostazioni Android, il controllo della rete USB, **Avvia server**, l'indirizzo con IP e porta e il PIN. Il **?** apre lo stesso argomento nell'help dell'app.
 
 !!! info "Se hai una build precedente"
     Il server si trova nel riquadro **Fine lavori sul PC via USB** della pagina **Rete** e si avvia con l'interruttore. Per raggiungerlo anche a campionamento chiuso, tocca l'icona di rete in alto e poi **Pagina Rete**. Attiva prima Tethering USB nelle impostazioni Android e, se serve, premi **Ricontrolla USB**.
@@ -21,7 +21,7 @@ Non occorrono debug USB, ADB, modalità Trasferimento file o programmi Fejalog d
 ## 1. Attiva il tethering sulla Regia
 
 1. Collega fisicamente la Regia al PC con il cavo dati.
-2. In Fejalog apri **Gestione campioni › Collegamento al PC via USB** e premi **Apri impostazioni tethering USB**.
+2. In Fejalog apri **Gestione campioni › Dal PC via USB** e premi **Apri impostazioni tethering USB**.
 3. Nelle impostazioni Android attiva **Tethering USB**, poi torna a Fejalog. Il pulsante apre le impostazioni: l'attivazione la fai lì.
 4. Attendi che Windows riconosca la scheda di rete USB. Fejalog ricontrolla gli indirizzi al ritorno dalle impostazioni; se serve premi **Ricontrolla USB**.
 

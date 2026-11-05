@@ -7,13 +7,13 @@ basta scrivere il numero sulla scheda (o su un foglio).
 
 ## Fai
 
-1. Menu ☰ › **Campionamento**, pagina **Pecore**.
-2. **Col tastierino**: digita le ultime cifre in grassetto della scheda, per esempio **001**. Compaiono i capi che
+1. Menu ☰ › **Campionamento › Registra campioni**, pagina **Pecore**.
+2. **Col tastierino**: digita le ultime cifre in grassetto della scheda, per esempio **0618** (IT066000010618, adulto del principale). Compaiono i capi che
    finiscono con quelle cifre, poi quelli che le contengono. Tocca quello giusto.
 3. **Col lettore**: leggi il barcode della scheda. Il codice entra da solo e, se il capo è uno solo, **Invio** lo
    sceglie.
-4. Nel **foglio di conferma**: in alto, grande, il **numero** da scrivere sulla provetta all'interno del riquadro colorato (neutro = solo l'etichetta; blu = ordinario da isolato, non scrivere tutto; rosso = problematico, contrassegno COMPLETO). Prova le caselle **DX**, **SX** e **bolo** su qualche capo (da sostituire: DX o bolo = senza transponder, in rosso).
-5. **«CONFERMA»** (oppure premi **Invio/OK** sulla tastiera/telecomando: conferma col focus su Conferma; se il focus è su un’opzione, attiva quell’opzione) e scrivi il numero sulla provetta.
+4. Nel **foglio di conferma**: in alto, grande, il **numero** da scrivere sulla provetta all'interno del riquadro colorato (neutro = solo l'etichetta; blu = ordinario da isolato, non scrivere tutto; rosso = problematico, contrassegno COMPLETO). Prova le caselle **DX**, **SX** e **bolo** su qualche capo (da sostituire: DX o bolo = senza transponder, in rosso). Puoi toccare **Foto** per collegare fino a 5 fotografie della provetta o dell'animale.
+5. **«CONFERMA»** (oppure premi **Invio/OK** sulla tastiera o sul telecomando ad anello BLE-M3: conferma subito col focus su Conferma; se il focus è su un’opzione, attiva quell’opzione) e scrivi il numero sulla provetta.
 6. Prova il **cambio di specie**: se digiti o leggi un codice e cambi specie (scorrendo o con le frecce), il codice non si perde e la ricerca riparte da sola.
 7. Ripeti con un **montone** (sezione «Presenti · montoni») e con una **capra** (pagina Capre in alto, o scorrendo di
 lato).
@@ -39,8 +39,8 @@ lato).
 
 !!! atteso "Cosa devi vedere"
     - I capi presenti in età diagnostica hanno il **numero assegnato fin dal caricamento**:
-        - I **montoni** (maschi ovini) prendono i primi numeri (da 1 a 12 nel kit, in ordine alfabetico di contrassegno).
-        - Le **pecore** proseguono dal numero 13 in poi.
+        - I **montoni** (maschi ovini) prendono i primi numeri (da 1 a 21 nel principale del kit, in ordine alfabetico di contrassegno).
+        - Le **pecore** proseguono dal numero 22 in poi.
         - Le **capre** prendono la loro serie con la lettera di specie (es. `C1`, `C2`… se impostata `C` sulla specie meno numerosa).
     - L'etichetta da scrivere sulla provetta compare grande in testa al foglio di conferma:
         - **Riquadro neutro**: provetta ordinaria in rete (copia l’etichetta mostrata);

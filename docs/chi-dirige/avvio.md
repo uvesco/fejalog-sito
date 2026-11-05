@@ -20,43 +20,46 @@ La preparazione del progetto sulla Regia trasforma i dati anagrafici ufficiali s
 
 ## 2. Cosa si fa: i passi di preparazione
 
-Apri Fejalog sul tablet e tocca **«Nuovo progetto»** (oppure apri un pacchetto già preparato da *Progetto › Apri da un file*).
+Apri Fejalog sul tablet e tocca **«Nuovo progetto»** in **Progetto** (oppure apri un pacchetto già preparato da **Progetto › Apri progetto**).
+
+![Menu della Regia in fase di configurazione](../img/menu/menu_regia_configurazione.png)
+*Il menu della Regia in configurazione: i passi di preparazione ordinati (Parametri, Stabilimenti, Dati input, Rete, Checklist).*
 
 ### Passo 1: Registri BDN e anagrafica
-In *Dati › Registri BDN e contrassegni*, tocca «Scegli i file» e carica i file BDN. L'app li riconosce automaticamente e compila la matrice:
+In **Configurazione › 3. Dati input** (sezione Registri BDN e contrassegni), tocca «Scegli i file» e carica i file BDN. L'app li riconosce automaticamente e compila la matrice:
 - Righe: gli stabilimenti di lavoro (es. `888TO999`);
 - Colonne: pecore presenti, capre presenti, marche disponibili per specie;
 - Verifica che il conteggio dei presenti corrisponda al conteggio dello stabilimento aggiornato.
 
 ### Passo 2: Età diagnostica
-Imposta l'età minima per la profilassi (tipicamente 6 o 12 mesi a seconda del piano sanitario vigente). L'app separa istantaneamente i capi in età diagnostica (che riceveranno un numero di provetta) dai capi sotto età (che, se campionati per errore, verranno trattati come problematici).
+In **Configurazione › 1. Parametri e regole**, imposta l'età minima per la profilassi (tipicamente 6 o 12 mesi a seconda del piano sanitario vigente). L'app separa istantaneamente i capi in età diagnostica (che riceveranno un numero di provetta) dai capi sotto età (che, se campionati per errore, verranno trattati come problematici).
 
 ### Passo 3: Lettere di specie (Regola vincolante)
-Se il progetto comprende **sia pecore che capre**, si applica una regola di sicurezza tassativa:
+Sempre in **1. Parametri e regole**, se il progetto comprende **sia pecore che capre**, si applica una regola di sicurezza tassativa:
 - **Almeno una delle due specie deve obbligatoriamente avere la lettera di specie** (`P` per pecore, `C` per capre), assegnata di norma alla specie meno numerosa;
 - L'opzione «Nessuna» è **categoricamente disabilitata** dall'interfaccia quando sono presenti entrambe le specie. In questo modo una pecora e una capra non potranno mai avere la stessa etichetta omonima sulla provetta (vedi [Le cinque garanzie](../inizia-qui/cinque-garanzie.md)).
 
 ### Passo 4: Stabilimenti di lavoro
-Distingui lo stabilimento principale dagli eventuali secondari che partecipano allo stesso intervento. Controlla le lettere proposte per distinguere le serie. Il solo caricamento di un registro non aggiunge uno stabilimento al campionamento.
+In **Configurazione › 2. Stabilimenti**, distingui lo stabilimento principale dagli eventuali secondari che partecipano allo stesso intervento. Controlla le lettere proposte per distinguere le serie. Il solo caricamento di un registro non aggiunge uno stabilimento al campionamento.
 
 ### Passo 5: Verso di riempimento dei plateau
-La Regia stabilisce come verranno riempiti fisicamente i rack da 100 pozzetti sul tavolo:
+In **1. Parametri e regole**, la Regia stabilisce come verranno riempiti fisicamente i rack da 100 pozzetti sul tavolo:
 - **Dall'alto verso il basso** (*predefinito*): il pozzetto 1 si trova in alto a sinistra;
 - **Dal basso verso l'alto**: il pozzetto 1 si trova in basso a sinistra.  
 Entrambi i versi seguono rigorosamente la numerazione ordinata riga per riga (mai a serpente).
 
 ### Passo 6: Problematici in sequenza unica
-Nei progetti nuovi, i campioni problematici, i doppi prelievi e i capi fuori registro confluiscono in un'**unica sequenza progressiva per tutto il progetto**, indipendentemente da stabilimento e specie. Sul tavolo della Regia è presente un solo plateau problematici alla volta; quando raggiunge 100 provette, viene archiviato e sostituito dal successivo.
+Sempre in **1. Parametri e regole**, nei progetti nuovi, i campioni problematici, i doppi prelievi e i capi fuori registro confluiscono in un'**unica sequenza progressiva per tutto il progetto**, indipendentemente da stabilimento e specie. Sul tavolo della Regia è presente un solo plateau problematici alla volta; quando raggiunge 100 provette, viene archiviato e sostituito dal successivo.
 
 ### Passo 7: Capi ricercati e regole di fine lavoro
-- In *Dati › Capi ricercati*, inserisci eventuali animali segnalati con il motivo e l'azione da compiere (compariranno evidenziati in viola sui telefoni con vibrazione dedicata);
-- In *Preparazione › Modalità e regole*, definisci come trattare a fine lavoro le varie tipologie di anomalie (es. «Tutte in coda» per inviarle in coda su ARVET tramite snippet, oppure «Elimina tutte» per quelle da escludere definitivamente).
+- In **Configurazione › 3. Dati input** (sezione Capi ricercati), inserisci eventuali animali segnalati con il motivo e l'azione da compiere (compariranno evidenziati in viola sui telefoni con vibrazione dedicata);
+- In **Configurazione › 1. Parametri e regole** (sezione Regole per i problematici), definisci come trattare a fine lavoro le varie tipologie di anomalie (es. «Tutte in coda» per inviarle in coda su ARVET tramite snippet, oppure «Elimina tutte» per quelle da escludere definitivamente).
 
 ---
 
 ## 3. Cosa si congela categoricamente all'avvio
 
-Quando la Regia preme **«Avvia campionamento»**, il sistema genera lo stato iniziale e blocca i parametri strutturali:
+Quando la Regia preme **«Avvia campionamento»** in **Configurazione › 5. Checklist e avvio**, il sistema genera lo stato iniziale e blocca i parametri strutturali:
 
 | Parametro | Stato dopo l'avvio | Motivo del congelamento |
 |---|---|---|
@@ -67,7 +70,11 @@ Quando la Regia preme **«Avvia campionamento»**, il sistema genera lo stato in
 | **Sequenza problematici** | **CONGELATA** | I pozzetti dei problematici vengono assegnati in ordine di arrivo alla consegna. |
 | **Numeri preassegnati** | **CONGELATI** | I numeri già assegnati restano riservati; i numeri finali si calcolano nel Riordino. |
 
-L'età diagnostica può essere cambiata dalla Regia anche durante il campionamento, con doppia conferma. I numeri già assegnati non vengono ricalcolati da zero. Registri e regole per i problematici restano aggiornabili dalle funzioni dedicate.
+L'età diagnostica può essere cambiata dalla Regia anche durante il campionamento, con doppia conferma; i parametri congelati restano visibili in sola lettura col motivo del blocco; la modalità di rete, i registri e le regole per i problematici restano aggiornabili dalla Regia anche dopo l'avvio. I numeri già assegnati non vengono ricalcolati da zero.
+
+![Menu della Regia a campionamento aperto](../img/menu/menu_regia_campionamento.png)
+*Il menu della Regia a campionamento aperto: Configurazione e Campionamento restano entrambi apribili, mentre Gestione richiede la chiusura.*
+
 
 I progetti precedenti senza le nuove impostazioni conservano il verso dal basso verso l'alto e la disposizione precedente dei problematici. Non adottano automaticamente le scelte dei progetti nuovi.
 

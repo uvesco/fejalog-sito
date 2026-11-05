@@ -6,8 +6,8 @@
 
 ## Fai
 
-1. Menu ☰ › **Statistiche**: copertura per specie (fatti, attesi, mancanti), letti elettronicamente, andamento del
-   lavoro per veterinario con la stima della fine, problematici per motivo.
+1. Menu ☰ › **Campionamento › Avanzamento e statistiche** (sul palmare la voce si chiama **Avanzamento**): copertura per specie (fatti, attesi, mancanti), letti elettronicamente, andamento del
+   lavoro per veterinario con la stima della fine, problematici per motivo e scheda Stabilimenti (quando ce n'è più d'uno).
 2. **Classifica**: provette, ritmi e problematiche di ogni veterinario, per persona: chi cambia device tiene le sue provette. Il Plateau è nella [tappa seguente](10b-plateau.md).
 3. **Provette**: l'elenco in parole, con ricerca e filtri.
 4. **Una provetta rotta**: Campionamento › **Ultime** › una provetta › **«Persa»**, motivo «Rotta», «Segna persa».
@@ -49,7 +49,7 @@
     - La provetta persa **tiene il suo numero**, che diventa un **buco** da chiudere a fine lavoro.
     - Il capo torna da fare: il foglio dice «Provetta N **PERSA** (rotta): si ripete il prelievo», e **non** è un
       doppio contrassegno.
-    - Toccando un capo mancante in Statistiche, lo si cerca nel Campionamento.
+    - Toccando un capo mancante in Avanzamento e statistiche, lo si cerca nel Campionamento.
 
 ## Fatto?
 

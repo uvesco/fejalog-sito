@@ -36,25 +36,31 @@ Il lettore configurato per inviare il codice come tastiera (per esempio Allflex 
 ---
 
 ### Posso usare il telefono con i guanti o a mani libere?
-**Con un dispositivo compatibile, da provare prima del campo.** I tasti grandi facilitano il tocco. Una tastiera o un telecomando che invia i codici previsti permette di spostare il focus con su/giù e attivare l’opzione con spazio. **Invio/OK conferma col focus su Conferma**; dopo averlo spostato, attiva l’opzione in focus. Nei campi di testo spazio e Invio restano testo.
+**Con un dispositivo compatibile, da provare prima del campo.** I tasti grandi facilitano il tocco anche con i guanti. È supportato il telecomando ad anello o mouse Bluetooth (es. BLE-M3 con frecce, tasto centrale OK e Indietro). Lo spostamento del focus con su/giù permette di attivare ciascuna opzione con spazio o Invio; **Invio/OK conferma subito col focus su Conferma**, mentre spostando il focus attiva l'opzione evidenziata. In **Impostazioni › Dispositivo › Prova del telecomando** trovi la schermata dedicata per verificare i comandi prima dell'uso.
+
+---
+
+### Cosa devo fare se mi allontano dalla rete o devo fare una pausa?
+**Se ti allontani dalla rete, mettiti in pausa da Campionamento › Pausa e ripresa: altrimenti tutti passano alla gestione provvisoria, con i doppi non controllati. La Regia può comunque metterti in pausa.** Quando rientri nell'area Wi-Fi, apri la stessa schermata e premi **Riprendi** (dopo una pausa decisa da te riprendi anche registrando la prima provetta). Se la pausa è stata imposta dalla Regia, serve invece premere esplicitamente **Riprendi** o attendere che la Regia ti riattivi.
 
 ---
 
 ### Cosa succede se confermo un capo per errore?
 In cima alla schermata di Campionamento trovi il pulsante **Ultime**. Toccandolo puoi visualizzare gli ultimi campioni registrati:
 - **Modifica**: per aggiungere note, correggere lo stato degli orecchini o del bolo;
+- **Foto**: per aggiungere o verificare le foto collegate al campione (fino a 5 foto per provetta);
 - **Elimina**: per annullare la provetta se il prelievo non è andato a buon fine.  
 Nel registro l'annullo viene memorizzato come evento formale di rettifica: l'etichetta fisica non viene mai riciclata e il capo viene gestito tra i problematici per garantire la massima trasparenza.
 
 ---
 
 ### Se la Wi-Fi si interrompe, perdo le provette registrate mentre ero isolato?
-**Le conferme con esito verde sono salvate localmente.** Il salvataggio precede l’esito verde; il guasto o la perdita di un telefono prima della replica o di una copia esterna possono però far perdere i dati rimasti solo lì. Le provette registrate senza rete ricevono un suffisso che segnala la condizione di isolamento; non appena il palmare torna nel raggio della Wi-Fi della Regia, tutti gli eventi accumulati vengono inviati e fusi automaticamente con la storia della squadra.
+**Le conferme con esito verde sono salvate localmente.** Il salvataggio precede l’esito verde; ciascun palmare effettua istantanee locali continue (ogni 10 eventi da solo o isolato, e all'uscita). Il guasto o la perdita di un telefono prima della replica o di una copia esterna possono però far perdere i dati rimasti solo lì. Le provette registrate senza rete ricevono un suffisso che segnala la condizione di isolamento; non appena il palmare torna nel raggio della Wi-Fi della Regia, tutti gli eventi accumulati vengono inviati e fusi automaticamente con la storia della squadra.
 
 ---
 
 ### Posso cambiare smartphone a metà giornata se si scarica o si bagna?
-**Sì.** La classifica e le statistiche dei prelievi sono legate al tuo **codice fiscale**, non al modello di telefono. Se cambi dispositivo, inserisci il tuo codice fiscale nelle impostazioni del nuovo smartphone e chiedi alla Regia di entrare: riprenderai la seduta esattamente da dove avevi interrotto, conservando nella classifica i prelievi già presenti nel registro riunito. Prima di chiudere occorre recuperare anche gli eventi eventualmente rimasti solo sul vecchio telefono; il codice fiscale non li trasferisce da solo.
+**Sì.** La tua sigla di due lettere resta la stessa anche sul nuovo palmare, e la classifica e le statistiche dei prelievi seguono la persona tramite il **codice fiscale**. Se cambi dispositivo, inserisci il tuo codice fiscale in **Impostazioni › Utente** del nuovo smartphone ed entra nel progetto con **Progetto › Entra col QR**: riprenderai la seduta conservando nella classifica i prelievi già presenti nel registro riunito. Prima di chiudere occorre recuperare anche gli eventi eventualmente rimasti solo sul vecchio telefono; il codice fiscale non li trasferisce da solo.
 
 ---
 

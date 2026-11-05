@@ -6,12 +6,11 @@
 
 ## Fai
 
-1. Menu ☰ › **Impostazioni** (del device).
+1. Menu ☰ › **Impostazioni › Utente**.
 2. Scrivi **nome, cognome e codice fiscale**. Se il tablet ha già l'elenco dei veterinari dell'ASL, «Scegli
    dall'elenco dei veterinari» li compila senza errori.
-3. Scrivi il **nome del device**: «Tablet Regia», «A55 Mario».
-4. Guarda le altre impostazioni: dove salva il tasto 💾, lo scorrimento fra pecore e capre, le statistiche in tempo
-   reale.
+3. In **Impostazioni › Dispositivo** scrivi il **nome del device**: «Tablet Regia», «A55 Mario». Qui trovi anche la checklist del telefono e la prova del telecomando.
+4. In **Impostazioni › Cartelle** configuri la cartella locale dei backup e la cartella remota; in **Impostazioni › App** regoli lo scorrimento fra pecore e capre, la vibrazione, le statistiche in tempo reale e la diagnostica.
 
 <div class="schermate" markdown>
 

@@ -5,7 +5,7 @@
 Fejalog prepara un testo da incollare nella console del browser, nella pagina ARVET dell'invio corretto. Controlla i risultati contro le provette fisiche prima di completare il lavoro.
 
 !!! warning "Prima di ogni prova"
-    Con il kit fittizio `888TO999`, digita `window.__ARVET_PROVA__=true;` nella console prima dello snippet. Non salvare mai su ARVET durante le prove. Dopo una ricarica della pagina, imposta di nuovo la variabile prima di rieseguire lo snippet.
+    Con il kit fittizio a cinque stabilimenti, digita `window.__ARVET_PROVA__=true;` nella console prima dello snippet. Non salvare mai su ARVET durante le prove. Dopo una ricarica della pagina, imposta di nuovo la variabile prima di rieseguire lo snippet.
 
 ## I tre invii
 

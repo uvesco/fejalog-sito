@@ -1,6 +1,6 @@
 # Reperire i file BDN
 
-**Obiettivo:** preparare registri storici e contrassegni da caricare in **Dati › Registri BDN e contrassegni**.
+**Obiettivo:** preparare registri storici e contrassegni da caricare in **Configurazione › 3. Dati input** (Registri BDN e contrassegni).
 
 Le schermate seguenti provengono dal manuale locale di svet-tools e contengono dati di esempio. Le voci possono variare con la versione della BDN.
 
@@ -30,7 +30,7 @@ Ripeti per le specie pertinenti. Se il file non indica la specie, Fejalog te la 
 
 ## 4. Carica i file nel progetto
 
-Sulla Regia apri **Dati › Registri BDN e contrassegni** e scegli i file, anche in uno zip. Controlla l'anteprima prima di applicarli. Conserva gli originali nella cartella del progetto.
+Sulla Regia apri **Configurazione › 3. Dati input** (Registri BDN e contrassegni) e scegli i file, anche in uno zip. Controlla l'anteprima prima di applicarli. Conserva gli originali nella cartella del progetto.
 
 Puoi sostituire i file durante il lavoro: il caricamento è esplicito, conserva la storia e non cambia le etichette già scritte sulle provette.
 

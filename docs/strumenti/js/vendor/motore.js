@@ -24,7 +24,7 @@
 const PLATEAU_SIZE = 100;
 
 /* Decodifica dei codici di USCITA della BDN (2026-10-07: tutti, anche quelli non più in uso e le cause di morte e
-   macellazione in stabilimento). Nel registro ASCII il motivo è un carattere: «Y3» arriva come «Y». Gemella di
+   macellazione in stabilimento). Il motivo si legge sulle colonne 538-539 («Y3» intero, bdnMotivo). Gemella di
    BDN_DECODIFICA_USCITE_DEFAULT in R/parse_bdn.R e di CodiciBdn.USCITE in Fejalog. */
 const DECODIFICA_DEFAULT = {
   // in uso
@@ -1533,12 +1533,18 @@ function pipeline(canon0, opz) {
    parse_marche_disponibili(), split_registro_per_specie() e classifica_ovicaprini() di R/parse_bdn.R, con gli stessi
    errori. Servono alle pagine per sostituire o aggiungere registri a lavori in corsa. */
 const BDN_REG = { codice_stabilimento: [7, 8], denominazione: [51, 40], specie_allevata: [31, 20], contrassegno: [298, 20],
-  data_nascita: [358, 10], specie_bdn: [368, 10], sesso: [378, 1], razza: [379, 3], data_uscita: [528, 10], motivo_uscita: [538, 1] };
+  data_nascita: [358, 10], specie_bdn: [368, 10], sesso: [378, 1], razza: [379, 3], data_uscita: [528, 10], motivo_uscita: [538, 2] };
 const bdnTrim = (x) => str(x).replace(/^[ \t\r\n]+|[ \t\r\n]+$/g, '');
 function bdnRighe(testo) {
   return str(testo).replace(/^\uFEFF/, '').split('\n').map((l) => l.replace(/\r$/, '')).filter((l) => nz(bdnTrim(l)));
 }
 const bdnCampo = (l, pos) => bdnTrim(l.substr(pos[0] - 1, pos[1]));
+/* Motivo d'uscita dalle colonne 538-539: «Y3» intero; due caratteri che non sono un codice noto valgono come il primo.
+   Gemella di .bdn_motivo in R/parse_bdn.R. */
+function bdnMotivo(x) {
+  const m = str(x).replace(/ /g, '');
+  return m.length > 1 && !Object.prototype.hasOwnProperty.call(DECODIFICA_DEFAULT, m) ? m.charAt(0) : m;
+}
 function leggiRegistroStalla(testo) {
   const L = bdnRighe(testo);
   if (!L.length) throw new Error('Registro di stalla vuoto o illeggibile.');
@@ -1548,7 +1554,7 @@ function leggiRegistroStalla(testo) {
   const righe = L.map((l) => ({
     contrassegno: bdnCampo(l, BDN_REG.contrassegno), specie_bdn: bdnCampo(l, BDN_REG.specie_bdn), sesso: bdnCampo(l, BDN_REG.sesso),
     razza: bdnCampo(l, BDN_REG.razza), data_nascita: bdnCampo(l, BDN_REG.data_nascita), data_uscita: bdnCampo(l, BDN_REG.data_uscita),
-    motivo_uscita: bdnCampo(l, BDN_REG.motivo_uscita), codice_stabilimento: bdnCampo(l, BDN_REG.codice_stabilimento),
+    motivo_uscita: bdnMotivo(bdnCampo(l, BDN_REG.motivo_uscita)), codice_stabilimento: bdnCampo(l, BDN_REG.codice_stabilimento),
     denominazione: bdnCampo(l, BDN_REG.denominazione) })).filter((r) => nz(r.contrassegno));
   if (!righe.length)
     throw new Error('Nessun capo riconosciuto nel file: controlla che sia il «Registro storico capi identificati singolarmente» in formato ASCII.');

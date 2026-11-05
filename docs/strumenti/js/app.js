@@ -1489,7 +1489,7 @@ function schedaUscite() {
 }
 function schedaEsporta() {
   var d = h('div'), az = S.stato.azioni().filter(function (a) { return Mod.TIPI.indexOf(a.tipo) >= 0; });
-  d.appendChild(h('p', null, 'Il file con le azioni fatte qui, da importare nell\'app (Regia, a campionamento chiuso: Gestione campioni › Importa modifiche dal sito). L\'app mostra un\'anteprima, scarta ciò che non è più coerente e scrive solo eventi nuovi. Il sito non scrive mai nel registro.'));
+  d.appendChild(h('p', null, 'Il file con le azioni fatte qui, da importare nell\'app (Regia, a campionamento chiuso: Gestione campioni › Sul sito › Importa le modifiche dal sito). L\'app mostra un\'anteprima, scarta ciò che non è più coerente e scrive solo eventi nuovi. Il sito non scrive mai nel registro.'));
   var conta = {}; az.forEach(function (a) { conta[a.tipo] = (conta[a.tipo] || 0) + 1; });
   d.appendChild(h('ul', null, Object.keys(conta).map(function (k) { return h('li', null, conta[k] + ' × ' + k); })));
   if (!az.length) d.appendChild(h('p', { class: 'fej-tenue' }, 'Nessuna azione da riportare.'));

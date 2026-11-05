@@ -4,6 +4,10 @@
 
 Dopo aver caricato il backup nello strumento [Fine lavori sul computer](../strumenti/fine-lavori.md), la schermata mette a disposizione un ambiente di lavoro avanzato suddiviso in schede specializzate. Da qui puoi esaminare ogni singolo prelievo, risolvere le eccezioni anagrafiche, identificare provette con etichette danneggiate e seguire la guida al riposizionamento nei plateau.
 
+![Menu di Gestione campioni sulla Regia](../img/menu/menu_regia_gestione.png)
+*Il menu di Gestione campioni sulla Regia a campionamento chiuso: le sezioni Sul tablet, Dal PC via USB e Sul sito.*
+
+
 ---
 
 ## 1. Scheda «Provette»: verifica di dettaglio e modifiche
@@ -85,14 +89,30 @@ La scheda fornisce il consuntivo della seduta di profilassi:
 - **Classifica e andamento orario legati alla persona fisica**:
   - Le metriche di produttività (numero di prelievi, velocità oraria) sono calcolate sul **codice fiscale** della persona fisica;
   - Se un veterinario ha cambiato telefono durante la seduta o ha utilizzato un palmare sostitutivo, il rendimento somma automaticamente tutti i dispositivi usati dalla stessa persona.
+- **Produttività della gestione**: accanto ai grafici del campionamento, mostra l'andamento aggregato delle operazioni di risanamento nel tempo (senza classifiche individuali): azioni eseguite, plateau completati/da completare/da svuotare, problematici ricollocati o scartati e stima della fine.
+- **Riepilogo problematici e tardive**: quadro delle anomalie gestite diviso per fattispecie ed esito finale, con il conteggio distinto di registrazioni tardive e modifiche ai campioni (disponibile a schermo, nel CSV per l'ufficio, nello zip e nel foglio «gestione_progetto» dell'Excel).
 
 ---
 
-## 6. Cosa può andare storto
+## 6. Gestione visiva dal Plateau
+
+La vista Plateau a campionamento chiuso permette di intervenire direttamente sui pozzetti:
+- **Bordi colorati di stato**:
+  - **Verde**: plateau completo (tutti i 100 pozzetti occupati; l'ultimo plateau diventa verde quando non vi sono buchi e non restano problematiche da ricollocare);
+  - **Giallo**: plateau da completare;
+  - **Rosso**: plateau dei problematici da svuotare (diventa verde solo quando è completamente vuoto).
+- **Azioni dirette sulla provetta**: toccando una provetta si può copiarne il contrassegno, riattribuire un altro capo (cercato in anagrafe o digitato per intero), spostarla a un'altra posizione (con proposta di scambio se occupata), registrarne lo smarrimento o lo scarto con motivo.
+- **Scarto recuperabile**: una provetta scartata è esclusa da ARVET e non tiene rosso il plateau dei problematici né blocca il completamento, ma resta recuperabile in qualunque momento con «Annulla scarto». Una provetta persa torna con «Ritrovata».
+- **Conferme**: scarto e smarrimento chiedono un motivo; un capo già prelevato si conferma come doppio; per un capo senza anagrafe servono sesso, razza e data di nascita; uno spostamento che tocca un plateau completo chiede una conferma esplicita.
+- I bordi riportano anche il testo (completo, da completare, da svuotare), non solo il colore.
+
+---
+
+## 7. Cosa può andare storto
 
 | Problema | Causa probabile | Soluzione operativa |
 |---|---|---|
-| **Una provetta fisica non compare nell'elenco** | Prelievo non confermato sul palmare prima della chiusura. | Usa la scheda *Non trovati e tardive › Attribuisci* per registrarla come tardiva con l'etichetta fisica presente sulla provetta. |
+| **Una provetta fisica non compare nell'elenco** | Prelievo non confermato sul palmare prima della chiusura. | Usa la scheda *Non trovati e tardive › Attribuisci* (negli strumenti del sito o in **Gestione campioni › Sul tablet › Non trovati e tardive** sull'app) per registrarla come tardiva con l'etichetta fisica presente sulla provetta. |
 | **Nella guida al riordino una provetta non è dove dice l'app** | Errore manuale di posa avvenuto in campo durante le consegne concitate. | Controlla etichetta e campione fisico. La ricerca indica il posto registrato, non rileva dove si trova materialmente la provetta. Per movimenti o scambi usa i comandi della scheda Riordino e verifica che siano accettati. |
 | **Un capo senza transponder non è evidenziato** | Il prelevatore ha dimenticato di spuntare la casella DX/Bolo nel foglio di conferma. | Apri la scheda della provetta in *Provette*, attiva la spunta «DX da sostituire» o «Bolo da sostituire» e salva la modifica. |
 
@@ -103,16 +123,3 @@ La scheda fornisce il consuntivo della seduta di profilassi:
 - [Riconciliazione e verifica dei backup](riconcilia-backup.md)
 - [Il modello 2/33 finale con numeri definitivi](modello-233-finale.md)
 - [Gli snippet per ARVET](snippet-arvet.md)
-
-### Gestione dal Plateau
-
-Tocca una provetta per copiare il contrassegno, modificare la registrazione, spostarla, scartarla o segnarla persa.
-Un capo già prelevato richiede la conferma come doppio; per un capo senza anagrafe servono sesso, razza e data di nascita.
-Scarto e smarrimento richiedono un motivo. Il recupero è possibile con «Annulla scarto» e «Ritrovata».
-Gli spostamenti che toccano un plateau completo richiedono una conferma esplicita.
-
-I bordi riportano anche il testo: completo, da completare, da svuotare. Le perse e le scartate
-non tengono rosso il plateau dei problematici. Le statistiche del campionamento restano consultabili dopo la chiusura;
-le azioni di gestione hanno un andamento aggregato, senza classifiche personali.
-Il riepilogo dei problematici e delle modifiche tardive si trova nelle Statistiche, nel CSV per l'ufficio,
-nello zip e nel foglio «gestione_progetto» del riepilogo Excel.

@@ -39,7 +39,12 @@
 
 ## Dopo la chiusura del campionamento
 
-Da **Gestione campioni › Plateau**, la vista segue la posa registrata e gli invii applicati del Riordino. Scegli stabilimento, specie e vista. Cerca cifre finali, contrassegno intero o etichetta e tocca un risultato: centra ed evidenzia il pozzetto e apre la scheda della provetta, con il contrassegno copiabile.
+Da **Gestione campioni › Sul tablet › Plateau e provette**, la vista segue la posa registrata e gli invii applicati del Riordino. Scegli stabilimento, specie e vista. Cerca cifre finali, contrassegno intero o etichetta e tocca un risultato: centra ed evidenzia il pozzetto e apre la scheda della provetta, con il contrassegno copiabile.
+
+- **Bordi colorati di stato**: bordo **verde** per plateau completi (100 pozzetti pieni; l'ultimo plateau è verde se non ha buchi e non vi sono problematiche da ricollocare); **giallo** per plateau da completare; **rosso** per il plateau dei problematici da svuotare (verde quando vuoto).
+- **Azioni sulla provetta**: tocca una provetta per copiarne il codice, riattribuire un altro capo, spostarla (con proposta di scambio da confermare se il pozzetto è occupato), segnarla persa o registrarne lo scarto motivato.
+- **Scarto recuperabile**: la provetta scartata è esclusa da ARVET e non tiene rosso il plateau dei problematici, ma resta ripristinabile in ogni momento con «Annulla scarto».
+- **Produttività della gestione**: grafico e avanzamento temporale aggregato delle operazioni di gestione (azioni eseguite, stato dei plateau, problematici ricollocati o scartati e stima della fine).
 
 Per cercare una posizione scrivi **plateau / pozzetto**, per esempio plateau **2**, pozzetto **25**, nella serie e vista scelte: funziona anche sui posti vuoti. I problematici in sequenza unica mostrano insieme specie e stabilimenti. I colori distinguono ordinarie, da isolato, problematiche, provvisorie, annullate e perse; queste ultime due sono riferimenti all’ultimo posto noto e non occupano il pozzetto. Se manca la posa registrata il posto è indicativo.
 

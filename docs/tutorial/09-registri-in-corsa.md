@@ -4,8 +4,8 @@
 
 ## Carica un altro stabilimento
 
-1. Sulla Regia: **Dati › Registri BDN e contrassegni › Scegli i file**.
-2. Dal kit scegli `in_corsa/888TO777_pecore_….txt`. È un **altro stabilimento**, utile per riconoscere i capi. Controlla l’anteprima, indica il motivo e carica per tutti.
+1. Sulla Regia: **Configurazione › 3. Dati input** (sezione Registri BDN e contrassegni › Scegli i file).
+2. Dal kit scegli `in_corsa/888TO222_pecore_….txt`. È un **altro stabilimento**, utile per riconoscere i capi. Controlla l’anteprima, indica il motivo e carica per tutti.
 3. Sul palmare cerca un capo di quel registro. Se l’operatore (allevatore) lo dichiara acquistato con DDA, spunta **Acquisto con DDA** nella conferma di quel singolo prelievo. La casella parte sempre non selezionata.
 
 !!! atteso "Cosa devi vedere"
@@ -13,12 +13,12 @@
 
 ## Verifica il DDA
 
-In **Lavoro › Problemi da risolvere**, la Regia indica se il DDA è valido oppure da rifare e annota la verifica. Con DDA valido, l’operatore o il delegato deve registrare/forzare l’ingresso: solo dopo averne confermato l’avvenuta registrazione la provetta può essere normalizzata.
+In **Gestione campioni › Sul tablet › Problemi da risolvere**, la Regia indica se il DDA è valido oppure da rifare e annota la verifica. Con DDA valido, l’operatore o il delegato deve registrare/forzare l’ingresso: solo dopo averne confermato l’avvenuta registrazione la provetta può essere normalizzata.
 Le attività restano nello specchietto per l’allevatore. Fejalog non scrive nella BDN.
 
 ## Sostituisci un registro
 
-1. Scegli il registro aggiornato di **888TO999** dal kit.
+1. Preleva IT066000011274 di 888TO888, poi scegli il suo registro aggiornato `in_corsa/888TO888_pecore_…_1100.txt`: lo stesso capo risulta venduto (V).
 2. Controlla l’anteprima: lo stabilimento di lavoro viene aggiornato; una specie assente dal nuovo file conserva i propri dati precedenti.
 3. Indica il motivo e conferma. Le nuove informazioni riclassificano i prelievi, conservando registro eventi, assegnazioni e numeri già mostrati.
 

@@ -1,159 +1,150 @@
 # Il kit di prova con dati fittizi
 
-> **A chi serve**: a chiunque desideri provare Fejalog prima di andare in campo, da soli nel browser o in squadra con telefoni reali o emulatori, senza alcun rischio per i dati ufficiali.  
-> **Tempo di lettura**: 4 minuti.
+> **A chi serve**: a chi prova Fejalog nel browser, con telefoni o emulatori, prima del campo.
+> **Tempo di lettura**: 5 minuti.
 
-Fejalog mette a disposizione **due kit di simulazione completi** basati su greggi e archivi interamente fittizi. Nessun codice di stabilimento reale, nessun codice fiscale reale e nessun contrassegno reale sono presenti nei file di prova.
-
-I pacchetti sono archiviati in modo ripetibile e possono essere scaricati direttamente per essere importati nell'applicazione Android, aperti negli strumenti di fine lavori sul computer o stampati su carta.
-
----
+Il kit pubblico comprende **cinque stabilimenti di lavoro**, uno grande con **1.200 presenti** e uno piccolo con
+**10 presenti**, tutte le causali d'uscita scrivibili nel tracciato BDN e le altre fattispecie descritte sotto.
+Usa pochi capi per una prova breve; i dati completi servono anche per verificare numerazioni oltre mille.
 
 ## File scaricabili dal sito
 
-Tutti i pacchetti sono pronti per il download:
+| File | Dimensione | Contenuto |
+|---|---|---|
+| [kit_cinque_stabilimenti_dati.zip](provalo/kit/kit_cinque_stabilimenti_dati.zip) | 0,63 MiB | Registri BDN, pacchetto, ricercati, schede HTML, modelli 2/33 di ingresso, stampe HTML e backup di esempio. |
+| [kit_cinque_stabilimenti_pdf.zip](provalo/kit/kit_cinque_stabilimenti_pdf.zip) | 4,50 MiB | Schede A4 (4265 schede, 307 pagine), dieci 2/33 precompilati e foglio A3 in quattro pagine. |
+| [backup_esempio_cinque_stabilimenti.zip](provalo/kit/backup_esempio_cinque_stabilimenti.zip) | 0,17 MiB | Pochi campioni già registrati e posati nelle dieci serie, una problematica, campionamento chiuso: pronto per il browser. |
 
-| Archivio scaricabile | Dimensione | Contenuto principale | Modalità consigliata |
-|---|---|---|---|
-| [**`kit_prova_888TO999.zip`**](provalo/kit/kit_prova_888TO999.zip) | ~310 KB | Stabilimento singolo `888TO999`: registri BDN, pacchetto, ricercati, schede pronte in PDF (29 pag.), acquisto con DDA in corsa, backup di esempio. | **Modo B** (telefoni veri) e **Modo C** (emulatori) |
-| [**`kit_cinque_stabilimenti_dati.zip`**](provalo/kit/kit_cinque_stabilimenti_dati.zip) | ~426 KB | Dati completi per 5 stabilimenti: registri BDN di 5 stabilimenti, pacchetto multi-stabilimento, modelli 2/33 di ARVET, foglio A3 orizzontale in HTML, schede HTML, backup di esempio. | **Modo A** (browser) e preparazione Regia |
-| [**`kit_cinque_stabilimenti_pdf.zip`**](provalo/kit/kit_cinque_stabilimenti_pdf.zip) | ~3,0 MB | Solo documenti pronti per la stampa in PDF: 2.576 schede capo (180 pagine), tutti i modelli 2/33 con provette e foglio A3 orizzontale. | Sessioni di addestramento avanzate su carta |
-| [**`backup_esempio_888TO999.zip`**](provalo/kit/backup_esempio_888TO999.zip) | ~26 KB | Singolo file di backup di Fejalog con provette già campionate e registro verificato: pronto da trascinare negli strumenti on line. | **Modo A** (solo browser) |
+[Impronte SHA-256](provalo/kit/sha256sum.txt). Nessun file supera 10 MiB; il PDF delle schede è circa 6,9 MiB.
+Il kit storico singolo resta nel repository per i test e non viene più pubblicato.
 
-Le impronte crittografiche SHA-256 di tutti gli archivi sono pubblicate nel file [**`sha256sum.txt`**](provalo/kit/sha256sum.txt).
+## Gli stabilimenti e i casi
 
----
+È il kit pubblico di Fejalog (aggiornato il 30/10/2026), con cinque stabilimenti di lavoro e registri storici.
+Tutto è inventato: codici `888TO…`, denominazioni «AZ. AGR. ESEMPIO…», contrassegni `IT0660000NNNNN`
+da 10001 a 14277. Un solo codice francese fittizio `FR066000010030` sostituisce un ovino del principale,
+per provare il lettore estero (`0250…`); tutti gli altri sono italiani (`0380…`). Nessun codice coincide con il kit singolo.
 
-## 1. Kit 1: Stabilimento singolo `888TO999` («AZ. AGR. ESEMPIO»)
+Ci sono **4.277 identità distinte**, comprese le marche non stampate e i sei capi DDA caricabili in corsa:
+meno dei 10.000 suffissi disponibili. Le ultime **quattro cifre sono uniche fra tutte le identità del kit**;
+le ultime tre possono ripetersi. Una scheda discordante o doppia ripete intenzionalmente lo stesso animale.
 
-È il kit storico di Fejalog, calibrato per sessioni rapide di simulazione (15–60 minuti) con un tablet di Regia e uno o due palmari:
+Le frequenze di base (usciti per presente 1,5; maschi, età e razze) derivano soltanto da aggregati di due greggi.
+Sono integrate con esempi sintetici: **tutti i 32 motivi di uscita della BDN**, almeno due per codice e
+specie nel principale, e almeno due per codice e specie distribuiti fra gli altri quattro stabilimenti di lavoro.
+Non sono quindi più una distribuzione puramente percentuale.
 
-- **Stabilimento di lavoro**: `888TO999`, denominazione convenzionale «AZ. AGR. ESEMPIO».
-- **Stabilimento di riferimento**: `888TO888` (pascolo confinante condiviso: i suoi capi compaiono come «altro stabilimento»).
-- **Consistenza del gregge**:
-    - 220 pecore presenti;
-    - 12 montoni presenti (con numeri di provetta riservati in testa);
-    - 40 capre presenti (inclusi 2 becchi);
-    - 48 pecore uscite (due capi per ciascuna causale di uscita BDN: macello, morte, vendita, furto, smarrimento, ecc.);
-    - 4 capre uscite;
-    - 15 contrassegni disponibili, non registrati su un capo (10 pecore e 5 capre);
-    - 5 contrassegni in nessun registro caricato;
-    - 4 capi ricercati (bordo viola sulle schede);
-    - 6 capi di un venditore esterno (`888TO777`), il cui registro si carica come riferimento per provare la dichiarazione individuale di acquisto con DDA;
-    - 1 contrassegno estero francese (`FR...`);
-    - 3 capi con doppio prelievo simulato.
+- In uso: **A C E G H I J K L M P R S T U V W 8 9**.
+- Morte/macellazione in stabilimento: **D N Q Y Y3 2 3 4 5 6**.
+- Non più in uso: **F X Z**.
+- **Y3** (presunto morto) è scritto intero: il motivo occupa le colonne 538-539. Le descrizioni complete sono
+  quelle di `CodiciBdn.USCITE`.
+- I codici per insiemi **L** e **8** sono simulati su righe individuali del tracciato per provarne la decodifica;
+  non rappresentano una movimentazione reale di un insieme.
 
-### Contenuto dettagliato di `kit_prova_888TO999.zip`
 
-- `bdn/registri/`: i file di testo fittizi nel tracciato BDN per pecore e capre di `888TO999` e `888TO888`;
-- `bdn/contrassegni/`: i file dei contrassegni disponibili non applicati;
-- `pacchetto_888TO999_kit.json`: il medesimo progetto già convertito in pacchetto JSON;
-- `ricercati_888TO999.csv`: l'elenco dei quattro capi ricercati con la motivazione sanitaria;
-- `in_corsa/`: i file BDN per simulare variazioni in corso d'opera (acquisto con DDA e capo venduto dopo lo scarico BDN);
-- `schede_kit_prova_888TO999.pdf` e `.html`: 29 pagine A4 con le schede dei capi, complete di barcode microchip e istruzioni su cosa deve accadere;
-- `elenco_kit_prova.csv`: tabella riepilogativa di tutte le schede;
-- `backup_esempio_888TO999.zip`: backup derivato dal pacchetto del kit, con catene di hash, provette registrate e pose complete.
 
----
-
-## 2. Kit 2: Cinque stabilimenti di lavoro
-
-È il kit avanzato per simulare una profilassi complessa multi-stabilimento:
-
-| Stabilimento | Ruolo | Lettera | Ovini | Caprini | Usciti nello storico |
+| Codice | Ruolo | Lettera | Ovini | Capre | Usciti nel registro |
 |---|---|---|---|---|---|
-| **888TO999** | Principale | Nessuna | 500 | 100 | 902 |
-| **888TO888** | Secondario | X | 120 | 24 | 216 |
-| **888TO777** | Secondario | Y | 80 | 16 | 144 |
-| **888TO666** | Secondario | W | 60 | 12 | 108 |
-| **888TO555** | Secondario | V | 40 | Nessuno | 60 |
-| **888TO444** | Chiuso | — | — | — | 160 |
-| **888TO333** | Chiuso | — | — | — | 60 |
-| **888TO222** | Riferimento (pascolo) | — | 8 | — | 6 |
+| 888TO999 | principale | nessuna | 1050 | 150 | 1930 |
+| 888TO888 | secondario | X | 120 | 24 | 248 |
+| 888TO777 | secondario | Y | 80 | 16 | 176 |
+| 888TO666 | secondario | W | 60 | 12 | 140 |
+| 888TO555 | secondario | V | 8 | 2 | 47 |
+| 888TO444 | chiuso il 30/06/2025 |  | 0 | 0 | 160 |
+| 888TO333 | chiuso il 15/11/2023 |  | 0 | 0 | 60 |
+| 888TO222 | riferimento (pascolo e venditore DDA) |  | 8 | 0 | 6 |
 
-### Particolarità del kit a cinque stabilimenti
+- **Lettera di specie predefinita**: C sulle capre. Così le etichette sono `12` e `C12` nel principale, `X12` e `XC12`
+  nel secondario X, e così via.
+- **Chiusi**: una parte delle loro vendite è finita negli stabilimenti di lavoro. Sono capi presenti oggi, con la loro
+  storia nel registro del chiuso.
+- **Fra 888TO999 e 888TO888**: due pecore risultano uscite (V) dal primo e presenti nel secondo.
+- **In corsa**: `in_corsa/888TO888_pecore_…_1100.txt` è il registro di 888TO888 aggiornato, con un capo venduto dopo lo
+  scarico.
+- **Marche disponibili**: 21 ovine e 6 caprine, in cinque stabilimenti.
+- **DDA individuale**: sei ovini (IT066000014241–IT066000014246), solo nel registro `in_corsa/888TO222_pecore_…_1100.txt`. Il file conserva anche gli otto presenti e i sei usciti del riferimento.
+- **Specie discordante**: due capre già presenti del principale, IT066000011082 e IT066000011106, riproposte in schede dedicate da cercare fra le pecore.
+- **Codice estero**: FR066000010030, già compreso nei 1050 ovini del principale.
+- **Ricercati**: uno per stabilimento, in `ricercati_cinque_stabilimenti.csv`.
+- **Doppi**: uno per stabilimento.
+- **Capi in nessun registro**: quattro.
 
-1. **Lettere di specie nel pacchetto di prova**: le capre usano la lettera `C`, generando etichette come `12` e `C12` nel principale, `X12` e `XC12` nel secondario X, e così via.
-2. **Stabilimenti chiusi**: distingue capi che risultano solo usciti dai chiusi (movimentazione da chiarire) da capi con una vecchia uscita dal chiuso e una presenza già registrata nello stabilimento di lavoro. La storia da sola non implica un ingresso mancante.
-3. **Modelli 2/33 fittizi**:
-    - `2-33/ingresso/`: i 9 file `.htm` sintetici che riproducono la struttura del modello ARVET, senza dati veri;
-    - `2-33/con_provette/`: i modelli 2/33 precompilati con numerazione assegnata a 12 mesi e maschi evidenziati in grigio;
-    - `prima_del_campo/provette_contrassegni_12mesi_A3.html` e `.pdf`: foglio orizzontale A3 con le colonne Provetta e Contrassegno;
-    - `2-33/numerazione_attesa_12mesi.csv`: i 796 numeri assegnati per la verifica automatica.
+## Contenuto degli archivi
 
----
+| File | A che cosa serve |
+|---|---|
+| `bdn/registri/` (15 file), `bdn/contrassegni/` (7) | i file della BDN per Nuovo › file BDN (si possono scegliere tutti insieme, anche in uno zip) |
+| `pacchetto_888TO999_cinque_stabilimenti.json` | lo stesso progetto come pacchetto, come lo fa svet-tools |
+| `schede_kit_cinque_stabilimenti.pdf` (e `.html`) | 4265 schede col barcode del codice elettronico, 307 pagine (4258 animali stampati distinti). Per ogni stabilimento prima i presenti (pecore, montoni, capre, giovani), poi un capitolo per ogni motivo d'uscita; in fondo marche, capi in nessun registro e doppi. Ogni sezione dice cosa deve succedere |
+| `elenco_kit_cinque_stabilimenti.csv` | ogni scheda: sezione, contrassegno, codice elettronico, anagrafica, cosa deve succedere (per filtrare e stampare solo una parte) |
+| `2-33/ingresso/` | i 2/33 come li stampa ARVET, uno per stabilimento e specie (10 file `.htm`): sono quelli da dare all'app |
+| `2-33/con_provette/` | il risultato atteso (`.html` e `.pdf`): lo stesso 2/33 precompilato, con l'età diagnostica di 12 mesi. Stesso ordine di ARVET, il numero nella colonna «Provetta», negli ovini la riga dei maschi grigia; i fuori età restano senza numero |
+| `prima_del_campo/provette_contrassegni_12mesi_A3.pdf` (e `.html`) | il foglio A3 orizzontale atteso, Provetta \| Contrassegno: i numeri assegnati con 12 mesi in ordine di provetta, serie per serie, maschi degli ovini in grigio (quattro fogli). prodotto fra le stampe pre-campo |
+| `2-33/numerazione_attesa_12mesi.csv` | i 1291 numeri assegnati che l'app deve dare con 12 mesi e la C sulle capre |
+
+## I 2/33
+
+- **Il 2/33 precompilato si produce in configurazione**, fra le stampe pre-campo, partendo dai file fittizi di ingresso. I file con le provette sono esempi del risultato iniziale a 12 mesi. Il sito produce anche il 2/33 finale a partire dal backup campionato, in Uscite, caricando i modelli fittizi di ingresso.
+- **Sono fatti sullo schema dei 2/33 ovicaprini veri** della prova del 22 ottobre (solo la struttura, nessun dato):
+  - testata della bonifica col codice dello stabilimento e il suo codice a barre;
+  - proprietari e detentori; 888TO999 ne ha due, e una parte delle sue capre è del secondo;
+  - tabella dei capi a pagine di 40 righe, coi soli presenti in ordine di contrassegno;
+  - la colonna «Provetta» vuota;
+  - la razza con la sigla di ARVET (BLS, MTT, TCL; nei registri BDN BIE, MET, TAC);
+  - il genotipo scrapie dei montoni;
+  - in coda righe vuote numerate, il 10% dei capi più 3.
+- **I maschi sono sparsi** nell'ordine di contrassegno, come nei 2/33 veri: i numeri della colonna «Provetta» non
+  seguono l'ordine delle righe (fra le pecore i maschi hanno i primi numeri).
+- Il lettore di svet-tools (`R/fabbisogno_tubercolina.R`) legge questi file come quelli veri.
 
 ## Quali anomalie provare
 
-**La presenza delle schede nel kit non equivale a una prova eseguita.** Usa questa tabella come lista di controllo, insieme al [quadro completo delle anomalie](anomalie.md). Il kit singolo copre le causali d'uscita alfabetiche delle sue schede; il kit a cinque stabilimenti aggiunge giovani, stabilimenti chiusi e confronti fra serie di lavoro e di riferimento.
+Usa data della seduta **24/10/2026**, soglia **12 mesi**, e copia le etichette effettive della conferma.
+I giovani delle schede restano giovani alla data del kit, non a qualunque data successiva.
 
-I codici sotto sono interamente fittizi. Nel kit singolo il prefisso è `IT066000000`; per esempio **401** significa `IT066000000401`. Per i fuori età conserva la data della seduta del kit avanzato, **24/10/2026**, e la soglia **12 mesi**: le età non sono riferite al giorno in cui leggi questa pagina.
-
-| Da spuntare | Schede o azione da scegliere | Risultato da controllare |
+| Prova | Schede / azione | Esito atteso |
 |---|---|---|
-| ☐ **Smarriti, rubati, furto/smarrimento** | Singolo: **401** (`W`), **403** (`H`), **405** (`F`); anche capre **449**, **450** | Sempre problematici, senza numero ordinario preassegnato; il ritrovamento non corregge la BDN. |
-| ☐ **Morti, abbattuti, presunti morti** | Singolo: **407–414**, incluse urgenza e macellazione domiciliare | Avviso di uscito con causale/data; verifica dell'identità e soluzione della Regia. |
-| ☐ **Trasferiti, macello e altre uscite** | Singolo: **415–436**, **437–440**, **441–448** | Problematici anche se il capo è fisicamente presente. Prova una scheda per ciascuna causale, non solo una per sezione. |
-| ☐ **Stabilimento non campionato** | Singolo: **501–506** di `888TO888` | Viola «Altro stabilimento»; scartare non registra, inserire e confermare produce una problematica. |
-| ☐ **Altro stabilimento di lavoro** | Cinque: un adulto di `888TO888`; poi un capo di `888TO222` prima e uno dopo l'aggiunta come secondario | L'adulto del secondario già attivo è ordinario nella sua serie; il riferimento è problematico. Numeri già scritti invariati. |
-| ☐ **Stabilimenti chiusi e storia dei trasferimenti** | Cinque: capitoli `888TO444`/`888TO333`; confronta un capo solo uscito con un capo già presente in uno stabilimento di lavoro | Non confondere provenienza storica e ingresso mancante; il presente attuale prevale sulla vecchia uscita. |
-| ☐ **Marche disponibili** | Singolo: **601–610** e **651–655** | Blu, anagrafica obbligatoria, etichetta problematica; la marca disponibile non è un capo già censito. |
-| ☐ **Contrassegno in nessun registro** | Singolo: **701–705** | Forzato col codice completo; sesso, razza e nascita obbligatori, soluzione da verificare. |
-| ☐ **Anagrafica oltre sei mesi** | Su una marca o un forzato inserisci una nascita più vecchia di sei mesi rispetto alla seduta | Avviso giallo non bloccante; è diverso dal fuori età diagnostica. |
-| ☐ **DDA individuale** | Singolo: **801**, dopo aver caricato il registro del venditore `888TO777`; poi **802** | DDA dichiarato solo su **801**; resta da verificare. Prova valido/da rifare e ingresso registrato prima della normalizzazione. **802** non eredita la spunta. |
-| ☐ **Specie discordante** | Singolo: **341–342**, capre cercate nella pagina Pecore | Errore di specie; cambiando pagina risolvi una ricerca errata, confermando la discordanza registri una problematica. |
-| ☐ **Fuori età diagnostica** | Cinque: `IT066000010007`, nato 11/12/2025; anche una scheda «sotto i 6 mesi» | Con soglia 12 mesi, se prelevato è problematico; predefinita **Eliminata**, niente numero finale né ARVET. |
-| ☐ **Senza contrassegno e successiva comparsa delle marche** | Simula l'assenza delle marche su un presente non ancora prelevato; dopo l'attribuzione cerca e preleva quel candidato con il codice | Identificazione attribuita, DX/SX da sostituire; se arriva il prelievo col contrassegno letto, la precedente attribuita è da verificare. Prova fisica sul campo ancora da fare. |
-| ☐ **DX, SX, bolo e sesso discordante** | Su un adulto presente prova le spunte e il sesso corretto | Segnalazioni conservate in Ultime e nelle uscite; DX o bolo alimentano i senza transponder. |
-| ☐ **Doppi e collisioni** | Singolo: seconde schede **003**, **150**, **225**; [lezione 8](tutorial/08-doppi-rete.md) | Rifiuto senza nuovo campione oppure doppio distinto; fuori rete verifica al rientro, con controllo e rinomina fisica se richiesta. |
-| ☐ **Diventata problematica / ora in lista** | Preleva **010**, poi carica il registro aggiornato `_1100`; per il percorso inverso prova un acquisto verificato della [lezione 9](tutorial/09-registri-in-corsa.md) | Riclassificazione senza cambiare la scritta già emessa; normalizzazione solo quando ammessa. |
-| ☐ **Persa, ripetuta, ritrovata** | Su un presente registrato usa Persa, ripeti il prelievo, poi Ritrovata | Il vecchio numero resta impegnato; il ritrovamento dopo la ripetizione crea un doppio da risolvere. |
-| ☐ **Ricercati, accantonate e tardive** | Ricercati **005**, **017**, **222**, **703**; poi [lezione 11](tutorial/11-problemi.md) e [incidenti programmati](provalo/incidenti-programmati.md) | Banner e istruzioni anche su forzati; accantonate risolte; tardiva solo con provetta fisica riconosciuta, etichetta e nota. |
-| ☐ **Annullata ed eliminata** | Su due campioni di prova usa annullo e soluzione Eliminata | Storia conservata, campioni da mettere da parte, niente numero finale né ARVET; l'etichetta annullata non viene riemessa. |
-| ☐ **Casi di confronto senza anomalia anagrafica** | Estero `FR066000000950`; adulto ordinario prelevato da isolato | Codice estero riconosciuto; etichetta da isolato conservata al rientro, senza presumere che sia una problematica. |
+| ☐ Usciti ritrovati | Per ogni stabilimento, tutti i 32 capitoli di causale dove presenti, compresi 2, 3, 4, 5, 6, 8, 9 | Smarriti e rubati sempre problematici; controlla identità, data e causale anche per morti, macello e trasferiti. |
+| ☐ Fuori età | IT066000010012 (19/11/2025), più una scheda sotto sei mesi | Con soglia 12 mesi sono problematici se prelevati, senza numero ordinario; predefinita Eliminata, niente numero finale né ARVET. Confronta i 2/33 iniziali senza numero. |
+| ☐ Secondario già campionato | Un adulto presente di 888TO888 | Ordinario nella serie dello stabilimento di lavoro, distinta da quella del principale. |
+| ☐ Stabilimento non campionato | Un presente di 888TO222 prima di aggiungerlo | Avviso viola, problematico; il solo registro non lo include nella profilassi. |
+| ☐ Nuovo secondario | Aggiungi 888TO222 solo per simularne il risanamento contemporaneo; poi preleva un altro adulto | Nuovi capi nella sua serie; scritte già emesse invariate, da controllare prima del riordino. |
+| ☐ Stabilimento chiuso | Capi solo usciti di 888TO444/888TO333, poi un capo già presente in uno di lavoro con vecchia uscita dal chiuso | Il primo richiede verifica di provenienza/ingresso; il secondo non è problematico per la sola storia, perché prevale il presente. |
+| ☐ Trasferimento fra due di lavoro | Sezione «888TO888 · arrivate da 888TO999» | Presente in 888TO888, serie X; la precedente uscita da 888TO999 non lo duplica. |
+| ☐ Marche e forzati | Sezioni Marche disponibili / In nessun registro | Sesso, razza, nascita obbligatori; per il forzato codice completo e destinazione verificata. Una nascita oltre sei mesi genera un avviso non bloccante. |
+| ☐ Registro aggiornato | Preleva prima il capo poi venduto nel file `in_corsa/888TO888_pecore_…_1100.txt`, quindi carica quel file | Diventata problematica; scritta fisica e assegnazione iniziale conservate, soluzione guidata. |
+| ☐ Ricercati e doppi | Ricercati del CSV; seconde schede da un altro palmare, anche dopo isolamento | Banner con azione; Già fatto non registra, la conferma come doppio crea una distinta problematica. Al rientro verifica tutte le provette coinvolte. |
+| ☐ Senza marche, orecchini/bolo e sesso | Simula un presente non prelevato senza identificativi; prova anche le spunte e il sesso corretto su altre schede | Attribuzione per anagrafica tracciata, DX/SX da sostituire; se poi arriva il prelievo col contrassegno letto, l'attribuita va verificata. DX o bolo segnalati alimentano i senza transponder. |
+| ☐ Perdite, accantonate e tardive | Persa → ripeti → Ritrovata; Accantona; provetta scritta e non confermata | Doppio dopo il ritrovamento; accantonata da registrare/scartare; tardiva solo dalla Regia a campionamento chiuso con etichetta verificata e nota. |
+| ☐ DDA individuale | Carica `in_corsa/888TO222_pecore_…_1100.txt`, dichiara DDA su IT066000014241, poi cerca IT066000014242 | Il secondo non eredita il DDA; prova documento valido/da rifare e ingresso registrato prima di normalizzare. Il venditore resta riferimento. |
+| ☐ Specie discordante | Cerca IT066000011082 e IT066000011106 nella pagina Pecore | Sono capre già nel registro; verificare specie e animale. |
+| ☐ Codice estero | Barcode di FR066000010030, `0250066000010030` | Riconosciuto come presente ovino del principale; il paese estero non è di per sé un'anomalia. |
 
-Le **provvisorie storiche** e il gruppo residuo **Altre problematiche** si controllano se presenti in un progetto pregresso: i backup di esempio non dimostrano da soli tutte le fattispecie. Per le prove di questa tabella avvia un progetto dal pacchetto o dai file BDN, come nel tutorial.
+Il DDA non è un ruolo da applicare all'intero venditore: si dichiara per singolo prelievo. Fejalog non scrive nella BDN.
+Esegui la prova DDA prima di aggiungere 888TO222 ai luoghi di lavoro, oppure riparti dal pacchetto iniziale.
+Il kit singolo resta soltanto nel repository per le regressioni e non è più distribuito.
 
-Prima di calcolare il riordino controlla **regole per tipologia ed eccezioni individuali**: in coda, eliminata oppure normalizzata quando ammessa. Annota build, dispositivi, data della seduta e risultato. Nel **LEGGIMI incluso in ciascun archivio** trovi anche le istruzioni per le anomalie da consultare senza sito.
+Controlla le soluzioni prima del riordino: in coda, eliminata oppure normalizzata quando ammessa. Le eliminate vanno
+messe da parte. Queste sono prove da eseguire e annotare, non certificazioni di esecuzione su dispositivi fisici.
 
----
+## Percorso e rigenerazione
 
-## Come leggere una scheda di prova
+Segui le [tre modalità di simulazione](provalo/tre-modalita.md), gli [incidenti programmati](provalo/incidenti-programmati.md)
+o il [tutorial](tutorial/index.md). I 2/33 precompilati sono esempi iniziali; il 2/33 finale deriva dal backup campionato.
+Nel LEGGIMI di ogni archivio trovi anche la lista di prova da consultare senza sito.
 
-Le schede stampate o visualizzate a schermo contengono tutte le informazioni per simulare il lavoro del veterinario:
-
-- **Con lettore ottico di codici a barre in modalità tastiera**:  
-  Il codice a barre riporta le cifre che manderebbe il lettore di microchip (`0380` seguito da 12 cifre, oppure `0250` per il capo francese). Il lettore ottico le scrive nell’app come una tastiera. Un lettore di microchip legge il transponder fisico e non il codice a barre stampato.
-- **Inserimento manuale a tastiera**:  
-  Sul tastierino dell'app si digitano le **ultime 3 o 4 cifre** del contrassegno, evidenziate in grassetto sulla scheda.
-- **Esito atteso**:  
-  Ogni sezione delle schede specifica cosa deve fare l'applicazione (provetta ordinaria nella serie, provetta problematica, avviso ricercato, richiesta anagrafica). Se l'app si comporta diversamente, è un'anomalia.
-
----
-
-## Rigenerazione e verifica dei dati
-
-I kit fittizi sono generati con codice R a seme fisso per garantire la totale riproducibilità:
-
-- `Rscript strumenti/genera_kit_prova.R`: rigenera il kit a stabilimento singolo `kit_prova/`;
-- `Rscript strumenti/genera_kit_cinque_stabilimenti.R`: rigenera il kit a cinque stabilimenti `kit_prova/cinque_stabilimenti/`;
-- `strumenti/pacchetti_sito_kit.sh`: rigenera entrambi i backup tramite `KitBackupEsempioTest` (le API JVM dell'app), poi confeziona gli archivi e `sha256sum.txt` con Python. Richiede JDK 21, Android SDK, Node, Python e `pdftotext`. Non legge altre cartelle di dati e non modifica svet-tools.
-
-Dalla radice del repository:
+Dalla radice del repository, con JDK 21 e Android SDK:
 
 ```bash
-export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
-export ANDROID_HOME="$HOME/Android/Sdk"
+Rscript strumenti/genera_kit_cinque_stabilimenti.R
 strumenti/pacchetti_sito_kit.sh
-./gradlew -PsoloFixture=true :shared:jvmTest --tests '*KitSitoTest' --tests '*KitBackupEsempioTest'
+./gradlew -PsoloFixture=true :shared:jvmTest --tests '*KitSitoTest' --tests '*KitBackupEsempioTest' --tests '*KitProvaTest'
 ```
 
-Il backup singolo proviene da `pacchetto_888TO999_kit.json`, quello multiplo da `pacchetto_888TO999_cinque_stabilimenti.json`: entrambi hanno campioni già registrati, una problematica, pose della Regia e campionamento chiuso. La data e le scelte del generatore sono fisse. A parità di sorgenti gli archivi sono identici anche nei metadati; i test confrontano l'inventario completo e gli hash dei file interni.
+`KitProvaTest` confronta importazione BDN, pacchetto e numerazione con svet-tools, usato in sola lettura.
+`KitSitoTest` verifica inventario completo e SHA-256 di ogni file; i backup sono generati con le API dell'app,
+con data e scelte fisse. Il confezionamento verifica gli identificativi sintetici anche nei PDF e negli ZIP annidati.
+A parità di sorgenti gli archivi sono identici anche nei metadati. Il kit singolo continua a essere verificato dai test.
 
-I 2/33 precompilati e il foglio A3 del kit sono esempi **iniziali** a 12 mesi. Il 2/33 finale si ottiene invece dal backup campionato seguendo il [Modo A](provalo/tre-modalita.md).
-
-La suite di test automatica di Fejalog (`KitSitoTest` e `KitProvaTest`) controlla costantemente che:
-
-1. Gli archivi scaricabili sul sito coincidano esattamente con i file sorgente di `kit_prova/` (confronto dell'hash SHA-256 dei singoli file interni);
-2. L'importazione dei file BDN fittizi produca lo stesso pacchetto e gli stessi numeri assegnati calcolati da svet-tools;
-3. Il confezionamento ammetta solo le famiglie di codici sintetici del kit, anche nei backup annidati e nel testo estratto dai PDF. Nelle intestazioni dei 2/33 ci sono identificativi fiscali numerici fittizi con prefisso `888000`; nelle provette e negli export non ci sono codici fiscali. Il controllo non sostituisce la revisione prima della pubblicazione.
+Le etichette degli esempi indicano serie e numeri: sul campo copia sempre la scritta effettiva mostrata dall'app.

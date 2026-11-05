@@ -4,8 +4,8 @@
 
 ## 1. Il telefono si spegne
 
-**Cosa fai:** riaccendilo e riapri Fejalog; verifica progetto e rete. Se devi cambiarlo, avvisa la Regia e chiedi di entrare col nuovo telefono. Conserva il vecchio per recuperarne i dati.
-**Cosa resta:** i prelievi con esito verde sono salvati localmente; quelli già replicati sono anche sui colleghi. Un telefono distrutto con dati mai replicati né copiati può perderli. L'esclusione del telefono da parte della Regia non ne recupera il registro.
+**Cosa fai:** riaccendilo e riapri Fejalog; verifica progetto e rete. Se devi cambiarlo, avvisa la Regia e chiedi di entrare col nuovo telefono: la tua sigla resta la stessa e le statistiche restano legate al tuo codice fiscale. Conserva il vecchio per recuperarne i dati.
+**Cosa resta:** i prelievi con esito verde sono salvati localmente (con istantanee automatiche frequenti); quelli già replicati sono anche sui colleghi. Un telefono distrutto con dati mai replicati né copiati può perderli. L'esclusione del telefono da parte della Regia non ne recupera il registro.
 
 ## 2. La Wi-Fi cade: «Wi-Fi PERSA»
 
@@ -29,7 +29,7 @@
 
 ## 6. La batteria è scarica
 
-**Cosa fai:** collega il power bank al primo avviso. Le soglie predefinite sono **20% e 10%**, con pausa al **5% se non in carica**; la Regia può cambiare le soglie. Dopo aver collegato il caricatore tocca **Riprendi sessione**.
+**Cosa fai:** collega il power bank al primo avviso. Le soglie predefinite sono **20% e 10%**, con pausa al **5% se non in carica**; la Regia può cambiare le soglie (pagina Campionamento › Messaggi). Dopo aver collegato il caricatore apri **Campionamento › Pausa e ripresa** e tocca **Riprendi sessione**.
 **Cosa resta:** il lavoro salvato rimane; la pausa viene comunicata sulla rete quando raggiungibile. Non aspettare lo spegnimento.
 
 ## 7. Il capo è di uno stabilimento non campionato
@@ -51,5 +51,10 @@
 
 **Cosa fai:** distingui la **marca disponibile** (blu) dal codice **in nessun registro caricato** (Forzato). Per entrambi servono sesso, razza e nascita; per il forzato digita il contrassegno intero. Se il problema è soltanto la pagina della specie sbagliata, cambia specie prima di confermare.
 **Cosa resta:** è una provetta problematica. «Non nei file caricati» non significa necessariamente «assente dalla BDN»: la Regia verifica anche gli input.
+
+## 11. La Regia mette in pausa il tuo palmare o ti allontani dalla rete
+
+**Cosa fai:** l'app blocca l'inserimento dei prelievi e mostra lo stato di pausa imposto dalla Regia (ad esempio se il palmare si è disconnesso all'improvviso o per riorganizzare i prelievi). Se ti allontani dalla rete, mettiti in pausa da **Campionamento › Pausa e ripresa**: altrimenti tutti passano alla gestione provvisoria, con i doppi non controllati. La Regia può comunque metterti in pausa. Per riprendere dalla pausa della Regia, ricollegati alla rete e premi **Riprendi** (solo da **Campionamento › Pausa e ripresa**) oppure attendi che la Regia tocchi **Riattiva**. Dopo una pausa propria riprendi anche alla prima provetta.
+**Cosa resta:** tutti i prelievi salvati in precedenza restano conservati sul dispositivo.
 
 [Tutte le anomalie e le soluzioni](../anomalie.md) · [In campo](in-campo.md) · [Domande](domande.md) · [Checklist](../checklist-veterinari.md)

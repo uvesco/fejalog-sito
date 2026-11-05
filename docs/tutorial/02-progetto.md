@@ -10,17 +10,18 @@
 
 ## Configura
 
-Da **Preparazione › Configura il progetto**:
+Da **Configurazione**:
 
-1. **Cartelle e copie:** scegli la cartella del progetto, eventualmente cloud, e le copie desiderate. Senza una cartella disponibile, i file restano sul dispositivo. Puoi scegliere anche una seconda cartella su USB.
-2. **Modalità e regole:** scegli l’età diagnostica, le lettere di specie e le regole per i problematici. Definisci se lavorare da solo, con Wi-Fi locale o con hotspot.
-3. **Rete e dispositivi:** se lavori con più device, prepara la rete principale e quella di riserva; i palmari entreranno da qui.
-4. Tocca **Conferma e passa ai dati**.
+1. **Parametri e regole (1):** scegli l'età diagnostica, le lettere di specie, il verso di riempimento, le regole per i problematici e il backup automatico. Le cartelle dell'applicazione (locale per i backup e remota per i dati BDN) vengono configurate una volta sola in **Impostazioni › Cartelle** con permessi persistenti Android; all'uscita dal lavoro non serve selezionare cartelle.
+2. **Stabilimenti e sigle (2):** controlla lo stabilimento principale e gli eventuali secondari, le lettere assegnate alle serie e le sigle dei veterinari prelevatori.
+3. **Dati input (3):** carica registri BDN, contrassegni ed eventuali capi ricercati.
+4. **Rete del progetto (4):** se lavori con più device, definisci la modalità di rete, la rete principale e quella di riserva; i palmari entreranno da qui (o con **QR d'ingresso**).
+5. Tocca **5. Checklist e avvio** per i controlli finali.
 
 <div class="schermate" markdown>
 
 <figure markdown="span">
-  ![Configurazione di un progetto vuoto: cartelle, modalità e rete prima dei dati](../img/tutorial/02_configura_progetto.png)
+  ![Configurazione di un progetto: parametri, stabilimenti e rete prima dell'avvio](../img/tutorial/02_configura_progetto.png)
   <figcaption>Il progetto esiste già; prima si completa la configurazione.</figcaption>
 </figure>
 
@@ -28,23 +29,26 @@ Da **Preparazione › Configura il progetto**:
 
 ## Poi carica i dati
 
-Da **Dati › Registri BDN e contrassegni**, scegli i cinque file di `kit_prova/bdn/`:
+Da **Configurazione › 3. Dati input** (Registri BDN e contrassegni), scegli tutti i file di `bdn/` estratti dal kit a cinque stabilimenti:
 
 - registri di pecore e capre di **888TO999**;
-- registro di **888TO888** come altro stabilimento di riferimento;
+- registri degli altri quattro stabilimenti di lavoro **888TO888**, **888TO777**, **888TO666**, **888TO555**;
+- registri di **888TO222** e dei chiusi **888TO444** e **888TO333**, che restano di riferimento;
 - contrassegni disponibili di pecore e capre.
 
 Controlla l’anteprima e applica il caricamento. Per reperire gli input veri, segui [Scaricare i file dalla BDN](file-bdn.md).
-I successivi aggiornamenti si fanno sempre in Dati: i numeri già assegnati restano conservati.
+I successivi aggiornamenti si fanno sempre in **3. Dati input**: i numeri già assegnati restano conservati.
 
 !!! atteso "Cosa devi vedere"
-    Il progetto esiste prima dell’importazione. Dopo il caricamento, 888TO999 ha **233 pecore e 42 capre presenti**, **10 e 5 contrassegni disponibili**; 888TO888 ha 6 pecore.
+    Il progetto esiste prima dell’importazione. Dopo il caricamento, 888TO999 ha **1050 ovini e 150 capre presenti**, **10 e 4 contrassegni disponibili**; 888TO555 ha **8 ovini e 2 capre**.
+    In **Configurazione › 2. Stabilimenti e sigle**, prima dell’avvio, includi anche 888TO888 (X), 888TO777 (Y), 888TO666 (W) e 888TO555 (V).
+    In alternativa apri il pacchetto già preparato, che contiene tutti e cinque gli stabilimenti di lavoro.
 
 ??? tip "Se hai già un progetto"
     Usa **Progetto › Apri progetto** per un backup oppure un pacchetto già preparato in svet-tools. **Recenti** riapre i progetti presenti sul dispositivo. Rivedi la configurazione, poi passa ai dati.
 
 ??? failure "C’è già un progetto aperto"
-    Prima usa **Progetto › Chiudi progetto**. Il progetto resta nei Recenti.
+    Prima usa **menu › Esci dal progetto**. Il progetto resta nei Recenti.
 
 ## Fatto?
 

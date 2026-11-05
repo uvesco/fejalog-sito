@@ -19,7 +19,7 @@
 
 - ☐ Disponi il tavolo e i plateau distinguendo le serie per stabilimento e specie e tenendo separati i problematici.
 - ☐ Accendi l'hotspot o il router e collega la Regia alla rete prevista.
-- ☐ Apri in Rete il QR di ingresso della Regia e fallo inquadrare ai palmari.
+- ☐ Apri Configurazione › QR d’ingresso della Regia e fallo inquadrare ai palmari.
 - ☐ Fai entrare tutti i palmari e controlla in Rete l'allineamento e l'impronta del pacchetto, uguale a quella della Regia.
 - ☐ Avvia il campionamento dalla Regia quando tutti sono pronti.
 - ☐ Raccogli le consegne dei veterinari, registrale con «Ricevi» e metti le provette nei plateau seguendo la pagina Plateau della Regia.

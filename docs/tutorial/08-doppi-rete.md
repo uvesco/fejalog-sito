@@ -2,15 +2,15 @@
 
 **Obiettivo**: vedere i doppi di contrassegno in tempo reale, e lavorare quando la rete manca.
 
-**Ti serve**: almeno due palmari in rete, e la sezione «Doppi di contrassegno (seconda lettura)» delle schede: tre capi
-già nel gregge.
+**Ti serve**: almeno due palmari in rete, e la sezione «Doppi di contrassegno (seconda lettura)» delle schede: cinque capi
+già nel gregge, uno per stabilimento di lavoro.
 
 ## Fai
 
-1. **Doppio in rete.** Un palmare preleva il capo IT066000000<span class="cifre">003</span>; un **altro** palmare
+1. **Doppio in rete.** Un palmare preleva il capo IT06600001<span class="cifre">0618</span>; un **altro** palmare
    legge la seconda scheda dello stesso capo.
 2. **Senza rete.** Su un palmare spegni la Wi-Fi e continua a prelevare. Poi leggi su quel palmare un capo che un altro
-   ha già fatto (per esempio <span class="cifre">150</span>). Riaccendi la Wi-Fi.
+   ha già fatto (per esempio <span class="cifre">1248</span>, IT066000011248). Riaccendi la Wi-Fi.
 3. **Regia spenta.** Spegni la Wi-Fi del tablet (o il tablet) e continua sui palmari. Dopo 2 minuti, su un palmare:
    Rete › **«Prendi la regia»**. Riaccendi il tablet.
 

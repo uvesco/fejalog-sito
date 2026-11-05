@@ -16,21 +16,21 @@
 - [ ] A ogni consegna controlla il lotto, conferma «Ricevi (N)» e segui «Metti qui».
 - [ ] Nei progetti nuovi tieni un solo plateau problematici in uso sul tavolo; quando è pieno, mettilo da parte e prepara il successivo.
 - [ ] Gli isolati non doppi vanno subito al loro numero ordinario. Segui sempre le destinazioni dell'app.
-- [ ] Se un telefono si spegne, controlla la situazione in Rete: solo la Regia può escluderlo a mano e serve la maggioranza pesata degli attivi.
+- [ ] Se un telefono si spegne o deve essere sospeso, usa la riga del veterinario o la pagina Rete: solo la Regia può escluderlo a mano o metterlo in pausa, con la maggioranza pesata degli attivi; per riammetterlo usa «Riattiva».
 - [ ] Collega il power bank ai dispositivi con batteria bassa. Al 5%, se non in carica, è prevista la pausa automatica; verifica che la squadra l'abbia ricevuta.
 - [ ] Per i capi privi di contrassegno usa «Senza contrassegno» mentre il campionamento è aperto.
-- [ ] Controlla e conserva i backup intermedi.
+- [ ] Cartelle configurate una volta nelle impostazioni; tutti i dispositivi scattano istantanee automatiche locali frequenti.
 
 ## Dopo il campo
 
 - [ ] Verifica che tutti i palmari abbiano finito e siano allineati; esamina gli avvisi sui dispositivi mai rientrati.
-- [ ] Chiudi il campionamento e salva il backup. Se mancano eventi, raccogli i backup da riconciliare.
-- [ ] Per il PC via cavo: **Gestione campioni › Collegamento al PC via USB**, attiva il tethering Android e avvia il server. Sul browser Windows usa l’indirizzo e il PIN mostrati dalla Regia. [Guida USB](tethering-pc.md).
-- [ ] Registra le provette già scritte ma non confermate con «Non trovati e tardive», senza riaprire il campionamento.
-- [ ] Risolvi i problemi e completa la guida del Riordino. Dal primo evento di gestione dopo la chiusura (anche una nota o una tardiva) il campionamento non si riapre più.
-- [ ] Se lavori sul PC, esporta le modifiche e controlla l'anteprima sulla Regia prima di importarle. Salva poi un nuovo backup.
-- [ ] Genera le uscite e il 2/33 finale, controllandoli contro le provette fisiche.
-- [ ] Per le prove con `888TO999`, imposta `window.__ARVET_PROVA__=true;` prima dello snippet e non salvare mai su ARVET.
+- [ ] Chiudi il campionamento (con controllo di chi è ancora al lavoro e parola di conferma) e salva il backup. Se mancano eventi, raccogli i backup da riconciliare.
+- [ ] Per il PC via cavo: **Gestione campioni › Dal PC via USB**, attiva il tethering Android e avvia il server. Sul browser Windows usa l’indirizzo e il PIN mostrati dalla Regia. [Guida USB](tethering-pc.md).
+- [ ] Registra le provette già scritte ma non confermate con **Gestione campioni › Sul tablet › Non trovati e tardive**, senza riaprire il campionamento.
+- [ ] Risolvi i problemi e completa la guida del Riordino (a invio singolo o batch) da **Gestione campioni › Sul tablet › Riordino plateau**. Dal primo evento di gestione dopo la chiusura (anche una nota o una tardiva) il campionamento non si riapre più.
+- [ ] Se lavori sul PC o sul sito, esporta le modifiche e controlla l'anteprima sulla Regia (**Gestione campioni › Sul sito › Importa le modifiche dal sito**) prima di applicarle. Salva poi un nuovo backup.
+- [ ] Genera le uscite e il 2/33 finale da **Gestione campioni › Sul tablet › Fine lavori ed esportazioni**, controllandoli contro le provette fisiche.
+- [ ] Per le prove con il kit fittizio, imposta `window.__ARVET_PROVA__=true;` prima dello snippet e non salvare mai su ARVET.
 
 Non riutilizzare l'etichetta di una provetta annullata. Per i controlli sui doppi segui gli avvisi e verifica i campioni fisici: il verde non esclude due conferme contemporanee.
 

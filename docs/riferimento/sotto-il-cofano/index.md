@@ -13,6 +13,7 @@ Come Fejalog risponde ai vincoli del lavoro sul campo per garantire integrità, 
 - [6. Fasi operative rigide e prevenzione dell'errore umano](#6-fasi-operative-rigide-e-prevenzione-dellerrore-umano)
 - [7. Riconciliazione finale con ARVET e chiusura buchi](#7-riconciliazione-finale-con-arvet-e-chiusura-buchi)
 - [8. Ergonomia di campo, hardware e consumo energetico](#8-ergonomia-di-campo-hardware-e-consumo-energetico)
+- [9. Collaudi di tenuta e simulazione su larga scala](#9-collaudi-di-tenuta-e-simulazione-su-larga-scala)
 - [Riepilogo sintetico dei problemi e delle risposte architetturali](#riepilogo-sintetico-dei-problemi-e-delle-risposte-architetturali)
 
 ---
@@ -23,8 +24,8 @@ La profilassi di massa degli ovicaprini (prelievo di sangue per la diagnosi dell
 
 - **Ambiente avverso**: recinti polverosi o fangosi, animali in movimento rapido, freddo o caldo intenso, veterinari muniti di guanti di protezione;
 - **Assenza di connettività**: pascoli montani e stabilimenti rurali spesso privi di copertura cellulare o con segnale instabile;
-- **Hardware eterogeneo**: tablet di servizio con risorse limitate (es. Lenovo Tab M10), smartphone personali dei veterinari, lettori elettronici di bolo/transponder Bluetooth;
-- **Vincolo primario inderogabile**: il numero scritto col pennarello indelebile sulla provetta di vetro comanda su tutto. L'intero sistema informatico serve a garantire che quel campione arrivi integro, univoco e perfettamente riconciliato nel sistema informativo veterinario nazionale (ARVET/BDN).
+- **Hardware eterogeneo**: tablet con risorse limitate, smartphone vari, lettori elettronici di bolo/transponder Bluetooth;
+- **Vincolo primario inderogabile**: il numero scritto col pennarello indelebile sulla provetta di vetro comanda su tutto. L'intero sistema informatico serve a garantire che quel campione arrivi integro, univoco e perfettamente riconciliato nel sistema informativo veterinario.
 
 Di seguito vengono analizzate le principali sfide affrontate da Fejalog e le soluzioni ingegneristiche adottate per soddisfare tutti i requisiti di sistema.
 
@@ -62,7 +63,7 @@ flowchart TD
 ## 2. Unicità assoluta dei numeri e prevenzione delle collisioni
 
 ### Il problema
-Due veterinari posizionati ai capi opposti della manica di cattura prelevano decine di animali al minuto. Il sistema deve impedire categoricamente che:
+Due veterinari posizionati ai capi opposti del recinto prelevano decine di animali all'ora. Il sistema deve impedire categoricamente che:
 - Due provette ricevano lo stesso identificativo;
 - Un veterinario debba correggere o rinumerare un campione già etichettato col pennarello durante il campionamento (REQ-NUM-01).
 
@@ -90,12 +91,13 @@ sequenceDiagram
     Note over Op1,Op2: Blocco modale obbligatorio non dismissibile:<br/>entrambi devono assegnare una nuova etichetta fisica
 ```
 
-1. **Numerazione deterministica al caricamento dei registri**: all'avvio della seduta, i capi presenti e in età diagnostica ricevono un progressivo potenziale naturale `1..N` (con i maschi in testa per preservare il blocco profilassi *Brucella ovis*). Non ci sono contese di blocchi o riserve dinamiche durante il prelievo;
-2. **Disgiunzione assoluta dei namespace (Lettere)**:
-   - Lettere per stabilimenti secondari: riservate all'insieme `XYWVURNKH`;
-   - Lettere per i veterinari (identificazione campioni problematici): riservate all'insieme `ADEFJM...`;
-   - L'intersezione tra i due insiemi è rigorosamente vuota: non può mai verificarsi ambiguità tra un plateau di stabilimento secondario e il codice di un veterinario;
-3. **Prelievi in isolamento con lettera del veterinario**: quando un dispositivo non ha collegamento di rete (`isolato = true`), i prelievi portano automaticamente in coda la lettera del veterinario (es. `P5A`). In questo modo, anche se due veterinari operassero completamente sconnessi, non genererebbero mai etichette fisiche sovrapposte;
+1. **Numerazione deterministica al caricamento dei registri**: all'avvio della seduta, i capi presenti e in età diagnostica ricevono un progressivo potenziale naturale in base all'ordine alfabetico di contrassegno `1..N` (con i maschi in testa per preservare il blocco profilassi *Brucella ovis*). Non ci sono contese di blocchi o riserve dinamiche durante il prelievo. Un numero di provetta corrisponde ad un contrassegno fin da prima di arrivare in campo, operando in rete si scoprono i doppi contrassegni (o doppi prelievi);
+2. **Sigle dei veterinari e lettere degli stabilimenti, mai confondibili**:
+   - nei progetti nuovi ogni veterinario ha una **sigla di due lettere** confermata dalla Regia (per esempio `UV`), unica nel progetto e condivisa fra i suoi device, insieme al progressivo dei problematici;
+   - gli stabilimenti secondari hanno una lettera nel **cerchietto in testa** all'etichetta (per esempio `Ⓧ125`): sigla e cerchietto stanno in posti diversi e non si confondono;
+   - classifiche e statistiche seguono la persona (codice fiscale), anche se cambia telefono;
+   - nei progetti precedenti alle sigle restano le lettere previste all'inizio, mai condivise fra un device e uno stabilimento;
+3. **Prelievi da isolato con la sigla**: quando i doppi non sono controllati (rete assente o colleghi che non rispondono), l'etichetta aggiunge dopo la barra la sigla di chi preleva (per esempio `125/UV`). Così anche due veterinari sconnessi non producono mai etichette uguali;
 4. **Gestione deterministica delle collisioni simultanee**:
    - Qualora due nodi allineati in rete confermino simultaneamente lo stesso capo prima della replica TCP, il fold deterministico identifica l'anomalia;
    - Viene apposta automaticamente su entrambi i record la nota di audit:
@@ -134,7 +136,10 @@ Fejalog adotta una persistenza ridondante a più strati:
 3. **Doppio archivio parallelo**:
    - Storage privato dell'applicazione;
    - Cartella pubblica `Documents/Fejalog/<sessione>/` (MediaStore), che garantisce la sopravvivenza dei dati anche in caso di disinstallazione involontaria o reset dei dati dell'app;
-4. **Istantanee e riconciliazione automatica**: salvataggio automatico di archivi compressi protetti da manifesto crittografico (`fejalog-backup`) a intervalli regolari (es. ogni 25 eventi). In caso di disconnessioni prolungate o recupero di backup parziali da dispositivi superstiti, il motore `BackupSeduta.unisci` unifica le catene senza alcuna perdita di eventi.
+4. **Istantanee locali e salvaguardia su tutti i dispositivi**:
+   - Cartelle configurate una volta sola nelle Impostazioni dell'app con permessi persistenti (nessun selettore all'uscita);
+   - Salvataggio automatico di istantanee locali compresse su tutti i device: ogni 10 eventi da soli o isolati, ogni N in rete, e a ogni pausa, ripresa o uscita dal lavoro (con attesa finale fino a 5 secondi);
+   - Il motore `BackupSeduta.unisci` unifica le catene superstiti senza alcuna perdita di eventi.
 
 ---
 
@@ -143,7 +148,7 @@ Fejalog adotta una persistenza ridondante a più strati:
 ### Il problema
 Durante il campionamento sul campo possono verificarsi variazioni rispetto alla pianificazione d'ufficio:
 - Il veterinario ufficiale decide di modificare la soglia di età diagnostica (es. da 12 mesi a 6 mesi per accertato pascolo vagante, o viceversa);
-- Vengono reperiti sul posto registri BDN cartacei o file integrativi per animali non presenti nell'estrazione iniziale.
+- Vengono aggiornati i registri con animali non presenti nell'estrazione iniziale.
 
 Se l'applicazione ricalcolasse la numerazione da capo, i progressivi assegnati ai capi cambierebbero, rendendo errate e inservibili tutte le provette già etichettate col pennarello nei plateau.
 
@@ -168,10 +173,10 @@ flowchart LR
 
 ---
 
-## 5. Multi-stabilimento e greggi promiscui (Comproprietà e pascoli)
+## 5. Multi-stabilimento e greggi promiscui (pascoli)
 
 ### Il problema
-Nelle aree alpine e negli alpeggi è frequente risanare contemporaneamente greggi promiscui appartenenti a proprietari o codici stabilimento differenti.
+Nelle aree alpine e negli alpeggi è possibile risanare contemporaneamente greggi promiscui appartenenti a proprietari o codici stabilimento differenti.
 Esistono due fattispecie radicalmente diverse che richiedono trattamenti distinti:
 1. **Altro risanamento svolto in contemporanea**: un intero gregge con codice BDN diverso risanato nello stesso intervento, che richiede provette separate e una propria distinta di accettazione ARVET;
 2. **Singoli capi compravenduti o estranei**: singoli animali presenti nel gregge privi di passaggio di proprietà perfezionato in BDN.
@@ -218,13 +223,13 @@ stateDiagram-v2
         RiordinoPlateau --> ExportARVET
     }
 
-    CAMPIONAMENTO_CHIUSO --> CAMPIONAMENTO_APERTO: Riapertura eccezionale (Regia)<br/>(vietata dal primo evento di riordino)
+    CAMPIONAMENTO_CHIUSO --> CAMPIONAMENTO_APERTO: Riapertura eccezionale (Regia)<br/>(vietata dal primo evento di gestione)
 ```
 
 1. **Blocco dei palmari non allineati**: un palmare non può accedere alla schermata di campionamento finché non ha configurato l'identità del veterinario, ricevuto il pacchetto e il registro sincronizzato, e verificato che la seduta sia formalmente in `CAMPIONAMENTO_APERTO`;
 2. **Congelamento dei parametri strutturali**: all'avvio del campionamento, le lettere di specie e lo stabilimento principale sono congelati nel fold del registro e non possono essere alterati;
 3. **Menu differenziato e mirato**: durante i prelievi, il palmare visualizza solo i comandi strettamente operativi (`Campionamento`, `Ultime`, `Avanzamento`, `Rete`), evitando interferenze con le impostazioni globali;
-4. **Sblocco controllato e chiusura definitiva**: le sezioni di `Soluzione problemi`, `Riordino plateau` e `Esportazioni ARVET` sono rigorosamente inaccessibili finché il campionamento non viene chiuso dalla Regia; dal primo evento del riordino (spunta, spostamento, scambio) la chiusura diventa categoricamente definitiva e irreversibile.
+4. **Sblocco controllato e chiusura definitiva**: le sezioni di `Soluzione problemi`, `Riordino plateau` e `Esportazioni ARVET` sono rigorosamente inaccessibili finché il campionamento non viene chiuso dalla Regia; dal primo evento di gestione dopo la chiusura (spunta, spostamento, scambio, nota, registrazione tardiva) la chiusura diventa categoricamente definitiva e irreversibile.
 
 ---
 
@@ -274,13 +279,26 @@ flowchart TD
 ## 8. Ergonomia di campo, hardware e consumo energetico
 
 ### Il problema
-Le batterie degli smartphone si degradano rapidamente alle basse temperature invernali tipiche della profilassi. Schermi sempre accesi, frequenti richieste di geolocalizzazione o scansioni di rete continue possono esaurire la carica in meno di due ore. Inoltre, i veterinari che indossano guanti non possono eseguire gesti complessi su touchscreen umidi.
+Le batterie degli smartphone si degradano rapidamente alle basse temperature invernali. Schermi sempre accesi, frequenti richieste di geolocalizzazione o scansioni di rete continue possono esaurire la carica in meno di due ore. Inoltre, i veterinari che indossano guanti non possono eseguire gesti complessi su touchscreen umidi.
 
 ### La soluzione adottata
 1. **Zero polling e zero wake-lock**: Fejalog non mantiene lo schermo costantemente forzato né esegue cicli di polling a vuoto. Le connessioni TCP sono reattive su socket bloccanti in attesa di eventi;
 2. **Telemetria passiva della batteria**: il livello di carica di ogni palmare (`bat: {l, c}`) viene trasmesso unicamente come metadato opzionale nei normali pacchetti di sincronizzazione, consentendo alla Regia di monitorare lo stato di tutti i dispositivi senza inviare messaggi dedicati;
-3. **Supporto lettori Bluetooth HID**: l'app accetta input diretto da lettori di transponder auricolari e ruminali conformi ISO 11784/11785 (es. Allflex AWR250) configurati come tastiera Bluetooth, con pulizia automatica di codici paese e spaziature;
-4. **Interfaccia ad alto contrasto**: layout Material 3 conformi agli standard WCAG AAA con numeri di provetta sovradimensionati e bande colorate ad alta saturazione, chiaramente distinguibili anche sotto la luce solare diretta.
+3. **Lettori Bluetooth HID**: l'app accetta input diretto da lettori di transponder conformi ISO 11784/11785, FDX-B e HDX (es. Allflex AWR250), configurati come tastiera Bluetooth: il capo si trova senza toccare lo schermo;
+4. **Telecomandi Bluetooth per lavorare coi guanti**: un telecomando da dito o ad anello (per esempio BLE-M3, con frecce, OK e Indietro) conferma la provetta, cambia specie e scorre le opzioni del foglio di conferma senza toccare il telefono con i guanti sporchi o bagnati; si prova in Impostazioni › Dispositivo › Prova del telecomando;
+5. **Interfaccia ad alto contrasto**: layout Material 3 con numeri di provetta sovradimensionati e bande colorate ad alta saturazione, chiaramente distinguibili anche sotto la luce solare diretta;
+6. **Diagnostica locale leggera**: monitoraggio passivo di tempi, eventi di rete, livello batteria ed errori registrato in locale nei backup anche nella versione di release, senza timer extra e spegnibile nelle impostazioni.
+
+---
+
+## 9. Collaudi di tenuta e simulazione su larga scala
+
+La scalabilità e la reattività dell'architettura sono state verificate tramite benchmark ed esecuzioni estensive su PC ed emulatore:
+- **Scala a 4, 8 e 12 palmari**: prove con lotti fuori ordine, disconnessioni e riconciliazioni senza collisioni né omonimie;
+- **Simulazione gregge da 1800 capi**: oltre 1890 eventi con 12 palmari contemporanei, compattazione plateau ed export lineare;
+- **Guida fisica su emulatore**: riordino completo eseguito su tablet virtuale senza blocchi dell'interfaccia (ANR).
+
+*(La prova sul campo con animali reali si è svolta con 3 veterinari il 22/10/2026).*
 
 ---
 
@@ -290,9 +308,9 @@ Le batterie degli smartphone si degradano rapidamente alle basse temperature inv
 |---|---|---|
 | **Assenza di connessione Internet** | Nessun accesso a server remoti o cloud | Architettura peer-to-peer locale su Wi-Fi; replica totale del registro crittografico. |
 | **Possibile spegnimento del tablet (Regia)** | Nessun Single Point of Failure | Topologia a stella cedibile; ogni palmare numera in locale e può subentrare come Regia. |
-| **Rischio di doppie numerazioni** | Unicità assoluta e definitiva (REQ-NUM-01) | Numerazione pre-assegnata 1..N; lettere stabilimenti e veterinari disgiunte; prelievi isolati con lettera del veterinario. |
+| **Rischio di doppie numerazioni** | Unicità assoluta e definitiva (REQ-NUM-01) | Numerazione pre-assegnata 1..N; sigle dei veterinari e lettere degli stabilimenti in posti diversi dell'etichetta; prelievi da isolato con la sigla di chi preleva. |
 | **Prelievi simultanei non sincronizzati** | Concorrenza nella finestra TCP | Rilevamento automatico collisioni; nota permanente; blocco modale obbligatorio di rinomina. |
-| **Crash improvviso o scarica batteria** | Tolleranza totale alla perdita dati | Scrittura sincrona con `fsync` a disco; conferma distribuita (✓✓); doppio archivio persistente. |
+| **Crash improvviso o scarica batteria** | Tolleranza totale alla perdita dati | Scrittura sincrona con `fsync` a disco; conferma distribuita (✓✓); doppio archivio persistente e istantanee locali automatiche. |
 | **Modifica età diagnostica in corsa** | Non alterare i numeri già scritti | Numerazione consolidata all'avvio; capi adulti invariabili; buchi provvisori; accodamento nuovi idonei. |
 | **Greggi promiscui e comproprietà** | Distinte e fatturazioni ARVET separate | Stabilimenti secondari dedicati (solo aggiungibili); serie a lettere (`X1`); DDA individuali per singoli capi estranei. |
 | **Buchi e salti nella numerazione** | ARVET accetta solo serie lineari 1..n | Algoritmo di riordino geometrico dei plateau; chiusura buchi dal fondo; guida al riposizionamento; snippet ARVET. |

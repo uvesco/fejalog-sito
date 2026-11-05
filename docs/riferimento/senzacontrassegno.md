@@ -2,6 +2,7 @@
 
 # Capo senza contrassegno
 
+- Se ti allontani dalla rete, mettiti in pausa dal menu Campionamento › Pausa e ripresa. Altrimenti tutti passano alla gestione provvisoria, con i doppi non controllati. La Regia può comunque metterti in pausa.
 - Per i capi senza marche lasciati alla fine, a campionamento aperto tocca «Senza contrassegno», sul palmare o sulla Regia.
 - Scegli sesso, razza (o «Non so») ed età da … a … in anni, a scatti di 6 mesi; con più stabilimenti scegli quello del capo.
 - Compaiono i presenti non prelevati compatibili, anche fuori età diagnostica (segnalati fra i problematici). Scegli il capo e usa la conferma normale, copiando l'etichetta mostrata.

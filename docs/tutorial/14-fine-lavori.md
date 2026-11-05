@@ -7,11 +7,11 @@
 !!! tip "Sul computer"
     Le stesse azioni si possono fare dal backup nel browser: [Strumenti on line](../strumenti/index.md). Il sito non manda i dati a nessuno e può riportare le modifiche nell'app.
 
-    Con un cavo dati puoi anche usare **Gestione campioni › Collegamento al PC via USB** sulla Regia: apri le impostazioni del tethering, attiva Tethering USB, poi **Avvia server**. Sul PC Windows apri l'indirizzo con IP e porta mostrato e inserisci il PIN. [Procedura completa e problemi di collegamento](../chi-dirige/tethering-pc.md).
+    Con un cavo dati puoi anche usare **Gestione campioni › Dal PC via USB** sulla Regia: apri le impostazioni del tethering, attiva Tethering USB, poi **Avvia server**. Sul PC Windows apri l'indirizzo con IP e porta mostrato e inserisci il PIN. [Procedura completa e problemi di collegamento](../chi-dirige/tethering-pc.md).
 
 ## Fai
 
-1. Menu ☰ › **Import/Export** › **«Prepara i file (allevatore e fine lavori)»**.
+1. Menu ☰ › **Gestione campioni › Sul tablet › Fine lavori ed esportazioni** (in precedenza denominata Import/Export).
 2. Leggi le **cose da fare per l'allevatore**: un testo da mandare su WhatsApp o per email.
 3. In fondo, **«Zip completo»**: «Salva lo zip» o «Condividi».
 

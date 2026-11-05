@@ -149,7 +149,7 @@ nav:
           - "Lo stato della rete in alto": riferimento/banner.md
           - "Statistiche": riferimento/statistiche.md
           - "Il Plateau della Regia": riferimento/plateau.md
-          - "Soluzione problemi": riferimento/problemi.md
+          - "Problemi da risolvere": riferimento/problemi.md
           - "Riordino dei plateau": riferimento/riordino.md
           - "Backup e ripristino": riferimento/backup.md
           - "Fine lavori in Fejalog": riferimento/fine.md
@@ -157,6 +157,14 @@ nav:
           - "Pausa, chiusura e uscita": riferimento/uscita.md
           - "Se qualcosa va storto": riferimento/guasti.md
           - "Le parole": riferimento/parole.md
+          - "Messaggi": riferimento/messaggi.md
+          - "Dispositivo": riferimento/dispositivo.md
+          - "QR d'ingresso": riferimento/qringresso.md
+          - "Pausa e ripresa": riferimento/pausa.md
+          - "App": riferimento/app.md
+          - "Cartelle": riferimento/cartelle.md
+          - "Briefing": riferimento/briefing.md
+          - "Informazioni": riferimento/informazioni.md
           - "Crediti": riferimento/crediti.md
       # <<< riferimento
       - "ARVET e gli snippet": arvet.md

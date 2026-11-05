@@ -7,8 +7,8 @@ plateau da 100.
 
 ## Fai
 
-1. Chiudi il campionamento (**Checklist › Chiudi campionamento**): il riordino si fa solo a campionamento chiuso.
-2. Menu ☰ › **Gestione campioni › Riordino plateau**: la sistemazione si calcola da sola, col motore di Fejalog. Se il
+1. Chiudi il campionamento da **Configurazione › 5. Checklist e avvio**: il riordino si fa solo a campionamento chiuso.
+2. Menu ☰ › **Gestione campioni › Sul tablet › Riordino plateau**: la sistemazione si calcola da sola, col motore di Fejalog. Se il
    lavoro cambia dopo, la sistemazione si aggiorna; puoi usare anche **«Ricalcola»**.
 3. Segui la **guida**: ogni riga dice l'etichetta scritta sulla provetta e **da dove prenderla**, come nel Plateau («Plat. 1 · Pozz. 11 (Problematici)»). Ogni provetta va **direttamente al numero finale, una volta sola**. Ogni riga mostra la fattispecie. Premi **Invia** sulla singola riga, oppure seleziona le righe e premi **Invia le selezionate**.
 4. Il numero di campo non si cancella e non si copre: si **barra con una riga sola** e si scrive accanto il numero
@@ -47,8 +47,7 @@ plateau da 100.
     - La **chiusura dei buchi** sui prenumerati avviene prima dei problematici, tranne per i maschi ovini che si compattano dopo i problematici maschi.
     - I **problematici** vanno in coda alla rispettiva serie; i codici problematici mostrati e le etichette delle provette da isolato ricevono il numero sequenziale finale.
     - Ogni provetta spostata ha la sua riga nella guida, dal suo pozzetto fisico registrato alla consegna al numero finale.
-    - Le azioni applicate sono nel registro: selezionare non equivale a fare. **Dal primo invio applicato il campionamento è chiuso per sempre**: in
-      Checklist la riapertura non c'è più.
+    - Le azioni applicate sono nel registro: selezionare non equivale a fare. **Dal primo evento di gestione applicato il campionamento è chiuso per sempre**: in **5. Checklist e avvio** la riapertura non c'è più.
     - Gli spostamenti a mano entrano nella guida e nei file di fine lavori.
 
 !!! info "Dal numero di campo si risale sempre al capo"

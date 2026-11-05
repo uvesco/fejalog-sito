@@ -2,15 +2,15 @@
 
 > **A chi serve**: a tutti · **Tempo di lettura**: 1 minuto
 
-**Dal capo alla provetta, fino ai file per il laboratorio.** Fejalog accompagna i veterinari nella profilassi della brucellosi ovicaprina, su rete Wi-Fi locale autonoma, **anche dove internet non arriva**.
+**Dal capo alla provetta, fino all'accettazione per il laboratorio.** Fejalog registra le provette per i prelievi di sangue per la profilassi della brucellosi ovicaprina lavorando su rete Wi-Fi locale autonoma, **anche dove internet non arriva**, fornisce una struttura per la risoluzione dei problemi nei campioni ed agevola il caricamento dell'accettazione per il laboratorio.
 
 ---
 
 ## Cos'è Fejalog in un minuto
 
-- **Cosa fa**: organizza la registrazione in campo delle provette di sangue. I veterinari cercano i capi con il lettore di microchip Bluetooth o digitando poche cifre sul palmare; un tablet (**la Regia**) coordina la squadra, riceve le provette e guida il riempimento dei plateau (rack da 100 pozzetti). A fine giornata produce il modello 2/33, le statistiche per persona e gli **snippet ARVET** per preparare l’inserimento dei campioni dal PC, da controllare prima del salvataggio in ARVET.
-- **Per chi è**: per i veterinari dei Servizi Veterinari (ASL del Piemonte e ovunque si svolga profilassi ovicaprina) che lavorano in stabilimento, al pascolo o in alpeggio.
-- **Cosa NON fa**: **non richiede internet** in campo; non richiede un servizio cloud per campionare; i backup possono andare nella cartella, anche cloud, scelta dalla Regia; **non scrive direttamente in ARVET** (produce gli snippet che il veterinario incolla su PC).
+- **Cosa fa**: organizza la registrazione in campo delle provette di sangue. I veterinari cercano i capi con il lettore di microchip Bluetooth o digitando poche cifre sul cellulare che opera come palmare; un tablet (**la Regia**) coordina la squadra, riceve le provette e guida il riempimento dei plateau (rack da 100 pozzetti). A fine giornata riordina i campioni, guida alla soluzione di quelli problematici, consentendo di lavorare dal PC.
+- **Per chi è**: per i veterinari dei Servizi Veterinari (è ottimizzata per caricare i dati in Arvet per ASL del Piemonte ma può esportare una tabella di corrispondenza provetta-contrassegno che può essere utilizzata anche in altri sistemi).
+- **Cosa NON fa**: **non richiede internet** in campo; non richiede un servizio cloud per campionare; i backup possono andare nella cartella, anche cloud, scelta dalla Regia; **non scrive direttamente in ARVET**.
 
 ---
 
@@ -49,7 +49,7 @@
 
     ---
 
-    Valuti l'adozione per il servizio veterinario: garanzie di integrità del dato, destinazione dei backup e limiti operativi da verificare prima dell’adozione.
+    Valuti l'utilizzo dell'app: garanzie di integrità del dato, destinazione dei backup e limiti operativi da verificare prima dell’adozione.
 
     [:octicons-arrow-right-24: Leggi la guida per decisori](inizia-qui/ruoli.md)
 
@@ -80,11 +80,11 @@ Tutti i dettagli e le quantità raccomandate sono descritti in [I requisiti in b
 
 Fejalog è progettato attorno a cinque principi architetturali irrinunciabili:
 
-1. **Un numero non si ripete mai**: etichette distinte e allarme con rinomina per le collisioni simultanee.
+1. **Un numero non si ripete mai**: etichette sempre distinte e allarme in caso di prelievo di un animale con lo stesso contrassegno di uno già prelevato (o doppio prelievo dello stesso animale...).
 2. **Niente si cancella**: ogni correzione è un evento nuovo concatenato nel registro.
-3. **Tutti i telefoni hanno la stessa storia**: sincronizzazione deterministica tra dispositivi.
-4. **Ogni doppio si ritrova a fine lavori**: controllo in rete e verifica finale sui registri riuniti di tutti i palmari.
-5. **Rete locale senza internet**: i dati restano protetti nelle mani della squadra.
+3. **Tutti i telefoni hanno la stessa storia**: tutti i dispositivi condividono una copia del registro degli eventi.
+4. **Ogni doppio si ritrova a fine lavori**: controllo in rete e verifica finale sui registri riuniti di tutti i palmari se dovesse cadere la rete durante il campionamento o isolarsi qualche palmare.
+5. **Rete locale senza internet**: è possibile lavorare anche in luoghi remoti senza copertura di rete.
 
 Approfondisci significati pratici, indicatori a schermo e limiti dichiarati in [Le cinque garanzie](inizia-qui/cinque-garanzie.md).
 

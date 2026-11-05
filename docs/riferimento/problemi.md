@@ -1,6 +1,6 @@
 <!-- Pagina generata da Fejalog (ScriviSito) dai testi dell'app: non modificare qui. -->
 
-# Soluzione problemi
+# Problemi da risolvere
 
 ## Da risolvere a fine lavoro
 
