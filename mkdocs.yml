@@ -168,6 +168,6 @@ nav:
           - "Crediti": riferimento/crediti.md
       # <<< riferimento
       - "ARVET e gli snippet": arvet.md
-      - "Novità e versioni": novita.md
+      - "Versioni e novità": novita.md
       - "Domande frequenti": domande.md
       - "Sotto il cofano: problemi e architettura": riferimento/sotto-il-cofano/index.md

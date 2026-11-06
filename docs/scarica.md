@@ -1,8 +1,7 @@
 # Scarica
 
-Tutto si scarica dall'**ultima versione** pubblicata. L'elenco di tutte le versioni è nella
-[pagina delle versioni](https://github.com/uvesco/fejalog-sito/releases); che cosa cambia in ognuna è nelle
-[Novità](novita.md).
+Qui si scarica l'**ultima versione** pubblicata. In [Versioni e novità](novita.md) trovi le note
+e i download di tutte le versioni, anche quelle precedenti.
 
 | File | Che cos'è |
 |---|---|
