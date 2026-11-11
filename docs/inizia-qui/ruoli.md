@@ -2,7 +2,7 @@
 
 > **A chi serve**: chi si orienta per la prima volta nella documentazione · **Tempo di lettura**: 2 minuti
 
-La documentazione di Fejalog è strutturata attorno ai tre ruoli operativi che intervengono nella profilassi: il **veterinario prelevatore**, il **responsabile della Regia** e i **decisori dei servizi veterinari**.
+La documentazione di Fejalog è strutturata attorno ai tre ruoli operativi che intervengono nella profilassi: il **veterinario prelevatore**, il **responsabile della Regia** e i **decisori dei servizi veterinari**. Per comprendere l'alternanza dei compiti e cosa vede ciascun dispositivo nelle diverse fasi della giornata, consulta la guida [**Fasi di lavoro e ruoli**](fasi-e-ruoli.md).
 
 ---
 

@@ -1,10 +1,10 @@
 <!-- Pagina generata da Fejalog (ScriviSito) dai testi dell'app: non modificare qui. -->
 
-# Collegamento al PC Windows via USB
+# Collegamento al PC via USB
 
 ## Prima: sulla Regia
 
-- Chiudi il campionamento dalla Checklist e apri Gestione campioni › Dal PC via USB. Il dispositivo Android resta la Regia; il computer usa la pagina degli strumenti nel browser.
+- Per preparare il progetto apri Configurazione › Dal PC via USB, sulla Regia o da solo. Per la Gestione, chiudi il campionamento e apri Gestione campioni › Dal PC via USB. Il dispositivo Android resta la Regia; il computer usa la pagina degli strumenti nel browser.
 - Collega Regia e PC Windows con un cavo dati USB. Un cavo solo ricarica non basta. Non occorrono debug USB, ADB o la modalità Trasferimento file: serve la connessione di rete Tethering USB.
 
 ## 1. Attiva Tethering USB su Android
@@ -19,11 +19,18 @@
 - Compaiono Server attivo, la porta 47801, l'indirizzo completo http://IP-del-tablet:47801/ e il PIN. L'IP è quello effettivo del collegamento USB, non un numero fisso; compare soltanto dopo l'avvio riuscito.
 - Copia indirizzo mette il link negli appunti del tablet. Non lo trasferisce automaticamente negli appunti di Windows; sul PC puoi digitare l'indirizzo mostrato. Il PIN non fa parte del link.
 
-## 3. Dal PC Windows
+## 3. Dal PC Windows o Linux
 
 - Apri Chrome, Edge o Firefox e digita l'indirizzo nella barra degli indirizzi, incluso http:// e :47801. Non usare https, localhost o l'indirizzo del PC. Inserisci il PIN mostrato dalla Regia e autorizza l'accesso.
-- La pagina carica il backup corrente dal tablet. Il server risponde solo sulla connessione USB: la rete Wi-Fi comune, da sola, non basta.
+- La pagina mostra le schede della fase corrente: configurazione prima dell’avvio, Gestione dopo la chiusura. Il server risponde solo sulla connessione USB: la rete Wi-Fi comune, da sola, non basta.
+- Su Linux attendi che NetworkManager riconosca la connessione USB, poi usa lo stesso indirizzo nel browser. La prova sui PC reali resta necessaria.
 - Windows può indicare Nessun accesso a Internet sulla rete USB: il collegamento locale può comunque funzionare. Per ARVET serve invece mantenere la normale connessione del PC alla rete ASL.
+
+## Configura dal PC e passa la regia al tablet
+
+- Sull’A55, senza progetto aperto, apri Nuovo progetto › Dal PC via USB. Dopo il PIN e la conferma sul device, dal PC crei il progetto (vuoto, dai file BDN o da un pacchetto di svet-tools; l’elenco dei veterinari conservato sul device entra nel pacchetto) e lo configuri: parametri, regole e file d’ingresso con anteprima. I dati vengono salvati dal device.
+- Dal PC puoi modificare lettere e sigle, scegliere fra le reti già salvate senza vederne le password, scaricare la numerazione e le stampe. Le cartelle e le credenziali si impostano sul device.
+- A configurazione completa il QR è disponibile anche prima dell’avvio: fai entrare il tablet, attendi l’allineamento e dall’A55 cedigli la regia. La sessione PC dell’A55 termina. Avvia il campionamento dal tablet, dalla Checklist. In alternativa apri sul tablet il backup del progetto configurato e subentra come Regia.
 
 ## Riporta le modifiche e termina
 

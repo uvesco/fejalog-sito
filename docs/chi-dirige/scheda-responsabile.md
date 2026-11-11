@@ -36,6 +36,7 @@ Non riutilizzare l'etichetta di una provetta annullata. Per i controlli sui dopp
 
 ## Pagine collegate
 
+- [Fasi di lavoro e ruoli](../inizia-qui/fasi-e-ruoli.md)
 - [Preparare il progetto](avvio.md)
 - [Consegne e plateau](consegne-plateau.md)
 - [Rete e dispositivi](rete.md)

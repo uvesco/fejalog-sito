@@ -22,6 +22,10 @@ function crea(invia) {
     });
   }
   return {
+    configurazione: function () { return richiesta('configurazione').then(function (r) { return r.json(); }); },
+    configura: function (dati) { return richiesta('configurazione', {method:'POST', headers:{'X-Fejalog-Richiesta':'1','Content-Type':'application/json'}, body:JSON.stringify(dati)}).then(function(r){return r.json();}); },
+    fileIngresso: function (tipo, file) { return richiesta('file-ingresso', {method:'POST', headers:{'X-Fejalog-Richiesta':'1','X-Fejalog-Tipo':tipo,'X-Fejalog-Nome':encodeURIComponent(file.name),'Content-Type':'application/octet-stream'},body:file}).then(function(r){return r.json();}); },
+    numerazione: function () { return richiesta('numerazione.csv').then(function(r){return r.text();}); },
     stato: function () { return richiesta('stato').then(function (r) { return r.json(); }); },
     accesso: function (pin) { return richiesta('accesso', { method: 'POST', headers: { 'X-Fejalog-Richiesta': '1', 'X-Fejalog-Pin': pin.replace(/\s/g, '') } }); },
     backup: function () { return richiesta('backup').then(function (r) { return r.arrayBuffer(); }); },

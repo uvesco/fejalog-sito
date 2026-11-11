@@ -20,7 +20,7 @@ La preparazione del progetto sulla Regia trasforma i dati anagrafici ufficiali s
 
 ## 2. Cosa si fa: i passi di preparazione
 
-Apri Fejalog sul tablet e tocca **«Nuovo progetto»** in **Progetto** (oppure apri un pacchetto già preparato da **Progetto › Apri progetto**).
+Apri Fejalog sul tablet e tocca **«Nuovo progetto»** in **Progetto** (oppure apri un pacchetto già preparato da **Progetto › Apri progetto**). I palmari della squadra non partecipano alla configurazione: entreranno solo dopo l'avvio del campionamento (vedi [Fasi di lavoro e ruoli](../inizia-qui/fasi-e-ruoli.md)).
 
 ![Menu della Regia in fase di configurazione](../img/menu/menu_regia_configurazione.png)
 *Il menu della Regia in configurazione: i passi di preparazione ordinati (Parametri, Stabilimenti, Dati input, Rete, Checklist).*
@@ -51,9 +51,8 @@ Entrambi i versi seguono rigorosamente la numerazione ordinata riga per riga (ma
 ### Passo 6: Problematici in sequenza unica
 Sempre in **1. Parametri e regole**, nei progetti nuovi, i campioni problematici, i doppi prelievi e i capi fuori registro confluiscono in un'**unica sequenza progressiva per tutto il progetto**, indipendentemente da stabilimento e specie. Sul tavolo della Regia è presente un solo plateau problematici alla volta; quando raggiunge 100 provette, viene archiviato e sostituito dal successivo.
 
-### Passo 7: Capi ricercati e regole di fine lavoro
-- In **Configurazione › 3. Dati input** (sezione Capi ricercati), inserisci eventuali animali segnalati con il motivo e l'azione da compiere (compariranno evidenziati in viola sui telefoni con vibrazione dedicata);
-- In **Configurazione › 1. Parametri e regole** (sezione Regole per i problematici), definisci come trattare a fine lavoro le varie tipologie di anomalie (es. «Tutte in coda» per inviarle in coda su ARVET tramite snippet, oppure «Elimina tutte» per quelle da escludere definitivamente).
+### Passo 7: Capi ricercati
+- In **Configurazione › 3. Dati input** (sezione Capi ricercati), inserisci eventuali animali segnalati con il motivo e l'azione da compiere (compariranno evidenziati in viola sui telefoni con vibrazione dedicata). Le soluzioni per le varie tipologie di anomalie non si configurano in anticipo nelle impostazioni: si decideranno ex post in Gestione campioni (Problemi da risolvere).
 
 ---
 
@@ -90,6 +89,7 @@ I progetti precedenti senza le nuove impostazioni conservano il verso dal basso 
 ---
 
 ## Pagine collegate
+- [Fasi di lavoro e ruoli](../inizia-qui/fasi-e-ruoli.md)
 - [Rete locale e gestione dispositivi](rete.md)
 - [Consegne delle provette e gestione dei plateau](consegne-plateau.md)
 - [Stampe pre-campo e calcolo materiale](../strumenti/prima-del-campo.md)

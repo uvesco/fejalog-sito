@@ -65,12 +65,13 @@ Nel registro l'annullo viene memorizzato come evento formale di rettifica: l'eti
 ---
 
 ### Chi assegna i pozzetti fisici nei plateau?
-**La Regia.** A campionamento aperto, i veterinari prelevatori consegnano periodicamente le provette raccolte al tavolo del coordinatore. Il responsabile tocca **«Ricevi»** per prendere in carico i campioni e li alloggia nei pozzetti dei plateau da 100 posti secondo lo schema visualizzato a video.
+**La Regia.** Il palmare partecipa solo alla fase di campionamento (vedi [Fasi di lavoro e ruoli](../inizia-qui/fasi-e-ruoli.md)); la collocazione nei plateau e la successiva gestione sono a carico della Regia. A campionamento aperto, i veterinari prelevatori consegnano periodicamente le provette raccolte al tavolo del coordinatore. Il responsabile tocca **«Ricevi»** per prendere in carico i campioni e li alloggia nei pozzetti dei plateau da 100 posti secondo lo schema visualizzato a video.
 
 ---
 
 ## Pagine collegate
 
+- [Fasi di lavoro e ruoli](../inizia-qui/fasi-e-ruoli.md)
 - [In campo (scheda pratica)](in-campo.md)
 - [Cosa succede se…](cosa-succede-se.md)
 - [Preparare il telefono](../veterinari.md)

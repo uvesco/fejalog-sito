@@ -4,7 +4,7 @@
 
 ## Cercare il capo
 
-- Sul tastierino le ultime cifre del contrassegno (bastano 3–6), anche se comincia per IT: compaiono i capi che finiscono con quelle cifre, poi quelli che le contengono.
+- Sul tastierino le ultime cifre del contrassegno (bastano 3–6), anche se comincia per IT: compaiono i capi che finiscono con quelle cifre, poi quelli che le contengono. Nel Campionamento si cerca solo per contrassegno, mai per numero di provetta.
 - Col lettore di microchip Bluetooth il codice entra da solo (380 o 0380 più 12 cifre, o di un altro paese): se il capo è uno solo, Invio lo sceglie.
 - Cambia fra pecore e capre con le schede, lo scorrimento di lato o le frecce destra/sinistra: il codice letto o digitato resta nel campo e la ricerca riparte nella nuova specie.
 - Se cambi specie con la conferma aperta, il foglio si chiude: con un solo capo compatibile si riapre per quello, altrimenti resta l'elenco. Riaprendo lo stesso capo ritrovi note, marche e scelte; con un capo diverso ricontrollale.
@@ -13,10 +13,12 @@
 ## Il foglio di conferma
 
 - Si apre dal basso quando si sceglie il capo; si chiude con Annulla, trascinandolo giù o toccando fuori.
-- Il riquadro mostra esattamente la scritta da mettere sulla provetta. Rosso: «Scrivi sempre il contrassegno COMPLETO», oltre al codice problematico. Blu: «Preso senza tutti collegati: non scrivere il contrassegno, solo l'etichetta». Neutro: «Scrivi solo l'etichetta». La banda del capo conserva il suo colore.
+- Il riquadro mostra esattamente la scritta da mettere sulla provetta, riga per riga; l'istruzione in grassetto sta sotto il riquadro. Rosso: problematica, «Scrivi tutto: progressivo e contrassegno completo» (e i dati se la BDN non li ha). Blu: preso senza tutti collegati, «Scrivi solo il progressivo». Neutro: «Scrivi solo il progressivo». La banda del capo conserva il suo colore.
+- Nel riquadro del foglio c'è esattamente ciò che si copia sulla provetta; le istruzioni stanno sotto. Le iniziali del prelevatore DOPO il numero («125-UV») indicano la provetta col numero preassegnato presa da isolato; PRIMA del numero («UV-15») indicano una provetta senza numero preassegnato, col progressivo del prelevatore.
+- Che cosa scrivere sulla provetta (esempi): Ordinaria, con tutti collegati: 125 (Scrivi solo il progressivo) · Ordinaria con il cerchietto dello stabilimento: Ⓧ125 (Scrivi solo il progressivo) · Ordinaria presa da isolato: 125-UV (Scrivi solo il progressivo) · Problematica (doppio, uscito, altro stabilimento, fuori età, errore di specie): UV-15 C / IT066000000113 (Scrivi tutto: progressivo e contrassegno completo) · Contrassegno non registrato in BDN o marca disponibile: UV-15 C / IT066000000113 / F · 01/03/2022 · Sarda (Scrivi tutto: progressivo, contrassegno completo e dati) · Animale senza contrassegno: UV-16 C / senza marca · F · bocca piena · Sarda (Scrivi tutto: progressivo e dati dell'animale (non ha contrassegno)).
 - Tastiera o telecomando: il focus iniziale è su Conferma e basta un solo Invio/OK. Su/giù spostano il bordo del focus fra i controlli in ordine di schermata, tornando al primo dopo l'ultimo. Invio/OK o spazio attivano il controllo in focus: per registrare torna su Conferma, oppure toccalo.
 - Telecomando o tastiera Bluetooth nuovi: Impostazioni › Dispositivo › Prova del telecomando mostra il nome di ogni tasto e che cosa fa.
-- Telecomando che fa da dito (come il BLE-M3, quello per i selfie con la croce): le frecce fanno da frecce, il tasto centrale è OK (conferma), l'altro tasto è Indietro (annulla). I suoi tocchi non arrivano allo schermo: Fejalog li trasforma in tasti.
+- Telecomando che fa da dito o da mouse (come il BLE-M3, quello per i selfie con la croce): le frecce fanno da frecce, il tasto centrale è OK (conferma), l'altro tasto è Indietro (annulla); tenendo premuto su o giù il bordo scorre. Anche se compare il cursore, i suoi tocchi e clic non arrivano allo schermo e il volume del telefono non cambia: Fejalog li trasforma in tasti.
 - Nelle note la barra spaziatrice scrive uno spazio; lascia il campo con su/giù o Tab (Maiusc+Tab torna indietro). Esc e Indietro annullano il foglio. Destra/sinistra cambiano specie conservando il codice.
 - Da sostituire: SX (orecchino sinistro, accessorio), DX (destro, elettronico) e bolo, se mancano o non si leggono. DX o bolo segnalati = SENZA TRANSPONDER, in rosso.
 - Sesso corretto, se in anagrafe è sbagliato; nota facoltativa.

@@ -9,7 +9,7 @@
 
 - 1. Chi usa questo device: una volta sola, in Impostazioni › Utente. Il nome del telefono si cambia in Impostazioni › Dispositivo.
 - 2. Il progetto: lo crea o lo riapre la Regia (🏷️ Progetto › Nuovo progetto, Apri progetto, Recenti). I palmari lo ricevono entrando in rete.
-- 3. Configurazione: Parametri e regole, Stabilimenti e sigle, Dati input, Rete del progetto, Checklist e avvio. QR d'ingresso e Stampe hanno voci proprie.
+- 3. Configurazione: Parametri e regole, Sigle stabilimenti e veterinari, Dati input, Rete del progetto, Checklist e avvio. QR d'ingresso e Stampe hanno voci proprie.
 - 4. Carica gli input da Configurazione › 3. Dati input: registri BDN, contrassegni ed eventuali ricercati. Se si lavora in rete, i palmari entrano col QR della Regia.
 - 5. Il campionamento (💉 Campionamento): si cerca il capo, si conferma, si scrive il numero sulla provetta. La Regia riceve le provette e le mette nei plateau (Plateau).
 - 6. I problemi, per tipologia e provetta per provetta (⚠️ Problemi da risolvere).

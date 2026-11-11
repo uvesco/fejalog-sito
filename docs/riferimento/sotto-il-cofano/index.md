@@ -93,11 +93,11 @@ sequenceDiagram
 
 1. **Numerazione deterministica al caricamento dei registri**: all'avvio della seduta, i capi presenti e in età diagnostica ricevono un progressivo potenziale naturale in base all'ordine alfabetico di contrassegno `1..N` (con i maschi in testa per preservare il blocco profilassi *Brucella ovis*). Non ci sono contese di blocchi o riserve dinamiche durante il prelievo. Un numero di provetta corrisponde ad un contrassegno fin da prima di arrivare in campo, operando in rete si scoprono i doppi contrassegni (o doppi prelievi);
 2. **Sigle dei veterinari e lettere degli stabilimenti, mai confondibili**:
-   - nei progetti nuovi ogni veterinario ha una **sigla di due lettere** confermata dalla Regia (per esempio `UV`), unica nel progetto e condivisa fra i suoi device, insieme al progressivo dei problematici;
+   - nei progetti nuovi ogni veterinario ha una **sigla di due lettere** assegnata automaticamente dalla Regia (per esempio `UV`), unica nel progetto e condivisa fra i suoi device, insieme al progressivo dei problematici;
    - gli stabilimenti secondari hanno una lettera nel **cerchietto in testa** all'etichetta (per esempio `Ⓧ125`): sigla e cerchietto stanno in posti diversi e non si confondono;
    - classifiche e statistiche seguono la persona (codice fiscale), anche se cambia telefono;
    - nei progetti precedenti alle sigle restano le lettere previste all'inizio, mai condivise fra un device e uno stabilimento;
-3. **Prelievi da isolato con la sigla**: quando i doppi non sono controllati (rete assente o colleghi che non rispondono), l'etichetta aggiunge dopo la barra la sigla di chi preleva (per esempio `125/UV`). Così anche due veterinari sconnessi non producono mai etichette uguali;
+3. **Prelievi da isolato con la sigla**: quando i doppi non sono controllati (rete assente o colleghi che non rispondono), l'etichetta aggiunge dopo il trattino la sigla di chi preleva (per esempio `125-UV`; la forma storica `125/UV` si legge ancora). Così anche due veterinari sconnessi non producono mai etichette uguali;
 4. **Gestione deterministica delle collisioni simultanee**:
    - Qualora due nodi allineati in rete confermino simultaneamente lo stesso capo prima della replica TCP, il fold deterministico identifica l'anomalia;
    - Viene apposta automaticamente su entrambi i record la nota di audit:

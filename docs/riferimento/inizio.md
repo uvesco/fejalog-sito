@@ -4,10 +4,9 @@
 
 ## Regole per i problematici
 
-- I capi smarriti (W) e rubati (H, F) dello stabilimento, trovati in campo, vanno sempre fra i problematici: nessun numero preassegnato, plateau problematici e coda a fine lavoro (dopo la denuncia di ritrovamento).
-- Lettera di specie: con pecore e capre nello stesso progetto almeno una delle due ha la lettera (C o P), di base la meno numerosa; «Nessuna» non si può scegliere, così una pecora e una capra non hanno mai la stessa scritta. Si fissa all'avvio del campionamento.
-- In Configurazione › 1. Parametri e regole sceglie anche cosa fare a fine lavoro di ogni tipologia di problematiche: in coda (in ARVET le aggiunge lo snippet), o eliminate (messe da parte: niente numero finale, niente ARVET).
-- Meglio scegliere all'inizio: dopo ci sono meno spostamenti. Si possono cambiare anche dopo, e le provette già fatte seguono da sole in sistemazione. Valgono per tutti i device.
+- I capi smarriti (W) e rubati (H, F) dello stabilimento, trovati in campo, vanno sempre fra i problematici: nessun numero preassegnato, secchio dei problematici e coda a fine lavoro (dopo la denuncia di ritrovamento).
+- Lettera di specie: con pecore e capre nello stesso progetto almeno una delle due ha la lettera (C o P), di base la meno numerosa; «Nessuna» non si può scegliere, così una pecora e una capra non hanno mai la stessa scritta. Si fissa all'avvio del campionamento. Se una seconda specie arriva in corsa quando era scelta Nessuna, quella ancora senza provette prende automaticamente la sua lettera; le etichette già scritte non cambiano.
+- Le soluzioni per le varie tipologie di problematiche (in coda per ARVET o eliminate per escluderle) non si scelgono in anticipo nelle impostazioni: si decidono ex post in Gestione campioni (Problemi da risolvere).
 
 ## Capi ricercati
 
@@ -19,8 +18,9 @@
 
 - La numerazione delle pecore viene salvata in nuovi CSV alla prima assegnazione e dopo modifiche e scambi: nella cartella di progetto se disponibile, sempre anche sul dispositivo. I numeri di campo restano distinti dai finali calcolati.
 - Da Configurazione › 1. Parametri e regole › File del progetto scegli una cartella aggiuntiva, anche su chiavetta USB collegata ad Android. Copia i file mancanti verifica le copie presenti senza sovrascriverle. La destinazione aggiuntiva riceve anche backup e uscite prodotti dopo la scelta; se scollegata, le copie restano sul dispositivo.
-- Le reti salvate risiedono nelle Impostazioni dell'app e restano disponibili per tutti i progetti. Nelle Impostazioni del progetto scegli principale e riserva: vengono trasmesse ai palmari prima del lavoro.
-- Se la disconnessione si prolunga, la Regia avvia l'hotspot predisposto dalle impostazioni Android. I palmari, se la Wi-Fi resta persa per 45 secondi, provano da soli l'altra rete scelta (il telefono può chiedere una conferma: va data); oppure si sceglie Collegati alla riserva in Rete e dispositivi. Se cambia l'indirizzo della Regia, la ritrovano in rete o inquadrano il nuovo QR.
+- La Regia copia il registro sulla chiavetta USB, nella cartella del progetto sotto «registro»: pacchetto.json e un file .jsonl per device; ogni device tiene anche il suo specchio in Documents/Fejalog. Se il tablet si rompe o si perde, da un altro device scegli Riconcilia backup › Da una cartella e indica la chiavetta (puoi aggiungere altre cartelle o zip; lo specchio di un palmare ha solo i file .jsonl, quindi serve insieme alla chiavetta o a un backup col pacchetto): Fejalog ricostruisce il progetto con le stesse verifiche degli zip e lo apre.
+- Le reti salvate risiedono nelle Impostazioni dell'app e restano disponibili per tutti i progetti. In Configurazione › 4. Rete del progetto scegli le reti del progetto, in ordine: arrivano ai palmari, e ogni telefono le salva in Android inquadrando il loro QR Wi-Fi prima del lavoro.
+- Se il router cade, accendi l'hotspot del tablet (impostazioni di Android, nome e password fissi, già salvati sui telefoni): Android ci sposta da solo i telefoni e Fejalog ritrova la squadra, col tablet come gateway. Se serve, «Passa tutti qui» avvisa i palmari di toccare la rete nel pannello Wi-Fi. Ultima risorsa, il QR della Regia.
 - La cartella di lavoro conserva input, impostazioni, backup e uscite. Il lavoro è disponibile offline; le copie non inviate restano sul dispositivo. Da Configurazione › 1. Parametri e regole › File del progetto usa Aggiorna archivio e invia copie pendenti quando la cartella torna raggiungibile.
 - La cartella cloud è un archivio: per riprendere il lavoro su un'altra Regia apri esplicitamente il backup. La selezione di cartelle OneDrive dipende dal provider Android e va verificata sul dispositivo; puoi anche scaricare o condividere i file verso Fejalog.
 

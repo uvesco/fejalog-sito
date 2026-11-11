@@ -20,7 +20,7 @@ Nelle situazioni di comproprietà, stabilimenti adiacenti o pascolo promiscuo, l
 
 ## 2. Fasi operative vincolanti e sicurezza di processo
 
-Il flusso operativo è governato da tre fasi tassative memorizzate nel registro a eventi crittografico:
+Il flusso operativo è governato da fasi tassative memorizzate nel registro a eventi crittografico (vedi [Fasi di lavoro e ruoli](inizia-qui/fasi-e-ruoli.md)):
 
 1. **`CONFIGURAZIONE`**: la Regia carica i dati BDN, assegna i ruoli e imposta le regole di seduta. I palmari attendono e non possono avviare prelievi.
 2. **`CAMPIONAMENTO_APERTO`**: una volta verificata la configurazione di partenza (età diagnostica e lettere di specie), si avviano i prelievi. I parametri strutturali si congelano per prevenire incoerenze sui progressivi.

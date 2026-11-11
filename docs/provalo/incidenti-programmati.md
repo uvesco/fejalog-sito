@@ -21,7 +21,7 @@ Nessun nome o codice fiscale reale nei profili. Usa «Anna Esempio», «Daniele 
 ## Minuti 00–10 · Preparazione e ingresso
 
 1. Sulla Regia usa **Progetto › Apri progetto** per caricare `pacchetto_888TO999_cinque_stabilimenti.json`. Non aprire il backup già campionato: serve un progetto da avviare.
-2. In **Configurazione** (sezioni 1. Parametri e regole e 2. Stabilimenti e sigle) controlla: principale `888TO999`, `888TO888`, `888TO777`, `888TO666` e `888TO555` di lavoro; `888TO222` di riferimento, età diagnostica 12 mesi, lettera `C` sulle capre, verso dall'alto al basso. Il verso e le lettere di specie si scelgono prima dell'avvio.
+2. In **Configurazione** (sezioni 1. Parametri e regole e 2. Sigle stabilimenti e veterinari) controlla: principale `888TO999`, `888TO888`, `888TO777`, `888TO666` e `888TO555` di lavoro; `888TO222` di riferimento, età diagnostica 12 mesi, lettera `C` sulle capre, verso dall'alto al basso. Il verso e le lettere di specie si scelgono prima dell'avvio.
 3. Prepara la rete locale. I palmari usano **Progetto › Entra col QR** per inquadrare il QR mostrato dalla Regia (da **Configurazione › QR d'ingresso** o dall'icona della rete), oppure aprono la voce diretta **Rete** e toccano **Chiedi di entrare** (con **Fai entrare** sul tablet).
 4. Controlla l'impronta del pacchetto e **l'allineamento del registro** in **4. Rete del progetto**: l'impronta del pacchetto da sola non certifica gli eventi successivi.
 5. La Regia apre **5. Checklist e avvio** e tocca **Avvia campionamento**. Tutti devono vedere lo stato aperto.

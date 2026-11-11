@@ -3,6 +3,7 @@
 # Riordino dei plateau
 
 - A campionamento chiuso, ogni riga mostra l'etichetta, la posizione di partenza, il numero finale suggerito e la fattispecie del problema.
+- Provetta in mano: scrivi l'etichetta o le cifre del contrassegno, o leggi il microchip. L'app trova la provetta del secchio, dice che cosa farne (numero e pozzetto, oppure eliminata) e l'invio scrive gli stessi eventi di sempre. Con più corrispondenze scegli quella che hai in mano.
 - Il campo A è modificabile. Ripristina riporta il suggerimento; le altre destinazioni suggerite restano ferme. Se il numero è occupato viene proposto uno scambio: senza conferma non si scrive niente.
 - Invia applica quella sola riga. La casella seleziona per Invia le selezionate, solo al numero suggerito: una destinazione modificata si invia singolarmente. Puoi selezionare tutte, nessuna o una fattispecie.
 - Lo stato fatta e il contatore vengono dalle azioni applicate, non dalla selezione. Il primo evento di gestione dopo la chiusura rende il campionamento definitivamente chiuso.

@@ -4,7 +4,7 @@
 
 ## Crea
 
-1. Menu ☰ › **Progetto › Nuovo progetto**.
+1. Senza un progetto aperto, Menu ☰ › **Nuovo progetto**.
 2. Indica **888TO999** come stabilimento di lavoro, la data e una descrizione facoltativa. Il tipo disponibile è **Profilassi ovicaprini**.
 3. Tocca **Crea e configura**. Non servono ancora i file della BDN.
 
@@ -13,9 +13,9 @@
 Da **Configurazione**:
 
 1. **Parametri e regole (1):** scegli l'età diagnostica, le lettere di specie, il verso di riempimento, le regole per i problematici e il backup automatico. Le cartelle dell'applicazione (locale per i backup e remota per i dati BDN) vengono configurate una volta sola in **Impostazioni › Cartelle** con permessi persistenti Android; all'uscita dal lavoro non serve selezionare cartelle.
-2. **Stabilimenti e sigle (2):** controlla lo stabilimento principale e gli eventuali secondari, le lettere assegnate alle serie e le sigle dei veterinari prelevatori.
+2. **Sigle stabilimenti e veterinari (2):** controlla lo stabilimento principale e gli eventuali secondari, le lettere assegnate alle serie e le sigle dei veterinari prelevatori.
 3. **Dati input (3):** carica registri BDN, contrassegni ed eventuali capi ricercati.
-4. **Rete del progetto (4):** se lavori con più device, definisci la modalità di rete, la rete principale e quella di riserva; i palmari entreranno da qui (o con **QR d'ingresso**).
+4. **Rete del progetto (4):** se lavori con più device, definisci la modalità di rete e le reti del progetto (router, hotspot del tablet), da salvare su ogni telefono col loro QR Wi-Fi; i palmari entreranno da qui (o con **QR d'ingresso**).
 5. Tocca **5. Checklist e avvio** per i controlli finali.
 
 <div class="schermate" markdown>
@@ -41,11 +41,11 @@ I successivi aggiornamenti si fanno sempre in **3. Dati input**: i numeri già a
 
 !!! atteso "Cosa devi vedere"
     Il progetto esiste prima dell’importazione. Dopo il caricamento, 888TO999 ha **1050 ovini e 150 capre presenti**, **10 e 4 contrassegni disponibili**; 888TO555 ha **8 ovini e 2 capre**.
-    In **Configurazione › 2. Stabilimenti e sigle**, prima dell’avvio, includi anche 888TO888 (X), 888TO777 (Y), 888TO666 (W) e 888TO555 (V).
+    In **Configurazione › 2. Sigle stabilimenti e veterinari**, prima dell’avvio, includi anche 888TO888 (X), 888TO777 (Y), 888TO666 (W) e 888TO555 (V).
     In alternativa apri il pacchetto già preparato, che contiene tutti e cinque gli stabilimenti di lavoro.
 
 ??? tip "Se hai già un progetto"
-    Usa **Progetto › Apri progetto** per un backup oppure un pacchetto già preparato in svet-tools. **Recenti** riapre i progetti presenti sul dispositivo. Rivedi la configurazione, poi passa ai dati.
+    Usa **Apri progetto** per un backup oppure un pacchetto già preparato in svet-tools. **Recenti** riapre i progetti presenti sul dispositivo. Rivedi la configurazione, poi passa ai dati. Per cambiare progetto devi prima usare **Esci dal progetto**: a progetto aperto gli accessi a Nuovo, Apri, Recenti ed Entra col QR non compaiono.
 
 ??? failure "C’è già un progetto aperto"
     Prima usa **menu › Esci dal progetto**. Il progetto resta nei Recenti.

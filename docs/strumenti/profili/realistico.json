@@ -1,0 +1,20 @@
+{
+  "formato": "fejalog-profilo-errori",
+  "versione": 1,
+  "nome": "profilo realistico",
+  "fonte": "prova di campo reale, circa 1030 capi campionati (pecore e capre); percentuali sui capi in età",
+  "percentuali": {
+    "doppio": 1.0,
+    "non_in_elenco": 1.1,
+    "smarrito": 0.6,
+    "uscito": 0.7,
+    "contrassegno_sbagliato": 2.0,
+    "marca_da_sostituire_dx": 3.0,
+    "marca_da_sostituire_sx": 2.0,
+    "bolo": 0.0,
+    "senza_orecchini": 0.5,
+    "non_campionato": 5.0,
+    "annullata": 1.0
+  },
+  "note": "contrassegno_sbagliato: metà corretto subito dalle Ultime, metà da trovare in gestione; senza_orecchini: animale senza nessuna marca leggibile (registrazione senza contrassegno)"
+}

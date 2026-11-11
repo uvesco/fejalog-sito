@@ -13,7 +13,8 @@
      i buchi), stamp, data (gg/mm/aaaa), motoreArvet (testo di arvet_fill.min.js), soloDati (niente file: per la pagina
      Riordino e per le cose da fare in campo), ricercati [{contrassegno, specie, provetta, cosa}] (i ricercati trovati,
      per le cose da fare), generatoIl (ora ISO del file delle anomalie),
-     partenze {uid: {specie, etichetta, vista: "serie" | "problematici", plateau, pozzetto}}:
+     partenze {uid: {specie, etichetta, vista: "serie" | "problematici" | "secchio", plateau, pozzetto}}
+     (il «secchio» è senza posto: plateau e pozzetto valgono 0 e la partenza è «dal secchio»):
      posti fisici dal dominio Kotlin (StatoPosati/SchemaPlateau), anche per le escluse. Se presenti devono coprire
      tutte le provette della numerazione. Senza questo ingresso resta la guida del motore per i chiamanti pregressi.
    Uscita: {file: [{nome, mime, base64 | testo}], riepilogo, dati (numerazione, invii, guida per specie, esiti degli
@@ -45,9 +46,10 @@ function foglio(nome, colonne, righe, testo) { return { nome: nome, colonne: col
    anche per PA1, né dal solo contrassegno, che può avere più provette. Si produce un solo passo per UID. */
 function partenza(inp, r) {
   var p = Object.prototype.hasOwnProperty.call(inp.partenze, r.uid) ? inp.partenze[r.uid] : null;
-  if (!p || p.specie !== r.specie || (p.vista !== 'serie' && p.vista !== 'problematici') ||
-      p.plateau < 1 || p.plateau !== Math.floor(p.plateau) || p.pozzetto < 1 || p.pozzetto > M.PLATEAU_SIZE ||
-      p.pozzetto !== Math.floor(p.pozzetto) || !p.etichetta) throw new Error('Partenza fisica mancante o non valida per una provetta di ' + r.specie);
+  var secchio = !!p && p.vista === 'secchio';
+  if (!p || p.specie !== r.specie || (p.vista !== 'serie' && p.vista !== 'problematici' && !secchio) ||
+      (!secchio && (p.plateau < 1 || p.plateau !== Math.floor(p.plateau) || p.pozzetto < 1 || p.pozzetto > M.PLATEAU_SIZE ||
+      p.pozzetto !== Math.floor(p.pozzetto))) || !p.etichetta) throw new Error('Partenza fisica mancante o non valida per una provetta di ' + r.specie);
   return p;
 }
 function guidaFisica(inp, numerazione, guidaMotore) {
@@ -63,9 +65,9 @@ function guidaFisica(inp, numerazione, guidaMotore) {
     return Object.assign({}, g || { da_n: r.provetta_campo, coda_da: '', corsia_da: '',
       a_n: r.provetta, plateau_a: Math.floor((r.provetta - 1) / M.PLATEAU_SIZE) + 1,
       pos_a: (r.provetta - 1) % M.PLATEAU_SIZE + 1, contrassegno: r.contrassegno, ruolo: r.gruppo,
-      motivo: p.vista === 'problematici' ? 'problematici' : 'riordino', fattispecie: r.fattispecie }, {
+      motivo: p.vista === 'serie' ? 'riordino' : 'problematici', fattispecie: r.fattispecie }, {
         uid: r.uid, da: p.etichetta, campo: p.etichetta, fisica: true, vista_da: p.vista,
-        plateau_da: p.plateau, pos_da: p.pozzetto, motivo: p.tipologia || (p.vista === 'problematici' ? r.fattispecie : 'Ordinaria'), fattispecie: p.tipologia || r.fattispecie
+        plateau_da: p.plateau, pos_da: p.pozzetto, motivo: p.tipologia || (p.vista !== 'serie' ? r.fattispecie : 'Ordinaria'), fattispecie: p.tipologia || r.fattispecie
       });
   }).filter(function (g) { return g != null; });
 }
@@ -185,6 +187,7 @@ function paginaGuida(inp, guida, escluse) {
       esclusa ? r.provetta_campo : r.a_n, r.vista_da || '', r.plateau_da, r.pos_da]));
   }
   function posto(r) {
+    if (r.vista_da === 'secchio') return ' <span class="nota">(dal secchio)</span>';
     return ' <span class="nota">(' + (r.vista_da === 'problematici' ? 'problematici, ' : '') +
       'plateau ' + esc(r.plateau_da) + ', pos ' + esc(r.pos_da) + ')</span>';
   }
@@ -330,7 +333,8 @@ function calcola(inp) {
   if (inp.partenze != null) escluse = escluse.map(function (r, i) {
     var originale = P.escluse[i], p = partenza(inp, originale);
     return Object.assign({}, r, { uid: originale.uid, provetta_campo: p.etichetta,
-      vista_da: p.vista, plateau_da: p.plateau, pos_da: p.pozzetto, motivo: p.tipologia || (p.vista === 'problematici' ? r.fattispecie : 'Ordinaria'), fattispecie: p.tipologia || r.fattispecie });
+      vista_da: p.vista, plateau_da: p.plateau, pos_da: p.pozzetto,
+      motivo: p.tipologia || (p.vista !== 'serie' ? r.fattispecie : 'Ordinaria'), fattispecie: p.tipologia || r.fattispecie });
   });
   var bo = M.brucellaOvisArvet(fin, ordine, compatta, spost);
   var cs = M.reportCorrezioniSesso(fin), np = M.reportNonProvati(presenti.pecore, presenti.capre, fin);

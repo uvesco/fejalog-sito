@@ -1,0 +1,404 @@
+/* =============================================================================
+ * Stili per il Simulatore di Campo e Tutorial a Slide di Fejalog
+ * ============================================================================= */
+
+.fej-sim-contenitore {
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--md-default-fg-color, #263238);
+}
+
+/* Barra superiore / Selettore modalità */
+.fej-sim-modalita-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--md-default-fg-color--lighter, #dce4e7);
+  padding-bottom: 0.25rem;
+}
+
+.fej-sim-tab-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--md-default-fg-color--light, #46565d);
+  transition: all 0.2s ease;
+}
+
+.fej-sim-tab-btn:hover {
+  color: var(--md-primary-fg-color, #006b5b);
+}
+
+.fej-sim-tab-btn.fej-sim-tab-attiva {
+  color: var(--md-primary-fg-color, #006b5b);
+  border-bottom-color: var(--md-primary-fg-color, #006b5b);
+}
+
+/* Pannello Configurazione Iniziale */
+.fej-sim-config-box {
+  background: var(--md-code-bg-color, #f4f6f7);
+  border: 1px solid var(--md-default-fg-color--lighter, #dce4e7);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.fej-sim-config-box h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--md-primary-fg-color, #006b5b);
+}
+
+.fej-sim-griglia-config {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.fej-sim-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.fej-sim-campo label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--md-default-fg-color, #263238);
+}
+
+.fej-sim-campo input,
+.fej-sim-campo select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--md-default-fg-color--lighter, #b0bec5);
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+.fej-sim-azioni-config {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+/* Pulsanti principali */
+.fej-sim-btn-primario {
+  background: var(--md-primary-fg-color, #006b5b);
+  color: #ffffff !important;
+  border: none;
+  padding: 0.65rem 1.3rem;
+  font-size: 1.05rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.15s ease;
+}
+
+.fej-sim-btn-primario:hover {
+  background: #005044;
+}
+
+.fej-sim-btn-secondario {
+  background: #ffffff;
+  color: var(--md-default-fg-color, #263238) !important;
+  border: 1px solid var(--md-default-fg-color--lighter, #b0bec5);
+  padding: 0.55rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.15s ease;
+}
+
+.fej-sim-btn-secondario:hover {
+  background: #f0f3f4;
+  border-color: #78909c;
+}
+
+/* Area del Gregge a Schermo */
+.fej-sim-schermo-box {
+  background: #ffffff;
+  border: 2px solid var(--md-default-fg-color--lighter, #cfd8dc);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+}
+
+/* Barra di stato del capo */
+.fej-sim-barra-capo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #eceff1;
+  margin-bottom: 1rem;
+}
+
+.fej-sim-contatore-capo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--md-primary-fg-color, #006b5b);
+}
+
+.fej-sim-badge-info {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.fej-sim-pill {
+  padding: 0.25rem 0.65rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: #e0f2f1;
+  color: #004d40;
+}
+
+.fej-sim-pill-specie {
+  background: #ede7f6;
+  color: #4a148c;
+}
+
+.fej-sim-pill-sesso {
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+
+/* Riquadro Animale e Visualizzazione Grafica */
+.fej-sim-animale-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.fej-sim-svg-wrapper {
+  max-width: 100%;
+  width: 680px;
+  min-height: 380px;
+  background: #fafafa;
+  border: 1px solid #eceff1;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Riga cosa aspettarsi (addestramento) */
+.fej-sim-attesa-box {
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: #fff8e1;
+  border-left: 4px solid #ffb300;
+  color: #5d4037;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Controlli di Navigazione */
+.fej-sim-nav-controlli {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eceff1;
+}
+
+.fej-sim-nav-btn {
+  min-height: 48px;
+  min-width: 130px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.15s ease;
+}
+
+.fej-sim-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.fej-sim-nav-salto {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.fej-sim-nav-salto input {
+  width: 4rem;
+  padding: 0.35rem 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+  border: 1px solid #b0bec5;
+  border-radius: 4px;
+}
+
+/* Strumenti Chiave e Confronto */
+.fej-sim-sez-confronto {
+  background: #ffffff;
+  border: 1px solid #cfd8dc;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.fej-sim-tabella-confronto {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.fej-sim-tabella-confronto th,
+.fej-sim-tabella-confronto td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #eceff1;
+}
+
+.fej-sim-tabella-confronto th {
+  background: #f4f6f7;
+  font-weight: 600;
+  color: #37474f;
+}
+
+.fej-sim-esito-verde {
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+.fej-sim-esito-giallo {
+  color: #f57f17;
+  font-weight: bold;
+}
+
+.fej-sim-esito-rosso {
+  color: #c62828;
+  font-weight: bold;
+}
+
+/* Tutorial a Slide */
+.fej-sim-slide-box {
+  background: #ffffff;
+  border: 2px solid var(--md-default-fg-color--lighter, #cfd8dc);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.fej-sim-slide-testata {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eceff1;
+}
+
+.fej-sim-slide-passo {
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--md-primary-fg-color, #006b5b);
+  letter-spacing: 0.05em;
+}
+
+.fej-sim-slide-figura {
+  width: 100%;
+  max-width: 600px;
+  height: 280px;
+  background: #fafafa;
+  border-radius: 8px;
+  border: 1px solid #eceff1;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fej-sim-slide-frase {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #263238;
+  line-height: 1.4;
+  max-width: 640px;
+  margin: 1rem 0 1.5rem 0;
+}
+
+.fej-sim-slide-dots {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.fej-sim-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #cfd8dc;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  padding: 0;
+}
+
+.fej-sim-dot.attivo {
+  background: var(--md-primary-fg-color, #006b5b);
+  transform: scale(1.25);
+}
+
+@media (max-width: 768px) {
+  .fej-sim-svg-wrapper {
+    width: 100%;
+    min-height: 320px;
+  }
+  .fej-sim-nav-btn {
+    min-width: 100px;
+    font-size: 0.95rem;
+    padding: 0.5rem 0.8rem;
+  }
+  .fej-sim-slide-figura {
+    height: 220px;
+  }
+  .fej-sim-slide-frase {
+    font-size: 1.1rem;
+  }
+}

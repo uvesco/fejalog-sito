@@ -7,6 +7,7 @@
 var api = bundle.io.github.uvesco.fejalog.prova;
 function json(x) { return JSON.stringify(x); }
 return {
+  creaProgetto: function (ingresso) { return JSON.parse(api.creaProgettoSito(json(ingresso))); },
   cercaCapiGestione: function (P, az, specie, query) { return JSON.parse(api.cercaCapiGestioneSito(json(P), json(az || []), specie, query)); },
   bordoPlateau: function (celle, serie, vista, numero, sequenza) {
     return JSON.parse(api.calcolaBordoPlateauSito(serie, vista, numero, json(celle), null, !!sequenza));

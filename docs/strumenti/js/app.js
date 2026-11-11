@@ -95,7 +95,7 @@ radice.appendChild(tabs); radice.appendChild(msgEl); radice.appendChild(corpo);
 function disegna() {
   if (plateauPrincipale) { plateauPrincipale.ferma(); plateauPrincipale = null; }
   tabs.textContent = '';
-  SCHEDE.forEach(function (s) {
+  SCHEDE.filter(function (s) { return !pc || !!S.P || s[0] === 'carica'; }).forEach(function (s) {
     tabs.appendChild(h('button', { type: 'button', role: 'tab', 'aria-selected': S.scheda === s[0] ? 'true' : 'false', class: S.scheda === s[0] ? 'fej-tab fej-attiva' : 'fej-tab',
       disabled: s[0] !== 'carica' && (!S.P || !verificaAmmessa()), onclick: function () { S.scheda = s[0]; disegna(); } }, s[1]));
   });
@@ -113,7 +113,7 @@ function salvaNome(v) { try { localStorage.setItem('fejalog:nome', v); } catch (
 
 function apriProgetto(P) {
   var precedenti = pc && S.P && S.P.pacchetto.id === P.pacchetto.id && S.P.pacchetto.sha256 === P.pacchetto.sha256 && S.stato ? S.stato.azioni() : [];
-  if (S.P && S.P.pacchetto.id !== P.pacchetto.id) riordinoUI = {destinazioni: {}, selezionate: {}, esiti: {}, conferma: null};
+  if (S.P && S.P.pacchetto.id !== P.pacchetto.id) riordinoUI = {destinazioni: {}, selezionate: {}, esiti: {}, conferma: null, inMano: ''};
   if (S.P && (S.P.pacchetto.id !== P.pacchetto.id || S.P.pacchetto.sha256 !== P.pacchetto.sha256)) {
     if (plateauPrincipale) plateauPrincipale.ferma();
     if (plateauStaccato) plateauStaccato.ferma();
@@ -749,6 +749,15 @@ function leggiBackup(byte) {
   });
 }
 function caricaDalTablet() {
+  if (window.FejConfigurazionePc) {
+    occupatoPc = true; disegna();
+    pc.stato().then(function (stato) {
+      if (stato.configurazione || stato.campionamento_chiuso === false) window.FejConfigurazionePc.monta(radice, pc);
+      else caricaBackupDalTablet();
+    }, function (e) { occupatoPc = false; errorePc(e); disegna(); });
+  } else caricaBackupDalTablet();
+}
+function caricaBackupDalTablet() {
   if (S.P && !confirm('Caricare il backup corrente? Le azioni su questo backup restano conservate nel browser.')) { occupatoPc = false; disegna(); return; }
   occupatoPc = true; disegna();
   pc.backup().then(leggiBackup).catch(errorePc).then(function () { occupatoPc = false; disegna(); });
@@ -871,7 +880,7 @@ function rigaCapo(capo, match, nCand) {
 
 var finestraPlateau = null, plateauStaccato = null, plateauPrincipale = null;
 var modelloPlateau = Plateau.modelloAttuale();
-var riordinoUI = { destinazioni: {}, selezionate: {}, esiti: {}, conferma: null };
+var riordinoUI = { destinazioni: {}, selezionate: {}, esiti: {}, conferma: null, inMano: '' };
 function righeRiordino() {
   var out = [];
   Dominio.riordino(S.P, S.stato.azioni()).forEach(function (serie) {
@@ -939,6 +948,24 @@ function schedaRiordino() {
   } }), ' Chiudi i buchi' + (bloccata ? ': il Riordino è cominciato.' : ': si sceglie prima degli invii.'))));
   var righe;
   try { righe = righeRiordino(); } catch (e) { return h('p', {role: 'alert'}, e.message); }
+  // Riordino dalla provetta in mano: etichetta, contrassegno o sue ultime cifre; con più corrispondenze restano tutte.
+  var tutteLeRighe = righe;
+  var q = String(riordinoUI.inMano || '').replace(/\s+/g, '').toUpperCase();
+  if (q) {
+    var grado = function (r) {
+      var et = String(r.g.da || '').replace(/\s+/g, '').toUpperCase(), cs = String(r.g.contrassegno || '').toUpperCase();
+      if (et === q || cs === q) return 0;
+      if (cs.slice(-q.length) === q) return 1;
+      return cs.indexOf(q) >= 0 ? 2 : 3;
+    };
+    var migliore = Math.min.apply(null, righe.map(grado).concat([3]));
+    righe = migliore < 3 ? righe.filter(function (r) { return grado(r) === migliore; }) : [];
+  }
+  d.appendChild(h('p', null, h('label', null, 'Provetta in mano: etichetta o contrassegno ', h('input', {type: 'text', 'data-in-mano': true, value: riordinoUI.inMano || '', maxlength: 40, autocomplete: 'off',
+    'aria-label': 'Provetta in mano: etichetta o contrassegno',
+    oninput: function (ev) { var cursore = ev.target.selectionStart; riordinoUI.inMano = ev.target.value; disegna();
+      var campoNuovo = corpo.querySelector('input[data-in-mano]'); if (campoNuovo) { campoNuovo.focus(); campoNuovo.setSelectionRange(cursore, cursore); } } }))));
+  if (q) d.appendChild(h('p', {role: 'status'}, righe.length === 0 ? 'Nessuna provetta trovata.' : righe.length === 1 ? 'Trovata: ' + (righe[0].g.secchio ? 'viene dal secchio.' : 'viene dal plateau.') : righe.length + ' provette possibili: scegli quella che hai in mano.'));
   var seleziona = function (tipo) {
     riordinoUI.selezionate = {};
     righe.forEach(function (r) { if (tipo !== null && !r.g.fatta && !modificataRiordino(r.g) && (tipo === '' || tipo === r.g.motivo)) riordinoUI.selezionate[r.g.uid] = true; }); disegna();
@@ -949,11 +976,11 @@ function schedaRiordino() {
     barra.appendChild(h('button', {type: 'button', onclick: function () { seleziona(t); }}, 'Solo ' + t));
   });
   d.appendChild(barra);
-  var batch = righe.filter(function (r) { return riordinoUI.selezionate[r.g.uid] && !modificataRiordino(r.g) && !r.g.fatta; });
+  var batch = tutteLeRighe.filter(function (r) { return riordinoUI.selezionate[r.g.uid] && !modificataRiordino(r.g) && !r.g.fatta; });
   d.appendChild(h('button', {type: 'button', disabled: occupatoPc || !batch.length, onclick: function () {
     inviaRiordino(batch.map(function (r) { return azioneRiordino(r, true); }));
   }}, pc ? 'Invia le selezionate' : 'Applica le selezionate'));
-  d.appendChild(h('p', {role: 'status', 'data-riordino-contatore': true}, righe.filter(function (r) { return r.g.fatta; }).length + ' di ' + righe.length + ' fatte.'));
+  d.appendChild(h('p', {role: 'status', 'data-riordino-contatore': true}, tutteLeRighe.filter(function (r) { return r.g.fatta; }).length + ' di ' + tutteLeRighe.length + ' fatte.'));
   var tb = h('table', {class: 'fej-guida'}, h('tr', null, ['Selezione', 'Specie', 'Contrassegno', 'Da', 'A · numero finale', 'Fattispecie', 'Esito'].map(function (t) { return h('th', null, t); })));
   righe.forEach(function (r) {
     var g = r.g, modificata = modificataRiordino(g), valore = g.fatta && g.applicata_a != null ? String(g.applicata_a) : riordinoUI.destinazioni[g.uid] == null ? String(g.a_n) : riordinoUI.destinazioni[g.uid];
@@ -965,7 +992,7 @@ function schedaRiordino() {
         disabled: occupatoPc || modificata || g.fatta, onchange: function (ev) { riordinoUI.selezionate[g.uid] = ev.target.checked; disegna(); }}),
         modificata ? h('small', null, 'Modificata: invia singolarmente') : null),
       h('td', null, r.serie.specie), h('td', null, h('code', null, g.contrassegno), ' ', bottoneCopia(g.contrassegno, 'Copia')),
-      h('td', null, g.da, h('small', null, ' · plateau ' + g.plateau_da + ', posto ' + g.pos_da)),
+      h('td', null, g.da, h('small', null, g.secchio ? ' · dal secchio' : ' · plateau ' + g.plateau_da + ', posto ' + g.pos_da)),
       h('td', null, campo, nValido ? h('small', null, ' · plateau ' + (Math.floor((n - 1) / 100) + 1) + ', posto ' + ((n - 1) % 100 + 1)) : h('small', {role: 'alert'}, 'Scrivi un numero intero positivo'),
         modificata ? h('button', {type: 'button', disabled: occupatoPc, onclick: function () { delete riordinoUI.destinazioni[g.uid]; disegna(); }}, 'Ripristina') : null),
       h('td', null, g.motivo), h('td', {role: 'status'}, g.fatta ? 'Applicata' : (riordinoUI.esiti[g.uid] || 'Da fare'), ' ',

@@ -9,7 +9,8 @@ Fejalog lavora su una rete Wi-Fi locale completamente autonoma, senza connession
 ## 1. Cosa serve per la rete
 
 - Il tablet della Regia con il progetto creato e configurato (vedi [Preparare il progetto e avviare la seduta](avvio.md));
-- Il router Wi-Fi portatile acceso (oppure l'hotspot Wi-Fi attivato sul tablet della Regia);
+- Il router Wi-Fi portatile acceso (oppure l'hotspot Wi-Fi attivato sul tablet della Regia, con nome e password fissi);
+- Le **reti del progetto salvate su ogni telefono**: in **Configurazione › 4. Rete del progetto** scegli le reti (router, hotspot del tablet) e, con il tasto **QR**, falle inquadrare con la fotocamera di ogni telefono prima del lavoro;
 - I telefoni palmari dei veterinari prelevatori con Fejalog installata;
 - Il foglio A4 con il QR Wi-Fi stampato in anticipo (prodotto con lo strumento [Prima del campo](../strumenti/prima-del-campo.md)) oppure il QR visualizzato sullo schermo della Regia.
 
@@ -27,7 +28,7 @@ All'apertura del progetto, Fejalog chiede se lavorare «In rete» oppure in loca
 *La schermata QR d'ingresso sulla Regia: mostra il QR code per far entrare i palmari della squadra.*
 
 ### Passo 2: Far entrare i palmari
-Ogni veterinario prelevatore, con il telefono collegato alla stessa Wi-Fi della squadra:
+I palmari partecipano solo alla fase di campionamento ed entrano a configurazione completata (vedi [Fasi di lavoro e ruoli](../inizia-qui/fasi-e-ruoli.md)). Ogni veterinario prelevatore, con il telefono collegato alla stessa Wi-Fi della squadra:
 1. Apre Fejalog e seleziona **Progetto › Entra col QR** (oppure, se già connesso alla rete, tocca «Chiedi di entrare» accanto al progetto rilevato nella voce diretta **Rete**);
 2. Sul tablet della Regia compare in sovrimpressione la notifica: **«[Nome Veterinario] chiede di entrare»**;
 3. La Regia tocca **«Fai entrare»**. Il palmare scarica istantaneamente il pacchetto anagrafico del progetto e la storia completa del registro a eventi.
@@ -72,14 +73,15 @@ La Regia mostra la batteria comunicata dai palmari e, quando disponibile, una st
 
 | Sintomo | Causa probabile | Soluzione operativa |
 |---|---|---|
-| **Il palmare inquadra il QR ma non si connette** | Permessi fotocamera negati o frequenza Wi-Fi non supportata dal telefono. | Connetti prima il palmare alla Wi-Fi manualmente dalle impostazioni Android del telefono; poi apri la voce **Rete** e tocca «Chiedi di entrare» (oppure usa **Progetto › Entra col QR**). |
+| **Il palmare inquadra il QR ma non si connette** | Il telefono non è sulla Wi-Fi della Regia (rete non salvata, o una frequenza che il telefono non vede: alcuni telefoni vedono solo i 2,4 GHz). | La guida dice quale Wi-Fi toccare e ha il tasto per aprire il pannello di Android: tocca la rete; se non c'è, salvala col suo QR Wi-Fi (o con «Salva la rete in Android»). Fejalog entra da solo appena la Regia risponde. |
 | **Impronta diversa tra palmare e Regia** | Il palmare ha caricato un pacchetto BDN obsoleto o una versione non allineata. | Fai uscire il palmare dal progetto (**menu › Esci dal progetto**); dalla Regia apri **Configurazione › QR d'ingresso**, fai rientrare il palmare scansionando nuovamente il QR per ricevere la copia aggiornata. |
-| **Tutti i palmari diventano improvvisamente gialli** | Il tablet della Regia o il router Wi-Fi ha subito un calo di segnale o si è spento. | Verifica immediatamente l'alimentazione del router o del tablet. Se il router è caduto, la Regia può attivare l'hotspot di emergenza dal tablet; i palmari provano la rete di riserva scelta nelle impostazioni dopo 45 secondi di Wi-Fi persa; Android può richiedere una conferma. |
+| **Tutti i palmari diventano improvvisamente gialli** | Il tablet della Regia o il router Wi-Fi ha subito un calo di segnale o si è spento. | Verifica l'alimentazione del router o del tablet. Se il router è caduto, accendi l'hotspot del tablet: i telefoni che l'hanno salvato ci passano da soli e Fejalog ritrova la squadra (il tablet è il loro gateway). Se serve, in **Rete del progetto** tocca **«Passa tutti qui»**: i palmari aprono il pannello Wi-Fi. Ultima risorsa, il QR della Regia. |
 | **Un palmare rientrato mostra numeri non sincronizzati** | Ritardo temporaneo nel passaggio dei pacchetti Wi-Fi. | Mantieni il telefono a portata del router per 10–15 secondi: la sincronizzazione è incrementale e si riallinea automaticamente al primo scambio dati. |
 
 ---
 
 ## Pagine collegate
+- [Fasi di lavoro e ruoli](../inizia-qui/fasi-e-ruoli.md)
 - [Requisiti hardware e software per la Regia](requisiti.md)
 - [Preparare il progetto e avviare la seduta](avvio.md)
 - [Consegne delle provette e gestione dei plateau](consegne-plateau.md)

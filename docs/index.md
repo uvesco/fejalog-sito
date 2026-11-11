@@ -27,6 +27,8 @@
 
 ## Tre percorsi: scegli il tuo ruolo
 
+L'app adatta l'interfaccia a ogni momento del lavoro e a ogni dispositivo (vedi [**Fasi di lavoro e ruoli**](inizia-qui/fasi-e-ruoli.md)):
+
 <div class="grid cards" markdown>
 
 -   :material-needle: **Sono un veterinario**
@@ -92,6 +94,7 @@ Approfondisci significati pratici, indicatori a schermo e limiti dichiarati in [
 
 ## Collegamenti rapidi
 
+- [Fasi di lavoro e ruoli](inizia-qui/fasi-e-ruoli.md)
 - [Le caratteristiche dettagliate](caratteristiche.md)
 - [Scarica l'applicazione e il kit](scarica.md)
 - [Sotto il cofano: problemi affrontati e architettura](riferimento/sotto-il-cofano/index.md)

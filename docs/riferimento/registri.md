@@ -7,7 +7,8 @@
 ## Caricare registri a lavori in corsa (Regia)
 
 - «Scegli i file (anche uno zip)»: registri e contrassegni, l'app li riconosce. Per ogni stabilimento si dice cosa sono:
-- Stabilimento di lavoro: il registro nuovo (BDN aggiornata) sostituisce quello di prima.
+- Stabilimento di lavoro: il registro nuovo (BDN aggiornata) sostituisce quello di prima dello stesso allevamento (stessa denominazione); gli altri allevamenti dello stesso stabilimento restano. Si fa prima di avviare il campionamento: a campionamento aperto il registro di un allevamento già caricato non si sostituisce (un allevamento nuovo sì, i suoi capi vanno in fondo).
+- Procedura d'emergenza, se a campionamento avviato serve la BDN aggiornata: il tasto «Aggiorna il registro (emergenza)» nella pagina dei registri guida i quattro passi: 1) chiudi il campionamento (la conferma della Checklist); 2) aspetta che tutti i device presenti siano allineati, così le provette raccolte finora sono tutte qui (chi non si ricollega si mette in pausa o si esclude dalla Gestione dispositivi); 3) carica il registro con l'anteprima; 4) riapri il campionamento. I numeri già assegnati restano, i capi nuovi vanno in fondo. Anche nel registro un caricamento di questo tipo scritto a campionamento aperto non vale.
 - Altro stabilimento: i suoi capi vanno fra i problematici.
 - Acquisto con DDA: nella conferma di un capo di altro stabilimento il veterinario dichiara il DDA solo per quel capo. La provetta resta problematica.
 - In Problemi da risolvere la Regia registra DDA valido o da rifare, con nota. Solo dopo aver confermato l'ingresso registrato può normalizzare la provetta.

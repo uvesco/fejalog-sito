@@ -230,7 +230,8 @@ function modelloAttuale() {
       var nuova = celle.filter(function (p) { return p.uid === m.evidenza.uid; })[0];
       if (nuova) {
         var spostata = ['serie', 'vista', 'plateau', 'pozzetto'].some(function (k) { return nuova[k] !== m.evidenza[k]; });
-        m.evidenza = nuova; m.serie = nuova.serie; m.vista = nuova.vista;
+        m.evidenza = nuova;
+        if (nuova.vista !== 'secchio') { m.serie = nuova.serie; m.vista = nuova.vista; }
         if (spostata) m.centro++;
       }
       else m.evidenza = null;
@@ -273,6 +274,7 @@ function creaAttuale(doc, radice, celle, opzioni) {
       var attive = presenti.filter(function (c) { return c.attiva; });
       if (attive.length === 1) p = attive[0]; else if (presenti.length === 1) p = presenti[0];
     }
+    if (p.vista === 'secchio') { m.evidenza = p; m.messaggio = ''; m.notifica(); return; }   // il secchio non ha posti: si apre la scheda
     m.serie = p.serie; m.vista = p.vista; m.evidenza = p; m.messaggio = '';
     m.plateauRicerca = String(p.plateau); m.postoRicerca = String(p.pozzetto); m.centro++; m.notifica();
   }
@@ -284,7 +286,7 @@ function creaAttuale(doc, radice, celle, opzioni) {
   function scheda(c, contenitore) {
     var d = h('section', {class: 'fej-scheda', 'aria-label': 'Scheda provetta', 'data-scheda-uid': c.uid});
     d.appendChild(h('strong', {}, c.etichetta + ' · ' + c.contrassegno));
-    d.appendChild(h('p', {}, c.categoria + ' · ' + c.serie.replace(':', ' · ') + ' · Plateau ' + c.plateau + ', pozzetto ' + c.pozzetto + (c.indicativa ? ' · posto indicativo' : '')));
+    d.appendChild(h('p', {}, c.categoria + ' · ' + c.serie.replace(':', ' · ') + (c.vista === 'secchio' ? ' · Nel secchio' : ' · Plateau ' + c.plateau + ', pozzetto ' + c.pozzetto + (c.indicativa ? ' · posto indicativo' : ''))));
     if (c.capo) d.appendChild(h('p', {}, c.capo));
     if (c.veterinario) d.appendChild(h('p', {}, 'Veterinario: ' + c.veterinario));
     if (c.note) d.appendChild(h('p', {}, 'Note: ' + c.note));
@@ -379,8 +381,19 @@ function creaAttuale(doc, radice, celle, opzioni) {
     m.serieDisponibili.forEach(function (x) { specie.appendChild(h('option', {value: x, selected: x === m.serie}, x.replace(':', ' · '))); });
     var label = h('label', {}, 'Stabilimento e specie '); label.appendChild(specie); controlli.appendChild(label);
     var v = h('select', {'aria-label': 'Vista plateau', onchange: function (e) { m.vista = e.target.value; m.evidenza = null; m.notifica(); }});
-    [['serie', 'Serie ordinaria'], ['problematici', 'Problematici']].forEach(function (x) { v.appendChild(h('option', {value: x[0], selected: x[0] === m.vista}, x[1])); });
+    // Con i problematici nel secchio (progetti nuovi) il plateau dei problematici c'è solo se ha pose antiche.
+    var secchio = m.celle.filter(function (c) { return c.vista === 'secchio' && c.attiva; });
+    var haSecchio = m.celle.some(function (c) { return c.vista === 'secchio'; });
+    var haProblematici = m.celle.some(function (c) { return c.vista === 'problematici'; });
+    [['serie', 'Serie ordinaria'], ['problematici', 'Problematici']].filter(function (x) { return x[0] === 'serie' || !haSecchio || haProblematici || m.vista === 'problematici'; })
+      .forEach(function (x) { v.appendChild(h('option', {value: x[0], selected: x[0] === m.vista}, x[1])); });
     label = h('label', {}, 'Vista '); label.appendChild(v); controlli.appendChild(label);
+    if (haSecchio) {
+      var pannello = h('div', {class: 'fej-plateau-secchio', 'aria-label': 'Secchio'});
+      pannello.appendChild(h('p', {role: 'status'}, h('strong', {}, 'Secchio: '), secchio.length ? secchio.length + ' provette problematiche da sistemare. Si prendono una alla volta, dalla provetta in mano, nel Riordino.' : 'vuoto: ogni problematica ha il suo esito.'));
+      secchio.forEach(function (c) { pannello.appendChild(bottone(c.etichetta + ' · ' + c.contrassegno + ' · ' + c.categoria, function () { centro(c); })); });
+      controlli.appendChild(pannello);
+    }
     var ricerca = h('input', {type: 'search', value: m.query, 'aria-label': 'Cerca contrassegno o etichetta', oninput: cerca, onchange: cerca});
     function cerca(e) { if (m.query !== e.target.value) { m.query = e.target.value; m.notifica(); } }
     label = h('label', {}, 'Numero, etichetta o contrassegno '); label.appendChild(ricerca); controlli.appendChild(label);
@@ -420,7 +433,7 @@ function creaAttuale(doc, radice, celle, opzioni) {
     var tavolo = h('div', {class: 'fej-tavolo-attuale', style: 'grid-template-columns:repeat(' + colonne + ',' + (480 * m.zoom) + 'px)'});
     var qui = m.celle.filter(function (p) { return (p.serie === m.serie || m.sequenza && m.vista === 'problematici') && p.vista === m.vista; });
     var numeri = qui.map(function (p) { return p.plateau; });
-    if (m.evidenza) numeri.push(m.evidenza.plateau);
+    if (m.evidenza && m.evidenza.plateau > 0) numeri.push(m.evidenza.plateau);
     if (!numeri.length) numeri.push(1);
     numeri.filter(function (x, i, a) { return a.indexOf(x) === i; }).sort(function (a, b) { return a - b; }).forEach(function (numero) {
       var articolo = h('section', {'data-plateau': numero, class: 'fej-plateau-attuale', 'data-verso': m.verso});

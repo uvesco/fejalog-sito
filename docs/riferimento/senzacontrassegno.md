@@ -3,8 +3,8 @@
 # Capo senza contrassegno
 
 - Se ti allontani dalla rete, mettiti in pausa dal menu Campionamento › Pausa e ripresa. Altrimenti tutti passano alla gestione provvisoria, con i doppi non controllati. La Regia può comunque metterti in pausa.
-- Per i capi senza marche lasciati alla fine, a campionamento aperto tocca «Senza contrassegno», sul palmare o sulla Regia.
-- Scegli sesso, razza (o «Non so») ed età da … a … in anni, a scatti di 6 mesi; con più stabilimenti scegli quello del capo.
-- Compaiono i presenti non prelevati compatibili, anche fuori età diagnostica (segnalati fra i problematici). Scegli il capo e usa la conferma normale, copiando l'etichetta mostrata.
-- L'identificazione resta attribuita, con gli indizi e il numero dei compatibili; gli orecchini destro e sinistro sono già segnati da sostituire.
-- Se poi compare il capo con le marche e viene prelevato, vale la provetta col contrassegno letto. La precedente attribuita va fra i problematici, da riattribuire a fine lavori.
+- Per un animale senza nessuna marca, a campionamento aperto tocca «Senza contrassegno», sul palmare o sulla Regia. Non si sceglie nessun capo: la scelta si fa solo dopo la chiusura, per non fare prelievi doppi.
+- Scegli sesso, età dai denti (pagina con la tabella e lo schema della mandibola, per pecora e capra), razza («Meticcio» vale per tutte) e, se vuoi, un'identificazione provvisoria: orecchino ASL o numero scritto sulla schiena.
+- L'app suggerisce l'etichetta completa, da scrivere sulla provetta con tutte le righe: è la copia di riserva dei dati. Dopo la chiusura, «Ha perso le marche» propone i non prelevati compatibili; «Mai identificato» assegna una marca disponibile.
+- Con «Applica ora una marca disponibile» marchi subito l'animale: scegli la marca fra quelle libere e registra come al solito; quella marca non è più disponibile per nessuno.
+- Gli animali sotto età si contano a parte con +1 e −1 nel Campionamento. Marche applicate, identità da rimarcare e sotto età vanno nel file per l'allevatore e il suo delegato in BDN.

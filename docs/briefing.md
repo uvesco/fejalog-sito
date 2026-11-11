@@ -13,9 +13,9 @@ Un registro condiviso da tutti i telefoni tiene insieme i prelievi dello stabili
 
 ## 2. La tua sigla di veterinario
 
-Nei progetti nuovi la Regia conferma una sigla di due lettere per ogni veterinario, per esempio UV.
+Nei progetti nuovi la Regia assegna automaticamente una sigla di due lettere per ogni veterinario, per esempio UV.
 
-- La sigla e il progressivo dei problematici sono condivisi fra i tuoi telefoni. Una modifica della sigla vale solo per le provette nuove.
+- La sigla e il progressivo dei problematici sono condivisi fra i tuoi telefoni. La Regia può modificarla solo prima che sia scritta sulla prima provetta.
 - La classifica resta tua e somma i tuoi telefoni.
 
 ## 3. L'icona della rete
@@ -23,8 +23,8 @@ Nei progetti nuovi la Regia conferma una sigla di due lettere per ogni veterinar
 Il colore indica se il controllo dei doppi è completo; le tacche mostrano la forza del segnale Wi-Fi.
 
 - Verde: i doppi sono controllati.
-- Giallo: per qualcuno i doppi non sono controllati; le provette prendono la tua sigla dopo la barra, per esempio 125/UV.
-- Rosso: Wi-Fi persa, registro conteso o sigla non confermata dalla Regia. Leggi l'avviso.
+- Giallo: per qualcuno i doppi non sono controllati; le provette prendono la tua sigla dopo il trattino, per esempio 125-UV.
+- Rosso: Wi-Fi persa, registro conteso o sigla ancora da ricevere. Arriva automaticamente al primo contatto con la Regia. Leggi l'avviso.
 - Grigio: senza rete.
 
 ## 4. Esito a tutto schermo
@@ -39,8 +39,8 @@ Dopo la conferma, controlla sempre l'esito della registrazione.
 Scrivi con il pennarello l'etichetta completa mostrata dall'app, comprese tutte le lettere.
 
 - Numero: per esempio 17. Se è prevista la lettera di specie, P per pecore o C per capre, precede il numero: P17 o C17.
-- Riquadro rosso: Scrivi sempre il contrassegno COMPLETO, oltre al codice problematico. Copia tutte le righe mostrate.
-- Riquadro blu: Preso senza tutti collegati: non scrivere il contrassegno, solo l'etichetta. Copia tutte le lettere mostrate. Il riquadro ordinario collegato è neutro.
+- Riquadro rosso (problematica): copia tutte le righe mostrate; sotto, in grassetto, «Scrivi tutto: progressivo e contrassegno completo» (con i dati, se la BDN non li ha).
+- Riquadro blu (preso senza tutti collegati) e riquadro neutro (collegato): «Scrivi solo il progressivo», per esempio 125-UV o 125.
 - Cambiando specie con le schede, uno swipe o destra/sinistra, il codice resta: non serve rileggerlo. Il foglio si chiude e si riapre solo se c'è un unico capo compatibile; altrimenti scegli dall'elenco. Sullo stesso capo restano note e scelte.
 - Tastiera o telecomando: il focus parte da Conferma; un solo Invio/OK registra. Su/giù scorrono circolarmente i controlli; Invio/OK o spazio attivano quello col bordo evidenziato. Per registrare torna su Conferma o toccalo. Nelle note spazio scrive; esci con su/giù o Tab. Esc e Indietro annullano.
 
@@ -53,11 +53,11 @@ L'app avvisa quando il contrassegno risulta già prelevato.
 
 ## 7. Capo senza contrassegno
 
-Per i capi senza marche lasciati alla fine, usa «Senza contrassegno» nel Campionamento, sul palmare o sulla Regia.
+Per un animale senza nessuna marca usa «Senza contrassegno» nel Campionamento, sul palmare o sulla Regia.
 
-- Scegli sesso, razza (o «Non so»), intervallo d'età in anni a scatti di 6 mesi e, se serve, stabilimento.
-- Scegli fra i presenti non prelevati compatibili e conferma normalmente. L'identificazione resta attribuita e i due orecchini sono segnati da sostituire.
-- Se poi viene prelevato il capo con le marche, vale il contrassegno letto: la provetta attribuita va fra i problematici, da riattribuire a fine lavori.
+- Scegli sesso, età dai denti, razza («Meticcio» vale per tutte) e, se vuoi, un'identificazione provvisoria. Non si sceglie nessun capo.
+- Scrivi sulla provetta tutte le righe suggerite: sono la copia di riserva dei dati. Il capo si sceglie dopo la chiusura del campionamento.
+- Con «Applica ora una marca disponibile» marchi subito l'animale. Gli animali sotto età si contano a parte con +1 e −1.
 
 ## 8. Se una provetta non è confermata
 

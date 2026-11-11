@@ -34,11 +34,14 @@ Il telefono deve restare stabilmente collegato.
 Configurazione iniziale (una volta sola)
 ☰ Menu → ⚙️ Impostazioni: inserire nome, cognome, codice fiscale e nome del dispositivo.
 
+Le reti del progetto (prima di partire)
+Apri la fotocamera e inquadra i QR Wi-Fi delle reti del progetto (router, hotspot del tablet), che la Regia mostra in Rete del progetto o sulle stampe: Android chiede di collegarsi, conferma. La rete resta salvata. Durante il lavoro, se una rete cade, Android passa da solo a un'altra salvata.
+
 ## Per entrare nella seduta
 
-1. ☰ Menu → 📶 Rete → «Inquadra il QR della Regia»: il telefono si collega alla Wi-Fi e riceve il progetto.
+1. ☰ Menu → Progetto → «Entra col QR» e inquadra il QR della Regia: se il telefono è già sulla sua Wi-Fi riceve subito il progetto; altrimenti tocca nel pannello la Wi-Fi indicata.
 2. Oppure, già sulla Wi-Fi della Regia: il progetto compare da solo in 📶 Rete; «Chiedi di entrare» e la Regia ti fa entrare.
-3. Dopo un riavvio o riaprendo l'app: si rientra automaticamente.
+3. Dopo un riavvio o riaprendo l'app: si rientra automaticamente. Quello che hai registrato resta sul telefono e arriva alla Regia appena ti ricolleghi.
 
 Prima di cominciare (impostazioni telefono)
 1. Wi-Fi accesa. Dati mobili: possono restare accesi.
@@ -50,8 +53,10 @@ Prima di cominciare (impostazioni telefono)
 ## Durante il lavoro
 
 - Se Android notifica «Questa rete non ha accesso a internet»: rispondere «Sì, mantieni la connessione» e spuntare «Non chiedere più».
-- Non spegnere la Wi-Fi e non passare ad altre reti.
-- Se compare la banda ROSSA «Wi-Fi PERSA»: toccare «Ricollegati» o riattivare la Wi-Fi. I numeri pronti si possono usare, ma i doppi non sono controllati.
+- Non spegnere la Wi-Fi. Se la rete cade, Android passa da solo a un'altra rete del progetto e Fejalog ritrova la squadra.
+- Se la Regia dice di passare a un'altra Wi-Fi, il telefono vibra e mostra «La Regia passa alla Wi-Fi …»: tocca «Apri il pannello Wi-Fi» e poi la rete indicata.
+- Se compare la banda ROSSA «Wi-Fi PERSA»: tocca una rete del progetto nel pannello o «Ricollegati». I numeri pronti si possono usare, ma i doppi non sono controllati.
+- Se dopo qualche minuto la Regia non si trova, il telefono propone di inquadrare il QR della Regia (Rete › «Ricollegati col QR»).
 - È possibile usare altre app sul telefono: Fejalog resta attiva in background finché è presente la notifica in primo piano.
 
 ## Alla fine del lavoro

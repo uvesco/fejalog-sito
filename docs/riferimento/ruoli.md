@@ -10,5 +10,6 @@
 
 - Chi ha la regia la può affidare a un device al lavoro che si vede (📶 Rete › «Affida la regia a»), per esempio quando il tablet si scarica.
 - Si prende solo se è libera: chi ce l'aveva l'ha lasciata, ha finito, è uscito o non risponde da 2 minuti.
+- Regia d'emergenza: se il tablet si spegne la prende un solo palmare, quello a cui si collegano gli altri. La Regia sceglie prima chi (Configurazione › 2. Sigle stabilimenti e veterinari › Priorità per la regia d'emergenza): per esempio il telefono del coordinatore, poi un secondo. Vale il primo della lista che è al lavoro; esauriti quelli, il palmare indicato dall'app. Il banner dice a chi tocca: «La Regia non risponde: prendi tu la regia».
 - Sotto il titolo di ogni pagina c'è lo stato della rete e chi ha la regia.
 - Il Briefing per i prelevatori si apre da Aiuto › Briefing, anche durante il campionamento.

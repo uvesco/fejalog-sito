@@ -49,6 +49,6 @@ A campionamento aperto, tocca **Senza contrassegno**. Indica sesso, razza ed et�
 Porta le provette alla Regia, che registra **Ricevi (N)** e le posa seguendo il Plateau. Non cambiare le scritte da solo. Se la Wi-Fi cade, tocca **Ricollegati** e segui la banda; puoi continuare se il campionamento è abilitato, ma i doppi non sono controllati in diretta. Se ti allontani dalla rete, mettiti in pausa da **Campionamento › Pausa e ripresa**: altrimenti tutti passano alla gestione provvisoria, con i doppi non controllati. La Regia può comunque metterti in pausa. Se la Regia mette in pausa il tuo palmare, la registrazione viene sospesa fino a quando non premi **Riprendi** (raggiungibile solo da **Campionamento › Pausa e ripresa**) o vieni riattivato dalla Regia. Prima di uscire attendi l'allineamento e usa **menu › Esci dal progetto** o **menu › Esci dall'app**.
 
 
-[Imprevisti e conferme mancate](cosa-succede-se.md) · [Domande](domande.md) · [Guarda i micro-video operativi](../inizia-qui/video.md#2-micro-video-operativi)
+[Fasi di lavoro e ruoli](../inizia-qui/fasi-e-ruoli.md) · [Imprevisti e conferme mancate](cosa-succede-se.md) · [Domande](domande.md) · [Guarda i micro-video operativi](../inizia-qui/video.md#2-micro-video-operativi)
 
 </div>

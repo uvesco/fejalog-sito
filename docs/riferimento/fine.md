@@ -18,4 +18,4 @@
 - Sul PC apri l'indirizzo mostrato e inserisci il PIN: la pagina carica il backup corrente dal tablet.
 - Dopo il PIN, sul tablet premi Accetta le modifiche dal PC per questa sessione. Da lì gli invii si applicano automaticamente se validi; gli scarti mostrano il motivo.
 - Il tablet resta la Regia. Usa Ferma server quando hai finito; senza collegamento puoi scaricare e importare il file a mano. Il ? nella pagina USB apre le istruzioni complete per Windows.
-- Export per stabilimento: un file per stabilimento (formato 4); le provette perse non ci sono, le provvisorie ancora senza numero vanno nel plateau problematici come A1001, A1002…
+- Export per stabilimento: un file per stabilimento (formato 4); le provette perse non ci sono, le provvisorie ancora senza numero hanno etichette come A1001, A1002… e stanno nel secchio
