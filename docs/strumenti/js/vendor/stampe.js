@@ -23,11 +23,15 @@
   'use strict';
   var GRIGIO = '<style>tr.maschio td { background-color: #c8c8c8; -webkit-print-color-adjust: exact; print-color-adjust: exact; }</style>';
   function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
-  function etStampa(c) {
+  // L'etichetta intera, come sta sulla provetta: col cerchietto dello stabilimento (Ⓧ125). Serve al foglio A3, dove
+  // gli stabilimenti stanno uno dopo l'altro (utente, 2026-11-12: «le provette degli stabilimenti secondari devono avere
+  // stampata anche la lettera di stabilimento»).
+  function etIntera(c) {
     if (!c) return '';
-    var et = c.etichetta != null ? String(c.etichetta) : (c.numero != null ? String(c.numero) : '');
-    return et.replace(/[Ⓐ-Ⓩ]/g, '');
+    return c.etichetta != null ? String(c.etichetta) : (c.numero != null ? String(c.numero) : '');
   }
+  // Nel 2/33, che è di un solo stabilimento, il cerchietto non serve.
+  function etStampa(c) { return etIntera(c).replace(/[Ⓐ-Ⓩ]/g, ''); }
   function testo(s) {
     return s.replace(/<[^>]*>/g, '').replace(/&(#x[0-9a-f]+|#\d+|nbsp|amp|lt|gt|quot|apos);/gi, function (_, e) {
       if (e.charAt(0) === '#') return String.fromCharCode(e.charAt(1).toLowerCase() === 'x' ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10));
@@ -152,7 +156,7 @@
         nn.forEach(function(c){
           if(cur.length>=52) chiudi();
           if(!cur.length) cur.push('<tr class="tit"><td colspan="2">'+esc(titolo)+' (segue)</td></tr>');
-          cur.push('<tr'+(s.specie==='pecore' && c.sesso==='M'?' class="maschio"':'')+'><td class="p">'+esc(etStampa(c))+'</td><td class="c">'+esc(c.contrassegno)+'</td></tr>');
+          cur.push('<tr'+(s.specie==='pecore' && c.sesso==='M'?' class="maschio"':'')+'><td class="p">'+esc(etIntera(c))+'</td><td class="c">'+esc(c.contrassegno)+'</td></tr>');
         });
       });
       chiudi();
