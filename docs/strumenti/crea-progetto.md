@@ -6,7 +6,7 @@ Qui si crea il progetto con gli stessi passi e le stesse regole del tablet: i re
 
 Alla fine si scarica lo **snapshot per la Regia**: un file di backup di Fejalog (`fejalog-backup`) che il tablet apre con **Progetto › Apri** e che diventa un progetto identico a quello creato sul tablet con gli stessi file e le stesse scelte, pronto per la Checklist e l'avvio. La Regia poi diffonde il progetto ai palmari come sempre, col QR.
 
-I registri storici e le marche di molti allevamenti (anche quelli dei pascoli comuni) si scaricano in un solo zip con [Scarica i registri dalla BDN](scarica-bdn.md): lo zip si carica qui così com'è.
+I registri storici e le marche di molti allevamenti (anche quelli dei pascoli comuni) si scaricano in un solo zip con [Scarica dalla BDN e da ARVET](scarica-bdn.md): lo zip si carica qui così com'è. Dalla stessa pagina, uno snippet per ARVET scarica i modelli 2/33.
 
 Tutto avviene nel browser: nessun file viene inviato in rete. Il codice fiscale dei veterinari resta nel pacchetto del progetto, mai nel registro. La guida è in [Creare il progetto sul sito](../riferimento/creasito.md).
 

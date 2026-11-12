@@ -4,7 +4,7 @@ Le pagine che **fanno un lavoro** nel browser, sul computer: si caricano file, s
 
 **Prima del campo**
 
-- [Scarica i registri dalla BDN](../strumenti/scarica-bdn.md): uno snippet che scarica in un solo zip i registri storici e le marche degli allevamenti da campionare e di quelli dei pascoli comuni.
+- [Scarica dalla BDN e da ARVET](../strumenti/scarica-bdn.md): due snippet; uno scarica in un solo zip i registri storici e le marche degli allevamenti da campionare e di quelli dei pascoli comuni, l'altro i modelli 2/33 da ARVET.
 - [Crea il progetto sul sito](../strumenti/crea-progetto.md): dai file della BDN allo snapshot che il tablet della Regia apre.
 - [Stampe pre-campo e QR](../strumenti/prima-del-campo.md): il 2/33 precompilato, il foglio A3, i QR Wi-Fi, il materiale.
 

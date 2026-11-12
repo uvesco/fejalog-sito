@@ -1,4 +1,4 @@
-# Scarica i registri dalla BDN
+# Scarica dalla BDN e da ARVET
 
 > **A chi serve**: al responsabile che prepara il risanamento al computer, prima di creare il progetto · **Tempo**: 2 minuti qui, poi lo snippet lavora da solo (circa 10 secondi per allevamento)
 
@@ -11,6 +11,8 @@ Qui si prepara uno **snippet** che, incollato nella BDN, scarica in un solo zip 
 3. Sul **PC** (Chrome o Edge, Windows o Linux), entra nella BDN ovicaprini col tuo ruolo di Servizio Veterinario, apri **Dati › Interrogazioni › Stabilimenti**, poi apri la console (**F12 › Console**), incolla e premi Invio. Chrome alla prima volta può chiedere di scrivere «consenti incolla».
 4. Lascia lavorare: un riquadro in alto a destra mostra fase, allevamento e passo in corso, una barra, il tempo e da quanti secondi la BDN non risponde, e i file pronti. Non cambiare pagina in quella scheda.
 5. Alla fine arriva `bdn_AAAAMMGG.zip`: dentro i registri (`<stabilimento>_<specie>_<codice fiscale>_AAAAMMGG.txt`), le marche (`marche_…`, solo per chi ne ha a magazzino) e `riepilogo.txt` con quello che è stato scaricato e gli avvisi.
+
+**I modelli 2/33 da ARVET** (punto 5 qui sotto): per gli stessi stabilimenti da campionare, uno snippet da incollare nella console di **ARVET** (non della BDN) stampa il 2/33 di ogni specie che allevano fra ovini e caprini, uno alla volta nella coda stampe di ARVET, e alla fine scarica `arvet_233_AAAAMMGG.zip` con tutti i 2/33 e un riepilogo. Lo zip si carica nelle stampe pre-campo, che restituiscono i 2/33 precompilati coi numeri delle provette, anche loro in uno zip. È una stampa: in ARVET non si salva né si modifica niente.
 
 **Da sapere**
 

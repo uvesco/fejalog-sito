@@ -77,7 +77,7 @@ nav:
   - Strumenti:
       - sezioni/strumenti.md
       - Prima del campo:
-          - "Scarica i registri dalla BDN": strumenti/scarica-bdn.md
+          - "Scarica dalla BDN e da ARVET": strumenti/scarica-bdn.md
           - "Crea il progetto sul sito": strumenti/crea-progetto.md
           - "Stampe pre-campo e QR": strumenti/prima-del-campo.md
       - Dopo il campo:

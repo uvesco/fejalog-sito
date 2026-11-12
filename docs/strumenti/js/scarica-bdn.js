@@ -96,11 +96,11 @@ function configurazione(codici, aggiuntivi, data) {
   return { campionare: codici.slice(), aggiuntivi: agg, data: data };
 }
 function oggi() { var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; }; return '' + d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate()); }
-function testoSnippet(cfg, motore) { return 'window.__BDN_SCARICO__ = ' + JSON.stringify(cfg) + ';\n' + motore; }
+function testoSnippet(cfg, motore, variabile) { return 'window.' + (variabile || '__BDN_SCARICO__') + ' = ' + JSON.stringify(cfg) + ';\n' + motore; }
 /** Lo snippet corto (12/11): la configurazione e il caricamento del motore dal sito. Pochi kB invece di 25 nella console
     della BDN (la cronologia di DevTools si riempiva), e sempre l'ultima versione del motore. */
-function testoCorto(cfg, urlMotore) {
-  return 'window.__BDN_SCARICO__ = ' + JSON.stringify(cfg) + ';\n' +
+function testoCorto(cfg, urlMotore, variabile) {
+  return 'window.' + (variabile || '__BDN_SCARICO__') + ' = ' + JSON.stringify(cfg) + ';\n' +
     "fetch(" + JSON.stringify(urlMotore + '?v=' + cfg.data) + ").then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })" +
     ".then(function (t) { new Function(t)(); })" +
     ".catch(function (e) { console.log('Fejalog: non riesco a caricare lo snippet dal sito (' + e.message + '): usa «Scarica lo snippet completo».'); });\n";
@@ -129,9 +129,10 @@ function leggiFile(file) {
 
 function monta(radice, opz) {
   var base = (opz && opz.base) || '';
-  var st = { codici: '', aggiuntivi: '', pascoli: null, nomePascoli: '', motore: null, errore: '' };
+  var st = { codici: '', aggiuntivi: '', pascoli: null, nomePascoli: '', motore: null, motoreArvet: null, errore: '' };
   fetch(base + 'bdn-scarico-motore.js').then(function (r) { return r.text(); }).then(function (t) { st.motore = t; disegna(); },
     function () { st.errore = 'Non riesco a caricare lo snippet dal sito.'; disegna(); });
+  fetch(base + 'arvet-233-motore.js').then(function (r) { return r.text(); }).then(function (t) { st.motoreArvet = t; disegna(); }, function () {});
 
   var areaCodici = h('textarea', { rows: '3', style: 'width:100%;font-family:monospace', placeholder: 'es. 888TO999 888TO888' });
   areaCodici.addEventListener('input', function () { st.codici = areaCodici.value; disegna(); });
@@ -144,7 +145,7 @@ function monta(radice, opz) {
     st.nomePascoli = f.name;
     leggiFile(f).then(function (t) { st.pascoli = leggiPascoli(t); disegna(); }, function (e) { st.pascoli = { errore: e.message }; disegna(); });
   });
-  var uscita = h('div');
+  var uscita = h('div'), uscitaArvet = h('div');
   radice.textContent = '';
   radice.appendChild(h('div', null,
     h('h3', null, '1. Stabilimenti da campionare'),
@@ -156,10 +157,34 @@ function monta(radice, opz) {
     h('h3', null, '3. Altri allevamenti (facoltativo)'),
     h('p', { class: 'fej-tenue' }, 'Uno per riga: codice dello stabilimento, specie (ovini o caprini), codice fiscale dell\'operatore.'),
     areaAgg,
-    uscita));
+    uscita,
+    uscitaArvet));
+
+  /** I 2/33 da ARVET (utente, 12/11): per gli stabilimenti da campionare, ogni specie ovicaprina, un .htm ciascuno. */
+  function disegnaArvet(codici) {
+    uscitaArvet.textContent = '';
+    uscitaArvet.appendChild(h('h3', null, '5. I modelli 2/33 da ARVET'));
+    uscitaArvet.appendChild(h('p', { class: 'fej-tenue' }, 'Per gli stabilimenti da campionare (punto 1), un 2/33 per ogni specie che allevano fra ovini e caprini: ' +
+      'lo stesso «Stampa modello 2/33» di ARVET, ordinato per marchio auricolare. Lo snippet va incollato nella console di ARVET, non della BDN. ' +
+      'I file 2-33_<stabilimento>_<specie>_<data>.htm si caricano in «Stampe pre-campo e QR» per il 2/33 precompilato.'));
+    if (!codici.length) { uscitaArvet.appendChild(h('p', { class: 'fej-tenue' }, 'Scrivi al punto 1 i codici degli stabilimenti da campionare.')); return; }
+    var cfgA = { codici: codici.slice(), data: oggi() }, esitoA = h('span', { class: 'fej-tenue' });
+    var cortoA = testoCorto(cfgA, new URL(base + 'arvet-233-motore.js', location.href).href, '__ARVET_233__');
+    uscitaArvet.appendChild(h('p', null,
+      h('button', { type: 'button', class: 'md-button md-button--primary', onclick: function () {
+        navigator.clipboard.writeText(cortoA).then(function () { esitoA.textContent = ' Copiato: incollalo nella console di ARVET.'; },
+          function () { esitoA.textContent = ' Non riesco a copiare: usa «Scarica lo snippet per ARVET completo».'; });
+      } }, 'Copia lo snippet per ARVET'), ' ',
+      st.motoreArvet ? h('button', { type: 'button', class: 'md-button', onclick: function () {
+        var u = URL.createObjectURL(new Blob([testoSnippet(cfgA, st.motoreArvet, '__ARVET_233__')], { type: 'text/javascript' })),
+          l = h('a', { href: u, download: 'snippet_arvet_233_' + cfgA.data + '.js' });
+        document.body.appendChild(l); l.click(); l.remove();
+      } }, 'Scarica lo snippet per ARVET completo') : null, esitoA));
+  }
 
   function disegna() {
     uscita.textContent = '';
+    disegnaArvet(leggiCodici(st.codici).codici);
     var c = leggiCodici(st.codici), a = leggiAggiuntivi(st.aggiuntivi);
     var dalPascolo = st.pascoli && st.pascoli.allevamenti ? st.pascoli.allevamenti : [];
     if (st.pascoli && st.pascoli.errore) uscita.appendChild(h('p', { class: 'fej-avviso' }, st.nomePascoli + ': ' + st.pascoli.errore));

@@ -12,7 +12,7 @@
   })(0);
   function avvia() {
     root.innerHTML = '<div class="fej-form"><p><label>Chiave della numerazione (CSV) o backup (ZIP)<input id="prima-csv" type="file" accept=".csv,.zip,text/csv,application/zip"></label></p>' +
-      '<p><label>2/33 di ARVET (.htm, anche più file)<input id="prima-htm" type="file" accept=".htm,.html,text/html" multiple disabled></label></p></div>' +
+      '<p><label>2/33 di ARVET (.htm, anche più file, o lo zip dello snippet per ARVET)<input id="prima-htm" type="file" accept=".htm,.html,.zip,text/html,application/zip" multiple disabled></label></p></div>' +
       '<p id="prima-stato" role="status" aria-live="polite"></p><div id="prima-avvisi"></div><div id="prima-a3"></div><div id="prima-esiti"></div><section id="prima-materiale"></section>';
     var dati = null, versione = 0;
     function el(id) { return document.getElementById('prima-' + id); }
@@ -99,12 +99,30 @@
         else el('a3').textContent=a3.errore;
       }).catch(function(e){if(v===versione){dati=null;el('stato').textContent=e.message;el('htm').disabled=true;}});
     };
+    /* I 2/33 anche dentro uno zip (utente, 12/11: lo snippet per ARVET li scarica tutti in uno zip). Testo come leggi():
+       UTF-8, e se non lo è windows-1252. */
+    function testoDa(u){var t=new TextDecoder('utf-8').decode(u);return t.indexOf('\ufffd')>=0?new TextDecoder('windows-1252').decode(u):t;}
+    function byte(file){return new Promise(function(resolve,reject){var r=new FileReader();r.onerror=function(){reject(new Error('File non leggibile: '+file.name));};r.onload=function(){resolve(new Uint8Array(r.result));};r.readAsArrayBuffer(file);});}
+    function voci233(file){
+      if(!/\.zip$/i.test(file.name))return leggi(file).then(function(t){return [{nome:file.name,testo:t}];});
+      return byte(file).then(function(u){return window.FejZip.leggi(u);}).then(function(vv){
+        var nomi=Object.keys(vv).filter(function(n){return /\.html?$/i.test(n)&&n.indexOf('__MACOSX')<0;}).sort();
+        if(!nomi.length)throw new Error('Nello zip non ci sono file .htm del 2/33.');
+        return nomi.map(function(n){return {nome:file.name+' › '+n.replace(/^.*\//,''),testo:testoDa(vv[n])};});
+      });
+    }
+    function scaricaZip(nodo,nome,voci){
+      var b=document.createElement('button');b.type='button';b.className='md-button md-button--primary';b.textContent='Scarica tutti i 2/33 precompilati ('+voci.length+' file, '+nome+')';
+      b.onclick=function(){var u=URL.createObjectURL(new Blob([window.FejZip.scrivi(voci)],{type:'application/zip'})),a=document.createElement('a');a.href=u;a.download=nome;a.click();setTimeout(function(){URL.revokeObjectURL(u);},30000);};
+      nodo.appendChild(b);
+    }
     el('htm').onchange=function(){
       var files=Array.prototype.slice.call(this.files), v=++versione, dd=dati;
       el('esiti').textContent='';
       if(!dd)return;
       el('stato').textContent='Lettura dei 2/33…';
-      Promise.all(files.map(function(file){return leggi(file).then(function(t){return {nome:file.name,r:Stampe.precompila(t,dd)};},function(e){return {nome:file.name,r:{ok:false,errore:e.message,avvisi:[]}};});})).then(function(rr){
+      Promise.all(files.map(function(file){return voci233(file).then(function(vv){return vv.map(function(x){return {nome:x.nome,r:Stampe.precompila(x.testo,dd)};});},function(e){return [{nome:file.name,r:{ok:false,errore:e.message,avvisi:[]}}];});})).then(function(gruppi){
+        var rr=[].concat.apply([],gruppi);
         if(v!==versione)return;
         var ok=0, conti=Object.create(null);
         rr.forEach(function(f){if(f.r.ok){var id=f.r.stabilimento+':'+f.r.specie;conti[id]=(conti[id]||0)+1;}});
@@ -117,6 +135,10 @@
           if(f.r.ok){ok++;scarica(div,'2-33_provette_'+f.r.stabilimento+'_'+f.r.specie+'.html',f.r.html);}
           el('esiti').appendChild(div);
         });
+        var buoni=rr.filter(function(f){return f.r.ok;});
+        if(buoni.length>1){var d=new Date(),p2=function(n){return (n<10?'0':'')+n;},cima=document.createElement('p');
+          scaricaZip(cima,'2-33_provette_'+d.getFullYear()+p2(d.getMonth()+1)+p2(d.getDate())+'.zip',buoni.map(function(f){return {name:'2-33_provette_'+f.r.stabilimento+'_'+f.r.specie+'.html',data:f.r.html};}));
+          el('esiti').insertBefore(cima,el('esiti').firstChild);}
         el('stato').textContent=ok+' file riconosciuti · '+(rr.length-ok)+' rifiutati.';
       });
     };
