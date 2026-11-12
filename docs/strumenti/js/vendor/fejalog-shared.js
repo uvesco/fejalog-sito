@@ -106,8 +106,8 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForInterface(Entry, 'Entry');
   initMetadataForInterface(KtMap, 'Map');
   initMetadataForInterface(MutableIterable, 'MutableIterable');
-  initMetadataForInterface(KtMutableSet, 'MutableSet', VOID, VOID, [KtSet, Collection, MutableIterable]);
-  initMetadataForInterface(KtMutableList, 'MutableList', VOID, VOID, [KtList, Collection, MutableIterable]);
+  initMetadataForInterface(KtMutableSet, 'MutableSet', VOID, VOID, [KtSet, MutableIterable, Collection]);
+  initMetadataForInterface(KtMutableList, 'MutableList', VOID, VOID, [KtList, MutableIterable, Collection]);
   initMetadataForInterface(KtMutableMap, 'MutableMap', VOID, VOID, [KtMap]);
   initMetadataForCompanion(Companion_0);
   initMetadataForClass(Enum, 'Enum', VOID, VOID, [Comparable]);
@@ -127,7 +127,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForInterface(Comparator, 'Comparator');
   initMetadataForObject(Unit, 'Unit');
   initMetadataForClass(AbstractCollection, 'AbstractCollection', VOID, VOID, [Collection]);
-  initMetadataForClass(AbstractMutableCollection, 'AbstractMutableCollection', VOID, AbstractCollection, [Collection, MutableIterable]);
+  initMetadataForClass(AbstractMutableCollection, 'AbstractMutableCollection', VOID, AbstractCollection, [MutableIterable, Collection]);
   initMetadataForClass(IteratorImpl, 'IteratorImpl');
   initMetadataForClass(ListIteratorImpl, 'ListIteratorImpl', VOID, IteratorImpl);
   initMetadataForClass(AbstractMutableList, 'AbstractMutableList', VOID, AbstractMutableCollection, [KtMutableList]);
@@ -140,7 +140,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(ArrayList, 'ArrayList', ArrayList_init_$Create$, AbstractMutableList, [KtMutableList, RandomAccess]);
   initMetadataForClass(HashMap, 'HashMap', HashMap_init_$Create$, AbstractMutableMap, [KtMutableMap]);
   initMetadataForClass(HashMapKeys, 'HashMapKeys', VOID, AbstractMutableSet, [KtMutableSet]);
-  initMetadataForClass(HashMapValues, 'HashMapValues', VOID, AbstractMutableCollection, [Collection, MutableIterable]);
+  initMetadataForClass(HashMapValues, 'HashMapValues', VOID, AbstractMutableCollection, [MutableIterable, Collection]);
   initMetadataForClass(HashMapEntrySetBase, 'HashMapEntrySetBase', VOID, AbstractMutableSet, [KtMutableSet]);
   initMetadataForClass(HashMapEntrySet, 'HashMapEntrySet', VOID, HashMapEntrySetBase);
   initMetadataForClass(HashMapKeysDefault$iterator$1);
@@ -28287,6 +28287,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     RiconoscimentoBdn_instance = this;
     this.LUNGHEZZA_REGISTRO_1 = 538;
     this.CODICE_1 = Regex_init_$Create$_0('[0-9]{3}[A-Z]{2}[0-9]{3}');
+    this.CONTRASSEGNO_1 = Regex_init_$Create$_0('[0-9A-Z]{8,16}');
     this.SPECIE_BDN_1 = mapOf_0([to('0124', Specie_PECORE_getInstance()), to('0125', Specie_CAPRE_getInstance())]);
     this.SPECIE_REGISTRO_1 = mapOf_0([to('ovini', Specie_PECORE_getInstance()), to('caprini', Specie_CAPRE_getInstance())]);
   }
@@ -28433,18 +28434,10 @@ if (typeof String.prototype.startsWith === 'undefined') {
     while (_iterator__ex2g4s_8.hasNext_bitz1p_k$()) {
       var element_5 = _iterator__ex2g4s_8.next_20eer_k$();
       var tmp_3;
-      var tmp_4;
-      // Inline function 'kotlin.text.isNotBlank' call
-      var this_2 = campo_0(RiconoscimentoBdn_getInstance(), element_5, 28, 44);
-      if (!isBlank(this_2)) {
-        tmp_4 = element_5.length <= 120;
-      } else {
-        tmp_4 = false;
-      }
-      if (tmp_4) {
+      if (RiconoscimentoBdn_getInstance().CONTRASSEGNO_1.matches_evli6i_k$(campo_0(RiconoscimentoBdn_getInstance(), element_5, 28, 44)) && element_5.length <= 120) {
         // Inline function 'kotlin.text.trimStart' call
-        var tmp$ret$36 = toString_1(trimStart(isCharSequence(element_5) ? element_5 : THROW_CCE()));
-        tmp_3 = !startsWith(tmp$ret$36, '<');
+        var tmp$ret$35 = toString_1(trimStart(isCharSequence(element_5) ? element_5 : THROW_CCE()));
+        tmp_3 = !startsWith(tmp$ret$35, '<');
       } else {
         tmp_3 = false;
       }
@@ -28461,8 +28454,8 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var _iterator__ex2g4s_9 = marche.iterator_jk1svi_k$();
     while (_iterator__ex2g4s_9.hasNext_bitz1p_k$()) {
       var item_2 = _iterator__ex2g4s_9.next_20eer_k$();
-      var tmp$ret$39 = RiconoscimentoBdn_getInstance().SPECIE_BDN_1.get_wei43m_k$(campo_0(RiconoscimentoBdn_getInstance(), item_2, 24, 28));
-      destination_7.add_utx5q5_k$(tmp$ret$39);
+      var tmp$ret$38 = RiconoscimentoBdn_getInstance().SPECIE_BDN_1.get_wei43m_k$(campo_0(RiconoscimentoBdn_getInstance(), item_2, 24, 28));
+      destination_7.add_utx5q5_k$(tmp$ret$38);
     }
     var tmp1_elvis_lhs = singleOrNull(distinct(destination_7));
     var specie_0 = tmp1_elvis_lhs == null ? this.specieDalNome_qxplex_k$(f.nome_1) : tmp1_elvis_lhs;
@@ -28473,23 +28466,23 @@ if (typeof String.prototype.startsWith === 'undefined') {
     while (_iterator__ex2g4s_10.hasNext_bitz1p_k$()) {
       var item_3 = _iterator__ex2g4s_10.next_20eer_k$();
       // Inline function 'kotlin.takeIf' call
-      var this_3 = campo_0(RiconoscimentoBdn_getInstance(), item_3, 0, 8);
-      var tmp_5;
-      if (RiconoscimentoBdn_getInstance().CODICE_1.matches_evli6i_k$(this_3)) {
-        tmp_5 = this_3;
+      var this_2 = campo_0(RiconoscimentoBdn_getInstance(), item_3, 0, 8);
+      var tmp_4;
+      if (RiconoscimentoBdn_getInstance().CODICE_1.matches_evli6i_k$(this_2)) {
+        tmp_4 = this_2;
       } else {
-        tmp_5 = null;
+        tmp_4 = null;
       }
-      var tmp0_elvis_lhs = tmp_5;
-      var tmp_6;
+      var tmp0_elvis_lhs = tmp_4;
+      var tmp_5;
       if (tmp0_elvis_lhs == null) {
         // Inline function 'kotlin.text.orEmpty' call
-        tmp_6 = dalNome == null ? '' : dalNome;
+        tmp_5 = dalNome == null ? '' : dalNome;
       } else {
-        tmp_6 = tmp0_elvis_lhs;
+        tmp_5 = tmp0_elvis_lhs;
       }
-      var tmp$ret$42 = tmp_6;
-      destination_8.add_utx5q5_k$(tmp$ret$42);
+      var tmp$ret$41 = tmp_5;
+      destination_8.add_utx5q5_k$(tmp$ret$41);
     }
     // Inline function 'kotlin.collections.filter' call
     // Inline function 'kotlin.collections.filterTo' call
