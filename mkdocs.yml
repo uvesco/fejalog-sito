@@ -68,47 +68,102 @@ markdown_extensions:
 nav:
   - Inizia qui:
       - "Cos'è Fejalog": index.md
-      - "Caratteristiche": caratteristiche.md
-      - "Anomalie: tutti i casi": anomalie.md
       - "Le cinque garanzie": inizia-qui/cinque-garanzie.md
-      - "I requisiti in breve": inizia-qui/requisiti.md
       - "Fasi di lavoro e ruoli": inizia-qui/fasi-e-ruoli.md
       - "A chi serve cosa": inizia-qui/ruoli.md
+      - "I requisiti in breve": inizia-qui/requisiti.md
       - "Scarica l'app": scarica.md
+      - "Versioni e novità": novita.md
+  - Strumenti:
+      - sezioni/strumenti.md
+      - Prima del campo:
+          - "Scarica i registri dalla BDN": strumenti/scarica-bdn.md
+          - "Crea il progetto sul sito": strumenti/crea-progetto.md
+          - "Stampe pre-campo e QR": strumenti/prima-del-campo.md
+      - Dopo il campo:
+          - "Panoramica dopo il campo": strumenti/index.md
+          - "Fine lavori sul computer": strumenti/fine-lavori.md
+  - Documentazione:
+      - sezioni/documentazione.md
+      - Chi preleva:
+          # >>> chi-preleva (scritto da ScriviSito: non modificare)
+          - "Checklist del veterinario": checklist-veterinari.md
+          - "Preparare il telefono": veterinari.md
+          # <<< chi-preleva
+          - "In campo (scheda pratica)": chi-preleva/in-campo.md
+          - "Cosa succede se…": chi-preleva/cosa-succede-se.md
+          - "Domande dei prelevatori": chi-preleva/domande.md
+      - Chi dirige (la Regia):
+          # >>> chi-dirige (scritto da ScriviSito: non modificare)
+          - "Checklist del responsabile": checklist-responsabile.md
+          # <<< chi-dirige
+          - "Requisiti hardware e software": chi-dirige/requisiti.md
+          - "Attrezzatura e materiale": chi-dirige/attrezzatura-materiale.md
+          - "Rete e connessione": chi-dirige/rete.md
+          - "Avvio della seduta": chi-dirige/avvio.md
+          - "Consegne e plateau": chi-dirige/consegne-plateau.md
+          - "Collegamento al PC Windows via USB": chi-dirige/tethering-pc.md
+          - "In campo (scheda responsabile)": chi-dirige/scheda-responsabile.md
+      - Dopo il campo:
+          - "Riconciliazione dei backup": dopo-il-campo/riconcilia-backup.md
+          - "Controllo provette e statistiche": dopo-il-campo/provette-statistiche.md
+          - "Il 2/33 finale": dopo-il-campo/modello-233-finale.md
+          - "Gli snippet per ARVET": dopo-il-campo/snippet-arvet.md
+          - "ARVET e gli snippet": arvet.md
+      - Riferimento:
+          # >>> riferimento (scritto da ScriviSito: non modificare)
+          - Guida di riferimento:
+              - riferimento/index.md
+              - "Inizio: i passi di un progetto": riferimento/percorso.md
+              - "Regia e palmari": riferimento/ruoli.md
+              - "Prima di tutto: l'utente del device": riferimento/utente.md
+              - "Conservare le impostazioni dell'app": riferimento/impostazioniportabili.md
+              - "Il progetto: nuovo, apri, recenti, chiudi": riferimento/seduta.md
+              - "Archivio e copie del progetto": riferimento/archivio.md
+              - "Registri BDN": riferimento/registri.md
+              - "Lavorare in rete": riferimento/rete.md
+              - "Prima della prima provetta (Regia)": riferimento/inizio.md
+              - "Capi ricercati": riferimento/ricercati.md
+              - "Campionamento: registrare una provetta": riferimento/lavoro.md
+              - "Capo senza contrassegno": riferimento/senzacontrassegno.md
+              - "Avvisi sul capo": riferimento/avvisi.md
+              - "Correggere: le ultime provette": riferimento/ultime.md
+              - "Provette perse e ritrovate": riferimento/perse.md
+              - "Lo stato della rete in alto": riferimento/banner.md
+              - "Statistiche": riferimento/statistiche.md
+              - "Il Plateau della Regia": riferimento/plateau.md
+              - "Problemi da risolvere": riferimento/problemi.md
+              - "Riordino dei plateau": riferimento/riordino.md
+              - "Backup e ripristino": riferimento/backup.md
+              - "Fine lavori in Fejalog": riferimento/fine.md
+              - "Collegamento al PC via USB": riferimento/pcusb.md
+              - "Creare il progetto sul sito": riferimento/creasito.md
+              - "Pausa, chiusura e uscita": riferimento/uscita.md
+              - "Se qualcosa va storto": riferimento/guasti.md
+              - "Le parole": riferimento/parole.md
+              - "Messaggi": riferimento/messaggi.md
+              - "Dispositivo": riferimento/dispositivo.md
+              - "Gestione dispositivi (Regia)": riferimento/dispositivi.md
+              - "QR d'ingresso": riferimento/qringresso.md
+              - "Pausa e ripresa": riferimento/pausa.md
+              - "App": riferimento/app.md
+              - "Cartelle": riferimento/cartelle.md
+              - "Briefing": riferimento/briefing.md
+              - "Informazioni": riferimento/informazioni.md
+              - "Crediti": riferimento/crediti.md
+          # <<< riferimento
+          - "Anomalie: tutti i casi": anomalie.md
+          - "Caratteristiche": caratteristiche.md
+          - "Domande frequenti": domande.md
+          - "Sotto il cofano: problemi e architettura": riferimento/sotto-il-cofano/index.md
+  - Formazione:
+      - sezioni/formazione.md
       - "Video di introduzione": inizia-qui/video.md
-  - Chi preleva:
-      # >>> chi-preleva (scritto da ScriviSito: non modificare)
-      - "Checklist del veterinario": checklist-veterinari.md
-      - "Preparare il telefono": veterinari.md
+      # >>> formazione (scritto da ScriviSito: non modificare)
       - "Il briefing (11 diapositive)": briefing.md
-      # <<< chi-preleva
-      - "In campo (scheda pratica)": chi-preleva/in-campo.md
-      - "Cosa succede se…": chi-preleva/cosa-succede-se.md
-      - "Domande dei prelevatori": chi-preleva/domande.md
-  - Chi dirige (la Regia):
-      # >>> chi-dirige (scritto da ScriviSito: non modificare)
-      - "Checklist del responsabile": checklist-responsabile.md
-      # <<< chi-dirige
-      - "Requisiti hardware e software": chi-dirige/requisiti.md
-      - "Attrezzatura e materiale": chi-dirige/attrezzatura-materiale.md
-      - "Scarica i registri dalla BDN": strumenti/scarica-bdn.md
-      - "Crea il progetto sul sito": strumenti/crea-progetto.md
-      - "Stampe pre-campo e QR": strumenti/prima-del-campo.md
-      - "Rete e connessione": chi-dirige/rete.md
-      - "Avvio della seduta": chi-dirige/avvio.md
-      - "Consegne e plateau": chi-dirige/consegne-plateau.md
-      - "Collegamento al PC Windows via USB": chi-dirige/tethering-pc.md
-      - "In campo (scheda responsabile)": chi-dirige/scheda-responsabile.md
-  - Dopo il campo:
-      - "Panoramica dopo il campo": strumenti/index.md
-      - "Fine lavori sul computer": strumenti/fine-lavori.md
-      - "Riconciliazione dei backup": dopo-il-campo/riconcilia-backup.md
-      - "Controllo provette e statistiche": dopo-il-campo/provette-statistiche.md
-      - "Il 2/33 finale": dopo-il-campo/modello-233-finale.md
-      - "Gli snippet per ARVET": dopo-il-campo/snippet-arvet.md
-  - Provalo:
-      - "Il kit di prova": kit.md
+      # <<< formazione
       - "Tutorial e gregge a schermo": strumenti/simulatore.md
+      - "Il kit di prova": kit.md
       - "Tre modalità di simulazione": provalo/tre-modalita.md
       - "Incidenti programmati": provalo/incidenti-programmati.md
       - "Tutorial passo per passo":
@@ -131,49 +186,3 @@ nav:
           - "13 · Backup, uscita, ripresa": tutorial/13-backup.md
           - "14 · Fine lavori": tutorial/14-fine-lavori.md
           - "15 · ARVET": tutorial/15-arvet.md
-  - Riferimento:
-      # >>> riferimento (scritto da ScriviSito: non modificare)
-      - Guida di riferimento:
-          - riferimento/index.md
-          - "Inizio: i passi di un progetto": riferimento/percorso.md
-          - "Regia e palmari": riferimento/ruoli.md
-          - "Prima di tutto: l'utente del device": riferimento/utente.md
-          - "Conservare le impostazioni dell'app": riferimento/impostazioniportabili.md
-          - "Il progetto: nuovo, apri, recenti, chiudi": riferimento/seduta.md
-          - "Archivio e copie del progetto": riferimento/archivio.md
-          - "Registri BDN": riferimento/registri.md
-          - "Lavorare in rete": riferimento/rete.md
-          - "Prima della prima provetta (Regia)": riferimento/inizio.md
-          - "Capi ricercati": riferimento/ricercati.md
-          - "Campionamento: registrare una provetta": riferimento/lavoro.md
-          - "Capo senza contrassegno": riferimento/senzacontrassegno.md
-          - "Avvisi sul capo": riferimento/avvisi.md
-          - "Correggere: le ultime provette": riferimento/ultime.md
-          - "Provette perse e ritrovate": riferimento/perse.md
-          - "Lo stato della rete in alto": riferimento/banner.md
-          - "Statistiche": riferimento/statistiche.md
-          - "Il Plateau della Regia": riferimento/plateau.md
-          - "Problemi da risolvere": riferimento/problemi.md
-          - "Riordino dei plateau": riferimento/riordino.md
-          - "Backup e ripristino": riferimento/backup.md
-          - "Fine lavori in Fejalog": riferimento/fine.md
-          - "Collegamento al PC via USB": riferimento/pcusb.md
-          - "Creare il progetto sul sito": riferimento/creasito.md
-          - "Pausa, chiusura e uscita": riferimento/uscita.md
-          - "Se qualcosa va storto": riferimento/guasti.md
-          - "Le parole": riferimento/parole.md
-          - "Messaggi": riferimento/messaggi.md
-          - "Dispositivo": riferimento/dispositivo.md
-          - "Gestione dispositivi (Regia)": riferimento/dispositivi.md
-          - "QR d'ingresso": riferimento/qringresso.md
-          - "Pausa e ripresa": riferimento/pausa.md
-          - "App": riferimento/app.md
-          - "Cartelle": riferimento/cartelle.md
-          - "Briefing": riferimento/briefing.md
-          - "Informazioni": riferimento/informazioni.md
-          - "Crediti": riferimento/crediti.md
-      # <<< riferimento
-      - "ARVET e gli snippet": arvet.md
-      - "Versioni e novità": novita.md
-      - "Domande frequenti": domande.md
-      - "Sotto il cofano: problemi e architettura": riferimento/sotto-il-cofano/index.md

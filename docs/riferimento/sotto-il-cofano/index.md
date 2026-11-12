@@ -9,7 +9,7 @@ Come Fejalog risponde ai vincoli del lavoro sul campo per garantire integrità, 
 - [2. Unicità assoluta dei numeri e prevenzione delle collisioni](#2-unicita-assoluta-dei-numeri-e-prevenzione-delle-collisioni)
 - [3. Persistenza a strati e salvaguardia del dato («Rischio zero»)](#3-persistenza-a-strati-e-salvaguardia-del-dato-rischio-zero)
 - [4. Immutabilità dei progressivi a fronte di cambi di configurazione in corsa](#4-immutabilita-dei-progressivi-a-fronte-di-cambi-di-configurazione-in-corsa)
-- [5. Multi-stabilimento e greggi promiscui (Comproprietà e pascoli)](#5-multi-stabilimento-e-greggi-promiscui-comproprieta-e-pascoli)
+- [5. Multi-stabilimento e greggi promiscui (pascoli)](#5-multi-stabilimento-e-greggi-promiscui-pascoli)
 - [6. Fasi operative rigide e prevenzione dell'errore umano](#6-fasi-operative-rigide-e-prevenzione-dellerrore-umano)
 - [7. Riconciliazione finale con ARVET e chiusura buchi](#7-riconciliazione-finale-con-arvet-e-chiusura-buchi)
 - [8. Ergonomia di campo, hardware e consumo energetico](#8-ergonomia-di-campo-hardware-e-consumo-energetico)
