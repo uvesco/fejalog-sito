@@ -6,10 +6,10 @@
 
 ## Fai
 
-1. Menu ☰ › **Campionamento › Plateau**. In alto la specie e la vista: **Serie ordinaria** o **Problematici**.
+1. Menu ☰ › **Campionamento › Plateau**. In alto la specie e la vista: **Serie ordinaria** o **Fuori registro**.
 2. Nel riquadro delle consegne, accanto a ogni veterinario, tocca **«Ricevi (N)»** e conferma: hai in mano le sue
    provette. Lo stesso vale se è il palmare a toccare «Conferma consegna».
-3. Metti ogni provetta dove dice lo schema: le ordinarie e le provette da isolato non doppie al pozzetto del loro numero; le problematiche e le doppie nei pozzetti della vista Problematici (in sequenza unica per l'intero progetto, nel verso di riempimento scelto).
+3. Metti ogni provetta dove dice lo schema: le ordinarie e le provette da isolato non doppie al pozzetto del loro numero; le provette fuori registro e le doppie nei pozzetti della vista Fuori registro (in sequenza unica per l'intero progetto, nel verso di riempimento scelto).
 4. Con **Cerca** (numero, etichetta o cifre del contrassegno) lo schema va al plateau giusto e il pozzetto lampeggia.
 
 <div class="schermate" markdown>
@@ -20,7 +20,7 @@
 </figure>
 
 <figure markdown="span">
-  ![Problematici: sequenza unica sul tavolo](../img/release-0.2/plateau_problematici.png)
+  ![Fuori registro: sequenza unica sul tavolo](../img/release-0.2/plateau_problematici.png)
   <figcaption>Immagine precedente: mostra le righe per veterinario dei progetti pregressi, non la sequenza unica dei progetti nuovi.</figcaption>
 </figure>
 
@@ -29,7 +29,7 @@
 !!! atteso "Cosa devi vedere"
     - Le provette ricevute passano da colore **pastello** a colore **pieno**.
     - Gli **isolati non doppi** vanno subito al pozzetto del loro numero ordinario.
-    - I **problematici** riempiono i plateau in sequenza unica per l'intero progetto in ordine di consegna, secondo il verso stabilito (alto→basso o basso→alto).
+    - I **fuori registro** riempiono i plateau in sequenza unica per l'intero progetto in ordine di consegna, secondo il verso stabilito (alto→basso o basso→alto).
     - Ogni provetta ha **un solo pozzetto**, e il posto registrato alla consegna **non cambia più** fino al riordino.
 
 !!! info "A campionamento aperto si riempie soltanto"
@@ -41,12 +41,12 @@
 
 Da **Gestione campioni › Sul tablet › Plateau e provette**, la vista segue la posa registrata e gli invii applicati del Riordino. Scegli stabilimento, specie e vista. Cerca cifre finali, contrassegno intero o etichetta e tocca un risultato: centra ed evidenzia il pozzetto e apre la scheda della provetta, con il contrassegno copiabile.
 
-- **Bordi colorati di stato**: bordo **verde** per plateau completi (100 pozzetti pieni; l'ultimo plateau è verde se non ha buchi e non vi sono problematiche da ricollocare); **giallo** per plateau da completare; **rosso** per il plateau dei problematici da svuotare (verde quando vuoto).
+- **Bordi colorati di stato**: bordo **verde** per plateau completi (100 pozzetti pieni; l'ultimo plateau è verde se non ha buchi e non vi sono fuori registro da ricollocare); **giallo** per plateau da completare; **rosso** per il plateau dei fuori registro da svuotare (verde quando vuoto).
 - **Azioni sulla provetta**: tocca una provetta per copiarne il codice, riattribuire un altro capo, spostarla (con proposta di scambio da confermare se il pozzetto è occupato), segnarla persa o registrarne lo scarto motivato.
-- **Scarto recuperabile**: la provetta scartata è esclusa da ARVET e non tiene rosso il plateau dei problematici, ma resta ripristinabile in ogni momento con «Annulla scarto».
-- **Produttività della gestione**: grafico e avanzamento temporale aggregato delle operazioni di gestione (azioni eseguite, stato dei plateau, problematici ricollocati o scartati e stima della fine).
+- **Scarto recuperabile**: la provetta scartata è esclusa da ARVET e non tiene rosso il plateau dei fuori registro, ma resta ripristinabile in ogni momento con «Annulla scarto».
+- **Produttività della gestione**: grafico e avanzamento temporale aggregato delle operazioni di gestione (azioni eseguite, stato dei plateau, fuori registro ricollocati o scartati e stima della fine).
 
-Per cercare una posizione scrivi **plateau / pozzetto**, per esempio plateau **2**, pozzetto **25**, nella serie e vista scelte: funziona anche sui posti vuoti. I problematici in sequenza unica mostrano insieme specie e stabilimenti. I colori distinguono ordinarie, da isolato, problematiche, provvisorie, annullate e perse; queste ultime due sono riferimenti all’ultimo posto noto e non occupano il pozzetto. Se manca la posa registrata il posto è indicativo.
+Per cercare una posizione scrivi **plateau / pozzetto**, per esempio plateau **2**, pozzetto **25**, nella serie e vista scelte: funziona anche sui posti vuoti. I fuori registro in sequenza unica mostrano insieme specie e stabilimenti. I colori distinguono ordinarie, da isolato, fuori registro, provvisorie, annullate e perse; queste ultime due sono riferimenti all’ultimo posto noto e non occupano il pozzetto. Se manca la posa registrata il posto è indicativo.
 
 I plateau sono affiancati: usa **− / Ripristina / +**, oppure pizzico e trascinamento sul tablet, rotella e trascinamento sul PC. Sul computer puoi staccare la finestra: dati, ricerca, selezione e zoom restano condivisi, anche mentre lavori nel Riordino. Vale sia via USB sia sul sito aperto da uno zip; le azioni locali restano nel file da riportare nell’app.
 
@@ -56,4 +56,4 @@ I plateau sono affiancati: usa **− / Ripristina / +**, oppure pizzico e trasci
 - [ ] un isolato non doppio al proprio numero nella serie ordinaria
 - [ ] una provetta trovata con Cerca
 
-Nei progetti nuovi il verso predefinito è alto→basso e i problematici seguono una sequenza unica. I progetti già avviati conservano la disposizione precedente; senza il parametro del verso resta basso→alto.
+Nei progetti nuovi il verso predefinito è alto→basso e i fuori registro seguono una sequenza unica. I progetti già avviati conservano la disposizione precedente; senza il parametro del verso resta basso→alto.

@@ -12,7 +12,7 @@ basta scrivere il numero sulla scheda (o su un foglio).
    finiscono con quelle cifre, poi quelli che le contengono. Tocca quello giusto.
 3. **Col lettore**: leggi il barcode della scheda. Il codice entra da solo e, se il capo è uno solo, **Invio** lo
    sceglie.
-4. Nel **foglio di conferma**: in alto, grande, il **numero** da scrivere sulla provetta all'interno del riquadro colorato (neutro = solo l'etichetta; blu = ordinario da isolato, non scrivere tutto; rosso = problematico, contrassegno COMPLETO). Prova le caselle **DX**, **SX** e **bolo** su qualche capo (da sostituire: DX o bolo = senza transponder, in rosso). Puoi toccare **Foto** per collegare fino a 5 fotografie della provetta o dell'animale.
+4. Nel **foglio di conferma**: in alto, grande, il **numero** da scrivere sulla provetta all'interno del riquadro colorato (neutro = solo l'etichetta; blu = ordinario da isolato, non scrivere tutto; rosso = fuori registro, contrassegno COMPLETO). Prova le caselle **DX**, **SX** e **bolo** su qualche capo (da sostituire: DX o bolo = senza transponder, in rosso). Puoi toccare **Foto** per collegare fino a 5 fotografie della provetta o dell'animale.
 5. **«CONFERMA»** (oppure premi **Invio/OK** sulla tastiera o sul telecomando ad anello BLE-M3: conferma subito col focus su Conferma; se il focus è su un’opzione, attiva quell’opzione) e scrivi il numero sulla provetta.
 6. Prova il **cambio di specie**: se digiti o leggi un codice e cambi specie (scorrendo o con le frecce), il codice non si perde e la ricerca riparte da sola.
 7. Ripeti con un **montone** (sezione «Presenti · montoni») e con una **capra** (pagina Capre in alto, o scorrendo di
@@ -45,7 +45,7 @@ lato).
     - L'etichetta da scrivere sulla provetta compare grande in testa al foglio di conferma:
         - **Riquadro neutro**: provetta ordinaria in rete (copia l’etichetta mostrata);
         - **Riquadro blu**: ordinario prelevato **da isolato** (senza tutti i colleghi collegati, copia l’etichetta completa del suffisso): l'istruzione ricorda *«non scrivere tutto: solo l'etichetta»*; al tavolo la Regia la posiziona subito al pozzetto del suo numero;
-        - **Riquadro rosso**: capi **problematici** (fuori età diagnostica, marche nuove, altri stabilimenti, forzati): prendono il codice problematico mostrato e l'istruzione ricorda *«scrivi sempre il contrassegno COMPLETO»*.
+        - **Riquadro rosso**: capi **fuori registro** (fuori età diagnostica, marche nuove, altri stabilimenti, forzati): prendono il codice fuori registro mostrato e l'istruzione ricorda *«scrivi sempre il contrassegno COMPLETO»*.
     - Per capi senza marche a fine risanamento c'è il tasto **«Senza contrassegno»**, che attribuisce un capo compatibile non prelevato.
     - La provetta si vede salvata (**✓**) solo quando è sul disco; in cima a Campionamento, **Ultime** la mostra.
     - Il foglio dice come è stato identificato il capo: col lettore (codice intero) è certo, con le cifre digitate

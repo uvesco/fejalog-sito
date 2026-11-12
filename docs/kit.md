@@ -13,7 +13,7 @@ Usa pochi capi per una prova breve; i dati completi servono anche per verificare
 |---|---|---|
 | [kit_cinque_stabilimenti_dati.zip](provalo/kit/kit_cinque_stabilimenti_dati.zip) | 0,63 MiB | Registri BDN, pacchetto, ricercati, schede HTML, modelli 2/33 di ingresso, stampe HTML e backup di esempio. |
 | [kit_cinque_stabilimenti_pdf.zip](provalo/kit/kit_cinque_stabilimenti_pdf.zip) | 4,50 MiB | Schede A4 (4265 schede, 307 pagine), dieci 2/33 precompilati e foglio A3 in quattro pagine. |
-| [backup_esempio_cinque_stabilimenti.zip](provalo/kit/backup_esempio_cinque_stabilimenti.zip) | 0,17 MiB | Pochi campioni già registrati e posati nelle dieci serie, una problematica, campionamento chiuso: pronto per il browser. |
+| [backup_esempio_cinque_stabilimenti.zip](provalo/kit/backup_esempio_cinque_stabilimenti.zip) | 0,17 MiB | Pochi campioni già registrati e posati nelle dieci serie, una provetta fuori registro, campionamento chiuso: pronto per il browser. |
 
 [Impronte SHA-256](provalo/kit/sha256sum.txt). Nessun file supera 10 MiB; il PDF delle schede è circa 6,9 MiB.
 Il kit storico singolo resta nel repository per i test e non viene più pubblicato.
@@ -105,16 +105,16 @@ I giovani delle schede restano giovani alla data del kit, non a qualunque data s
 
 | Prova | Schede / azione | Esito atteso |
 |---|---|---|
-| ☐ Usciti ritrovati | Per ogni stabilimento, tutti i 32 capitoli di causale dove presenti, compresi 2, 3, 4, 5, 6, 8, 9 | Smarriti e rubati sempre problematici; controlla identità, data e causale anche per morti, macello e trasferiti. |
-| ☐ Fuori età | IT066000010012 (19/11/2025), più una scheda sotto sei mesi | Con soglia 12 mesi sono problematici se prelevati, senza numero ordinario; predefinita Eliminata, niente numero finale né ARVET. Confronta i 2/33 iniziali senza numero. |
+| ☐ Usciti ritrovati | Per ogni stabilimento, tutti i 32 capitoli di causale dove presenti, compresi 2, 3, 4, 5, 6, 8, 9 | Smarriti e rubati sempre fuori registro; controlla identità, data e causale anche per morti, macello e trasferiti. |
+| ☐ Fuori età | IT066000010012 (19/11/2025), più una scheda sotto sei mesi | Con soglia 12 mesi sono fuori registro se prelevati, senza numero ordinario; predefinita Eliminata, niente numero finale né ARVET. Confronta i 2/33 iniziali senza numero. |
 | ☐ Secondario già campionato | Un adulto presente di 888TO888 | Ordinario nella serie dello stabilimento di lavoro, distinta da quella del principale. |
-| ☐ Stabilimento non campionato | Un presente di 888TO222 prima di aggiungerlo | Avviso viola, problematico; il solo registro non lo include nella profilassi. |
+| ☐ Stabilimento non campionato | Un presente di 888TO222 prima di aggiungerlo | Avviso viola, fuori registro; il solo registro non lo include nella profilassi. |
 | ☐ Nuovo secondario | Aggiungi 888TO222 solo per simularne il risanamento contemporaneo; poi preleva un altro adulto | Nuovi capi nella sua serie; scritte già emesse invariate, da controllare prima del riordino. |
-| ☐ Stabilimento chiuso | Capi solo usciti di 888TO444/888TO333, poi un capo già presente in uno di lavoro con vecchia uscita dal chiuso | Il primo richiede verifica di provenienza/ingresso; il secondo non è problematico per la sola storia, perché prevale il presente. |
+| ☐ Stabilimento chiuso | Capi solo usciti di 888TO444/888TO333, poi un capo già presente in uno di lavoro con vecchia uscita dal chiuso | Il primo richiede verifica di provenienza/ingresso; il secondo non è fuori registro per la sola storia, perché prevale il presente. |
 | ☐ Trasferimento fra due di lavoro | Sezione «888TO888 · arrivate da 888TO999» | Presente in 888TO888, serie X; la precedente uscita da 888TO999 non lo duplica. |
 | ☐ Marche e forzati | Sezioni Marche disponibili / In nessun registro | Sesso, razza, nascita obbligatori; per il forzato codice completo e destinazione verificata. Una nascita oltre sei mesi genera un avviso non bloccante. |
-| ☐ Registro aggiornato | Preleva prima il capo poi venduto nel file `in_corsa/888TO888_pecore_…_1100.txt`, quindi carica quel file | Diventata problematica; scritta fisica e assegnazione iniziale conservate, soluzione guidata. |
-| ☐ Ricercati e doppi | Ricercati del CSV; seconde schede da un altro palmare, anche dopo isolamento | Banner con azione; Già fatto non registra, la conferma come doppio crea una distinta problematica. Al rientro verifica tutte le provette coinvolte. |
+| ☐ Registro aggiornato | Preleva prima il capo poi venduto nel file `in_corsa/888TO888_pecore_…_1100.txt`, quindi carica quel file | Diventata fuori registro; scritta fisica e assegnazione iniziale conservate, soluzione guidata. |
+| ☐ Ricercati e doppi | Ricercati del CSV; seconde schede da un altro palmare, anche dopo isolamento | Banner con azione; Già fatto non registra, la conferma come doppio crea una provetta fuori registro distinta. Al rientro verifica tutte le provette coinvolte. |
 | ☐ Senza marche, orecchini/bolo e sesso | Simula un presente non prelevato senza identificativi; prova anche le spunte e il sesso corretto su altre schede | Attribuzione per anagrafica tracciata, DX/SX da sostituire; se poi arriva il prelievo col contrassegno letto, l'attribuita va verificata. DX o bolo segnalati alimentano i senza transponder. |
 | ☐ Perdite, accantonate e tardive | Persa → ripeti → Ritrovata; Accantona; provetta scritta e non confermata | Doppio dopo il ritrovamento; accantonata da registrare/scartare; tardiva solo dalla Regia a campionamento chiuso con etichetta verificata e nota. |
 | ☐ DDA individuale | Carica `in_corsa/888TO222_pecore_…_1100.txt`, dichiara DDA su IT066000014241, poi cerca IT066000014242 | Il secondo non eredita il DDA; prova documento valido/da rifare e ingresso registrato prima di normalizzare. Il venditore resta riferimento. |

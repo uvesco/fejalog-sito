@@ -5,7 +5,7 @@
 **Ti serve**: i palmari e le schede del kit a cinque stabilimenti: presenti, giovani, usciti, DDA e casi particolari. Ogni sezione delle schede ha in testa **«Cosa deve succedere»**. La [tabella delle prove](../kit.md#quali-anomalie-provare) indica quali schede scegliere.
 
 !!! warning "Tre differenze da verificare"
-    **Smarrito o rubato ritrovato** resta problematico; **marca disponibile** e **contrassegno in nessun registro** richiedono entrambi l'anagrafica ma sono casi diversi; **registro di altro stabilimento caricato** non significa stabilimento campionato. Leggi [tutte le anomalie e le soluzioni](../anomalie.md) prima della prova.
+    **Smarrito o rubato ritrovato** resta fuori registro; **marca disponibile** e **contrassegno in nessun registro** richiedono entrambi l'anagrafica ma sono casi diversi; **registro di altro stabilimento caricato** non significa stabilimento campionato. Leggi [tutte le anomalie e le soluzioni](../anomalie.md) prima della prova.
 
 ## Fai
 
@@ -13,14 +13,14 @@ Preleva almeno una scheda per sezione e confronta con la tabella.
 
 | Sezione delle schede | Che cosa fare | Cosa devi vedere |
 |---|---|---|
-| Usciti · smarriti e rubati (W, H, F) | come un presente | avviso **USCITO** (giallo): sempre fra i problematici (codice del veterinario) |
-| Usciti · morti (D, N, Q, Y, Y3, 2, 3, 4, 5, 6) | verifica il codice (incluso `Y3` presunto morto, letto su due colonne) anche se sul campo è vivo | **USCITO**: fra i problematici, con l'etichetta mostrata |
-| Usciti · trasferiti (V, E, G, I, J, K, P, R, S, T, U) | come un presente | **USCITO**: fra i problematici |
-| Usciti · macello (M, A) | come un presente | **USCITO**: fra i problematici |
-| Usciti · altre causali (C, L, X, Z, 8, 9) | come un presente | **USCITO**: fra i problematici |
-| Altro stabilimento (888TO222, di riferimento) | verifica la destinazione; prova «Scarta», poi ripeti scegliendo «Inserisci» e conferma | **ALTRO STABILIMENTO 888TO222**, avviso viola; scartare non registra un prelievo, inserire produce una problematica |
-| Marche disponibili | cerca una marca dalla sezione dedicata | il contrassegno non è registrato su un capo: **sesso, razza e data di nascita obbligatori**, fra i problematici |
-| In nessun registro | non si trova: **«Forzato»**, sotto il tastierino, col contrassegno intero | **sesso, razza e data di nascita obbligatori**, fra i problematici |
+| Usciti · smarriti e rubati (W, H, F) | come un presente | avviso **USCITO** (giallo): sempre fra i fuori registro (codice del veterinario) |
+| Usciti · morti (D, N, Q, Y, Y3, 2, 3, 4, 5, 6) | verifica il codice (incluso `Y3` presunto morto, letto su due colonne) anche se sul campo è vivo | **USCITO**: fra i fuori registro, con l'etichetta mostrata |
+| Usciti · trasferiti (V, E, G, I, J, K, P, R, S, T, U) | come un presente | **USCITO**: fra i fuori registro |
+| Usciti · macello (M, A) | come un presente | **USCITO**: fra i fuori registro |
+| Usciti · altre causali (C, L, X, Z, 8, 9) | come un presente | **USCITO**: fra i fuori registro |
+| Altro stabilimento (888TO222, di riferimento) | verifica la destinazione; prova «Scarta», poi ripeti scegliendo «Inserisci» e conferma | **ALTRO STABILIMENTO 888TO222**, avviso viola; scartare non registra un prelievo, inserire produce una provetta fuori registro |
+| Marche disponibili | cerca una marca dalla sezione dedicata | il contrassegno non è registrato su un capo: **sesso, razza e data di nascita obbligatori**, fra i fuori registro |
+| In nessun registro | non si trova: **«Forzato»**, sotto il tastierino, col contrassegno intero | **sesso, razza e data di nascita obbligatori**, fra i fuori registro |
 | Specie discordante | cerca queste **capre** nella pagina **Pecore** | **ERRORE DI SPECIE**: verificare il capo |
 | Codice elettronico estero | leggi il barcode (`0250…`) | Fejalog lo riconosce come **FR066000010030** |
 
@@ -28,7 +28,7 @@ Preleva almeno una scheda per sezione e confronta con la tabella.
 
 ### Altri stabilimenti: tre prove diverse
 
-1. **Solo riferimento**: `888TO222` non è campionato. Il capo `IT066000014219` è problematico anche se risulta presente nel proprio registro.
+1. **Solo riferimento**: `888TO222` non è campionato. Il capo `IT066000014219` è fuori registro anche se risulta presente nel proprio registro.
 2. **Acquisto individuale**: nella [lezione 9](09-registri-in-corsa.md), carica il registro in corsa di `888TO222` come riferimento e dichiara il DDA su `IT066000014241`. La provetta resta da verificare; il capo successivo non deve ereditare la spunta.
 3. **Altro risanamento contemporaneo**: nel kit a cinque stabilimenti `888TO888` è già di lavoro, quindi i suoi adulti presenti sono ordinari nella propria serie. `888TO222` resta invece di riferimento: prova un capo prima e uno dopo l'aggiunta come secondario da parte della Regia. I numeri già scritti restano invariati.
 
@@ -36,16 +36,16 @@ Nel kit avanzato controlla anche i capi **solo usciti dagli stabilimenti chiusi*
 
 ### Fuori età e identificazione incompleta
 
-- **Fuori età diagnostica**: usa il kit a cinque stabilimenti con soglia **12 mesi** e data della seduta **24/10/2026**. Scegli `IT066000010012`, nato il 19/11/2025, dalla sezione giovani fra 6 e 12 mesi. Se lo prelevi, è problematico senza numero ordinario; in Soluzione problemi la scelta predefinita è **Eliminata**. Anche i giovani sotto sei mesi vanno provati. Le età delle schede sono riferite alla data del kit.
+- **Fuori età diagnostica**: usa il kit a cinque stabilimenti con soglia **12 mesi** e data della seduta **24/10/2026**. Scegli `IT066000010012`, nato il 19/11/2025, dalla sezione giovani fra 6 e 12 mesi. Se lo prelevi, è fuori registro senza numero ordinario; in Soluzione problemi la scelta predefinita è **Eliminata**. Anche i giovani sotto sei mesi vanno provati. Le età delle schede sono riferite alla data del kit.
 - **Senza contrassegno**: prima di esaurire i presenti, simula un animale senza marche e usa il tasto omonimo, con sesso, razza ed età compatibile. L'identificazione resta **attribuita**, DX e SX da sostituire. Se poi prelevi il candidato con le marche, la precedente attribuita va fra le **Attribuite da riattribuire**: controllala con la Regia. È una simulazione; il caso resta da provare sul campo.
-- **Orecchino o bolo illeggibile**: su un'ordinaria prova DX, SX e bolo da sostituire. DX o bolo segnalati compaiono fra i senza transponder; la segnalazione non basta a trasformarla in problematica.
+- **Orecchino o bolo illeggibile**: su un'ordinaria prova DX, SX e bolo da sostituire. DX o bolo segnalati compaiono fra i senza transponder; la segnalazione non basta a trasformarla in fuori registro.
 - **Sesso discordante**: su una scheda presente verifica il comando di correzione del sesso e la nota in Ultime; controlla il dato nelle uscite finali.
 
 <div class="schermate" markdown>
 
 <figure markdown="span">
-  ![Uscito (morto): A1, plateau problematici](../img/tutorial/07a_uscito.png)
-  <figcaption>Uscito (morto): A1, plateau problematici</figcaption>
+  ![Uscito (morto): A1, plateau fuori registro](../img/tutorial/07a_uscito.png)
+  <figcaption>Uscito (morto): A1, plateau fuori registro</figcaption>
 </figure>
 
 <figure markdown="span">
@@ -90,8 +90,8 @@ Nel kit avanzato controlla anche i capi **solo usciti dagli stabilimenti chiusi*
 
 </div>
 
-!!! info "Problematici e lettere"
-    I problematici prendono il **codice problematico mostrato** con riquadro rosso e istruzione *«scrivi sempre il contrassegno COMPLETO»*, e vanno nei **plateau problematici** (nei progetti nuovi in sequenza unica per l’intero progetto, in ordine di consegna; nei progetti pregressi resta lo schema precedente). **Non tutti finiscono in coda**: la Regia sceglie la soluzione prima del riordino. Le eliminate non hanno numero finale né invio ARVET; i fuori età sono eliminati per impostazione predefinita.
+!!! info "Fuori registro e lettere"
+    I fuori registro prendono il **codice fuori registro mostrato** con riquadro rosso e istruzione *«scrivi sempre il contrassegno COMPLETO»*, e vanno nei **plateau fuori registro** (nei progetti nuovi in sequenza unica per l’intero progetto, in ordine di consegna; nei progetti pregressi resta lo schema precedente). **Non tutti finiscono in coda**: la Regia sceglie la soluzione prima del riordino. Le eliminate non hanno numero finale né invio ARVET; i fuori età sono eliminati per impostazione predefinita.
 
 ### Completa il controllo nelle altre lezioni
 
@@ -105,4 +105,4 @@ I [ricercati](05-ricercati.md) possono accompagnare qualunque categoria. Prova a
 - [ ] riferimento, DDA individuale e secondario di lavoro distinti
 - [ ] fuori età con soluzione predefinita Eliminata
 - [ ] senza contrassegno, DX/SX/bolo e sesso corretto
-- [ ] verifica delle soluzioni a fine lavori, senza inviare automaticamente tutte le problematiche
+- [ ] verifica delle soluzioni a fine lavori, senza inviare automaticamente tutte le provette fuori registro

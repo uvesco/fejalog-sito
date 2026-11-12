@@ -12,14 +12,14 @@
 - ☐ Manda la checklist ai veterinari e verifica che Regia e palmari abbiano la stessa versione aggiornata della stessa app (Fejalog oppure Fejalog debug).
 - ☐ Fai una prova della rete con almeno un palmare: ingresso, allineamento e stessa impronta del pacchetto della Regia.
 - ☐ Stampa i modelli 2/33 di ARVET per gli stabilimenti e le specie interessati.
-- ☐ Conta a mano i plateau da 100 pozzetti: per ogni serie (stabilimento e specie), dividi i capi in età diagnostica per 100 e arrotonda per eccesso; somma le serie e aggiungi un plateau di scorta. I problematici non hanno plateau: vanno nel secchio.
-- ☐ Prepara provette non scritte: una per ogni capo in età diagnostica, più un margine per problematiche, ripetizioni e scorta.
+- ☐ Conta a mano i plateau da 100 pozzetti: per ogni serie (stabilimento e specie), dividi i capi in età diagnostica per 100 e arrotonda per eccesso; somma le serie e aggiungi un plateau di scorta. I fuori registro non hanno plateau: vanno nel secchio.
+- ☐ Prepara provette non scritte: una per ogni capo in età diagnostica, più un margine per fuori registro, ripetizioni e scorta.
 - ☐ Prepara un tavolo con spazio per i plateau e il materiale di prelievo, pennarelli indelebili, power bank carichi e cavi.
 - ☐ Carica al 100% la Regia e verifica le impostazioni del telefono descritte in «Il telefono pronto».
 
 ## Per il campo
 
-- ☐ Disponi il tavolo e i plateau distinguendo le serie per stabilimento e specie e tieni a portata di mano il secchio per le provette problematiche.
+- ☐ Disponi il tavolo e i plateau distinguendo le serie per stabilimento e specie e tieni a portata di mano il secchio per le provette fuori registro.
 - ☐ Accendi l'hotspot o il router e collega la Regia alla rete prevista.
 - ☐ Una sola rete del progetto accesa alla volta: con due reti accese Android può mettere i telefoni su reti diverse. L'hotspot del tablet si accende solo se il router cade; quando il router torna, spegni l'hotspot.
 - ☐ Apri Configurazione › QR d’ingresso della Regia e fallo inquadrare ai palmari.

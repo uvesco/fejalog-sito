@@ -232,7 +232,9 @@
   var pannello = document.createElement('div');
   pannello.style.cssText = 'position:fixed;top:8px;right:8px;z-index:99999;background:#fff;border:2px solid #2e5e3e;border-radius:8px;' +
     'padding:10px 12px;font:13px system-ui,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.25);width:400px;max-width:90vw;color:#222';
-  pannello.innerHTML = '<b>Fejalog · scarico dalla BDN</b>' +
+  pannello.innerHTML = '<button type="button" data-f="chiudi" title="Chiudi (se lo scarico è in corso, continua e lo zip arriva lo stesso)" ' +
+    'style="position:absolute;top:2px;right:6px;border:0;background:none;font-size:22px;line-height:1;cursor:pointer;color:#444;padding:2px 4px">×</button>' +
+    '<b>Fejalog · scarico dalla BDN</b>' +
     '<div data-f="fase" style="margin-top:6px;font-weight:600"></div>' +
     '<div style="background:#e6ece7;border-radius:4px;height:10px;margin:6px 0;overflow:hidden"><div data-f="barra" style="background:#2e5e3e;height:10px;width:0"></div></div>' +
     '<div data-f="conti" style="color:#444"></div>' +
@@ -256,6 +258,8 @@
     q('file').innerHTML = stato.file.slice(-8).map(function (f) { return '✓ ' + f.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }).join('<br>');
   }
   var orologio = setInterval(ridisegna, 1000);
+  // la crocetta chiude la finestrella senza ricaricare la pagina; il lavoro in corso continua (utente, 2026-11-12)
+  q('chiudi').addEventListener('click', function () { clearInterval(orologio); pannello.remove(); });
   var fase = function (t) { q('fase').textContent = t; ridisegna(); };
   var msg = function (t) { q('passo').textContent = t; console.log('Fejalog:', t); ridisegna(); };
   var risposta = function () { stato.ultima = Date.now(); };
@@ -428,5 +432,5 @@
     stato.fine = true; fase('Interrotto'); msg('Interrotto: ' + e.message);
     q('fase').style.color = '#b00020';
   }).then(function () { clearInterval(orologio); ridisegna(); riquadro.remove();
-    q('nota').textContent = 'Puoi chiudere questo riquadro ricaricando la pagina.'; });
+    q('nota').textContent = 'Chiudi questo riquadro con la × in alto a destra.'; });
 })(typeof window !== 'undefined' ? window : this);

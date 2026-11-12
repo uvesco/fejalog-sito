@@ -34,7 +34,7 @@
 
 ## 7. Il capo è di uno stabilimento non campionato
 
-**Cosa fai:** leggi l'avviso viola e il codice dello stabilimento. Se procedi nel progetto corrente, controlla la destinazione e copia l'etichetta problematica col contrassegno completo. Se è dichiarato acquistato, spunta il DDA solo per quel capo e avvisa la Regia.
+**Cosa fai:** leggi l'avviso viola e il codice dello stabilimento. Se procedi nel progetto corrente, controlla la destinazione e copia l'etichetta fuori registro col contrassegno completo. Se è dichiarato acquistato, spunta il DDA solo per quel capo e avvisa la Regia.
 **Cosa resta:** caricare il registro serve a riconoscere il capo; non lo rende ordinario nel risanamento corrente. Il DDA resta da verificare e l'ingresso da registrare fuori dall'app prima della normalizzazione.
 
 ## 8. Si campiona un altro stabilimento in contemporanea
@@ -45,12 +45,12 @@
 ## 9. Il capo risulta smarrito, rubato, morto o trasferito
 
 **Cosa fai:** verifica contrassegno, data e causale di uscita. Se lo prelevi, segui il riquadro rosso e segnala la discordanza alla Regia.
-**Cosa resta:** anche smarriti e rubati ritrovati sono sempre problematici finché i dati non ne consentono la normalizzazione. Il prelievo non corregge la BDN.
+**Cosa resta:** anche smarriti e rubati ritrovati sono sempre fuori registro finché i dati non ne consentono la normalizzazione. Il prelievo non corregge la BDN.
 
 ## 10. Il contrassegno non è registrato su un capo
 
 **Cosa fai:** distingui la **marca disponibile** (blu) dal codice **in nessun registro caricato** (Forzato). Per entrambi servono sesso, razza e nascita; per il forzato digita il contrassegno intero. Se il problema è soltanto la pagina della specie sbagliata, cambia specie prima di confermare.
-**Cosa resta:** è una provetta problematica. «Non nei file caricati» non significa necessariamente «assente dalla BDN»: la Regia verifica anche gli input.
+**Cosa resta:** è una provetta fuori registro. «Non nei file caricati» non significa necessariamente «assente dalla BDN»: la Regia verifica anche gli input.
 
 ## 11. La Regia mette in pausa il tuo palmare o ti allontani dalla rete
 

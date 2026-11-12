@@ -7,7 +7,7 @@
 - Pacchetto: i dati BDN del progetto (capi presenti, usciti, marche), con l'elenco dei veterinari e dei ricercati.
 - Registro: tutti gli eventi di tutti i device, mai cancellati; l'impronta lo riassume in 6 caratteri.
 - Serie: la numerazione di una specie in uno stabilimento. Riserva: i numeri prenotati da un device.
-- Problematici: provette fuori serie (A1, A2…), nel secchio. Provvisoria: A•1, senza numero confermato.
+- Fuori registro: provette fuori serie (A1, A2…), nel secchio. Provvisoria: A•1, senza numero confermato.
 - Accantonata: provetta col codice da risolvere. Persa: provetta sparita, il suo numero è un buco.
 - Numero di campo: quello scritto sulla provetta al prelievo; resta leggibile anche dopo. Numero finale: quello della sistemazione.
 - Sistemazione: il calcolo dei numeri finali e degli spostamenti a fine lavoro. ARVET: dove si registrano i campioni.

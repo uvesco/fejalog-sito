@@ -10,12 +10,13 @@
 ## I passi, in ordine
 
 - 1. File della BDN: registri di stalla e contrassegni disponibili di pecore e capre, anche più file per stabilimento e allevamento, anche in uno zip. Fejalog li riconosce dal contenuto; per i contrassegni senza specie scegli Pecore o Capre.
-- 2. Elenco dei veterinari (CSV id;cognome;nome;codice\_fiscale) e, se serve, i capi ricercati. L'elenco entra nel pacchetto, mai nel registro.
-- 3. Stabilimenti di lavoro: il più popoloso è proposto come principale (senza lettera); gli altri hanno la lettera cerchiata. Descrizione e data del progetto.
-- 4. Scelte della creazione, prima dei registri: età diagnostica (6 mesi, 12 mesi o tutti), lettera di specie (per predefinita sulla specie meno numerosa; con due specie «Nessuna» non vale) e problematici in una sola sequenza. Fissano la numerazione: i capi fuori età non si numerano; sul tablet si congelano all'avvio.
-- 5. Configurazione della Regia: verso di riempimento, sigle dei veterinari (due lettere non confondibili; vuote, la Regia le assegna all'ingresso), priorità per la regia d'emergenza, reti Wi-Fi del progetto (la password è facoltativa: se non la scrivi non va nel file e la completi sul tablet), regole dei problematici.
-- 6. Anteprima: capi numerati per stabilimento e specie, maschi in testa, fuori età, usciti, marche disponibili, e la tabella della numerazione da scaricare (numerazione\_chiave.csv).
-- 7. Snapshot per la Regia: scarica lo zip (fejalog\_backup\_\<stabilimento\>\_\<data\>\_sito\_R.zip) e portalo sul tablet.
+- 2. Elenco dei veterinari (CSV id;cognome;nome;codice\_fiscale): entra nel pacchetto, mai nel registro.
+- 3. Capi ricercati, se servono (CSV codice;nota;azione;segno): la Regia ne aggiunge anche durante il lavoro.
+- 4. Stabilimenti di lavoro: il più popoloso è proposto come principale; con più stabilimenti ogni provetta porta la lettera cerchiata del suo stabilimento. Descrizione e data del progetto.
+- 5. Regole di numerazione, prima dei registri: con più stabilimenti la lettera anche sul principale (sì o no), età diagnostica (6 mesi, 12 mesi o tutti), lettera di specie (per predefinita sulla specie meno numerosa; con due specie «Nessuna» non vale) e fuori registro in una sola sequenza. Fissano la numerazione: i capi fuori età non si numerano; sul tablet si congelano all'avvio.
+- 6. Configurazione della Regia: verso di riempimento, sigle dei veterinari (due lettere non confondibili; vuote, la Regia le assegna all'ingresso), priorità per la regia d'emergenza, reti Wi-Fi del progetto (la password è facoltativa: se non la scrivi non va nel file e la completi sul tablet; le reti si esportano in CSV e si ricaricano negli altri progetti).
+- 7. Anteprima: capi numerati per stabilimento e specie, maschi in testa, fuori età, usciti, marche disponibili, e la tabella della numerazione da scaricare (numerazione\_chiave.csv).
+- 8. Snapshot per la Regia: scarica lo zip (fejalog\_backup\_\<stabilimento\>\_\<data\>\_sito\_R.zip) e portalo sul tablet.
 
 ## Sul tablet della Regia
 

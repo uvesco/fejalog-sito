@@ -147,17 +147,17 @@
     senza_orecchini: { titolo: 'Senza orecchini, non identificato', atteso: 'Niente da leggere: registra come «senza contrassegno» con specie, sesso, dentizione, razza stimata e segno provvisorio; si risolve dopo la chiusura.' },
     contrassegno_sbagliato: { titolo: 'Cifre dell’orecchino sinistro abrase', atteso: 'Le cifre si leggono male: controlla sul capo, preferisci il barcode del destro; se le cifre portano a un capo diverso l’app lo mostra, verifica prima di confermare.' },
     doppio: { titolo: 'Doppio: capo già prelevato', atteso: 'L’app dice «DOPPIO CONTRASSEGNO: provetta … prelevata da …»: scegli «Già fatto: non prelevare», o «Preleva come doppio» se davvero serve.' },
-    uscito: { titolo: 'Uscito in BDN, ma è nel gregge', atteso: 'Il capo risulta uscito (venduto, macellato…): l’app lo mette fra i problematici; preleva e scrivi tutto sulla provetta.' },
-    smarrito: { titolo: 'Smarrito in BDN', atteso: 'Uscito per smarrimento (W): problematico, scrivi il contrassegno completo sulla provetta.' },
-    rubato: { titolo: 'Rubato in BDN', atteso: 'Uscito per furto (H/F): problematico, scrivi il contrassegno completo sulla provetta.' },
-    altro_stabilimento: { titolo: 'Registrato in un altro stabilimento', atteso: 'Banda viola: capo di un altro stabilimento nei registri; problematico (o DDA se c’è il documento).' },
-    marca_disponibile: { titolo: 'Marca disponibile, mai registrata', atteso: 'Contrassegno assegnato ma mai applicato in BDN (banda blu): sesso, razza e nascita obbligatori; problematico.' },
-    non_in_elenco: { titolo: 'Contrassegno in nessun registro', atteso: 'Non in elenco: inserimento forzato con sesso, razza e nascita; problematico, scrivi tutto sulla provetta.' },
-    sotto_eta: { titolo: 'Sotto l’età diagnostica', atteso: 'Capo giovane, senza numero: di norma non si preleva; se lo fai va fra i problematici (fuori età).' },
+    uscito: { titolo: 'Uscito in BDN, ma è nel gregge', atteso: 'Il capo risulta uscito (venduto, macellato…): l’app lo mette fra i fuori registro; preleva e scrivi tutto sulla provetta.' },
+    smarrito: { titolo: 'Smarrito in BDN', atteso: 'Uscito per smarrimento (W): fuori registro, scrivi il contrassegno completo sulla provetta.' },
+    rubato: { titolo: 'Rubato in BDN', atteso: 'Uscito per furto (H/F): fuori registro, scrivi il contrassegno completo sulla provetta.' },
+    altro_stabilimento: { titolo: 'Registrato in un altro stabilimento', atteso: 'Banda viola: capo di un altro stabilimento nei registri; fuori registro (o DDA se c’è il documento).' },
+    marca_disponibile: { titolo: 'Marca disponibile, mai registrata', atteso: 'Contrassegno assegnato ma mai applicato in BDN (banda blu): sesso, razza e nascita obbligatori; fuori registro.' },
+    non_in_elenco: { titolo: 'Contrassegno in nessun registro', atteso: 'Non in elenco: inserimento forzato con sesso, razza e nascita; fuori registro, scrivi tutto sulla provetta.' },
+    sotto_eta: { titolo: 'Sotto l’età diagnostica', atteso: 'Capo giovane, senza numero: di norma non si preleva; se lo fai va fra i fuori registro (fuori età).' },
     sesso_sbagliato: { titolo: 'Sesso diverso dalla BDN', atteso: 'L’animale non è del sesso che dice la BDN: registra e nel foglio segna il sesso corretto.' },
     razza_diversa: { titolo: 'Razza diversa dalla BDN', atteso: 'La razza osservata non è quella in BDN: registra e scrivilo nelle note (serve all’allevatore per la BDN).' },
     ricercato: { titolo: 'Capo ricercato', atteso: 'L’app avvisa (banner viola, vibrazione) con il motivo e cosa fare (marcare, isolare): fallo, poi conferma.' },
-    annullata: { titolo: 'Provetta rotta o emolizzata', atteso: 'Registra, poi annulla la provetta da Ultime e ripeti il prelievo: la nuova va fra i problematici.' },
+    annullata: { titolo: 'Provetta rotta o emolizzata', atteso: 'Registra, poi annulla la provetta da Ultime e ripeti il prelievo: la nuova va fra i fuori registro.' },
     non_campionato: { titolo: 'Capo del registro rimasto nel gregge', atteso: 'Non compare a schermo: resterà fra i non prelevati.' }
   };
   var DENTIZIONI = ['denti da latte', '2 denti permanenti', '4 denti permanenti', '6 denti permanenti', 'bocca piena', 'bocca consumata'];
@@ -635,7 +635,7 @@
           if (nLetti >= 2 && sue.some(function (p) { return annullati[p.uid]; })) { corretto = true; esitoTesto = 'Annullata e ripetuta'; }
           else if (nLetti >= 1) esitoTesto = 'Registrata, non annullata o non ripetuta'; else esitoTesto = 'Non registrata'; break;
         case 'sotto_eta':
-          if (nLetti === 0) { corretto = true; esitoTesto = 'Non prelevato (sotto età)'; } else { corretto = true; esitoTesto = 'Prelevato: fra i problematici (fuori età)'; } break;
+          if (nLetti === 0) { corretto = true; esitoTesto = 'Non prelevato (sotto età)'; } else { corretto = true; esitoTesto = 'Prelevato: fra i fuori registro (fuori età)'; } break;
         case 'contrassegno_sbagliato': registrata('Identificato bene nonostante le cifre abrase'); break;
         default: registrata();
       }
@@ -674,7 +674,7 @@
       frase: 'Scegli l’età diagnostica (6 mesi, 12 mesi o tutti) e la lettera di specie (per predefinita sulla specie meno numerosa). Fissano la numerazione: i capi fuori età non hanno numero. Sul tablet si congelano all’avvio del campionamento.',
       figura: figura('sito', 'Età 12 mesi · lettera C sulle capre', 'numerazione fissata') },
     { titolo: '5. La configurazione della Regia',
-      frase: 'Verso di riempimento dei plateau, sigle dei veterinari (due lettere non confondibili), priorità per la regia d’emergenza, reti Wi-Fi del progetto (password facoltativa) e regole dei problematici. Si possono cambiare anche dopo, sul tablet.',
+      frase: 'Verso di riempimento dei plateau, sigle dei veterinari (due lettere non confondibili), priorità per la regia d’emergenza, reti Wi-Fi del progetto (password facoltativa) e regole dei fuori registro. Si possono cambiare anche dopo, sul tablet.',
       figura: figura('sito', 'Sigle · priorità · reti · regole', 'modificabili sul tablet') },
     { titolo: '6. Anteprima e snapshot',
       frase: 'Controlla l’anteprima: capi numerati per stabilimento e specie, maschi in testa, fuori età, usciti, marche. Scarica numerazione_chiave.csv (la seconda copia) e lo snapshot per la Regia: uno zip fejalog_backup_…_sito_R.zip. Copialo sul tablet (cavo, chiavetta o condivisione).',

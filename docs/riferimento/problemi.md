@@ -4,11 +4,11 @@
 
 ## Da risolvere a fine lavoro
 
-- Le provette problematiche per tipologia: acquisti con DDA, smarriti e rubati ritrovati, usciti morti o macellati, usciti trasferiti, altro stabilimento, marche disponibili, non in elenco, fuori età diagnostica, doppi contrassegni, specie discordante, attribuite da riattribuire, diventate problematiche o ora in lista coi registri nuovi, altre problematiche.
-- Smarriti e rubati sono sempre problematici finché i dati non ne consentono la normalizzazione. Un registro di riferimento non rende ordinari i capi di uno stabilimento non campionato. Marche disponibili e codici in nessun registro richiedono sesso, razza e nascita: i file caricati non sono necessariamente tutta la BDN.
-- Gli acquisti con DDA si dichiarano sul singolo prelievo: la Regia verifica il documento e conferma l'ingresso registrato prima della normalizzazione. Fejalog non scrive nella BDN. I fuori età hanno la soluzione predefinita Eliminata: niente numero finale né ARVET.
-- Per ogni tipologia la Regia sceglie la regola, che vale anche per quelle che verranno: «Tutte in coda» (in ARVET le aggiunge lo snippet), «Elimina tutte» (messe da parte: niente numero finale, niente ARVET), «Normalizza tutte» (solo per quelle ora in lista: trattate come normali, ARVET automatico).
-- Aprendo una tipologia, provetta per provetta: la soluzione scelta lì vale sulla regola; e poi persa o ritrovata, annulla, cerca il capo.
+- Le provette fuori registro per tipologia: acquisti con DDA, smarriti e rubati ritrovati, usciti morti o macellati, usciti trasferiti, altro stabilimento, marche disponibili, non in elenco, fuori età diagnostica, doppi contrassegni, specie discordante, attribuite da riattribuire, diventate fuori registro o ora in lista coi registri nuovi, altri casi fuori registro.
+- Smarriti e rubati sono sempre fuori registro finché i dati non ne consentono la normalizzazione. Un registro di riferimento non rende ordinari i capi di uno stabilimento non campionato. Marche disponibili e codici in nessun registro richiedono sesso, razza e nascita: i file caricati non sono necessariamente tutta la BDN.
+- Gli acquisti con DDA si dichiarano sul singolo prelievo: la Regia verifica il documento e conferma l'ingresso registrato prima della normalizzazione. Fejalog non scrive nella BDN. I fuori età non hanno una scelta predefinita: a fine lavori la Regia sceglie se inserirli (in coda) o eliminarli; finché non sceglie restano «da decidere».
+- Per tipologia, «Tutte in coda» e, per quelle ora in lista, «Normalizza tutte» (trattate come normali, ARVET automatico); per i fuori età anche «Elimina tutte». Nessun'altra tipologia si elimina in blocco: niente eliminazione sistematica di campioni di sangue.
+- Aprendo una tipologia, provetta per provetta: in coda, eliminata (messa da parte: niente numero finale, niente ARVET), normalizzata se ora in lista; e poi persa o ritrovata, annulla, cerca il capo.
 
 ## Non trovati e registrazione tardiva
 

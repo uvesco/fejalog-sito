@@ -28,7 +28,7 @@ La Regia è il nodo centrale della profilassi in campo: apre il progetto partend
 
 - **Cavo dati USB**: per il collegamento diretto tra il tablet e il computer dell'ASL o dell'ufficio a fine lavori, sfruttando il tethering USB protetto da PIN breve a 8 cifre numeriche generate dal tablet (vedi [Regia su PC e tethering](tethering-pc.md)).
   > *Nota di trasparenza*: il collegamento USB è stato verificato via emulatore e provato dall’utente sul PC dell’ASL; il nuovo accesso con PIN a 8 cifre resta da provare sui dispositivi fisici.
-- **Lettore di microchip Bluetooth** (opzionale): doppio standard FDX-B / HDX (es. Allflex AWR250), utile se la Regia campiona o verifica direttamente al tavolo capi problematici o isolati.
+- **Lettore di microchip Bluetooth** (opzionale): doppio standard FDX-B / HDX (es. Allflex AWR250), utile se la Regia campiona o verifica direttamente al tavolo capi fuori registro o isolati.
 
 ---
 

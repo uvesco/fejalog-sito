@@ -27,7 +27,7 @@ Controlla il riquadro della scritta, distinto dalla banda colorata del capo:
 |---|---|
 | **Neutro**, ordinario con controllo completo | Solo l'etichetta mostrata. |
 | **Blu**, ordinario senza tutti collegati | Solo l'etichetta mostrata, completa del suffisso. Non scrivere tutto. |
-| **Rosso**, problematico | Tutta la scritta mostrata, con il **contrassegno COMPLETO**. |
+| **Rosso**, fuori registro | Tutta la scritta mostrata, con il **contrassegno COMPLETO**. |
 
 Controlla orecchini DX/SX, bolo e note. Puoi toccare **Foto** per acquisire fino a 5 immagini del capo o della provetta (trasmesse in rete alla Regia). Premi **Conferma** e attendi l'esito verde **Registrata**. Un esito rosso non conferma il salvataggio: leggi il motivo e verifica nelle **Ultime** prima di riprovare.
 

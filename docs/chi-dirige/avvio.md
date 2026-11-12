@@ -33,7 +33,7 @@ In **Configurazione › 3. Dati input** (sezione Registri BDN e contrassegni), t
 - Verifica che il conteggio dei presenti corrisponda al conteggio dello stabilimento aggiornato.
 
 ### Passo 2: Età diagnostica
-In **Configurazione › 1. Parametri e regole**, imposta l'età minima per la profilassi (tipicamente 6 o 12 mesi a seconda del piano sanitario vigente). L'app separa istantaneamente i capi in età diagnostica (che riceveranno un numero di provetta) dai capi sotto età (che, se campionati per errore, verranno trattati come problematici).
+In **Configurazione › 1. Parametri e regole**, imposta l'età minima per la profilassi (tipicamente 6 o 12 mesi a seconda del piano sanitario vigente). L'app separa istantaneamente i capi in età diagnostica (che riceveranno un numero di provetta) dai capi sotto età (che, se campionati per errore, verranno trattati come fuori registro).
 
 ### Passo 3: Lettere di specie (Regola vincolante)
 Sempre in **1. Parametri e regole**, se il progetto comprende **sia pecore che capre**, si applica una regola di sicurezza tassativa:
@@ -51,8 +51,8 @@ In **1. Parametri e regole**, la Regia stabilisce come verranno riempiti fisicam
 - **Dal basso verso l'alto**: il pozzetto 1 si trova in basso a sinistra.  
 Entrambi i versi seguono rigorosamente la numerazione ordinata riga per riga (mai a serpente).
 
-### Passo 6: Problematici in sequenza unica
-Sempre in **1. Parametri e regole**, nei progetti nuovi, i campioni problematici, i doppi prelievi e i capi fuori registro confluiscono in un'**unica sequenza progressiva per tutto il progetto**, indipendentemente da stabilimento e specie. Sul tavolo della Regia è presente un solo plateau problematici alla volta; quando raggiunge 100 provette, viene archiviato e sostituito dal successivo.
+### Passo 6: Fuori registro in sequenza unica
+Sempre in **1. Parametri e regole**, nei progetti nuovi, i campioni fuori registro, i doppi prelievi e i capi fuori registro confluiscono in un'**unica sequenza progressiva per tutto il progetto**, indipendentemente da stabilimento e specie. Sul tavolo della Regia è presente un solo plateau fuori registro alla volta; quando raggiunge 100 provette, viene archiviato e sostituito dal successivo.
 
 ### Passo 7: Capi ricercati
 
@@ -70,16 +70,16 @@ Quando la Regia preme **«Avvia campionamento»** in **Configurazione › 5. Che
 | **Lettere di specie** | **CONGELATE** | Impedisce che etichette già scritte con il pennarello cambino significato a metà lavoro. |
 | **Lettere di stabilimento** | **CONGELATE** | Garantisce la tracciabilità univoca dei lotti tra allevamenti diversi. |
 | **Stabilimento principale** | **CONGELATO** | I secondari restano aggiungibili in corsa, senza togliere quelli già presenti. |
-| **Sequenza problematici** | **CONGELATA** | I pozzetti dei problematici vengono assegnati in ordine di arrivo alla consegna. |
+| **Sequenza fuori registro** | **CONGELATA** | I pozzetti dei fuori registro vengono assegnati in ordine di arrivo alla consegna. |
 | **Numeri preassegnati** | **CONGELATI** | I numeri già assegnati restano riservati; i numeri finali si calcolano nel Riordino. |
 
-L'età diagnostica può essere cambiata dalla Regia anche durante il campionamento, con doppia conferma; i parametri congelati restano visibili in sola lettura col motivo del blocco; la modalità di rete, i registri e le regole per i problematici restano aggiornabili dalla Regia anche dopo l'avvio. I numeri già assegnati non vengono ricalcolati da zero.
+L'età diagnostica può essere cambiata dalla Regia anche durante il campionamento, con doppia conferma; i parametri congelati restano visibili in sola lettura col motivo del blocco; la modalità di rete, i registri e le regole per i fuori registro restano aggiornabili dalla Regia anche dopo l'avvio. I numeri già assegnati non vengono ricalcolati da zero.
 
 ![Menu della Regia a campionamento aperto](../img/menu/menu_regia_campionamento.png)
 *Il menu della Regia a campionamento aperto: Configurazione e Campionamento restano entrambi apribili, mentre Gestione richiede la chiusura.*
 
 
-I progetti precedenti senza le nuove impostazioni conservano il verso dal basso verso l'alto e la disposizione precedente dei problematici. Non adottano automaticamente le scelte dei progetti nuovi.
+I progetti precedenti senza le nuove impostazioni conservano il verso dal basso verso l'alto e la disposizione precedente dei fuori registro. Non adottano automaticamente le scelte dei progetti nuovi.
 
 ---
 

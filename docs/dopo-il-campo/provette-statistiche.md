@@ -14,7 +14,7 @@ Dopo aver caricato il backup nello strumento [Fine lavori sul computer](../strum
 
 La scheda **Provette** presenta l'elenco tabellare di tutti i campioni registrati durante la profilassi:
 
-- **Filtri di visualizzazione rapidi**: filtra istantaneamente per specie (pecore o capre), stabilimento di lavoro, categoria del campione (ordinarie, problematiche, doppi, collisioni, annullate, perse).
+- **Filtri di visualizzazione rapidi**: filtra istantaneamente per specie (pecore o capre), stabilimento di lavoro, categoria del campione (ordinarie, fuori registro, doppi, collisioni, annullate, perse).
 - **Tasto rapido «Copia»**: presente accanto a ogni codice contrassegno per incollarlo al volo in BDN o su altre banche dati.
 - **Dettaglio completo del prelievo**: aprendo la scheda di una provetta si visualizza l'intera cronologia dell'evento:
   - Chi ha eseguito il prelievo (nome del veterinario);
@@ -86,13 +86,13 @@ A campionamento chiuso, apri la scheda **Riordino**: la pagina calcola la sistem
 
 La scheda fornisce il consuntivo della seduta di profilassi:
 
-- **Quadratura contabile**: capi presenti in BDN, campionati ordinari, campionati problematici, capi non trovati, percentuale di copertura per specie e stabilimento.
+- **Quadratura contabile**: capi presenti in BDN, campionati ordinari, campionati fuori registro, capi non trovati, percentuale di copertura per specie e stabilimento.
 - **Riepilogo anomalie**: conteggio provette senza transponder (orecchino DX o bolo mancante), doppi scoperti, capi ricercati individuati.
 - **Classifica e andamento orario legati alla persona fisica**:
   - Le metriche di produttività (numero di prelievi, velocità oraria) sono calcolate sul **codice fiscale** della persona fisica;
   - Se un veterinario ha cambiato telefono durante la seduta o ha utilizzato un palmare sostitutivo, il rendimento somma automaticamente tutti i dispositivi usati dalla stessa persona.
-- **Produttività della gestione**: accanto ai grafici del campionamento, mostra l'andamento aggregato delle operazioni di risanamento nel tempo (senza classifiche individuali): azioni eseguite, plateau completati/da completare/da svuotare, problematici ricollocati o scartati e stima della fine.
-- **Riepilogo problematici e tardive**: quadro delle anomalie gestite diviso per fattispecie ed esito finale, con il conteggio distinto di registrazioni tardive e modifiche ai campioni (disponibile a schermo, nel CSV per l'ufficio, nello zip e nel foglio «gestione_progetto» dell'Excel).
+- **Produttività della gestione**: accanto ai grafici del campionamento, mostra l'andamento aggregato delle operazioni di risanamento nel tempo (senza classifiche individuali): azioni eseguite, plateau completati/da completare/da svuotare, fuori registro ricollocati o scartati e stima della fine.
+- **Riepilogo fuori registro e tardive**: quadro delle anomalie gestite diviso per fattispecie ed esito finale, con il conteggio distinto di registrazioni tardive e modifiche ai campioni (disponibile a schermo, nel CSV per l'ufficio, nello zip e nel foglio «gestione_progetto» dell'Excel).
 
 ---
 
@@ -101,11 +101,11 @@ La scheda fornisce il consuntivo della seduta di profilassi:
 La vista Plateau a campionamento chiuso permette di intervenire direttamente sui pozzetti:
 
 - **Bordi colorati di stato**:
-  - **Verde**: plateau completo (tutti i 100 pozzetti occupati; l'ultimo plateau diventa verde quando non vi sono buchi e non restano problematiche da ricollocare);
+  - **Verde**: plateau completo (tutti i 100 pozzetti occupati; l'ultimo plateau diventa verde quando non vi sono buchi e non restano fuori registro da ricollocare);
   - **Giallo**: plateau da completare;
-  - **Rosso**: plateau dei problematici da svuotare (diventa verde solo quando è completamente vuoto).
+  - **Rosso**: plateau dei fuori registro da svuotare (diventa verde solo quando è completamente vuoto).
 - **Azioni dirette sulla provetta**: toccando una provetta si può copiarne il contrassegno, riattribuire un altro capo (cercato in anagrafe o digitato per intero), spostarla a un'altra posizione (con proposta di scambio se occupata), registrarne lo smarrimento o lo scarto con motivo.
-- **Scarto recuperabile**: una provetta scartata è esclusa da ARVET e non tiene rosso il plateau dei problematici né blocca il completamento, ma resta recuperabile in qualunque momento con «Annulla scarto». Una provetta persa torna con «Ritrovata».
+- **Scarto recuperabile**: una provetta scartata è esclusa da ARVET e non tiene rosso il plateau dei fuori registro né blocca il completamento, ma resta recuperabile in qualunque momento con «Annulla scarto». Una provetta persa torna con «Ritrovata».
 - **Conferme**: scarto e smarrimento chiedono un motivo; un capo già prelevato si conferma come doppio; per un capo senza anagrafe servono sesso, razza e data di nascita; uno spostamento che tocca un plateau completo chiede una conferma esplicita.
 - I bordi riportano anche il testo (completo, da completare, da svuotare), non solo il colore.
 

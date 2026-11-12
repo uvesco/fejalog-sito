@@ -409,7 +409,7 @@ function schedaProvette() {
   }, [
     ['', 'Tutti gli stati'],
     ['ordinarie', 'Ordinarie'],
-    ['problematiche', 'Problematiche'],
+    ['problematiche', 'Fuori registro'],
     ['doppi', 'Doppi'],
     ['collisioni', 'Collisioni'],
     ['annullate', 'Annullate'],
@@ -781,7 +781,7 @@ function schedaProblemi() {
     if (typeof Dominio !== 'undefined' && Dominio.corrispondeRicerca && Dominio.corrispondeRicerca(r.etichetta, q)) return true;
     return [r.etichetta, r.contrassegno, r.operatore, r.note].join(' ').toLowerCase().indexOf(q) >= 0;
   });
-  if (!recs.length) d.appendChild(h('p', null, 'Nessuna provetta problematica.'));
+  if (!recs.length) d.appendChild(h('p', null, 'Nessuna provetta fuori registro.'));
   S.ap.tipologie.forEach(function (t) {
     var righe = filtrate.filter(function (r) { return S.ap.problemi[r.uid].tipo === t.codice; });
     if (!righe.length) return;
@@ -1174,7 +1174,7 @@ function schedaStatistiche() {
   specieChiavi.forEach(function (k) {
     var s = spec[k];
     righeAnom.push(['Provette totali valide (' + s.specie + ')', str(s.provette)]);
-    righeAnom.push(['  di cui problematiche', str(s.problematiche)]);
+    righeAnom.push(['  di cui fuori registro', str(s.problematiche)]);
     righeAnom.push(['  di cui provvisorie', str(s.provvisorie)]);
     righeAnom.push(['  di cui perse (buchi)', str(s.perse)]);
     if (s.numeriDoppi > 0) righeAnom.push(['  Numeri doppi (anomalia)', str(s.numeriDoppi)]);
@@ -1199,7 +1199,7 @@ function schedaStatistiche() {
     d.appendChild(h('p', { class: 'fej-tenue' }, 'Nessun dato di andamento operatori.'));
   } else {
     var tbOps = h('table', { class: 'fej-guida' },
-      h('tr', null, ['Persona / Operatore', 'Stato', 'Provette', 'Problematiche', 'Ritmo medio (all\'ora)', 'Ritmo 20 min', 'Ultimo prelievo', 'Tempo lavoro'].map(function (t) { return h('th', null, t); }))
+      h('tr', null, ['Persona / Operatore', 'Stato', 'Provette', 'Fuori registro', 'Ritmo medio (all\'ora)', 'Ritmo 20 min', 'Ultimo prelievo', 'Tempo lavoro'].map(function (t) { return h('th', null, t); }))
     );
     ops.forEach(function (op) {
       tbOps.appendChild(h('tr', null,
@@ -1232,8 +1232,8 @@ function schedaStatistiche() {
     var stAv = gest;
     if (stAv) {
       d.appendChild(h('p', null,
-        'Plateau completi: ' + stAv.plateauCompleti + ' · Da completare: ' + stAv.plateauDaCompletare + ' · Problematici da svuotare: ' + stAv.plateauDaSvuotare + ' · ' +
-        'Problematici sistemati: ' + stAv.problematiciSistemati + ' / ' + stAv.totaleProblematiciIniziali + ' (residui: ' + stAv.problematiciResidui + ')'
+        'Plateau completi: ' + stAv.plateauCompleti + ' · Da completare: ' + stAv.plateauDaCompletare + ' · Fuori registro da svuotare: ' + stAv.plateauDaSvuotare + ' · ' +
+        'Fuori registro sistemati: ' + stAv.problematiciSistemati + ' / ' + stAv.totaleProblematiciIniziali + ' (residui: ' + stAv.problematiciResidui + ')'
       ));
       if (stAv.stimaMinutiFine != null) {
         d.appendChild(h('p', { class: 'fej-avviso' },
@@ -1256,9 +1256,9 @@ function schedaStatistiche() {
   // 4. Riepilogo dei problematici e delle modifiche in gestione
   var riep = S.ap && S.ap.riepilogoProblematici;
   if (riep) {
-    d.appendChild(h('h3', null, 'Riepilogo problematici e modifiche tardive'));
+    d.appendChild(h('h3', null, 'Riepilogo fuori registro e modifiche tardive'));
     d.appendChild(h('p', null,
-      'Totale problematici gestiti: ' + riep.totaleProblematici + ' · Registrazioni tardive: ' + riep.totaleRegistrazioniTardive + ' · Modifiche tardive: ' + riep.totaleModificheTardive
+      'Totale fuori registro gestiti: ' + riep.totaleProblematici + ' · Registrazioni tardive: ' + riep.totaleRegistrazioniTardive + ' · Modifiche tardive: ' + riep.totaleModificheTardive
     ));
 
     d.appendChild(h('button', {type: 'button', onclick: function () {

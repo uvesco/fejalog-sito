@@ -302,17 +302,18 @@
         return (p.lettera && /[Ⓐ-Ⓩ]/.test(p.lettera)) || (p.stabilimento && /[Ⓐ-Ⓩ]/.test(p.stabilimento));
       });
       m.disposizione.forEach(function(p){
-        var tit = p.problematici ? 'Problematici' : ((p.lettera && /[Ⓐ-Ⓩ]/.test(p.lettera) ? p.lettera + ' ' : '') + p.stabilimento);
+        var tit = p.problematici ? 'Fuori registro' : ((p.lettera && /[Ⓐ-Ⓩ]/.test(p.lettera) ? p.lettera + ' ' : '') + p.stabilimento);
         svg.push('<g class="posto-plateau" data-fila="'+p.fila+'" data-colonna="'+p.colonna+'"><rect x="'+p.x+'" y="'+p.y+'" width="'+o.larghezzaPlateau+'" height="'+o.profonditaPlateau+'" fill="'+(p.problematici?'#eee':'white')+'" stroke="black" stroke-width=".2"/>'+
-          '<text text-anchor="middle" font-size="1.7" x="'+(p.x+o.larghezzaPlateau/2)+'" y="'+(p.y+4)+'">'+esc(tit)+'</text>'+
-          '<text text-anchor="middle" font-size="1.5" x="'+(p.x+o.larghezzaPlateau/2)+'" y="'+(p.y+8)+'">'+(p.problematici?'in uso':(p.specie==='pecore'?'Ovini':'Caprini')+' · '+p.plateau)+'</text>'+
-          '<text text-anchor="middle" font-size="1.5" x="'+(p.x+o.larghezzaPlateau/2)+'" y="'+(p.y+12)+'">'+p.da+'–'+p.a+'</text></g>');
+          // etichette leggibili da lontano sul tavolo e a schermo (utente, 2026-11-12: «troppo poco visibili»)
+          '<text text-anchor="middle" font-size="'+(p.problematici?2.2:2.6)+'" font-weight="bold" fill="#000" x="'+(p.x+o.larghezzaPlateau/2)+'" y="'+(p.y+4.2)+'">'+esc(tit)+'</text>'+
+          '<text text-anchor="middle" font-size="2.4" font-weight="bold" fill="#000" x="'+(p.x+o.larghezzaPlateau/2)+'" y="'+(p.y+8.6)+'">'+(p.problematici?'in uso':(p.specie==='pecore'?'Ovini':'Caprini')+' · '+p.plateau)+'</text>'+
+          '<text text-anchor="middle" font-size="3.4" font-weight="bold" fill="#000" x="'+(p.x+o.larghezzaPlateau/2)+'" y="'+(p.y+13.2)+'">'+(p.problematici?'':p.da+'–'+p.a)+'</text></g>');
       });
       svg.push('</svg>');
       var riassunto=m.capi+' capi in età diagnostica · '+m.provette+' provette non scritte ('+m.provetteMargine+' di margine + '+m.provetteScorta+' di scorta).';
       var notaCerchietto = haCerchietto ? '<p class="piccolo">Sulle provette, la lettera cerchiata in testa identifica lo stabilimento.</p>' : '';
       var corpo='<h1>Materiale e schema del tavolo</h1><p>'+riassunto+'</p><p>'+m.veterinari+' veterinari · '+m.pennarelli+' pennarelli.</p>'+
-        '<p>'+m.ordinari+' plateau ordinari, tutti sul tavolo nel Riordino. Problematici: '+m.problematiciUso+' in uso + '+m.problematiciScorta+' di scorta fuori tavolo. Totale da portare: '+m.plateauTotali+'.</p>'+
+        '<p>'+m.ordinari+' plateau ordinari, tutti sul tavolo nel Riordino. Fuori registro: '+m.problematiciUso+' in uso + '+m.problematiciScorta+' di scorta fuori tavolo. Totale da portare: '+m.plateauTotali+'.</p>'+
         '<p>Verso di riempimento dei plateau: <b>'+descrVerso+'</b>.</p>'+
         notaCerchietto+
         '<p>Una fila: '+m.larghezzaUnaFila+' cm · due file: '+m.larghezzaDueFile+' cm.</p>'+

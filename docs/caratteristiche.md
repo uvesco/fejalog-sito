@@ -39,7 +39,7 @@ Il flusso operativo è governato da fasi tassative memorizzate nel registro a ev
 - **Tasti e comandi rapidi**: supporto a telecomandi Bluetooth o tastiere (frecce per navigare, frecce destra/sinistra per cambiare specie, barra spaziatrice per le spunte e **Invio/OK per confermare col focus su Conferma**; se il focus è su un’opzione, Invio attiva quell’opzione). Mappatura specifica per telecomandi tipo BLE-M3 (anello o mouse Bluetooth con frecce, OK centrale e Indietro) e schermata «Prova del telecomando» in Impostazioni.
 - **Foto del campione**: tasto «Foto» nel foglio di conferma e in «Ultime» per associare immagini (fino a 5 foto per provetta, JPEG compresso senza dati EXIF), sincronizzate in rete verso la Regia e archiviate nei backup e nello zip finale.
 - **Diagnostica locale leggera**: monitoraggio interno trasparente di tempi, rete, batteria ed errori anche nella build di release, senza polling né timer aggiuntivi, spegnibile nelle impostazioni e conservato nei backup completi per l'assistenza tecnica.
-- **Riquadro della scritta sulla provetta**: neutro per campioni ordinari (*scrivi l'etichetta*); blu per ordinari presi da isolato (*non scrivere tutto: solo l'etichetta*); rosso per problematici (*scrivi sempre il contrassegno COMPLETO* oltre al codice mostrato).
+- **Riquadro della scritta sulla provetta**: neutro per campioni ordinari (*scrivi l'etichetta*); blu per ordinari presi da isolato (*non scrivere tutto: solo l'etichetta*); rosso per fuori registro (*scrivi sempre il contrassegno COMPLETO* oltre al codice mostrato).
 - **Tasto «Senza contrassegno»**: funzione di attribuzione rapida per gli animali non identificati rimasti a fine risanamento, filtrando per sesso, razza ed età compatibile dai registri.
 - **Codici colore immediati**: verde per capi presenti in età, ocra per capi usciti o doppi, blu per marche disponibili, viola per capi di altri stabilimenti, rosso per codici manuali forzati.
 - **Prefissi univoci**: coerenza assoluta nei punti di controllo (anteprima, conferma, etichetta fisica, snackbar, lista ultime e registro durevole).
@@ -55,7 +55,7 @@ Il flusso operativo è governato da fasi tassative memorizzate nel registro a ev
 
 Il controllo comprende **smarriti e rubati ritrovati**, morti o macellati che risultano presenti sul campo, venduti e trasferiti, capi di **stabilimenti non campionati**, acquisti con **DDA da verificare**, marche disponibili mai registrate su un capo e contrassegni assenti dai file caricati. Si aggiungono **fuori età diagnostica**, specie discordante, doppi, identificazione attribuita per i senza contrassegno e segnalazioni di orecchini o bolo da sostituire.
 
-La Regia vede anche le provette diventate problematiche dopo un aggiornamento BDN, quelle ora normalizzabili, le perse e ritrovate, le accantonate e le conferme mancate da recuperare. Ogni caso ha un controllo e una soluzione: **non tutti i problematici finiscono nell'invio**; i fuori età sono eliminati per impostazione predefinita. L'app non registra ingressi né corregge i dati nella BDN.
+La Regia vede anche le provette diventate fuori registro dopo un aggiornamento BDN, quelle ora normalizzabili, le perse e ritrovate, le accantonate e le conferme mancate da recuperare. Ogni caso ha un controllo e una soluzione: **non tutti i fuori registro finiscono nell'invio**; i fuori età sono eliminati per impostazione predefinita. L'app non registra ingressi né corregge i dati nella BDN.
 
 [**Consulta tutte le fattispecie, con azioni in campo ed esiti a fine lavori**](anomalie.md) · [Scegli le prove nel kit](kit.md#quali-anomalie-provare).
 
@@ -78,7 +78,7 @@ Per coordinare la squadra in stabilimento o al pascolo senza dover urlare tra i 
 
 - **Avanzamento totale e per stabilimento**: quadro sintetico dei capi fatti, attesi, mancanti e percentuale di completamento, con esclusione delle provette perse per prevenire falsi 100%.
 - **Statistiche alla persona**: la classifica, le provette fatte e le statistiche seguono la persona fisica (codice fiscale) anche cambiando smartphone a metà seduta; omonimi distinti.
-- **Classifica individuale dei veterinari**: medaglie 🥇🥈🥉, provette fatte, ritmo orario, ritmo medio di campionamento e quota problematiche per ciascun veterinario, con badge `Tu` sempre garantito per orientarsi a colpo d'occhio.
+- **Classifica individuale dei veterinari**: medaglie 🥇🥈🥉, provette fatte, ritmo orario, ritmo medio di campionamento e quota fuori registro per ciascun veterinario, con badge `Tu` sempre garantito per orientarsi a colpo d'occhio.
 - **Stima del tempo di fine**: proiezione dinamica dell'orario di completamento calcolata sull'andamento reale dei prelievi.
 - **Permessi differenziati**: la vista Plateau e la funzione di Riordino rimangono riservate alla Regia, mentre i palmari visualizzano solo i dati rilevanti per la propria attività.
 
@@ -89,19 +89,19 @@ Per coordinare la squadra in stabilimento o al pascolo senza dover urlare tra i 
 
 ## 6. Risoluzione problemi, vista Plateau e riordino
 
-- **Plateau della Regia (riempimento)**: schema a quinconce da 100 pozzetti come il rack vero con verso configurabile (alto→basso default, o basso→alto); a campionamento aperto la Regia **riceve** le provette consegnate e le colloca nei pozzetti indicati. Gli isolati non doppi vanno subito al pozzetto del loro numero; nei progetti nuovi i problematici si alloggiano in una sequenza unica per l’intero progetto in ordine di consegna. I progetti già avviati conservano la disposizione precedente e, senza il parametro del verso, il riempimento basso→alto. Il posto si registra alla consegna e **non cambia più** fino al riordino; ricerca rapida con pozzetto che lampeggia.
-- **Bordi dei plateau colorati**: bordo verde per plateau completi (100 pozzetti occupati; l'ultimo plateau diventa verde quando non ha buchi e non restano problematici da ricollocare), giallo per plateau da completare, rosso per il plateau dei problematici da svuotare (diventa verde quando vuoto).
+- **Plateau della Regia (riempimento)**: schema a quinconce da 100 pozzetti come il rack vero con verso configurabile (alto→basso default, o basso→alto); a campionamento aperto la Regia **riceve** le provette consegnate e le colloca nei pozzetti indicati. Gli isolati non doppi vanno subito al pozzetto del loro numero; nei progetti nuovi i fuori registro si alloggiano in una sequenza unica per l’intero progetto in ordine di consegna. I progetti già avviati conservano la disposizione precedente e, senza il parametro del verso, il riempimento basso→alto. Il posto si registra alla consegna e **non cambia più** fino al riordino; ricerca rapida con pozzetto che lampeggia.
+- **Bordi dei plateau colorati**: bordo verde per plateau completi (100 pozzetti occupati; l'ultimo plateau diventa verde quando non ha buchi e non restano fuori registro da ricollocare), giallo per plateau da completare, rosso per il plateau dei fuori registro da svuotare (diventa verde quando vuoto).
 - **Azioni sulla provetta nel plateau**: cliccando una provetta si può copiare il codice, riattribuire un altro contrassegno (digitato o scelto dai registri), spostare la provetta a un'altra posizione (con proposta di scambio se occupata), registrarne lo smarrimento o lo scarto con motivo.
-- **Scarto recuperabile**: una provetta scartata esce dai problematici e non compare negli snippet ARVET, ma resta recuperabile annullando lo scarto.
+- **Scarto recuperabile**: una provetta scartata esce dai fuori registro e non compare negli snippet ARVET, ma resta recuperabile annullando lo scarto.
 - **Riordino a campionamento chiuso**: la guida parte dal pozzetto vero di ogni provetta e ne mostra l'etichetta. Ciascuna riga dispone del tasto «Invia» per la destinazione suggerita o digitata a mano; le caselle di spunta servono per l'invio in batch di quelle selezionate.
-- **Produttività della gestione**: oltre ai ritmi di campionamento individuali, la Regia e gli strumenti mostrano l'avanzamento della gestione nel tempo (azioni eseguite, stato dei plateau, problematici sistemati o scartati e stima della conclusione).
-- **Riepilogo finale problematici e tardive**: quadro consuntivo che elenca le anomalie riscontrate per fattispecie ed esito, evidenziando anche registrazioni e modifiche tardive.
+- **Produttività della gestione**: oltre ai ritmi di campionamento individuali, la Regia e gli strumenti mostrano l'avanzamento della gestione nel tempo (azioni eseguite, stato dei plateau, fuori registro sistemati o scartati e stima della conclusione).
+- **Riepilogo finale fuori registro e tardive**: quadro consuntivo che elenca le anomalie riscontrate per fattispecie ed esito, evidenziando anche registrazioni e modifiche tardive.
 - **Mai provette con la stessa scritta**: lettera di specie obbligatoria con due specie, etichette delle annullate mai riusate, avviso bloccante «Controlla subito il capo» e rinomina obbligatoria nelle collisioni fra palmari.
 - **Soluzione anomalie guidata**: gestione guidata di capi ritrovati, acquisti con DDA approvata, capi fuori età ed esclusione motivata da ARVET.
-- **Compattazione automatica**: chiusura dei buchi sui prenumerati prima dei problematici, raggruppamento specifico dei maschi ovini (*Brucella ovis*) e produzione dello snippet ARVET lineare da `1..n`.
+- **Compattazione automatica**: chiusura dei buchi sui prenumerati prima dei fuori registro, raggruppamento specifico dei maschi ovini (*Brucella ovis*) e produzione dello snippet ARVET lineare da `1..n`.
 
 ![Plateau della Regia: le righe dei veterinari](img/release-0.2/plateau_problematici.png)
-*Immagine di una versione precedente: le righe per veterinario restano nei progetti pregressi. Nei nuovi progetti i problematici seguono la sequenza di consegna.*
+*Immagine di una versione precedente: le righe per veterinario restano nei progetti pregressi. Nei nuovi progetti i fuori registro seguono la sequenza di consegna.*
 
 ![Riordino: la guida dal pozzetto vero](img/release-0.2/riordino_guida_fisica.png)
 *Guida del riordino: etichetta della provetta, pozzetto di partenza e numero finale.*

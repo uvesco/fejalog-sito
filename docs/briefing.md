@@ -15,7 +15,7 @@ Un registro condiviso da tutti i telefoni tiene insieme i prelievi dello stabili
 
 Nei progetti nuovi la Regia assegna automaticamente una sigla di due lettere per ogni veterinario, per esempio UV.
 
-- La sigla e il progressivo dei problematici sono condivisi fra i tuoi telefoni. La Regia può modificarla solo prima che sia scritta sulla prima provetta.
+- La sigla e il progressivo dei fuori registro sono condivisi fra i tuoi telefoni. La Regia può modificarla solo prima che sia scritta sulla prima provetta.
 - La classifica resta tua e somma i tuoi telefoni.
 
 ## 3. L'icona della rete
@@ -39,7 +39,7 @@ Dopo la conferma, controlla sempre l'esito della registrazione.
 Scrivi con il pennarello l'etichetta completa mostrata dall'app, comprese tutte le lettere.
 
 - Numero: per esempio 17. Se è prevista la lettera di specie, P per pecore o C per capre, precede il numero: P17 o C17.
-- Riquadro rosso (problematica): copia tutte le righe mostrate; sotto, in grassetto, «Scrivi tutto: progressivo e contrassegno completo» (con i dati, se la BDN non li ha).
+- Riquadro rosso (fuori registro): copia tutte le righe mostrate; sotto, in grassetto, «Scrivi tutto: progressivo e contrassegno completo» (con i dati, se la BDN non li ha).
 - Riquadro blu (preso senza tutti collegati) e riquadro neutro (collegato): «Scrivi solo il progressivo», per esempio 125-UV o 125.
 - Cambiando specie con le schede, uno swipe o destra/sinistra, il codice resta: non serve rileggerlo. Il foglio si chiude e si riapre solo se c'è un unico capo compatibile; altrimenti scegli dall'elenco. Sullo stesso capo restano note e scelte.
 - Tastiera o telecomando: il focus parte da Conferma; un solo Invio/OK registra. Su/giù scorrono circolarmente i controlli; Invio/OK o spazio attivano quello col bordo evidenziato. Per registrare torna su Conferma o toccalo. Nelle note spazio scrive; esci con su/giù o Tab. Esc e Indietro annullano.

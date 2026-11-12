@@ -50,7 +50,7 @@ flowchart TD
     end
 
     subgraph F3 ["Fase 3 · Gestione dei campioni"]
-        F3_A["Riordino plateau, problematici e tardive"]
+        F3_A["Riordino plateau, fuori registro e tardive"]
         F3_B["Esportazione modello 2/33 e snippet ARVET"]
     end
 
@@ -91,7 +91,7 @@ La fase di configurazione trasforma i file ufficiali BDN nel piano di lavoro del
 ### Fase 2: Campionamento (Regia e Palmari)
 È la fase operativa vera e propria nei recinti e al tavolo:
 
-- **I palmari**: leggono i microchip col lettore Bluetooth o digitano le ultime cifre sul tastierino; visualizzano il capo anagrafico con i codici colore; leggono il riquadro dell'etichetta per sapere cosa scrivere sulla provetta (neutro per ordinaria, blu per isolato, rosso con contrassegno completo per problematico); possono scattare foto al campione se occorre; confermano il prelievo; consultano le proprie ultime provette per annotazioni; portano i campioni al tavolo.
+- **I palmari**: leggono i microchip col lettore Bluetooth o digitano le ultime cifre sul tastierino; visualizzano il capo anagrafico con i codici colore; leggono il riquadro dell'etichetta per sapere cosa scrivere sulla provetta (neutro per ordinaria, blu per isolato, rosso con contrassegno completo per fuori registro); possono scattare foto al campione se occorre; confermano il prelievo; consultano le proprie ultime provette per annotazioni; portano i campioni al tavolo.
 - **La Regia**: accoglie i lotti di provette consegnate toccando **Ricevi (N)**; segue lo schema visualizzato a video (**«Metti qui»**) per collocare fisicamente ciascuna provetta nel pozzetto esatto del plateau; vigila sulla rete locale e sul livello di batteria dei palmari; gestisce pause o esclusioni se un dispositivo si spegne; può registrare provette direttamente se necessario.
 - **Chiusura della fase**: quando tutti gli animali sono stati prelevati e la squadra lascia il gregge, **solo la Regia** chiude il campionamento. L'operazione richiede un dialogo di sicurezza che segnala chi è ancora al lavoro, le provette non ancora consegnate e una parola di conferma da digitare.
 
@@ -100,8 +100,8 @@ La fase di configurazione trasforma i file ufficiali BDN nel piano di lavoro del
 ### Fase 3: Gestione dei campioni (solo Regia, dopo la chiusura)
 Terminato il campionamento sul campo, si apre la gestione dei campioni (in ufficio o sul furgone). I palmari hanno terminato il loro compito ed escono dal progetto; la fase è gestita interamente dalla Regia (anche collegando il tablet a un PC Windows via USB, senza internet) o da chi lavora da solo:
 
-- **Riordino dei plateau**: chiusura dei buchi rimasti liberi nelle serie ordinarie spostando le provette dai numeri alti o ricollocando i capi problematici normalizzati;
-- **Plateau dei problematici**: verifica di tutti i campioni anomali e svuotamento progressivo del plateau problematici verso le destinazioni corrette;
+- **Riordino dei plateau**: chiusura dei buchi rimasti liberi nelle serie ordinarie spostando le provette dai numeri alti o ricollocando i capi fuori registro normalizzati;
+- **Plateau dei fuori registro**: verifica di tutti i campioni anomali e svuotamento progressivo del plateau fuori registro verso le destinazioni corrette;
 - **Provette tardive e modifiche**: inserimento di provette fisiche scritte ma non confermate in campo, rettifiche di contrassegni, gestione di scarti (recuperabili) e smarrimenti;
 - **Fine lavori**: calcolo dei numeri definitivi di provetta, generazione del report del modello 2/33 e produzione degli **snippet per ARVET** per i 3 invii (pecore, capre, maschi *Brucella ovis*).
 
@@ -119,7 +119,7 @@ La tabella riassume con precisione cosa è accessibile a ciascun ruolo nelle div
 | **Fuori progetto** | Crea nuovo progetto, apre pacchetto o recenti. | Entra inquadrando il QR d'ingresso o chiede di entrare in rete. | Crea nuovo progetto, apre pacchetto o recenti. |
 | **Configurazione** | Carica i file BDN, fissa parametri, specie, verso plateau e rete. | In attesa: il palmare non entra fino al termine della configurazione. | Carica i file BDN, fissa parametri, specie, verso plateau e cartelle. |
 | **Campionamento** | Riceve provette, guida i plateau, sorveglia rete/batterie, può prelevare. Chiude la seduta. | Cerca capi, controlla riquadro, scrive provette, conferma, consulta avanzamento/classifica, gestisce rete/pausa. | Cerca capi, scrive provette, riempie i plateau man mano, consulta avanzamento. Chiude la seduta. |
-| **Gestione campioni** | Riordino plateau, risoluzione problematici, tardive, modello 2/33, snippet ARVET (anche da PC via USB). | Nessun accesso: esce dal progetto dopo la chiusura (può consultare l'avanzamento finale). | Riordino plateau, risoluzione problematici, tardive, modello 2/33, snippet ARVET. |
+| **Gestione campioni** | Riordino plateau, risoluzione fuori registro, tardive, modello 2/33, snippet ARVET (anche da PC via USB). | Nessun accesso: esce dal progetto dopo la chiusura (può consultare l'avanzamento finale). | Riordino plateau, risoluzione fuori registro, tardive, modello 2/33, snippet ARVET. |
 
 ---
 

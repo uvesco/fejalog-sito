@@ -2,11 +2,11 @@
 
 # Prima della prima provetta (Regia)
 
-## Regole per i problematici
+## Regole per i fuori registro
 
-- I capi smarriti (W) e rubati (H, F) dello stabilimento, trovati in campo, vanno sempre fra i problematici: nessun numero preassegnato, secchio dei problematici e coda a fine lavoro (dopo la denuncia di ritrovamento).
+- I capi smarriti (W) e rubati (H, F) dello stabilimento, trovati in campo, vanno sempre fra i fuori registro: nessun numero preassegnato, secchio dei fuori registro e coda a fine lavoro (dopo la denuncia di ritrovamento).
 - Lettera di specie: con pecore e capre nello stesso progetto almeno una delle due ha la lettera (C o P), di base la meno numerosa; «Nessuna» non si può scegliere, così una pecora e una capra non hanno mai la stessa scritta. Si fissa all'avvio del campionamento. Se una seconda specie arriva in corsa quando era scelta Nessuna, quella ancora senza provette prende automaticamente la sua lettera; le etichette già scritte non cambiano.
-- Le soluzioni per le varie tipologie di problematiche (in coda per ARVET o eliminate per escluderle) non si scelgono in anticipo nelle impostazioni: si decidono ex post in Gestione campioni (Problemi da risolvere).
+- Le provette fuori registro vanno tutte in coda: non ci sono regole da scegliere prima e nessuna tipologia si elimina in blocco, salvo i fuori età, per cui la Regia sceglie a fine lavori se inserirli o eliminarli. In Gestione campioni (Problemi da risolvere) si decide anche provetta per provetta, compresa l'eliminazione.
 
 ## Capi ricercati
 

@@ -31,7 +31,7 @@ Ti occupi dell'allestimento sul campo, crei il progetto partendo dai dati BDN, a
 2. [**Checklist del responsabile**](../checklist-responsabile.md): spunte di preparazione e controllo dall'ufficio al ritorno dal campo.
 3. [**Stampe pre-campo e calcolo materiale**](../strumenti/prima-del-campo.md): creazione del modello 2/33 precompilato, del foglio A3 orizzontale, del foglio generico 1–100 e del QR Wi-Fi.
 4. [**Avvio della seduta e consegne**](../chi-dirige/avvio.md): configurazione delle specie, degli stabilimenti, e gestione del flusso di consegna provette.
-5. [**Fine lavori sul computer**](../strumenti/fine-lavori.md): riordino dei plateau, risoluzione problematiche, export del modello 2/33 e caricamento assistito su ARVET.
+5. [**Fine lavori sul computer**](../strumenti/fine-lavori.md): riordino dei plateau, risoluzione fuori registro, export del modello 2/33 e caricamento assistito su ARVET.
 
 ---
 

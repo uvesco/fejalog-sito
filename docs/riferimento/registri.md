@@ -9,8 +9,8 @@
 - «Scegli i file (anche uno zip)»: registri e contrassegni, l'app li riconosce. Per ogni stabilimento si dice cosa sono:
 - Stabilimento di lavoro: il registro nuovo (BDN aggiornata) sostituisce quello di prima dello stesso allevamento (stessa denominazione); gli altri allevamenti dello stesso stabilimento restano. Si fa prima di avviare il campionamento: a campionamento aperto il registro di un allevamento già caricato non si sostituisce (un allevamento nuovo sì, i suoi capi vanno in fondo).
 - Procedura d'emergenza, se a campionamento avviato serve la BDN aggiornata: il tasto «Aggiorna il registro (emergenza)» nella pagina dei registri guida i quattro passi: 1) chiudi il campionamento (la conferma della Checklist); 2) aspetta che tutti i device presenti siano allineati, così le provette raccolte finora sono tutte qui (chi non si ricollega si mette in pausa o si esclude dalla Gestione dispositivi); 3) carica il registro con l'anteprima; 4) riapri il campionamento. I numeri già assegnati restano, i capi nuovi vanno in fondo. Anche nel registro un caricamento di questo tipo scritto a campionamento aperto non vale.
-- Altro stabilimento: i suoi capi vanno fra i problematici.
-- Acquisto con DDA: nella conferma di un capo di altro stabilimento il veterinario dichiara il DDA solo per quel capo. La provetta resta problematica.
+- Altro stabilimento: i suoi capi vanno fra i fuori registro.
+- Acquisto con DDA: nella conferma di un capo di altro stabilimento il veterinario dichiara il DDA solo per quel capo. La provetta resta fuori registro.
 - In Problemi da risolvere la Regia registra DDA valido o da rifare, con nota. Solo dopo aver confermato l'ingresso registrato può normalizzare la provetta.
 - Lo specchietto dell'operatore (allevatore) riporta la verifica del DDA e la registrazione o forzatura dell'ingresso a cura dell'operatore o del delegato. L'app non modifica la BDN.
 - I progetti precedenti conservano gli effetti degli acquisti già registrati; i nuovi prelievi richiedono sempre la dichiarazione individuale.
@@ -30,6 +30,6 @@
 
 ## Un contrassegno che non è in nessun registro
 
-- Si preleva lo stesso: è un problematico, e nel foglio di conferma sesso, razza e data di nascita (stimati) sono obbligatori.
-- Con le verifiche in BDN si cerca lo stabilimento d'origine. Se si trova, se ne carica il registro: la provetta resta fra i problematici e prende i dati della BDN; in ARVET lo snippet di fine lavori lo aggiunge col solo contrassegno, perché sesso, razza e nascita ARVET li ha già.
-- Se non si trova, la provetta resta fra i problematici coi dati stimati, che lo snippet scrive in ARVET (la razza dall'elenco di ARVET). Lo zip di fine lavori ha anche l'elenco «da inserire a mano in ARVET», che dice per ogni capo se lo aggiunge lo snippet e se l'anagrafica va scritta.
+- Si preleva lo stesso: è un capo fuori registro, e nel foglio di conferma sesso, razza e data di nascita (stimati) sono obbligatori.
+- Con le verifiche in BDN si cerca lo stabilimento d'origine. Se si trova, se ne carica il registro: la provetta resta fra i fuori registro e prende i dati della BDN; in ARVET lo snippet di fine lavori lo aggiunge col solo contrassegno, perché sesso, razza e nascita ARVET li ha già.
+- Se non si trova, la provetta resta fra i fuori registro coi dati stimati, che lo snippet scrive in ARVET (la razza dall'elenco di ARVET). Lo zip di fine lavori ha anche l'elenco «da inserire a mano in ARVET», che dice per ogni capo se lo aggiunge lo snippet e se l'anagrafica va scritta.

@@ -4,7 +4,7 @@
 
 - Campionamento › Gestione dispositivi, solo sulla Regia in rete: tutti i palmari del progetto in una pagina, col QR d'ingresso in testa e «Riallinea tutti». Si apre anche dalla pagina Regia e dal tasto accanto a «Fatte» nel campionamento.
 - Filtri a tasti: Presenti (al lavoro e in pausa, quello di partenza), Solo attivi, Tutti (anche chi ha finito, gli esclusi e i tolti dalla rete).
-- Ogni riga: veterinario e nome del telefono, sigla, il semaforo della rete, da quanto non risponde se è scollegato, la batteria se arriva coi messaggi, provette e problematiche fatte, quante sono da ricevere.
+- Ogni riga: veterinario e nome del telefono, sigla, il semaforo della rete, da quanto non risponde se è scollegato, la batteria se arriva coi messaggi, provette e fuori registro fatte, quante sono da ricevere.
 
 ## Il semaforo
 

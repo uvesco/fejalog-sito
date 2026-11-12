@@ -12,7 +12,7 @@ A fine lavori, dopo aver completato il riordino fisico dei plateau, Fejalog cons
 Durante l'intervento di profilassi vengono prodotti due modelli 2/33:
 
 1. **Il 2/33 precompilato (prima del campo)**: generato in fase di preparazione (vedi [Stampe pre-campo e calcolo materiale](../strumenti/prima-del-campo.md)) a partire dal file `.htm` scaricato da ARVET, con i numeri ordinari preassegnati e i maschi in grigio, utile come traccia cartacea di riserva.
-2. **Il 2/33 finale definitivo (dopo il campo)**: generato a campionamento chiuso e dopo aver calcolato la sistemazione dei plateau. Riflette i **numeri fisici definitivi delle provette**, incorporando gli spostamenti dei problematici, la chiusura dei buchi e le registrazioni tardive.
+2. **Il 2/33 finale definitivo (dopo il campo)**: generato a campionamento chiuso e dopo aver calcolato la sistemazione dei plateau. Riflette i **numeri fisici definitivi delle provette**, incorporando gli spostamenti dei fuori registro, la chiusura dei buchi e le registrazioni tardive.
 
 ---
 

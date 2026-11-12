@@ -85,10 +85,6 @@ function monta(radice, deps) {
     });
     return out;
   }
-  function regolaPredefinita(t) {
-    var codici = t.soluzioni.map(function (s) { return s[0]; });
-    return t.codice === 'ORA_IN_LISTA' && codici.indexOf('normalizzata') >= 0 ? 'normalizzata' : 'coda';
-  }
   function scarica(nome, dati, mime) {
     if (deps.scarica) return deps.scarica(nome, dati, mime);
     var url = w.URL.createObjectURL(new w.Blob([dati], { type: mime }));
@@ -205,19 +201,25 @@ function monta(radice, deps) {
       leggiTesto(f).then(function (t) { stato.veterinariCsv = t; stato.veterinariNome = f.name; stato.sigle = {}; stato.priorita = []; }, function (e) { stato.messaggio = e.message; })
         .then(function () { vet.value = ''; ricalcola(true); renderElenco(); });
     });
-    var ric = h('input', { type: 'file', accept: '.csv,.txt,text/csv,text/plain' });
-    ric.addEventListener('change', function () {
-      var f = ric.files && ric.files[0]; if (!f) return;
-      leggiTesto(f).then(function (t) { stato.ricercatiCsv = t; stato.ricercatiNome = f.name; }, function (e) { stato.messaggio = e.message; })
-        .then(function () { ric.value = ''; ricalcola(true); renderElenco(); });
-    });
     var e = stato.esito || {};
     c.appendChild(h('p', null, h('label', null, 'Elenco dei veterinari (CSV id;cognome;nome;codice_fiscale) ', vet), ' ',
       stato.veterinariNome ? stato.veterinariNome + ': ' + (e.veterinari || []).length + ' veterinari' + (e.veterinari_scartati ? ', ' + e.veterinari_scartati + ' righe ignorate' : '') : 'nessuno: in campo ognuno si aggiunge a mano',
       stato.veterinariNome ? [' ', bottone('Togli', function () { stato.veterinariCsv = ''; stato.veterinariNome = ''; stato.sigle = {}; stato.priorita = []; ricalcola(true); renderElenco(); })] : null));
-    c.appendChild(h('p', null, h('label', null, 'Capi ricercati (CSV codice;nota;azione;segno, facoltativo) ', ric), ' ',
-      stato.ricercatiNome ? [stato.ricercatiNome, ' ', bottone('Togli', function () { stato.ricercatiCsv = ''; stato.ricercatiNome = ''; ricalcola(true); renderElenco(); })] : 'nessuno'));
     c.appendChild(h('p', { class: 'fej-tenue' }, 'L’elenco entra nel pacchetto del progetto, mai nel registro: il codice fiscale non va sulle provette né nei file di campo.'));
+  }
+
+  // i capi ricercati, separati dall'elenco dei veterinari (utente, 2026-11-12)
+  function renderRicercati() {
+    var c = sez.ricercati; svuota(c);
+    var ric = h('input', { type: 'file', accept: '.csv,.txt,text/csv,text/plain' });
+    ric.addEventListener('change', function () {
+      var f = ric.files && ric.files[0]; if (!f) return;
+      leggiTesto(f).then(function (t) { stato.ricercatiCsv = t; stato.ricercatiNome = f.name; }, function (e) { stato.messaggio = e.message; })
+        .then(function () { ric.value = ''; ricalcola(true); renderRicercati(); });
+    });
+    c.appendChild(h('p', null, h('label', null, 'Capi ricercati (CSV codice;nota;azione;segno) ', ric), ' ',
+      stato.ricercatiNome ? [stato.ricercatiNome, ' ', bottone('Togli', function () { stato.ricercatiCsv = ''; stato.ricercatiNome = ''; ricalcola(true); renderRicercati(); })] : 'nessuno'));
+    c.appendChild(h('p', { class: 'fej-tenue' }, 'Facoltativo: i capi da cercare in campo (marcare col segno, isolare), col motivo e cosa fare. La Regia ne aggiunge altri anche durante il lavoro.'));
   }
 
   function renderStabilimenti() {
@@ -241,15 +243,6 @@ function monta(radice, deps) {
       c.appendChild(h('p', null, h('label', null, cb, ' ', s.codice, s.denominazione ? ' · ' + s.denominazione : '', ' · ', s.pecore + ' pecore, ' + s.capre + ' capre presenti'),
         ' ', h('label', { class: 'fej-tenue' }, rb, ' principale')));
     });
-    // utente, 2026-11-12: «lasciare scelta di non indicare la lettera dello stabilimento principale»
-    if (scelti.length > 1) {
-      var princ = (e.stabilimenti || []).filter(function (x) { return x.principale; })[0];
-      var conLettera = stato.cerchiettoPrincipale === null ? !!(princ && princ.cerchietto) : stato.cerchiettoPrincipale;
-      var cp = h('input', { type: 'checkbox', checked: conLettera });
-      cp.addEventListener('change', function () { stato.cerchiettoPrincipale = cp.checked; ricalcola(true); renderStabilimenti(); });
-      c.appendChild(h('p', null, h('label', null, cp, ' Lettera cerchiata anche sullo stabilimento principale'), ' ',
-        h('span', { class: 'fej-tenue' }, conLettera ? '(tutte le provette hanno la lettera)' : '(le provette del principale senza lettera, gli altri con la loro)')));
-    }
     var descr = campo('Descrizione del progetto', stato.descrizione, 'text', { maxlength: 120 });
     descr.input.addEventListener('input', function () { stato.descrizione = descr.input.value; ricalcola(); });
     var data = campo('Data (AAAA-MM-GG)', stato.data, 'text', { maxlength: 10 });
@@ -260,6 +253,19 @@ function monta(radice, deps) {
   function renderScelte() {
     var c = sez.scelte; svuota(c);
     var e = stato.esito || {};
+    // con più stabilimenti: la lettera cerchiata anche sul principale, sì o no (utente, 2026-11-12)
+    if ((e.stabilimenti || []).length > 1) {
+      var princ = e.stabilimenti.filter(function (x) { return x.principale; })[0];
+      var conLettera = stato.cerchiettoPrincipale === null ? !!(princ && princ.cerchietto) : stato.cerchiettoPrincipale;
+      var lp = h('p', null, 'Lettera dello stabilimento anche sul principale' + (princ ? ' (' + princ.codice + ')' : '') + ': ');
+      [[true, 'Sì'], [false, 'No']].forEach(function (o) {
+        var r = h('input', { type: 'radio', name: 'lettera-principale', value: o[0] ? 'si' : 'no', checked: conLettera === o[0] });
+        r.addEventListener('change', function () { stato.cerchiettoPrincipale = o[0]; ricalcola(true); });
+        lp.appendChild(h('label', null, r, ' ' + o[1], ' '));
+      });
+      lp.appendChild(h('span', { class: 'fej-tenue' }, conLettera ? 'tutte le provette hanno la lettera cerchiata' : 'le provette del principale senza lettera, gli altri con la loro'));
+      c.appendChild(lp);
+    }
     var eta = h('p', null, 'Età diagnostica (profilo di rischio dello stabilimento): ');
     [[6, '6 mesi (vagante / rischio)'], [12, '12 mesi (stanziale)'], [0, 'tutti i presenti']].forEach(function (o) {
       var r = h('input', { type: 'radio', name: 'eta', value: o[0], checked: stato.etaMesi === o[0] });
@@ -275,7 +281,7 @@ function monta(radice, deps) {
     c.appendChild(h('p', null, lett.label));
     var seq = h('input', { type: 'checkbox', checked: stato.problematiciInSequenza });
     seq.addEventListener('change', function () { stato.problematiciInSequenza = seq.checked; ricalcola(true); });
-    c.appendChild(h('p', null, h('label', null, seq, ' Problematici in una sola sequenza (un plateau dei problematici sul tavolo alla volta)')));
+    c.appendChild(h('p', null, h('label', null, seq, ' Fuori registro in una sola sequenza (un plateau dei fuori registro sul tavolo alla volta)')));
     c.appendChild(h('p', { class: 'fej-tenue' }, 'Queste scelte si scrivono prima dei registri: fissano la numerazione (i capi fuori età non si numerano). Sul tablet si congelano all’avvio del campionamento.'));
   }
 
@@ -292,9 +298,9 @@ function monta(radice, deps) {
     else {
       box.appendChild(h('h3', null, 'Sigle dei veterinari (due lettere, mai confondibili)'));
       vets.forEach(function (v) {
-        var s = campo(v.nome + ' (' + v.id + ')', stato.sigle[v.id] || '', 'text', { maxlength: 2, placeholder: v.proposta, size: 3 });
+        var s = campo(v.nome + ' (' + v.id + ')', stato.sigle[v.id] || '', 'text', { maxlength: 2, placeholder: v.proposta, size: 3, 'data-vet': v.id });
         s.input.addEventListener('input', function () { stato.sigle[v.id] = s.input.value.toUpperCase(); ricalcola(); });
-        box.appendChild(h('p', null, s.label, ' ', h('span', { class: 'fej-tenue' }, 'vuota: la Regia assegna ' + v.proposta + ' all’ingresso')));
+        box.appendChild(h('p', null, s.label, ' ', h('span', { class: 'fej-tenue', 'data-proposta': v.id }, 'vuota: la Regia assegna ' + v.proposta)));
       });
       box.appendChild(h('h3', null, 'Priorità per la regia d’emergenza'));
       var lista = h('ol');
@@ -343,21 +349,9 @@ function monta(radice, deps) {
         scarica('reti_progetto.csv', '\uFEFF' + retiInCsv(stato.reti), 'text/csv;charset=utf-8');
       })));
     c.appendChild(h('p', { class: 'fej-tenue' }, 'Scrivi le reti la prima volta ed esportale: negli altri progetti sulle stesse reti si ricaricano dal CSV. Colonne SSID;password;note;sicurezza (WPA2, WPA3 o aperta): lo stesso reti.csv delle reti salvate dell’app, con la sicurezza in più. Il file contiene le password: tienilo per te.'));
-    // regole dei problematici
-    var tipi = e.tipologie || [];
-    if (tipi.length) {
-      c.appendChild(h('h3', null, 'Regole dei problematici (soluzione di fine lavori per tipologia)'));
-      // utente, 2026-11-12: «tutti in coda, arvet a mano, salvo "ora in lista coi registri nuovi"» (quelle si normalizzano)
-      var mancanti = false;
-      tipi.forEach(function (t) {
-        if (!stato.regole[t.codice]) { stato.regole[t.codice] = regolaPredefinita(t); mancanti = true; }
-        var s = scelta(t.titolo, t.soluzioni, stato.regole[t.codice]);
-        s.input.addEventListener('change', function () { stato.regole[t.codice] = s.input.value; ricalcola(); });
-        c.appendChild(h('p', null, s.label));
-      });
-      if (mancanti) ricalcola();
-      c.appendChild(h('p', { class: 'fej-tenue' }, 'Si possono cambiare anche dopo, dal tablet: le provette seguono da sole nella sistemazione.'));
-    }
+    // niente regole dei problematici: tutti in coda, ARVET a mano (utente, 2026-11-12: «non è accettabile eliminare
+    // sistematicamente dei campioni di sangue»); la singola provetta si decide in sistemazione
+    c.appendChild(h('p', { class: 'fej-tenue' }, 'Le provette fuori registro vanno tutte in coda, ARVET a mano: in sistemazione si decide provetta per provetta, anche l’eliminazione di una singola provetta.'));
   }
 
   function renderAnteprima() {
@@ -371,7 +365,7 @@ function monta(radice, deps) {
     c.appendChild(h('p', null, h('strong', null, 'Progetto ' + p.nome + (p.descrizione ? ' · ' + p.descrizione : '')), ' · codice di creazione ' + p.codice_creazione +
       ' · ' + p.veterinari + ' veterinari nel pacchetto' + (p.ricercati ? ' · ' + p.ricercati + ' ricercati' : '')));
     c.appendChild(h('p', null, r.presenti_pecore + ' pecore e ' + r.presenti_capre + ' capre presenti · ' + r.numerati + ' capi numerati (' + r.maschi + ' maschi in testa) · ' +
-      r.fuori_eta + ' fuori età diagnostica (senza numero: problematici se prelevati) · ' + (r.usciti_pecore + r.usciti_capre) + ' usciti · ' + (r.marche_pecore + r.marche_capre) + ' marche disponibili' +
+      r.fuori_eta + ' fuori età diagnostica (senza numero: fuori registro se prelevati) · ' + (r.usciti_pecore + r.usciti_capre) + ' usciti · ' + (r.marche_pecore + r.marche_capre) + ' marche disponibili' +
       (r.altri_stabilimenti ? ' · ' + r.altri_stabilimenti + ' capi di altri stabilimenti nei registri' : '')));
     var tab = h('table', { class: 'fej-tabella-scorre' }, h('thead', null, h('tr', null, ['Stabilimento', 'Specie', 'Prefisso', 'Presenti', 'Numerati', 'Maschi', 'Numeri', 'Fuori età'].map(function (t) { return h('th', null, t); }))));
     var tb = h('tbody');
@@ -412,6 +406,12 @@ function monta(radice, deps) {
     if (codici !== codiciVisti) { codiciVisti = codici; renderStabilimenti(); }
     var vets = JSON.stringify((e.veterinari || []).map(function (v) { return v.id; })) + '|' + (e.tipologie || []).length + '|' + stato.priorita.join(',');
     if (vets !== veterinariVisti) { veterinariVisti = vets; renderConfigurazione(); }
+    // le proposte cambiano con le sigle scritte a mano: si aggiornano al loro posto, senza ridisegnare il campo in uso
+    (e.veterinari || []).forEach(function (v) {
+      var i = d.querySelector('#crea-veterinari input[data-vet="' + v.id + '"]'), t = d.querySelector('#crea-veterinari [data-proposta="' + v.id + '"]');
+      if (i) i.setAttribute('placeholder', v.proposta);
+      if (t) t.textContent = 'vuota: la Regia assegna ' + v.proposta;
+    });
     renderScelte();
     renderAnteprima(); renderSnapshot(); aggiornaStampe();
   }
@@ -451,16 +451,17 @@ function monta(radice, deps) {
   pannelloCrea.appendChild(h('p', null, bottone('Ricomincia da capo', function () {
     Object.assign(stato, { file: [], specieFile: {}, veterinariCsv: '', veterinariNome: '', ricercatiCsv: '', ricercatiNome: '', stabilimenti: null, principale: '', descrizione: '',
       etaMesi: 6, lettere: '', problematiciInSequenza: true, verso: 'alto_basso', sigle: {}, priorita: [], reti: [], regole: {}, cerchiettoPrincipale: null, id: uuid(w), messaggio: '', esito: null });
-    codiciVisti = veterinariVisti = ''; calcola(); aggiorna(); renderFile(); renderElenco();
+    codiciVisti = veterinariVisti = ''; calcola(); aggiorna(); renderFile(); renderElenco(); renderRicercati();
   })));
   pannelloCrea.appendChild(sezione('file', '1 · File della BDN'));
-  pannelloCrea.appendChild(sezione('elenco', '2 · Elenco dei veterinari e ricercati'));
-  pannelloCrea.appendChild(sezione('stabilimenti', '3 · Stabilimenti e progetto'));
-  pannelloCrea.appendChild(sezione('scelte', '4 · Scelte della creazione (prima dei registri)'));
-  pannelloCrea.appendChild(sezione('configurazione', '5 · Configurazione della Regia'));
-  pannelloCrea.appendChild(sezione('anteprima', '6 · Anteprima della numerazione'));
-  pannelloCrea.appendChild(sezione('snapshot', '7 · Snapshot per la Regia'));
-  calcola(); aggiorna(); renderFile(); renderElenco();
+  pannelloCrea.appendChild(sezione('elenco', '2 · Elenco dei veterinari'));
+  pannelloCrea.appendChild(sezione('ricercati', '3 · Capi ricercati (facoltativo)'));
+  pannelloCrea.appendChild(sezione('stabilimenti', '4 · Stabilimenti e progetto'));
+  pannelloCrea.appendChild(sezione('scelte', '5 · Regole di numerazione'));
+  pannelloCrea.appendChild(sezione('configurazione', '6 · Configurazione della Regia'));
+  pannelloCrea.appendChild(sezione('anteprima', '7 · Anteprima della numerazione'));
+  pannelloCrea.appendChild(sezione('snapshot', '8 · Snapshot per la Regia'));
+  calcola(); aggiorna(); renderFile(); renderElenco(); renderRicercati();
   return { stato: stato, ricalcola: function () { ricalcola(true); } };
 }
 

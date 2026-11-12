@@ -19,7 +19,7 @@
 
 !!! atteso "Cosa devi vedere"
     - In ogni invio i numeri di provetta finali formano una **sequenza lineare continua da 1 a n** senza buchi.
-    - Nell'invio delle pecore, `__ARVET_NUOVI__` ha i problematici, tranne i doppi di contrassegno: usciti, altro
+    - Nell'invio delle pecore, `__ARVET_NUOVI__` ha i fuori registro, tranne i doppi di contrassegno: usciti, altro
       stabilimento, marche disponibili, capi in nessun registro.
     - Per i capi stimati in campo la razza è una descrizione di ARVET (BIELLESE…).
     - L'invio dei maschi ha gli **stessi numeri** delle pecore.

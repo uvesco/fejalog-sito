@@ -97,7 +97,7 @@ sequenceDiagram
 
 1. **Numerazione deterministica al caricamento dei registri**: all'avvio della seduta, i capi presenti e in età diagnostica ricevono un progressivo potenziale naturale in base all'ordine alfabetico di contrassegno `1..N` (con i maschi in testa per preservare il blocco profilassi *Brucella ovis*). Non ci sono contese di blocchi o riserve dinamiche durante il prelievo. Un numero di provetta corrisponde ad un contrassegno fin da prima di arrivare in campo, operando in rete si scoprono i doppi contrassegni (o doppi prelievi);
 2. **Sigle dei veterinari e lettere degli stabilimenti, mai confondibili**:
-   - nei progetti nuovi ogni veterinario ha una **sigla di due lettere** assegnata automaticamente dalla Regia (per esempio `UV`), unica nel progetto e condivisa fra i suoi device, insieme al progressivo dei problematici;
+   - nei progetti nuovi ogni veterinario ha una **sigla di due lettere** assegnata automaticamente dalla Regia (per esempio `UV`), unica nel progetto e condivisa fra i suoi device, insieme al progressivo dei fuori registro;
    - gli stabilimenti secondari hanno una lettera nel **cerchietto in testa** all'etichetta (per esempio `Ⓧ125`): sigla e cerchietto stanno in posti diversi e non si confondono;
    - classifiche e statistiche seguono la persona (codice fiscale), anche se cambia telefono;
    - nei progetti precedenti alle sigle restano le lettere previste all'inizio, mai condivise fra un device e uno stabilimento;
@@ -192,8 +192,8 @@ Esistono due fattispecie radicalmente diverse che richiedono trattamenti distint
 | Caso operativo | Strumento Fejalog | Lettera e serie | Destinazione ARVET |
 |---|---|---|---|
 | **Altro risanamento in contemporanea** | **Stabilimento secondario** (aggiunto in corsa da dropdown BDN) | Lettera dedicata di stabilimento: `X1`, `X2`, `XC12` | Accettazione separata autonoma per lo stabilimento secondario |
-| **Singolo capo estraneo / compravendita** | **DDA individuale** o provetta problematica dello stabilimento di lavoro | Lettera del veterinario o prefisso specie (es. `CA1`, `P25`) | Confluisce nei problematici dello stabilimento prescelto |
-| **Capo appartenente a registro non in campionamento** | Riconoscimento automatico con **banda viola** | Provetta problematica (`altro_stabilimento`) | Gestito dalla Regia nella risoluzione problemi |
+| **Singolo capo estraneo / compravendita** | **DDA individuale** o provetta fuori registro dello stabilimento di lavoro | Lettera del veterinario o prefisso specie (es. `CA1`, `P25`) | Confluisce nei fuori registro dello stabilimento prescelto |
+| **Capo appartenente a registro non in campionamento** | Riconoscimento automatico con **banda viola** | Provetta fuori registro (`altro_stabilimento`) | Gestito dalla Regia nella risoluzione problemi |
 
 - **Stabilimenti secondari solo aggiungibili**: uno stabilimento secondario può essere aggiunto in corsa ma mai rimosso durante il campionamento, preservando l'integrità dei record;
 - **Spostamento manuale tracciato**: se un veterinario attribuisce erroneamente una provetta a uno stabilimento anziché all'altro, la Regia o il palmare possono effettuare lo spostamento manuale; l'app preserva il legame storico con la BDN d'origine aggiornando coerentemente la serie e l'export finale.
@@ -243,7 +243,7 @@ stateDiagram-v2
 
 ### Il problema
 Il sistema informativo ARVET dell'Istituto Zooprofilattico accetta unicamente serie di provette continue, lineari e crescenti da `1` a `n` per ciascun invio (pecore, capre, maschi *Brucella ovis*). Non sono ammessi buchi, salti o etichette alfanumeriche complesse.
-In campo, al contrario, si generano inevitabilmente provette rotte, buchi da capi non presenti, provette da isolato e campioni problematici.
+In campo, al contrario, si generano inevitabilmente provette rotte, buchi da capi non presenti, provette da isolato e campioni fuori registro.
 
 ### La soluzione adottata
 Il modulo di fine lavori applica un algoritmo deterministico di sistemazione geometrica:
@@ -256,12 +256,12 @@ flowchart TD
         P3["3: Femmina"]
         P4["4: Femmina"]
         P5["5: Femmina (Ultima)"]
-        Prob["CA1: Capo problematico risolto"]
+        Prob["CA1: capo fuori registro risolto"]
     end
 
     subgraph Riordino["Algoritmo di fine lavori"]
         RiordinoAzione["Chiusura buchi:<br/>La provetta 5 viene tirata su nella posizione 2<br/>(un solo spostamento fisico per buco)"]
-        AccodaProb["I problematici risolti vengono accodati<br/>in fondo alla serie ordinaria"]
+        AccodaProb["I fuori registro risolti vengono accodati<br/>in fondo alla serie ordinaria"]
     end
 
     subgraph ARVET["Snippet ed Export finale per ARVET"]
@@ -269,7 +269,7 @@ flowchart TD
         ARV2["2: Femmina (ex 5)"]
         ARV3["3: Femmina"]
         ARV4["4: Femmina"]
-        ARV5["5: Capo problematico (ex CA1)"]
+        ARV5["5: capo fuori registro (ex CA1)"]
     end
 
     Stalla --> Riordino

@@ -34,7 +34,7 @@ solo il numero (12).
 
 ## I capi che non sono nell'elenco
 
-Sono i problematici della sistemazione: usciti, altro stabilimento, marche disponibili, capi in nessun registro. Per
+Sono i fuori registro della sistemazione: usciti, altro stabilimento, marche disponibili, capi in nessun registro. Per
 ognuno lo snippet fa quello che farebbe il veterinario con **«Inserisci capo»**:
 
 1. **Cerca** il contrassegno;

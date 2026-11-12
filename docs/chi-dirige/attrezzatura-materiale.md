@@ -31,7 +31,7 @@ Il calcolo esatto del fabbisogno si effettua direttamente in Fejalog (**Configur
 ### Che cosa conta il calcolo
 
 - **Plateau ordinari**: per ogni serie serve spazio fino al massimo numero assegnato, anche se ci sono buchi. Si arrotonda al centinaio successivo: con il solo numero 101 servono comunque due plateau.
-- **Problematici**: nei progetti nuovi, un solo plateau problematici in uso sul tavolo e la scorta indicata dal calcolo fuori tavolo.
+- **Fuori registro**: nei progetti nuovi, un solo plateau fuori registro in uso sul tavolo e la scorta indicata dal calcolo fuori tavolo.
 - **Provette**: numero di capi numerati, più margine e scorta scelti dalla Regia (inizialmente 10% e 5%). Ciascuna percentuale si arrotonda separatamente all'intero superiore: con un capo e i valori iniziali il totale è tre provette.
 - **Pennarelli**: il riepilogo ne conta uno per veterinario; prepara anche quelli di riserva che ritieni necessari.
 
@@ -81,8 +81,8 @@ La disposizione fisica sul tavolo deve rispecchiare fedelmente lo schema logico 
 2. **Il tablet al centro**: mantieni il tablet orientato verso di te, con il pannello sinistro («Ricevi») e il pannello destro («Plateau / Metti qui») ben visibili contemporaneamente.
 3. **Separazione netta dei plateau**:
    - A sinistra o davanti a te: i plateau della serie ordinaria attiva;
-   - A destra (o separato visivamente): l'**unico plateau problematici in uso**;
-   - **Toglilo dal tavolo**: quando il plateau dei problematici raggiunge i 100 pozzetti, l'app mostra un promemoria (*«Plateau problematici N pieno: toglilo dal tavolo»*). Mettilo da parte, contrassegnalo con un'etichetta (es. «Problematici 1») e posiziona sul tavolo un nuovo plateau vuoto.
+   - A destra (o separato visivamente): l'**unico plateau fuori registro in uso**;
+   - **Toglilo dal tavolo**: quando il plateau dei fuori registro raggiunge i 100 pozzetti, l'app mostra un promemoria (*«Plateau fuori registro N pieno: toglilo dal tavolo»*). Mettilo da parte, contrassegnalo con un'etichetta (es. «Fuori registro 1») e posiziona sul tavolo un nuovo plateau vuoto.
 4. **Il foglio generico 1–100**: fissalo sul tavolo accanto ai plateau con nastro adesivo da carrozziere. Serve a ricordare a chiunque riponga provette l'ordine corretto di riempimento: **file per file, mai a serpente**.
 
 ---
@@ -93,7 +93,7 @@ La disposizione fisica sul tavolo deve rispecchiare fedelmente lo schema logico 
 |---|---|---|
 | **Provette non scritte esaurite a metà lavoro** | Alto numero di capi non in elenco o errori di prelievo superiori al margine. | Attingi immediatamente alla scorta prudenziale (5%); se insufficiente, fai convergere le provette disponibili sui capi con priorità diagnostica. |
 | **Pennarello che non scrive sulla plastica bagnata** | Condensa o sangue sulla provetta; pennarello non adatto. | Asciuga la provetta con carta assorbente prima di scrivere; usa pennarelli indelebili ad asciugatura istantanea dedicati. |
-| **Plateau problematici confuso con l'ordinario** | Mancata separazione sul tavolo da campo. | Applica una striscia di nastro colorato o scrivi chiaramente «PROBL» sul bordo del plateau problematici. Rispetta la regola: un solo plateau problematici sul tavolo alla volta. |
+| **Plateau fuori registro confuso con l'ordinario** | Mancata separazione sul tavolo da campo. | Applica una striscia di nastro colorato o scrivi chiaramente «PROBL» sul bordo del plateau fuori registro. Rispetta la regola: un solo plateau fuori registro sul tavolo alla volta. |
 | **Pozzetto fisico già occupato da un'altra provetta** | Errore manuale di inserimento o riempimento non conforme allo schema dell'app. | Controlla immediatamente il riquadro «Metti qui» e la vista Plateau della Regia. Se necessario, verifica il numero della provetta presente e controlla il posto registrato prima di posare altri campioni. |
 
 ---

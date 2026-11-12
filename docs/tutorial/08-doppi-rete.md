@@ -25,9 +25,9 @@ già nel gregge, uno per stabilimento di lavoro.
 
 !!! atteso "Cosa devi vedere"
     - **In rete**: il secondo palmare vede **«DOPPIO CONTRASSEGNO: provetta N prelevata da … alle …»** e sceglie
-      «Già fatto: non prelevare» (niente registrato) o «Preleva come doppio contrassegno» (fra i problematici).
-    - **Senza rete**: in alto la banda **rossa** «Wi-Fi PERSA» con «**Doppi NON controllati**»; le provette prendono l’etichetta da isolato (riquadro blu per ordinari con *«non scrivere tutto: solo l'etichetta»*, rosso per problematici). Riaccesa la Wi-Fi, i doppi scoperti aprono ai due veterinari una
-      finestra che resta fino a «**Visto**»; la seconda provetta va fra i problematici.
+      «Già fatto: non prelevare» (niente registrato) o «Preleva come doppio contrassegno» (fra i fuori registro).
+    - **Senza rete**: in alto la banda **rossa** «Wi-Fi PERSA» con «**Doppi NON controllati**»; le provette prendono l’etichetta da isolato (riquadro blu per ordinari con *«non scrivere tutto: solo l'etichetta»*, rosso per fuori registro). Riaccesa la Wi-Fi, i doppi scoperti aprono ai due veterinari una
+      finestra che resta fino a «**Visto**»; la seconda provetta va fra i fuori registro.
     - **Regia spenta**: i palmari continuano coi loro numeri; la regia si prende quando è libera. Le **impronte** del
       registro tornano uguali su tutti i device.
 

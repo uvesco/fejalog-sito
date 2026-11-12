@@ -32,7 +32,7 @@
       stampa.onclick=function(){var u=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'})),p=window.open(u,'_blank');if(p)p.addEventListener('load',function(){p.print();},{once:true});setTimeout(function(){URL.revokeObjectURL(u);},60000);};nodo.appendChild(stampa);
     }
     var campi=[['veterinari','Veterinari previsti',1,1,999],['margine','Margine provette (%)',10,0,100],['scorta','Scorta provette (%)',5,0,100],['larghezzaPlateau','Larghezza plateau, lato delle righe (cm)',18,1,100],['profonditaPlateau','Profondità plateau (cm)',15,1,100],['spazio','Spazio fra i plateau (cm)',2,0,100],['larghezzaTavolo','Larghezza massima del tavolo (cm)',180,1,10000]];
-    el('materiale').innerHTML='<h2>Materiale</h2><p>Tutti i plateau ordinari devono stare sul tavolo nel Riordino. La scorta dei problematici resta fuori tavolo.</p><div id="prima-parametri" class="fej-form">'+
+    el('materiale').innerHTML='<h2>Materiale</h2><p>Tutti i plateau ordinari devono stare sul tavolo nel Riordino. La scorta dei fuori registro resta fuori tavolo.</p><div id="prima-parametri" class="fej-form">'+
       '<p><label>Verso di riempimento dei plateau<select id="prima-verso"><option value="alto_basso">Dall’alto verso il basso (predefinito: 1 in alto a sinistra)</option><option value="basso_alto">Dal basso verso l’alto (1 in basso a sinistra)</option></select></label></p>'+
       '</div><div id="prima-calcolo" role="status" aria-live="polite"></div><div id="prima-schema"></div><div id="prima-stampe-materiale"></div>'+
       '<h3>Wi-Fi per il foglio d’ingresso</h3><p>SSID e password restano nella pagina e vengono inseriti solo nel foglio richiesto.</p><div class="fej-form">'+
@@ -62,7 +62,7 @@
         var o={};campi.forEach(function(c){var v=el(c[0]).value;if(!/^\d+$/.test(v))throw new Error('Completa le impostazioni con numeri interi.');o[c[0]]=Number(v);});
         var m=FejDominio.materiale(dati,o),r=Stampe.schemaTavolo(m,verso);
         if(!r.ok)throw new Error(r.errore);
-        el('calcolo').textContent=r.riassunto+' '+m.veterinari+' veterinari · '+m.pennarelli+' pennarelli. '+m.ordinari+' plateau ordinari; problematici '+m.problematiciUso+' in uso + '+m.problematiciScorta+' di scorta fuori tavolo. Totale da portare: '+m.plateauTotali+'. Una fila: '+m.larghezzaUnaFila+' cm; due file: '+m.larghezzaDueFile+' cm. Disposizione: '+m.larghezza+' × '+m.profondita+' cm.';
+        el('calcolo').textContent=r.riassunto+' '+m.veterinari+' veterinari · '+m.pennarelli+' pennarelli. '+m.ordinari+' plateau ordinari; fuori registro '+m.problematiciUso+' in uso + '+m.problematiciScorta+' di scorta fuori tavolo. Totale da portare: '+m.plateauTotali+'. Una fila: '+m.larghezzaUnaFila+' cm; due file: '+m.larghezzaDueFile+' cm. Disposizione: '+m.larghezza+' × '+m.profondita+' cm.';
         m.serie.forEach(function(s){var p=document.createElement('p');p.textContent=s.stabilimento+' · '+s.specie+': '+s.capi+' capi, '+s.ordinari+' plateau ordinari.';el('calcolo').appendChild(p);});
         if(!m.tavoloSufficiente){var av=document.createElement('p');av.className='fej-avviso';av.textContent='La larghezza scelta non basta neppure su due file. Serve un tavolo più largo.';el('calcolo').appendChild(av);}
         el('schema').innerHTML=r.svg;

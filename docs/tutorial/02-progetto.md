@@ -12,7 +12,7 @@
 
 Da **Configurazione**:
 
-1. **Parametri e regole (1):** scegli l'età diagnostica, le lettere di specie, il verso di riempimento, le regole per i problematici e il backup automatico. Le cartelle dell'applicazione (locale per i backup e remota per i dati BDN) vengono configurate una volta sola in **Impostazioni › Cartelle** con permessi persistenti Android; all'uscita dal lavoro non serve selezionare cartelle.
+1. **Parametri e regole (1):** scegli l'età diagnostica, le lettere di specie, il verso di riempimento, le regole per i fuori registro e il backup automatico. Le cartelle dell'applicazione (locale per i backup e remota per i dati BDN) vengono configurate una volta sola in **Impostazioni › Cartelle** con permessi persistenti Android; all'uscita dal lavoro non serve selezionare cartelle.
 2. **Sigle stabilimenti e veterinari (2):** controlla lo stabilimento principale e gli eventuali secondari, le lettere assegnate alle serie e le sigle dei veterinari prelevatori.
 3. **Dati input (3):** carica registri BDN, contrassegni ed eventuali capi ricercati.
 4. **Rete del progetto (4):** se lavori con più device, definisci la modalità di rete e le reti del progetto (router, hotspot del tablet), da salvare su ogni telefono col loro QR Wi-Fi; i palmari entreranno da qui (o con **QR d'ingresso**).

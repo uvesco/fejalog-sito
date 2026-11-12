@@ -26,7 +26,7 @@ Segui il riquadro della scritta, distinto dalla banda colorata del capo:
 
 - **Neutro**: solo l'etichetta mostrata;
 - **Blu**, ordinario da isolato: solo l'etichetta completa del suffisso; non tutto il contrassegno;
-- **Rosso**, problematico: tutta la scritta mostrata, con il **contrassegno completo**.
+- **Rosso**, fuori registro: tutta la scritta mostrata, con il **contrassegno completo**.
 
 ---
 
@@ -51,7 +51,7 @@ In cima alla schermata di Campionamento trovi il pulsante **Ultime**. Toccandolo
 - **Modifica**: per aggiungere note, correggere lo stato degli orecchini o del bolo;
 - **Foto**: per aggiungere o verificare le foto collegate al campione (fino a 5 foto per provetta);
 - **Elimina**: per annullare la provetta se il prelievo non è andato a buon fine.  
-Nel registro l'annullo viene memorizzato come evento formale di rettifica: l'etichetta fisica non viene mai riciclata e il capo viene gestito tra i problematici per garantire la massima trasparenza.
+Nel registro l'annullo viene memorizzato come evento formale di rettifica: l'etichetta fisica non viene mai riciclata e il capo viene gestito tra i fuori registro per garantire la massima trasparenza.
 
 ---
 

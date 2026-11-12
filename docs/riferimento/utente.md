@@ -6,7 +6,7 @@
 - La sigla segue la persona anche su più dispositivi: iniziali di nome e cognome, poi la prima alternativa libera, senza lettere confondibili.
 - Con «Scegli dall'elenco dei veterinari» nome, cognome e codice fiscale si prendono dall'elenco dell'ASL, senza errori.
 - Il codice fiscale riconosce il veterinario nell'elenco; non va mai sulle provette né negli export. Va nel nome dei file di backup, per sapere chi li ha salvati.
-- Nei progetti nuovi ogni veterinario ha una sigla di due lettere assegnata dalla Regia (per esempio UV). In configurazione la Regia assegna le sigle a tutto l'elenco dei veterinari dell'ASL e può cambiarle prima dell'avvio; la tua compare fra parentesi accanto al nome in cima al menu. Sigla e progressivo dei problematici sono condivisi fra i suoi device. La Regia può cambiare la sigla solo prima della prima provetta che la porta. Da isolato la sigla arriva al primo contatto con la Regia. Nei progetti precedenti restano le lettere previste all'inizio.
+- Nei progetti nuovi ogni veterinario ha una sigla di due lettere assegnata dalla Regia (per esempio UV). In configurazione la Regia assegna le sigle a tutto l'elenco dei veterinari dell'ASL e può cambiarle prima dell'avvio; la tua compare fra parentesi accanto al nome in cima al menu. Sigla e progressivo dei fuori registro sono condivisi fra i suoi device. La Regia può cambiare la sigla solo prima della prima provetta che la porta. Da isolato la sigla arriva al primo contatto con la Regia. Nei progetti precedenti restano le lettere previste all'inizio.
 - I nomi si mostrano corti, «Mario R»; due veterinari con lo stesso nome si distinguono col nome del device. Le statistiche di chi cambia device restano sue.
 
 ## Le altre impostazioni del device

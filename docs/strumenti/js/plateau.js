@@ -112,7 +112,7 @@ function statoA(passi, n) {
   return { plateau: plateau, inAttesa: inAttesa, registrate: tutte.length, posate: tutte.length - inAttesa.length };
 }
 
-var NOMI_VISTA = { serie: 'Serie ordinaria', problematici: 'Problematici' };
+var NOMI_VISTA = { serie: 'Serie ordinaria', problematici: 'Fuori registro' };
 function elencoPlateau(passi) {
   var visti = {}, out = [];
   passi.forEach(function (p) {
@@ -385,12 +385,12 @@ function creaAttuale(doc, radice, celle, opzioni) {
     var secchio = m.celle.filter(function (c) { return c.vista === 'secchio' && c.attiva; });
     var haSecchio = m.celle.some(function (c) { return c.vista === 'secchio'; });
     var haProblematici = m.celle.some(function (c) { return c.vista === 'problematici'; });
-    [['serie', 'Serie ordinaria'], ['problematici', 'Problematici']].filter(function (x) { return x[0] === 'serie' || !haSecchio || haProblematici || m.vista === 'problematici'; })
+    [['serie', 'Serie ordinaria'], ['problematici', 'Fuori registro']].filter(function (x) { return x[0] === 'serie' || !haSecchio || haProblematici || m.vista === 'problematici'; })
       .forEach(function (x) { v.appendChild(h('option', {value: x[0], selected: x[0] === m.vista}, x[1])); });
     label = h('label', {}, 'Vista '); label.appendChild(v); controlli.appendChild(label);
     if (haSecchio) {
       var pannello = h('div', {class: 'fej-plateau-secchio', 'aria-label': 'Secchio'});
-      pannello.appendChild(h('p', {role: 'status'}, h('strong', {}, 'Secchio: '), secchio.length ? secchio.length + ' provette problematiche da sistemare. Si prendono una alla volta, dalla provetta in mano, nel Riordino.' : 'vuoto: ogni problematica ha il suo esito.'));
+      pannello.appendChild(h('p', {role: 'status'}, h('strong', {}, 'Secchio: '), secchio.length ? secchio.length + ' provette fuori registro da sistemare. Si prendono una alla volta, dalla provetta in mano, nel Riordino.' : 'vuoto: ogni provetta fuori registro ha il suo esito.'));
       secchio.forEach(function (c) { pannello.appendChild(bottone(c.etichetta + ' · ' + c.contrassegno + ' · ' + c.categoria, function () { centro(c); })); });
       controlli.appendChild(pannello);
     }

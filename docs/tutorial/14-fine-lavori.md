@@ -39,7 +39,7 @@
     - Nello **zip**:
         - gli snippet ARVET dei tre invii (`snippet_arvet_….html` e un `.txt` per invio);
         - gli xlsx per ARVET;
-        - la guida al riposizionamento e le schede dei problematici;
+        - la guida al riposizionamento e le schede dei fuori registro;
         - il report per l'allevatore;
         - i capi senza transponder e i ricercati;
         - le anomalie;

@@ -7,8 +7,8 @@
 ## Fai
 
 1. Menu ☰ › **Campionamento › Avanzamento e statistiche** (sul palmare la voce si chiama **Avanzamento**): copertura per specie (fatti, attesi, mancanti), letti elettronicamente, andamento del
-   lavoro per veterinario con la stima della fine, problematici per motivo e scheda Stabilimenti (quando ce n'è più d'uno).
-2. **Classifica**: provette, ritmi e problematiche di ogni veterinario, per persona: chi cambia device tiene le sue provette. Il Plateau è nella [tappa seguente](10b-plateau.md).
+   lavoro per veterinario con la stima della fine, fuori registro per motivo e scheda Stabilimenti (quando ce n'è più d'uno).
+2. **Classifica**: provette, ritmi e fuori registro di ogni veterinario, per persona: chi cambia device tiene le sue provette. Il Plateau è nella [tappa seguente](10b-plateau.md).
 3. **Provette**: l'elenco in parole, con ricerca e filtri.
 4. **Una provetta rotta**: Campionamento › **Ultime** › una provetta › **«Persa»**, motivo «Rotta», «Segna persa».
    Poi preleva di nuovo lo stesso capo.

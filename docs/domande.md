@@ -23,7 +23,7 @@ export.
 
 La guida di riferimento ha la pagina [Se qualcosa va storto](riferimento/guasti.md). Le più frequenti:
 
-- **Wi-Fi persa** (banda rossa): «Ricollegati». Intanto si lavora con le provette da isolato (riquadro blu per ordinari, rosso per problematici).
+- **Wi-Fi persa** (banda rossa): «Ricollegati». Intanto si lavora con le provette da isolato (riquadro blu per ordinari, rosso per fuori registro).
 - **La Regia si spegne**: gli altri continuano. Dopo 2 minuti la regia è libera e un palmare la prende.
 - **Il tablet si rompe**: su un altro device **Progetto › Apri progetto** (il backup) e subentra come Regia.
 - **Impronte diverse** fra i device: aspettare l'allineamento prima della fine lavori.

@@ -31,7 +31,7 @@
 ## Materiale da campo
 
 - In Stampe, Materiale calcola plateau e provette dai capi in età diagnostica. La Regia sceglie veterinari, margine e scorta (inizialmente 10% e 5%), misure e larghezza del tavolo.
-- Lo schema tiene tutti i plateau ordinari sul tavolo nel Riordino; i problematici stanno nel secchio; la scorta sta fuori tavolo.
+- Lo schema tiene tutti i plateau ordinari sul tavolo nel Riordino; i fuori registro stanno nel secchio; la scorta sta fuori tavolo.
 - Il foglio generico di riempimento A4 riporta i 100 pozzetti (1–100) nel verso scelto dalla Regia in Configurazione (dall'alto verso il basso predefinito, oppure dal basso verso l'alto), da riempire in ordine file per file, mai a serpente; un secondo tasto stampa anche l'altro verso.
 - Il foglio A4 del QR collega solo alla Wi-Fi. SSID e password scritti nella pagina restano sul dispositivo, fuori dal registro e dai file di progetto; il foglio si salva nelle uscite locali. Poi il palmare chiede di entrare alla Regia.
 - Sul sito, Prima del campo stampa il foglio generico nei due versi anche senza caricare dati. Con la chiave CSV o il backup prepara anche il materiale e le stampe del progetto. Le credenziali Wi-Fi si scrivono nel browser e vengono inserite solo nel foglio richiesto.

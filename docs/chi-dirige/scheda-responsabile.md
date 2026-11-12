@@ -14,7 +14,7 @@
 
 - [ ] Accogli i palmari dalla pagina Rete e controlla l'allineamento prima di avviare il campionamento.
 - [ ] A ogni consegna controlla il lotto, conferma «Ricevi (N)» e segui «Metti qui».
-- [ ] Nei progetti nuovi tieni un solo plateau problematici in uso sul tavolo; quando è pieno, mettilo da parte e prepara il successivo.
+- [ ] Nei progetti nuovi tieni un solo plateau fuori registro in uso sul tavolo; quando è pieno, mettilo da parte e prepara il successivo.
 - [ ] Gli isolati non doppi vanno subito al loro numero ordinario. Segui sempre le destinazioni dell'app.
 - [ ] Se un telefono si spegne o deve essere sospeso, usa la riga del veterinario o la pagina Rete: solo la Regia può escluderlo a mano o metterlo in pausa, con la maggioranza pesata degli attivi; per riammetterlo usa «Riattiva».
 - [ ] Collega il power bank ai dispositivi con batteria bassa. Al 5%, se non in carica, è prevista la pausa automatica; verifica che la squadra l'abbia ricevuta.

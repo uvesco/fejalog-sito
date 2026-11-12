@@ -10,7 +10,7 @@ plateau da 100.
 1. Chiudi il campionamento da **Configurazione › 5. Checklist e avvio**: il riordino si fa solo a campionamento chiuso.
 2. Menu ☰ › **Gestione campioni › Sul tablet › Riordino plateau**: la sistemazione si calcola da sola, col motore di Fejalog. Se il
    lavoro cambia dopo, la sistemazione si aggiorna; puoi usare anche **«Ricalcola»**.
-3. Segui la **guida**: ogni riga dice l'etichetta scritta sulla provetta e **da dove prenderla**, come nel Plateau («Plat. 1 · Pozz. 11 (Problematici)»). Ogni provetta va **direttamente al numero finale, una volta sola**. Ogni riga mostra la fattispecie. Premi **Invia** sulla singola riga, oppure seleziona le righe e premi **Invia le selezionate**.
+3. Segui la **guida**: ogni riga dice l'etichetta scritta sulla provetta e **da dove prenderla**, come nel Plateau («Plat. 1 · Pozz. 11 (Fuori registro)»). Ogni provetta va **direttamente al numero finale, una volta sola**. Ogni riga mostra la fattispecie. Premi **Invia** sulla singola riga, oppure seleziona le righe e premi **Invia le selezionate**.
 4. Il numero di campo non si cancella e non si copre: si **barra con una riga sola** e si scrive accanto il numero
    finale.
 5. Modifica il campo **A**: la riga è segnata e la casella batch si disabilita. **Ripristina** riporta il suggerimento. Se il numero è occupato lo strumento propone lo scambio: annullando non scrive nulla. Invia le destinazioni modificate con il loro tasto.
@@ -26,7 +26,7 @@ plateau da 100.
 </figure>
 
 <figure markdown="span">
-  ![La guida parte dal pozzetto vero: P1A dalla riga dei problematici al suo numero](../img/release-0.2/riordino_guida_fisica.png)
+  ![La guida parte dal pozzetto vero: P1A dalla riga dei fuori registro al suo numero](../img/release-0.2/riordino_guida_fisica.png)
   <figcaption>La guida parte dal pozzetto vero della provetta</figcaption>
 </figure>
 
@@ -44,8 +44,8 @@ plateau da 100.
 
 !!! atteso "Cosa devi vedere"
     - I **maschi ovini in testa**, poi la serie delle femmine e le capre.
-    - La **chiusura dei buchi** sui prenumerati avviene prima dei problematici, tranne per i maschi ovini che si compattano dopo i problematici maschi.
-    - I **problematici** vanno in coda alla rispettiva serie; i codici problematici mostrati e le etichette delle provette da isolato ricevono il numero sequenziale finale.
+    - La **chiusura dei buchi** sui prenumerati avviene prima dei fuori registro, tranne per i maschi ovini che si compattano dopo i fuori registro maschi.
+    - I **fuori registro** vanno in coda alla rispettiva serie; i codici fuori registro mostrati e le etichette delle provette da isolato ricevono il numero sequenziale finale.
     - Ogni provetta spostata ha la sua riga nella guida, dal suo pozzetto fisico registrato alla consegna al numero finale.
     - Le azioni applicate sono nel registro: selezionare non equivale a fare. **Dal primo evento di gestione applicato il campionamento è chiuso per sempre**: in **5. Checklist e avvio** la riapertura non c'è più.
     - Gli spostamenti a mano entrano nella guida e nei file di fine lavori.

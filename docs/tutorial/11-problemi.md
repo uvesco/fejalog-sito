@@ -1,14 +1,14 @@
 # 11 · Soluzione problemi
 
-**Obiettivo**: decidere che cosa fare dei problematici prima della sistemazione.
+**Obiettivo**: decidere che cosa fare dei fuori registro prima della sistemazione.
 
 **Ti serve**: il tablet della Regia, a campionamento chiuso, dopo aver prelevato le fattispecie della [lezione 7](07-fattispecie.md). Tieni accanto il [quadro delle anomalie](../anomalie.md).
 
 ## Fai
 
-1. Apri **Gestione campioni › Sul tablet › Problemi da risolvere**: i problematici per tipologia (smarriti, rubati, usciti morti o macellati,
-   trasferiti, altro stabilimento, marche disponibili, non in elenco, fuori età, doppi, specie discordante, altre problematiche).
-   Controlla anche **Acquisti con DDA**, **Attribuite da riattribuire**, **Diventate problematiche**
+1. Apri **Gestione campioni › Sul tablet › Problemi da risolvere**: i fuori registro per tipologia (smarriti, rubati, usciti morti o macellati,
+   trasferiti, altro stabilimento, marche disponibili, non in elenco, fuori età, doppi, specie discordante, altri casi fuori registro).
+   Controlla anche **Acquisti con DDA**, **Attribuite da riattribuire**, **Diventate fuori registro**
    (la …010 della [lezione 9](09-registri-in-corsa.md)) e **Ora in lista coi registri nuovi**.
 2. Per ogni tipologia, la **regola**:
     - «Tutte in coda»: col numero finale in coda alla serie; controlla i dati e il trattamento ARVET nelle uscite;

@@ -28,7 +28,7 @@ Quando un veterinario si avvicina al tavolo e consegna il lotto di provette:
 1. **Tocca «Ricevi (N)»**: accanto al nome del veterinario compare il pulsante verde con il numero esatto di campioni in attesa di consegna. Toccando «Ricevi», la Regia conferma la presa in carico formale dei campioni.
 2. **I colori cambiano a video**: sullo schema del Plateau le provette consegnate passano istantaneamente da un colore pastello attenuato a un **colore pieno e brillante**, a testimonianza dell'avvenuta ricezione fisica.
 3. **Segui l'elenco «Metti qui»**: in calce al pannello di destra compare l'elenco dettagliato delle provette appena ricevute con l'indicazione precisa:
-   - Quale plateau prendere sul tavolo (es. *Plateau 1* o *Plateau Problematici*);
+   - Quale plateau prendere sul tavolo (es. *Plateau 1* o *Plateau Fuori registro*);
    - In quale pozzetto esatto infilare la provetta (da 1 a 100, secondo il verso di riempimento stabilito).
 
 ---
@@ -42,17 +42,17 @@ Dopo la conferma della ricezione, l'app genera nel registro l'evento immutabile 
 ### Provette ordinarie e provette da isolato non doppie
 
 - **Provette ordinarie**: vanno direttamente nel pozzetto corrispondente al loro numero definitivo preassegnato nella serie ordinaria (es. provetta 47 va al pozzetto 47 del Plateau 1).
-- **Provette prelevate da isolato senza duplicati (con il suffisso mostrato dall’app)**: vanno **subito nel pozzetto del loro numero naturale** (pozzetto 28 del Plateau 2) e non nella riga problematici.  
+- **Provette prelevate da isolato senza duplicati (con il suffisso mostrato dall’app)**: vanno **subito nel pozzetto del loro numero naturale** (pozzetto 28 del Plateau 2) e non nella riga fuori registro.  
   > *Regola operativa*: collocare subito al loro posto gli isolati che non risultano doppi azzera inutili spostamenti durante il riordino finale di fine seduta.
 
-### Problematici in sequenza unica: «Toglilo dal tavolo»
-I campioni problematici (capi smarriti, rubati, fuori età, di altri stabilimenti, doppi confermati e collisioni) seguono un flusso separato:
+### Fuori registro in sequenza unica: «Toglilo dal tavolo»
+I campioni fuori registro (capi smarriti, rubati, fuori età, di altri stabilimenti, doppi confermati e collisioni) seguono un flusso separato:
 
-1. Vanno posizionati nel **primo pozzetto libero disponibile** nel plateau dei problematici, in rigoroso ordine di consegna cronologica (indipendentemente da specie e stabilimento).
-2. Sul tavolo della Regia deve essere presente **un solo plateau problematici in uso alla volta**.
-3. Quando una consegna completa un plateau problematici, compare il promemoria:  
-   **«Plateau problematici N pieno: toglilo dal tavolo»**.
-4. Una consegna può interessare più plateau: controlla tutte le destinazioni in «Metti qui». Sposta il plateau colmo fuori dal piano di lavoro, contrassegnalo con la sua etichetta e colloca al suo posto un plateau vuoto per i problematici successivi.
+1. Vanno posizionati nel **primo pozzetto libero disponibile** nel plateau dei fuori registro, in rigoroso ordine di consegna cronologica (indipendentemente da specie e stabilimento).
+2. Sul tavolo della Regia deve essere presente **un solo plateau fuori registro in uso alla volta**.
+3. Quando una consegna completa un plateau fuori registro, compare il promemoria:  
+   **«Plateau fuori registro N pieno: toglilo dal tavolo»**.
+4. Una consegna può interessare più plateau: controlla tutte le destinazioni in «Metti qui». Sposta il plateau colmo fuori dal piano di lavoro, contrassegnalo con la sua etichetta e colloca al suo posto un plateau vuoto per i fuori registro successivi.
 
 ---
 
@@ -72,7 +72,7 @@ Se durante la profilassi vengono presentati animali che hanno perso entrambi i m
    - La modalità di identificazione viene registrata come `attribuita`;
    - Entrambe le caselle «Orecchino DX» e «Orecchino SX» vengono automaticamente spuntate come «da sostituire».
 5. **Cosa succede se in seguito compare il capo reale con le marche?**  
-   Se successivamente viene trovato e campionato l'animale vero con il suo contrassegno originale, il sistema dà precedenza assoluta al contrassegno reale letto. La provetta precedentemente attribuita viene riclassificata automaticamente tra i **problematici**, da esaminare a fine lavori. Questo caso non è ancora stato verificato su dispositivi fisici.
+   Se successivamente viene trovato e campionato l'animale vero con il suo contrassegno originale, il sistema dà precedenza assoluta al contrassegno reale letto. La provetta precedentemente attribuita viene riclassificata automaticamente tra i **fuori registro**, da esaminare a fine lavori. Questo caso non è ancora stato verificato su dispositivi fisici.
 
 ---
 
@@ -82,8 +82,8 @@ Se durante la profilassi vengono presentati animali che hanno perso entrambi i m
 |---|---|---|
 | **Il veterinario consegna provette ma a video risultano 0** | Il palmare ha lavorato isolato e non ha ancora sincronizzato i dati con la Wi-Fi. | Chiedi al veterinario di avvicinarsi al router finché l'icona di rete non diventa verde; non appena compaiono sul tablet, tocca «Ricevi». |
 | **Il pozzetto fisico indicato da «Metti qui» è già occupato** | Una provetta precedente è stata infilata per errore nel foro sbagliato. | Tocca il pozzetto sullo schermo del tablet: leggi il contrassegno che dovrebbe trovarsi lì, rintraccia la provetta fuori posto nel plateau e correggi la collocazione fisica prima di posare il nuovo campione. |
-| **Provetta problematica arrivata senza scritta completa** | Il veterinario non ha copiato tutto il codice dal riquadro rosso. | Prima di posare la provetta nel plateau, scrivi immediatamente con il pennarello il contrassegno BDN completo e l'etichetta completa mostrata dall'app sul corpo della provetta. |
-| **Provette cadute o rovinate durante il passaggio** | Incidente materiale al tavolo. | Se il campione è utilizzabile, asciugalo e riscrivi l'etichetta; se la provetta è rotta, seleziona la provetta su Fejalog e tocca «Annulla provetta». L'etichetta non verrà riutilizzata e il capo andrà riprelevato come problematico. |
+| **Provetta fuori registro arrivata senza scritta completa** | Il veterinario non ha copiato tutto il codice dal riquadro rosso. | Prima di posare la provetta nel plateau, scrivi immediatamente con il pennarello il contrassegno BDN completo e l'etichetta completa mostrata dall'app sul corpo della provetta. |
+| **Provette cadute o rovinate durante il passaggio** | Incidente materiale al tavolo. | Se il campione è utilizzabile, asciugalo e riscrivi l'etichetta; se la provetta è rotta, seleziona la provetta su Fejalog e tocca «Annulla provetta». L'etichetta non verrà riutilizzata e il capo andrà riprelevato come fuori registro. |
 
 ---
 

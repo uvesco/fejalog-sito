@@ -84,7 +84,7 @@ sito**, prima di andare in campo. In campo la Regia lo passa a tutti i palmari s
 
 ## 5. Dopo il campo
 
-Chiuso il campionamento, le provette si sistemano (problematici, buchi, riordino dei plateau) **sul tablet della Regia**
+Chiuso il campionamento, le provette si sistemano (fuori registro, buchi, riordino dei plateau) **sul tablet della Regia**
 oppure **sul sito**, partendo dal backup. Alla fine escono gli snippet per ARVET e le cose da fare per l'allevatore.
 
 [Gli strumenti dopo il campo](strumenti/index.md)

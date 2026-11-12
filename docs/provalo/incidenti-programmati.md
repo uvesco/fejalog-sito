@@ -13,7 +13,7 @@ Usa soltanto il kit fittizio. Installa l'app e prepara le schede prima del crono
 - Una Regia Android e uno o due palmari Android 11+, tutti con la stessa build di Fejalog.
 - Router Wi-Fi locale senza internet, oppure hotspot della Regia; alimentatori e power bank.
 - [Kit a cinque stabilimenti](kit/kit_cinque_stabilimenti_dati.zip) estratto: pacchetto e CSV riepilogativo; [PDF separati](kit/kit_cinque_stabilimenti_pdf.zip). Scegli poche schede di adulti ordinari di entrambe le specie, un montone e un capo non ancora prelevato per la tardiva.
-- Provette vuote o oggetti etichettabili e schemi 10×10 **distinti per serie**, più uno per i problematici. Il cartone serve a simulare i passi; sul campo usa i plateau reali.
+- Provette vuote o oggetti etichettabili e schemi 10×10 **distinti per serie**, più uno per i fuori registro. Il cartone serve a simulare i passi; sul campo usa i plateau reali.
 - Un computer per scaricare e controllare i file finali.
 
 Nessun nome o codice fiscale reale nei profili. Usa «Anna Esempio», «Daniele Esempio», «Marco Esempio» e gli identificativi di prova previsti per l'esercitazione.
@@ -45,7 +45,7 @@ Nessun nome o codice fiscale reale nei profili. Usa «Anna Esempio», «Daniele 
 
 **Cosa fare.** Registra un nuovo capo sul Palmare 1 e attendi che l'evento arrivi al Palmare 2. Sul secondo cerca lo stesso contrassegno. Con un solo palmare, fai la seconda ricerca dalla Regia.
 
-**Cosa si deve vedere nell'app.** Il foglio segnala il doppio contrassegno con i dati del prelievo già noto. Prima prova **Già fatto: non prelevare**: non deve aggiungere una provetta. Ripeti la ricerca e scegli **Preleva come doppio**, poi completa la conferma con l'etichetta problematica proposta: quel tasto da solo non completa il prelievo.
+**Cosa si deve vedere nell'app.** Il foglio segnala il doppio contrassegno con i dati del prelievo già noto. Prima prova **Già fatto: non prelevare**: non deve aggiungere una provetta. Ripeti la ricerca e scegli **Preleva come doppio**, poi completa la conferma con l'etichetta fuori registro proposta: quel tasto da solo non completa il prelievo.
 
 **Cosa dimostra.** Un doppio già noto viene segnalato e il secondo campione ha un'identità distinta. Il dialogo bloccante in diretta riguarda invece il caso in cui un prelievo concorrente arriva mentre la conferma è già aperta. Due conferme contemporanee possono richiedere una verifica dopo la sincronizzazione: segui gli avvisi, controlla i campioni fisici e non ignorare eventuali collisioni.
 

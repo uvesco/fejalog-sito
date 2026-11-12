@@ -9,7 +9,7 @@
 3. Sul palmare cerca un capo di quel registro. Se l’operatore (allevatore) lo dichiara acquistato con DDA, spunta **Acquisto con DDA** nella conferma di quel singolo prelievo. La casella parte sempre non selezionata.
 
 !!! atteso "Cosa devi vedere"
-    La dichiarazione resta una problematica da verificare. Non autorizza gli altri capi del venditore e non rende automatico l’ingresso.
+    La dichiarazione resta una provetta fuori registro da verificare. Non autorizza gli altri capi del venditore e non rende automatico l’ingresso.
 
 ## Verifica il DDA
 
@@ -22,7 +22,7 @@ Le attività restano nello specchietto per l’allevatore. Fejalog non scrive ne
 2. Controlla l’anteprima: lo stabilimento di lavoro viene aggiornato; una specie assente dal nuovo file conserva i propri dati precedenti.
 3. Indica il motivo e conferma. Le nuove informazioni riclassificano i prelievi, conservando registro eventi, assegnazioni e numeri già mostrati.
 
-Un capo già prelevato che ora risulta uscito può diventare problematico: resta ricostruibile la sua assegnazione iniziale. L’archivio delle numerazioni conserva un nuovo file a ogni aggiornamento pertinente.
+Un capo già prelevato che ora risulta uscito può diventare fuori registro: resta ricostruibile la sua assegnazione iniziale. L’archivio delle numerazioni conserva un nuovo file a ogni aggiornamento pertinente.
 
 ## Fatto?
 

@@ -17,7 +17,7 @@ Tutte le prove usano il [kit fittizio a cinque stabilimenti](../kit.md). Le dura
 
 Scarica ed estrai [il kit a cinque stabilimenti, dati](kit/kit_cinque_stabilimenti_dati.zip).
 Usa il suo **`backup_esempio_cinque_stabilimenti.zip`** e conserva la cartella **`2-33/ingresso/`** per il passo 7.
-Il backup contiene pochi campioni già registrati e posati, una problematica e il campionamento chiuso: non serve campionare tutti i capi.
+Il backup contiene pochi campioni già registrati e posati, una provetta fuori registro e il campionamento chiuso: non serve campionare tutti i capi.
 
 
 ### 2. Carica il backup e controlla la numerazione
@@ -30,7 +30,7 @@ Il sito lavora sul computer e conserva le azioni nel browser. Il registro del ba
 ### 3. Rivedi il riempimento nei due versi e lo stato dei plateau
 
 Apri **Plateau**. Il cursore **Passo** e i pulsanti avanti/indietro ripercorrono registrazioni e pose. Arriva all'ultimo passo, scegli una serie e tocca un pozzetto occupato per vedere la sua provetta.
-Puoi esaminare i bordi colorati dei plateau (verde per completo, giallo da completare, rosso per i problematici) e le azioni sulla singola provetta (spostamento con proposta di scambio, scarto con motivo o contrassegno modificato).
+Puoi esaminare i bordi colorati dei plateau (verde per completo, giallo da completare, rosso per i fuori registro) e le azioni sulla singola provetta (spostamento con proposta di scambio, scarto con motivo o contrassegno modificato).
 
 Il simulatore usa il verso salvato nel progetto: **non si cambia dopo l'avvio**. Per confrontare i due versi apri [Stampe pre-campo](../strumenti/prima-del-campo.md), anche senza caricare dati, e apri i due fogli generici **1–100 alto→basso e basso→alto**. Il pozzetto 1 cambia lato; le file restano da sinistra a destra, senza serpente. È un confronto delle stampe, non una modifica al backup chiuso.
 

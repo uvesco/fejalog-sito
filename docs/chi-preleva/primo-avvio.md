@@ -25,8 +25,9 @@ come Fejalog gestisce la batteria durante il lavoro.
     In campo tutti i telefoni devono avere **la stessa versione dell'app della Regia**: un telefono con una versione
     diversa non entra nel progetto. Installa quella che ti indica il responsabile. Se in campo ti accorgi di avere una
     versione diversa, la Regia te la dà al volo, sulla Wi-Fi del progetto e anche senza internet: nella pagina Rete,
-    dopo il rifiuto, tocca **«Aggiorna dalla Regia»** e conferma l'aggiornamento di Android (la prima volta Android
-    chiede anche di consentire a Fejalog di installare app). Se la tua versione è troppo vecchia per avere quel tasto,
+    dopo il rifiuto, tocca **«Aggiorna dalla Regia»** e conferma «Installa» nella finestra di Android (la prima volta
+    Android chiede anche di consentire a Fejalog di installare app; se compare Google Play Protect, come al primo
+    passo: «Altri dettagli» e installa senza l'analisi). Se la tua versione è troppo vecchia per avere quel tasto,
     la Regia tocca «Mostra il QR per scaricare l'app» sotto il QR d'ingresso e tu lo inquadri con la fotocamera. Una
     versione nuova si installa sopra quella vecchia: i progetti restano.
 

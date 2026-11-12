@@ -70,7 +70,7 @@ function monta(radice, pc) {
       var valori = {}; Object.keys(campi).forEach(function (k) { var c=campi[k]; valori[k] = c.type==='checkbox' ? c.checked : c.type==='number' || k==='eta_diagnostica_mesi' ? Number(c.value) : c.value; });
       invia('parametri',{valori:valori});
     });
-    var box=h('section',null,h('h2',null,'Parametri e regole'),f,h('h3',null,'Soluzioni dei problematici'));
+    var box=h('section',null,h('h2',null,'Parametri e regole'),f,h('h3',null,'Soluzioni dei fuori registro'));
     (stato.regole || []).forEach(function (r) {
       var sol=scelta(r.nome,[['regola','Regola predefinita']].concat(r.soluzioni || []),r.soluzione);
       box.appendChild(h('p',null,sol.label,' ',bottone('Salva regola',function () { invia('regola',{tipo:r.codice,soluzione:sol.input.value}); })));
