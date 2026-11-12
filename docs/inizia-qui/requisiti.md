@@ -25,7 +25,7 @@ Per organizzare un intervento di profilassi con Fejalog non servono server dedic
 ### Lettore di microchip transponder (facoltativo ma raccomandato)
 
 - **Standard supportati**: orecchini elettronici e boli endoruminali di ovini e caprini hanno transponder a 134,2 kHz conformi alle norme ISO 11784 e ISO 11785, in tecnologia **FDX-B** oppure **HDX**. Sono le due ammesse per l'identificazione ufficiale nell'Unione europea, Italia compresa (Reg. CE 21/2004 e norme successive): il lettore deve leggerle entrambe (per esempio Allflex AWR250 o lettori a bastone compatibili).
-- **Connessione**: il lettore si accoppia al telefono come tastiera Bluetooth (profilo **HID**). Per l'Allflex AWR250: nel menu del lettore «Set BT Profile» › «HID», poi dalle impostazioni Bluetooth del telefono si sceglie il lettore e si conferma l'accoppiamento (PIN 0000 o 1234, se richiesto); i passi completi sono in [Preparare il telefono](../veterinari.md). Leggendo il bolo o l'orecchino elettronico, il lettore scrive il codice elettronico (`380` o `0380` seguito dalle 12 cifre nazionali) e Fejalog cerca il capo; Invio lo sceglie se il risultato è unico. Prova la lettura prima di uscire in campo.
+- **Connessione**: il lettore si accoppia al telefono come tastiera Bluetooth (profilo **HID**). Per l'Allflex AWR250: nel menu del lettore «Set BT Profile» › «HID», poi dalle impostazioni Bluetooth del telefono si sceglie il lettore e si conferma l'accoppiamento (PIN 0000 o 1234, se richiesto); i passi completi sono in [Il foglio per i veterinari](../veterinari.md). Leggendo il bolo o l'orecchino elettronico, il lettore scrive il codice elettronico (`380` o `0380` seguito dalle 12 cifre nazionali) e Fejalog cerca il capo; Invio lo sceglie se il risultato è unico. Prova la lettura prima di uscire in campo.
 - **Portabilità**: fondina da cintura o faretra da schiena per i lettori a bastone.
 
 ### Computer per la chiusura dei lavori (dopo il campo)
@@ -66,6 +66,6 @@ Per non dimenticare nessun passaggio prima di uscire in campo:
 
 - [Checklist del veterinario prelevatore](../checklist-veterinari.md)
 - [Checklist del responsabile della Regia](../checklist-responsabile.md)
-- [Preparare il telefono](../veterinari.md)
+- [Il foglio per i veterinari](../veterinari.md)
 
 Su dispositivi fisici non ancora provato: la scansione del QR Wi-Fi con la fotocamera e le stampe su carta. Il tethering USB è stato provato sul PC dell'ASL; l'accesso col PIN no. Le quantità vanno verificate dalla Regia per il singolo intervento.

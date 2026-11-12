@@ -1,101 +1,111 @@
 # Fejalog
 
-> **A chi serve**: a tutti · **Tempo di lettura**: 1 minuto
+> **A chi serve**: a tutti, per cominciare · **Tempo di lettura**: 3 minuti
 
-**Dal capo alla provetta, fino all'accettazione per il laboratorio.** Fejalog registra le provette per i prelievi di sangue per la profilassi della brucellosi ovicaprina lavorando su rete Wi-Fi locale autonoma, **anche dove internet non arriva**, fornisce una struttura per la risoluzione dei problemi nei campioni ed agevola il caricamento dell'accettazione per il laboratorio.
-
----
-
-## Cos'è Fejalog in un minuto
-
-- **Cosa fa**: organizza la registrazione in campo delle provette di sangue. I veterinari cercano i capi con il lettore di microchip Bluetooth o digitando poche cifre sul cellulare che opera come palmare; un tablet (**la Regia**) coordina la squadra, riceve le provette e guida il riempimento dei plateau (rack da 100 pozzetti). A fine giornata riordina i campioni, guida alla soluzione di quelli problematici, consentendo di lavorare dal PC.
-- **Per chi è**: per i veterinari dei Servizi Veterinari (è ottimizzata per caricare i dati in Arvet per ASL del Piemonte ma può esportare una tabella di corrispondenza provetta-contrassegno che può essere utilizzata anche in altri sistemi).
-- **Cosa NON fa**: **non richiede internet** in campo; non richiede un servizio cloud per campionare; i backup possono andare nella cartella, anche cloud, scelta dalla Regia; **non scrive direttamente in ARVET**.
-
----
-
-## Quando il gregge non coincide con i registri
-
-**Smarriti o rubati ritrovati, capi che risultano morti o trasferiti, marche non registrate, animali di stabilimenti non campionati:** Fejalog li segnala e distingue le provette problematiche dalle ordinarie. Gestisce anche acquisti con DDA da verificare, fuori età, specie discordante, doppi, capi senza contrassegno e provette perse o non confermate.
-
-!!! info "Dalla segnalazione alla soluzione"
-    Il prelievo resta tracciato; la Regia verifica il caso prima del riordino e decide inclusione, esclusione o normalizzazione quando ammessa. **Fejalog non corregge la BDN.**
-
-[**Tutte le anomalie: come riconoscerle e cosa fare**](anomalie.md) · [Provale col kit fittizio](kit.md#quali-anomalie-provare)
-
----
-
-## Tre percorsi: scegli il tuo ruolo
-
-L'app adatta l'interfaccia a ogni momento del lavoro e a ogni dispositivo (vedi [**Fasi di lavoro e ruoli**](inizia-qui/fasi-e-ruoli.md)):
+**Fejalog** (da *fèja*, la pecora in piemontese) è un'app Android che sposta la registrazione delle provette della
+profilassi della brucellosi ovicaprina **dall'ufficio al campo**. Chi preleva registra ogni provetta sul telefono, in una
+rete Wi-Fi locale **che non ha bisogno di internet**; a fine lavori la Regia ha già pronto quello che serve per
+l'accettazione in ARVET.
 
 <div class="grid cards" markdown>
 
--   :material-needle: **Sono un veterinario**
+-   :material-needle: **Prelevo**
 
     ---
 
-    Usi il palmare in campo, cerchi i capi con il lettore o col tastierino, scrivi l'etichetta sulla provetta e consegni al tavolo.
+    Installa l'app, configura il telefono e prepara il materiale: dieci minuti, una volta sola.
 
-    [:octicons-arrow-right-24: Vai alla scheda in campo](chi-preleva/in-campo.md)
+    [:octicons-arrow-right-24: Prima del campo](chi-preleva/primo-avvio.md)
 
 -   :material-tablet-dashboard: **Dirigo la Regia**
 
     ---
 
-    Coordini la seduta sul tablet, configuri i parametri, ricevi le provette dai colleghi, riempi i plateau e calcoli il fine lavori.
+    Scarichi i registri dalla BDN, crei il progetto, prepari le stampe e la rete.
 
-    [:octicons-arrow-right-24: Vai alla checklist responsabile](checklist-responsabile.md)
+    [:octicons-arrow-right-24: Checklist del responsabile](checklist-responsabile.md)
 
--   :material-shield-check: **Devo decidere**
+-   :material-school: **Voglio provarla**
 
     ---
 
-    Valuti l'utilizzo dell'app: garanzie di integrità del dato, destinazione dei backup e limiti operativi da verificare prima dell’adozione.
+    Video, briefing e il gregge a schermo per campionare coi telefoni veri, con dati inventati.
 
-    [:octicons-arrow-right-24: Leggi la guida per decisori](inizia-qui/ruoli.md)
+    [:octicons-arrow-right-24: Formazione](sezioni/formazione.md)
 
 </div>
 
+## 1. Che cosa fa e perché conviene
+
+- **Doppi e capi fuori registro scoperti subito**: mentre prelevi, l'app avvisa se quel capo l'ha già prelevato un
+  collega o se non è nel registro dello stabilimento.
+- **Meno errori di scrittura e di lettura**: il capo si cerca col lettore di microchip o con poche cifre del
+  contrassegno, e il numero da scrivere sulla provetta lo dà l'app.
+- **Tutto digitale dal primo prelievo**: le anomalie si gestiscono con calma e i numeri di provetta si caricano in
+  ARVET con gli snippet, senza ricopiarli a mano.
+
+[Le anomalie e cosa fare](anomalie.md)
+
+## 2. Perché è sicura: c'è sempre una seconda copia
+
+- I **numeri di provetta sono assegnati prima** del campionamento, capo per capo, e **non cambiano mai** fino alla fine:
+  quando sulla provetta si scrive solo il numero, la corrispondenza col contrassegno è fissata in anticipo (tabella della
+  numerazione, 2/33 precompilato, foglio A3).
+- Per i capi che **non sono nel registro dello stabilimento** ma sono nei registri caricati (usciti, o di altri
+  stabilimenti con cui ci sono stati scambi), sulla provetta si scrive anche il **contrassegno completo**.
+- Per i capi **estranei a tutti i registri** o con una **marca mai applicata** si registrano anche **specie, sesso, età
+  stimata e razza**.
+
+Tutti i registri si caricano nel progetto prima di andare in campo, dove si lavora senza internet. Così, anche nel caso
+peggiore di un guasto totale, ogni provetta si ricollega al suo capo **anche senza l'app**.
+
+[Le cinque garanzie](inizia-qui/cinque-garanzie.md)
+
+## 3. Come è fatta
+
+- I **palmari** sono i telefoni dei veterinari che prelevano, in mano o al braccio.
+- La **Regia** di solito è un tablet al banco: coordina la squadra, riceve le provette e guida il riempimento dei
+  plateau. Anche un telefono può fare da Regia.
+- Un **router Wi-Fi** (o l'hotspot del tablet) crea una rete locale, **senza internet**, a cui si collegano tutti.
+- Un **libro mastro** con tutti gli eventi è condiviso da tutti i device e si aggiorna a ogni evento: ognuno ha tutto e
+  può fare un backup in qualsiasi momento. Oggi la rete è a stella (i palmari parlano con la Regia, che rimanda a
+  tutti); è in prova una rete a maglia, dove gli eventi passano in tutte le direzioni.
+- Si può anche lavorare **da soli, senza rete**.
+
+[Fasi di lavoro e ruoli](inizia-qui/fasi-e-ruoli.md) · [Sotto il cofano](riferimento/sotto-il-cofano/index.md)
+
+## 4. Il progetto lo prepara uno solo
+
+Il responsabile scarica i registri e le marche dalla BDN e crea il progetto **sul tablet della Regia** oppure **sul
+sito**, prima di andare in campo. In campo la Regia lo passa a tutti i palmari sulla Wi-Fi, col QR d'ingresso.
+
+[Scarica dalla BDN](strumenti/scarica-bdn.md) · [Crea il progetto sul sito](strumenti/crea-progetto.md) ·
+[Checklist del responsabile](checklist-responsabile.md)
+
+## 5. Dopo il campo
+
+Chiuso il campionamento, le provette si sistemano (problematici, buchi, riordino dei plateau) **sul tablet della Regia**
+oppure **sul sito**, partendo dal backup. Alla fine escono gli snippet per ARVET e le cose da fare per l'allevatore.
+
+[Gli strumenti dopo il campo](strumenti/index.md)
+
+## 6. Che cosa serve
+
+- Un **telefono Android 11 o più recente** (vanno bene i Samsung A20e dell'ASL; se è più recente, meglio).
+- Un **porta-cellulare da braccio** rotante, per non avere un oggetto in più da tenere in mano, oltre al solito marsupio
+  per provette e aghi.
+- Se c'è, un **lettore di microchip Bluetooth** per boli e orecchini: meno errori e meno cifre da digitare.
+- Il **telefono carico**, un **power bank** e un cavo, soprattutto per i telefoni che tengono poco la carica.
+- Per la Regia: un tablet e un router da viaggio a batteria (va bene anche l'hotspot del tablet).
+
+[Attrezzatura e materiale](chi-dirige/attrezzatura-materiale.md)
+
+## 7. Che cosa fare prima
+
+Arrivare in campo con l'app **già installata e configurata**: [scarica l'app](scarica.md) e segui la
+[prima configurazione del telefono](chi-preleva/primo-avvio.md). Tutti i telefoni devono avere **la stessa versione**
+della Regia. Il progetto lo configura uno solo e poi si condivide.
+
 ---
 
-## Video di introduzione
-
-<div class="fej-scheda" style="padding: 18px 24px; background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px;" markdown>
-:material-video: **Guarda il video introduttivo di 3–4 minuti** con voce sintetica e sottotitoli sulle tre fasi operative e le cinque garanzie:<br>
-[:octicons-arrow-right-24: **Apri la pagina dei video e delle micro-guide**](inizia-qui/video.md) · [:material-file-pdf-box: Scarica le diapositive del briefing in PDF (74 KiB)](video/it/briefing_diapositive.pdf).
-</div>
-
----
-
-## I requisiti essenziali
-
-- **Hardware**: telefoni Android 11 o più recente per i veterinari; tablet per la Regia; lettore di microchip Bluetooth (facoltativo); power bank e cavi da 1 m.
-- **Rete**: una rete Wi-Fi locale autonoma (hotspot del tablet o router portatile da viaggio), **senza connessione internet**.
-- **Materiale da campo**: plateau da 100 pozzetti (10 × 10), provette con margini scelti dalla Regia (valori iniziali 10% + 5% di scorta), aghi, pennarelli indelebili a punta fine, tavolo da lavoro.
-
-Tutti i dettagli e le quantità raccomandate sono descritti in [I requisiti in breve](inizia-qui/requisiti.md) e nelle [Checklist](checklist-veterinari.md).
-
----
-
-## Le cinque garanzie
-
-Fejalog è progettato attorno a cinque principi architetturali irrinunciabili:
-
-1. **Un numero non si ripete mai**: etichette sempre distinte e allarme in caso di prelievo di un animale con lo stesso contrassegno di uno già prelevato (o doppio prelievo dello stesso animale...).
-2. **Niente si cancella**: ogni correzione è un evento nuovo concatenato nel registro.
-3. **Tutti i telefoni hanno la stessa storia**: tutti i dispositivi condividono una copia del registro degli eventi.
-4. **Ogni doppio si ritrova a fine lavori**: controllo in rete e verifica finale sui registri riuniti di tutti i palmari se dovesse cadere la rete durante il campionamento o isolarsi qualche palmare.
-5. **Rete locale senza internet**: è possibile lavorare anche in luoghi remoti senza copertura di rete.
-
-Approfondisci significati pratici, indicatori a schermo e limiti dichiarati in [Le cinque garanzie](inizia-qui/cinque-garanzie.md).
-
----
-
-## Collegamenti rapidi
-
-- [Fasi di lavoro e ruoli](inizia-qui/fasi-e-ruoli.md)
-- [Le caratteristiche dettagliate](caratteristiche.md)
-- [Scarica l'applicazione e il kit](scarica.md)
-- [Sotto il cofano: problemi affrontati e architettura](riferimento/sotto-il-cofano/index.md)
-- [Guida di riferimento completa](riferimento/index.md)
+[Versioni e novità](novita.md) · [Domande frequenti](domande.md) · [La guida completa dell'app](riferimento/index.md)

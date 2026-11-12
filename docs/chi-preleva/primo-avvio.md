@@ -1,12 +1,12 @@
-# Prima configurazione del telefono
+# Prima del campo: il telefono e il materiale
 
 > **A chi serve**: veterinari prelevatori (gli stessi passi valgono per il tablet della Regia) · **Tempo**: una decina di
 > minuti, **una volta sola**
 
 Da fare a casa o in ufficio, prima della giornata, quando il telefono ha ancora internet per scaricare l'app. Dopo, in
-campo, internet non serve più. I passi sono sei: installare l'app, dire chi sei, dare un nome al telefono, concedere i
-permessi, sistemare i controlli del telefono (batteria e Wi-Fi) e salvare le reti del progetto. In fondo, come Fejalog
-gestisce la batteria durante il lavoro.
+campo, internet non serve più. I passi: installare l'app, dire chi sei, dare un nome al telefono, concedere i permessi,
+sistemare i controlli del telefono (batteria e Wi-Fi), salvare le reti del progetto e preparare il materiale. In fondo,
+come Fejalog gestisce la batteria durante il lavoro.
 
 !!! tip "In breve"
     ☰ Menu › **Impostazioni › Utente**: nome, cognome, codice fiscale › **Salva**.
@@ -107,6 +107,16 @@ Prima di partire salva in Android le reti Wi-Fi del progetto (il router da viagg
 **Rete del progetto**. Android chiede di collegarsi: conferma. La rete resta salvata, e se in campo una rete cade Android
 passa da solo a un'altra di quelle salvate.
 
+## 7. Il materiale da portare
+
+- Il **telefono carico al 100%**, un **power bank** carico e un **cavo da 1 m** adatto al telefono.
+- Il **porta-cellulare da braccio**, per avere le mani libere.
+- Un **pennarello indelebile** per le provette.
+- Se c'è, il **lettore di microchip** a doppio standard (FDX-B e HDX), carico; se è a bastone, una fondina da cintura o
+  una faretra da schiena.
+
+La [checklist del veterinario](../checklist-veterinari.md) ha tutto in una pagina da stampare.
+
 ## La batteria durante il lavoro
 
 Fejalog è fatto per reggere una giornata di campo senza regolazioni particolari:
@@ -144,7 +154,7 @@ avviso; la luminosità automatica va bene.
 - [ ] Batteria di Fejalog «Senza restrizioni», risparmio energetico spento, telefono carico e power bank
 - [ ] Reti del progetto salvate in Android
 - [ ] Lettore di microchip associato (se lo usi)
+- [ ] Materiale pronto: power bank e cavo, porta-cellulare, pennarello
 
-In campo si entra nel progetto da ☰ Menu › Progetto › **Entra col QR**, inquadrando il QR della Regia: i passi sono nel
-[foglio per i veterinari](../veterinari.md) e nella [scheda in campo](in-campo.md). Per l'elenco completo di cosa
-portare: [Checklist del veterinario](../checklist-veterinari.md).
+In campo si entra nel progetto da ☰ Menu › Progetto › **Entra col QR**, inquadrando il QR della Regia: il seguito è
+nella scheda [In campo](in-campo.md); se qualcosa non va, [Se qualcosa va storto](cosa-succede-se.md).

@@ -77,10 +77,6 @@ markdown_extensions:
 nav:
   - Inizia qui:
       - "Cos'è Fejalog": index.md
-      - "Le cinque garanzie": inizia-qui/cinque-garanzie.md
-      - "Fasi di lavoro e ruoli": inizia-qui/fasi-e-ruoli.md
-      - "A chi serve cosa": inizia-qui/ruoli.md
-      - "I requisiti in breve": inizia-qui/requisiti.md
       - "Scarica l'app": scarica.md
       - "Versioni e novità": novita.md
   - Strumenti:
@@ -95,31 +91,31 @@ nav:
   - Documentazione:
       - sezioni/documentazione.md
       - Chi preleva:
-          # >>> chi-preleva (scritto da ScriviSito: non modificare)
-          - "Checklist del veterinario": checklist-veterinari.md
-          - "Preparare il telefono": veterinari.md
-          # <<< chi-preleva
-          - "Prima configurazione del telefono": chi-preleva/primo-avvio.md
-          - "In campo (scheda pratica)": chi-preleva/in-campo.md
-          - "Cosa succede se…": chi-preleva/cosa-succede-se.md
-          - "Domande dei prelevatori": chi-preleva/domande.md
+          - "Prima del campo": chi-preleva/primo-avvio.md
+          - "In campo": chi-preleva/in-campo.md
+          - "Se qualcosa va storto": chi-preleva/cosa-succede-se.md
+          - Da stampare o mandare:
+              # >>> chi-preleva (scritto da ScriviSito: non modificare)
+              - "Checklist del veterinario": checklist-veterinari.md
+              - "Il foglio per i veterinari (da mandare)": veterinari.md
+              # <<< chi-preleva
       - Chi dirige (la Regia):
           # >>> chi-dirige (scritto da ScriviSito: non modificare)
           - "Checklist del responsabile": checklist-responsabile.md
           # <<< chi-dirige
-          - "Requisiti hardware e software": chi-dirige/requisiti.md
-          - "Attrezzatura e materiale": chi-dirige/attrezzatura-materiale.md
-          - "Rete e connessione": chi-dirige/rete.md
+          - Prima del campo:
+              - "Requisiti hardware e software": chi-dirige/requisiti.md
+              - "Attrezzatura e materiale": chi-dirige/attrezzatura-materiale.md
+              - "Rete e connessione": chi-dirige/rete.md
           - "Avvio della seduta": chi-dirige/avvio.md
           - "Consegne e plateau": chi-dirige/consegne-plateau.md
-          - "Collegamento al PC Windows via USB": chi-dirige/tethering-pc.md
           - "In campo (scheda responsabile)": chi-dirige/scheda-responsabile.md
+          - "Collegamento al PC Windows via USB": chi-dirige/tethering-pc.md
       - Dopo il campo:
           - "Riconciliazione dei backup": dopo-il-campo/riconcilia-backup.md
           - "Controllo provette e statistiche": dopo-il-campo/provette-statistiche.md
           - "Il 2/33 finale": dopo-il-campo/modello-233-finale.md
           - "Gli snippet per ARVET": dopo-il-campo/snippet-arvet.md
-          - "ARVET e gli snippet": arvet.md
       - Riferimento:
           # >>> riferimento (scritto da ScriviSito: non modificare)
           - Guida di riferimento:
@@ -163,8 +159,15 @@ nav:
               - "Crediti": riferimento/crediti.md
           # <<< riferimento
           - "Anomalie: tutti i casi": anomalie.md
-          - "Caratteristiche": caratteristiche.md
           - "Domande frequenti": domande.md
+          - "Domande dei prelevatori": chi-preleva/domande.md
+      - Approfondimenti:
+          - "Le cinque garanzie": inizia-qui/cinque-garanzie.md
+          - "Fasi di lavoro e ruoli": inizia-qui/fasi-e-ruoli.md
+          - "Per chi decide": inizia-qui/ruoli.md
+          - "I requisiti in breve": inizia-qui/requisiti.md
+          - "Le caratteristiche": caratteristiche.md
+          - "ARVET e gli snippet": arvet.md
           - "Sotto il cofano: problemi e architettura": riferimento/sotto-il-cofano/index.md
   - Formazione:
       - sezioni/formazione.md
@@ -172,27 +175,29 @@ nav:
       # >>> formazione (scritto da ScriviSito: non modificare)
       - "Il briefing (11 diapositive)": briefing.md
       # <<< formazione
-      - "Tutorial e gregge a schermo": strumenti/simulatore.md
+      - "Gregge a schermo coi telefoni veri": strumenti/simulatore.md
       - "Il kit di prova": kit.md
-      - "Tre modalità di simulazione": provalo/tre-modalita.md
-      - "Incidenti programmati": provalo/incidenti-programmati.md
-      - "Tutorial passo per passo":
+      - Tutorial passo per passo:
           - tutorial/index.md
-          - "0 · Prepara": tutorial/00-prepara.md
-          - "Reperire i file BDN": tutorial/file-bdn.md
-          - "1 · Chi usa il device": tutorial/01-utente.md
-          - "2 · Il progetto": tutorial/02-progetto.md
-          - "3 · Registri e regole": tutorial/03-registri-regole.md
-          - "4 · La rete": tutorial/04-rete.md
-          - "5 · I ricercati": tutorial/05-ricercati.md
-          - "6 · Il primo prelievo": tutorial/06-prelievo.md
-          - "7 · Le fattispecie": tutorial/07-fattispecie.md
-          - "8 · Doppi e rete difficile": tutorial/08-doppi-rete.md
-          - "9 · Registri in corsa": tutorial/09-registri-in-corsa.md
-          - "10 · Statistiche e provette perse": tutorial/10-statistiche.md
-          - "10 bis · Il Plateau della Regia": tutorial/10b-plateau.md
-          - "11 · Soluzione problemi": tutorial/11-problemi.md
-          - "12 · Riordino dei plateau": tutorial/12-riordino.md
-          - "13 · Backup, uscita, ripresa": tutorial/13-backup.md
-          - "14 · Fine lavori": tutorial/14-fine-lavori.md
-          - "15 · ARVET": tutorial/15-arvet.md
+          - Le lezioni:
+              - "0 · Prepara": tutorial/00-prepara.md
+              - "Reperire i file BDN": tutorial/file-bdn.md
+              - "1 · Chi usa il device": tutorial/01-utente.md
+              - "2 · Il progetto": tutorial/02-progetto.md
+              - "3 · Registri e regole": tutorial/03-registri-regole.md
+              - "4 · La rete": tutorial/04-rete.md
+              - "5 · I ricercati": tutorial/05-ricercati.md
+              - "6 · Il primo prelievo": tutorial/06-prelievo.md
+              - "7 · Le fattispecie": tutorial/07-fattispecie.md
+              - "8 · Doppi e rete difficile": tutorial/08-doppi-rete.md
+              - "9 · Registri in corsa": tutorial/09-registri-in-corsa.md
+              - "10 · Statistiche e provette perse": tutorial/10-statistiche.md
+              - "10 bis · Il Plateau della Regia": tutorial/10b-plateau.md
+              - "11 · Soluzione problemi": tutorial/11-problemi.md
+              - "12 · Riordino dei plateau": tutorial/12-riordino.md
+              - "13 · Backup, uscita, ripresa": tutorial/13-backup.md
+              - "14 · Fine lavori": tutorial/14-fine-lavori.md
+              - "15 · ARVET": tutorial/15-arvet.md
+      - Altre prove:
+          - "Tre modalità di simulazione": provalo/tre-modalita.md
+          - "Incidenti programmati": provalo/incidenti-programmati.md

@@ -4,7 +4,7 @@
 
 Il foglio per chi usa i palmari, da stampare o mandare su WhatsApp. Lo stesso testo si manda dall'app: «Prima di cominciare» › «Manda le istruzioni».
 
-Prima volta con Fejalog? Installazione, dati personali e permessi, passo per passo: [Prima configurazione del telefono](chi-preleva/primo-avvio.md).
+Prima volta con Fejalog? Installazione, dati personali, permessi e materiale, passo per passo: [Prima del campo](chi-preleva/primo-avvio.md).
 
 ## Cos'è Fejalog e a cosa serve
 

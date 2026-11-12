@@ -12,7 +12,7 @@ Lavori a contatto con gli animali nei recinti o nella corsia di prelievo. Il tuo
 
 **Il tuo percorso consigliato**:
 
-1. [**Preparare il telefono**](../veterinari.md): configurazione iniziale delle impostazioni di sistema Android (Wi-Fi senza internet, batteria senza restrizioni, abbinamento del lettore Bluetooth).
+1. [**Prima del campo**](../chi-preleva/primo-avvio.md): configurazione iniziale delle impostazioni di sistema Android (Wi-Fi senza internet, batteria senza restrizioni, abbinamento del lettore Bluetooth).
 2. [**Checklist del veterinario**](../checklist-veterinari.md): elenco sintetico di spunta da controllare prima di partire da casa o dall'ufficio.
 3. [**Il briefing operativo (11 diapositive)**](../briefing.md): le garanzie, la logica delle etichette e le regole fondamentali condivise da tutta la squadra.
 4. [**In campo (scheda pratica)**](../chi-preleva/in-campo.md): la guida rapida di una pagina con la ricerca, i colori del riquadro, i tasti e il tasto «Senza contrassegno».

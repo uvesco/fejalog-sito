@@ -75,5 +75,5 @@ Nel registro l'annullo viene memorizzato come evento formale di rettifica: l'eti
 - [Fasi di lavoro e ruoli](../inizia-qui/fasi-e-ruoli.md)
 - [In campo (scheda pratica)](in-campo.md)
 - [Cosa succede se…](cosa-succede-se.md)
-- [Preparare il telefono](../veterinari.md)
+- [Il foglio per i veterinari](../veterinari.md)
 - [Le cinque garanzie](../inizia-qui/cinque-garanzie.md)
