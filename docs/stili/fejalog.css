@@ -90,3 +90,13 @@
   .md-content__inner:has(.fej-scheda-stampa) td { padding: 4pt; }
   .md-content__inner:has(.fej-scheda-stampa) .headerlink { display: none; }
 }
+
+/* Le quattro schede (Inizia qui, Strumenti, Documentazione, Formazione) anche su telefono e tablet stretto (utente,
+   2026-11-12: «da cellulare i tab del sito non sono visibili»). Material le nasconde sotto i 1220 px e le lascia solo
+   nel menu ☰: qui restano in una riga sotto la testata, che scorre di lato se non ci sta. */
+@media screen and (max-width: 76.234375em) {
+  .md-tabs { display: block; }
+  .md-tabs__list { white-space: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .md-tabs__list::-webkit-scrollbar { display: none; }
+  .md-tabs__item { padding-left: .5rem; padding-right: .5rem; }
+}

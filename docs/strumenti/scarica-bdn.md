@@ -7,7 +7,7 @@ Qui si prepara uno **snippet** che, incollato nella BDN, scarica in un solo zip 
 **Come si usa**
 
 1. Scrivi qui sotto i codici degli stabilimenti da campionare; se vuoi, scegli l'export dello storico pascoli (`.gz` o `.xls`) e aggiungi altri allevamenti.
-2. Premi **Copia lo snippet**.
+2. Premi **Copia lo snippet**: sono poche righe, che caricano il resto da questo sito. Se dalla BDN il sito non si raggiunge, usa **Scarica lo snippet completo**, aprilo con un editor di testo e incollane tutto il contenuto.
 3. Sul **PC** (Chrome o Edge, Windows o Linux), entra nella BDN ovicaprini col tuo ruolo di Servizio Veterinario, apri **Dati › Interrogazioni › Stabilimenti**, poi apri la console (**F12 › Console**), incolla e premi Invio. Chrome alla prima volta può chiedere di scrivere «consenti incolla».
 4. Lascia lavorare: un riquadro in alto a destra mostra fase, allevamento e passo in corso, una barra, il tempo e da quanti secondi la BDN non risponde, e i file pronti. Non cambiare pagina in quella scheda.
 5. Alla fine arriva `bdn_AAAAMMGG.zip`: dentro i registri (`<stabilimento>_<specie>_<codice fiscale>_AAAAMMGG.txt`), le marche (`marche_…`, solo per chi ne ha a magazzino) e `riepilogo.txt` con quello che è stato scaricato e gli avvisi.

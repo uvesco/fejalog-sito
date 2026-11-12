@@ -193,13 +193,29 @@
     if (/cas\/login|name="password"/i.test(h)) throw new Error('la sessione BDN è scaduta: rientra e rilancia lo snippet');
     return h;
   }
+  /** Tempo massimo di ogni richiesta e di ogni pagina del riquadro: una BDN ferma diventa un errore dell'allevamento
+      (nel riepilogo) e lo scarico prosegue, invece di restare appeso. */
+  var MASSIMO = 90000;
+  function richiesta(url, opzioni) {
+    var c = typeof AbortController === 'function' ? new AbortController() : null;
+    var t = setTimeout(function () { if (c) c.abort(); }, MASSIMO);
+    return fetch(url, Object.assign({ credentials: 'same-origin' }, opzioni || {}, c ? { signal: c.signal } : {}))
+      .catch(function (e) { throw new Error(e && e.name === 'AbortError' ? 'la BDN non ha risposto in ' + MASSIMO / 1000 + ' s' : 'rete: ' + (e && e.message)); })
+      .then(function (r) { clearTimeout(t); return r; }, function (e) { clearTimeout(t); throw e; });
+  }
+  function caricamento() {
+    return Promise.race([
+      new Promise(function (r) { riquadro.addEventListener('load', r, { once: true }); }),
+      attesa(MASSIMO).then(function () { throw new Error('la BDN non ha aperto la pagina in ' + MASSIMO / 1000 + ' s'); }),
+    ]);
+  }
   function post(url, coppie) {
-    return fetch(url, { method: 'POST', body: new URLSearchParams(coppie), credentials: 'same-origin' })
+    return richiesta(url, { method: 'POST', body: new URLSearchParams(coppie) })
       .then(function (r) { if (!r.ok) throw new Error('la BDN risponde ' + r.status + ' a ' + url.split('/').pop()); return r.arrayBuffer(); })
       .then(function (b) { risposta(); return dec(b); }).then(controlla);
   }
   function get(url) {
-    return fetch(url, { credentials: 'same-origin' }).then(function (r) { if (!r.ok) throw new Error('la BDN risponde ' + r.status); return r.arrayBuffer(); }).then(function (b) { risposta(); return dec(b); });
+    return richiesta(url).then(function (r) { if (!r.ok) throw new Error('la BDN risponde ' + r.status); return r.arrayBuffer(); }).then(function (b) { risposta(); return dec(b); });
   }
   function coppie(form) { var fd = new FormData(form), out = []; fd.forEach(function (v, k) { out.push([k, v]); }); return out; }
   function imposta(c, nome, valore) { var t = false; c.forEach(function (x) { if (x[0] === nome) { x[1] = valore; t = true; } }); if (!t) c.push([nome, valore]); return c; }
@@ -247,7 +263,7 @@
     f.method = 'post'; f.action = azione; f.target = riquadro.name;
     dati.forEach(function (x) { var i = document.createElement('input'); i.type = 'hidden'; i.name = x[0]; i.value = x[1]; f.appendChild(i); });
     document.body.appendChild(f);
-    var p = new Promise(function (r) { riquadro.addEventListener('load', r, { once: true }); });
+    var p = caricamento();
     f.submit(); f.remove();
     return p.then(function () { risposta(); return attesa(PAUSA); });
   }
@@ -321,7 +337,7 @@
     return pronta('Stampa').then(function (ok) {
     var w = riquadro.contentWindow;
     if (!ok) return { righe: null, nota: 'la BDN non offre il registro di stalla per questo allevamento' };
-    var p = new Promise(function (r) { riquadro.addEventListener('load', r, { once: true }); });
+    var p = caricamento();
     w.Stampa();
     return p.then(function () { return attesa(PAUSA * 1.5); }).then(function () {
       var w2 = riquadro.contentWindow, d = riquadro.contentDocument, g = d.forms.formPrincipale;

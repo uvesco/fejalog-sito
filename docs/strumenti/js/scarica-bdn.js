@@ -97,6 +97,14 @@ function configurazione(codici, aggiuntivi, data) {
 }
 function oggi() { var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; }; return '' + d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate()); }
 function testoSnippet(cfg, motore) { return 'window.__BDN_SCARICO__ = ' + JSON.stringify(cfg) + ';\n' + motore; }
+/** Lo snippet corto (12/11): la configurazione e il caricamento del motore dal sito. Pochi kB invece di 25 nella console
+    della BDN (la cronologia di DevTools si riempiva), e sempre l'ultima versione del motore. */
+function testoCorto(cfg, urlMotore) {
+  return 'window.__BDN_SCARICO__ = ' + JSON.stringify(cfg) + ';\n' +
+    "fetch(" + JSON.stringify(urlMotore + '?v=' + cfg.data) + ").then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })" +
+    ".then(function (t) { new Function(t)(); })" +
+    ".catch(function (e) { console.log('Fejalog: non riesco a caricare lo snippet dal sito (' + e.message + '): usa «Scarica lo snippet completo».'); });\n";
+}
 
 /* ---------- la pagina ---------- */
 function h(tag, attr) {
@@ -170,23 +178,25 @@ function monta(radice, opz) {
     });
     uscita.appendChild(tab);
     uscita.appendChild(h('p', null, 'Lo zip si chiamerà bdn_' + cfg.data + '.zip; dentro, per ogni allevamento, <stabilimento>_<specie>_<cf>_' + cfg.data +
-      '.txt (registro storico ASCII dall\'apertura a oggi) e marche_… se ha marche a magazzino, più riepilogo.txt.'));
+      '.txt (registro storico ASCII dall\'apertura alla chiusura o a oggi) e marche_… se ha marche a magazzino, più riepilogo.txt.'));
     if (st.errore) { uscita.appendChild(h('p', { class: 'fej-avviso' }, st.errore)); return; }
     if (!st.motore) { uscita.appendChild(h('p', null, 'Carico lo snippet…')); return; }
-    var testo = testoSnippet(cfg, st.motore), esito = h('span', { class: 'fej-tenue' });
+    var urlMotore = new URL(base + 'bdn-scarico-motore.js', location.href).href;
+    var corto = testoCorto(cfg, urlMotore), esito = h('span', { class: 'fej-tenue' });
     uscita.appendChild(h('p', null,
       h('button', { type: 'button', class: 'md-button md-button--primary', onclick: function () {
-        navigator.clipboard.writeText(testo).then(function () { esito.textContent = ' Copiato: incollalo nella console della BDN.'; },
-          function () { esito.textContent = ' Non riesco a copiare: usa «Scarica lo snippet».'; });
+        navigator.clipboard.writeText(corto).then(function () { esito.textContent = ' Copiato: incollalo nella console della BDN.'; },
+          function () { esito.textContent = ' Non riesco a copiare: usa «Scarica lo snippet completo».'; });
       } }, 'Copia lo snippet'), ' ',
       h('button', { type: 'button', class: 'md-button', onclick: function () {
-        var u = URL.createObjectURL(new Blob([testo], { type: 'text/javascript' })), l = h('a', { href: u, download: 'snippet_bdn_' + cfg.data + '.js' });
+        var u = URL.createObjectURL(new Blob([testoSnippet(cfg, st.motore)], { type: 'text/javascript' })), l = h('a', { href: u, download: 'snippet_bdn_' + cfg.data + '.js' });
         document.body.appendChild(l); l.click(); l.remove();
-      } }, 'Scarica lo snippet'), esito));
+      } }, 'Scarica lo snippet completo'), esito));
+    uscita.appendChild(h('p', { class: 'fej-tenue' }, 'Lo snippet copiato è corto: carica il resto da questo sito. Se dalla BDN il sito non si raggiunge, scarica lo snippet completo, aprilo con un editor di testo e incolla tutto il contenuto.'));
   }
   disegna();
 }
 
 return { leggiCodici: leggiCodici, leggiPascoli: leggiPascoli, leggiAggiuntivi: leggiAggiuntivi, configurazione: configurazione,
-  testoSnippet: testoSnippet, monta: monta, specieBreve: specieBreve };
+  testoSnippet: testoSnippet, testoCorto: testoCorto, monta: monta, specieBreve: specieBreve };
 });
