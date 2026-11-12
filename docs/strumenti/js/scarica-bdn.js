@@ -166,7 +166,7 @@ function monta(radice, opz) {
     uscitaArvet.appendChild(h('h3', null, '5. I modelli 2/33 da ARVET'));
     uscitaArvet.appendChild(h('p', { class: 'fej-tenue' }, 'Per gli stabilimenti da campionare (punto 1), un 2/33 per ogni specie che allevano fra ovini e caprini: ' +
       'lo stesso «Stampa modello 2/33» di ARVET, ordinato per marchio auricolare. Lo snippet va incollato nella console di ARVET, non della BDN. ' +
-      'I file 2-33_<stabilimento>_<specie>_<data>.htm si caricano in «Stampe pre-campo e QR» per il 2/33 precompilato.'));
+      'Lo zip arvet_233_AAAAMMGG_HHMMSS.zip (2-33_<stabilimento>_<specie>_AAAAMMGG_HHMMSS.htm) si carica in «Crea il progetto», scheda delle stampe, per i 2/33 precompilati.'));
     if (!codici.length) { uscitaArvet.appendChild(h('p', { class: 'fej-tenue' }, 'Scrivi al punto 1 i codici degli stabilimenti da campionare.')); return; }
     var cfgA = { codici: codici.slice(), data: oggi() }, esitoA = h('span', { class: 'fej-tenue' });
     var cortoA = testoCorto(cfgA, new URL(base + 'arvet-233-motore.js', location.href).href, '__ARVET_233__');
@@ -202,8 +202,8 @@ function monta(radice, opz) {
       tab.appendChild(h('tr', null, h('td', null, x.codice), h('td', null, x.specie), h('td', null, x.cf), h('td', null, p ? 'pascolo comune (' + p.capi + ' capi)' : 'aggiunto a mano')));
     });
     uscita.appendChild(tab);
-    uscita.appendChild(h('p', null, 'Lo zip si chiamerà bdn_' + cfg.data + '.zip; dentro, per ogni allevamento, <stabilimento>_<specie>_<cf>_' + cfg.data +
-      '.txt (registro storico ASCII dall\'apertura alla chiusura o a oggi) e marche_… se ha marche a magazzino, più riepilogo.txt.'));
+    uscita.appendChild(h('p', null, 'Lo zip si chiamerà bdn_AAAAMMGG_HHMMSS.zip (data e ora dello scarico); dentro, per ogni allevamento, <stabilimento>_<specie>_<cf>_AAAAMMGG_HHMMSS' +
+      '.txt (registro storico ASCII dall\'apertura alla chiusura o a oggi) e marche_… se ha marche a magazzino, più riepilogo.txt, che «Crea il progetto» non carica.'));
     if (st.errore) { uscita.appendChild(h('p', { class: 'fej-avviso' }, st.errore)); return; }
     if (!st.motore) { uscita.appendChild(h('p', null, 'Carico lo snippet…')); return; }
     var urlMotore = new URL(base + 'bdn-scarico-motore.js', location.href).href;

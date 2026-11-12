@@ -10,6 +10,7 @@ copyright: Fejalog · Umberto Vesco · dati di esempio inventati (stabilimento 8
 
 theme:
   name: material
+  custom_dir: overrides   # la striscia in basso con la data dell'ultimo aggiornamento
   language: it
   font: false            # niente Google Fonts: caratteri del sistema
   logo: img/icona.png
@@ -45,6 +46,9 @@ extra_css:
 
 extra_javascript:
   - strumenti/js/barra.js
+
+hooks:
+  - hooks/aggiornato.py
 
 plugins:
   - search:

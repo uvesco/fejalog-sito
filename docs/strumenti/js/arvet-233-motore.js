@@ -6,8 +6,8 @@
  *
  * Per ogni stabilimento e per ogni specie che alleva fra ovini e caprini: lo stesso «Stampa modello 2/33» che faresti a
  * mano (codice dello stabilimento, specie, ordinamento per marchio auricolare), l'attesa nella coda stampe di ARVET e il
- * file .htm, salvato così com'è come 2-33_<stabilimento>_<specie>_<AAAAMMGG>.htm. Alla fine un solo zip,
- * arvet_233_<AAAAMMGG>.zip, con tutti i 2/33 e riepilogo.txt: si carica così com'è nelle stampe pre-campo del sito, che
+ * file .htm, salvato così com'è come 2-33_<stabilimento>_<specie>_<AAAAMMGG_HHMMSS>.htm. Alla fine un solo zip,
+ * arvet_233_<AAAAMMGG_HHMMSS>.zip, con tutti i 2/33 e riepilogo.txt: si carica così com'è nelle stampe pre-campo del sito, che
  * restituiscono i 2/33 precompilati coi numeri delle provette.
  *
  * Solo stampe: non salva e non modifica niente in ARVET. Una stampa alla volta (la coda di ARVET è una sola: se c'è già
@@ -32,6 +32,13 @@
     var p2 = function (n) { return (n < 10 ? '0' : '') + n; };
     return '' + d.getFullYear() + p2(d.getMonth() + 1) + p2(d.getDate());
   }
+  /** Data e ora dello scarico, `AAAAMMGG_HHMMSS`, nei nomi dei file (utente, 2026-11-12). */
+  function timbroAdesso(d) {
+    d = d || new Date();
+    var p2 = function (n) { return (n < 10 ? '0' : '') + n; };
+    return oggiAAAAMMGG(d) + '_' + p2(d.getHours()) + p2(d.getMinutes()) + p2(d.getSeconds());
+  }
+
   function nomeFile(codice, specie, data) { return '2-33_' + pulisci(codice).toUpperCase() + '_' + specieBreve(specie) + '_' + data + '.htm'; }
   function nomeStampa(codice) { return 'stampa_mod233_' + pulisci(codice).toUpperCase(); }
   /** Le specie ovicaprine dello stabilimento dalla risposta di ricerca_specie_azienda.json: [{specie, specieazi}]. */
@@ -80,7 +87,7 @@
     return out;
   }
 
-  var puro = { specieBreve: specieBreve, ovicaprino: ovicaprino, nomeFile: nomeFile, nomeStampa: nomeStampa, oggiAAAAMMGG: oggiAAAAMMGG,
+  var puro = { specieBreve: specieBreve, ovicaprino: ovicaprino, nomeFile: nomeFile, nomeStampa: nomeStampa, oggiAAAAMMGG: oggiAAAAMMGG, timbroAdesso: timbroAdesso,
     specieOvicaprine: specieOvicaprine, lavoroNuovo: lavoroNuovo, parametriStampa: parametriStampa, codici: codici, zip: zip, crc32: crc32 };
   if (typeof module === 'object' && module.exports) { module.exports = puro; return; }
 
@@ -89,6 +96,7 @@
   if (!cfg || !codici(cfg).length) { console.log('Fejalog: manca l\'elenco degli stabilimenti (window.__ARVET_233__). Prepara lo snippet dalla pagina del sito.'); return; }
   if (location.hostname.indexOf('arvet.reteunitaria.piemonte.it') < 0) { console.log('Fejalog: lo snippet va incollato in ARVET, nella scheda dove hai fatto l\'accesso.'); return; }
   cfg.data = cfg.data || oggiAAAAMMGG();
+  cfg.timbro = cfg.timbro || timbroAdesso();
   // solo per le prove (sito/prove/scarica-bdn.cjs): tempi ridotti
   var T = cfg.tempi || {}, ATTESA_CODA = T.coda || 15000;
   if (T.pausa != null) PAUSA = T.pausa; if (T.ogni != null) OGNI = T.ogni;
@@ -211,7 +219,7 @@
           msg(l.az.codice + ' ' + l.sp.specie + ': chiedo la stampa…');
           return stampa(utente, serveter, l.az, l.sp);
         }).then(function (b) {
-          var nome = nomeFile(l.az.codice, l.sp.specie, cfg.data);
+          var nome = nomeFile(l.az.codice, l.sp.specie, cfg.timbro);
           voci.push({ nome: nome, dati: new Uint8Array(b) }); fatti.push(nome);
           stato.file.push('✓ ' + nome + ' (' + Math.round(b.byteLength / 1024) + ' kB)');
         }).catch(function (e) {
@@ -223,12 +231,12 @@
     });
   }).then(function () {
     fase('Preparo lo zip…');
-    var r = ['Fejalog · 2/33 da ARVET del ' + cfg.data, '', 'Stabilimenti: ' + codici(cfg).join(', '), '']
+    var r = ['Fejalog · 2/33 da ARVET del ' + cfg.timbro, '', 'Stabilimenti: ' + codici(cfg).join(', '), '']
       .concat(fatti.map(function (f) { return 'scaricato: ' + f; }), avvisi.length ? ['', 'Avvisi:'].concat(avvisi.map(function (a) { return '- ' + a; })) : []);
     voci.push({ nome: 'riepilogo.txt', dati: latin1(r.join('\r\n') + '\r\n') });
-    scarica('arvet_233_' + cfg.data + '.zip', zip(voci), 'application/zip');
+    scarica('arvet_233_' + cfg.timbro + '.zip', zip(voci), 'application/zip');
     stato.fine = true; fase('Finito');
-    msg(fatti.length + ' modelli 2/33 nello zip arvet_233_' + cfg.data + '.zip' + (avvisi.length ? '; da controllare: ' + avvisi.join(' · ') : '') +
+    msg(fatti.length + ' modelli 2/33 nello zip arvet_233_' + cfg.timbro + '.zip' + (avvisi.length ? '; da controllare: ' + avvisi.join(' · ') : '') +
       '. Caricalo nelle stampe pre-campo del sito.');
   }).catch(function (e) {
     stato.fine = true; fase('Interrotto'); q('fase').style.color = '#b00020'; msg('Interrotto: ' + e.message);

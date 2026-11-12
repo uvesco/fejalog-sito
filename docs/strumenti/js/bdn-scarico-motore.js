@@ -7,9 +7,9 @@
  *
  * Per ogni allevamento (stabilimento + specie + codice fiscale dell'operatore):
  *  - il registro storico dei capi identificati singolarmente, dall'apertura dell'allevamento a oggi, in ASCII:
- *    <stabilimento>_<specie>_<cf>_<AAAAMMGG>.txt (righe da 700 caratteri, quelle che Fejalog legge);
+ *    <stabilimento>_<specie>_<cf>_<AAAAMMGG_HHMMSS>.txt (righe da 700 caratteri, quelle che Fejalog legge);
  *  - le marche disponibili (contrassegni a magazzino), solo se ce ne sono: marche_<stabilimento>_<specie>_<cf>_<data>.txt.
- * Alla fine un solo zip, bdn_<AAAAMMGG>.zip, con anche riepilogo.txt: da caricare in «Crea il progetto sul sito».
+ * Alla fine un solo zip, bdn_<AAAAMMGG_HHMMSS>.zip, con anche riepilogo.txt: da caricare in «Crea il progetto sul sito».
  *
  * Come lavora: le stesse pagine e gli stessi form dei tuoi click (ricerca stabilimento → «N Allevamenti» → scheda
  * dell'allevamento → «Identificativi(Ascii)» e «Stampa registro di stalla» › Registro attività Classico › Storico ›
@@ -44,6 +44,13 @@
     var p2 = function (n) { return (n < 10 ? '0' : '') + n; };
     return '' + d.getFullYear() + p2(d.getMonth() + 1) + p2(d.getDate());
   }
+  /** Data e ora dello scarico, `AAAAMMGG_HHMMSS`, nei nomi dei file (utente, 2026-11-12). */
+  function timbroAdesso(d) {
+    d = d || new Date();
+    var p2 = function (n) { return (n < 10 ? '0' : '') + n; };
+    return oggiAAAAMMGG(d) + '_' + p2(d.getHours()) + p2(d.getMinutes()) + p2(d.getSeconds());
+  }
+
   /** Il primo percorso di file temporaneo della BDN in una pagina (il tasto «Visualizza File»). */
   function percorsoTmp(html) {
     var m = String(html).match(/tmp_files\/[^'"\s<>)]+/);
@@ -156,7 +163,7 @@
   }
 
   function riepilogo(cfg, esiti, avvisi) {
-    var r = ['Fejalog · scarico dalla BDN del ' + cfg.data, '',
+    var r = ['Fejalog · scarico dalla BDN del ' + (cfg.timbro || cfg.data), '',
       'Stabilimenti da campionare: ' + (cfg.campionare || []).join(', '),
       'Allevamenti aggiuntivi chiesti: ' + (cfg.aggiuntivi || []).length, ''];
     esiti.forEach(function (e) {
@@ -170,7 +177,7 @@
   }
 
   var puro = {
-    fineStorico: fineStorico, specieBreve: specieBreve, ovicaprino: ovicaprino, chiave: chiave, nomeRegistro: nomeRegistro, nomeMarche: nomeMarche, oggiAAAAMMGG: oggiAAAAMMGG,
+    fineStorico: fineStorico, specieBreve: specieBreve, ovicaprino: ovicaprino, chiave: chiave, nomeRegistro: nomeRegistro, nomeMarche: nomeMarche, oggiAAAAMMGG: oggiAAAAMMGG, timbroAdesso: timbroAdesso,
     percorsoTmp: percorsoTmp, sceltaRiga: sceltaRiga, allevamentiDa: allevamentiDa, stabilimentiDa: stabilimentiDa,
     daScaricare: daScaricare, stabilimentiDaInterrogare: stabilimentiDaInterrogare, zip: zip, crc32: crc32, latin1: latin1,
     riepilogo: riepilogo,
@@ -184,6 +191,7 @@
     return;
   }
   cfg.data = cfg.data || oggiAAAAMMGG();
+  cfg.timbro = cfg.timbro || timbroAdesso();
   if (location.hostname.indexOf('vetinfo.it') < 0) { console.log('Fejalog: lo snippet va incollato nella BDN (vetinfo.it), nella scheda dove hai fatto l\'accesso.'); return; }
 
   var attesa = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };
@@ -398,10 +406,10 @@
         msg(a.codice + ' ' + a.specie + ': marche a magazzino…');
         return marche(scheda).then(function (m) {
           e.marche = m.righe;
-          if (m.righe) { voci.push({ nome: nomeMarche(a, cfg.data), dati: latin1(m.testo) }); arrivato(nomeMarche(a, cfg.data), m.righe); }
+          if (m.righe) { voci.push({ nome: nomeMarche(a, cfg.timbro), dati: latin1(m.testo) }); arrivato(nomeMarche(a, cfg.timbro), m.righe); }
         }).catch(function (err) { e.errore = 'marche: ' + err.message; })
           .then(function () { msg(a.codice + ' ' + a.specie + ': registro storico (può volerci qualche secondo)…'); return storico(); })
-          .then(function (r) { if (r.righe == null) { e.nota = r.nota; return; } e.righeRegistro = r.righe; voci.push({ nome: nomeRegistro(a, cfg.data), dati: latin1(r.testo) }); arrivato(nomeRegistro(a, cfg.data), r.righe); });
+          .then(function (r) { if (r.righe == null) { e.nota = r.nota; return; } e.righeRegistro = r.righe; voci.push({ nome: nomeRegistro(a, cfg.timbro), dati: latin1(r.testo) }); arrivato(nomeRegistro(a, cfg.timbro), r.righe); });
       }).catch(function (err) { e.errore = (e.errore ? e.errore + '; ' : '') + err.message; if (/sessione/.test(err.message)) throw err; })
         .then(function () { stato.fatti = i + 1; ridisegna(); return attesa(PAUSA); });
     }, Promise.resolve());
@@ -410,12 +418,12 @@
     voci.push({ nome: 'riepilogo.txt', dati: latin1(riepilogo(cfg, esiti, avvisi)) });
     var blob = new Blob([zip(voci)], { type: 'application/zip' });
     var a = document.createElement('a');
-    a.href = URL.createObjectURL(blob); a.download = 'bdn_' + cfg.data + '.zip';
+    a.href = URL.createObjectURL(blob); a.download = 'bdn_' + cfg.timbro + '.zip';
     document.body.appendChild(a); a.click(); a.remove();
     stato.fine = true; fase('Finito');
     var reg = esiti.filter(function (e) { return e.righeRegistro != null; }).length;
     msg('Fatto: ' + reg + ' registri su ' + esiti.length + ' allevamenti, ' + esiti.filter(function (e) { return e.marche; }).length +
-      ' file di marche. Zip bdn_' + cfg.data + '.zip scaricato' + (avvisi.length || esiti.some(function (e) { return e.errore; }) ? ': leggi riepilogo.txt.' : '.'));
+      ' file di marche. Zip bdn_' + cfg.timbro + '.zip scaricato' + (avvisi.length || esiti.some(function (e) { return e.errore; }) ? ': leggi riepilogo.txt.' : '.'));
   }).catch(function (e) {
     stato.fine = true; fase('Interrotto'); msg('Interrotto: ' + e.message);
     q('fase').style.color = '#b00020';

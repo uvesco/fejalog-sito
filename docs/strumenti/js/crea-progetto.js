@@ -33,7 +33,7 @@ function monta(radice, deps) {
   var stato = {
     file: [], specieFile: {}, veterinariCsv: '', veterinariNome: '', ricercatiCsv: '', ricercatiNome: '',
     stabilimenti: null, principale: '', descrizione: '', data: oggi(adesso), etaMesi: 6, lettere: '',
-    problematiciInSequenza: true, verso: 'alto_basso', sigle: {}, priorita: [], reti: [], regole: {},
+    problematiciInSequenza: true, verso: 'alto_basso', sigle: {}, priorita: [], reti: [], regole: {}, cerchiettoPrincipale: null,
     id: deps.id || uuid(w), creatoIl: deps.creatoIl || isoSenzaMillisecondi(adesso), messaggio: '', esito: null, occupato: false
   };
   var codiciVisti = '', veterinariVisti = '';
@@ -58,6 +58,36 @@ function monta(radice, deps) {
     var select = h('select', attrs || {});
     opzioni.forEach(function (o) { select.appendChild(h('option', { value: o[0], selected: String(o[0]) === String(valore) }, o[1])); });
     return { input: select, label: h('label', null, testo + ' ', select) };
+  }
+  /** Le reti in CSV «SSID;password;note;sicurezza», da riusare negli altri progetti sulle stesse reti (utente, 2026-11-12). */
+  function retiInCsv(reti) {
+    var c = function (v) { v = String(v == null ? '' : v); return /[;"\r\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
+    var sic = { WPA: 'WPA2', SAE: 'WPA3', APERTA: 'aperta' };
+    return 'SSID;password;note;sicurezza\r\n' + reti.filter(function (r) { return r.ssid.trim(); }).map(function (r) {
+      return [r.ssid.trim(), r.password, r.note, sic[r.sicurezza] || 'WPA2'].map(c).join(';');
+    }).join('\r\n') + '\r\n';
+  }
+  /** Le reti da un CSV «SSID;password;note;sicurezza» (separatore ; , o tabulazione; intestazione facoltativa). */
+  function retiDaCsv(testo) {
+    var righe = String(testo).replace(/^\uFEFF/, '').split(/\r?\n/).filter(function (r) { return r.trim(); });
+    if (!righe.length) return [];
+    var sep = [';', '\t', ','].sort(function (a, b) { return righe[0].split(b).length - righe[0].split(a).length; })[0];
+    var viste = {}, out = [];
+    righe.forEach(function (r, i) {
+      var p = r.split(sep).map(function (x) { return x.trim().replace(/^"(.*)"$/, '$1').replace(/""/g, '"'); });
+      var ssid = p[0] || '';
+      if (i === 0 && /^(ssid|rete|nome)$/i.test(ssid)) return;
+      if (!ssid || viste[ssid] || ssid.length > 32) return;
+      viste[ssid] = true;
+      var sic = String(p[3] || '').toLowerCase();
+      out.push({ ssid: ssid, password: (p[1] || '').slice(0, 63), note: p[2] || '',
+        sicurezza: /wpa3|sae/.test(sic) ? 'SAE' : /apert|open|nessun/.test(sic) ? 'APERTA' : 'WPA' });
+    });
+    return out;
+  }
+  function regolaPredefinita(t) {
+    var codici = t.soluzioni.map(function (s) { return s[0]; });
+    return t.codice === 'ORA_IN_LISTA' && codici.indexOf('normalizzata') >= 0 ? 'normalizzata' : 'coda';
   }
   function scarica(nome, dati, mime) {
     if (deps.scarica) return deps.scarica(nome, dati, mime);
@@ -88,7 +118,8 @@ function monta(radice, deps) {
     return Zip.leggi(u8).then(function (voci) {
       var lavori = Object.keys(voci).sort().filter(function (n) {
         var base = n.replace(/^.*\//, '');
-        return base && base.charAt(0) !== '.' && n.indexOf('__MACOSX') < 0;
+        // il riepilogo.txt degli snippet BDN e ARVET non è un file della BDN: non si carica mai (utente, 2026-11-12)
+        return base && base.charAt(0) !== '.' && n.indexOf('__MACOSX') < 0 && base.toLowerCase() !== 'riepilogo.txt';
       }).map(function (n) { return fileBdnDa(nome + ' › ' + n.replace(/^.*\//, ''), voci[n], (profondita || 0) + 1); });
       return Promise.all(lavori).then(function (liste) { return [].concat.apply([], liste); });
     });
@@ -103,7 +134,8 @@ function monta(radice, deps) {
       stabilimenti: stato.stabilimenti || [], principale: stato.principale,
       eta_mesi: stato.etaMesi, lettere_specie: stato.lettere, problematici_in_sequenza: stato.problematiciInSequenza,
       verso_riempimento: stato.verso, sigle: sigle, priorita_regia: stato.priorita,
-      reti: stato.reti.filter(function (r) { return r.ssid.trim(); }), regole: stato.regole
+      reti: stato.reti.filter(function (r) { return r.ssid.trim(); }), regole: stato.regole,
+      cerchietto_principale: stato.cerchiettoPrincipale === null ? undefined : stato.cerchiettoPrincipale
     };
   }
   function calcola() {
@@ -194,7 +226,7 @@ function monta(radice, deps) {
     if (!codici.length) { c.appendChild(h('p', { class: 'fej-tenue' }, 'Gli stabilimenti compaiono dopo i registri.')); return; }
     var scelti = stato.stabilimenti || (e.piu_popoloso ? [e.piu_popoloso] : []);
     var principale = stato.principale || scelti[0] || '';
-    c.appendChild(h('p', null, 'Stabilimenti di lavoro (il principale non ha la lettera; gli altri la lettera cerchiata):'));
+    c.appendChild(h('p', null, 'Stabilimenti di lavoro (con più stabilimenti ogni provetta porta la lettera cerchiata del suo stabilimento):'));
     codici.forEach(function (s) {
       var sel = scelti.indexOf(s.codice) >= 0;
       var cb = h('input', { type: 'checkbox', checked: sel, name: 'stab', value: s.codice });
@@ -209,6 +241,15 @@ function monta(radice, deps) {
       c.appendChild(h('p', null, h('label', null, cb, ' ', s.codice, s.denominazione ? ' · ' + s.denominazione : '', ' · ', s.pecore + ' pecore, ' + s.capre + ' capre presenti'),
         ' ', h('label', { class: 'fej-tenue' }, rb, ' principale')));
     });
+    // utente, 2026-11-12: «lasciare scelta di non indicare la lettera dello stabilimento principale»
+    if (scelti.length > 1) {
+      var princ = (e.stabilimenti || []).filter(function (x) { return x.principale; })[0];
+      var conLettera = stato.cerchiettoPrincipale === null ? !!(princ && princ.cerchietto) : stato.cerchiettoPrincipale;
+      var cp = h('input', { type: 'checkbox', checked: conLettera });
+      cp.addEventListener('change', function () { stato.cerchiettoPrincipale = cp.checked; ricalcola(true); renderStabilimenti(); });
+      c.appendChild(h('p', null, h('label', null, cp, ' Lettera cerchiata anche sullo stabilimento principale'), ' ',
+        h('span', { class: 'fej-tenue' }, conLettera ? '(tutte le provette hanno la lettera)' : '(le provette del principale senza lettera, gli altri con la loro)')));
+    }
     var descr = campo('Descrizione del progetto', stato.descrizione, 'text', { maxlength: 120 });
     descr.input.addEventListener('input', function () { stato.descrizione = descr.input.value; ricalcola(); });
     var data = campo('Data (AAAA-MM-GG)', stato.data, 'text', { maxlength: 10 });
@@ -283,16 +324,38 @@ function monta(radice, deps) {
       pw.input.addEventListener('input', function () { r.password = pw.input.value; ricalcola(); });
       c.appendChild(h('p', null, ssid.label, ' ', sic.label, ' ', pw.label, ' ', bottone('Togli', function () { stato.reti.splice(i, 1); ricalcola(true); renderConfigurazione(); })));
     });
-    c.appendChild(h('p', null, bottone('Aggiungi una rete', function () { stato.reti.push({ ssid: '', password: '', sicurezza: 'WPA' }); renderConfigurazione(); })));
+    var csvReti = h('input', { type: 'file', accept: '.csv,.txt,text/csv,text/plain' });
+    csvReti.addEventListener('change', function () {
+      var f = csvReti.files && csvReti.files[0]; if (!f) return;
+      leggiTesto(f).then(function (t) {
+        var lette = retiDaCsv(t);
+        lette.forEach(function (r) {
+          var i = stato.reti.findIndex(function (x) { return x.ssid === r.ssid; });
+          if (i >= 0) stato.reti[i] = r; else stato.reti.push(r);
+        });
+        stato.messaggio = lette.length ? 'Reti caricate dal CSV: ' + lette.length + '.' : 'Nel CSV non ci sono reti (serve almeno la colonna SSID).';
+      }, function (e) { stato.messaggio = e.message; }).then(function () { csvReti.value = ''; ricalcola(true); renderConfigurazione(); });
+    });
+    c.appendChild(h('p', null, bottone('Aggiungi una rete', function () { stato.reti.push({ ssid: '', password: '', sicurezza: 'WPA' }); renderConfigurazione(); }), ' ',
+      h('label', null, 'oppure caricale da un CSV ', csvReti), ' ',
+      bottone('Esporta le reti (CSV)', function () {
+        if (!stato.reti.some(function (r) { return r.ssid.trim(); })) { stato.messaggio = 'Nessuna rete da esportare: scrivine almeno una.'; aggiorna(); return; }
+        scarica('reti_progetto.csv', '\uFEFF' + retiInCsv(stato.reti), 'text/csv;charset=utf-8');
+      })));
+    c.appendChild(h('p', { class: 'fej-tenue' }, 'Scrivi le reti la prima volta ed esportale: negli altri progetti sulle stesse reti si ricaricano dal CSV. Colonne SSID;password;note;sicurezza (WPA2, WPA3 o aperta): lo stesso reti.csv delle reti salvate dell’app, con la sicurezza in più. Il file contiene le password: tienilo per te.'));
     // regole dei problematici
     var tipi = e.tipologie || [];
     if (tipi.length) {
       c.appendChild(h('h3', null, 'Regole dei problematici (soluzione di fine lavori per tipologia)'));
+      // utente, 2026-11-12: «tutti in coda, arvet a mano, salvo "ora in lista coi registri nuovi"» (quelle si normalizzano)
+      var mancanti = false;
       tipi.forEach(function (t) {
-        var s = scelta(t.titolo, [['regola', 'Regola predefinita']].concat(t.soluzioni), stato.regole[t.codice] || 'regola');
-        s.input.addEventListener('change', function () { if (s.input.value === 'regola') delete stato.regole[t.codice]; else stato.regole[t.codice] = s.input.value; ricalcola(); });
+        if (!stato.regole[t.codice]) { stato.regole[t.codice] = regolaPredefinita(t); mancanti = true; }
+        var s = scelta(t.titolo, t.soluzioni, stato.regole[t.codice]);
+        s.input.addEventListener('change', function () { stato.regole[t.codice] = s.input.value; ricalcola(); });
         c.appendChild(h('p', null, s.label));
       });
+      if (mancanti) ricalcola();
       c.appendChild(h('p', { class: 'fej-tenue' }, 'Si possono cambiare anche dopo, dal tablet: le provette seguono da sole nella sistemazione.'));
     }
   }
@@ -387,7 +450,7 @@ function monta(radice, deps) {
   pannelloCrea.appendChild(msg);
   pannelloCrea.appendChild(h('p', null, bottone('Ricomincia da capo', function () {
     Object.assign(stato, { file: [], specieFile: {}, veterinariCsv: '', veterinariNome: '', ricercatiCsv: '', ricercatiNome: '', stabilimenti: null, principale: '', descrizione: '',
-      etaMesi: 6, lettere: '', problematiciInSequenza: true, verso: 'alto_basso', sigle: {}, priorita: [], reti: [], regole: {}, id: uuid(w), messaggio: '', esito: null });
+      etaMesi: 6, lettere: '', problematiciInSequenza: true, verso: 'alto_basso', sigle: {}, priorita: [], reti: [], regole: {}, cerchiettoPrincipale: null, id: uuid(w), messaggio: '', esito: null });
     codiciVisti = veterinariVisti = ''; calcola(); aggiorna(); renderFile(); renderElenco();
   })));
   pannelloCrea.appendChild(sezione('file', '1 · File della BDN'));
