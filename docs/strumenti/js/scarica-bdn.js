@@ -12,8 +12,9 @@
 function pulisci(s) { return String(s == null ? '' : s).replace(/&nbsp;/gi, ' ').replace(/\s+/g, ' ').trim(); }
 function specieBreve(s) {
   var t = pulisci(s).toLowerCase();
-  if (/^(o|ov|ovin|pecor)/.test(t)) return 'ovini';
-  if (/^(c|cap|capr)/.test(t)) return 'caprini';
+  // solo parole intere: «CAVALLI» o «ASINI» non sono caprini (12/11: lo snippet apriva i cavalli come capre)
+  if (/^(o|ov|ovin[io]|ovino|pecor[ae]|pecora)$/.test(t)) return 'ovini';
+  if (/^(c|cap|caprin[io]|capr[ae]|capra)$/.test(t)) return 'caprini';
   return '';
 }
 var CODICE = /^[0-9]{3}[A-Z]{2}[0-9A-Z]{3}$/;

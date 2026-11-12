@@ -30,8 +30,9 @@
   function pulisci(s) { return String(s == null ? '' : s).replace(/\s+/g, ' ').trim(); }
   function specieBreve(s) {
     var t = pulisci(s).toLowerCase();
-    if (/^(o|ov|ovin|pecor)/.test(t)) return 'ovini';
-    if (/^(c|cap|capr)/.test(t)) return 'caprini';
+    // solo parole intere: «CAVALLI» o «ASINI» non sono caprini (12/11: lo snippet apriva i cavalli come capre)
+    if (/^(o|ov|ovin[io]|ovino|pecor[ae]|pecora)$/.test(t)) return 'ovini';
+    if (/^(c|cap|caprin[io]|capr[ae]|capra)$/.test(t)) return 'caprini';
     return t;
   }
   function ovicaprino(specie) { var s = specieBreve(specie); return s === 'ovini' || s === 'caprini'; }
@@ -217,12 +218,12 @@
     '<div data-f="nota" style="color:#666;margin-top:6px">Non chiudere questa scheda e non cambiare pagina finché non arriva lo zip.</div>';
   document.body.appendChild(pannello);
   var q = function (n) { return pannello.querySelector('[data-f="' + n + '"]'); };
-  var stato = { inizio: Date.now(), ultima: Date.now(), fatti: 0, totale: 0, file: [], fine: false };
+  var stato = { inizio: Date.now(), ultima: Date.now(), fatti: 0, totale: 0, unita: 'stabilimenti', file: [], fine: false };
   var mmss = function (ms) { var s = Math.round(ms / 1000); return Math.floor(s / 60) + ':' + (s % 60 < 10 ? '0' : '') + (s % 60); };
   function ridisegna() {
     var pr = stato.totale ? Math.round(100 * stato.fatti / stato.totale) : 0;
     q('barra').style.width = pr + '%';
-    q('conti').textContent = stato.totale ? stato.fatti + ' di ' + stato.totale + ' allevamenti (' + pr + '%) · ' +
+    q('conti').textContent = stato.totale ? stato.fatti + ' di ' + stato.totale + ' ' + stato.unita + ' (' + pr + '%) · ' +
       stato.file.length + ' file pronti' : '';
     var fermo = Math.round((Date.now() - stato.ultima) / 1000);
     q('tempo').textContent = 'Da ' + mmss(Date.now() - stato.inizio) + (stato.fine ? '' : ' · ultima risposta della BDN ' + fermo + ' s fa' +
@@ -350,7 +351,7 @@
     var d = daScaricare(cfg, perStab);
     avvisi = avvisi.concat(d.avvisi);
     fase('Fase 2 di 2 · scarico registri storici e marche di ' + d.allevamenti.length + ' allevamenti');
-    stato.fatti = 0; stato.totale = d.allevamenti.length;
+    stato.fatti = 0; stato.totale = d.allevamenti.length; stato.unita = 'allevamenti';
     return d.allevamenti.reduce(function (p, a, i) {
       var e = { codice: a.codice, specie: a.specie, cf: a.cf, chiusura: a.chiusura, motivo: a.motivo };
       esiti.push(e);
