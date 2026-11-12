@@ -97,15 +97,15 @@ da controllare a mano (Android non lascia leggere quell'impostazione alle app). 
 
 I dati mobili possono restare accesi.
 
+Se usi un **lettore di microchip Bluetooth**, associalo al telefono come tastiera: i passi per l'Allflex AWR250 sono nel
+[foglio per i veterinari](../veterinari.md).
+
 ## 6. Le reti del progetto
 
 Prima di partire salva in Android le reti Wi-Fi del progetto (il router da viaggio, l'hotspot del tablet): apri la
 **fotocamera** del telefono e inquadra il **QR Wi-Fi** di ogni rete, stampato dal responsabile o mostrato dalla Regia in
 **Rete del progetto**. Android chiede di collegarsi: conferma. La rete resta salvata, e se in campo una rete cade Android
 passa da solo a un'altra di quelle salvate.
-
-Se usi un **lettore di microchip Bluetooth**, associalo al telefono come tastiera: i passi per l'Allflex AWR250 sono nel
-[foglio per i veterinari](../veterinari.md).
 
 ## La batteria durante il lavoro
 

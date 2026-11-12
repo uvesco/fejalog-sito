@@ -14,8 +14,8 @@ Scheda da una pagina: scegli **Stampa** nel browser (A4 verticale).
 - ☐ Per aggiornare, apri il nuovo APK della stessa app senza disinstallarla. Se usavi Fejalog debug, aggiorna con l'APK debug; la release Fejalog ha un altro applicationId e dati separati: non aggiorna né recupera i dati della debug. Per passare alla release, salva prima un backup dalla debug e aprilo nella release.
 - ☐ In Impostazioni › Utente verifica nome, cognome e codice fiscale. In Impostazioni › Dispositivo verifica il nome del device (vedi «Il telefono pronto», Configurazione iniziale).
 - ☐ Imposta la batteria di Fejalog su «Senza restrizioni» e spegni il risparmio energetico; segui «Il telefono pronto», Prima di cominciare, per gli altri controlli.
-- ☐ Salva in Android le reti del progetto: inquadra con la fotocamera i loro QR Wi-Fi, mostrati dalla Regia in Rete del progetto o stampati dal responsabile, compreso l'hotspot del tablet (vedi «Il telefono pronto», Le reti del progetto).
-- ☐ Prova la Wi-Fi con la Regia e mantieni la connessione anche senza internet: è normale (vedi «Il telefono pronto», La Wi-Fi del progetto).
+- ☐ Salva in Android le reti del progetto: inquadra con la fotocamera i loro QR Wi-Fi, mostrati dalla Regia in Rete del progetto o stampati dal responsabile, compreso l'hotspot del tablet (vedi «Il telefono pronto», Collegarsi alla Wi-Fi del progetto).
+- ☐ Prova la Wi-Fi con la Regia e mantieni la connessione anche senza internet: è normale (vedi «Il telefono pronto», Collegarsi alla Wi-Fi del progetto).
 - ☐ Prepara il portacellulare da avambraccio.
 - ☐ Porta un power bank carico e un cavo da 1 m adatto al telefono.
 - ☐ Porta un pennarello indelebile.
