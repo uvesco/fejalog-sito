@@ -91,6 +91,7 @@ nav:
       # <<< chi-dirige
       - "Requisiti hardware e software": chi-dirige/requisiti.md
       - "Attrezzatura e materiale": chi-dirige/attrezzatura-materiale.md
+      - "Scarica i registri dalla BDN": strumenti/scarica-bdn.md
       - "Crea il progetto sul sito": strumenti/crea-progetto.md
       - "Stampe pre-campo e QR": strumenti/prima-del-campo.md
       - "Rete e connessione": chi-dirige/rete.md
