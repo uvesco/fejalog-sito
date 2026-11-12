@@ -170,7 +170,7 @@
   }
 
   var puro = {
-    specieBreve: specieBreve, ovicaprino: ovicaprino, chiave: chiave, nomeRegistro: nomeRegistro, nomeMarche: nomeMarche, oggiAAAAMMGG: oggiAAAAMMGG,
+    fineStorico: fineStorico, specieBreve: specieBreve, ovicaprino: ovicaprino, chiave: chiave, nomeRegistro: nomeRegistro, nomeMarche: nomeMarche, oggiAAAAMMGG: oggiAAAAMMGG,
     percorsoTmp: percorsoTmp, sceltaRiga: sceltaRiga, allevamentiDa: allevamentiDa, stabilimentiDa: stabilimentiDa,
     daScaricare: daScaricare, stabilimentiDaInterrogare: stabilimentiDaInterrogare, zip: zip, crc32: crc32, latin1: latin1,
     riepilogo: riepilogo,
@@ -301,9 +301,26 @@
   }
 
   /** Il registro storico: «Stampa registro di stalla» nel riquadro, Classico, Storico, date, ASCII. */
+  /** Aspetta (fino a 5 s) che la pagina nel riquadro abbia la funzione `nome`: le schede lente arrivano dopo il load. */
+  function pronta(nome) {
+    var t0 = Date.now();
+    return (function prova() {
+      if (typeof riquadro.contentWindow[nome] === 'function') return Promise.resolve(true);
+      if (Date.now() - t0 > 5000) return Promise.resolve(false);
+      return attesa(300).then(prova);
+    })();
+  }
+  /** Fine dello storico: la chiusura dell'allevamento se c'è (la BDN non accetta una data oltre la fine attività), se no oggi. */
+  function fineStorico(fineAttivita, oggi) {
+    var f = pulisci(fineAttivita).split('/');
+    if (f.length === 3 && /^\d{2}$/.test(f[0]) && /^\d{2}$/.test(f[1]) && /^\d{4}$/.test(f[2])) return f;
+    var p2 = function (n) { return (n < 10 ? '0' : '') + n; };
+    return [p2(oggi.getDate()), p2(oggi.getMonth() + 1), String(oggi.getFullYear())];
+  }
   function storico() {
+    return pronta('Stampa').then(function (ok) {
     var w = riquadro.contentWindow;
-    if (typeof w.Stampa !== 'function') return Promise.resolve({ righe: null, nota: 'la BDN non offre il registro di stalla per questo allevamento' });
+    if (!ok) return { righe: null, nota: 'la BDN non offre il registro di stalla per questo allevamento' };
     var p = new Promise(function (r) { riquadro.addEventListener('load', r, { once: true }); });
     w.Stampa();
     return p.then(function () { return attesa(PAUSA * 1.5); }).then(function () {
@@ -313,10 +330,10 @@
       var st = d.getElementById('STORICO'); if (st) st.click();
       var ini = pulisci(g.elements.P_DT_INIZIO_ATTIVITA.value).split('/');
       if (ini.length !== 3) ini = ['01', '01', '1920'];
-      var o = new Date(), p2 = function (n) { return (n < 10 ? '0' : '') + n; };
+      var fine = fineStorico(g.elements.P_DT_FINE_ATTIVITA ? g.elements.P_DT_FINE_ATTIVITA.value : '', new Date());
       var sel = function (n, v) { var e = g.elements[n]; if (e) { e.value = v; e.dispatchEvent(new Event('change', { bubbles: true })); } };
       sel('P_DT_INIZIO_GG', ini[0]); sel('P_DT_INIZIO_MM', ini[1]); sel('P_DT_INIZIO_AA', ini[2]);
-      sel('P_DT_FINE_GG', p2(o.getDate())); sel('P_DT_FINE_MM', p2(o.getMonth() + 1)); sel('P_DT_FINE_AA', String(o.getFullYear()));
+      sel('P_DT_FINE_GG', fine[0]); sel('P_DT_FINE_MM', fine[1]); sel('P_DT_FINE_AA', fine[2]);
       var catturato = null;
       w2.open = function () { return { closed: false, focus: function () {}, close: function () {}, document: { write: function () {}, close: function () {} }, location: {} }; };
       w2.alert = function (m) { throw new Error('la BDN avvisa: ' + pulisci(m).slice(0, 120)); };
@@ -334,6 +351,7 @@
       var righe = t.split(/\r?\n/).filter(Boolean);
       if (righe.length && righe.every(function (r) { return r.length < 538; })) throw new Error('il registro non è nel tracciato ASCII atteso');
       return { righe: righe.length, testo: t };
+    });
     });
   }
 
