@@ -1,5 +1,8 @@
 # Tutorial col kit di prova (il percorso lungo)
 
+<script defer src="../js/vendor/mermaid.min.js"></script>
+
+
 > **A chi serve**: a chi vuole imparare ogni singolo aspetto del funzionamento di Fejalog passo per passo, affrontando in dettaglio ciascuna schermata e operazione sul gregge fittizio di prova.  
 > **Tempo di lettura**: 5 minuti (panoramica) · indice delle lezioni pratiche.
 
@@ -53,14 +56,14 @@ Ogni lezione del tutorial è strutturata con una griglia uniforme:
 
 ```mermaid
 flowchart TD
-    subgraph Preparazione ["1. Preparazione & Rete"]
+    subgraph Preparazione ["Passo 1 · Preparazione e rete"]
         L0["0 · Prepara kit"] --> L1["1 · Utente"]
         L1 --> L2["2 · Progetto"]
         L2 --> L3["3 · Registri & Regole"]
         L3 --> L4["4 · Connessione Rete"]
         L4 --> L5["5 · Capi Ricercati"]
     end
-    subgraph Campo ["2. Il Lavoro in Campo"]
+    subgraph Campo ["Passo 2 · Il lavoro in campo"]
         L5 --> L6["6 · Primo Prelievo"]
         L6 --> L7["7 · Fattispecie Capi"]
         L7 --> L8["8 · Doppi & Fuori Rete"]
@@ -68,7 +71,7 @@ flowchart TD
         L9 --> L10["10 · Statistiche"]
         L10 --> L10b["10 bis · Plateau della Regia"]
     end
-    subgraph Chiusura ["3. Risoluzione & Fine Lavori"]
+    subgraph Chiusura ["Passo 3 · Problemi e fine lavori"]
         L10b --> L11["11 · Soluzione Problemi"]
         L11 --> L12["12 · Riordino Plateau"]
         L12 --> L13["13 · Backup & Uscita"]

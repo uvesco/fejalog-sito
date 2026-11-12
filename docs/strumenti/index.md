@@ -11,6 +11,7 @@ Gli strumenti web di Fejalog consentono di completare tutte le operazioni comple
 
 ### Elaborazione al 100% nel tuo browser
 Tutti gli strumenti funzionano interamente all'interno del tuo browser web (Google Chrome, Microsoft Edge o Mozilla Firefox) grazie al motore di dominio Fejalog compilato in Kotlin/JS:
+
 - Il backup viene letto direttamente dal disco del tuo PC (o trasferito via cavo USB dal tablet);
 - **Nessun dato viene inviato a server esterni**: né i contrassegni, né i codici fiscali, né i dati sanitari transitano mai su internet;
 - Le azioni si conservano nel browser per quel backup, quando lo spazio locale è disponibile. Su un PC condiviso, esporta il lavoro e usa «Ricomincia da capo» per cancellare le azioni conservate; elimina anche i file scaricati quando non servono più. Non affidarti al solo browser come copia del lavoro.
@@ -72,6 +73,7 @@ Quando utilizzi gli strumenti per esercitazione, formazione o per testare il flu
 ---
 
 ## Pagine collegate
+
 - [Apri lo strumento interattivo: Fine lavori sul computer](fine-lavori.md)
 - [Stampe pre-campo e calcolo materiale](prima-del-campo.md)
 - [Regia su PC e tethering USB](../chi-dirige/tethering-pc.md)

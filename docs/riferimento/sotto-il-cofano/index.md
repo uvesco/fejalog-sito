@@ -1,5 +1,8 @@
 # Sotto il cofano: problemi affrontati e architettura
 
+<script defer src="../../js/vendor/mermaid.min.js"></script>
+
+
 Come Fejalog risponde ai vincoli del lavoro sul campo per garantire integrità, sincronizzazione e zero perdite di dati.
 
 ## Indice delle sezioni tecniche
@@ -64,6 +67,7 @@ flowchart TD
 
 ### Il problema
 Due veterinari posizionati ai capi opposti del recinto prelevano decine di animali all'ora. Il sistema deve impedire categoricamente che:
+
 - Due provette ricevano lo stesso identificativo;
 - Un veterinario debba correggere o rinumerare un campione già etichettato col pennarello durante il campionamento (REQ-NUM-01).
 
@@ -147,6 +151,7 @@ Fejalog adotta una persistenza ridondante a più strati:
 
 ### Il problema
 Durante il campionamento sul campo possono verificarsi variazioni rispetto alla pianificazione d'ufficio:
+
 - Il veterinario ufficiale decide di modificare la soglia di età diagnostica (es. da 12 mesi a 6 mesi per accertato pascolo vagante, o viceversa);
 - Vengono aggiornati i registri con animali non presenti nell'estrazione iniziale.
 
@@ -178,6 +183,7 @@ flowchart LR
 ### Il problema
 Nelle aree alpine e negli alpeggi è possibile risanare contemporaneamente greggi promiscui appartenenti a proprietari o codici stabilimento differenti.
 Esistono due fattispecie radicalmente diverse che richiedono trattamenti distinti:
+
 1. **Altro risanamento svolto in contemporanea**: un intero gregge con codice BDN diverso risanato nello stesso intervento, che richiede provette separate e una propria distinta di accettazione ARVET;
 2. **Singoli capi compravenduti o estranei**: singoli animali presenti nel gregge privi di passaggio di proprietà perfezionato in BDN.
 
@@ -282,6 +288,7 @@ flowchart TD
 Le batterie degli smartphone si degradano rapidamente alle basse temperature invernali. Schermi sempre accesi, frequenti richieste di geolocalizzazione o scansioni di rete continue possono esaurire la carica in meno di due ore. Inoltre, i veterinari che indossano guanti non possono eseguire gesti complessi su touchscreen umidi.
 
 ### La soluzione adottata
+
 1. **Zero polling e zero wake-lock**: Fejalog non mantiene lo schermo costantemente forzato né esegue cicli di polling a vuoto. Le connessioni TCP sono reattive su socket bloccanti in attesa di eventi;
 2. **Telemetria passiva della batteria**: il livello di carica di ogni palmare (`bat: {l, c}`) viene trasmesso unicamente come metadato opzionale nei normali pacchetti di sincronizzazione, consentendo alla Regia di monitorare lo stato di tutti i dispositivi senza inviare messaggi dedicati;
 3. **Lettori Bluetooth HID**: l'app accetta input diretto da lettori di transponder conformi ISO 11784/11785, FDX-B e HDX (es. Allflex AWR250), configurati come tastiera Bluetooth: il capo si trova senza toccare lo schermo;
@@ -294,6 +301,7 @@ Le batterie degli smartphone si degradano rapidamente alle basse temperature inv
 ## 9. Collaudi di tenuta e simulazione su larga scala
 
 La scalabilità e la reattività dell'architettura sono state verificate tramite benchmark ed esecuzioni estensive su PC ed emulatore:
+
 - **Scala a 4, 8 e 12 palmari**: prove con lotti fuori ordine, disconnessioni e riconciliazioni senza collisioni né omonimie;
 - **Simulazione gregge da 1800 capi**: oltre 1890 eventi con 12 palmari contemporanei, compattazione plateau ed export lineare;
 - **Guida fisica su emulatore**: riordino completo eseguito su tablet virtuale senza blocchi dell'interfaccia (ANR).

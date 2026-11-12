@@ -1,5 +1,8 @@
 # Fasi di lavoro e ruoli
 
+<script defer src="../../js/vendor/mermaid.min.js"></script>
+
+
 > **A chi serve**: a tutta la squadra (veterinari prelevatori e responsabile della Regia) · **Tempo di lettura**: 4 minuti
 
 Fejalog organizza la registrazione delle provette in campo separando in modo netto i **momenti della giornata** (le fasi) e i **compiti delle persone** (i ruoli). L'interfaccia dell'app si adatta a questa distinzione: ogni operatore vede e può utilizzare esclusivamente i dati, i moduli e i comandi pertinenti alla fase in corso e al ruolo assegnato al dispositivo.
@@ -9,6 +12,7 @@ Fejalog organizza la registrazione delle provette in campo separando in modo net
 ## 1. Il principio guida: solo ciò che serve alla fase e al ruolo
 
 Niente distrazioni e niente rischi operativi:
+
 - Chi è nei recinti o nella corsia di prelievo deve potersi concentrare sull'animale, sul microchip, sull'etichetta corretta della provetta e sull'avanzamento, senza il timore di toccare parametri di configurazione o impostazioni di seduta.
 - Chi coordina al tavolo della Regia deve avere a disposizione il quadro completo della squadra, l'accoglienza delle provette, il riempimento guidato dei plateau e la sorveglianza della rete locale.
 
@@ -29,23 +33,23 @@ Una giornata di profilassi si articola in quattro momenti successivi: una fase p
 
 ```mermaid
 flowchart TD
-    subgraph F0 ["1. Fuori progetto (sfondo tortora)"]
+    subgraph F0 ["Fase 0 · Fuori progetto"]
         F0_A["Regia: Crea o apre il progetto"]
         F0_B["Palmare: Inquadra il QR d'ingresso"]
     end
 
-    subgraph F1 ["2. Configurazione (solo Regia o Da solo)"]
+    subgraph F1 ["Fase 1 · Configurazione"]
         F1_A["Carica registri BDN, fissa parametri e plateau"]
         F1_B["Genera QR d'ingresso per la squadra"]
     end
 
-    subgraph F2 ["3. Campionamento (Regia e Palmari al lavoro)"]
+    subgraph F2 ["Fase 2 · Campionamento"]
         F2_A["Palmari e Regia: prelievo e registrazione provette"]
         F2_B["Regia: ricezione campioni e posa nei plateau"]
         F2_C["Chiusura del campionamento dalla Regia"]
     end
 
-    subgraph F3 ["4. Gestione campioni (solo Regia o Da solo)"]
+    subgraph F3 ["Fase 3 · Gestione dei campioni"]
         F3_A["Riordino plateau, problematici e tardive"]
         F3_B["Esportazione modello 2/33 e snippet ARVET"]
     end
@@ -62,6 +66,7 @@ flowchart TD
 
 ### Fase 0: Fuori progetto
 È lo stato iniziale in cui si trova l'app all'avvio. Non vi è ancora alcuna seduta attiva:
+
 - **Cosa fa la Regia**: tocca **Nuovo progetto** per iniziare una nuova profilassi, oppure **Apri progetto** / **Recenti** per riprendere un progetto già preparato in ufficio.
 - **Cosa fa il palmare**: tocca **Entra col QR** per inquadrare il codice mostrato dalla Regia (o cerca la seduta nella voce diretta **Rete** toccando «Chiedi di entrare»).
 - **Cosa fa chi è Da solo**: crea o apre il proprio progetto locale.
@@ -70,6 +75,7 @@ flowchart TD
 
 ### Fase 1: Configurazione (solo Regia)
 La fase di configurazione trasforma i file ufficiali BDN nel piano di lavoro della giornata. È riservata alla Regia (o a chi lavora da solo):
+
 - Si caricano i registri BDN degli stabilimenti (pecore, capre, contrassegni disponibili);
 - Si imposta l'età diagnostica minima (es. 6 o 12 mesi);
 - Se sono presenti sia pecore sia capre, si assegna obbligatoriamente la lettera di specie (regola di sicurezza);
@@ -84,6 +90,7 @@ La fase di configurazione trasforma i file ufficiali BDN nel piano di lavoro del
 
 ### Fase 2: Campionamento (Regia e Palmari)
 È la fase operativa vera e propria nei recinti e al tavolo:
+
 - **I palmari**: leggono i microchip col lettore Bluetooth o digitano le ultime cifre sul tastierino; visualizzano il capo anagrafico con i codici colore; leggono il riquadro dell'etichetta per sapere cosa scrivere sulla provetta (neutro per ordinaria, blu per isolato, rosso con contrassegno completo per problematico); possono scattare foto al campione se occorre; confermano il prelievo; consultano le proprie ultime provette per annotazioni; portano i campioni al tavolo.
 - **La Regia**: accoglie i lotti di provette consegnate toccando **Ricevi (N)**; segue lo schema visualizzato a video (**«Metti qui»**) per collocare fisicamente ciascuna provetta nel pozzetto esatto del plateau; vigila sulla rete locale e sul livello di batteria dei palmari; gestisce pause o esclusioni se un dispositivo si spegne; può registrare provette direttamente se necessario.
 - **Chiusura della fase**: quando tutti gli animali sono stati prelevati e la squadra lascia il gregge, **solo la Regia** chiude il campionamento. L'operazione richiede un dialogo di sicurezza che segnala chi è ancora al lavoro, le provette non ancora consegnate e una parola di conferma da digitare.
@@ -92,6 +99,7 @@ La fase di configurazione trasforma i file ufficiali BDN nel piano di lavoro del
 
 ### Fase 3: Gestione dei campioni (solo Regia, dopo la chiusura)
 Terminato il campionamento sul campo, si apre la gestione dei campioni (in ufficio o sul furgone). I palmari hanno terminato il loro compito ed escono dal progetto; la fase è gestita interamente dalla Regia (anche collegando il tablet a un PC Windows via USB, senza internet) o da chi lavora da solo:
+
 - **Riordino dei plateau**: chiusura dei buchi rimasti liberi nelle serie ordinarie spostando le provette dai numeri alti o ricollocando i capi problematici normalizzati;
 - **Plateau dei problematici**: verifica di tutti i campioni anomali e svuotamento progressivo del plateau problematici verso le destinazioni corrette;
 - **Provette tardive e modifiche**: inserimento di provette fisiche scritte ma non confermate in campo, rettifiche di contrassegni, gestione di scarti (recuperabili) e smarrimenti;
@@ -136,6 +144,7 @@ Se dopo qualche minuto il palmare non ritrova la Regia, propone di inquadrare il
 
 ### «Togli dalla rete» (prerogativa della Regia)
 Se un palmare smette di rispondere per più di 2 minuti (telefono spento, batteria esaurita o veterinario allontanatosi senza mettersi in pausa), la Regia può utilizzare il comando **«Togli dalla rete»** senza bisogno di maggioranze (`DEVICE_USCITO` con motivo `rimosso_dalla_rete`). 
+
 - Prima di toglierlo il regista verifica col veterinario che il telefono sia spento o fermo e non prelevi, e lo conferma nel dialogo. Il dispositivo rimosso non conta più per la maggioranza e non blocca più le decisioni: gli altri continuano a lavorare, anche col verde. Resta solo un avviso: i suoi eventuali prelievi non ancora arrivati si uniscono quando rientra col QR.
 - Se la Regia non riesce a escludere o a mettere in pausa per mancanza di maggioranza, il messaggio dice quale dispositivo non ha ancora ricevuto un ingresso o una ripresa: è quello da verificare e, se è fermo, da togliere dalla rete.
 - I prelievi già registrati da quel palmare restano al sicuro nel registro distribuito.

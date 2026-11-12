@@ -9,12 +9,14 @@ La Regia è il nodo centrale della profilassi in campo: apre il progetto partend
 ## 1. Hardware della postazione Regia
 
 ### Il tablet Android
+
 - **Sistema operativo**: Android **11** o superiore.
 - **Dimensione dello schermo**: raccomandato un display da almeno **10–11 pollici**. Questa dimensione consente a Fejalog di visualizzare la schermata operativa a **due pannelli affiancati**: a sinistra l'elenco dei veterinari con le provette pronte per «Ricevi», a destra il Plateau interattivo a 100 pozzetti con il riquadro «Metti qui». Sui telefoni o display piccoli i due pannelli vengono separati in schede distinte.
 - **Custodia protettiva**: custodia robusta da campo con supporto rigido d'appoggio (stand o leggio) per mantenere lo schermo inclinato, leggibile e stabile sul tavolo anche in presenza di polvere o vento.
 - **Autonomia e alimentazione**: la Regia coordina la replica del registro ed è il punto di riferimento per tutta la squadra. Non deve mai spegnersi durante la seduta. Porta un **power bank dedicato** e un cavo adatto; dimensiona la capacità dopo una prova della durata prevista. Una capacità nominale non garantisce una giornata di lavoro.
 
 ### La connettività Wi-Fi locale
+
 - **Router da viaggio a batteria** (consigliato) oppure **hotspot Wi-Fi** generato direttamente dal tablet o da un telefono ausiliario.
   L'hotspot va bene con pochi palmari: telefoni e tablet accettano pochi dispositivi collegati insieme (dipende dal modello, spesso
   8–10 e a volte meno: controlla nelle impostazioni dell'hotspot) e consumano più batteria. Con più di 5–6 palmari usa il router da
@@ -23,6 +25,7 @@ La Regia è il nodo centrale della profilassi in campo: apre il progetto partend
 - **Nessuna connessione internet**: il router o l'hotspot operano esclusivamente come punto d'accesso locale protetto (WPA2-PSK). Nessun dato transita su internet né su server remoti durante il campionamento (vedi [Le cinque garanzie](../inizia-qui/cinque-garanzie.md)).
 
 ### Accessori per la chiusura dei lavori
+
 - **Cavo dati USB**: per il collegamento diretto tra il tablet e il computer dell'ASL o dell'ufficio a fine lavori, sfruttando il tethering USB protetto da PIN breve a 8 cifre numeriche generate dal tablet (vedi [Regia su PC e tethering](tethering-pc.md)).
   > *Nota di trasparenza*: il collegamento USB è stato verificato via emulatore e provato dall’utente sul PC dell’ASL; il nuovo accesso con PIN a 8 cifre resta da provare sui dispositivi fisici.
 - **Lettore di microchip Bluetooth** (opzionale): doppio standard FDX-B / HDX (es. Allflex AWR250), utile se la Regia campiona o verifica direttamente al tavolo capi problematici o isolati.
@@ -32,6 +35,7 @@ La Regia è il nodo centrale della profilassi in campo: apre il progetto partend
 ## 2. Software e impostazioni di sistema
 
 ### Applicazione Fejalog
+
 - Installata sul tablet tramite file APK ([Scarica l'app](../scarica.md)).
 - **Preparazione della squadra**: tablet Regia e tutti i palmari dei veterinari devono utilizzare la **stessa identica versione e tipo di build** di Fejalog. Le build di release (`io.github.uvesco.fejalog`) e di debug (`io.github.uvesco.fejalog.debug`) hanno archivi e identificatori distinti: per la prova della squadra usa la stessa build su tutti. Gli archivi delle due app sullo stesso dispositivo sono separati.
 
@@ -59,6 +63,7 @@ Prima di uscire sul campo, verifica i seguenti parametri nelle impostazioni di s
 ---
 
 ## Pagine collegate
+
 - [Checklist del responsabile della Regia](../checklist-responsabile.md)
 - [Attrezzatura da campo e calcolo materiale](attrezzatura-materiale.md)
 - [Stampe pre-campo e calcolo materiale](../strumenti/prima-del-campo.md)

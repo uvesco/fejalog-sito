@@ -9,6 +9,7 @@ Per organizzare un intervento di profilassi con Fejalog non servono server dedic
 ## 1. Hardware
 
 ### Telefoni per i veterinari prelevatori (palmari)
+
 - **Sistema operativo**: Android **11** o più recente (installazione tramite file APK).
 - **Batteria**: carica iniziale al **100%**.
 - **Supporto da lavoro**: portacellulare da avambraccio (o fascia elastica da polso/braccio) per lavorare a mani libere tra gli animali.
@@ -17,15 +18,18 @@ Per organizzare un intervento di profilassi con Fejalog non servono server dedic
 - **Pennarello**: pennarello indelebile a punta fine (ad asciugatura rapida, resistente a umidità e basse temperature).
 
 ### Tablet per il coordinatore (la Regia)
+
 - **Dispositivo**: tablet Android 11 o più recente, con schermo da almeno 10–11 pollici consigliato per visualizzare chiaramente la griglia del Plateau a 100 pozzetti.
 - **Autonomia**: custodia robusta con piedistallo d'appoggio e power bank o alimentatore dedicato per l'intera durata della seduta.
 
 ### Lettore di microchip transponder (facoltativo ma raccomandato)
+
 - **Standard supportati**: orecchini elettronici e boli endoruminali di ovini e caprini hanno transponder a 134,2 kHz conformi alle norme ISO 11784 e ISO 11785, in tecnologia **FDX-B** oppure **HDX**. Sono le due ammesse per l'identificazione ufficiale nell'Unione europea, Italia compresa (Reg. CE 21/2004 e norme successive): il lettore deve leggerle entrambe (per esempio Allflex AWR250 o lettori a bastone compatibili).
 - **Connessione**: il lettore si accoppia al telefono come tastiera Bluetooth (profilo **HID**). Per l'Allflex AWR250: nel menu del lettore «Set BT Profile» › «HID», poi dalle impostazioni Bluetooth del telefono si sceglie il lettore e si conferma l'accoppiamento (PIN 0000 o 1234, se richiesto); i passi completi sono in [Preparare il telefono](../veterinari.md). Leggendo il bolo o l'orecchino elettronico, il lettore scrive il codice elettronico (`380` o `0380` seguito dalle 12 cifre nazionali) e Fejalog cerca il capo; Invio lo sceglie se il risultato è unico. Prova la lettura prima di uscire in campo.
 - **Portabilità**: fondina da cintura o faretra da schiena per i lettori a bastone.
 
 ### Computer per la chiusura dei lavori (dopo il campo)
+
 - Un PC con browser per gli strumenti del sito; per gli snippet ARVET usa Chrome su PC, come nella guida. Collegamento diretto al tablet anche via tethering USB, col cavo dati e un PIN di 8 cifre mostrato dal tablet: il collegamento è stato provato sul PC dell'ASL; l'accesso col PIN resta da provare sul PC.
 
 ---

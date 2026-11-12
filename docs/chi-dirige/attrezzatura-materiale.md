@@ -29,6 +29,7 @@ Per una seduta di profilassi tipo con più veterinari prelevatori occorrono:
 Il calcolo esatto del fabbisogno si effettua direttamente in Fejalog (**Configurazione › Stampe › Materiale**) oppure nello strumento on line [Prima del campo](../strumenti/prima-del-campo.md), partendo dai capi registrati in BDN in età diagnostica.
 
 ### Che cosa conta il calcolo
+
 - **Plateau ordinari**: per ogni serie serve spazio fino al massimo numero assegnato, anche se ci sono buchi. Si arrotonda al centinaio successivo: con il solo numero 101 servono comunque due plateau.
 - **Problematici**: nei progetti nuovi, un solo plateau problematici in uso sul tavolo e la scorta indicata dal calcolo fuori tavolo.
 - **Provette**: numero di capi numerati, più margine e scorta scelti dalla Regia (inizialmente 10% e 5%). Ciascuna percentuale si arrotonda separatamente all'intero superiore: con un capo e i valori iniziali il totale è tre provette.
@@ -75,6 +76,7 @@ La disposizione fisica sul tavolo deve rispecchiare fedelmente lo schema logico 
 ```
 
 ### Regole per il tavolo operativo
+
 1. **Posizione riparata**: posiziona il tavolo vicino all'uscita della corsia o dei recinti di prelievo, ma al riparo da polvere, correnti d'aria e pioggia.
 2. **Il tablet al centro**: mantieni il tablet orientato verso di te, con il pannello sinistro («Ricevi») e il pannello destro («Plateau / Metti qui») ben visibili contemporaneamente.
 3. **Separazione netta dei plateau**:
@@ -97,6 +99,7 @@ La disposizione fisica sul tavolo deve rispecchiare fedelmente lo schema logico 
 ---
 
 ## Pagine collegate
+
 - [Requisiti hardware e software per la Regia](requisiti.md)
 - [Stampe pre-campo e calcolo materiale](../strumenti/prima-del-campo.md)
 - [Consegne delle provette e gestione dei plateau](consegne-plateau.md)

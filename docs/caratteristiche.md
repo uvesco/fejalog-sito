@@ -124,6 +124,7 @@ Per coordinare la squadra in stabilimento o al pascolo senza dover urlare tra i 
 ## 8. Tenuta e simulazione su larga scala
 
 La robustezza dell'architettura e la reattività dell'interfaccia sono state collaudate in simulazioni estensive su PC ed emulatore:
+
 - **Scala a 4, 8 e 12 palmari**: prove con lotti fuori ordine, riconnessioni e assenza di omonimie garantite.
 - **Simulazione gregge da 1800 capi**: oltre 1890 prelievi simulati con 12 palmari contemporanei, plateau compattati e riconciliazione finale identica.
 - **Riordino senza blocchi**: guida fisica al riordino eseguita interamente su tablet emulato senza blocchi dell'interfaccia (ANR).

@@ -40,12 +40,14 @@ Dopo la conferma della ricezione, l'app genera nel registro l'evento immutabile 
 **Il posto fisico registrato non cambia mai più durante il campionamento aperto per nessun motivo**: né per l'aggiunta successiva di una nota, né per la correzione di una marca, né se in seguito viene scoperto un doppio prelievo. Se una provetta viene persa o annullata, la posa rimane nella storia. Non cambiare di nascosto il posto di altre provette per chiudere il buco.
 
 ### Provette ordinarie e provette da isolato non doppie
+
 - **Provette ordinarie**: vanno direttamente nel pozzetto corrispondente al loro numero definitivo preassegnato nella serie ordinaria (es. provetta 47 va al pozzetto 47 del Plateau 1).
 - **Provette prelevate da isolato senza duplicati (con il suffisso mostrato dall’app)**: vanno **subito nel pozzetto del loro numero naturale** (pozzetto 28 del Plateau 2) e non nella riga problematici.  
   > *Regola operativa*: collocare subito al loro posto gli isolati che non risultano doppi azzera inutili spostamenti durante il riordino finale di fine seduta.
 
 ### Problematici in sequenza unica: «Toglilo dal tavolo»
 I campioni problematici (capi smarriti, rubati, fuori età, di altri stabilimenti, doppi confermati e collisioni) seguono un flusso separato:
+
 1. Vanno posizionati nel **primo pozzetto libero disponibile** nel plateau dei problematici, in rigoroso ordine di consegna cronologica (indipendentemente da specie e stabilimento).
 2. Sul tavolo della Regia deve essere presente **un solo plateau problematici in uso alla volta**.
 3. Quando una consegna completa un plateau problematici, compare il promemoria:  
@@ -86,6 +88,7 @@ Se durante la profilassi vengono presentati animali che hanno perso entrambi i m
 ---
 
 ## Pagine collegate
+
 - [Attrezzatura da campo e calcolo materiale](attrezzatura-materiale.md)
 - [Preparare il progetto e avviare la seduta](avvio.md)
 - [Rete locale e gestione dispositivi](rete.md)

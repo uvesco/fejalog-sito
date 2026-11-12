@@ -34,6 +34,7 @@ Se durante la profilassi uno o più palmari sono rimasti isolati (ad esempio in 
 L'unione elimina le copie dello stesso evento: 120 eventi su un dispositivo e 25 su un altro non significano necessariamente 145 eventi distinti. Vengono mantenute le registrazioni uniche di entrambi.
 
 ### Procedura di riconciliazione passo per passo
+
 1. **Raccogli i file zip**: salva in una cartella del computer il backup prodotto dal tablet della Regia e i backup prodotti dai palmari che hanno lavorato isolati.
 2. **Caricamento multiplo**: nella scheda *Carica e riconcilia* dello strumento web, usa il selettore di file per scegliere insieme tutti gli zip dello stesso progetto.
 3. **Unione deterministica degli eventi**: il motore esamina tutti i registri caricati:
@@ -55,6 +56,7 @@ L'unione elimina le copie dello stesso evento: 120 eventi su un dispositivo e 25
 ---
 
 ## Pagine collegate
+
 - [Panoramica: gli strumenti dopo il campo](../strumenti/index.md)
 - [Controllo provette, problemi e statistiche](provette-statistiche.md)
 - [Le cinque garanzie di Fejalog](../inizia-qui/cinque-garanzie.md)

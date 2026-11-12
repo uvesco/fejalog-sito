@@ -14,6 +14,7 @@ La salvaguardia dei dati è protetta: per il salvataggio dei backup e dei report
 Lettore di microchip Bluetooth (Allflex AWR250 in uso ai Servizi Veterinari)
 Fejalog supporta la ricerca immediata del capo tramite i lettori di microchip transponder (bolo endoruminale o orecchino elettronico DX).
 Per configurare il lettore Allflex AWR250 in modalità tastiera Bluetooth con i palmari:
+
 1. Sul lettore: accendere e premere il tasto centrale per aprire il Menu.
 2. Andare su «Setup» › «Interface Setup» › «Bluetooth».
 3. Selezionare «Set Bluetooth Mode» e impostarlo su «Slave Mode».
@@ -24,6 +25,7 @@ Per configurare il lettore Allflex AWR250 in modalità tastiera Bluetooth con i 
 
 Provette problematiche e contrassegno sulla provetta
 I capi che non rientrano nella numerazione prenumerata (animali fuori età diagnostica, doppi contrassegni, inserimenti forzati di capi non in anagrafe, stabilimenti secondari):
+
 - Prendono una sigla problematica col codice veterinario (es. CA1, C17U).
 - REGOLA PRATICA: su tutte le provette problematiche si raccomanda caldamente di scrivere con il pennarello sulla provetta ANCHE IL CONTRASSEGNO completo del capo oltre alla sigla della provetta, per garantire la rintracciabilità visiva immediata durante il riordino e la successiva sistemazione.
 
@@ -44,6 +46,7 @@ Apri la fotocamera e inquadra i QR Wi-Fi delle reti del progetto (router, hotspo
 3. Dopo un riavvio o riaprendo l'app: si rientra automaticamente. Quello che hai registrato resta sul telefono e arriva alla Regia appena ti ricolleghi.
 
 Prima di cominciare (impostazioni telefono)
+
 1. Wi-Fi accesa. Dati mobili: possono restare accesi.
 2. Samsung: Impostazioni → Connessioni → Wi-Fi → ⋮ → Intelligent Wi-Fi → «Passa a dati mobili» SPENTO. Altri telefoni: spegnere il passaggio automatico ai dati mobili o la «connettività adattiva».
 3. Risparmio energetico SPENTO durante il lavoro.

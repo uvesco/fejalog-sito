@@ -27,6 +27,7 @@ Apri Fejalog sul tablet e tocca **«Nuovo progetto»** in **Progetto** (oppure a
 
 ### Passo 1: Registri BDN e anagrafica
 In **Configurazione › 3. Dati input** (sezione Registri BDN e contrassegni), tocca «Scegli i file» e carica i file BDN. L'app li riconosce automaticamente e compila la matrice:
+
 - Righe: gli stabilimenti di lavoro (es. `888TO999`);
 - Colonne: pecore presenti, capre presenti, marche disponibili per specie;
 - Verifica che il conteggio dei presenti corrisponda al conteggio dello stabilimento aggiornato.
@@ -36,6 +37,7 @@ In **Configurazione › 1. Parametri e regole**, imposta l'età minima per la pr
 
 ### Passo 3: Lettere di specie (Regola vincolante)
 Sempre in **1. Parametri e regole**, se il progetto comprende **sia pecore che capre**, si applica una regola di sicurezza tassativa:
+
 - **Almeno una delle due specie deve obbligatoriamente avere la lettera di specie** (`P` per pecore, `C` per capre), assegnata di norma alla specie meno numerosa;
 - L'opzione «Nessuna» è **categoricamente disabilitata** dall'interfaccia quando sono presenti entrambe le specie. In questo modo una pecora e una capra non potranno mai avere la stessa etichetta omonima sulla provetta (vedi [Le cinque garanzie](../inizia-qui/cinque-garanzie.md)).
 
@@ -44,6 +46,7 @@ In **Configurazione › 2. Stabilimenti**, distingui lo stabilimento principale 
 
 ### Passo 5: Verso di riempimento dei plateau
 In **1. Parametri e regole**, la Regia stabilisce come verranno riempiti fisicamente i rack da 100 pozzetti sul tavolo:
+
 - **Dall'alto verso il basso** (*predefinito*): il pozzetto 1 si trova in alto a sinistra;
 - **Dal basso verso l'alto**: il pozzetto 1 si trova in basso a sinistra.  
 Entrambi i versi seguono rigorosamente la numerazione ordinata riga per riga (mai a serpente).
@@ -52,6 +55,7 @@ Entrambi i versi seguono rigorosamente la numerazione ordinata riga per riga (ma
 Sempre in **1. Parametri e regole**, nei progetti nuovi, i campioni problematici, i doppi prelievi e i capi fuori registro confluiscono in un'**unica sequenza progressiva per tutto il progetto**, indipendentemente da stabilimento e specie. Sul tavolo della Regia è presente un solo plateau problematici alla volta; quando raggiunge 100 provette, viene archiviato e sostituito dal successivo.
 
 ### Passo 7: Capi ricercati
+
 - In **Configurazione › 3. Dati input** (sezione Capi ricercati), inserisci eventuali animali segnalati con il motivo e l'azione da compiere (compariranno evidenziati in viola sui telefoni con vibrazione dedicata). Le soluzioni per le varie tipologie di anomalie non si configurano in anticipo nelle impostazioni: si decideranno ex post in Gestione campioni (Problemi da risolvere).
 
 ---
@@ -89,6 +93,7 @@ I progetti precedenti senza le nuove impostazioni conservano il verso dal basso 
 ---
 
 ## Pagine collegate
+
 - [Fasi di lavoro e ruoli](../inizia-qui/fasi-e-ruoli.md)
 - [Rete locale e gestione dispositivi](rete.md)
 - [Consegne delle provette e gestione dei plateau](consegne-plateau.md)

@@ -48,6 +48,7 @@ Valuti il funzionamento e i limiti dell’app prima di una prova nel servizio. Q
 - **File**: legge i registri BDN supportati e prepara esportazioni e snippet per ARVET. Una prova col kit fittizio permette di verificare il percorso completo prima dell’uso.
 
 **Pagine dedicate all'approfondimento istituzionale**:
+
 - [Le cinque garanzie di Fejalog](cinque-garanzie.md)
 - [Le caratteristiche funzionali](../caratteristiche.md)
 - [Sotto il cofano: problemi affrontati e architettura](../riferimento/sotto-il-cofano/index.md)

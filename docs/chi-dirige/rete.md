@@ -20,6 +20,7 @@ Fejalog lavora su una rete Wi-Fi locale completamente autonoma, senza connession
 
 ### Passo 1: Aprire la rete sulla Regia
 All'apertura del progetto, Fejalog chiede se lavorare «In rete» oppure in locale. Scegli **«In rete»** (oppure apri **Configurazione › 4. Rete del progetto**). La pagina Rete della Regia mostrerà:
+
 - Il nome della rete Wi-Fi attiva;
 - Il pulsante per visualizzare il **QR d'ingresso** per i palmari (raggiungibile anche dalla voce **Configurazione › QR d'ingresso** o toccando l'icona della rete);
 - La tabella dei dispositivi collegati.
@@ -29,6 +30,7 @@ All'apertura del progetto, Fejalog chiede se lavorare «In rete» oppure in loca
 
 ### Passo 2: Far entrare i palmari
 I palmari partecipano solo alla fase di campionamento ed entrano a configurazione completata (vedi [Fasi di lavoro e ruoli](../inizia-qui/fasi-e-ruoli.md)). Ogni veterinario prelevatore, con il telefono collegato alla stessa Wi-Fi della squadra:
+
 1. Apre Fejalog e seleziona **Progetto › Entra col QR** (oppure, se già connesso alla rete, tocca «Chiedi di entrare» accanto al progetto rilevato nella voce diretta **Rete**);
 2. Sul tablet della Regia compare in sovrimpressione la notifica: **«[Nome Veterinario] chiede di entrare»**;
 3. La Regia tocca **«Fai entrare»**. Il palmare scarica istantaneamente il pacchetto anagrafico del progetto e la storia completa del registro a eventi.
@@ -81,6 +83,7 @@ La Regia mostra la batteria comunicata dai palmari e, quando disponibile, una st
 ---
 
 ## Pagine collegate
+
 - [Fasi di lavoro e ruoli](../inizia-qui/fasi-e-ruoli.md)
 - [Requisiti hardware e software per la Regia](requisiti.md)
 - [Preparare il progetto e avviare la seduta](avvio.md)

@@ -55,12 +55,14 @@ Quando il campionamento è chiuso, la scheda presenta la distinta completa di tu
 
 ### L'algoritmo di confronto per somiglianza
 Se sul tavolo della Regia è rimasta una provetta fisica con la scritta a pennarello sbiadita, parzialmente cancellata o macchiata:
+
 1. Inserisci nel campo di ricerca ciò che riesci a decifrare; puoi usare il carattere jolly `?` per indicare una cifra illeggibile (ad esempio digitando `5?` o `IT00100?42`);
 2. L'algoritmo confronta i caratteri inseriti con la distinta dei capi non prelevati;
 3. Il sistema ordina i candidati per somiglianza, specificando chiaramente il motivo di corrispondenza (es. *«Coincidono 5 cifre finali, sesso femmina compatibile»*).
 
 ### Registrazione tardiva dalla Regia
 Individuato il capo corrispondente:
+
 - La Regia tocca **«Attribuisci»**: scrive l'etichetta presente sul corpo della provetta e inserisce una breve nota sulle modalità di riconoscimento;
 - Il sito prepara un’azione: diventa un evento solo dopo esportazione e importazione confermata sulla Regia;
 - **Il campionamento non viene riaperto**: la registrazione tardiva è una facoltà esclusiva della Regia a campionamento chiuso che non richiede il rientro dei palmari.
@@ -97,6 +99,7 @@ La scheda fornisce il consuntivo della seduta di profilassi:
 ## 6. Gestione visiva dal Plateau
 
 La vista Plateau a campionamento chiuso permette di intervenire direttamente sui pozzetti:
+
 - **Bordi colorati di stato**:
   - **Verde**: plateau completo (tutti i 100 pozzetti occupati; l'ultimo plateau diventa verde quando non vi sono buchi e non restano problematiche da ricollocare);
   - **Giallo**: plateau da completare;
@@ -119,6 +122,7 @@ La vista Plateau a campionamento chiuso permette di intervenire direttamente sui
 ---
 
 ## Pagine collegate
+
 - [Panoramica: gli strumenti dopo il campo](../strumenti/index.md)
 - [Riconciliazione e verifica dei backup](riconcilia-backup.md)
 - [Il modello 2/33 finale con numeri definitivi](modello-233-finale.md)

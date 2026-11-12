@@ -47,6 +47,7 @@ Il lettore configurato per inviare il codice come tastiera (per esempio Allflex 
 
 ### Cosa succede se confermo un capo per errore?
 In cima alla schermata di Campionamento trovi il pulsante **Ultime**. Toccandolo puoi visualizzare gli ultimi campioni registrati:
+
 - **Modifica**: per aggiungere note, correggere lo stato degli orecchini o del bolo;
 - **Foto**: per aggiungere o verificare le foto collegate al campione (fino a 5 foto per provetta);
 - **Elimina**: per annullare la provetta se il prelievo non è andato a buon fine.  
