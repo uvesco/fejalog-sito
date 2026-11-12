@@ -1,16 +1,19 @@
 /* Interfaccia delle stampe: gli HTML sono prodotti solo da stampe.js, identico all'app. */
 (function () {
   'use strict';
-  var root = document.getElementById('fejalog-prima');
-  if (!root) return;
+  /* Montabile anche dentro «Crea il progetto» (utente, 12/11: le stampe come scheda di quella pagina, senza ridare la
+     numerazione): FejPrimaDelCampo.monta(radice, {progetto: true}) → { caricaBackup(byte dello snapshot) }. */
+  window.FejPrimaDelCampo = { monta: function (r, opz) { return avvia(r, opz || {}); } };
+  var radice = document.getElementById('fejalog-prima');
+  if (!radice) return;
   var base = document.currentScript.src.replace(/[^/]*$/, '');
   var elenco=['vendor/fejalog-shared.js','dominio.js','vendor/qrcode.js','vendor/stampe.js','vendor/xlsx.js','zip.js','registro.js','progetto.js'];
   (function avanti(i){
-    if(i===elenco.length){avvia();return;}
+    if(i===elenco.length){window.FejPrimaDelCampo.ultima=avvia(radice,{});return;}
     var script=document.createElement('script');script.src=base+elenco[i];
     script.onload=function(){avanti(i+1);};script.onerror=function(){root.textContent='Non riesco a caricare il motore delle stampe.';};document.head.appendChild(script);
   })(0);
-  function avvia() {
+  function avvia(root, opz) {
     root.innerHTML = '<div class="fej-form"><p><label>Chiave della numerazione (CSV) o backup (ZIP)<input id="prima-csv" type="file" accept=".csv,.zip,text/csv,application/zip"></label></p>' +
       '<p><label>2/33 di ARVET (.htm, anche più file, o lo zip dello snippet per ARVET)<input id="prima-htm" type="file" accept=".htm,.html,.zip,text/html,application/zip" multiple disabled></label></p></div>' +
       '<p id="prima-stato" role="status" aria-live="polite"></p><div id="prima-avvisi"></div><div id="prima-a3"></div><div id="prima-esiti"></div><section id="prima-materiale"></section>';
@@ -86,6 +89,9 @@
         carica=new Promise(function(resolve,reject){var r=new FileReader();r.onerror=function(){reject(new Error('Backup non leggibile.'));};r.onload=function(){resolve(r.result);};r.readAsArrayBuffer(file);})
           .then(function(buf){return FejProgetto.leggiBackup(buf);}).then(function(P){if(!P.verifica.ok)throw new Error('Verifica del backup non riuscita: scegli una copia integra.');return FejDominio.numerazioneStampe(P);});
       } else carica=leggi(file).then(function(t){return Stampe.daCsv(t);});
+      usa(carica,v);
+    };
+    function usa(carica,v){
       carica.then(function(d){
         if(v!==versione)return;
         dati=d;el('htm').disabled=false;
@@ -141,6 +147,16 @@
           el('esiti').insertBefore(cima,el('esiti').firstChild);}
         el('stato').textContent=ok+' file riconosciuti · '+(rr.length-ok)+' rifiutati.';
       });
+    };
+    if(opz.progetto){var pc=el('csv').closest('p');if(pc)pc.hidden=true;el('stato').textContent='Crea prima il progetto nella scheda «Crea il progetto»: la numerazione arriva da lì.';}
+    return {
+      /** La numerazione dallo snapshot creato nella pagina (byte dello zip fejalog-backup), al posto del CSV o del backup scelto a mano. */
+      caricaBackup: function(byteZip){
+        var v=++versione;
+        dati=null;el('htm').disabled=true;el('htm').value='';el('esiti').textContent='';el('a3').textContent='';el('avvisi').textContent='';aggiornaMateriale();
+        el('stato').textContent='Lettura della numerazione del progetto…';
+        usa(Promise.resolve(byteZip).then(function(b){return FejProgetto.leggiBackup(b);}).then(function(P){if(!P.verifica.ok)throw new Error('Verifica del progetto non riuscita.');return FejDominio.numerazioneStampe(P);}),v);
+      }
     };
   }
 }());

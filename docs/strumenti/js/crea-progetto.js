@@ -350,23 +350,53 @@ function monta(radice, deps) {
     var vets = JSON.stringify((e.veterinari || []).map(function (v) { return v.id; })) + '|' + (e.tipologie || []).length + '|' + stato.priorita.join(',');
     if (vets !== veterinariVisti) { veterinariVisti = vets; renderConfigurazione(); }
     renderScelte();
-    renderAnteprima(); renderSnapshot();
+    renderAnteprima(); renderSnapshot(); aggiornaStampe();
+  }
+
+  /* Le stampe pre-campo come seconda scheda (utente, 12/11: «unirei la pagina delle stampe alla precedente, così da non
+     dover dare altri input»): ricevono lo snapshot ogni volta che il progetto creato qui cambia. */
+  var Stampe = deps.stampe || w.FejPrimaDelCampo, apiStampe = null, chiaveStampe = '';
+  function aggiornaStampe() {
+    var e = stato.esito;
+    if (!apiStampe || !e || !e.ok) return;
+    var k = e.impronta + '|' + e.pacchetto.sha256;
+    if (k === chiaveStampe) return;
+    chiaveStampe = k;
+    apiStampe.caricaBackup(Zip.scrivi(Object.keys(e.files).sort().map(function (n) { return { name: n, data: e.files[n] }; })));
   }
 
   svuota(radice);
-  radice.appendChild(msg);
-  radice.appendChild(h('p', null, bottone('Ricomincia da capo', function () {
+  var pannelloCrea = h('div', { id: 'crea-scheda-progetto' }), pannelloStampe = h('div', { id: 'crea-scheda-stampe', hidden: 'hidden' });
+  var tastoCrea, tastoStampe;
+  function scheda(quale) {
+    pannelloCrea.hidden = quale !== 'crea'; pannelloStampe.hidden = quale !== 'stampe';
+    tastoCrea.className = 'md-button' + (quale === 'crea' ? ' md-button--primary' : ''); tastoCrea.setAttribute('aria-selected', String(quale === 'crea'));
+    tastoStampe.className = 'md-button' + (quale === 'stampe' ? ' md-button--primary' : ''); tastoStampe.setAttribute('aria-selected', String(quale === 'stampe'));
+  }
+  tastoCrea = bottone('1 · Crea il progetto', function () { scheda('crea'); }, { role: 'tab' });
+  tastoStampe = bottone('2 · Stampe pre-campo e 2/33', function () { scheda('stampe'); }, { role: 'tab' });
+  if (Stampe) {
+    radice.appendChild(h('p', { role: 'tablist', class: 'fej-schede' }, tastoCrea, ' ', tastoStampe));
+    radice.appendChild(pannelloCrea); radice.appendChild(pannelloStampe);
+    var contenitore = h('div', { id: 'fejalog-prima-incorporata' });
+    pannelloStampe.appendChild(h('p', { class: 'fej-tenue' }, 'Le stampe usano il progetto creato nella scheda 1: chiave della numerazione, foglio A3, materiale, QR Wi-Fi e i 2/33 precompilati (carica i .htm o lo zip dello snippet per ARVET).'));
+    pannelloStampe.appendChild(contenitore);
+    apiStampe = Stampe.monta(contenitore, { progetto: true });
+    scheda('crea');
+  } else radice.appendChild(pannelloCrea);
+  pannelloCrea.appendChild(msg);
+  pannelloCrea.appendChild(h('p', null, bottone('Ricomincia da capo', function () {
     Object.assign(stato, { file: [], specieFile: {}, veterinariCsv: '', veterinariNome: '', ricercatiCsv: '', ricercatiNome: '', stabilimenti: null, principale: '', descrizione: '',
       etaMesi: 6, lettere: '', problematiciInSequenza: true, verso: 'alto_basso', sigle: {}, priorita: [], reti: [], regole: {}, id: uuid(w), messaggio: '', esito: null });
     codiciVisti = veterinariVisti = ''; calcola(); aggiorna(); renderFile(); renderElenco();
   })));
-  radice.appendChild(sezione('file', '1 · File della BDN'));
-  radice.appendChild(sezione('elenco', '2 · Elenco dei veterinari e ricercati'));
-  radice.appendChild(sezione('stabilimenti', '3 · Stabilimenti e progetto'));
-  radice.appendChild(sezione('scelte', '4 · Scelte della creazione (prima dei registri)'));
-  radice.appendChild(sezione('configurazione', '5 · Configurazione della Regia'));
-  radice.appendChild(sezione('anteprima', '6 · Anteprima della numerazione'));
-  radice.appendChild(sezione('snapshot', '7 · Snapshot per la Regia'));
+  pannelloCrea.appendChild(sezione('file', '1 · File della BDN'));
+  pannelloCrea.appendChild(sezione('elenco', '2 · Elenco dei veterinari e ricercati'));
+  pannelloCrea.appendChild(sezione('stabilimenti', '3 · Stabilimenti e progetto'));
+  pannelloCrea.appendChild(sezione('scelte', '4 · Scelte della creazione (prima dei registri)'));
+  pannelloCrea.appendChild(sezione('configurazione', '5 · Configurazione della Regia'));
+  pannelloCrea.appendChild(sezione('anteprima', '6 · Anteprima della numerazione'));
+  pannelloCrea.appendChild(sezione('snapshot', '7 · Snapshot per la Regia'));
   calcola(); aggiorna(); renderFile(); renderElenco();
   return { stato: stato, ricalcola: function () { ricalcola(true); } };
 }

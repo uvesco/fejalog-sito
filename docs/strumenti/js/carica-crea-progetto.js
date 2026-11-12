@@ -4,7 +4,8 @@
   var root = document.getElementById('fejalog-crea');
   if (!root) return;
   var base = document.currentScript.src.replace(/[^/]*$/, '');
-  var elenco = ['vendor/fejalog-shared.js', 'dominio.js', 'vendor/xlsx.js', 'zip.js', 'crea-progetto.js'];
+  var elenco = ['vendor/fejalog-shared.js', 'dominio.js', 'vendor/xlsx.js', 'zip.js', 'vendor/qrcode.js', 'vendor/stampe.js', 'registro.js', 'progetto.js',
+    'prima-del-campo.js', 'crea-progetto.js'];
   (function avanti(i) {
     if (i >= elenco.length) {
       try { window.FejCreaProgetto.monta(root, { dominio: window.FejDominio, zip: window.FejZip }); }

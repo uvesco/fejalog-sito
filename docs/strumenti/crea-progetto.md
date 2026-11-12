@@ -8,6 +8,8 @@ Alla fine si scarica lo **snapshot per la Regia**: un file di backup di Fejalog 
 
 I registri storici e le marche di molti allevamenti (anche quelli dei pascoli comuni) si scaricano in un solo zip con [Scarica dalla BDN e da ARVET](scarica-bdn.md): lo zip si carica qui così com'è. Dalla stessa pagina, uno snippet per ARVET scarica i modelli 2/33.
 
+La pagina ha due schede: **1 · Crea il progetto** e **2 · Stampe pre-campo e 2/33**. La seconda usa direttamente il progetto creato nella prima, senza ricaricare la numerazione: foglio A3 provette e contrassegni, materiale e tavolo, fogli dei QR Wi-Fi e, caricando i 2/33 di ARVET (i `.htm` o lo zip dello snippet per ARVET), i 2/33 precompilati coi numeri delle provette, anche tutti insieme in uno zip.
+
 Tutto avviene nel browser: nessun file viene inviato in rete. Il codice fiscale dei veterinari resta nel pacchetto del progetto, mai nel registro. La guida è in [Creare il progetto sul sito](../riferimento/creasito.md).
 
 <noscript>Questa pagina ha bisogno di JavaScript attivo nel browser.</noscript>
