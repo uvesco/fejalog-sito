@@ -73509,7 +73509,41 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return list;
   }
-  function analisi($this, file) {
+  function marcheEntrambe($this, ingresso, file) {
+    var tmp0_elvis_lhs = oggetto($this, ingresso, 'specie_file');
+    var specieScelte = tmp0_elvis_lhs == null ? new JsonObject(emptyMap()) : tmp0_elvis_lhs;
+    // Inline function 'kotlin.collections.filter' call
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination = ArrayList_init_$Create$();
+    var _iterator__ex2g4s = file.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      var tmp;
+      if (element.tipo_1.equals(TipoFileBdn_MARCHE_getInstance()) && element.specie_1 == null) {
+        // Inline function 'kotlin.text.trim' call
+        var this_0 = testo_10(CreazioneSito_getInstance(), specieScelte, element.fonte_1.nome_1);
+        // Inline function 'kotlin.text.lowercase' call
+        // Inline function 'kotlin.js.asDynamic' call
+        tmp = toString_1(trim_0(isCharSequence(this_0) ? this_0 : THROW_CCE())).toLowerCase() === 'entrambe';
+      } else {
+        tmp = false;
+      }
+      if (tmp) {
+        destination.add_utx5q5_k$(element);
+      }
+    }
+    // Inline function 'kotlin.collections.map' call
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination, 10));
+    var _iterator__ex2g4s_0 = destination.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s_0.next_20eer_k$();
+      var tmp$ret$8 = item.fonte_1.nome_1;
+      destination_0.add_utx5q5_k$(tmp$ret$8);
+    }
+    return toSet_0(destination_0);
+  }
+  function analisi($this, file, entrambe) {
     var tmp = ImportatoreBdn_getInstance();
     // Inline function 'kotlin.collections.filter' call
     // Inline function 'kotlin.collections.filterTo' call
@@ -73537,7 +73571,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var _iterator__ex2g4s_1 = file.iterator_jk1svi_k$();
     while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
       var element_0 = _iterator__ex2g4s_1.next_20eer_k$();
-      if (element_0.tipo_1.equals(TipoFileBdn_MARCHE_getInstance()) && equals(element_0.specie_1, Specie_PECORE_getInstance())) {
+      if (element_0.tipo_1.equals(TipoFileBdn_MARCHE_getInstance()) && (equals(element_0.specie_1, Specie_PECORE_getInstance()) || entrambe.contains_aljjnj_k$(element_0.fonte_1.nome_1))) {
         destination_1.add_utx5q5_k$(element_0);
       }
     }
@@ -73557,7 +73591,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var _iterator__ex2g4s_3 = file.iterator_jk1svi_k$();
     while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
       var element_1 = _iterator__ex2g4s_3.next_20eer_k$();
-      if (element_1.tipo_1.equals(TipoFileBdn_MARCHE_getInstance()) && equals(element_1.specie_1, Specie_CAPRE_getInstance())) {
+      if (element_1.tipo_1.equals(TipoFileBdn_MARCHE_getInstance()) && (equals(element_1.specie_1, Specie_CAPRE_getInstance()) || entrambe.contains_aljjnj_k$(element_1.fonte_1.nome_1))) {
         destination_3.add_utx5q5_k$(element_1);
       }
     }
@@ -74231,6 +74265,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     CreazioneSito_instance = this;
     this.PREFISSO_FEED_1 = 'sito-';
     this.OPERATORE_1 = 'Sito';
+    this.ENTRAMBE_1 = 'entrambe';
     var tmp = this;
     tmp.jsonManifesto_1 = Json_0(VOID, CreazioneSito$jsonManifesto$lambda);
   }
@@ -74326,14 +74361,15 @@ if (typeof String.prototype.startsWith === 'undefined') {
         }
       }
     }
-    var a = analisi(this, utili);
+    var entrambe = marcheEntrambe(this, ingresso, utili);
+    var a = analisi(this, utili, entrambe);
     // Inline function 'kotlin.collections.filter' call
     // Inline function 'kotlin.collections.filterTo' call
     var destination_1 = ArrayList_init_$Create$();
     var _iterator__ex2g4s_1 = utili.iterator_jk1svi_k$();
     while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
       var element_5 = _iterator__ex2g4s_1.next_20eer_k$();
-      if (element_5.tipo_1.equals(TipoFileBdn_MARCHE_getInstance()) && element_5.specie_1 == null) {
+      if (element_5.tipo_1.equals(TipoFileBdn_MARCHE_getInstance()) && element_5.specie_1 == null && !entrambe.contains_aljjnj_k$(element_5.fonte_1.nome_1)) {
         destination_1.add_utx5q5_k$(element_5);
       }
     }
@@ -74416,7 +74452,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     // Inline function 'kotlin.collections.isNotEmpty' call
     if (!marcheSenzaSpecie.isEmpty_y1axqb_k$()) {
       // Inline function 'kotlin.collections.plusAssign' call
-      var element_14 = 'Scegli Pecore o Capre per i contrassegni senza specie: ' + joinToString_0(marcheSenzaSpecie, ', ', VOID, VOID, VOID, VOID, CreazioneSito$crea$lambda_0) + '.';
+      var element_14 = 'Scegli Pecore, Capre o Ambedue per i contrassegni senza specie: ' + joinToString_0(marcheSenzaSpecie, ', ', VOID, VOID, VOID, VOID, CreazioneSito$crea$lambda_0) + '.';
       errori.add_utx5q5_k$(element_14);
     }
     var codici = a.codiciStabilimento_1;
@@ -74594,7 +74630,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       // Inline function 'kotlin.js.asDynamic' call
       var tmp$ret$81 = item_0.tipo_1.name_1.toLowerCase();
       put(builder_0, 'tipo', tmp$ret$81);
-      put(builder_0, 'specie', nomeSpecie(CreazioneSito_getInstance(), item_0.specie_1));
+      put(builder_0, 'specie', entrambe.contains_aljjnj_k$(item_0.fonte_1.nome_1) ? 'entrambe' : nomeSpecie(CreazioneSito_getInstance(), item_0.specie_1));
       // Inline function 'kotlin.collections.map' call
       var this_7 = item_0.codici_1;
       // Inline function 'kotlin.collections.mapTo' call

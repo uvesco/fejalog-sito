@@ -147,9 +147,9 @@ function monta(radice, deps) {
       var ul = h('ul');
       e.file.forEach(function (f) {
         var li = h('li', null, f.nome + ' · ' + (f.tipo === 'registro' ? 'registro' : f.tipo === 'marche' ? 'contrassegni' : 'non riconosciuto') +
-          (f.specie ? ' · ' + f.specie : '') + (f.codici.length ? ' · ' + f.codici.join(', ') : '') + (f.tipo !== 'sconosciuto' ? ' · ' + f.capi + ' righe' : '') + ' ');
+          (f.specie ? ' · ' + (f.specie === 'entrambe' ? 'pecore e capre' : f.specie) : '') + (f.codici.length ? ' · ' + f.codici.join(', ') : '') + (f.tipo !== 'sconosciuto' ? ' · ' + f.capi + ' righe' : '') + ' ');
         if (f.tipo === 'marche' && !f.specie) {
-          var sp = scelta('Specie', [['', 'Da scegliere'], ['pecore', 'Pecore'], ['capre', 'Capre']], stato.specieFile[f.nome] || '');
+          var sp = scelta('Specie', [['', 'Da scegliere'], ['entrambe', 'Ambedue'], ['pecore', 'Pecore'], ['capre', 'Capre']], stato.specieFile[f.nome] || '');
           sp.input.addEventListener('change', function () { stato.specieFile[f.nome] = sp.input.value; ricalcola(true); renderFile(); });
           li.appendChild(sp.label); li.appendChild(d.createTextNode(' '));
         }
