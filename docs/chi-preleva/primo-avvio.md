@@ -24,9 +24,11 @@ come Fejalog gestisce la batteria durante il lavoro.
 !!! warning "La stessa versione del tablet"
     In campo tutti i telefoni devono avere **la stessa versione dell'app della Regia**: un telefono con una versione
     diversa non entra nel progetto. Installa quella che ti indica il responsabile. Se in campo ti accorgi di avere una
-    versione diversa, la Regia te la dà al volo: nella pagina del QR d'ingresso tocca «Mostra il QR per scaricare
-    l'app», tu lo inquadri con la fotocamera e scarichi l'app dal tablet, anche senza internet. Una versione nuova si
-    installa sopra quella vecchia: i progetti restano.
+    versione diversa, la Regia te la dà al volo, sulla Wi-Fi del progetto e anche senza internet: nella pagina Rete,
+    dopo il rifiuto, tocca **«Aggiorna dalla Regia»** e conferma l'aggiornamento di Android (la prima volta Android
+    chiede anche di consentire a Fejalog di installare app). Se la tua versione è troppo vecchia per avere quel tasto,
+    la Regia tocca «Mostra il QR per scaricare l'app» sotto il QR d'ingresso e tu lo inquadri con la fotocamera. Una
+    versione nuova si installa sopra quella vecchia: i progetti restano.
 
     «Fejalog» e «Fejalog debug» sono due app distinte, coi loro dati: usa quella che ti indica il responsabile.
 
