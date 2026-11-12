@@ -19,8 +19,9 @@
 
 ## Per il campo
 
-- ☐ Disponi il tavolo e i plateau distinguendo le serie per stabilimento e specie e e tieni a portata di mano il secchio per le provette problematiche.
+- ☐ Disponi il tavolo e i plateau distinguendo le serie per stabilimento e specie e tieni a portata di mano il secchio per le provette problematiche.
 - ☐ Accendi l'hotspot o il router e collega la Regia alla rete prevista.
+- ☐ Una sola rete del progetto accesa alla volta: con due reti accese Android può mettere i telefoni su reti diverse. L'hotspot del tablet si accende solo se il router cade; quando il router torna, spegni l'hotspot.
 - ☐ Apri Configurazione › QR d’ingresso della Regia e fallo inquadrare ai palmari.
 - ☐ Fai entrare tutti i palmari e controlla in Rete l'allineamento e l'impronta del pacchetto, uguale a quella della Regia.
 - ☐ Avvia il campionamento dalla Regia quando tutti sono pronti.

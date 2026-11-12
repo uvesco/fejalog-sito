@@ -8,12 +8,145 @@ Ogni versione elenca ciò che è cambiato dalla precedente pubblicata, comprese 
 
 | Versione | Data | Scarica |
 |---|---|---|
-| [0.4.0](#v0-4-0) · ultima | 05/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/schede_kit_cinque_stabilimenti.pdf) |
+| [0.5.5](#v0-5-5) · ultima | 11/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/schede_kit_cinque_stabilimenti.pdf) |
+| [0.4.0](#v0-4-0) | 05/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/schede_kit_cinque_stabilimenti.pdf) |
 | [0.3.0](#v0-3-0) | 28/10/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.3.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.3.0/kit_prova_888TO999.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.3.0/schede_kit_prova_888TO999.pdf) |
 | [0.2.0](#v0-2-0) | 21/10/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.2.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.2.0/kit_prova_888TO999.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.2.0/schede_kit_prova_888TO999.pdf) |
 | [0.1.0](#v0-1-0) | 16/10/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/kit_prova_888TO999.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/schede_kit_prova_888TO999.pdf) |
 
 Una versione precedente non si installa sopra una più recente: prima salva un backup, poi disinstalla l'app (i progetti nel telefono si perdono), infine installa la versione scelta. Per installare: [Scarica](scarica.md).
+
+## Versione 0.5.5 · 11/11/2026 { #v0-5-5 }
+
+Per il risanamento del 16/11: la rete torna da sola dopo la caduta del router e l'offline automatico si spegne al ritorno della Wi-Fi, nessun palmare diventa Regia da solo, la Regia ha la Gestione dispositivi e l'aggiornamento d'emergenza del registro in un tasto, più allevamenti nello stesso stabilimento; sul sito si crea il progetto e c'è il simulatore del gregge per il tutorial coi telefoni veri.
+
+[Scarica l'app](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/fejalog.apk){ .md-button .md-button--primary }
+[Kit di prova](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/kit_prova_cinque_stabilimenti.zip){ .md-button }
+[Schede da stampare](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/schede_kit_cinque_stabilimenti.pdf){ .md-button }
+
+[Pagina della release su GitHub](https://github.com/uvesco/fejalog-sito/releases/tag/v0.5.5)
+
+### Novità
+
+- Sul sito, Strumenti › Crea progetto: si crea il progetto nel browser dai file BDN (registri e contrassegni, più allevamenti per stabilimento), con l'elenco dei veterinari, età e lettere, sigle, priorità della regia, reti, verso di riempimento e regole dei problematici; si scarica la tabella della numerazione e lo «snapshot per la Regia», che il tablet apre con Progetto › Apri progetto › Riprendi da un backup. Stessa numerazione del progetto creato sul tablet con gli stessi file; nessun dato esce dal browser.
+- Sul sito, Strumenti › Simulatore del gregge: per imparare l'app coi telefoni veri, il sito mostra le pecore una alla volta (anche orecchini o bolo mancanti, marche disponibili, animali senza contrassegno con denti, razza e sesso, errori di sesso) e la Regia e i palmari campionano come in campo.
+- Campionamento › Gestione dispositivi (solo la Regia in rete): QR d'ingresso in testa, filtri Presenti / Solo attivi / Tutti, per ogni palmare il semaforo della rete (stessa regola dell'icona di rete), batteria, da quanto non risponde, provette; tasti Ricevi, Pausa / Riattiva ed Escludi definitivamente (si rientra solo col QR, «Riprendi» non basta). Si apre anche dalla pagina Regia e dal tasto accanto a «Fatte».
+- Registri BDN › «Aggiorna il registro (emergenza)»: la procedura in quattro passi guidati (chiusura con la conferma della Checklist, attesa che tutti siano allineati con l'elenco dei non allineati e il rimando alla Gestione dispositivi, caricamento con anteprima, riapertura). I numeri già dati restano.
+- La Regia sceglie in Configurazione › Sigle stabilimenti e veterinari un ordine di priorità per la regia d'emergenza (per esempio il coordinatore, poi un secondo e un terzo veterinario dell'elenco). Se il tablet non risponde, la regia la prende il primo della lista al lavoro; il suo telefono lo dice («prendi tu la regia»), gli altri dicono a chi spetta. Esauriti quelli della lista vale il criterio di prima.
+- Il QR d'ingresso porta sempre il nome della rete: la Regia deve avere il permesso di posizione (avviso con tasto in Checklist e avvio e nella pagina del QR); se il nome non si legge, si sceglie «Sei su …» fra le reti del progetto. L'impronta del registro è grande, in testa alla pagina del QR.
+- Il QR d'ingresso porta sempre il nome della Wi-Fi: per la Regia la posizione è obbligatoria (Android fa leggere il nome della rete solo così), con l'avviso e il tasto per concederla in Checklist e avvio e nella pagina del QR. Se il nome non si legge, la Regia tocca «Sei su …» fra le reti del progetto.
+- Nella pagina del QR l'impronta del registro è in testa, grande.
+- Nel foglio di conferma il riquadro contiene esattamente ciò che si copia sulla provetta; le istruzioni stanno sotto, in grassetto. Le provette prese da isolato si scrivono «125-UV» (non più con la barra).
+- «Togli dalla rete» chiede la conferma del regista («Ho verificato col veterinario: quel telefono non preleva»): il device esce subito dal conto e tutti tornano verdi.
+- Rete: una sola procedura. Prima del lavoro ogni telefono salva in Android le reti del progetto inquadrando il loro QR, mostrato in «Rete del progetto»; durante il lavoro la Wi-Fi la sceglie Android e Fejalog ritrova da solo la Regia sulla rete in cui è, anche sull'hotspot del tablet. Niente più finestre «Connessione al dispositivo» né reti temporanee.
+- Reti del progetto: una collezione da ordinare, ognuna col suo QR Wi-Fi grande da inquadrare.
+- «Passa tutti qui» della Regia avvisa i palmari con banda e vibrazione e apre il pannello Wi-Fi: si tocca la rete e Fejalog ritrova la Regia.
+- La guida «Collegati alla Wi-Fi di sistema» della Regia mostra anche il QR standard della Wi-Fi, da inquadrare con la fotocamera.
+- Animali senza contrassegno: in campionamento si registrano come non identificati, senza scegliere un capo, con specie, sesso, classe d'età dalla dentizione (tabella per pecora e capra), razza e un'identificazione provvisoria; tutto si scrive anche sulla provetta.
+- Dopo la chiusura del campionamento, in Gestione: chi ha perso le marche si confronta coi non prelevati compatibili; chi non era mai stato identificato si assegna a una marca disponibile dell'allevamento, anche applicandola subito in campo. Ne esce lo schema per la registrazione in BDN da dare all'allevatore.
+- Conteggio degli animali sotto età man mano che si marcano.
+- Problematici nel secchio: non si mettono nel plateau; nel Riordino si parte dalla provetta che si ha in mano.
+- Creazione e configurazione del progetto dal PC via USB (anche dall'A55), poi la regia passa al tablet.
+- Ricostruzione del progetto da una cartella: chiavetta della Regia o specchi dei device, in «Riconcilia backup».
+- Reti salvate: «Aggiungi da QR» legge il QR standard di una Wi-Fi.
+- Sotto il QR d'ingresso (di fianco, sul tablet) chi è entrato, l'ultimo in cima, e l'impronta del registro.
+- Regia: si passa fra le schermate della fase con uno swipe a destra o a sinistra (non sopra i plateau) e, sul tablet, con le schede in cima.
+- Il palmare si collega da solo alla Wi-Fi del QR, senza passare dalle impostazioni di Android; il collegamento a mano resta come ripiego.
+- Se un device viene spostato a mano su un'altra Wi-Fi, l'app cerca lì la Regia e gli altri palmari dello stesso progetto e ricostruisce la rete; chi ha cambiato rete a mano non viene riportato indietro.
+- Se la Regia non si trova né sulla rete principale né sulla riserva, dopo qualche minuto il palmare vibra una volta e chiede di inquadrare il QR della Regia.
+- Registro sulla chiavetta USB della Regia: ogni registrazione o modifica di provetta va subito sulla chiavetta, gli altri eventi a gruppi di dieci. Lo stato si legge in «Numerazioni e seconda copia».
+- In configurazione la Regia assegna le sigle a tutti i veterinari dell'elenco dell'ASL; la tua sigla compare accanto al nome in cima al menu.
+- Colori di lavoro diversi: salvia sul palmare, blu sulla Regia, altri colori da soli e fuori dal progetto.
+- Rete › «Togli dalla rete»: la Regia toglie un telefono che non risponde da 2 minuti, anche senza la maggioranza; rientra solo col QR.
+- Cambio di rete coordinato: la Regia manda la nuova rete ai palmari collegati, che si spostano da soli; chi manca rientra con «Ricollegati col QR» in Rete.
+- La sigla del veterinario si assegna da sola (prima le iniziali di nome e cognome), senza fermare né il palmare né la Regia.
+
+### Miglioramenti
+
+- L'esclusione definitiva di chi è in pausa o escluso si fa subito, anche se è collegato; per chi è al lavoro e collegato prima la pausa.
+- La Regia chiama lei i palmari al lavoro che non le sono collegati: se il tablet torna sulla Wi-Fi con un altro indirizzo, i palmari lo ritrovano subito.
+- Offline: quello automatico si accende solo senza Wi-Fi e si spegne da solo quando torna; quello scelto a mano resta finché non si tocca «Torna online» (in Rete e sotto la banda).
+- Nessun palmare si fa Regia da solo: il telefono che ha preso la regia d'emergenza col tasto, se cade e torna, non la riprende da sé. Il tablet tornato riprende la regia come prima.
+- Con tutti collegati meno provette «da isolato» (125-UV): alla conferma l'app aspetta al massimo un secondo e mezzo che arrivino le conferme dei colleghi, invece di decidere nell'attimo in cui è appena arrivata la provetta di un altro.
+- A campionamento aperto il registro di un allevamento già caricato non si sostituisce più e non si torna al pacchetto: la pagina dei registri spiega la procedura d'emergenza (chiudi il campionamento, controlla in Rete che tutti siano allineati, carica, riapri). I numeri già dati restano. Un allevamento nuovo, un altro stabilimento o un DDA si caricano come prima.
+- Con molti capi e molti palmari l'app lavora meno: una consegna, una provetta messa nel plateau, una pausa, una ripresa o un ingresso non fanno più ricalcolare tutto l'elenco su ogni telefono.
+- Checklist del responsabile: stampare il QR Wi-Fi di ogni rete prevista, compreso l'hotspot del tablet, perché ogni telefono le salvi prima di partire.
+- Il tablet spento più di 2 minuti, quando torna, riprende la regia da solo se nessuno l'ha presa e vede la maggioranza dei veterinari al lavoro: non serve più che il primo della lista la prenda e gliela ridia.
+- Entrando o rientrando col QR, il telefono aspetta finché il registro arriva dalla Regia (fino a 2 minuti), dice quanti eventi sono arrivati e si può annullare: non dice più «riprova col QR» a chi sta solo ricevendo il registro.
+- Con la regia libera e il tablet di nuovo in rete, il primo della lista legge «la riprende Mario R, l'ultima Regia tornata in rete» invece di «prendi tu la regia».
+- Il pannello Wi-Fi di Android non si apre mai da solo: l'avviso di cambio rete ha un tasto per aprirlo.
+- Se «Prendi la regia» è spento, la pagina dice il motivo vero; un palmare rifiutato per build diversa lo dice in rosso.
+- Telecomando BLE-M3: riconosciuto anche quando Android lo tratta come mouse; il volume non cambia più; OK, Indietro e frecce nei fogli, nei dialoghi e nei risultati; la schermata non si ricarica quando il telecomando si collega o si addormenta.
+- Maggioranza più sicura: chi entra, riprende o viene escluso conta solo quando lo sanno quelli di prima; prima della regia d'emergenza un controllo di chi risponde davvero.
+- Dopo la regia d'emergenza i palmari collegati tornano verdi senza ricollegarsi.
+- Se nessuno ha più la regia e tutti risultano esclusi, chi è al lavoro rientra da solo e la regia si può riprendere.
+- Telecomando: su e giù scelgono fra i capi trovati e OK apre quello evidenziato; nelle finestre di conferma OK conferma e Indietro annulla; un gesto risveglia lo schermo nero senza fare altro.
+- Ultime: sul palmare solo le proprie provette; la Regia sceglie tutte o di un veterinario.
+- Nella checklist del telefono (Dispositivo, «Entra col QR» e, sulla Regia, Checklist e avvio) ci sono anche i permessi: posizione o dispositivi Wi-Fi vicini, fotocamera, notifiche, con il tasto per concederli.
+- La copia del registro sulla chiavetta, dopo una scrittura interrotta, riparte su un file nuovo e non si ferma più; il file interrotto resta com'è.
+- La ricostruzione da una cartella legge anche le copie ripartite e salta le righe rovinate, lasciando decidere alla verifica del registro.
+- «Marca in campo» si vede con una riga fissa e si chiude annullando, cambiando specie o dopo la registrazione.
+- Letto un capo registrato dell'altra specie, l'app chiede sempre se passare alla sua specie o registrare l'errore di specie: un solo OK non basta più.
+- Nel cerchio in cima al menu c'è la tua sigla, senza ripeterla accanto al nome.
+- Nella pagina Regia, accanto a chi non ha provette da ricevere: «Tutte ricevute», oppure «Le ultime provette arrivano al rientro» per chi non risponde.
+- I palmari entrano solo a configurazione completa e con la stessa build della Regia: se la build è diversa, il messaggio dice quale installare.
+- Sul palmare il menu mostra solo campionamento, avanzamento con la classifica e rete; «Collegati alla riserva» sposta il telefono da solo.
+- Fuori da un progetto il menu non mostra le fasi del lavoro.
+- Gli avvisi chiusi restano chiusi anche cambiando pagina; ricompaiono solo se la situazione peggiora.
+- Lo schermo nero del campionamento non rallenta più il telefono.
+- Le scelte su che cosa fare dei problematici si fanno solo in Gestione, dopo il campionamento.
+- Rete del progetto: la password è facoltativa. Senza password il QR porta comunque il nome della rete, e i palmari usano la rete già salvata nel telefono.
+- Cambio di rete: resta «in corso» finché il telefono non è davvero sulla rete nuova, e solo allora il QR mostra il nuovo indirizzo; se Android non si sposta da solo, la guida compare anche sulla Regia («Completa il cambio rete»).
+- Il palmare non fa più controlli ripetuti mentre aspetta la rete o la Regia: si muove quando la rete cambia o arrivano i dati.
+- Il QR d'ingresso mostra sempre la rete in uso, con il nome della rete e l'indirizzo della Regia; il palmare usa la Wi-Fi del telefono e, se non è collegato, guida a collegarsi.
+- Un progetto alla volta: con un progetto aperto non si apre né si crea un altro progetto e non si entra col QR di un altro; senza progetto le voci Nuovo, Apri, Recenti ed Entra col QR stanno al posto delle fasi.
+- Campionamento: Pecore e Capre sono due tasti grossi; la ricerca è solo per contrassegno, prima quelli che finiscono con le cifre digitate.
+- Gli avvisi stanno su una riga e si chiudono con la X (ricompaiono se la situazione peggiora); nel foglio di conferma scorre tutto tranne Conferma e Annulla.
+- «Stabilimenti e sigle» si chiama «Sigle stabilimenti e veterinari».
+
+### Correzioni
+
+- Difesa anche nel registro: un caricamento che sostituisce il registro di un allevamento già caricato, scritto a campionamento aperto, non vale su nessun device (nemmeno il ritorno al pacchetto); vale a campionamento chiuso, e un allevamento nuovo si aggiunge sempre.
+- Più allevamenti nello stesso stabilimento (un file BDN per proprietario): il registro aggiornato di un allevamento caricato in corsa toglieva anche i capi degli altri allevamenti dello stesso codice. Ora sostituisce solo i suoi.
+- Creando il progetto dai file BDN, sul tablet o dal PC, i capi sotto l'età diagnostica prendevano un numero: ora l'età si fissa prima dei registri. Se dopo si cambia l'età o si aggiunge un registro o uno stabilimento, i capi nuovi vanno in fondo e i numeri già dati non cambiano.
+- Il progetto creato sul tablet dai file della BDN usa le sigle dei veterinari («125-UV», «UV-15»), come quelli creati per le altre strade.
+- Nella rinomina obbligatoria di due provette registrate insieme con la stessa etichetta ogni veterinario riceve una proposta diversa, che l'app accetta («Ⓥ20-A», «Ⓥ20-B»).
+- Alla riunione di una rete divisa nessuno esclude più i veterinari dell'altro gruppo contando un telefono che porta già la propria esclusione.
+- Regia e palmari si ritrovano anche senza Regia attiva e dopo la cessione della regia; un collegamento rifiutato non conta più come riuscito.
+- Senza Regia (regia libera dopo un'esclusione) i palmari della stessa Wi-Fi si ritrovano e si allineano fra loro; il tablet che aveva la regia ed è stato escluso torna palmare e si collega agli altri, invece di aspettarli.
+- Quando la regia passa a un altro device (presa o affidata), i palmari si collegano subito al nuovo regista invece di aspettarlo.
+- Un device con un'altra build non viene più richiamato di continuo: i tentativi verso di lui si diradano e non impediscono agli altri di collegarsi fra loro.
+- Il router della Wi-Fi si prova come Regia solo per pochi tentativi; in Rete la scritta della Regia dice «regia libera» o «indirizzo non ancora noto» invece di un indirizzo sbagliato.
+- Un palmare rifiutato dagli altri perché ha un'altra build lo dice in rosso, con la build da installare, invece di «non risponde».
+- Il pannello Wi-Fi di Android non si apre più da solo (all'avviso «Passa tutti qui» o nella guida d'ingresso): la banda vibra e ha il tasto «Apri il pannello Wi-Fi».
+- Il tasto «Prendi la regia» spento dice il motivo vero (per esempio: dispositivo escluso, da far rientrare), e il banner dice «si può prendere» solo se da qui si può.
+- Dopo «Ricollegati col QR» il palmare non torna a cercare indirizzi vecchi.
+- Lo schermo del campionamento non si scurisce più mentre si lavora nel foglio di conferma o in una finestra di dialogo.
+- La Regia mostra il QR e si fa trovare subito sulla rete in cui è, anche senza il permesso di posizione.
+- Il cambio di rete della Regia si completa anche quando Android non lascia leggere il nome della Wi-Fi (senza permesso di posizione): prima restava «in attesa di verifica».
+- «Aggiungi da QR» nelle Reti salvate non chiude più l'app.
+- I palmari dei progetti già avviati non vengono più fermati all'ingresso per una configurazione «incompleta».
+- Nel Riordino la provetta di un animale senza contrassegno non ancora risolto dice di risolverla prima in Gestione.
+- Il campionamento si avvia solo dal tablet; la pagina del PC via USB si spegne all'avvio.
+- Un palmare rimasto nel progetto vecchio non legge più «build diversa»: se trova la sua Regia in un altro progetto gli dice di uscire e inquadrare il QR.
+- «Manca 1 capo» al singolare; la Regia non è più fra i destinatari dei propri messaggi.
+- «Ricollegati col QR» e l'avviso per inquadrare il QR della Regia compaiono solo sul palmare: chi ha la regia o lavora da solo mostra il suo QR, non entra con quello di un altro.
+- Un palmare appena entrato aspetta la sigla dalla Regia e, con tutti collegati, le provette non escono più con la sigla in coda.
+- La banda e l'icona della rete diventano gialle ogni volta che le provette escono con la sigla in coda (prima potevano restare verdi).
+- «Esci dal progetto» chiude il progetto in un solo passaggio.
+- «Nuovo progetto › Di prova» crea sempre un progetto nuovo invece di riaprire quello di una prova precedente.
+- Dopo «Esci dall'app», riaprendo l'app la rete riparte da sola anche se Android aveva tenuto l'app in memoria.
+- Dopo «Chiedi di entrare» il palmare apre davvero il progetto e può campionare (col progetto «Di prova» restava senza progetto).
+- «Passa tutti alla riserva» e il cambio di rete principale o riserva non vanno più in timeout.
+- «Ricollegati col QR» dice «Ricollegato» solo quando il rientro vale davvero, dopo aver ricevuto tutti i dati della Regia.
+- Un telefono tolto dalla rete, escluso, in pausa o che ha finito non può prendersi la regia, neanche quando è libera.
+- Un palmare tolto dalla rete torna al lavoro solo col QR, non con Pausa e Riprendi; finché non rientra, i doppi si segnalano con prudenza.
+- Se due regie si sono scambiate un'esclusione mentre erano separate, al ritorno la Regia giusta resta valida.
+- L'app non si blocca più quando arrivano dati dalla rete mentre si aggiorna una schermata: erano i blocchi della presentazione del 6/11, che facevano cadere anche le connessioni.
+- Un telefono escluso, o che non vede la maggioranza, non può più prendersi la regia d'emergenza.
+- «Ricollegati col QR» sostituisce davvero la rete vecchia e dice se il collegamento è riuscito.
+- Con pecore e capre «Nessuna» lettera di specie non si può più scegliere; se la seconda specie arriva dopo l'avvio, prende la lettera da sola.
+- Sulla Regia che fa da hotspot il QR porta l'indirizzo dell'hotspot.
 
 ## Versione 0.4.0 · 05/11/2026 { #v0-4-0 }
 
