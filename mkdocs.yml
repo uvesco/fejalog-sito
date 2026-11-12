@@ -99,6 +99,7 @@ nav:
           - "Checklist del veterinario": checklist-veterinari.md
           - "Preparare il telefono": veterinari.md
           # <<< chi-preleva
+          - "Prima configurazione del telefono": chi-preleva/primo-avvio.md
           - "In campo (scheda pratica)": chi-preleva/in-campo.md
           - "Cosa succede se…": chi-preleva/cosa-succede-se.md
           - "Domande dei prelevatori": chi-preleva/domande.md

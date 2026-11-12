@@ -4,14 +4,18 @@
 
 Il foglio per chi usa i palmari, da stampare o mandare su WhatsApp. Lo stesso testo si manda dall'app: «Prima di cominciare» › «Manda le istruzioni».
 
-Cos'è Fejalog e a cosa serve
+Prima volta con Fejalog? Installazione, dati personali e permessi, passo per passo: [Prima configurazione del telefono](chi-preleva/primo-avvio.md).
+
+## Cos'è Fejalog e a cosa serve
+
 Fejalog è l'applicazione per la registrazione in campo delle provette durante la profilassi della brucellosi ovicaprina (e futuri controlli).
 Risponde all'esigenza di catalogare con precisione assoluta le provette di sangue prelevate nello stabilimento o al pascolo e gestire la successiva accettazione al laboratorio IZS verso ARVET (per il Piemonte).
 Per l'uso fuori dal Piemonte (o con altri gestionali), a fine lavori l'applicazione genera anche un file CSV lineare nel formato «provetta,contrassegno» per ogni invio di campioni.
 Funziona interamente su rete Wi-Fi locale senza internet: i dati sono sincronizzati in tempo reale tra tutti i dispositivi presenti.
 La salvaguardia dei dati è protetta: per il salvataggio dei backup e dei report l'app esclude tassativamente servizi di posta (Gmail), social o app di intelligenza artificiale, consentendo l'archiviazione esclusivamente nella memoria locale del dispositivo e su cloud storage autorizzati (Google Drive, Microsoft OneDrive, Dropbox, Nextcloud).
 
-Lettore di microchip Bluetooth (Allflex AWR250 in uso ai Servizi Veterinari)
+## Lettore di microchip Bluetooth (Allflex AWR250 in uso ai Servizi Veterinari)
+
 Fejalog supporta la ricerca immediata del capo tramite i lettori di microchip transponder (bolo endoruminale o orecchino elettronico DX).
 Per configurare il lettore Allflex AWR250 in modalità tastiera Bluetooth con i palmari:
 
@@ -23,20 +27,26 @@ Per configurare il lettore Allflex AWR250 in modalità tastiera Bluetooth con i 
 6. Selezionare il lettore (es. AWR250\_...) e confermare l'accoppiamento (se richiesto codice PIN: 0000 o 1234).
 7. Durante il campionamento: posizionandosi nella schermata di Campionamento, leggendo il transponder il codice (380... o 0380...) viene trasmesso istantaneamente come digitazione da tastiera seguita da Invio, selezionando il capo corrispondente senza digitare cifre a mano.
 
-Provette problematiche e contrassegno sulla provetta
-I capi che non rientrano nella numerazione prenumerata (animali fuori età diagnostica, doppi contrassegni, inserimenti forzati di capi non in anagrafe, stabilimenti secondari):
+## Provette problematiche e contrassegno sulla provetta
 
-- Prendono una sigla problematica col codice veterinario (es. CA1, C17U).
+I capi che non rientrano nella numerazione prenumerata (animali fuori età diagnostica, doppi contrassegni, inserimenti forzati di capi non in anagrafe, capi di altri stabilimenti):
+
+- Prendono il progressivo del prelevatore con la sua sigla (es. UV-15). Sulla provetta si scrive esattamente quello che c'è nel riquadro del foglio di conferma.
 - REGOLA PRATICA: su tutte le provette problematiche si raccomanda caldamente di scrivere con il pennarello sulla provetta ANCHE IL CONTRASSEGNO completo del capo oltre alla sigla della provetta, per garantire la rintracciabilità visiva immediata durante il riordino e la successiva sistemazione.
 
-La Wi-Fi del progetto
+## La Wi-Fi del progetto
+
 La Wi-Fi (router da viaggio, Wi-Fi dello stabilimento o hotspot del tablet) di norma NON ha connessione internet: è normale.
 Il telefono deve restare stabilmente collegato.
 
-Configurazione iniziale (una volta sola)
-☰ Menu → ⚙️ Impostazioni: inserire nome, cognome, codice fiscale e nome del dispositivo.
+## Configurazione iniziale (una volta sola)
 
-Le reti del progetto (prima di partire)
+1. ☰ Menu → Impostazioni › Utente: nome, cognome e codice fiscale, poi «Salva». Valgono per tutti i progetti.
+2. Impostazioni › Dispositivo: il nome del telefono (es. «A55 Mario»), poi «Salva».
+3. Sotto, in «Prima di cominciare»: «Concedi i permessi che mancano» (posizione, dispositivi Wi-Fi vicini, notifiche, fotocamera) e sistema le voci con la ✗ rossa.
+
+## Le reti del progetto (prima di partire)
+
 Apri la fotocamera e inquadra i QR Wi-Fi delle reti del progetto (router, hotspot del tablet), che la Regia mostra in Rete del progetto o sulle stampe: Android chiede di collegarsi, conferma. La rete resta salvata. Durante il lavoro, se una rete cade, Android passa da solo a un'altra salvata.
 
 ## Per entrare nella seduta
@@ -45,7 +55,7 @@ Apri la fotocamera e inquadra i QR Wi-Fi delle reti del progetto (router, hotspo
 2. Oppure, già sulla Wi-Fi della Regia: il progetto compare da solo in 📶 Rete; «Chiedi di entrare» e la Regia ti fa entrare.
 3. Dopo un riavvio o riaprendo l'app: si rientra automaticamente. Quello che hai registrato resta sul telefono e arriva alla Regia appena ti ricolleghi.
 
-Prima di cominciare (impostazioni telefono)
+## Prima di cominciare (impostazioni telefono)
 
 1. Wi-Fi accesa. Dati mobili: possono restare accesi.
 2. Samsung: Impostazioni → Connessioni → Wi-Fi → ⋮ → Intelligent Wi-Fi → «Passa a dati mobili» SPENTO. Altri telefoni: spegnere il passaggio automatico ai dati mobili o la «connettività adattiva».
