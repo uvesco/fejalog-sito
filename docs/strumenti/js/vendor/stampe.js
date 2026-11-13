@@ -52,11 +52,21 @@
     var tab, righe = [], viste = Object.create(null);
     while ((tab = t.exec(html))) {
       var corpo = tab[1], base = tab.index + tab[0].indexOf('>') + 1;
-      if (/<table\b/i.test(corpo)) throw new Error('Tabella dei capi non riconosciuta.');
+      // ARVET non chiude l'ultima tabella dei capi: dopo l'ultima riga comincia la tabella delle firme. Il browser la
+      // chiude da solo nella pagina salvata, l'HTML preso dallo snippet no (utente, 2026-11-13): si legge fino a lì,
+      // solo se prima ci sono righe complete; la ricerca delle tabelle riprende da quella che segue.
+      var annidata = corpo.search(/<table\b/i);
+      if (annidata >= 0) {
+        var prima = corpo.slice(0, annidata);
+        if (!/<\/tr\s*>\s*$/i.test(prima) || (prima.match(/<tr\b/gi) || []).length !== (prima.match(/<\/tr\s*>/gi) || []).length) throw new Error('Tabella dei capi non riconosciuta.');
+        corpo = prima; t.lastIndex = base + annidata;
+      }
       var re = /<tr\b[^>]*>[\s\S]*?<\/tr\s*>/gi, r, intestazione = false;
       while ((r = re.exec(corpo))) {
         var cc = celle(r[0]);
-        if (/<th\b/i.test(r[0]) && cc.length === 9 && chiave(cc[1].testo) === 'PROVETTA' && /CONTRASSEGNO/i.test(cc[2].testo)) intestazione = true;
+        // le righe bianche hanno un'intestazione di 10 colonne con la data di nascita ripetuta, ma righe di 9 celle come le altre
+        var colonne = cc.length === 9 || (cc.length === 10 && cc.filter(function (x) { return /NASCITA/.test(chiave(x.testo)); }).length === 2);
+        if (/<th\b/i.test(r[0]) && colonne && chiave(cc[1].testo) === 'PROVETTA' && /CONTRASSEGNO/i.test(cc[2].testo)) intestazione = true;
         else if (cc.length) {
           if (!intestazione || cc.length !== 9 || !/^\d+$/.test(cc[0].testo)) throw new Error('Riga dei capi non riconosciuta.');
           var c = chiave(cc[2].testo);
