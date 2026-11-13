@@ -9,6 +9,7 @@
 
 ## I passi, in ordine
 
+- 0. Riprendi un progetto, se ne hai già preparato uno: il progetto salvato al passo 9 riporta tutto, file della BDN compresi; lo snapshot tutto tranne i file della BDN, da ricaricare al passo 1. Un backup col campionamento già avviato non si riprende.
 - 1. File della BDN: registri di stalla e contrassegni disponibili di pecore e capre, anche più file per stabilimento e allevamento, anche in uno zip. Fejalog li riconosce dal contenuto; per i contrassegni senza specie scegli Pecore o Capre.
 - 2. Elenco dei veterinari (CSV id;cognome;nome;codice\_fiscale): entra nel pacchetto, mai nel registro.
 - 3. Capi ricercati, se servono (CSV codice;nota;azione;segno): la Regia ne aggiunge anche durante il lavoro.
@@ -17,6 +18,13 @@
 - 6. Configurazione della Regia: verso di riempimento, sigle dei veterinari (due lettere non confondibili; vuote, la Regia le assegna all'ingresso), priorità per la regia d'emergenza, reti Wi-Fi del progetto (la password è facoltativa: se non la scrivi non va nel file e la completi sul tablet; le reti si esportano in CSV e si ricaricano negli altri progetti).
 - 7. Anteprima: capi numerati per stabilimento e specie, maschi in testa, fuori età, usciti, marche disponibili, e la tabella della numerazione da scaricare (numerazione\_chiave.csv).
 - 8. Snapshot per la Regia: scarica lo zip (fejalog\_backup\_\<stabilimento\>\_\<data\>\_sito\_R.zip) e portalo sul tablet.
+- 9. Salva il progetto per cambiarlo dopo (un file JSON): contiene i file della BDN, i codici fiscali dei veterinari e le password delle reti, quindi tienilo per te.
+
+## Cambiare un progetto già preparato
+
+- Riprendilo al passo 0, cambia ciò che serve (reti, veterinari, scelte, file della BDN riscaricati il giorno del lavoro) e scarica di nuovo lo snapshot.
+- L'anteprima dice se la numerazione è rimasta identica: allora il foglio A3 e i 2/33 già stampati valgono; se è cambiata, ristampali e butta quelli vecchi.
+- Un progetto cambiato ha un codice di creazione nuovo: sul tablet apri lo snapshot nuovo, non quello vecchio.
 
 ## Sul tablet della Regia
 

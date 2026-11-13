@@ -2,9 +2,9 @@
    compilato in JS (FejDominio.creaProgetto) fa pacchetto, numerazione ed eventi; qui solo lettura dei file, modulo e
    download. Nessun dato esce dal browser. In Node (prove) si monta con jsdom passando dominio, zip e scarica. */
 (function (root, factory) {
-  if (typeof module === 'object' && module.exports) module.exports = factory();
-  else root.FejCreaProgetto = factory();
-})(typeof self !== 'undefined' ? self : this, function () {
+  if (typeof module === 'object' && module.exports) module.exports = factory(require('./reti.js'), require('./registro.js'));
+  else root.FejCreaProgetto = factory(root.FejReti, root.FejRegistro);
+})(typeof self !== 'undefined' ? self : this, function (Reti, Reg) {
 'use strict';
 
 /* Byte → carattere, come ISO-8859-1 di Java (la BDN scrive così): identico su JVM e nel browser, senza TextDecoder
@@ -26,15 +26,67 @@ function isoSenzaMillisecondi(data) { return data.toISOString().replace(/\.\d{3}
 function oggi(data) { return data.toISOString().slice(0, 10); }
 function eZip(u8) { return u8.length > 4 && u8[0] === 0x50 && u8[1] === 0x4b && u8[2] === 3 && u8[3] === 4; }
 
+/* Riprendere un progetto per cambiarlo (utente, 2026-11-13: reti, veterinari, file della BDN). Il file salvato da questa
+   pagina riporta tutto; uno snapshot (o un backup del tablet ancora in configurazione) tutto tranne i file della BDN, che
+   non contiene. Un backup col campionamento avviato non si riprende: un progetto in corso si cambia solo sul tablet. */
+var FORMATO_SALVATO = 'fejalog-progetto-sito';
+function campiCsv(v) { v = String(v == null ? '' : v); return /[;"\r\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+/** La chiave di una persona come la scrivono le sigle nel registro (SigleVeterinari.normalizzaChiavePersona). */
+function chiavePersona(cf) {
+  var n = String(cf || '').replace(/\s+/g, '').toUpperCase();
+  return n ? 'persona:' + Reg.sha256('fejalog-persona:' + n) : '';
+}
+function sceltaDaBackup(P) {
+  var ev = (P.eventi || []).slice().sort(function (a, b) {
+    return (a.lamport || 0) - (b.lamport || 0) || String(a.feed).localeCompare(String(b.feed)) || (a.seq || 0) - (b.seq || 0);
+  });
+  var avviato = ev.some(function (e) {
+    return /^PROVETTA_/.test(e.tipo) || (e.tipo === 'IMPOSTAZIONI_PROGETTO' && e.dati && e.dati.fase_operativa && e.dati.fase_operativa !== 'configurazione');
+  });
+  if (avviato) return { ok: false, errore: 'In questo backup il campionamento è già stato avviato: un progetto in corso non si cambia sul sito. Reti, veterinari e registri si cambiano sul tablet della Regia.' };
+  var imp = {};
+  ev.forEach(function (e) { if (e.tipo === 'IMPOSTAZIONI_PROGETTO' && e.dati) Object.keys(e.dati).forEach(function (k) { imp[k] = e.dati[k]; }); });
+  var p = P.pacchetto || {}, ops = p.operatori || [], ric = p.ricercati || [], ses = p.sessione || {}, cfg = p.config || {};
+  var perPersona = {};
+  ops.forEach(function (o) { var k = chiavePersona(o.codice_fiscale); if (k) perPersona[k] = o.id; });
+  var sigle = {};
+  Object.keys(imp.sigle_veterinari || {}).forEach(function (k) { var id = perPersona[String(k).toLowerCase()]; if (id) sigle[id] = String(imp.sigle_veterinari[k]); });
+  var ids = ops.map(function (o) { return o.id; });
+  var stab = (cfg.stabilimenti_lavoro || []).map(function (s) { return s.codice; });
+  return { ok: true, scelte: {
+    file: [], specie_file: {},
+    veterinari_csv: ops.length ? 'id;cognome;nome;codice_fiscale\r\n' + ops.map(function (o) { return [o.id, o.cognome, o.nome, o.codice_fiscale].map(campiCsv).join(';'); }).join('\r\n') + '\r\n' : '',
+    veterinari_nome: ops.length ? 'elenco del progetto ripreso' : '',
+    ricercati_csv: ric.length ? 'codice;nota;azione;segno\r\n' + ric.map(function (r) { return [r.codice, r.nota, r.azione, r.segno].map(campiCsv).join(';'); }).join('\r\n') + '\r\n' : '',
+    ricercati_nome: ric.length ? 'ricercati del progetto ripreso' : '',
+    stabilimenti: stab, principale: stab[0] || '', descrizione: ses.descrizione || '', data: ses.data || '',
+    eta_mesi: typeof imp.eta_diagnostica_mesi === 'number' ? imp.eta_diagnostica_mesi : 6, lettere: imp.lettere_specie || '',
+    problematici_in_sequenza: imp.problematici_in_sequenza !== false, verso: imp.verso_riempimento === 'basso_alto' ? 'basso_alto' : 'alto_basso',
+    sigle: sigle, priorita: String(imp.priorita_regia || '').split(',').map(function (x) { return x.trim(); }).filter(function (x) { return ids.indexOf(x) >= 0; }),
+    reti: Reti.daEventi(ev), cerchietto_principale: typeof imp.cerchietto_principale === 'boolean' ? imp.cerchietto_principale : null
+  }, riferimento: { id: p.id || '', creato_il: p.creato_il || '', impronta: P.verifica && P.verifica.impronta || '', numerazione_csv: P.numerazioneCsv || '' } };
+}
+/** Le righe della chiave della numerazione cambiate o aggiunte e quelle tolte, rispetto al progetto ripreso. */
+function confrontaNumerazione(prima, ora) {
+  var righe = function (t) { return String(t || '').replace(/^\uFEFF/, '').split(/\r?\n/).filter(function (r) { return r.trim(); }); };
+  var conta = {}, nuove = 0, tolte = 0;
+  righe(prima).forEach(function (r) { conta[r] = (conta[r] || 0) + 1; });
+  righe(ora).forEach(function (r) { if (conta[r]) conta[r]--; else nuove++; });
+  Object.keys(conta).forEach(function (k) { tolte += conta[k]; });
+  return { uguale: !nuove && !tolte, nuove: nuove, tolte: tolte };
+}
+
 function monta(radice, deps) {
   var d = radice.ownerDocument, w = deps.finestra || d.defaultView;
-  var Dominio = deps.dominio, Zip = deps.zip;
+  var Dominio = deps.dominio, Zip = deps.zip, Progetto = deps.progetto || w.FejProgetto;
   var adesso = deps.adesso ? deps.adesso() : new Date();
   var stato = {
     file: [], specieFile: {}, veterinariCsv: '', veterinariNome: '', ricercatiCsv: '', ricercatiNome: '',
     stabilimenti: null, principale: '', descrizione: '', data: oggi(adesso), etaMesi: 6, lettere: '',
     problematiciInSequenza: true, verso: 'alto_basso', sigle: {}, priorita: [], reti: [], regole: {}, cerchiettoPrincipale: null,
-    id: deps.id || uuid(w), creatoIl: deps.creatoIl || isoSenzaMillisecondi(adesso), messaggio: '', esito: null, occupato: false
+    id: deps.id || uuid(w), creatoIl: deps.creatoIl || isoSenzaMillisecondi(adesso), messaggio: '', esito: null, occupato: false,
+    // il progetto ripreso: la sua identità (cambia se cambia il contenuto) e la chiave della numerazione già stampata
+    riferimento: null, numerazioneRipresa: '', ripresoDa: '', avvisoIdentita: ''
   };
   var codiciVisti = '', veterinariVisti = '';
 
@@ -59,32 +111,7 @@ function monta(radice, deps) {
     opzioni.forEach(function (o) { select.appendChild(h('option', { value: o[0], selected: String(o[0]) === String(valore) }, o[1])); });
     return { input: select, label: h('label', null, testo + ' ', select) };
   }
-  /** Le reti in CSV «SSID;password;note;sicurezza», da riusare negli altri progetti sulle stesse reti (utente, 2026-11-12). */
-  function retiInCsv(reti) {
-    var c = function (v) { v = String(v == null ? '' : v); return /[;"\r\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
-    var sic = { WPA: 'WPA2', SAE: 'WPA3', APERTA: 'aperta' };
-    return 'SSID;password;note;sicurezza\r\n' + reti.filter(function (r) { return r.ssid.trim(); }).map(function (r) {
-      return [r.ssid.trim(), r.password, r.note, sic[r.sicurezza] || 'WPA2'].map(c).join(';');
-    }).join('\r\n') + '\r\n';
-  }
-  /** Le reti da un CSV «SSID;password;note;sicurezza» (separatore ; , o tabulazione; intestazione facoltativa). */
-  function retiDaCsv(testo) {
-    var righe = String(testo).replace(/^\uFEFF/, '').split(/\r?\n/).filter(function (r) { return r.trim(); });
-    if (!righe.length) return [];
-    var sep = [';', '\t', ','].sort(function (a, b) { return righe[0].split(b).length - righe[0].split(a).length; })[0];
-    var viste = {}, out = [];
-    righe.forEach(function (r, i) {
-      var p = r.split(sep).map(function (x) { return x.trim().replace(/^"(.*)"$/, '$1').replace(/""/g, '"'); });
-      var ssid = p[0] || '';
-      if (i === 0 && /^(ssid|rete|nome)$/i.test(ssid)) return;
-      if (!ssid || viste[ssid] || ssid.length > 32) return;
-      viste[ssid] = true;
-      var sic = String(p[3] || '').toLowerCase();
-      out.push({ ssid: ssid, password: (p[1] || '').slice(0, 63), note: p[2] || '',
-        sicurezza: /wpa3|sae/.test(sic) ? 'SAE' : /apert|open|nessun/.test(sic) ? 'APERTA' : 'WPA' });
-    });
-    return out;
-  }
+  var retiInCsv = Reti.inCsv, retiDaCsv = Reti.daCsv;
   function scarica(nome, dati, mime) {
     if (deps.scarica) return deps.scarica(nome, dati, mime);
     var url = w.URL.createObjectURL(new w.Blob([dati], { type: mime }));
@@ -191,6 +218,65 @@ function monta(radice, deps) {
       c.appendChild(ul);
       c.appendChild(h('p', null, bottone('Svuota i file', function () { stato.file = []; stato.specieFile = {}; stato.stabilimenti = null; ricalcola(true); renderFile(); })));
     } else c.appendChild(h('p', { class: 'fej-tenue' }, 'Fejalog riconosce i file dal contenuto: registri di stalla (ASCII a 538 colonne) e contrassegni disponibili, di pecore e capre.'));
+  }
+
+  /* ---- 0 · riprendere un progetto salvato o uno snapshot ---- */
+  function scelteCorrenti() {
+    return {
+      file: stato.file, specie_file: stato.specieFile, veterinari_csv: stato.veterinariCsv, veterinari_nome: stato.veterinariNome,
+      ricercati_csv: stato.ricercatiCsv, ricercati_nome: stato.ricercatiNome, stabilimenti: stato.stabilimenti || [], principale: stato.principale,
+      descrizione: stato.descrizione, data: stato.data, eta_mesi: stato.etaMesi, lettere: stato.lettere, problematici_in_sequenza: stato.problematiciInSequenza,
+      verso: stato.verso, sigle: stato.sigle, priorita: stato.priorita, reti: stato.reti, cerchietto_principale: stato.cerchiettoPrincipale
+    };
+  }
+  function riprendi(sc, rif, nome) {
+    Object.assign(stato, {
+      file: (sc.file || []).map(function (f) { return { nome: String(f.nome), contenuto: String(f.contenuto) }; }), specieFile: sc.specie_file || {},
+      veterinariCsv: sc.veterinari_csv || '', veterinariNome: sc.veterinari_csv ? sc.veterinari_nome || 'elenco del progetto ripreso' : '',
+      ricercatiCsv: sc.ricercati_csv || '', ricercatiNome: sc.ricercati_csv ? sc.ricercati_nome || 'ricercati del progetto ripreso' : '',
+      stabilimenti: sc.stabilimenti && sc.stabilimenti.length ? sc.stabilimenti.slice() : null, principale: sc.principale || '',
+      descrizione: sc.descrizione || '', data: sc.data || stato.data, etaMesi: typeof sc.eta_mesi === 'number' ? sc.eta_mesi : 6, lettere: sc.lettere || '',
+      problematiciInSequenza: sc.problematici_in_sequenza !== false, verso: sc.verso === 'basso_alto' ? 'basso_alto' : 'alto_basso',
+      sigle: Object.assign({}, sc.sigle || {}), priorita: (sc.priorita || []).slice(),
+      reti: (sc.reti || []).map(function (r) { return { ssid: String(r.ssid || ''), password: String(r.password || ''), note: String(r.note || ''), sicurezza: Reti.SICUREZZE[r.sicurezza] ? r.sicurezza : 'WPA' }; }),
+      regole: {}, cerchiettoPrincipale: typeof sc.cerchietto_principale === 'boolean' ? sc.cerchietto_principale : null,
+      id: rif.id || uuid(w), creatoIl: rif.creato_il || stato.creatoIl, esito: null,
+      riferimento: rif.impronta ? { impronta: rif.impronta } : null, numerazioneRipresa: rif.numerazione_csv || '', ripresoDa: nome, avvisoIdentita: ''
+    });
+    codiciVisti = veterinariVisti = '';
+    calcola(); aggiorna(); renderFile(); renderElenco(); renderRicercati(); renderRiprendi();
+  }
+  function renderRiprendi() {
+    var c = sez.riprendi; svuota(c);
+    var input = h('input', { type: 'file', accept: '.json,.zip,application/json,application/zip' });
+    input.addEventListener('change', function () {
+      var f = input.files && input.files[0]; if (!f) return;
+      stato.occupato = true; stato.messaggio = 'Leggo ' + f.name + '…'; aggiornaMessaggio();
+      leggiBytes(f).then(function (u8) {
+        if (eZip(u8)) {
+          if (!Progetto) throw new Error('Non riesco a leggere gli snapshot in questa pagina.');
+          return Progetto.leggiBackup(u8).then(function (P) {
+            if (!P.verifica.ok) throw new Error('Lo zip non è un backup integro di Fejalog: ' + (P.verifica.errori || []).join('; '));
+            var r = sceltaDaBackup(P);
+            if (!r.ok) throw new Error(r.errore);
+            riprendi(r.scelte, r.riferimento, f.name);
+            stato.messaggio = 'Ripreso da ' + f.name + ': veterinari, ricercati, stabilimenti, regole, sigle, priorità e reti. Lo snapshot non contiene i file della BDN: ricaricali al passo 1 (con gli stessi file la numerazione resta identica).';
+          });
+        }
+        return leggiTesto(f).then(function (t) {
+          var o;
+          try { o = JSON.parse(String(t).replace(/^\uFEFF/, '')); } catch (e) { throw new Error(f.name + ' non è un progetto salvato da questa pagina (né JSON né zip).'); }
+          if (!o || o.formato !== FORMATO_SALVATO || !o.scelte) throw new Error(f.name + ' non è un progetto salvato da «Crea il progetto».');
+          if (o.versione !== 1) throw new Error('Il progetto salvato è di una versione più nuova della pagina: ricarica la pagina.');
+          riprendi(o.scelte, o.riferimento || {}, f.name);
+          stato.messaggio = 'Ripreso da ' + f.name + ', con i file della BDN: cambia ciò che serve e scarica di nuovo lo snapshot.';
+        });
+      }).then(null, function (e) { stato.messaggio = e && e.message ? e.message : String(e); })
+        .then(function () { stato.occupato = false; input.value = ''; aggiornaMessaggio(); });
+    });
+    c.appendChild(h('p', null, h('label', null, 'Progetto salvato (JSON) o snapshot per la Regia (zip) ', input)));
+    if (stato.ripresoDa) c.appendChild(h('p', null, 'Ripreso da ' + stato.ripresoDa + '. ', bottone('Togli e ricomincia da capo', ricomincia)));
+    c.appendChild(h('p', { class: 'fej-tenue' }, 'Per cambiare un progetto già preparato (reti, veterinari, scelte, file della BDN): il file salvato al passo 9 riporta tutto, file della BDN compresi; lo snapshot riporta tutto tranne i file della BDN, da ricaricare al passo 1. Un backup del tablet col campionamento già avviato non si riprende qui.'));
   }
 
   function renderElenco() {
@@ -379,22 +465,65 @@ function monta(radice, deps) {
       ' · sigle: ' + (Object.keys(imp.sigle).length || 'automatiche') + ' · priorità regia: ' + (imp.priorita_regia.length ? imp.priorita_regia.join(', ') : 'nessuna') +
       ' · reti: ' + (imp.reti.length ? imp.reti.join(', ') : 'nessuna') + ' · ' + e.eventi + ' eventi · pronto per l’avvio: ' + (imp.pronto_per_avvio ? 'sì' : 'no')));
     c.appendChild(h('p', null, bottone('Scarica la tabella della numerazione (numerazione_chiave.csv)', function () { scarica('numerazione_chiave.csv', e.numerazione_csv, 'text/csv;charset=utf-8'); })));
+    // le stampe già fatte (foglio A3, 2/33) sono la seconda copia fisica: si dice subito se valgono ancora
+    if (stato.numerazioneRipresa) {
+      var cf = confrontaNumerazione(stato.numerazioneRipresa, e.numerazione_csv);
+      c.appendChild(cf.uguale
+        ? h('p', { class: 'fej-ok', id: 'crea-confronto' }, 'Numerazione identica a quella del progetto ripreso: il foglio A3 e i 2/33 già stampati restano validi.')
+        : h('p', { class: 'fej-avviso', role: 'alert', id: 'crea-confronto' }, 'La numerazione è cambiata rispetto al progetto ripreso (' + cf.nuove + ' righe della chiave nuove o cambiate, ' + cf.tolte + ' tolte): ristampa il foglio A3 e i 2/33 e butta quelli vecchi.'));
+    }
+  }
+
+  /* Un progetto cambiato dopo uno snapshot già scaricato (o ripreso) prende un codice di creazione nuovo: sul tablet non
+     esistono mai due progetti diversi con lo stesso codice. Con le stesse scelte e gli stessi file resta quello di prima. */
+  function fissaIdentita() {
+    var e = stato.esito;
+    if (!e || !e.ok) return null;
+    if (stato.riferimento && stato.riferimento.impronta !== e.impronta) {
+      stato.id = uuid(w); stato.creatoIl = isoSenzaMillisecondi(deps.adesso ? deps.adesso() : new Date());
+      calcola(); e = stato.esito;
+      if (!e.ok) return null;
+      stato.avvisoIdentita = 'Progetto cambiato rispetto allo snapshot di prima: ha un codice di creazione nuovo (' + e.pacchetto.codice_creazione + '). Sul tablet apri questo snapshot; quello vecchio, se l’avevi già aperto, non usarlo più.';
+      aggiorna();
+    }
+    stato.riferimento = { impronta: e.impronta };
+    return e;
+  }
+  function salvaProgetto() {
+    var e = stato.esito && stato.esito.ok ? fissaIdentita() : null;
+    var nome = e ? e.nome_file.replace(/^fejalog_backup_/, 'fejalog_progetto_').replace(/_sito_R\.zip$/, '.json') : 'fejalog_progetto_bozza_' + stato.data + '.json';
+    var o = { formato: FORMATO_SALVATO, versione: 1, salvato_il: isoSenzaMillisecondi(deps.adesso ? deps.adesso() : new Date()),
+      nota: 'Da riaprire in «Crea il progetto» sul sito di Fejalog. Contiene i file della BDN, l’elenco dei veterinari coi codici fiscali e le password delle reti: tienilo per te.',
+      scelte: scelteCorrenti(),
+      riferimento: { id: stato.id, creato_il: stato.creatoIl, impronta: e ? e.impronta : (stato.riferimento ? stato.riferimento.impronta : ''),
+        numerazione_csv: e ? e.numerazione_csv : stato.numerazioneRipresa } };
+    scarica(nome, JSON.stringify(o), 'application/json');
+    stato.messaggio = 'Progetto salvato: ' + nome + '. Per cambiarlo, riprendilo al passo 0.'; aggiornaMessaggio();
   }
 
   function renderSnapshot() {
     var c = sez.snapshot; svuota(c);
     var e = stato.esito, ok = !!(e && e.ok);
     c.appendChild(h('p', null, bottone('Scarica lo snapshot per la Regia (zip)', function () {
-      if (!ok) return;
-      var files = Object.keys(e.files).sort().map(function (n) { return { name: n, data: e.files[n] }; });
-      scarica(e.nome_file, Zip.scrivi(files), 'application/zip');
-      stato.messaggio = 'Snapshot scaricato: ' + e.nome_file + '. Aprilo sul tablet della Regia con Progetto › Apri.'; aggiornaMessaggio();
+      var x = fissaIdentita();
+      if (!x) return;
+      var files = Object.keys(x.files).sort().map(function (n) { return { name: n, data: x.files[n] }; });
+      scarica(x.nome_file, Zip.scrivi(files), 'application/zip');
+      stato.messaggio = 'Snapshot scaricato: ' + x.nome_file + '. Aprilo sul tablet della Regia con Progetto › Apri.'; aggiornaMessaggio();
     }, { disabled: !ok, class: 'md-button md-button--primary', id: 'crea-scarica' }), ok ? ' ' + e.nome_file : ''));
+    if (stato.avvisoIdentita) c.appendChild(h('p', { class: 'fej-avviso' }, stato.avvisoIdentita));
     if (ok) c.appendChild(h('p', { class: 'fej-tenue' }, 'Impronta del registro ' + e.impronta.slice(0, 6).toUpperCase() + ' · pacchetto ' + e.pacchetto.sha256.slice(0, 8) + '. Lo stesso file apre lo stesso progetto su qualunque tablet; non modificarlo.'));
     c.appendChild(h('ol', null,
       h('li', null, 'Copia lo zip sul tablet (cavo, chiavetta, condivisione).'),
       h('li', null, 'Sul tablet: menu ☰ › Progetto › Apri, scegli lo zip, «Riprendi».'),
       h('li', null, 'Controlla la Checklist e avvio, apri la rete come Regia, mostra il QR: i palmari entrano come sempre.')));
+  }
+
+  function renderSalva() {
+    var c = sez.salva; svuota(c);
+    var qualcosa = stato.file.length || stato.veterinariCsv || stato.reti.some(function (r) { return r.ssid.trim(); });
+    c.appendChild(h('p', null, bottone('Salva il progetto per cambiarlo dopo (JSON)', salvaProgetto, { disabled: !qualcosa, class: 'md-button', id: 'crea-salva' })));
+    c.appendChild(h('p', { class: 'fej-tenue' }, 'Un file da riprendere al passo 0 per cambiare reti, veterinari, scelte o file della BDN (per esempio coi registri riscaricati il giorno del lavoro), senza rifare tutto. Contiene i file della BDN, i codici fiscali dei veterinari e le password delle reti: tienilo per te.'));
   }
 
   var msg = h('div', { role: 'status', class: 'fej-msg', 'aria-live': 'polite' });
@@ -413,14 +542,19 @@ function monta(radice, deps) {
       if (t) t.textContent = 'vuota: la Regia assegna ' + v.proposta;
     });
     renderScelte();
-    renderAnteprima(); renderSnapshot(); aggiornaStampe();
+    renderAnteprima(); renderSnapshot(); renderSalva(); aggiornaStampe();
   }
 
   /* Le stampe pre-campo come seconda scheda (utente, 12/11: «unirei la pagina delle stampe alla precedente, così da non
      dover dare altri input»): ricevono lo snapshot ogni volta che il progetto creato qui cambia. */
   var Stampe = deps.stampe || w.FejPrimaDelCampo, apiStampe = null, chiaveStampe = '';
+  var retiStampe = '';
   function aggiornaStampe() {
     var e = stato.esito;
+    if (apiStampe && apiStampe.impostaReti) {
+      var rr = stato.reti.filter(function (r) { return r.ssid.trim(); }), kr = JSON.stringify(rr);
+      if (kr !== retiStampe) { retiStampe = kr; apiStampe.impostaReti(rr); }
+    }
     if (!apiStampe || !e || !e.ok) return;
     var k = e.impronta + '|' + e.pacchetto.sha256;
     if (k === chiaveStampe) return;
@@ -448,11 +582,15 @@ function monta(radice, deps) {
     scheda('crea');
   } else radice.appendChild(pannelloCrea);
   pannelloCrea.appendChild(msg);
-  pannelloCrea.appendChild(h('p', null, bottone('Ricomincia da capo', function () {
+  function ricomincia() {
     Object.assign(stato, { file: [], specieFile: {}, veterinariCsv: '', veterinariNome: '', ricercatiCsv: '', ricercatiNome: '', stabilimenti: null, principale: '', descrizione: '',
-      etaMesi: 6, lettere: '', problematiciInSequenza: true, verso: 'alto_basso', sigle: {}, priorita: [], reti: [], regole: {}, cerchiettoPrincipale: null, id: uuid(w), messaggio: '', esito: null });
-    codiciVisti = veterinariVisti = ''; calcola(); aggiorna(); renderFile(); renderElenco(); renderRicercati();
-  })));
+      etaMesi: 6, lettere: '', problematiciInSequenza: true, verso: 'alto_basso', sigle: {}, priorita: [], reti: [], regole: {}, cerchiettoPrincipale: null, id: uuid(w),
+      creatoIl: isoSenzaMillisecondi(deps.adesso ? deps.adesso() : new Date()), messaggio: '', esito: null,
+      riferimento: null, numerazioneRipresa: '', ripresoDa: '', avvisoIdentita: '' });
+    codiciVisti = veterinariVisti = ''; calcola(); aggiorna(); renderFile(); renderElenco(); renderRicercati(); renderRiprendi();
+  }
+  pannelloCrea.appendChild(h('p', null, bottone('Ricomincia da capo', ricomincia)));
+  pannelloCrea.appendChild(sezione('riprendi', '0 · Riprendi un progetto (facoltativo)'));
   pannelloCrea.appendChild(sezione('file', '1 · File della BDN'));
   pannelloCrea.appendChild(sezione('elenco', '2 · Elenco dei veterinari'));
   pannelloCrea.appendChild(sezione('ricercati', '3 · Capi ricercati (facoltativo)'));
@@ -461,9 +599,10 @@ function monta(radice, deps) {
   pannelloCrea.appendChild(sezione('configurazione', '6 · Configurazione della Regia'));
   pannelloCrea.appendChild(sezione('anteprima', '7 · Anteprima della numerazione'));
   pannelloCrea.appendChild(sezione('snapshot', '8 · Snapshot per la Regia'));
-  calcola(); aggiorna(); renderFile(); renderElenco(); renderRicercati();
+  pannelloCrea.appendChild(sezione('salva', '9 · Salva il progetto per cambiarlo dopo'));
+  calcola(); aggiorna(); renderFile(); renderElenco(); renderRicercati(); renderRiprendi();
   return { stato: stato, ricalcola: function () { ricalcola(true); } };
 }
 
-return { monta: monta, latin1: latin1, eZip: eZip };
+return { monta: monta, latin1: latin1, eZip: eZip, sceltaDaBackup: sceltaDaBackup, confrontaNumerazione: confrontaNumerazione, chiavePersona: chiavePersona, FORMATO_SALVATO: FORMATO_SALVATO };
 });

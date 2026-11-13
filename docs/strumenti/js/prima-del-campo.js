@@ -7,7 +7,7 @@
   var radice = document.getElementById('fejalog-prima');
   if (!radice) return;
   var base = document.currentScript.src.replace(/[^/]*$/, '');
-  var elenco=['vendor/fejalog-shared.js','dominio.js','vendor/qrcode.js','vendor/stampe.js','vendor/xlsx.js','zip.js','registro.js','progetto.js'];
+  var elenco=['vendor/fejalog-shared.js','dominio.js','vendor/qrcode.js','vendor/stampe.js','vendor/xlsx.js','zip.js','registro.js','progetto.js','reti.js'];
   (function avanti(i){
     if(i===elenco.length){window.FejPrimaDelCampo.ultima=avvia(radice,{});return;}
     var script=document.createElement('script');script.src=base+elenco[i];
@@ -35,19 +35,67 @@
     el('materiale').innerHTML='<h2>Materiale</h2><p>Tutti i plateau ordinari devono stare sul tavolo nel Riordino. La scorta dei fuori registro resta fuori tavolo.</p><div id="prima-parametri" class="fej-form">'+
       '<p><label>Verso di riempimento dei plateau<select id="prima-verso"><option value="alto_basso">Dall’alto verso il basso (predefinito: 1 in alto a sinistra)</option><option value="basso_alto">Dal basso verso l’alto (1 in basso a sinistra)</option></select></label></p>'+
       '</div><div id="prima-calcolo" role="status" aria-live="polite"></div><div id="prima-schema"></div><div id="prima-stampe-materiale"></div>'+
-      '<h3>Wi-Fi per il foglio d’ingresso</h3><p>SSID e password restano nella pagina e vengono inseriti solo nel foglio richiesto.</p><div class="fej-form">'+
-      '<p><label>Nome della rete (SSID)<input id="prima-ssid" type="text" autocomplete="off"></label></p>'+
-      '<p><label>Tipo di rete<select id="prima-tipo"><option value="WPA">WPA</option><option value="nopass">Aperta, senza password</option></select></label></p>'+
-      '<p><label>Password Wi-Fi<input id="prima-password" type="password" autocomplete="off"></label></p></div><div id="prima-wifi-stato" role="status"></div><div id="prima-wifi"></div>';
+      '<h3>Wi-Fi: fogli d’ingresso col QR</h3><p>Un foglio A4 per ogni rete del progetto (router, hotspot del tablet). SSID e password restano nella pagina e finiscono solo nei fogli che scarichi.</p>'+
+      '<div id="prima-reti" class="fej-form"></div><p><button type="button" id="prima-rete-aggiungi">Aggiungi una rete</button> '+
+      '<label>oppure caricale da un CSV (reti_progetto.csv) <input id="prima-reti-csv" type="file" accept=".csv,.txt,text/csv,text/plain"></label></p>'+
+      '<div id="prima-wifi-stato" role="status"></div><div id="prima-wifi"></div>';
     campi.forEach(function(c){var p=document.createElement('p'),l=document.createElement('label'),i=document.createElement('input');l.textContent=c[1];i.id='prima-'+c[0];i.type='number';i.value=c[2];i.min=c[3];i.max=c[4];i.step=1;i.oninput=aggiornaMateriale;l.appendChild(i);p.appendChild(l);el('parametri').appendChild(p);});
     el('verso').onchange=aggiornaMateriale;
+    /* Le reti dei fogli Wi-Fi (utente, 13/11: «dalla pagina dopo non si possono importare i csv»): quelle del progetto
+       (dalla scheda «Crea il progetto» o dal backup), quelle del CSV e quelle scritte qui; un foglio per rete. */
+    var Reti=window.FejReti, reti=[{ssid:'',sicurezza:'WPA',password:'',origine:'qui'}];
+    function nomeFoglio(ssid){return 'rete_wifi_'+(String(ssid).trim().replace(/[^A-Za-z0-9_-]+/g,'_').replace(/^_+|_+$/g,'')||'rete')+'_A4.html';}
     function aggiornaWifi(){
-      el('wifi').textContent='';el('wifi-stato').textContent='';el('password').disabled=el('tipo').value==='nopass';
-      if(!el('ssid').value.trim())return;
-      var r=Stampe.foglioWifi({ssid:el('ssid').value,tipo:el('tipo').value,password:el('password').value});
-      if(r.ok)scarica(el('wifi'),'rete_wifi_A4.html',r.html);else el('wifi-stato').textContent=r.errore;
+      el('wifi').textContent='';el('wifi-stato').textContent='';
+      var buoni=[],errori=[];
+      reti.forEach(function(r){
+        if(!r.ssid.trim())return;
+        var f=Stampe.foglioWifi({ssid:r.ssid.trim(),tipo:Reti.tipoQr(r),password:r.password});
+        if(f.ok)buoni.push({nome:nomeFoglio(r.ssid),html:f.html,ssid:r.ssid.trim()});else errori.push(r.ssid.trim()+': '+f.errore);
+      });
+      if(buoni.length>1){var cima=document.createElement('p');var b=document.createElement('button');b.type='button';b.className='md-button md-button--primary';
+        b.textContent='Scarica tutti i fogli Wi-Fi ('+buoni.length+' reti, zip)';
+        b.onclick=function(){var u=URL.createObjectURL(new Blob([window.FejZip.scrivi(buoni.map(function(x){return {name:x.nome,data:x.html};}))],{type:'application/zip'})),a=document.createElement('a');a.href=u;a.download='reti_wifi_A4.zip';a.click();setTimeout(function(){URL.revokeObjectURL(u);},30000);};
+        cima.appendChild(b);el('wifi').appendChild(cima);}
+      buoni.forEach(function(x){var p=document.createElement('p');p.appendChild(document.createTextNode(x.ssid+' '));scarica(p,x.nome,x.html);el('wifi').appendChild(p);});
+      el('wifi-stato').textContent=errori.join(' · ');
     }
-    ['ssid','password','tipo'].forEach(function(n){el(n).oninput=aggiornaWifi;});
+    function renderReti(){
+      var box=el('reti');box.textContent='';
+      reti.forEach(function(r,i){
+        var p=document.createElement('p');p.className='prima-rete';
+        function etichetta(testo,campo){var l=document.createElement('label');l.textContent=testo+' ';l.appendChild(campo);p.appendChild(l);p.appendChild(document.createTextNode(' '));}
+        var ssid=document.createElement('input');ssid.type='text';ssid.className='prima-rete-ssid';ssid.maxLength=32;ssid.autocomplete='off';ssid.value=r.ssid;
+        ssid.oninput=function(){r.ssid=ssid.value;r.origine='qui';aggiornaWifi();};etichetta('Nome della rete (SSID)',ssid);
+        var tipo=document.createElement('select');tipo.className='prima-rete-tipo';
+        [['WPA','WPA2'],['SAE','WPA3'],['APERTA','aperta, senza password']].forEach(function(o){var op=document.createElement('option');op.value=o[0];op.textContent=o[1];op.selected=r.sicurezza===o[0];tipo.appendChild(op);});
+        var pw=document.createElement('input');pw.type='password';pw.className='prima-rete-password';pw.maxLength=63;pw.autocomplete='off';pw.value=r.password;pw.disabled=r.sicurezza==='APERTA';
+        tipo.oninput=tipo.onchange=function(){r.sicurezza=tipo.value;pw.disabled=r.sicurezza==='APERTA';aggiornaWifi();};etichetta('Sicurezza',tipo);
+        pw.oninput=function(){r.password=pw.value;aggiornaWifi();};etichetta('Password',pw);
+        var togli=document.createElement('button');togli.type='button';togli.textContent='Togli';
+        togli.onclick=function(){reti.splice(i,1);if(!reti.length)reti.push({ssid:'',sicurezza:'WPA',password:'',origine:'qui'});renderReti();aggiornaWifi();};p.appendChild(togli);
+        box.appendChild(p);
+      });
+    }
+    /* Aggiunge o aggiorna per SSID; le righe vuote spariscono. Con «progetto» sostituisce le reti arrivate dal progetto. */
+    function unisciReti(nuove,origine){
+      if(origine==='progetto')reti=reti.filter(function(r){return r.origine!=='progetto';});
+      reti=reti.filter(function(r){return r.ssid.trim();});
+      nuove.forEach(function(n){
+        var r={ssid:String(n.ssid||''),sicurezza:Reti.SICUREZZE[n.sicurezza]?n.sicurezza:'WPA',password:String(n.password||''),origine:origine};
+        var i=reti.findIndex(function(x){return x.ssid.trim()===r.ssid.trim();});
+        if(i>=0){if(origine!=='progetto'||reti[i].origine==='progetto')reti[i]=r;}else reti.push(r);
+      });
+      if(!reti.length)reti.push({ssid:'',sicurezza:'WPA',password:'',origine:'qui'});
+      renderReti();aggiornaWifi();
+    }
+    el('rete-aggiungi').onclick=function(){reti.push({ssid:'',sicurezza:'WPA',password:'',origine:'qui'});renderReti();};
+    el('reti-csv').onchange=function(){
+      var file=this.files[0],input=this;if(!file)return;
+      leggi(file).then(function(t){var lette=Reti.daCsv(t);unisciReti(lette,'qui');el('wifi-stato').textContent=lette.length?'Reti caricate dal CSV: '+lette.length+'.':'Nel CSV non ci sono reti (serve almeno la colonna SSID).';},
+        function(e){el('wifi-stato').textContent=e.message;}).then(function(){input.value='';});
+    };
+    renderReti();
     function aggiornaMateriale(){
       el('calcolo').textContent='';el('schema').textContent='';el('stampe-materiale').textContent='';
       var verso=el('verso').value==='basso_alto'?'basso_alto':'alto_basso';
@@ -87,7 +135,8 @@
       var carica;
       if(/\.zip$/i.test(file.name)) {
         carica=new Promise(function(resolve,reject){var r=new FileReader();r.onerror=function(){reject(new Error('Backup non leggibile.'));};r.onload=function(){resolve(r.result);};r.readAsArrayBuffer(file);})
-          .then(function(buf){return FejProgetto.leggiBackup(buf);}).then(function(P){if(!P.verifica.ok)throw new Error('Verifica del backup non riuscita: scegli una copia integra.');return FejDominio.numerazioneStampe(P);});
+          .then(function(buf){return FejProgetto.leggiBackup(buf);}).then(function(P){if(!P.verifica.ok)throw new Error('Verifica del backup non riuscita: scegli una copia integra.');
+            if(v===versione)unisciReti(Reti.daEventi(P.eventi),'progetto');return FejDominio.numerazioneStampe(P);});
       } else carica=leggi(file).then(function(t){return Stampe.daCsv(t);});
       usa(carica,v);
     };
@@ -150,6 +199,8 @@
     };
     if(opz.progetto){var pc=el('csv').closest('p');if(pc)pc.hidden=true;el('stato').textContent='Crea prima il progetto nella scheda «Crea il progetto»: la numerazione arriva da lì.';}
     return {
+      /** Le reti del progetto creato nella pagina (con le password scritte là): sostituiscono quelle arrivate prima dal progetto. */
+      impostaReti: function(lista){unisciReti(lista||[],'progetto');},
       /** La numerazione dallo snapshot creato nella pagina (byte dello zip fejalog-backup), al posto del CSV o del backup scelto a mano. */
       caricaBackup: function(byteZip){
         var v=++versione;
