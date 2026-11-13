@@ -163,6 +163,7 @@ nav:
               - "Crediti": riferimento/crediti.md
           # <<< riferimento
           - "Anomalie: tutti i casi": anomalie.md
+          - "I fuori registro in campo": chi-preleva/fuori-registro.md
           - "Domande frequenti": domande.md
           - "Domande dei prelevatori": chi-preleva/domande.md
       - Approfondimenti:
@@ -177,7 +178,7 @@ nav:
       - sezioni/formazione.md
       - "Video di introduzione": inizia-qui/video.md
       # >>> formazione (scritto da ScriviSito: non modificare)
-      - "Il briefing (11 diapositive)": briefing.md
+      - "Il briefing (13 diapositive)": briefing.md
       # <<< formazione
       - "Gregge a schermo coi telefoni veri": strumenti/simulatore.md
       - "Il kit di prova": kit.md

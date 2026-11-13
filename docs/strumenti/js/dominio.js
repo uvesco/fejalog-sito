@@ -22,6 +22,22 @@ return {
   statoEventi: function (ev, p) { return JSON.parse(api.statoSito(json(ev), json(p))); },
   riordino: function (P, az) { return JSON.parse(api.riordinoRigheSito(json(P), json(az || []))); },
   applica: function (P, az) { return JSON.parse(api.applicaSito(json(P), json(az || []))); },
+  /* Il Banco (2026-11-13): una sessione tenuta aperta sul backup; ogni scelta scrive solo i suoi eventi. */
+  apriBanco: function (P, az) {
+    var b = api.apriBancoSito(json(P), json(az || []));
+    return {
+      coda: function () { return JSON.parse(b.coda()); },
+      scheda: function (uid, cifre) { return JSON.parse(b.scheda(String(uid), String(cifre || ''))); },
+      cerca: function (q) { return JSON.parse(b.cerca(String(q || ''))); },
+      applica: function (a) { return JSON.parse(b.applica(json(a))); },
+      destinazione: function (uid) { return JSON.parse(b.destinazione(String(uid))); },
+      risultato: function () { return JSON.parse(b.risultato()); },
+      riordino: function () { return JSON.parse(b.riordino()); },
+      cercaCapi: function (specie, query) { return JSON.parse(b.cercaCapi(String(specie), String(query || ''))); },
+      numerazioneFinale: function (sistemazioni) { return JSON.parse(b.numerazioneFinale(json(sistemazioni || {}))); },
+      azioni: function () { return JSON.parse(b.azioni()); }
+    };
+  },
   cercaPlateau: function (celle, query) { return JSON.parse(api.cercaPlateauSito(json(celle), String(query || ''))); },
   posizionePlateau: function (serie, vista, plateau, pozzetto) { return JSON.parse(api.posizionePlateauSito(serie, vista, String(plateau), String(pozzetto))); },
   chiaveSpunta: function (r) { return api.chiaveSpuntaSito(json(r)); },

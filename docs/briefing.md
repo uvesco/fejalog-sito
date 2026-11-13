@@ -55,24 +55,32 @@ L'app avvisa quando il contrassegno risulta già prelevato.
 
 Per un animale senza nessuna marca usa «Senza contrassegno» nel Campionamento, sul palmare o sulla Regia.
 
-- Scegli sesso, età dai denti, razza («Meticcio» vale per tutte) e, se vuoi, un'identificazione provvisoria. Non si sceglie nessun capo.
+- Scegli sesso, età dai denti e razza («Meticcio» vale per tutte). Come identificazione provvisoria scrivi la sigla della provetta (per esempio UV-16) e scrivila anche sulla schiena dell'animale. Non si sceglie nessun capo.
 - Scrivi sulla provetta tutte le righe suggerite: sono la copia di riserva dei dati. Il capo si sceglie dopo la chiusura del campionamento.
-- Con «Applica ora una marca disponibile» marchi subito l'animale. Gli animali sotto età si contano a parte con +1 e −1.
+- Con «Applica ora una marca disponibile» marchi subito l'animale. Gli animali sotto età si contano a parte con +1 e −1, mentre li marchi col colore: così non si contano due volte.
 
-## 8. Se una provetta non è confermata
+## 8. Marcare i fuori registro
+
+In ufficio il sangue di un fuori registro si attribuisce al capo giusto solo se in campo animale e provetta restano legati.
+
+- Prima di cominciare, con l'allevatore: un colore per ogni capo prelevato e un altro per i fuori registro. Se si può, i fuori registro in un recinto a parte, alla fine.
+- Senza marche: sigla della provetta sulla schiena, una foto della testa e del fianco. Una marca sola o illeggibile: leggi quella che c'è e segna «da sostituire»; le cifre lette a metà vanno nelle note.
+- Doppio: ricontrolla le marche e il colore. Se ha il colore dei prelevati è già fatto. Se è un altro animale, «Preleva come doppio», marcalo col colore dei fuori registro e scrivi in nota che cosa lo distingue.
+
+## 9. Se una provetta non è confermata
 
 Una provetta scritta senza conferma deve essere recuperata nel registro.
 
 - Controlla le conferme mancate nelle Ultime e usa «Registra adesso» durante il campionamento.
 - A campionamento chiuso la registra la Regia, senza riaprire il campionamento. Dal primo evento di gestione, anche una nota o una tardiva, la chiusura è definitiva.
 
-## 9. La consegna alla Regia
+## 10. La consegna alla Regia
 
 Consegna le provette alla Regia.
 
 - La Regia le riceve con «Ricevi»: le ordinarie vanno nei plateau, i fuori registro nel secchio.
 
-## 10. Se un telefono sparisce
+## 11. Se un telefono sparisce
 
 Se ti allontani dalla rete, mettiti in pausa dal menu Campionamento › Pausa e ripresa. Altrimenti tutti passano alla gestione provvisoria, con i doppi non controllati.
 
@@ -80,7 +88,7 @@ Se ti allontani dalla rete, mettiti in pausa dal menu Campionamento › Pausa e 
 - Dopo 2 minuti viene escluso da chi vede la maggioranza; solo la Regia può escluderlo subito, con conferma e vedendo la maggioranza.
 - Il telefono che rientra usa la sigla del veterinario confermata dalla Regia.
 
-## 11. Batteria
+## 12. Batteria
 
 Tieni d'occhio gli avvisi di batteria durante il lavoro.
 
@@ -88,7 +96,7 @@ Tieni d'occhio gli avvisi di batteria durante il lavoro.
 - Al 5%, se non è in carica, il telefono va in pausa da solo e avvisa la Regia.
 - La Regia può cambiare le soglie nelle impostazioni del progetto.
 
-## 12. Cosa garantisce tutto questo
+## 13. Cosa garantisce tutto questo
 
 Il registro conserva la traccia dei prelievi e del controllo dei doppi.
 

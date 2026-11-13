@@ -444,16 +444,21 @@ function creaAttuale(doc, radice, celle, opzioni) {
       intestazione.appendChild(h('span', {class: 'fej-badge-bordo', style: 'color:inherit;border:1px solid ' + bordo.colore + ';padding:2px 8px;border-radius:4px;font-weight:bold;font-size:12px', 'aria-label': bordo.desc}, bordo.etichetta));
       articolo.appendChild(intestazione);
       var griglia = h('div', {class: 'fej-plateau-griglia'});
+      // un indice per pozzetto, invece di scorrere tutte le celle per ognuno dei 100 pozzetti
+      var perPosto = {};
+      qui.forEach(function (p) { if (p.plateau === numero) (perPosto[p.pozzetto] = perPosto[p.pozzetto] || []).push(p); });
       for (var fila = 0; fila < 10; fila++) {
         var riga = h('div', {class: 'fej-plateau-fila', style: 'margin-left:' + (fila % 2 ? 22 * m.zoom : 0) + 'px'});
         for (var c = 0; c < 10; c++) (function () {
           var posto = (m.verso === 'alto_basso' ? fila : 9 - fila) * 10 + c + 1;
-          var campioni = qui.filter(function (p) { return p.plateau === numero && p.pozzetto === posto; });
+          var campioni = perPosto[posto] || [];
+          // nella serie il numero intero della provetta (plateau 3: 201–300; utente, 2026-11-13), nel resto il pozzetto
+          var numeroProvetta = m.vista === 'serie' ? (numero - 1) * 100 + posto : posto;
           var occupanti = campioni.filter(function (p) { return p.attiva; }), scelta = occupanti[0] || campioni[0];
           var ev = m.evidenza && m.evidenza.serie === m.serie && m.evidenza.vista === m.vista && m.evidenza.plateau === numero && m.evidenza.pozzetto === posto;
           var b = h('button', {type: 'button', 'data-posto': posto, 'data-uids': campioni.map(function (p) { return p.uid; }).join(' '), 'data-tipo': scelta ? scelta.tipo : 'vuoto', 'data-occupanti': occupanti.length,
-            class: 'fej-plateau-pozzetto', 'aria-label': 'Plateau ' + numero + ', pozzetto ' + posto + (campioni.length ? ': ' + campioni.map(function (p) { return p.etichetta + ', ' + p.categoria; }).join('; ') : ' vuoto'), 'aria-pressed': ev ? 'true' : 'false',
-            style: 'width:' + (44 * m.zoom) + 'px;height:' + (44 * m.zoom) + 'px;font-size:' + (14 * m.zoom) + 'px;background:' + (occupanti.length > 1 ? '#ad1457' : scelta ? scelta.colore : '#f5f5f5') + ';color:' + (scelta ? scelta.testo : '#333'),
+            class: 'fej-plateau-pozzetto', 'aria-label': 'Plateau ' + numero + ', pozzetto ' + posto + (m.vista === 'serie' ? ' (provetta ' + numeroProvetta + ')' : '') + (campioni.length ? ': ' + campioni.map(function (p) { return p.etichetta + ', ' + p.categoria; }).join('; ') : ' vuoto'), 'aria-pressed': ev ? 'true' : 'false',
+            style: 'width:' + (44 * m.zoom) + 'px;height:' + (44 * m.zoom) + 'px;font-size:' + ((numeroProvetta >= 1000 ? 11 : 14) * m.zoom) + 'px;background:' + (occupanti.length > 1 ? '#ad1457' : scelta ? scelta.colore : '#f5f5f5') + ';color:' + (scelta ? scelta.testo : '#333'),
             onclick: function (e) {
               if (trascinato && e.detail !== 0) return;
               trascinato = false;
@@ -462,7 +467,7 @@ function creaAttuale(doc, radice, celle, opzioni) {
                 if (sorgente) { sposta(sorgente, {serie: m.serie, vista: m.vista, plateau: numero, pozzetto: posto}); return; }
               }
               centro({serie: m.serie, vista: m.vista, plateau: numero, pozzetto: posto});
-            }}, occupanti.length > 1 ? '!' : posto);
+            }}, occupanti.length > 1 ? '!' : String(numeroProvetta));
           riga.appendChild(b);
         })();
         griglia.appendChild(riga);

@@ -76,3 +76,25 @@ body.fej-regia-locale button:focus-visible, body.fej-regia-locale input:focus-vi
 .fej-plateau-pozzetto:focus-visible { outline: 4px solid #005fcc; outline-offset: 1px; }
 .fej-plateau-legenda { display: flex; flex-wrap: wrap; gap: .8rem; }
 .fej-plateau-legenda i { display: inline-block; width: .9rem; height: .9rem; border: 1px solid #666; border-radius: 50%; margin-right: .3rem; }
+
+/* Banco (2026-11-13): una provetta fuori registro alla volta */
+.fej-tabs-altre { flex-basis: 100%; display: flex; flex-wrap: wrap; align-items: center; gap: .15rem; font-size: .8em; opacity: .85; }
+.fej-tabs-altre .fej-tab { padding: .25rem .5rem; }
+.fej-banco-testa { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin: .5rem 0; }
+.fej-banco-testa input[type=search] { flex: 1 1 16rem; min-width: 0; font-size: 1.1em; padding: .35rem .5rem; }
+.fej-banco-conteggi { font-size: .9em; }
+.fej-banco-scheda { border: 1px solid var(--md-default-fg-color--lighter); border-radius: .4rem; padding: .6rem .8rem; margin: .6rem 0; }
+.fej-banco-scheda h3 { margin-top: 0; }
+.fej-banco-etichetta { font-family: var(--md-code-font-family, monospace); }
+.fej-banco-scritta pre { display: inline-block; margin: .2rem 0 .4rem; padding: .3rem .6rem; border: 2px solid #c0392b; border-radius: .3rem; font-size: 1.05em; white-space: pre-wrap; }
+.fej-banco-dati { border-collapse: collapse; font-size: .85em; }
+.fej-banco-dati th, .fej-banco-dati td { text-align: left; padding: .2rem .5rem; border-bottom: 1px solid var(--md-default-fg-color--lightest); vertical-align: top; }
+.fej-banco-proposta { border-left: 4px solid #1b8a3a; background: rgba(27, 138, 58, .08); padding: .4rem .8rem; margin: .5rem 0; }
+.fej-banco-esito { border-left: 4px solid var(--md-primary-fg-color); padding: .4rem .8rem; margin: .5rem 0; }
+.fej-banco-tasti { display: flex; flex-wrap: wrap; gap: .3rem; }
+.fej-banco-pannello { margin: .5rem 0; padding: .4rem .6rem; background: var(--md-code-bg-color, rgba(0,0,0,.04)); border-radius: .3rem; }
+.fej-banco-pannello input[type=text] { min-width: 0; width: min(28rem, 100%); }
+.fej-banco-accantonata strong { color: #b36b00; }
+.fej-banco-tolta strong, .fej-banco-persa strong { color: #c0392b; }
+.fej-banco-decisa strong { color: #1b8a3a; }
+.fej-primario { font-weight: 700; padding: .4rem 1rem; }

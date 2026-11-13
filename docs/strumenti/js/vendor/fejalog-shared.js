@@ -106,8 +106,8 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForInterface(Entry, 'Entry');
   initMetadataForInterface(KtMap, 'Map');
   initMetadataForInterface(MutableIterable, 'MutableIterable');
-  initMetadataForInterface(KtMutableSet, 'MutableSet', VOID, VOID, [KtSet, Collection, MutableIterable]);
-  initMetadataForInterface(KtMutableList, 'MutableList', VOID, VOID, [KtList, Collection, MutableIterable]);
+  initMetadataForInterface(KtMutableSet, 'MutableSet', VOID, VOID, [KtSet, MutableIterable, Collection]);
+  initMetadataForInterface(KtMutableList, 'MutableList', VOID, VOID, [KtList, MutableIterable, Collection]);
   initMetadataForInterface(KtMutableMap, 'MutableMap', VOID, VOID, [KtMap]);
   initMetadataForCompanion(Companion_0);
   initMetadataForClass(Enum, 'Enum', VOID, VOID, [Comparable]);
@@ -127,7 +127,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForInterface(Comparator, 'Comparator');
   initMetadataForObject(Unit, 'Unit');
   initMetadataForClass(AbstractCollection, 'AbstractCollection', VOID, VOID, [Collection]);
-  initMetadataForClass(AbstractMutableCollection, 'AbstractMutableCollection', VOID, AbstractCollection, [Collection, MutableIterable]);
+  initMetadataForClass(AbstractMutableCollection, 'AbstractMutableCollection', VOID, AbstractCollection, [MutableIterable, Collection]);
   initMetadataForClass(IteratorImpl, 'IteratorImpl');
   initMetadataForClass(ListIteratorImpl, 'ListIteratorImpl', VOID, IteratorImpl);
   initMetadataForClass(AbstractMutableList, 'AbstractMutableList', VOID, AbstractMutableCollection, [KtMutableList]);
@@ -140,7 +140,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(ArrayList, 'ArrayList', ArrayList_init_$Create$, AbstractMutableList, [KtMutableList, RandomAccess]);
   initMetadataForClass(HashMap, 'HashMap', HashMap_init_$Create$, AbstractMutableMap, [KtMutableMap]);
   initMetadataForClass(HashMapKeys, 'HashMapKeys', VOID, AbstractMutableSet, [KtMutableSet]);
-  initMetadataForClass(HashMapValues, 'HashMapValues', VOID, AbstractMutableCollection, [Collection, MutableIterable]);
+  initMetadataForClass(HashMapValues, 'HashMapValues', VOID, AbstractMutableCollection, [MutableIterable, Collection]);
   initMetadataForClass(HashMapEntrySetBase, 'HashMapEntrySetBase', VOID, AbstractMutableSet, [KtMutableSet]);
   initMetadataForClass(HashMapEntrySet, 'HashMapEntrySet', VOID, HashMapEntrySetBase);
   initMetadataForClass(HashMapKeysDefault$iterator$1);
@@ -193,6 +193,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(InternalHashMap, 'InternalHashMap', InternalHashMap_init_$Create$, VOID, [InternalMap]);
   initMetadataForObject(EmptyHolder, 'EmptyHolder');
   initMetadataForClass(LinkedHashMap, 'LinkedHashMap', LinkedHashMap_init_$Create$, HashMap, [KtMutableMap]);
+  initMetadataForObject(EmptyHolder_0, 'EmptyHolder');
   initMetadataForClass(LinkedHashSet, 'LinkedHashSet', LinkedHashSet_init_$Create$, HashSet, [KtMutableSet]);
   initMetadataForInterface(Continuation, 'Continuation');
   initMetadataForClass(InterceptedCoroutine, 'InterceptedCoroutine', VOID, VOID, [Continuation]);
@@ -210,8 +211,8 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(ArithmeticException, 'ArithmeticException', ArithmeticException_init_$Create$, RuntimeException);
   initMetadataForClass(Error_0, 'Error', Error_init_$Create$, Error);
   initMetadataForClass(AssertionError, 'AssertionError', AssertionError_init_$Create$, Error_0);
-  initMetadataForClass(NumberFormatException, 'NumberFormatException', NumberFormatException_init_$Create$, IllegalArgumentException);
   initMetadataForClass(UninitializedPropertyAccessException, 'UninitializedPropertyAccessException', UninitializedPropertyAccessException_init_$Create$, RuntimeException);
+  initMetadataForClass(NumberFormatException, 'NumberFormatException', NumberFormatException_init_$Create$, IllegalArgumentException);
   initMetadataForClass(NoWhenBranchMatchedException, 'NoWhenBranchMatchedException', NoWhenBranchMatchedException_init_$Create$, RuntimeException);
   initMetadataForClass(NullPointerException, 'NullPointerException', NullPointerException_init_$Create$, RuntimeException);
   initMetadataForClass(ClassCastException, 'ClassCastException', ClassCastException_init_$Create$, RuntimeException);
@@ -652,6 +653,8 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(TipoFileBdn, 'TipoFileBdn', VOID, Enum);
   initMetadataForClass(FileBdn, 'FileBdn');
   initMetadataForObject(RiconoscimentoBdn, 'RiconoscimentoBdn');
+  initMetadataForClass(Accantonamento, 'Accantonamento');
+  initMetadataForObject(Accantonate, 'Accantonate');
   initMetadataForClass(Stato, 'Stato', VOID, Enum);
   initMetadataForClass(Verifica, 'Verifica');
   initMetadataForObject(AcquistiDda, 'AcquistiDda');
@@ -665,8 +668,20 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForCompanion(Companion_34);
   initMetadataForClass(Andamento, 'Andamento');
   initMetadataForObject(Data, 'Data');
+  initMetadataForClass(Candidato, 'Candidato');
+  initMetadataForObject(AssentiCompatibili, 'AssentiCompatibili');
   initMetadataForCompanion(Companion_35);
   initMetadataForObject(AzioniProvettaSito, 'AzioniProvettaSito');
+  initMetadataForClass(Stato_0, 'Stato', VOID, Enum);
+  initMetadataForClass(Voce, 'Voce');
+  initMetadataForClass(Registrato, 'Registrato');
+  initMetadataForClass(DatiBdn, 'DatiBdn');
+  initMetadataForClass(AltraProvetta, 'AltraProvetta');
+  initMetadataForClass(Compatibile, 'Compatibile');
+  initMetadataForClass(Proposta, 'Proposta');
+  initMetadataForClass(Scheda, 'Scheda');
+  initMetadataForClass(Destinazione, 'Destinazione');
+  initMetadataForObject(Banco, 'Banco');
   initMetadataForCompanion(Companion_36);
   initMetadataForClass(AnagraficaForzata, 'AnagraficaForzata');
   initMetadataForObject(CampiProvetta, 'CampiProvetta');
@@ -704,6 +719,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(StatoElencoProvette, 'StatoElencoProvette');
   initMetadataForClass(BozzaElenco, 'BozzaElenco');
   initMetadataForClass(sam$kotlin_Comparator$0_8, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_9, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(ElencoProvette, 'ElencoProvette');
   initMetadataForClass(Riepilogo, 'Riepilogo');
   initMetadataForClass(PostoDiCampo, 'PostoDiCampo');
@@ -731,9 +747,10 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(MessaggioRegia, 'MessaggioRegia');
   initMetadataForObject(MessaggiRegia, 'MessaggiRegia');
   initMetadataForObject(NomeSeduta, 'NomeSeduta');
-  initMetadataForClass(Candidato, 'Candidato');
   initMetadataForObject(NonIdentificati, 'NonIdentificati');
   initMetadataForObject(SottoEta, 'SottoEta');
+  initMetadataForClass(VoceSchemaBdn, 'VoceSchemaBdn');
+  initMetadataForObject(SchemaBdn, 'SchemaBdn');
   initMetadataForObject(NonTrovati, 'NonTrovati');
   initMetadataForCompanion(Companion_46);
   initMetadataForClass(OperazioniCampo, 'OperazioniCampo');
@@ -756,7 +773,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForObject(RegistriCaricati, 'RegistriCaricati');
   initMetadataForObject(Riattribuzione, 'Riattribuzione');
   initMetadataForClass(CapoTrovato, 'CapoTrovato');
-  initMetadataForClass(Voce, 'Voce');
+  initMetadataForClass(Voce_0, 'Voce');
   initMetadataForClass(Indice, 'Indice');
   initMetadataForClass(Fatte, 'Fatte');
   initMetadataForObject(RicercaCapo, 'RicercaCapo');
@@ -765,9 +782,8 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(ElencoRicercati, 'ElencoRicercati');
   initMetadataForClass(RicercatoTrovato, 'RicercatoTrovato');
   initMetadataForClass(Lettura, 'Lettura');
-  initMetadataForClass(sam$kotlin_Comparator$0_9, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_10, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(Ricercati, 'Ricercati');
-  initMetadataForClass(CandidatoRicollocazione, 'CandidatoRicollocazione');
   initMetadataForObject(Ricollocazione, 'Ricollocazione');
   initMetadataForClass(ProvettaPosata, 'ProvettaPosata');
   initMetadataForCompanion(Companion_49);
@@ -801,9 +817,9 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForObject(NessunRisultato, 'NessunRisultato');
   initMetadataForClass(Univoco, 'Univoco');
   initMetadataForClass(Ambiguo, 'Ambiguo');
-  initMetadataForClass(sam$kotlin_Comparator$0_10, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForClass(sam$kotlin_Comparator$0_11, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForClass(sam$kotlin_Comparator$0_12, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_13, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(GuidaPosizionamento, 'GuidaPosizionamento');
   initMetadataForClass(Ambito, 'Ambito');
   initMetadataForClass(Riferimento, 'Riferimento');
@@ -825,7 +841,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForCompanion(Companion_56);
   initMetadataForObject($serializer_1, '$serializer', VOID, VOID, [GeneratedSerializer]);
   initMetadataForClass(StatoAvanzamentoGestione, 'StatoAvanzamentoGestione', VOID, VOID, VOID, VOID, VOID, {0: $serializer_getInstance_1});
-  initMetadataForClass(sam$kotlin_Comparator$0_13, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_14, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(ProduttivitaGestione, 'ProduttivitaGestione');
   initMetadataForCompanion(Companion_57);
   initMetadataForObject($serializer_2, '$serializer', VOID, VOID, [GeneratedSerializer]);
@@ -865,7 +881,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForObject(SceltaOperatore, 'SceltaOperatore');
   initMetadataForClass(AssegnazioneSerie, 'AssegnazioneSerie');
   initMetadataForClass(DataCivile, 'DataCivile');
-  initMetadataForClass(sam$kotlin_Comparator$0_14, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_15, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(AssegnazioneNumeri, 'AssegnazioneNumeri');
   initMetadataForClass(FormaEtichetta, 'FormaEtichetta', VOID, Enum);
   initMetadataForClass(TipoEtichetta, 'TipoEtichetta', VOID, Enum);
@@ -891,7 +907,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForCompanion(Companion_66);
   initMetadataForClass(Titolarita, 'Titolarita', Titolarita);
   initMetadataForObject(RegiaImpostazioni, 'RegiaImpostazioni');
-  initMetadataForClass(sam$kotlin_Comparator$0_15, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_16, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(SeriePacchetto, 'SeriePacchetto');
   initMetadataForObject(SigleVeterinari, 'SigleVeterinari');
   initMetadataForClass(Serie, 'Serie');
@@ -899,7 +915,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForCompanion(Companion_67);
   initMetadataForClass(StatoNumeri, 'StatoNumeri');
   initMetadataForClass(RigaNumerazione, 'RigaNumerazione');
-  initMetadataForClass(sam$kotlin_Comparator$0_16, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_17, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(TabellaNumerazione, 'TabellaNumerazione');
   initMetadataForClass(Valido_0, 'Valido');
   initMetadataForClass(Rifiutato_0, 'Rifiutato');
@@ -966,7 +982,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(Evento, 'Evento');
   initMetadataForClass(Testa, 'Testa');
   initMetadataForObject(Hash, 'Hash');
-  initMetadataForClass(sam$kotlin_Comparator$0_17, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_18, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForCompanion(Companion_87);
   initMetadataForClass(Impronta, 'Impronta');
   initMetadataForObject(Jcs, 'Jcs');
@@ -980,18 +996,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(DatiBackupIngresso, 'DatiBackupIngresso');
   initMetadataForClass(RisultatoUnione, 'RisultatoUnione');
   initMetadataForObject(RiconciliazioneBackup, 'RiconciliazioneBackup');
-  initMetadataForClass(sam$kotlin_Comparator$0_18, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_19, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(CreazioneSito, 'CreazioneSito');
   initMetadataForCompanion(Companion_88);
   initMetadataForObject($serializer_22, '$serializer', VOID, VOID, [GeneratedSerializer]);
   initMetadataForClass(OpzioniMateriale, 'OpzioniMateriale', OpzioniMateriale, VOID, VOID, VOID, VOID, {0: $serializer_getInstance_22});
   initMetadataForObject(MaterialeCampo, 'MaterialeCampo');
-  initMetadataForClass(sam$kotlin_Comparator$0_19, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_20, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(NumerazioneStampe, 'NumerazioneStampe');
   initMetadataForClass(ContestoLocale, 'ContestoLocale', ContestoLocale);
-  initMetadataForClass(sam$kotlin_Comparator$0_20, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
-  initMetadataForClass(SessioneSito, 'SessioneSito');
+  initMetadataForClass(BancoSito, 'BancoSito');
   initMetadataForClass(sam$kotlin_Comparator$0_21, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(SessioneSito, 'SessioneSito');
+  initMetadataForClass(sam$kotlin_Comparator$0_22, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   //endregion
   function CharSequence() {
   }
@@ -2023,6 +2040,15 @@ if (typeof String.prototype.startsWith === 'undefined') {
       throw IllegalArgumentException_init_$Create$_0(toString_1(message));
     }
     return substring_0(_this__u8e3s4, coerceAtMost(n, _this__u8e3s4.length));
+  }
+  function takeLast(_this__u8e3s4, n) {
+    // Inline function 'kotlin.require' call
+    if (!(n >= 0)) {
+      var message = 'Requested character count ' + n + ' is less than zero.';
+      throw IllegalArgumentException_init_$Create$_0(toString_1(message));
+    }
+    var length = _this__u8e3s4.length;
+    return substring_0(_this__u8e3s4, length - coerceAtMost(n, length) | 0);
   }
   function lastOrNull_0(_this__u8e3s4) {
     var tmp;
@@ -4773,6 +4799,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
     this.array_1 = array;
     this.isReadOnly_1 = false;
   }
+  protoOf(ArrayList).build_nmwvly_k$ = function () {
+    this.checkIsMutable_jn1ih0_k$();
+    this.isReadOnly_1 = true;
+    return this.get_size_woubt6_k$() > 0 ? this : Companion_getInstance_2().Empty_1;
+  };
   protoOf(ArrayList).ensureCapacity_wr7980_k$ = function (minCapacity) {
   };
   protoOf(ArrayList).get_size_woubt6_k$ = function () {
@@ -6073,6 +6104,32 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function LinkedHashSet_init_$Create$_1(initialCapacity) {
     return LinkedHashSet_init_$Init$_2(initialCapacity, objectCreate(protoOf(LinkedHashSet)));
   }
+  function LinkedHashSet_init_$Init$_3(internalMap, $this) {
+    HashSet_init_$Init$(internalMap, $this);
+    LinkedHashSet.call($this);
+    return $this;
+  }
+  function LinkedHashSet_init_$Create$_2(internalMap) {
+    return LinkedHashSet_init_$Init$_3(internalMap, objectCreate(protoOf(LinkedHashSet)));
+  }
+  function EmptyHolder_0() {
+    EmptyHolder_instance_0 = this;
+    var tmp = this;
+    // Inline function 'kotlin.also' call
+    var this_0 = InternalHashMap_init_$Create$_0(0);
+    this_0.build_52xuhq_k$();
+    tmp.value_1 = LinkedHashSet_init_$Create$_2(this_0);
+  }
+  var EmptyHolder_instance_0;
+  function EmptyHolder_getInstance_0() {
+    if (EmptyHolder_instance_0 == null)
+      new EmptyHolder_0();
+    return EmptyHolder_instance_0;
+  }
+  protoOf(LinkedHashSet).build_nmwvly_k$ = function () {
+    this.internalMap_1.build_52xuhq_k$();
+    return this.get_size_woubt6_k$() > 0 ? this : EmptyHolder_getInstance_0().value_1;
+  };
   protoOf(LinkedHashSet).checkIsMutable_jn1ih0_k$ = function () {
     return this.internalMap_1.checkIsMutable_h5js84_k$();
   };
@@ -6455,6 +6512,29 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function AssertionError() {
     captureStack(this, AssertionError);
   }
+  function UninitializedPropertyAccessException_init_$Init$($this) {
+    RuntimeException_init_$Init$($this);
+    UninitializedPropertyAccessException.call($this);
+    return $this;
+  }
+  function UninitializedPropertyAccessException_init_$Create$() {
+    var tmp = UninitializedPropertyAccessException_init_$Init$(objectCreate(protoOf(UninitializedPropertyAccessException)));
+    captureStack(tmp, UninitializedPropertyAccessException_init_$Create$);
+    return tmp;
+  }
+  function UninitializedPropertyAccessException_init_$Init$_0(message, $this) {
+    RuntimeException_init_$Init$_0(message, $this);
+    UninitializedPropertyAccessException.call($this);
+    return $this;
+  }
+  function UninitializedPropertyAccessException_init_$Create$_0(message) {
+    var tmp = UninitializedPropertyAccessException_init_$Init$_0(message, objectCreate(protoOf(UninitializedPropertyAccessException)));
+    captureStack(tmp, UninitializedPropertyAccessException_init_$Create$_0);
+    return tmp;
+  }
+  function UninitializedPropertyAccessException() {
+    captureStack(this, UninitializedPropertyAccessException);
+  }
   function Error_init_$Init$($this) {
     extendThrowable($this);
     Error_0.call($this);
@@ -6500,29 +6580,6 @@ if (typeof String.prototype.startsWith === 'undefined') {
   }
   function NumberFormatException() {
     captureStack(this, NumberFormatException);
-  }
-  function UninitializedPropertyAccessException_init_$Init$($this) {
-    RuntimeException_init_$Init$($this);
-    UninitializedPropertyAccessException.call($this);
-    return $this;
-  }
-  function UninitializedPropertyAccessException_init_$Create$() {
-    var tmp = UninitializedPropertyAccessException_init_$Init$(objectCreate(protoOf(UninitializedPropertyAccessException)));
-    captureStack(tmp, UninitializedPropertyAccessException_init_$Create$);
-    return tmp;
-  }
-  function UninitializedPropertyAccessException_init_$Init$_0(message, $this) {
-    RuntimeException_init_$Init$_0(message, $this);
-    UninitializedPropertyAccessException.call($this);
-    return $this;
-  }
-  function UninitializedPropertyAccessException_init_$Create$_0(message) {
-    var tmp = UninitializedPropertyAccessException_init_$Init$_0(message, objectCreate(protoOf(UninitializedPropertyAccessException)));
-    captureStack(tmp, UninitializedPropertyAccessException_init_$Create$_0);
-    return tmp;
-  }
-  function UninitializedPropertyAccessException() {
-    captureStack(this, UninitializedPropertyAccessException);
   }
   function NoWhenBranchMatchedException_init_$Init$($this) {
     RuntimeException_init_$Init$($this);
@@ -7905,6 +7962,15 @@ if (typeof String.prototype.startsWith === 'undefined') {
     } else
       return regionMatches(_this__u8e3s4, 0, prefix, 0, prefix.length, ignoreCase);
   }
+  function endsWith(_this__u8e3s4, suffix, ignoreCase) {
+    ignoreCase = ignoreCase === VOID ? false : ignoreCase;
+    if (!ignoreCase) {
+      // Inline function 'kotlin.text.nativeEndsWith' call
+      // Inline function 'kotlin.js.asDynamic' call
+      return _this__u8e3s4.endsWith(suffix);
+    } else
+      return regionMatches(_this__u8e3s4, _this__u8e3s4.length - suffix.length | 0, suffix, 0, suffix.length, ignoreCase);
+  }
   function equals_0(_this__u8e3s4, other, ignoreCase) {
     ignoreCase = ignoreCase === VOID ? false : ignoreCase;
     if (_this__u8e3s4 == null)
@@ -7929,15 +7995,6 @@ if (typeof String.prototype.startsWith === 'undefined') {
       }
        while (inductionVariable < last);
     return true;
-  }
-  function endsWith(_this__u8e3s4, suffix, ignoreCase) {
-    ignoreCase = ignoreCase === VOID ? false : ignoreCase;
-    if (!ignoreCase) {
-      // Inline function 'kotlin.text.nativeEndsWith' call
-      // Inline function 'kotlin.js.asDynamic' call
-      return _this__u8e3s4.endsWith(suffix);
-    } else
-      return regionMatches(_this__u8e3s4, _this__u8e3s4.length - suffix.length | 0, suffix, 0, suffix.length, ignoreCase);
   }
   function regionMatches(_this__u8e3s4, thisOffset, other, otherOffset, length, ignoreCase) {
     ignoreCase = ignoreCase === VOID ? false : ignoreCase;
@@ -11019,6 +11076,25 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   }
+  function lastIndexOf(_this__u8e3s4, string, startIndex, ignoreCase) {
+    startIndex = startIndex === VOID ? get_lastIndex_3(_this__u8e3s4) : startIndex;
+    ignoreCase = ignoreCase === VOID ? false : ignoreCase;
+    var tmp;
+    var tmp_0;
+    if (ignoreCase) {
+      tmp_0 = true;
+    } else {
+      tmp_0 = !(typeof _this__u8e3s4 === 'string');
+    }
+    if (tmp_0) {
+      tmp = indexOf_8(_this__u8e3s4, string, startIndex, 0, ignoreCase, true);
+    } else {
+      // Inline function 'kotlin.text.nativeLastIndexOf' call
+      // Inline function 'kotlin.js.asDynamic' call
+      tmp = _this__u8e3s4.lastIndexOf(string, startIndex);
+    }
+    return tmp;
+  }
   function substringBefore(_this__u8e3s4, delimiter, missingDelimiterValue) {
     missingDelimiterValue = missingDelimiterValue === VOID ? _this__u8e3s4 : missingDelimiterValue;
     var index = indexOf_6(_this__u8e3s4, delimiter);
@@ -11272,6 +11348,26 @@ if (typeof String.prototype.startsWith === 'undefined') {
          while (!(index_0 === last_1));
     }
     return -1;
+  }
+  function trimEnd_0(_this__u8e3s4) {
+    var tmp$ret$0;
+    $l$block: {
+      // Inline function 'kotlin.text.trimEnd' call
+      var inductionVariable = charSequenceLength(_this__u8e3s4) - 1 | 0;
+      if (0 <= inductionVariable)
+        do {
+          var index = inductionVariable;
+          inductionVariable = inductionVariable + -1 | 0;
+          var p0 = charSequenceGet(_this__u8e3s4, index);
+          if (!isWhitespace(p0)) {
+            tmp$ret$0 = charSequenceSubSequence(_this__u8e3s4, 0, index + 1 | 0);
+            break $l$block;
+          }
+        }
+         while (0 <= inductionVariable);
+      tmp$ret$0 = '';
+    }
+    return tmp$ret$0;
   }
   function padEnd_0(_this__u8e3s4, length, padChar) {
     padChar = padChar === VOID ? _Char___init__impl__6a9atx(32) : padChar;
@@ -11553,25 +11649,6 @@ if (typeof String.prototype.startsWith === 'undefined') {
       tmp$ret$1 = '';
     }
     return toString_1(tmp$ret$1);
-  }
-  function lastIndexOf(_this__u8e3s4, string, startIndex, ignoreCase) {
-    startIndex = startIndex === VOID ? get_lastIndex_3(_this__u8e3s4) : startIndex;
-    ignoreCase = ignoreCase === VOID ? false : ignoreCase;
-    var tmp;
-    var tmp_0;
-    if (ignoreCase) {
-      tmp_0 = true;
-    } else {
-      tmp_0 = !(typeof _this__u8e3s4 === 'string');
-    }
-    if (tmp_0) {
-      tmp = indexOf_8(_this__u8e3s4, string, startIndex, 0, ignoreCase, true);
-    } else {
-      // Inline function 'kotlin.text.nativeLastIndexOf' call
-      // Inline function 'kotlin.js.asDynamic' call
-      tmp = _this__u8e3s4.lastIndexOf(string, startIndex);
-    }
-    return tmp;
   }
   function rangesDelimitedBy$lambda($delimiters, $ignoreCase) {
     return function ($this$DelimitedRangesSequence, currentIndex) {
@@ -28543,6 +28620,73 @@ if (typeof String.prototype.startsWith === 'undefined') {
     static_init_7();
     return TipoFileBdn_SCONOSCIUTO_instance;
   }
+  function Accantonamento(motivo) {
+    this.motivo_1 = motivo;
+  }
+  protoOf(Accantonamento).toString = function () {
+    return 'Accantonamento(motivo=' + this.motivo_1 + ')';
+  };
+  protoOf(Accantonamento).hashCode = function () {
+    return getStringHashCode(this.motivo_1);
+  };
+  protoOf(Accantonamento).equals = function (other) {
+    if (this === other)
+      return true;
+    if (!(other instanceof Accantonamento))
+      return false;
+    if (!(this.motivo_1 === other.motivo_1))
+      return false;
+    return true;
+  };
+  function posizione($this, note) {
+    var i = lastIndexOf(note, 'Accantonata: ');
+    if (i < 0)
+      return null;
+    if (i === 0 || endsWith(substring(note, 0, i), ' \u2014 '))
+      return i;
+    return null;
+  }
+  function Accantonate() {
+    this.PREFISSO_1 = 'Accantonata: ';
+    this.SEPARATORE_1 = ' \u2014 ';
+  }
+  protoOf(Accantonate).di_8ry225_k$ = function (r) {
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs = r.caratteristiche_1.get_wei43m_k$('note');
+    var tmp$ret$0 = tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
+    return this.di_wlylgr_k$(tmp$ret$0);
+  };
+  protoOf(Accantonate).di_wlylgr_k$ = function (note) {
+    var tmp0_elvis_lhs = posizione(this, note);
+    var tmp;
+    if (tmp0_elvis_lhs == null) {
+      return null;
+    } else {
+      tmp = tmp0_elvis_lhs;
+    }
+    var i = tmp;
+    // Inline function 'kotlin.text.trim' call
+    var this_0 = substring_0(note, i + 13 | 0);
+    var tmp$ret$0 = toString_1(trim_0(isCharSequence(this_0) ? this_0 : THROW_CCE()));
+    return new Accantonamento(tmp$ret$0);
+  };
+  protoOf(Accantonate).senzaAccantonamento_n7koda_k$ = function (note) {
+    var tmp0_elvis_lhs = posizione(this, note);
+    var tmp;
+    if (tmp0_elvis_lhs == null) {
+      return note;
+    } else {
+      tmp = tmp0_elvis_lhs;
+    }
+    var i = tmp;
+    // Inline function 'kotlin.text.trimEnd' call
+    var this_0 = removeSuffix(substring(note, 0, i), ' \u2014 ');
+    return toString_1(trimEnd_0(isCharSequence(this_0) ? this_0 : THROW_CCE()));
+  };
+  var Accantonate_instance;
+  function Accantonate_getInstance() {
+    return Accantonate_instance;
+  }
   var static_init_called_8;
   function static_init_8() {
     if (static_init_called_8)
@@ -29917,6 +30061,366 @@ if (typeof String.prototype.startsWith === 'undefined') {
     static_init_9();
     return StatoOperatore_ESCLUSO_instance;
   }
+  function Candidato(capo, etaMesi, stessaRazza, cifreDiverse, motivi) {
+    this.capo_1 = capo;
+    this.etaMesi_1 = etaMesi;
+    this.stessaRazza_1 = stessaRazza;
+    this.cifreDiverse_1 = cifreDiverse;
+    this.motivi_1 = motivi;
+  }
+  protoOf(Candidato).toString = function () {
+    return 'Candidato(capo=' + this.capo_1.toString() + ', etaMesi=' + this.etaMesi_1 + ', stessaRazza=' + this.stessaRazza_1 + ', cifreDiverse=' + this.cifreDiverse_1 + ', motivi=' + toString_1(this.motivi_1) + ')';
+  };
+  protoOf(Candidato).hashCode = function () {
+    var result = this.capo_1.hashCode();
+    result = imul(result, 31) + (this.etaMesi_1 == null ? 0 : this.etaMesi_1) | 0;
+    result = imul(result, 31) + getBooleanHashCode(this.stessaRazza_1) | 0;
+    result = imul(result, 31) + (this.cifreDiverse_1 == null ? 0 : this.cifreDiverse_1) | 0;
+    result = imul(result, 31) + hashCode_0(this.motivi_1) | 0;
+    return result;
+  };
+  protoOf(Candidato).equals = function (other) {
+    if (this === other)
+      return true;
+    if (!(other instanceof Candidato))
+      return false;
+    if (!this.capo_1.equals(other.capo_1))
+      return false;
+    if (!(this.etaMesi_1 == other.etaMesi_1))
+      return false;
+    if (!(this.stessaRazza_1 === other.stessaRazza_1))
+      return false;
+    if (!(this.cifreDiverse_1 == other.cifreDiverse_1))
+      return false;
+    if (!equals(this.motivi_1, other.motivi_1))
+      return false;
+    return true;
+  };
+  function AssentiCompatibili$di$lambda(it) {
+    return it.cifreDiverse_1 === 1 ? 0 : 1;
+  }
+  function AssentiCompatibili$di$lambda_0(it) {
+    return !it.stessaRazza_1;
+  }
+  function AssentiCompatibili$di$lambda_1($etaProvetta) {
+    return function (it) {
+      return $etaProvetta == null || it.etaMesi_1 == null ? 2147483647 : abs_0(it.etaMesi_1 - $etaProvetta | 0);
+    };
+  }
+  function AssentiCompatibili$di$lambda_2(it) {
+    return it.capo_1.contrassegno_1;
+  }
+  function AssentiCompatibili() {
+  }
+  protoOf(AssentiCompatibili).di_ra4auy_k$ = function (r, righe, attuali, max, cifre) {
+    // Inline function 'kotlin.text.filter' call
+    // Inline function 'kotlin.text.filterTo' call
+    var destination = StringBuilder_init_$Create$_0();
+    var inductionVariable = 0;
+    var last = charSequenceLength(cifre);
+    if (inductionVariable < last)
+      do {
+        var index = inductionVariable;
+        inductionVariable = inductionVariable + 1 | 0;
+        var element = charSequenceGet(cifre, index);
+        if (_Char___init__impl__6a9atx(48) <= element ? element <= _Char___init__impl__6a9atx(57) : false) {
+          destination.append_58al37_k$(element);
+        }
+      }
+       while (inductionVariable < last);
+    var cerca = destination.toString();
+    var classe = NonIdentificati_instance.classe_iqwwgl_k$(r);
+    var senzaMarche = NonIdentificati_instance.eNonIdentificata_g78cp5_k$(r) && NonIdentificati_instance.nonRisolta_hrylc1_k$(r);
+    var sesso = r.get_sesso_iygpqs_k$();
+    if (senzaMarche && (classe == null || isBlank(sesso)))
+      return emptyList();
+    var stab = substringBefore(r.serie_1, _Char___init__impl__6a9atx(58));
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs = r.caratteristiche_1.get_wei43m_k$('ts_raccolta');
+    // Inline function 'kotlin.text.ifBlank' call
+    var this_0 = tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
+    var tmp;
+    if (isBlank(this_0)) {
+      tmp = r.ts_1;
+    } else {
+      tmp = this_0;
+    }
+    var data = tmp;
+    var sp = r.specie_1 === 'capre' ? Specie_CAPRE_getInstance() : Specie_PECORE_getInstance();
+    var arvet = RazzeArvet_getInstance().di_fczljh_k$(sp);
+    var tmp_0 = RazzeArvet_getInstance();
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs_0 = r.caratteristiche_1.get_wei43m_k$('razza');
+    var tmp$ret$6 = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
+    var razza = tmp_0.inArvet_ybv88v_k$(tmp$ret$6, arvet);
+    var tmp_1;
+    if (!(classe == null)) {
+      tmp_1 = classe.mesiCentrali_l507s8_k$(r.specie_1);
+    } else {
+      var tmp_2 = ConfrontoNonPrelevati_getInstance();
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_1 = r.caratteristiche_1.get_wei43m_k$('data_nascita');
+      var tmp$ret$7 = tmp0_elvis_lhs_1 == null ? '' : tmp0_elvis_lhs_1;
+      tmp_1 = tmp_2.mesiDi_qcs6u3_k$(tmp$ret$7, data);
+    }
+    var etaProvetta = tmp_1;
+    var tmp0_elvis_lhs_2 = r.contrassegnoCampo_1;
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs_3 = tmp0_elvis_lhs_2 == null ? r.contrassegno_1 : tmp0_elvis_lhs_2;
+    // Inline function 'kotlin.text.filter' call
+    var tmp0 = tmp0_elvis_lhs_3 == null ? '' : tmp0_elvis_lhs_3;
+    // Inline function 'kotlin.text.filterTo' call
+    var destination_0 = StringBuilder_init_$Create$_0();
+    var inductionVariable_0 = 0;
+    var last_0 = charSequenceLength(tmp0);
+    if (inductionVariable_0 < last_0)
+      do {
+        var index_0 = inductionVariable_0;
+        inductionVariable_0 = inductionVariable_0 + 1 | 0;
+        var element_0 = charSequenceGet(tmp0, index_0);
+        if (_Char___init__impl__6a9atx(48) <= element_0 ? element_0 <= _Char___init__impl__6a9atx(57) : false) {
+          destination_0.append_58al37_k$(element_0);
+        }
+      }
+       while (inductionVariable_0 < last_0);
+    var letto = destination_0.toString();
+    // Inline function 'kotlin.collections.mapNotNull' call
+    var tmp0_0 = NonTrovati_instance.presentiNonPrelevati_33cxnm_k$(attuali, righe);
+    // Inline function 'kotlin.collections.mapNotNullTo' call
+    var destination_1 = ArrayList_init_$Create$();
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s = tmp0_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element_1 = _iterator__ex2g4s.next_20eer_k$();
+      var tmp$ret$16;
+      $l$block_4: {
+        if (!(element_1.specie_1 === r.specie_1) || !(element_1.stabilimento_1 === stab)) {
+          tmp$ret$16 = null;
+          break $l$block_4;
+        }
+        var tmp_3;
+        // Inline function 'kotlin.text.isNotBlank' call
+        if (!isBlank(sesso)) {
+          tmp_3 = !(element_1.sesso_1 === sesso);
+        } else {
+          tmp_3 = false;
+        }
+        if (tmp_3) {
+          tmp$ret$16 = null;
+          break $l$block_4;
+        }
+        var tmp_4;
+        // Inline function 'kotlin.text.isNotEmpty' call
+        if (charSequenceLength(cerca) > 0) {
+          // Inline function 'kotlin.text.filter' call
+          var tmp0_1 = element_1.contrassegno_1;
+          // Inline function 'kotlin.text.filterTo' call
+          var destination_2 = StringBuilder_init_$Create$_0();
+          var inductionVariable_1 = 0;
+          var last_1 = charSequenceLength(tmp0_1);
+          if (inductionVariable_1 < last_1)
+            do {
+              var index_1 = inductionVariable_1;
+              inductionVariable_1 = inductionVariable_1 + 1 | 0;
+              var element_2 = charSequenceGet(tmp0_1, index_1);
+              if (_Char___init__impl__6a9atx(48) <= element_2 ? element_2 <= _Char___init__impl__6a9atx(57) : false) {
+                destination_2.append_58al37_k$(element_2);
+              }
+            }
+             while (inductionVariable_1 < last_1);
+          var tmp$ret$19 = destination_2.toString();
+          tmp_4 = !contains_7(tmp$ret$19, cerca);
+        } else {
+          tmp_4 = false;
+        }
+        if (tmp_4) {
+          tmp$ret$16 = null;
+          break $l$block_4;
+        }
+        var razzaCapo = RazzeArvet_getInstance().inArvet_ybv88v_k$(element_1.razza_1, arvet);
+        if (senzaMarche && !NonIdentificati_instance.razzaCompatibile_spiwtx_k$(razza, razzaCapo)) {
+          tmp$ret$16 = null;
+          break $l$block_4;
+        }
+        var mesi = ConfrontoNonPrelevati_getInstance().mesiDi_qcs6u3_k$(element_1.dataNascita_1, data);
+        if (!(classe == null) && (mesi == null || !classe.compatibile$default_agvtwy_k$(r.specie_1, mesi))) {
+          tmp$ret$16 = null;
+          break $l$block_4;
+        }
+        var cl = attuali.classificaPrelievo_b4hhe_k$(sp, element_1.contrassegno_1, element_1.stabilimento_1);
+        if (!cl.categoria_1.equals(CategoriaCampo_VERDE_getInstance()) || cl.problematica_1) {
+          tmp$ret$16 = null;
+          break $l$block_4;
+        }
+        var tmp_5;
+        // Inline function 'kotlin.text.isNotBlank' call
+        if (!isBlank(razza)) {
+          // Inline function 'kotlin.text.trim' call
+          var tmp_6 = toString_1(trim_0(isCharSequence(razzaCapo) ? razzaCapo : THROW_CCE()));
+          // Inline function 'kotlin.text.trim' call
+          var tmp$ret$24 = toString_1(trim_0(isCharSequence(razza) ? razza : THROW_CCE()));
+          tmp_5 = equals_0(tmp_6, tmp$ret$24, true);
+        } else {
+          tmp_5 = false;
+        }
+        var stessaRazza = tmp_5;
+        // Inline function 'kotlin.text.filter' call
+        var tmp0_2 = element_1.contrassegno_1;
+        // Inline function 'kotlin.text.filterTo' call
+        var destination_3 = StringBuilder_init_$Create$_0();
+        var inductionVariable_2 = 0;
+        var last_2 = charSequenceLength(tmp0_2);
+        if (inductionVariable_2 < last_2)
+          do {
+            var index_2 = inductionVariable_2;
+            inductionVariable_2 = inductionVariable_2 + 1 | 0;
+            var element_3 = charSequenceGet(tmp0_2, index_2);
+            if (_Char___init__impl__6a9atx(48) <= element_3 ? element_3 <= _Char___init__impl__6a9atx(57) : false) {
+              destination_3.append_58al37_k$(element_3);
+            }
+          }
+           while (inductionVariable_2 < last_2);
+        // Inline function 'kotlin.let' call
+        var d = destination_3.toString();
+        var tmp_7;
+        if (letto.length >= 6 && d.length === letto.length) {
+          var tmp0_3 = get_indices_2(d);
+          var tmp$ret$30;
+          $l$block_5: {
+            // Inline function 'kotlin.collections.count' call
+            var tmp_8;
+            if (isInterface(tmp0_3, Collection)) {
+              tmp_8 = tmp0_3.isEmpty_y1axqb_k$();
+            } else {
+              tmp_8 = false;
+            }
+            if (tmp_8) {
+              tmp$ret$30 = 0;
+              break $l$block_5;
+            }
+            var count = 0;
+            var inductionVariable_3 = tmp0_3.first_1;
+            var last_3 = tmp0_3.last_1;
+            if (inductionVariable_3 <= last_3)
+              do {
+                var element_4 = inductionVariable_3;
+                inductionVariable_3 = inductionVariable_3 + 1 | 0;
+                var it = element_4;
+                if (!(charCodeAt(d, it) === charCodeAt(letto, it))) {
+                  count = count + 1 | 0;
+                  checkCountOverflow(count);
+                }
+              }
+               while (!(element_4 === last_3));
+            tmp$ret$30 = count;
+          }
+          tmp_7 = tmp$ret$30;
+        } else {
+          tmp_7 = null;
+        }
+        var diverse = tmp_7;
+        // Inline function 'kotlin.collections.buildList' call
+        // Inline function 'kotlin.collections.buildListInternal' call
+        // Inline function 'kotlin.apply' call
+        var this_1 = ArrayList_init_$Create$();
+        if (diverse === 1) {
+          this_1.add_utx5q5_k$('differisce di una cifra dal contrassegno letto');
+        }
+        if (stessaRazza) {
+          this_1.add_utx5q5_k$('stessa razza');
+        } else {
+          var tmp_9;
+          // Inline function 'kotlin.text.isNotBlank' call
+          if (!isBlank(razza)) {
+            tmp_9 = NonIdentificati_instance.razzaCompatibile_spiwtx_k$(razza, razzaCapo);
+          } else {
+            tmp_9 = false;
+          }
+          if (tmp_9) {
+            this_1.add_utx5q5_k$('razza compatibile');
+          }
+        }
+        if (!(mesi == null)) {
+          this_1.add_utx5q5_k$(AssentiCompatibili_instance.etaTesto_6vb70t_k$(mesi) + (!(classe == null) ? ', nella classe dei denti' : ''));
+        }
+        var motivi = this_1.build_nmwvly_k$();
+        tmp$ret$16 = new Candidato(element_1, mesi, stessaRazza, diverse, motivi);
+      }
+      var tmp0_safe_receiver = tmp$ret$16;
+      if (tmp0_safe_receiver == null)
+        null;
+      else {
+        // Inline function 'kotlin.let' call
+        destination_1.add_utx5q5_k$(tmp0_safe_receiver);
+      }
+    }
+    var tmp_10 = destination_1;
+    var tmp_11 = AssentiCompatibili$di$lambda;
+    var tmp_12 = AssentiCompatibili$di$lambda_0;
+    var tmp_13 = AssentiCompatibili$di$lambda_1(etaProvetta);
+    return take(sortedWith(tmp_10, compareBy([tmp_11, tmp_12, tmp_13, AssentiCompatibili$di$lambda_2])), max);
+  };
+  protoOf(AssentiCompatibili).di$default_b0mgbw_k$ = function (r, righe, attuali, max, cifre, $super) {
+    max = max === VOID ? 15 : max;
+    cifre = cifre === VOID ? '' : cifre;
+    return $super === VOID ? this.di_ra4auy_k$(r, righe, attuali, max, cifre) : $super.di_ra4auy_k$.call(this, r, righe, attuali, max, cifre);
+  };
+  protoOf(AssentiCompatibili).etaTesto_6vb70t_k$ = function (mesi) {
+    if (mesi < 0)
+      return 'et\xE0 non valida';
+    var a = mesi / 12 | 0;
+    var m = mesi % 12 | 0;
+    var anni;
+    switch (a) {
+      case 0:
+        anni = '';
+        break;
+      case 1:
+        anni = '1 anno';
+        break;
+      default:
+        anni = '' + a + ' anni';
+        break;
+    }
+    var mm;
+    switch (m) {
+      case 0:
+        mm = '';
+        break;
+      case 1:
+        mm = '1 mese';
+        break;
+      default:
+        mm = '' + m + ' mesi';
+        break;
+    }
+    // Inline function 'kotlin.collections.filter' call
+    var tmp0 = listOf_0([anni, mm]);
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination = ArrayList_init_$Create$();
+    var _iterator__ex2g4s = tmp0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      // Inline function 'kotlin.text.isNotEmpty' call
+      if (charSequenceLength(element) > 0) {
+        destination.add_utx5q5_k$(element);
+      }
+    }
+    // Inline function 'kotlin.text.ifEmpty' call
+    var this_0 = joinToString_0(destination, ' e ');
+    var tmp;
+    // Inline function 'kotlin.text.isEmpty' call
+    if (charSequenceLength(this_0) === 0) {
+      tmp = 'meno di un mese';
+    } else {
+      tmp = this_0;
+    }
+    return tmp;
+  };
+  var AssentiCompatibili_instance;
+  function AssentiCompatibili_getInstance() {
+    return AssentiCompatibili_instance;
+  }
   function Companion_35() {
   }
   protoOf(Companion_35).anni_k7cmgg_k$ = function (mesi) {
@@ -30089,7 +30593,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       }
     }
     if (tipo === 'regola_problemi') {
-      var tmp0_1 = get_entries_7();
+      var tmp0_1 = get_entries_8();
       var tmp$ret$26;
       $l$block: {
         // Inline function 'kotlin.collections.firstOrNull' call
@@ -30249,62 +30753,32 @@ if (typeof String.prototype.startsWith === 'undefined') {
           throw IllegalArgumentException_init_$Create$_0(toString_1(message_14));
         }
 
-        var tmp_5;
-        if (NonIdentificati_instance.eNonIdentificata_g78cp5_k$(riga) && NonIdentificati_instance.nonRisolta_hrylc1_k$(riga)) {
-          var tmp0_3 = NonIdentificati_instance.candidati$default_x3f5ui_k$(riga, righe, attuali, 2147483647);
-          var tmp$ret$57;
-          $l$block_3: {
-            // Inline function 'kotlin.collections.any' call
-            var tmp_6;
-            if (isInterface(tmp0_3, Collection)) {
-              tmp_6 = tmp0_3.isEmpty_y1axqb_k$();
-            } else {
-              tmp_6 = false;
-            }
-            if (tmp_6) {
-              tmp$ret$57 = false;
+        var tmp0_3 = AssentiCompatibili_instance.di$default_b0mgbw_k$(riga, righe, attuali, 2147483647);
+        var tmp$ret$57;
+        $l$block_3: {
+          // Inline function 'kotlin.collections.any' call
+          var tmp_5;
+          if (isInterface(tmp0_3, Collection)) {
+            tmp_5 = tmp0_3.isEmpty_y1axqb_k$();
+          } else {
+            tmp_5 = false;
+          }
+          if (tmp_5) {
+            tmp$ret$57 = false;
+            break $l$block_3;
+          }
+          var _iterator__ex2g4s_6 = tmp0_3.iterator_jk1svi_k$();
+          while (_iterator__ex2g4s_6.hasNext_bitz1p_k$()) {
+            var element_6 = _iterator__ex2g4s_6.next_20eer_k$();
+            if (element_6.capo_1.contrassegno_1 === testo(AzioniProvettaSito_getInstance(), dati, 'capo')) {
+              tmp$ret$57 = true;
               break $l$block_3;
             }
-            var _iterator__ex2g4s_6 = tmp0_3.iterator_jk1svi_k$();
-            while (_iterator__ex2g4s_6.hasNext_bitz1p_k$()) {
-              var element_6 = _iterator__ex2g4s_6.next_20eer_k$();
-              if (element_6.capo_1.contrassegno_1 === testo(AzioniProvettaSito_getInstance(), dati, 'capo')) {
-                tmp$ret$57 = true;
-                break $l$block_3;
-              }
-            }
-            tmp$ret$57 = false;
           }
-          tmp_5 = tmp$ret$57;
-        } else {
-          var tmp0_4 = Ricollocazione_instance.candidati$default_bvmee2_k$(riga, righe, attuali);
-          var tmp$ret$59;
-          $l$block_5: {
-            // Inline function 'kotlin.collections.any' call
-            var tmp_7;
-            if (isInterface(tmp0_4, Collection)) {
-              tmp_7 = tmp0_4.isEmpty_y1axqb_k$();
-            } else {
-              tmp_7 = false;
-            }
-            if (tmp_7) {
-              tmp$ret$59 = false;
-              break $l$block_5;
-            }
-            var _iterator__ex2g4s_7 = tmp0_4.iterator_jk1svi_k$();
-            while (_iterator__ex2g4s_7.hasNext_bitz1p_k$()) {
-              var element_7 = _iterator__ex2g4s_7.next_20eer_k$();
-              if (element_7.capo_1.contrassegno_1 === testo(AzioniProvettaSito_getInstance(), dati, 'capo')) {
-                tmp$ret$59 = true;
-                break $l$block_5;
-              }
-            }
-            tmp$ret$59 = false;
-          }
-          tmp_5 = tmp$ret$59;
+          tmp$ret$57 = false;
         }
 
-        var ammesso = tmp_5;
+        var ammesso = tmp$ret$57;
         // Inline function 'kotlin.require' call
 
         if (!ammesso) {
@@ -30342,32 +30816,32 @@ if (typeof String.prototype.startsWith === 'undefined') {
         var precedente_0 = Soluzioni_instance.datiAnnullaScarto_44lnhv_k$(uid, eventi);
         var soluzione = Companion_instance_51.di_j0pbpe_k$(testo(this, precedente_0, 'soluzione'));
         if (riga.get_fraIProblematici_oa76rq_k$() && equals(soluzione, Soluzione_RICOLLOCATA_getInstance())) {
-          var tmp0_5 = Ricollocazione_instance.candidati$default_bvmee2_k$(riga, righe, attuali);
-          var tmp$ret$70;
-          $l$block_7: {
+          var tmp0_4 = AssentiCompatibili_instance.di$default_b0mgbw_k$(riga, righe, attuali, 2147483647);
+          var tmp$ret$68;
+          $l$block_5: {
             // Inline function 'kotlin.collections.any' call
-            var tmp_8;
-            if (isInterface(tmp0_5, Collection)) {
-              tmp_8 = tmp0_5.isEmpty_y1axqb_k$();
+            var tmp_6;
+            if (isInterface(tmp0_4, Collection)) {
+              tmp_6 = tmp0_4.isEmpty_y1axqb_k$();
             } else {
-              tmp_8 = false;
+              tmp_6 = false;
             }
-            if (tmp_8) {
-              tmp$ret$70 = false;
-              break $l$block_7;
+            if (tmp_6) {
+              tmp$ret$68 = false;
+              break $l$block_5;
             }
-            var _iterator__ex2g4s_8 = tmp0_5.iterator_jk1svi_k$();
-            while (_iterator__ex2g4s_8.hasNext_bitz1p_k$()) {
-              var element_8 = _iterator__ex2g4s_8.next_20eer_k$();
-              if (element_8.capo_1.contrassegno_1 === testo(AzioniProvettaSito_getInstance(), precedente_0, 'capo')) {
-                tmp$ret$70 = true;
-                break $l$block_7;
+            var _iterator__ex2g4s_7 = tmp0_4.iterator_jk1svi_k$();
+            while (_iterator__ex2g4s_7.hasNext_bitz1p_k$()) {
+              var element_7 = _iterator__ex2g4s_7.next_20eer_k$();
+              if (element_7.capo_1.contrassegno_1 === testo(AzioniProvettaSito_getInstance(), precedente_0, 'capo')) {
+                tmp$ret$68 = true;
+                break $l$block_5;
               }
             }
-            tmp$ret$70 = false;
+            tmp$ret$68 = false;
           }
           // Inline function 'kotlin.require' call
-          if (!tmp$ret$70) {
+          if (!tmp$ret$68) {
             var message_18 = 'Il capo della scelta precedente non \xE8 pi\xF9 disponibile o compatibile: risolvi prima quel conflitto.';
             throw IllegalArgumentException_init_$Create$_0(toString_1(message_18));
           }
@@ -30401,91 +30875,91 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     if (tipo === 'visto_doppio' || tipo === 'visto_ricercato') {
       var evento = tipo === 'visto_doppio' ? 'DOPPIO_VISTO' : 'RICERCATO_VISTO';
-      var tmp_9;
+      var tmp_7;
       if (tipo === 'visto_doppio') {
-        var tmp0_6 = DoppiScoperti_instance.di_f1yo41_k$(righe);
+        var tmp0_5 = DoppiScoperti_instance.di_f1yo41_k$(righe);
+        var tmp$ret$79;
+        $l$block_7: {
+          // Inline function 'kotlin.collections.any' call
+          var tmp_8;
+          if (isInterface(tmp0_5, Collection)) {
+            tmp_8 = tmp0_5.isEmpty_y1axqb_k$();
+          } else {
+            tmp_8 = false;
+          }
+          if (tmp_8) {
+            tmp$ret$79 = false;
+            break $l$block_7;
+          }
+          var _iterator__ex2g4s_8 = tmp0_5.iterator_jk1svi_k$();
+          while (_iterator__ex2g4s_8.hasNext_bitz1p_k$()) {
+            var element_8 = _iterator__ex2g4s_8.next_20eer_k$();
+            if (element_8.doppia_1.uid_1 === uid) {
+              tmp$ret$79 = true;
+              break $l$block_7;
+            }
+          }
+          tmp$ret$79 = false;
+        }
+        tmp_7 = tmp$ret$79;
+      } else {
+        var tmp0_6 = Ricercati_instance.trovati_z6r9hf_k$(Ricercati_instance.elenco_5kramu_k$(attuali.pacchetto_1.ricercati_1, eventi), righe);
         var tmp$ret$81;
         $l$block_9: {
           // Inline function 'kotlin.collections.any' call
-          var tmp_10;
+          var tmp_9;
           if (isInterface(tmp0_6, Collection)) {
-            tmp_10 = tmp0_6.isEmpty_y1axqb_k$();
+            tmp_9 = tmp0_6.isEmpty_y1axqb_k$();
           } else {
-            tmp_10 = false;
+            tmp_9 = false;
           }
-          if (tmp_10) {
+          if (tmp_9) {
             tmp$ret$81 = false;
             break $l$block_9;
           }
           var _iterator__ex2g4s_9 = tmp0_6.iterator_jk1svi_k$();
           while (_iterator__ex2g4s_9.hasNext_bitz1p_k$()) {
             var element_9 = _iterator__ex2g4s_9.next_20eer_k$();
-            if (element_9.doppia_1.uid_1 === uid) {
+            if (element_9.riga_1.uid_1 === uid) {
               tmp$ret$81 = true;
               break $l$block_9;
             }
           }
           tmp$ret$81 = false;
         }
-        tmp_9 = tmp$ret$81;
-      } else {
-        var tmp0_7 = Ricercati_instance.trovati_z6r9hf_k$(Ricercati_instance.elenco_5kramu_k$(attuali.pacchetto_1.ricercati_1, eventi), righe);
-        var tmp$ret$83;
-        $l$block_11: {
-          // Inline function 'kotlin.collections.any' call
-          var tmp_11;
-          if (isInterface(tmp0_7, Collection)) {
-            tmp_11 = tmp0_7.isEmpty_y1axqb_k$();
-          } else {
-            tmp_11 = false;
-          }
-          if (tmp_11) {
-            tmp$ret$83 = false;
-            break $l$block_11;
-          }
-          var _iterator__ex2g4s_10 = tmp0_7.iterator_jk1svi_k$();
-          while (_iterator__ex2g4s_10.hasNext_bitz1p_k$()) {
-            var element_10 = _iterator__ex2g4s_10.next_20eer_k$();
-            if (element_10.riga_1.uid_1 === uid) {
-              tmp$ret$83 = true;
-              break $l$block_11;
-            }
-          }
-          tmp$ret$83 = false;
-        }
-        tmp_9 = tmp$ret$83;
+        tmp_7 = tmp$ret$81;
       }
-      var esiste = tmp_9;
+      var esiste = tmp_7;
       // Inline function 'kotlin.require' call
       if (!esiste) {
         var message_21 = "l'avviso non \xE8 pi\xF9 presente per questa provetta";
         throw IllegalArgumentException_init_$Create$_0(toString_1(message_21));
       }
-      var tmp$ret$87;
-      $l$block_13: {
+      var tmp$ret$85;
+      $l$block_11: {
         // Inline function 'kotlin.collections.none' call
-        var tmp_12;
+        var tmp_10;
         if (isInterface(eventi, Collection)) {
-          tmp_12 = eventi.isEmpty_y1axqb_k$();
+          tmp_10 = eventi.isEmpty_y1axqb_k$();
         } else {
-          tmp_12 = false;
+          tmp_10 = false;
         }
-        if (tmp_12) {
-          tmp$ret$87 = true;
-          break $l$block_13;
+        if (tmp_10) {
+          tmp$ret$85 = true;
+          break $l$block_11;
         }
-        var _iterator__ex2g4s_11 = eventi.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_11.hasNext_bitz1p_k$()) {
-          var element_11 = _iterator__ex2g4s_11.next_20eer_k$();
-          if (element_11.tipo_1 === evento && element_11.feed_1 === device && testo(AzioniProvettaSito_getInstance(), element_11.dati_1, 'uid') === uid) {
-            tmp$ret$87 = false;
-            break $l$block_13;
+        var _iterator__ex2g4s_10 = eventi.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_10.hasNext_bitz1p_k$()) {
+          var element_10 = _iterator__ex2g4s_10.next_20eer_k$();
+          if (element_10.tipo_1 === evento && element_10.feed_1 === device && testo(AzioniProvettaSito_getInstance(), element_10.dati_1, 'uid') === uid) {
+            tmp$ret$85 = false;
+            break $l$block_11;
           }
         }
-        tmp$ret$87 = true;
+        tmp$ret$85 = true;
       }
       // Inline function 'kotlin.require' call
-      if (!tmp$ret$87) {
+      if (!tmp$ret$85) {
         var message_22 = 'avviso gi\xE0 visto dalla Regia';
         throw IllegalArgumentException_init_$Create$_0(toString_1(message_22));
       }
@@ -30507,116 +30981,116 @@ if (typeof String.prototype.startsWith === 'undefined') {
       }
     }
     if (tipo === 'sposta_stabilimento') {
-      var tmp_13;
+      var tmp_11;
       // Inline function 'kotlin.text.isNotBlank' call
       if (!isBlank(stab)) {
-        tmp_13 = !(stab === substringBefore(riga.serie_1, _Char___init__impl__6a9atx(58)));
+        tmp_11 = !(stab === substringBefore(riga.serie_1, _Char___init__impl__6a9atx(58)));
       } else {
-        tmp_13 = false;
+        tmp_11 = false;
       }
       // Inline function 'kotlin.require' call
-      if (!tmp_13) {
+      if (!tmp_11) {
         var message_24 = 'indicare un altro stabilimento';
         throw IllegalArgumentException_init_$Create$_0(toString_1(message_24));
       }
     }
     // Inline function 'kotlin.text.isNotBlank' call
     if (!isBlank(stab)) {
-      var tmp0_8 = attuali.pacchetto_1.config_1.stabilimentiLavoro_1;
-      var tmp$ret$101;
-      $l$block_15: {
+      var tmp0_7 = attuali.pacchetto_1.config_1.stabilimentiLavoro_1;
+      var tmp$ret$99;
+      $l$block_13: {
         // Inline function 'kotlin.collections.any' call
-        var tmp_14;
-        if (isInterface(tmp0_8, Collection)) {
-          tmp_14 = tmp0_8.isEmpty_y1axqb_k$();
+        var tmp_12;
+        if (isInterface(tmp0_7, Collection)) {
+          tmp_12 = tmp0_7.isEmpty_y1axqb_k$();
         } else {
-          tmp_14 = false;
+          tmp_12 = false;
         }
-        if (tmp_14) {
-          tmp$ret$101 = false;
+        if (tmp_12) {
+          tmp$ret$99 = false;
+          break $l$block_13;
+        }
+        var _iterator__ex2g4s_11 = tmp0_7.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_11.hasNext_bitz1p_k$()) {
+          var element_11 = _iterator__ex2g4s_11.next_20eer_k$();
+          if (element_11.codice_1 === stab) {
+            tmp$ret$99 = true;
+            break $l$block_13;
+          }
+        }
+        tmp$ret$99 = false;
+      }
+      // Inline function 'kotlin.require' call
+      if (!tmp$ret$99) {
+        var message_25 = 'stabilimento ' + stab + ' non presente nel progetto';
+        throw IllegalArgumentException_init_$Create$_0(toString_1(message_25));
+      }
+    }
+    var tmp_13;
+    // Inline function 'kotlin.text.isNotBlank' call
+    if (!isBlank(et)) {
+      tmp_13 = !(et === riga.etichetta_1);
+    } else {
+      tmp_13 = false;
+    }
+    if (tmp_13) {
+      var chiave = GrammaticaEtichetta_getInstance().chiaveFisica_yz3vl5_k$(et);
+      var stato = Companion_getInstance_67().di$default_tuv5ya_k$(eventi, attuali.get_serie_iygor7_k$());
+      var tmp_14;
+      var tmp0_8 = stato.etichetteEmesse_1;
+      var tmp$ret$104;
+      $l$block_15: {
+        // Inline function 'kotlin.collections.none' call
+        var tmp_15;
+        if (isInterface(tmp0_8, Collection)) {
+          tmp_15 = tmp0_8.isEmpty_y1axqb_k$();
+        } else {
+          tmp_15 = false;
+        }
+        if (tmp_15) {
+          tmp$ret$104 = true;
           break $l$block_15;
         }
         var _iterator__ex2g4s_12 = tmp0_8.iterator_jk1svi_k$();
         while (_iterator__ex2g4s_12.hasNext_bitz1p_k$()) {
           var element_12 = _iterator__ex2g4s_12.next_20eer_k$();
-          if (element_12.codice_1 === stab) {
-            tmp$ret$101 = true;
+          if (GrammaticaEtichetta_getInstance().chiaveFisica_yz3vl5_k$(element_12) === chiave) {
+            tmp$ret$104 = false;
             break $l$block_15;
           }
         }
-        tmp$ret$101 = false;
+        tmp$ret$104 = true;
       }
-      // Inline function 'kotlin.require' call
-      if (!tmp$ret$101) {
-        var message_25 = 'stabilimento ' + stab + ' non presente nel progetto';
-        throw IllegalArgumentException_init_$Create$_0(toString_1(message_25));
-      }
-    }
-    var tmp_15;
-    // Inline function 'kotlin.text.isNotBlank' call
-    if (!isBlank(et)) {
-      tmp_15 = !(et === riga.etichetta_1);
-    } else {
-      tmp_15 = false;
-    }
-    if (tmp_15) {
-      var chiave = GrammaticaEtichetta_getInstance().chiaveFisica_yz3vl5_k$(et);
-      var stato = Companion_getInstance_67().di$default_tuv5ya_k$(eventi, attuali.get_serie_iygor7_k$());
-      var tmp_16;
-      var tmp0_9 = stato.etichetteEmesse_1;
-      var tmp$ret$106;
-      $l$block_17: {
-        // Inline function 'kotlin.collections.none' call
-        var tmp_17;
-        if (isInterface(tmp0_9, Collection)) {
-          tmp_17 = tmp0_9.isEmpty_y1axqb_k$();
-        } else {
-          tmp_17 = false;
-        }
-        if (tmp_17) {
-          tmp$ret$106 = true;
-          break $l$block_17;
-        }
-        var _iterator__ex2g4s_13 = tmp0_9.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_13.hasNext_bitz1p_k$()) {
-          var element_13 = _iterator__ex2g4s_13.next_20eer_k$();
-          if (GrammaticaEtichetta_getInstance().chiaveFisica_yz3vl5_k$(element_13) === chiave) {
-            tmp$ret$106 = false;
+      if (tmp$ret$104) {
+        var tmp$ret$106;
+        $l$block_17: {
+          // Inline function 'kotlin.collections.none' call
+          var tmp_16;
+          if (isInterface(righe, Collection)) {
+            tmp_16 = righe.isEmpty_y1axqb_k$();
+          } else {
+            tmp_16 = false;
+          }
+          if (tmp_16) {
+            tmp$ret$106 = true;
             break $l$block_17;
           }
-        }
-        tmp$ret$106 = true;
-      }
-      if (tmp$ret$106) {
-        var tmp$ret$108;
-        $l$block_19: {
-          // Inline function 'kotlin.collections.none' call
-          var tmp_18;
-          if (isInterface(righe, Collection)) {
-            tmp_18 = righe.isEmpty_y1axqb_k$();
-          } else {
-            tmp_18 = false;
-          }
-          if (tmp_18) {
-            tmp$ret$108 = true;
-            break $l$block_19;
-          }
-          var _iterator__ex2g4s_14 = righe.iterator_jk1svi_k$();
-          while (_iterator__ex2g4s_14.hasNext_bitz1p_k$()) {
-            var element_14 = _iterator__ex2g4s_14.next_20eer_k$();
-            if (!(element_14.uid_1 === uid) && GrammaticaEtichetta_getInstance().chiaveFisica_yz3vl5_k$(element_14.etichetta_1) === chiave) {
-              tmp$ret$108 = false;
-              break $l$block_19;
+          var _iterator__ex2g4s_13 = righe.iterator_jk1svi_k$();
+          while (_iterator__ex2g4s_13.hasNext_bitz1p_k$()) {
+            var element_13 = _iterator__ex2g4s_13.next_20eer_k$();
+            if (!(element_13.uid_1 === uid) && GrammaticaEtichetta_getInstance().chiaveFisica_yz3vl5_k$(element_13.etichetta_1) === chiave) {
+              tmp$ret$106 = false;
+              break $l$block_17;
             }
           }
-          tmp$ret$108 = true;
+          tmp$ret$106 = true;
         }
-        tmp_16 = tmp$ret$108;
+        tmp_14 = tmp$ret$106;
       } else {
-        tmp_16 = false;
+        tmp_14 = false;
       }
       // Inline function 'kotlin.require' call
-      if (!tmp_16) {
+      if (!tmp_14) {
         var message_26 = "L'etichetta " + et + ' \xE8 gi\xE0 usata: mai provette omonime.';
         throw IllegalArgumentException_init_$Create$_0(toString_1(message_26));
       }
@@ -30629,43 +31103,43 @@ if (typeof String.prototype.startsWith === 'undefined') {
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
     var builder_3 = new JsonObjectBuilder();
     // Inline function 'kotlin.collections.filter' call
-    var tmp0_10 = plus_1(minus_1(AzioniProvettaSito_getInstance().booleani_1, 'nel_report'), setOf_0(['note', 'sesso_corretto']));
+    var tmp0_9 = plus_1(minus_1(AzioniProvettaSito_getInstance().booleani_1, 'nel_report'), setOf_0(['note', 'sesso_corretto']));
     // Inline function 'kotlin.collections.filterTo' call
     var destination_1 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_15 = tmp0_10.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_15.hasNext_bitz1p_k$()) {
-      var element_15 = _iterator__ex2g4s_15.next_20eer_k$();
+    var _iterator__ex2g4s_14 = tmp0_9.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_14.hasNext_bitz1p_k$()) {
+      var element_14 = _iterator__ex2g4s_14.next_20eer_k$();
       // Inline function 'kotlin.collections.contains' call
       // Inline function 'kotlin.collections.containsKey' call
-      if ((isInterface(dati, KtMap) ? dati : THROW_CCE()).containsKey_aw81wo_k$(element_15)) {
-        destination_1.add_utx5q5_k$(element_15);
+      if ((isInterface(dati, KtMap) ? dati : THROW_CCE()).containsKey_aw81wo_k$(element_14)) {
+        destination_1.add_utx5q5_k$(element_14);
       }
     }
     // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_16 = destination_1.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_16.hasNext_bitz1p_k$()) {
-      var element_16 = _iterator__ex2g4s_16.next_20eer_k$();
-      builder_3.put_mrde5n_k$(element_16, getValue(dati, element_16));
+    var _iterator__ex2g4s_15 = destination_1.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_15.hasNext_bitz1p_k$()) {
+      var element_15 = _iterator__ex2g4s_15.next_20eer_k$();
+      builder_3.put_mrde5n_k$(element_15, getValue(dati, element_15));
     }
-    var tmp_19;
+    var tmp_17;
     // Inline function 'kotlin.text.isNotBlank' call
     if (!isBlank(et)) {
-      tmp_19 = !(et === riga.etichetta_1);
+      tmp_17 = !(et === riga.etichetta_1);
     } else {
-      tmp_19 = false;
+      tmp_17 = false;
     }
-    if (tmp_19) {
+    if (tmp_17) {
       put(builder_3, 'etichetta', et);
       put(builder_3, 'etichetta_campo', et);
     }
-    var tmp_20;
+    var tmp_18;
     // Inline function 'kotlin.text.isNotBlank' call
     if (!isBlank(stab)) {
-      tmp_20 = !(stab === substringBefore(riga.serie_1, _Char___init__impl__6a9atx(58)));
+      tmp_18 = !(stab === substringBefore(riga.serie_1, _Char___init__impl__6a9atx(58)));
     } else {
-      tmp_20 = false;
+      tmp_18 = false;
     }
-    if (tmp_20) {
+    if (tmp_18) {
       put(builder_3, 'stabilimento', stab);
       put(builder_3, 'codice_stabilimento', stab);
       put(builder_3, 'serie', stab + ':' + riga.specie_1);
@@ -30684,6 +31158,1262 @@ if (typeof String.prototype.startsWith === 'undefined') {
     if (AzioniProvettaSito_instance == null)
       new AzioniProvettaSito();
     return AzioniProvettaSito_instance;
+  }
+  var static_init_called_10;
+  function static_init_10() {
+    if (static_init_called_10)
+      return Unit_instance;
+    static_init_called_10 = true;
+    Stato_DA_DECIDERE_instance = new Stato_0('DA_DECIDERE', 0, 'da_decidere', 'Da decidere');
+    Stato_ACCANTONATA_instance = new Stato_0('ACCANTONATA', 1, 'accantonata', 'Accantonate');
+    Stato_DECISA_instance = new Stato_0('DECISA', 2, 'decisa', 'Decise');
+    Stato_TOLTA_instance = new Stato_0('TOLTA', 3, 'tolta', 'Tolte');
+    Stato_PERSA_instance = new Stato_0('PERSA', 4, 'persa', 'Perse');
+  }
+  var Stato_DA_DECIDERE_instance;
+  var Stato_ACCANTONATA_instance;
+  var Stato_DECISA_instance;
+  var Stato_TOLTA_instance;
+  var Stato_PERSA_instance;
+  function values_1() {
+    static_init_10();
+    return [Stato_DA_DECIDERE_getInstance(), Stato_ACCANTONATA_getInstance(), Stato_DECISA_getInstance(), Stato_TOLTA_getInstance(), Stato_PERSA_getInstance()];
+  }
+  function get_entries_1() {
+    static_init_10();
+    if ($ENTRIES_1 == null)
+      $ENTRIES_1 = enumEntries(values_1());
+    return $ENTRIES_1;
+  }
+  var $ENTRIES_1;
+  function Stato_0(name, ordinal, codice, titolo) {
+    Enum.call(this, name, ordinal);
+    this.codice_1 = codice;
+    this.titolo_1 = titolo;
+  }
+  function Voce(uid, etichetta, specie, stabilimento, contrassegno, tipo, stato, esito, soluzione, capo, priorita, operatore, ts) {
+    this.uid_1 = uid;
+    this.etichetta_1 = etichetta;
+    this.specie_1 = specie;
+    this.stabilimento_1 = stabilimento;
+    this.contrassegno_1 = contrassegno;
+    this.tipo_1 = tipo;
+    this.stato_1 = stato;
+    this.esito_1 = esito;
+    this.soluzione_1 = soluzione;
+    this.capo_1 = capo;
+    this.priorita_1 = priorita;
+    this.operatore_1 = operatore;
+    this.ts_1 = ts;
+  }
+  protoOf(Voce).toString = function () {
+    return 'Voce(uid=' + this.uid_1 + ', etichetta=' + this.etichetta_1 + ', specie=' + this.specie_1 + ', stabilimento=' + this.stabilimento_1 + ', contrassegno=' + this.contrassegno_1 + ', tipo=' + this.tipo_1.toString() + ', stato=' + this.stato_1.toString() + ', esito=' + this.esito_1 + ', soluzione=' + toString_0(this.soluzione_1) + ', capo=' + this.capo_1 + ', priorita=' + this.priorita_1 + ', operatore=' + this.operatore_1 + ', ts=' + this.ts_1 + ')';
+  };
+  protoOf(Voce).hashCode = function () {
+    var result = getStringHashCode(this.uid_1);
+    result = imul(result, 31) + getStringHashCode(this.etichetta_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.specie_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.stabilimento_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.contrassegno_1) | 0;
+    result = imul(result, 31) + this.tipo_1.hashCode() | 0;
+    result = imul(result, 31) + this.stato_1.hashCode() | 0;
+    result = imul(result, 31) + getStringHashCode(this.esito_1) | 0;
+    result = imul(result, 31) + (this.soluzione_1 == null ? 0 : this.soluzione_1.hashCode()) | 0;
+    result = imul(result, 31) + getStringHashCode(this.capo_1) | 0;
+    result = imul(result, 31) + this.priorita_1 | 0;
+    result = imul(result, 31) + getStringHashCode(this.operatore_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.ts_1) | 0;
+    return result;
+  };
+  protoOf(Voce).equals = function (other) {
+    if (this === other)
+      return true;
+    if (!(other instanceof Voce))
+      return false;
+    if (!(this.uid_1 === other.uid_1))
+      return false;
+    if (!(this.etichetta_1 === other.etichetta_1))
+      return false;
+    if (!(this.specie_1 === other.specie_1))
+      return false;
+    if (!(this.stabilimento_1 === other.stabilimento_1))
+      return false;
+    if (!(this.contrassegno_1 === other.contrassegno_1))
+      return false;
+    if (!this.tipo_1.equals(other.tipo_1))
+      return false;
+    if (!this.stato_1.equals(other.stato_1))
+      return false;
+    if (!(this.esito_1 === other.esito_1))
+      return false;
+    if (!equals(this.soluzione_1, other.soluzione_1))
+      return false;
+    if (!(this.capo_1 === other.capo_1))
+      return false;
+    if (!(this.priorita_1 === other.priorita_1))
+      return false;
+    if (!(this.operatore_1 === other.operatore_1))
+      return false;
+    if (!(this.ts_1 === other.ts_1))
+      return false;
+    return true;
+  };
+  function Registrato(contrassegno, sesso, sessoCorretto, razza, dataNascita, classeEta, provvisoria, note, operatore, ts, isolato, doppioInCampo, doppioScoperto, marcataInCampo) {
+    this.contrassegno_1 = contrassegno;
+    this.sesso_1 = sesso;
+    this.sessoCorretto_1 = sessoCorretto;
+    this.razza_1 = razza;
+    this.dataNascita_1 = dataNascita;
+    this.classeEta_1 = classeEta;
+    this.provvisoria_1 = provvisoria;
+    this.note_1 = note;
+    this.operatore_1 = operatore;
+    this.ts_1 = ts;
+    this.isolato_1 = isolato;
+    this.doppioInCampo_1 = doppioInCampo;
+    this.doppioScoperto_1 = doppioScoperto;
+    this.marcataInCampo_1 = marcataInCampo;
+  }
+  protoOf(Registrato).toString = function () {
+    return 'Registrato(contrassegno=' + this.contrassegno_1 + ', sesso=' + this.sesso_1 + ', sessoCorretto=' + this.sessoCorretto_1 + ', razza=' + this.razza_1 + ', dataNascita=' + this.dataNascita_1 + ', classeEta=' + this.classeEta_1 + ', provvisoria=' + this.provvisoria_1 + ', note=' + this.note_1 + ', operatore=' + this.operatore_1 + ', ts=' + this.ts_1 + ', isolato=' + this.isolato_1 + ', doppioInCampo=' + this.doppioInCampo_1 + ', doppioScoperto=' + this.doppioScoperto_1 + ', marcataInCampo=' + this.marcataInCampo_1 + ')';
+  };
+  protoOf(Registrato).hashCode = function () {
+    var result = getStringHashCode(this.contrassegno_1);
+    result = imul(result, 31) + getStringHashCode(this.sesso_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.sessoCorretto_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.razza_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.dataNascita_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.classeEta_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.provvisoria_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.note_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.operatore_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.ts_1) | 0;
+    result = imul(result, 31) + getBooleanHashCode(this.isolato_1) | 0;
+    result = imul(result, 31) + getBooleanHashCode(this.doppioInCampo_1) | 0;
+    result = imul(result, 31) + getBooleanHashCode(this.doppioScoperto_1) | 0;
+    result = imul(result, 31) + getBooleanHashCode(this.marcataInCampo_1) | 0;
+    return result;
+  };
+  protoOf(Registrato).equals = function (other) {
+    if (this === other)
+      return true;
+    if (!(other instanceof Registrato))
+      return false;
+    if (!(this.contrassegno_1 === other.contrassegno_1))
+      return false;
+    if (!(this.sesso_1 === other.sesso_1))
+      return false;
+    if (!(this.sessoCorretto_1 === other.sessoCorretto_1))
+      return false;
+    if (!(this.razza_1 === other.razza_1))
+      return false;
+    if (!(this.dataNascita_1 === other.dataNascita_1))
+      return false;
+    if (!(this.classeEta_1 === other.classeEta_1))
+      return false;
+    if (!(this.provvisoria_1 === other.provvisoria_1))
+      return false;
+    if (!(this.note_1 === other.note_1))
+      return false;
+    if (!(this.operatore_1 === other.operatore_1))
+      return false;
+    if (!(this.ts_1 === other.ts_1))
+      return false;
+    if (!(this.isolato_1 === other.isolato_1))
+      return false;
+    if (!(this.doppioInCampo_1 === other.doppioInCampo_1))
+      return false;
+    if (!(this.doppioScoperto_1 === other.doppioScoperto_1))
+      return false;
+    if (!(this.marcataInCampo_1 === other.marcataInCampo_1))
+      return false;
+    return true;
+  };
+  function DatiBdn(contrassegno, sesso, razza, nascita, stabilimento) {
+    this.contrassegno_1 = contrassegno;
+    this.sesso_1 = sesso;
+    this.razza_1 = razza;
+    this.nascita_1 = nascita;
+    this.stabilimento_1 = stabilimento;
+  }
+  protoOf(DatiBdn).toString = function () {
+    return 'DatiBdn(contrassegno=' + this.contrassegno_1 + ', sesso=' + this.sesso_1 + ', razza=' + this.razza_1 + ', nascita=' + this.nascita_1 + ', stabilimento=' + this.stabilimento_1 + ')';
+  };
+  protoOf(DatiBdn).hashCode = function () {
+    var result = getStringHashCode(this.contrassegno_1);
+    result = imul(result, 31) + getStringHashCode(this.sesso_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.razza_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.nascita_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.stabilimento_1) | 0;
+    return result;
+  };
+  protoOf(DatiBdn).equals = function (other) {
+    if (this === other)
+      return true;
+    if (!(other instanceof DatiBdn))
+      return false;
+    if (!(this.contrassegno_1 === other.contrassegno_1))
+      return false;
+    if (!(this.sesso_1 === other.sesso_1))
+      return false;
+    if (!(this.razza_1 === other.razza_1))
+      return false;
+    if (!(this.nascita_1 === other.nascita_1))
+      return false;
+    if (!(this.stabilimento_1 === other.stabilimento_1))
+      return false;
+    return true;
+  };
+  function AltraProvetta(uid, etichetta, operatore, ts) {
+    this.uid_1 = uid;
+    this.etichetta_1 = etichetta;
+    this.operatore_1 = operatore;
+    this.ts_1 = ts;
+  }
+  protoOf(AltraProvetta).toString = function () {
+    return 'AltraProvetta(uid=' + this.uid_1 + ', etichetta=' + this.etichetta_1 + ', operatore=' + this.operatore_1 + ', ts=' + this.ts_1 + ')';
+  };
+  protoOf(AltraProvetta).hashCode = function () {
+    var result = getStringHashCode(this.uid_1);
+    result = imul(result, 31) + getStringHashCode(this.etichetta_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.operatore_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.ts_1) | 0;
+    return result;
+  };
+  protoOf(AltraProvetta).equals = function (other) {
+    if (this === other)
+      return true;
+    if (!(other instanceof AltraProvetta))
+      return false;
+    if (!(this.uid_1 === other.uid_1))
+      return false;
+    if (!(this.etichetta_1 === other.etichetta_1))
+      return false;
+    if (!(this.operatore_1 === other.operatore_1))
+      return false;
+    if (!(this.ts_1 === other.ts_1))
+      return false;
+    return true;
+  };
+  function Compatibile(contrassegno, sesso, razza, nascita, eta, numero, stessaRazza, motivi) {
+    this.contrassegno_1 = contrassegno;
+    this.sesso_1 = sesso;
+    this.razza_1 = razza;
+    this.nascita_1 = nascita;
+    this.eta_1 = eta;
+    this.numero_1 = numero;
+    this.stessaRazza_1 = stessaRazza;
+    this.motivi_1 = motivi;
+  }
+  protoOf(Compatibile).toString = function () {
+    return 'Compatibile(contrassegno=' + this.contrassegno_1 + ', sesso=' + this.sesso_1 + ', razza=' + this.razza_1 + ', nascita=' + this.nascita_1 + ', eta=' + this.eta_1 + ', numero=' + this.numero_1 + ', stessaRazza=' + this.stessaRazza_1 + ', motivi=' + toString_1(this.motivi_1) + ')';
+  };
+  protoOf(Compatibile).hashCode = function () {
+    var result = getStringHashCode(this.contrassegno_1);
+    result = imul(result, 31) + getStringHashCode(this.sesso_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.razza_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.nascita_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.eta_1) | 0;
+    result = imul(result, 31) + (this.numero_1 == null ? 0 : this.numero_1) | 0;
+    result = imul(result, 31) + getBooleanHashCode(this.stessaRazza_1) | 0;
+    result = imul(result, 31) + hashCode_0(this.motivi_1) | 0;
+    return result;
+  };
+  protoOf(Compatibile).equals = function (other) {
+    if (this === other)
+      return true;
+    if (!(other instanceof Compatibile))
+      return false;
+    if (!(this.contrassegno_1 === other.contrassegno_1))
+      return false;
+    if (!(this.sesso_1 === other.sesso_1))
+      return false;
+    if (!(this.razza_1 === other.razza_1))
+      return false;
+    if (!(this.nascita_1 === other.nascita_1))
+      return false;
+    if (!(this.eta_1 === other.eta_1))
+      return false;
+    if (!(this.numero_1 == other.numero_1))
+      return false;
+    if (!(this.stessaRazza_1 === other.stessaRazza_1))
+      return false;
+    if (!equals(this.motivi_1, other.motivi_1))
+      return false;
+    return true;
+  };
+  function Proposta(testo, perche, azioni) {
+    this.testo_1 = testo;
+    this.perche_1 = perche;
+    this.azioni_1 = azioni;
+  }
+  protoOf(Proposta).toString = function () {
+    return 'Proposta(testo=' + this.testo_1 + ', perche=' + this.perche_1 + ', azioni=' + toString_1(this.azioni_1) + ')';
+  };
+  protoOf(Proposta).hashCode = function () {
+    var result = getStringHashCode(this.testo_1);
+    result = imul(result, 31) + getStringHashCode(this.perche_1) | 0;
+    result = imul(result, 31) + hashCode_0(this.azioni_1) | 0;
+    return result;
+  };
+  protoOf(Proposta).equals = function (other) {
+    if (this === other)
+      return true;
+    if (!(other instanceof Proposta))
+      return false;
+    if (!(this.testo_1 === other.testo_1))
+      return false;
+    if (!(this.perche_1 === other.perche_1))
+      return false;
+    if (!equals(this.azioni_1, other.azioni_1))
+      return false;
+    return true;
+  };
+  function Scheda(voce, fraIFuoriRegistro, scritta, descrizione, registrato, bdn, altreProvette, compatibili, marcheLibere, proposta, alternative) {
+    this.voce_1 = voce;
+    this.fraIFuoriRegistro_1 = fraIFuoriRegistro;
+    this.scritta_1 = scritta;
+    this.descrizione_1 = descrizione;
+    this.registrato_1 = registrato;
+    this.bdn_1 = bdn;
+    this.altreProvette_1 = altreProvette;
+    this.compatibili_1 = compatibili;
+    this.marcheLibere_1 = marcheLibere;
+    this.proposta_1 = proposta;
+    this.alternative_1 = alternative;
+  }
+  protoOf(Scheda).toString = function () {
+    return 'Scheda(voce=' + this.voce_1.toString() + ', fraIFuoriRegistro=' + this.fraIFuoriRegistro_1 + ', scritta=' + toString_1(this.scritta_1) + ', descrizione=' + this.descrizione_1.toString() + ', registrato=' + this.registrato_1.toString() + ', bdn=' + toString_0(this.bdn_1) + ', altreProvette=' + toString_1(this.altreProvette_1) + ', compatibili=' + toString_1(this.compatibili_1) + ', marcheLibere=' + toString_1(this.marcheLibere_1) + ', proposta=' + toString_0(this.proposta_1) + ', alternative=' + toString_1(this.alternative_1) + ')';
+  };
+  protoOf(Scheda).hashCode = function () {
+    var result = this.voce_1.hashCode();
+    result = imul(result, 31) + getBooleanHashCode(this.fraIFuoriRegistro_1) | 0;
+    result = imul(result, 31) + hashCode_0(this.scritta_1) | 0;
+    result = imul(result, 31) + this.descrizione_1.hashCode() | 0;
+    result = imul(result, 31) + this.registrato_1.hashCode() | 0;
+    result = imul(result, 31) + (this.bdn_1 == null ? 0 : this.bdn_1.hashCode()) | 0;
+    result = imul(result, 31) + hashCode_0(this.altreProvette_1) | 0;
+    result = imul(result, 31) + hashCode_0(this.compatibili_1) | 0;
+    result = imul(result, 31) + hashCode_0(this.marcheLibere_1) | 0;
+    result = imul(result, 31) + (this.proposta_1 == null ? 0 : this.proposta_1.hashCode()) | 0;
+    result = imul(result, 31) + hashCode_0(this.alternative_1) | 0;
+    return result;
+  };
+  protoOf(Scheda).equals = function (other) {
+    if (this === other)
+      return true;
+    if (!(other instanceof Scheda))
+      return false;
+    if (!this.voce_1.equals(other.voce_1))
+      return false;
+    if (!(this.fraIFuoriRegistro_1 === other.fraIFuoriRegistro_1))
+      return false;
+    if (!equals(this.scritta_1, other.scritta_1))
+      return false;
+    if (!this.descrizione_1.equals(other.descrizione_1))
+      return false;
+    if (!this.registrato_1.equals(other.registrato_1))
+      return false;
+    if (!equals(this.bdn_1, other.bdn_1))
+      return false;
+    if (!equals(this.altreProvette_1, other.altreProvette_1))
+      return false;
+    if (!equals(this.compatibili_1, other.compatibili_1))
+      return false;
+    if (!equals(this.marcheLibere_1, other.marcheLibere_1))
+      return false;
+    if (!equals(this.proposta_1, other.proposta_1))
+      return false;
+    if (!equals(this.alternative_1, other.alternative_1))
+      return false;
+    return true;
+  };
+  function Destinazione(cosa, numero, plateau, pozzetto, stabilimento, specie, contrassegno, da, daParte) {
+    numero = numero === VOID ? null : numero;
+    plateau = plateau === VOID ? null : plateau;
+    pozzetto = pozzetto === VOID ? null : pozzetto;
+    stabilimento = stabilimento === VOID ? '' : stabilimento;
+    specie = specie === VOID ? '' : specie;
+    contrassegno = contrassegno === VOID ? '' : contrassegno;
+    da = da === VOID ? '' : da;
+    daParte = daParte === VOID ? false : daParte;
+    this.cosa_1 = cosa;
+    this.numero_1 = numero;
+    this.plateau_1 = plateau;
+    this.pozzetto_1 = pozzetto;
+    this.stabilimento_1 = stabilimento;
+    this.specie_1 = specie;
+    this.contrassegno_1 = contrassegno;
+    this.da_1 = da;
+    this.daParte_1 = daParte;
+  }
+  protoOf(Destinazione).copy_f1dy7_k$ = function (cosa, numero, plateau, pozzetto, stabilimento, specie, contrassegno, da, daParte) {
+    return new Destinazione(cosa, numero, plateau, pozzetto, stabilimento, specie, contrassegno, da, daParte);
+  };
+  protoOf(Destinazione).copy$default_y2vf4m_k$ = function (cosa, numero, plateau, pozzetto, stabilimento, specie, contrassegno, da, daParte, $super) {
+    cosa = cosa === VOID ? this.cosa_1 : cosa;
+    numero = numero === VOID ? this.numero_1 : numero;
+    plateau = plateau === VOID ? this.plateau_1 : plateau;
+    pozzetto = pozzetto === VOID ? this.pozzetto_1 : pozzetto;
+    stabilimento = stabilimento === VOID ? this.stabilimento_1 : stabilimento;
+    specie = specie === VOID ? this.specie_1 : specie;
+    contrassegno = contrassegno === VOID ? this.contrassegno_1 : contrassegno;
+    da = da === VOID ? this.da_1 : da;
+    daParte = daParte === VOID ? this.daParte_1 : daParte;
+    return $super === VOID ? this.copy_f1dy7_k$(cosa, numero, plateau, pozzetto, stabilimento, specie, contrassegno, da, daParte) : $super.copy_f1dy7_k$.call(this, cosa, numero, plateau, pozzetto, stabilimento, specie, contrassegno, da, daParte);
+  };
+  protoOf(Destinazione).toString = function () {
+    return 'Destinazione(cosa=' + this.cosa_1 + ', numero=' + this.numero_1 + ', plateau=' + this.plateau_1 + ', pozzetto=' + this.pozzetto_1 + ', stabilimento=' + this.stabilimento_1 + ', specie=' + this.specie_1 + ', contrassegno=' + this.contrassegno_1 + ', da=' + this.da_1 + ', daParte=' + this.daParte_1 + ')';
+  };
+  protoOf(Destinazione).hashCode = function () {
+    var result = getStringHashCode(this.cosa_1);
+    result = imul(result, 31) + (this.numero_1 == null ? 0 : this.numero_1) | 0;
+    result = imul(result, 31) + (this.plateau_1 == null ? 0 : this.plateau_1) | 0;
+    result = imul(result, 31) + (this.pozzetto_1 == null ? 0 : this.pozzetto_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.stabilimento_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.specie_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.contrassegno_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.da_1) | 0;
+    result = imul(result, 31) + getBooleanHashCode(this.daParte_1) | 0;
+    return result;
+  };
+  protoOf(Destinazione).equals = function (other) {
+    if (this === other)
+      return true;
+    if (!(other instanceof Destinazione))
+      return false;
+    if (!(this.cosa_1 === other.cosa_1))
+      return false;
+    if (!(this.numero_1 == other.numero_1))
+      return false;
+    if (!(this.plateau_1 == other.plateau_1))
+      return false;
+    if (!(this.pozzetto_1 == other.pozzetto_1))
+      return false;
+    if (!(this.stabilimento_1 === other.stabilimento_1))
+      return false;
+    if (!(this.specie_1 === other.specie_1))
+      return false;
+    if (!(this.contrassegno_1 === other.contrassegno_1))
+      return false;
+    if (!(this.da_1 === other.da_1))
+      return false;
+    if (!(this.daParte_1 === other.daParte_1))
+      return false;
+    return true;
+  };
+  function etichetta($this, r) {
+    var tmp0_elvis_lhs = r.caratteristiche_1.get_wei43m_k$('etichetta_campo');
+    return tmp0_elvis_lhs == null ? r.etichetta_1 : tmp0_elvis_lhs;
+  }
+  function letto($this, r) {
+    var tmp0_elvis_lhs = r.contrassegnoCampo_1;
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs_0 = tmp0_elvis_lhs == null ? r.contrassegno_1 : tmp0_elvis_lhs;
+    return tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
+  }
+  function proposta($this, r, tipo, candidati, marche) {
+    if (r.persa_1 || r.annullata_1 || equals(r.soluzione_1, Soluzione_ESCLUSA_getInstance()) || !(Accantonate_instance.di_8ry225_k$(r) == null))
+      return null;
+    var primo = firstOrNull(candidati);
+    var tmp;
+    if (NonIdentificati_instance.eNonIdentificata_g78cp5_k$(r) && NonIdentificati_instance.nonRisolta_hrylc1_k$(r)) {
+      var tmp_0;
+      if (!(primo == null)) {
+        tmp_0 = proposta$ricolloca(r, primo, true, "Senza marche: il capo assente pi\xF9 simile (ha perso le marche). Le marche da rifare vanno all'allevatore.");
+      } else {
+        // Inline function 'kotlin.collections.isNotEmpty' call
+        if (!marche.isEmpty_y1axqb_k$()) {
+          tmp_0 = new Proposta('Marca disponibile ' + first(marche), 'Nessun capo assente compatibile: mai identificato, si registra su una marca disponibile.', $this.marca_ayme4c_k$(r.uid_1, first(marche)));
+        } else {
+          tmp_0 = null;
+        }
+      }
+      tmp = tmp_0;
+    } else {
+      if (tipo.equals(TipoProblema_ORA_IN_LISTA_getInstance())) {
+        tmp = new Proposta('Normalizza: il capo ora \xE8 in lista', 'Coi registri nuovi il capo \xE8 in lista: va in ARVET come gli altri.', listOf($this.soluzione_n6infk_k$(r.uid_1, Soluzione_NORMALIZZATA_getInstance())));
+      } else {
+        if (tipo.equals(TipoProblema_DOPPI_getInstance()) || tipo.equals(TipoProblema_DA_RIATTRIBUIRE_getInstance())) {
+          tmp = r.doppioScoperto_1 && !(r.caratteristiche_1.get_wei43m_k$('duplicato') === 'true') ? new Proposta('Togli questa provetta: doppio prelievo', 'Scoperto alla riunione dei device: di solito lo stesso animale preso da due veterinari. Se in campo era un altro animale, attribuiscila a un capo assente.', listOf($this.togli_q4ixmx_k$(r.uid_1, 'doppio prelievo dello stesso capo'))) : !(primo == null) ? proposta$ricolloca(r, primo, true, "\xABPreleva come doppio\xBB in campo: un altro animale con la stessa marca. Il capo assente pi\xF9 simile; le marche da rifare vanno all'allevatore.") : proposta$coda(r, 'Nessun capo assente compatibile.');
+        } else {
+          var tmp_1;
+          if (tipo.equals(TipoProblema_NON_IN_ELENCO_getInstance())) {
+            tmp_1 = (primo == null ? null : primo.cifreDiverse_1) === 1;
+          } else {
+            tmp_1 = false;
+          }
+          if (tmp_1) {
+            tmp = proposta$ricolloca(r, primo, false, 'Il contrassegno letto differisce di una cifra da quello di un capo assente: probabile lettura sbagliata.');
+          } else {
+            if (tipo.equals(TipoProblema_FUORI_ETA_getInstance())) {
+              tmp = null;
+            } else {
+              if (tipo.equals(TipoProblema_DDA_getInstance())) {
+                tmp = proposta$coda(r, "DDA da verificare: in coda finch\xE9 l'ingresso non \xE8 registrato (oppure rimandala).");
+              } else {
+                tmp = proposta$coda(r, 'La provetta va in ARVET a mano, con i dati del capo.');
+              }
+            }
+          }
+        }
+      }
+    }
+    return tmp;
+  }
+  function alternative($this, r, tipo, senzaMarche, candidati, marche, scelte) {
+    // Inline function 'kotlin.collections.buildList' call
+    // Inline function 'kotlin.collections.buildListInternal' call
+    // Inline function 'kotlin.apply' call
+    var this_0 = ArrayList_init_$Create$();
+    $l$block_2: {
+      if (r.annullata_1) {
+        break $l$block_2;
+      }
+      if (r.persa_1) {
+        this_0.add_utx5q5_k$('ritrovata');
+        break $l$block_2;
+      }
+      if (equals(r.soluzione_1, Soluzione_ESCLUSA_getInstance())) {
+        this_0.add_utx5q5_k$('annulla_scarto');
+        break $l$block_2;
+      }
+      if (!(Accantonate_instance.di_8ry225_k$(r) == null)) {
+        this_0.add_utx5q5_k$('riprendi');
+        break $l$block_2;
+      }
+      var tmp;
+      // Inline function 'kotlin.collections.isNotEmpty' call
+      if (!candidati.isEmpty_y1axqb_k$()) {
+        tmp = true;
+      } else {
+        tmp = !senzaMarche;
+      }
+      if (tmp) {
+        this_0.add_utx5q5_k$('ricolloca');
+      }
+      var tmp_0;
+      if (senzaMarche) {
+        // Inline function 'kotlin.collections.isNotEmpty' call
+        tmp_0 = !marche.isEmpty_y1axqb_k$();
+      } else {
+        tmp_0 = false;
+      }
+      if (tmp_0) {
+        this_0.add_utx5q5_k$('marca');
+      }
+      if (!senzaMarche) {
+        this_0.add_utx5q5_k$('coda');
+      }
+      if (tipo.equals(TipoProblema_ORA_IN_LISTA_getInstance())) {
+        this_0.add_utx5q5_k$('normalizza');
+      }
+      this_0.add_utx5q5_k$('scarto');
+      this_0.add_utx5q5_k$('persa');
+      this_0.add_utx5q5_k$('rimanda');
+      if (!senzaMarche && !(scelte.get_wei43m_k$(r.uid_1) == null)) {
+        this_0.add_utx5q5_k$('regola');
+      }
+    }
+    return this_0.build_nmwvly_k$();
+  }
+  function Banco$coda$lambda(it) {
+    return it.stato_1.ordinal_1;
+  }
+  function Banco$coda$lambda_0(it) {
+    return it.priorita_1;
+  }
+  function Banco$coda$lambda_1(it) {
+    return it.etichetta_1;
+  }
+  function Banco$cerca$lambda(it) {
+    return !Banco_getInstance().nelBanco_t8qvla_k$(it);
+  }
+  function Banco$cerca$lambda_0(it) {
+    return it.etichetta_1;
+  }
+  function Banco$ricolloca$lambda($capo, $nelReport) {
+    return function ($this$azione) {
+      put($this$azione, 'capo', $capo);
+      put_0($this$azione, 'nel_report', $nelReport);
+      return Unit_instance;
+    };
+  }
+  function Banco$soluzione$lambda($s) {
+    return function ($this$azione) {
+      var tmp0_safe_receiver = $s;
+      var tmp1_elvis_lhs = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.codice_1;
+      put($this$azione, 'soluzione', tmp1_elvis_lhs == null ? 'regola' : tmp1_elvis_lhs);
+      return Unit_instance;
+    };
+  }
+  function Banco$togli$lambda($motivo) {
+    return function ($this$azione) {
+      put($this$azione, 'motivo', $motivo);
+      return Unit_instance;
+    };
+  }
+  function Banco$marca$lambda($contrassegno) {
+    return function ($this$azione) {
+      put($this$azione, 'contrassegno', $contrassegno);
+      return Unit_instance;
+    };
+  }
+  function Banco$messa$lambda($d, $n) {
+    return function ($this$azione) {
+      put($this$azione, 'stabilimento', $d.stabilimento_1);
+      put($this$azione, 'specie', $d.specie_1);
+      put($this$azione, 'contrassegno', $d.contrassegno_1);
+      put_1($this$azione, 'suggerita', $n);
+      put_1($this$azione, 'destinazione', $n);
+      return Unit_instance;
+    };
+  }
+  function proposta$descr(k) {
+    var tmp0_safe_receiver = k.etaMesi_1;
+    var tmp;
+    if (tmp0_safe_receiver == null) {
+      tmp = null;
+    } else {
+      // Inline function 'kotlin.let' call
+      tmp = AssentiCompatibili_instance.etaTesto_6vb70t_k$(tmp0_safe_receiver);
+    }
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs = tmp;
+    var tmp$ret$2 = tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
+    // Inline function 'kotlin.collections.filter' call
+    var tmp0 = listOf_0([k.capo_1.sesso_1, tmp$ret$2]);
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination = ArrayList_init_$Create$();
+    var _iterator__ex2g4s = tmp0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      // Inline function 'kotlin.text.isNotBlank' call
+      if (!isBlank(element)) {
+        destination.add_utx5q5_k$(element);
+      }
+    }
+    return joinToString_0(destination, ', ');
+  }
+  function proposta$ricolloca($r, k, nelReport, perche) {
+    return new Proposta('Attribuisci a ' + k.capo_1.contrassegno_1 + ' (' + proposta$descr(k) + ')', perche, listOf(Banco_getInstance().ricolloca_grrnyz_k$($r.uid_1, k.capo_1.contrassegno_1, nelReport)));
+  }
+  function proposta$coda($r, perche) {
+    return new Proposta('In coda, ARVET a mano', perche, listOf(Banco_getInstance().soluzione_n6infk_k$($r.uid_1, Soluzione_CODA_getInstance())));
+  }
+  function Stato_DA_DECIDERE_getInstance() {
+    static_init_10();
+    return Stato_DA_DECIDERE_instance;
+  }
+  function Stato_ACCANTONATA_getInstance() {
+    static_init_10();
+    return Stato_ACCANTONATA_instance;
+  }
+  function Stato_DECISA_getInstance() {
+    static_init_10();
+    return Stato_DECISA_instance;
+  }
+  function Stato_TOLTA_getInstance() {
+    static_init_10();
+    return Stato_TOLTA_instance;
+  }
+  function Stato_PERSA_getInstance() {
+    static_init_10();
+    return Stato_PERSA_instance;
+  }
+  function Banco() {
+    Banco_instance = this;
+    this.MOTIVI_RIMANDO_1 = listOf_0(['Aspetto i dati BDN del capo', 'DDA da verificare', 'Da chiedere all\u2019allevatore', 'Provetta da ricontrollare (scritta poco leggibile)']);
+    this.PRIORITA_1 = listOf_0([TipoProblema_DOPPI_getInstance(), TipoProblema_DA_RIATTRIBUIRE_getInstance(), TipoProblema_SENZA_CONTRASSEGNO_getInstance(), TipoProblema_NON_IN_ELENCO_getInstance(), TipoProblema_MARCHE_getInstance(), TipoProblema_ALTRO_STABILIMENTO_getInstance(), TipoProblema_DDA_getInstance(), TipoProblema_ORA_IN_LISTA_getInstance(), TipoProblema_DIVENTATE_getInstance(), TipoProblema_SMARRITI_getInstance(), TipoProblema_RUBATI_getInstance(), TipoProblema_MORTI_MACELLATI_getInstance(), TipoProblema_TRASFERITI_getInstance(), TipoProblema_SPECIE_getInstance(), TipoProblema_FUORI_ETA_getInstance(), TipoProblema_ALTRE_getInstance()]);
+  }
+  protoOf(Banco).nelBanco_t8qvla_k$ = function (r) {
+    return !r.annullata_1 && (r.get_fraIProblematici_oa76rq_k$() || !(r.tipoProblema_1 == null) || equals(r.soluzione_1, Soluzione_ESCLUSA_getInstance()) || !(Accantonate_instance.di_8ry225_k$(r) == null) || NonIdentificati_instance.eNonIdentificata_g78cp5_k$(r));
+  };
+  protoOf(Banco).coda_atrewz_k$ = function (righe, eventi) {
+    var scelte = Soluzioni_instance.di_4dh1u9_k$(eventi);
+    // Inline function 'kotlin.collections.filter' call
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination = ArrayList_init_$Create$();
+    var _iterator__ex2g4s = righe.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      if (this.nelBanco_t8qvla_k$(element)) {
+        destination.add_utx5q5_k$(element);
+      }
+    }
+    // Inline function 'kotlin.collections.map' call
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination, 10));
+    var _iterator__ex2g4s_0 = destination.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s_0.next_20eer_k$();
+      var tmp$ret$5 = Banco_getInstance().voce_cxeo19_k$(item, scelte);
+      destination_0.add_utx5q5_k$(tmp$ret$5);
+    }
+    var tmp = destination_0;
+    var tmp_0 = Banco$coda$lambda;
+    var tmp_1 = Banco$coda$lambda_0;
+    return sortedWith(tmp, compareBy([tmp_0, tmp_1, Banco$coda$lambda_1]));
+  };
+  protoOf(Banco).voce_cxeo19_k$ = function (r, scelte) {
+    var tmp0_elvis_lhs = r.tipoProblema_1;
+    var tipo = tmp0_elvis_lhs == null ? TipologieProblemi_getInstance().tipo_5qq08s_k$(r) : tmp0_elvis_lhs;
+    var acc = Accantonate_instance.di_8ry225_k$(r);
+    var scelta = scelte.get_wei43m_k$(r.uid_1);
+    var stato = r.persa_1 ? Stato_PERSA_getInstance() : equals(r.soluzione_1, Soluzione_ESCLUSA_getInstance()) ? Stato_TOLTA_getInstance() : !(acc == null) ? Stato_ACCANTONATA_getInstance() : NonIdentificati_instance.eNonIdentificata_g78cp5_k$(r) && NonIdentificati_instance.nonRisolta_hrylc1_k$(r) ? Stato_DA_DECIDERE_getInstance() : !(scelta == null) && scelta.soluzione_1.equals(r.soluzione_1) ? Stato_DECISA_getInstance() : scelta == null && !(r.soluzione_1 == null) ? Stato_DECISA_getInstance() : Stato_DA_DECIDERE_getInstance();
+    var tmp;
+    switch (stato.ordinal_1) {
+      case 4:
+        tmp = 'Persa';
+        break;
+      case 3:
+        tmp = 'Tolta';
+        break;
+      case 1:
+        // Inline function 'kotlin.text.orEmpty' call
+
+        var tmp0_elvis_lhs_0 = acc == null ? null : acc.motivo_1;
+        tmp = 'Accantonata: ' + (tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0);
+        break;
+      case 2:
+        var tmp_0;
+        if (equals(r.soluzione_1, Soluzione_RICOLLOCATA_getInstance())) {
+          // Inline function 'kotlin.text.orEmpty' call
+          var tmp0_elvis_lhs_1 = r.contrassegno_1;
+          tmp_0 = 'Al capo ' + (tmp0_elvis_lhs_1 == null ? '' : tmp0_elvis_lhs_1);
+        } else if (scelta == null) {
+          var tmp3_safe_receiver = r.soluzione_1;
+          var tmp4_elvis_lhs = tmp3_safe_receiver == null ? null : tmp3_safe_receiver.nome_1;
+          tmp_0 = (tmp4_elvis_lhs == null ? Soluzione_CODA_getInstance().nome_1 : tmp4_elvis_lhs) + ' (regola)';
+        } else {
+          var tmp5_safe_receiver = r.soluzione_1;
+          var tmp6_elvis_lhs = tmp5_safe_receiver == null ? null : tmp5_safe_receiver.nome_1;
+          tmp_0 = tmp6_elvis_lhs == null ? Soluzione_CODA_getInstance().nome_1 : tmp6_elvis_lhs;
+        }
+
+        tmp = tmp_0;
+        break;
+      case 0:
+        var tmp_1;
+        if (equals(scelta == null ? null : scelta.soluzione_1, Soluzione_RICOLLOCATA_getInstance())) {
+          tmp_1 = 'Da decidere: il capo ' + scelta.capo_1 + " vale gi\xE0 per un'altra provetta";
+        } else {
+          if (!(scelta == null)) {
+            tmp_1 = 'Da decidere: la scelta di prima non vale pi\xF9';
+          } else {
+            tmp_1 = 'Da decidere';
+          }
+        }
+
+        tmp = tmp_1;
+        break;
+      default:
+        noWhenBranchMatchedException();
+        break;
+    }
+    var esito = tmp;
+    var tmp_2 = etichetta(this, r);
+    var tmp_3 = substringBefore(r.serie_1, _Char___init__impl__6a9atx(58));
+    var tmp_4 = letto(this, r);
+    var tmp_5;
+    if (equals(r.soluzione_1, Soluzione_RICOLLOCATA_getInstance())) {
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_2 = r.contrassegno_1;
+      tmp_5 = tmp0_elvis_lhs_2 == null ? '' : tmp0_elvis_lhs_2;
+    } else {
+      tmp_5 = '';
+    }
+    var tmp_6 = tmp_5;
+    // Inline function 'kotlin.let' call
+    var it = this.PRIORITA_1.indexOf_si1fv9_k$(tipo);
+    var tmp$ret$3 = it < 0 ? Banco_getInstance().PRIORITA_1.get_size_woubt6_k$() : it;
+    return new Voce(r.uid_1, tmp_2, r.specie_1, tmp_3, tmp_4, tipo, stato, esito, r.soluzione_1, tmp_6, tmp$ret$3, r.operatore_1, r.ts_1);
+  };
+  protoOf(Banco).scheda_656c6z_k$ = function (uid, righe, a, eventi, cifre) {
+    var tmp$ret$0;
+    $l$block: {
+      // Inline function 'kotlin.collections.firstOrNull' call
+      var _iterator__ex2g4s = righe.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+        var element = _iterator__ex2g4s.next_20eer_k$();
+        if (element.uid_1 === uid) {
+          tmp$ret$0 = element;
+          break $l$block;
+        }
+      }
+      tmp$ret$0 = null;
+    }
+    var tmp0_elvis_lhs = tmp$ret$0;
+    var tmp;
+    if (tmp0_elvis_lhs == null) {
+      return null;
+    } else {
+      tmp = tmp0_elvis_lhs;
+    }
+    var r = tmp;
+    var scelte = Soluzioni_instance.di_4dh1u9_k$(eventi);
+    var tmp1_elvis_lhs = r.tipoProblema_1;
+    var tipo = tmp1_elvis_lhs == null ? TipologieProblemi_getInstance().tipo_5qq08s_k$(r) : tmp1_elvis_lhs;
+    var sp = r.specie_1 === 'capre' ? Specie_CAPRE_getInstance() : Specie_PECORE_getInstance();
+    var letto_0 = letto(this, r);
+    var senzaMarche = NonIdentificati_instance.eNonIdentificata_g78cp5_k$(r) && NonIdentificati_instance.nonRisolta_hrylc1_k$(r);
+    var d = Companion_instance_39.di$default_ume0ct_k$(r, a.pacchetto_1.razze_1, a.pacchetto_1.decodificaUscite_1, a.pacchetto_1.config_1.stabilimentiLavoro_1.get_size_woubt6_k$() > 1);
+    var candidati = r.get_fraIProblematici_oa76rq_k$() && !r.persa_1 ? AssentiCompatibili_instance.di_ra4auy_k$(r, righe, a, 15, cifre) : emptyList();
+    var marche = senzaMarche ? take(NonIdentificati_instance.marcheLibere_72ss9l_k$(a, righe, r.specie_1, substringBefore(r.serie_1, _Char___init__impl__6a9atx(58))), 12) : emptyList();
+    // Inline function 'kotlin.takeIf' call
+    var tmp_0;
+    // Inline function 'kotlin.text.isNotBlank' call
+    if (!isBlank(letto_0)) {
+      tmp_0 = letto_0;
+    } else {
+      tmp_0 = null;
+    }
+    var tmp2_safe_receiver = tmp_0;
+    var tmp_1;
+    if (tmp2_safe_receiver == null) {
+      tmp_1 = null;
+    } else {
+      // Inline function 'kotlin.let' call
+      var tmp0 = a.pacchetto_1.specieDati_1.get_h9fx0k_k$(sp).presenti_1;
+      var tmp$ret$7;
+      $l$block_0: {
+        // Inline function 'kotlin.collections.firstOrNull' call
+        var _iterator__ex2g4s_0 = tmp0.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+          var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
+          if (element_0.contrassegno_1 === tmp2_safe_receiver) {
+            tmp$ret$7 = element_0;
+            break $l$block_0;
+          }
+        }
+        tmp$ret$7 = null;
+      }
+      tmp_1 = tmp$ret$7;
+    }
+    var bdn = tmp_1;
+    var tmp_2;
+    if (tipo.equals(TipoProblema_DOPPI_getInstance()) || tipo.equals(TipoProblema_DA_RIATTRIBUIRE_getInstance())) {
+      // Inline function 'kotlin.collections.filter' call
+      // Inline function 'kotlin.collections.filterTo' call
+      var destination = ArrayList_init_$Create$();
+      var _iterator__ex2g4s_1 = righe.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
+        var element_1 = _iterator__ex2g4s_1.next_20eer_k$();
+        var tmp_3;
+        var tmp_4;
+        if (!(element_1.uid_1 === r.uid_1) && !element_1.annullata_1) {
+          // Inline function 'kotlin.text.isNotBlank' call
+          tmp_4 = !isBlank(letto_0);
+        } else {
+          tmp_4 = false;
+        }
+        if (tmp_4) {
+          tmp_3 = letto(Banco_getInstance(), element_1) === letto_0;
+        } else {
+          tmp_3 = false;
+        }
+        if (tmp_3) {
+          destination.add_utx5q5_k$(element_1);
+        }
+      }
+      tmp_2 = destination;
+    } else {
+      tmp_2 = emptyList();
+    }
+    var altre = tmp_2;
+    var c = r.caratteristiche_1;
+    var tmp_5 = this.voce_cxeo19_k$(r, scelte);
+    var tmp_6 = r.get_fraIProblematici_oa76rq_k$();
+    var tmp_7 = this.scritta_lle3sy_k$(r);
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs_0 = c.get_wei43m_k$('sesso');
+    var tmp_8 = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs_1 = c.get_wei43m_k$('sesso_corretto');
+    var tmp_9 = tmp0_elvis_lhs_1 == null ? '' : tmp0_elvis_lhs_1;
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs_2 = c.get_wei43m_k$('razza');
+    var tmp_10 = tmp0_elvis_lhs_2 == null ? '' : tmp0_elvis_lhs_2;
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs_3 = c.get_wei43m_k$('data_nascita');
+    var tmp_11 = tmp0_elvis_lhs_3 == null ? '' : tmp0_elvis_lhs_3;
+    var tmp3_safe_receiver = NonIdentificati_instance.classe_iqwwgl_k$(r);
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs_4 = tmp3_safe_receiver == null ? null : tmp3_safe_receiver.nome_1;
+    var tmp_12 = tmp0_elvis_lhs_4 == null ? '' : tmp0_elvis_lhs_4;
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs_5 = c.get_wei43m_k$('identificazione_provvisoria');
+    var tmp_13 = tmp0_elvis_lhs_5 == null ? '' : tmp0_elvis_lhs_5;
+    var tmp_14 = Accantonate_instance;
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs_6 = c.get_wei43m_k$('note');
+    var tmp$ret$19 = tmp0_elvis_lhs_6 == null ? '' : tmp0_elvis_lhs_6;
+    var tmp_15 = new Registrato(letto_0, tmp_8, tmp_9, tmp_10, tmp_11, tmp_12, tmp_13, tmp_14.senzaAccantonamento_n7koda_k$(tmp$ret$19), r.operatore_1, r.ts_1, c.get_wei43m_k$('isolato') === 'true', c.get_wei43m_k$('duplicato') === 'true', r.doppioScoperto_1, c.get_wei43m_k$('marcata_in_campo') === 'true');
+    var tmp_16;
+    if (bdn == null) {
+      tmp_16 = null;
+    } else {
+      // Inline function 'kotlin.let' call
+      var tmp0_elvis_lhs_7 = a.pacchetto_1.razze_1.get_wei43m_k$(bdn.razza_1);
+      tmp_16 = new DatiBdn(bdn.contrassegno_1, bdn.sesso_1, tmp0_elvis_lhs_7 == null ? bdn.razza_1 : tmp0_elvis_lhs_7, bdn.dataNascita_1, bdn.codiceStabilimento_1);
+    }
+    var tmp_17 = tmp_16;
+    // Inline function 'kotlin.collections.map' call
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(altre, 10));
+    var _iterator__ex2g4s_2 = altre.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s_2.next_20eer_k$();
+      var tmp$ret$24 = new AltraProvetta(item.uid_1, etichetta(Banco_getInstance(), item), item.operatore_1, item.ts_1);
+      destination_0.add_utx5q5_k$(tmp$ret$24);
+    }
+    var tmp_18 = destination_0;
+    // Inline function 'kotlin.collections.map' call
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_1 = ArrayList_init_$Create$_0(collectionSizeOrDefault(candidati, 10));
+    var _iterator__ex2g4s_3 = candidati.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
+      var item_0 = _iterator__ex2g4s_3.next_20eer_k$();
+      var tmp0_elvis_lhs_8 = a.pacchetto_1.razze_1.get_wei43m_k$(item_0.capo_1.razza_1);
+      var tmp_19 = tmp0_elvis_lhs_8 == null ? item_0.capo_1.razza_1 : tmp0_elvis_lhs_8;
+      var tmp1_safe_receiver = item_0.etaMesi_1;
+      var tmp_20;
+      if (tmp1_safe_receiver == null) {
+        tmp_20 = null;
+      } else {
+        // Inline function 'kotlin.let' call
+        tmp_20 = AssentiCompatibili_instance.etaTesto_6vb70t_k$(tmp1_safe_receiver);
+      }
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_9 = tmp_20;
+      var tmp$ret$30 = tmp0_elvis_lhs_9 == null ? '' : tmp0_elvis_lhs_9;
+      var tmp$ret$27 = new Compatibile(item_0.capo_1.contrassegno_1, item_0.capo_1.sesso_1, tmp_19, item_0.capo_1.dataNascita_1, tmp$ret$30, item_0.capo_1.numeroAssegnato_1, item_0.stessaRazza_1, item_0.motivi_1);
+      destination_1.add_utx5q5_k$(tmp$ret$27);
+    }
+    return new Scheda(tmp_5, tmp_6, tmp_7, d, tmp_15, tmp_17, tmp_18, destination_1, marche, proposta(this, r, tipo, candidati, marche), alternative(this, r, tipo, senzaMarche, candidati, marche, scelte));
+  };
+  protoOf(Banco).cerca_tzwqnq_k$ = function (query, righe) {
+    // Inline function 'kotlin.text.trim' call
+    var q = toString_1(trim_0(isCharSequence(query) ? query : THROW_CCE()));
+    // Inline function 'kotlin.text.isEmpty' call
+    if (charSequenceLength(q) === 0)
+      return emptyList();
+    // Inline function 'kotlin.text.filter' call
+    // Inline function 'kotlin.text.filterTo' call
+    var destination = StringBuilder_init_$Create$_0();
+    var inductionVariable = 0;
+    var last = charSequenceLength(q);
+    if (inductionVariable < last)
+      do {
+        var index = inductionVariable;
+        inductionVariable = inductionVariable + 1 | 0;
+        var element = charSequenceGet(q, index);
+        if (_Char___init__impl__6a9atx(48) <= element ? element <= _Char___init__impl__6a9atx(57) : false) {
+          destination.append_58al37_k$(element);
+        }
+      }
+       while (inductionVariable < last);
+    var cifre = destination.toString();
+    // Inline function 'kotlin.collections.filter' call
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination_0 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s = righe.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element_0 = _iterator__ex2g4s.next_20eer_k$();
+      var tmp$ret$7;
+      $l$block: {
+        if (element_0.annullata_1) {
+          tmp$ret$7 = false;
+          break $l$block;
+        }
+        var et = etichetta(Banco_getInstance(), element_0);
+        // Inline function 'kotlin.text.filter' call
+        var tmp0 = letto(Banco_getInstance(), element_0);
+        // Inline function 'kotlin.text.filterTo' call
+        var destination_1 = StringBuilder_init_$Create$_0();
+        var inductionVariable_0 = 0;
+        var last_0 = charSequenceLength(tmp0);
+        if (inductionVariable_0 < last_0)
+          do {
+            var index_0 = inductionVariable_0;
+            inductionVariable_0 = inductionVariable_0 + 1 | 0;
+            var element_1 = charSequenceGet(tmp0, index_0);
+            if (_Char___init__impl__6a9atx(48) <= element_1 ? element_1 <= _Char___init__impl__6a9atx(57) : false) {
+              destination_1.append_58al37_k$(element_1);
+            }
+          }
+           while (inductionVariable_0 < last_0);
+        var c = destination_1.toString();
+        var tmp;
+        if (GrammaticaEtichetta_getInstance().corrispondeRicerca_tup37_k$(et, q) || equals_0(et, q, true) || (cifre.length >= 3 && cifre.length === q.length && endsWith(c, cifre))) {
+          tmp = true;
+        } else {
+          var tmp_0;
+          var tmp_1;
+          if (cifre.length >= 12) {
+            // Inline function 'kotlin.text.isNotEmpty' call
+            tmp_1 = charSequenceLength(c) > 0;
+          } else {
+            tmp_1 = false;
+          }
+          if (tmp_1) {
+            tmp_0 = endsWith(cifre, takeLast(c, 12));
+          } else {
+            tmp_0 = false;
+          }
+          tmp = tmp_0;
+        }
+        tmp$ret$7 = tmp;
+      }
+      if (tmp$ret$7) {
+        destination_0.add_utx5q5_k$(element_0);
+      }
+    }
+    var tmp_2 = destination_0;
+    var tmp_3 = Banco$cerca$lambda;
+    return take(sortedWith(tmp_2, compareBy([tmp_3, Banco$cerca$lambda_0])), 30);
+  };
+  protoOf(Banco).destinazione_3y5t48_k$ = function (r, guida, fatta, occupati) {
+    if (r.persa_1)
+      return new Destinazione('Persa: non va in ARVET finch\xE9 non si ritrova.');
+    else if (equals(r.soluzione_1, Soluzione_ESCLUSA_getInstance()))
+      return new Destinazione('Tolta: mettila da parte con le tolte, non va in ARVET.');
+    else if (!(Accantonate_instance.di_8ry225_k$(r) == null))
+      return new Destinazione('Accantonata: mettila nel contenitore delle accantonate.');
+    else if (NonIdentificati_instance.eNonIdentificata_g78cp5_k$(r) && NonIdentificati_instance.nonRisolta_hrylc1_k$(r))
+      return new Destinazione('Decidi prima di chi \xE8 (un capo assente o una marca disponibile).');
+    if (guida == null)
+      return new Destinazione('Il motore di fine lavori non \xE8 pronto.');
+    var tmp$ret$0;
+    $l$block: {
+      // Inline function 'kotlin.collections.firstOrNull' call
+      var _iterator__ex2g4s = guida.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+        var element = _iterator__ex2g4s.next_20eer_k$();
+        if (element.uid_1 === r.uid_1) {
+          tmp$ret$0 = element;
+          break $l$block;
+        }
+      }
+      tmp$ret$0 = null;
+    }
+    var tmp0_elvis_lhs = tmp$ret$0;
+    var tmp;
+    if (tmp0_elvis_lhs == null) {
+      return new Destinazione(!(r.numero_1 == null) ? "Resta dov'\xE8: numero " + r.numero_1 + '.' : 'In coda: il posto lo d\xE0 la guida dei posti (Riordino) alla fine.');
+    } else {
+      tmp = tmp0_elvis_lhs;
+    }
+    var g = tmp;
+    if (fatta(g.uid_1, g.a_1))
+      return new Destinazione('Gi\xE0 al suo posto: numero ' + g.a_1 + ' (plateau ' + g.plateauA_1 + ', pozzetto ' + g.posA_1 + ').');
+    var da = g.da_1.secchio_1 ? 'dal secchio' : 'dal plateau ' + g.da_1.plateau_1 + ', pozzetto ' + g.da_1.pozzettoPlateau_1;
+    var base = new Destinazione('', g.a_1, g.plateauA_1, g.posA_1, substringBefore(r.serie_1, _Char___init__impl__6a9atx(58)), r.specie_1, g.contrassegno_1, da);
+    var tmp1_elvis_lhs = maxOrNull(occupati);
+    var fine = tmp1_elvis_lhs == null ? 0 : tmp1_elvis_lhs;
+    var inFondo = g.a_1 > fine;
+    var tmp$ret$2;
+    $l$block_1: {
+      // Inline function 'kotlin.collections.any' call
+      var tmp_0;
+      if (isInterface(guida, Collection)) {
+        tmp_0 = guida.isEmpty_y1axqb_k$();
+      } else {
+        tmp_0 = false;
+      }
+      if (tmp_0) {
+        tmp$ret$2 = false;
+        break $l$block_1;
+      }
+      var _iterator__ex2g4s_0 = guida.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+        var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
+        if (!(element_0.uid_1 === g.uid_1) && !element_0.da_1.secchio_1 && !element_0.da_1.isProblematici_1 && !fatta(element_0.uid_1, element_0.a_1)) {
+          tmp$ret$2 = true;
+          break $l$block_1;
+        }
+      }
+      tmp$ret$2 = false;
+    }
+    var altriDaSpostare = tmp$ret$2;
+    var tmp_1;
+    if (occupati.contains_aljjnj_k$(g.a_1)) {
+      var tmp2_cosa = 'Il suo posto (numero ' + g.a_1 + ') \xE8 ancora occupato: mettila da parte con le decise. ' + 'Alla fine la guida dei posti (Riordino) chiude i buchi e la mette al suo numero.';
+      tmp_1 = base.copy$default_y2vf4m_k$(tmp2_cosa, VOID, VOID, VOID, VOID, VOID, VOID, VOID, true);
+    } else if (inFondo && altriDaSpostare) {
+      var tmp3_cosa = 'Va in fondo alla serie, dopo che si saranno chiusi i buchi: mettila da parte con le decise. Il numero glielo d\xE0 la guida dei posti (Riordino) alla fine.';
+      tmp_1 = base.copy$default_y2vf4m_k$(tmp3_cosa, VOID, VOID, VOID, VOID, VOID, VOID, VOID, true);
+    } else if (inFondo) {
+      tmp_1 = base.copy$default_y2vf4m_k$('Mettila in fondo alla serie, al numero ' + g.a_1 + ': plateau ' + g.plateauA_1 + ', pozzetto ' + g.posA_1 + '.');
+    } else {
+      tmp_1 = base.copy$default_y2vf4m_k$('Mettila nel buco al numero ' + g.a_1 + ': plateau ' + g.plateauA_1 + ', pozzetto ' + g.posA_1 + '.');
+    }
+    return tmp_1;
+  };
+  protoOf(Banco).occupati_rgev84_k$ = function (r, righe, serie, eventi, pacchetto) {
+    // Inline function 'kotlin.collections.filter' call
+    var tmp0 = PlateauAttuale_instance.di_4jqvut_k$(righe, serie, eventi, pacchetto);
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination = ArrayList_init_$Create$();
+    var _iterator__ex2g4s = tmp0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      if (element.serie_1 === r.serie_1 && element.vista_1 === 'serie' && element.attiva_1) {
+        destination.add_utx5q5_k$(element);
+      }
+    }
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_0 = HashSet_init_$Create$();
+    var _iterator__ex2g4s_0 = destination.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s_0.next_20eer_k$();
+      var tmp$ret$4 = imul(item.plateau_1 - 1 | 0, 100) + item.pozzetto_1 | 0;
+      destination_0.add_utx5q5_k$(tmp$ret$4);
+    }
+    return destination_0;
+  };
+  protoOf(Banco).azione_v5rv23_k$ = function (tipo, uid, altro) {
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder = new JsonObjectBuilder();
+    put(builder, 'tipo', tipo);
+    put(builder, 'uid', uid);
+    altro(builder);
+    return builder.build_bkh6qh_k$();
+  };
+  protoOf(Banco).ricolloca_grrnyz_k$ = function (uid, capo, nelReport) {
+    return this.azione_v5rv23_k$('ricollocazione', uid, Banco$ricolloca$lambda(capo, nelReport));
+  };
+  protoOf(Banco).soluzione_n6infk_k$ = function (uid, s) {
+    return this.azione_v5rv23_k$('soluzione', uid, Banco$soluzione$lambda(s));
+  };
+  protoOf(Banco).togli_q4ixmx_k$ = function (uid, motivo) {
+    return this.azione_v5rv23_k$('scarto', uid, Banco$togli$lambda(motivo));
+  };
+  protoOf(Banco).marca_ayme4c_k$ = function (uid, contrassegno) {
+    return listOf_0([this.azione_v5rv23_k$('riattribuzione', uid, Banco$marca$lambda(contrassegno)), this.soluzione_n6infk_k$(uid, Soluzione_CODA_getInstance())]);
+  };
+  protoOf(Banco).messa_srcj65_k$ = function (uid, d) {
+    var tmp0_safe_receiver = d.numero_1;
+    var tmp;
+    if (tmp0_safe_receiver == null) {
+      tmp = null;
+    } else {
+      // Inline function 'kotlin.takeIf' call
+      var tmp_0;
+      if (!d.daParte_1) {
+        tmp_0 = tmp0_safe_receiver;
+      } else {
+        tmp_0 = null;
+      }
+      tmp = tmp_0;
+    }
+    var tmp1_safe_receiver = tmp;
+    var tmp_1;
+    if (tmp1_safe_receiver == null) {
+      tmp_1 = null;
+    } else {
+      // Inline function 'kotlin.let' call
+      var tmp_2 = Banco_getInstance();
+      tmp_1 = tmp_2.azione_v5rv23_k$('riordino', uid, Banco$messa$lambda(d, tmp1_safe_receiver));
+    }
+    return tmp_1;
+  };
+  protoOf(Banco).scritta_lle3sy_k$ = function (r) {
+    var et = etichetta(this, r);
+    var c = r.caratteristiche_1;
+    if (NonIdentificati_instance.eNonIdentificata_g78cp5_k$(r)) {
+      // Inline function 'kotlin.collections.buildList' call
+      // Inline function 'kotlin.collections.buildListInternal' call
+      // Inline function 'kotlin.apply' call
+      var this_0 = ArrayList_init_$Create$();
+      this_0.add_utx5q5_k$(et);
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs = c.get_wei43m_k$('sesso');
+      var tmp = tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
+      var tmp0_safe_receiver = NonIdentificati_instance.classe_iqwwgl_k$(r);
+      var tmp1_safe_receiver = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.nome_1;
+      var tmp_0;
+      if (tmp1_safe_receiver == null) {
+        tmp_0 = null;
+      } else {
+        // Inline function 'kotlin.text.lowercase' call
+        // Inline function 'kotlin.js.asDynamic' call
+        tmp_0 = tmp1_safe_receiver.toLowerCase();
+      }
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_0 = tmp_0;
+      var tmp_1 = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_1 = c.get_wei43m_k$('razza');
+      var tmp$ret$8 = tmp0_elvis_lhs_1 == null ? '' : tmp0_elvis_lhs_1;
+      // Inline function 'kotlin.collections.filter' call
+      var tmp0 = listOf_0(['senza marca', tmp, tmp_1, tmp$ret$8]);
+      // Inline function 'kotlin.collections.filterTo' call
+      var destination = ArrayList_init_$Create$();
+      var _iterator__ex2g4s = tmp0.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+        var element = _iterator__ex2g4s.next_20eer_k$();
+        // Inline function 'kotlin.text.isNotBlank' call
+        if (!isBlank(element)) {
+          destination.add_utx5q5_k$(element);
+        }
+      }
+      this_0.add_utx5q5_k$(joinToString_0(destination, ' \xB7 '));
+      var tmp2_safe_receiver = c.get_wei43m_k$('identificazione_provvisoria');
+      var tmp_2;
+      if (tmp2_safe_receiver == null) {
+        tmp_2 = null;
+      } else {
+        // Inline function 'kotlin.takeIf' call
+        var tmp_3;
+        // Inline function 'kotlin.text.isNotBlank' call
+        if (!isBlank(tmp2_safe_receiver)) {
+          tmp_3 = tmp2_safe_receiver;
+        } else {
+          tmp_3 = null;
+        }
+        tmp_2 = tmp_3;
+      }
+      var tmp3_safe_receiver = tmp_2;
+      if (tmp3_safe_receiver == null)
+        null;
+      else {
+        // Inline function 'kotlin.let' call
+        this_0.add_utx5q5_k$('prov.: ' + tmp3_safe_receiver);
+      }
+      return this_0.build_nmwvly_k$();
+    }
+    var letto_0 = letto(this, r);
+    if (!(r.numero_1 == null) && !r.problematica_1)
+      return listOf(et);
+    // Inline function 'kotlin.collections.buildList' call
+    // Inline function 'kotlin.collections.buildListInternal' call
+    // Inline function 'kotlin.apply' call
+    var this_1 = ArrayList_init_$Create$();
+    // Inline function 'kotlin.text.trimEnd' call
+    var this_2 = removeSuffix(et, letto_0);
+    // Inline function 'kotlin.text.ifEmpty' call
+    var this_3 = toString_1(trimEnd_0(isCharSequence(this_2) ? this_2 : THROW_CCE()));
+    var tmp_4;
+    // Inline function 'kotlin.text.isEmpty' call
+    if (charSequenceLength(this_3) === 0) {
+      tmp_4 = et;
+    } else {
+      tmp_4 = this_3;
+    }
+    var tmp$ret$23 = tmp_4;
+    this_1.add_utx5q5_k$(tmp$ret$23);
+    // Inline function 'kotlin.text.isNotBlank' call
+    if (!isBlank(letto_0)) {
+      this_1.add_utx5q5_k$(letto_0);
+    }
+    return this_1.build_nmwvly_k$();
+  };
+  var Banco_instance;
+  function Banco_getInstance() {
+    if (Banco_instance == null)
+      new Banco();
+    return Banco_instance;
   }
   function giorniDel($this, mese, anno) {
     switch (mese) {
@@ -31304,11 +33034,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
       new CategoriaGestione();
     return CategoriaGestione_instance;
   }
-  var static_init_called_10;
-  function static_init_10() {
-    if (static_init_called_10)
+  var static_init_called_11;
+  function static_init_11() {
+    if (static_init_called_11)
       return Unit_instance;
-    static_init_called_10 = true;
+    static_init_called_11 = true;
     ClasseEta_DENTI_LATTE_instance = new ClasseEta('DENTI_LATTE', 0, 'denti_latte', 'Denti da latte', 0, 'Otto incisivi da latte, piccoli e stretti; nessun permanente.', numberRangeToNumber(0, 14), numberRangeToNumber(0, 14));
     ClasseEta_DUE_DENTI_instance = new ClasseEta('DUE_DENTI', 1, 'due_denti', 'Due denti', 2, 'Picozzi permanenti (prima coppia, larghi); gli altri sono da latte.', numberRangeToNumber(12, 19), numberRangeToNumber(12, 18));
     ClasseEta_QUATTRO_DENTI_instance = new ClasseEta('QUATTRO_DENTI', 2, 'quattro_denti', 'Quattro denti', 4, 'Anche i primi mezzani permanenti.', numberRangeToNumber(18, 26), numberRangeToNumber(17, 26));
@@ -31330,7 +33060,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     this.TOLLERANZA_MESI_1 = 6;
   }
   protoOf(Companion_37).di_j0pbpe_k$ = function (codice) {
-    var tmp0 = get_entries_1();
+    var tmp0 = get_entries_2();
     var tmp$ret$0;
     $l$block: {
       // Inline function 'kotlin.collections.firstOrNull' call
@@ -31350,17 +33080,17 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function Companion_getInstance_37() {
     return Companion_instance_37;
   }
-  function values_1() {
-    static_init_10();
+  function values_2() {
+    static_init_11();
     return [ClasseEta_DENTI_LATTE_getInstance(), ClasseEta_DUE_DENTI_getInstance(), ClasseEta_QUATTRO_DENTI_getInstance(), ClasseEta_SEI_DENTI_getInstance(), ClasseEta_BOCCA_PIENA_getInstance(), ClasseEta_BOCCA_CONSUMATA_getInstance()];
   }
-  function get_entries_1() {
-    static_init_10();
-    if ($ENTRIES_1 == null)
-      $ENTRIES_1 = enumEntries(values_1());
-    return $ENTRIES_1;
+  function get_entries_2() {
+    static_init_11();
+    if ($ENTRIES_2 == null)
+      $ENTRIES_2 = enumEntries(values_2());
+    return $ENTRIES_2;
   }
-  var $ENTRIES_1;
+  var $ENTRIES_2;
   function ClasseEta(name, ordinal, codice, nome, permanenti, descrizione, pecora, capra) {
     Enum.call(this, name, ordinal);
     this.codice_1 = codice;
@@ -31387,34 +33117,34 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return it.last_1 === 2147483647 ? 72 : (it.first_1 + it.last_1 | 0) / 2 | 0;
   };
   function ClasseEta_DENTI_LATTE_getInstance() {
-    static_init_10();
+    static_init_11();
     return ClasseEta_DENTI_LATTE_instance;
   }
   function ClasseEta_DUE_DENTI_getInstance() {
-    static_init_10();
+    static_init_11();
     return ClasseEta_DUE_DENTI_instance;
   }
   function ClasseEta_QUATTRO_DENTI_getInstance() {
-    static_init_10();
+    static_init_11();
     return ClasseEta_QUATTRO_DENTI_instance;
   }
   function ClasseEta_SEI_DENTI_getInstance() {
-    static_init_10();
+    static_init_11();
     return ClasseEta_SEI_DENTI_instance;
   }
   function ClasseEta_BOCCA_PIENA_getInstance() {
-    static_init_10();
+    static_init_11();
     return ClasseEta_BOCCA_PIENA_instance;
   }
   function ClasseEta_BOCCA_CONSUMATA_getInstance() {
-    static_init_10();
+    static_init_11();
     return ClasseEta_BOCCA_CONSUMATA_instance;
   }
-  var static_init_called_11;
-  function static_init_11() {
-    if (static_init_called_11)
+  var static_init_called_12;
+  function static_init_12() {
+    if (static_init_called_12)
       return Unit_instance;
-    static_init_called_11 = true;
+    static_init_called_12 = true;
     CategoriaCampo_VERDE_instance = new CategoriaCampo('VERDE', 0, 'verde');
     CategoriaCampo_GIALLO_instance = new CategoriaCampo('GIALLO', 1, 'giallo');
     CategoriaCampo_BLU_instance = new CategoriaCampo('BLU', 2, 'blu');
@@ -31586,7 +33316,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function IndiceCapi(dati) {
     var tmp = this;
     // Inline function 'kotlin.collections.associateWith' call
-    var this_0 = get_entries_10();
+    var this_0 = get_entries_11();
     var result = LinkedHashMap_init_$Create$_0(coerceAtLeast(mapCapacity(collectionSizeOrDefault(this_0, 10)), 16));
     // Inline function 'kotlin.collections.associateWithTo' call
     var _iterator__ex2g4s = this_0.iterator_jk1svi_k$();
@@ -31615,7 +33345,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     tmp.presenti_1 = result;
     var tmp_1 = this;
     // Inline function 'kotlin.collections.associateWith' call
-    var this_2 = get_entries_10();
+    var this_2 = get_entries_11();
     var result_0 = LinkedHashMap_init_$Create$_0(coerceAtLeast(mapCapacity(collectionSizeOrDefault(this_2, 10)), 16));
     // Inline function 'kotlin.collections.associateWithTo' call
     var _iterator__ex2g4s_1 = this_2.iterator_jk1svi_k$();
@@ -31644,7 +33374,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     tmp_1.usciti_1 = result_0;
     var tmp_3 = this;
     // Inline function 'kotlin.collections.associateWith' call
-    var this_4 = get_entries_10();
+    var this_4 = get_entries_11();
     var result_1 = LinkedHashMap_init_$Create$_0(coerceAtLeast(mapCapacity(collectionSizeOrDefault(this_4, 10)), 16));
     // Inline function 'kotlin.collections.associateWithTo' call
     var _iterator__ex2g4s_3 = this_4.iterator_jk1svi_k$();
@@ -31955,19 +33685,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return Classificatore_instance;
   }
   function CategoriaCampo_VERDE_getInstance() {
-    static_init_11();
+    static_init_12();
     return CategoriaCampo_VERDE_instance;
   }
   function CategoriaCampo_GIALLO_getInstance() {
-    static_init_11();
+    static_init_12();
     return CategoriaCampo_GIALLO_instance;
   }
   function CategoriaCampo_BLU_getInstance() {
-    static_init_11();
+    static_init_12();
     return CategoriaCampo_BLU_instance;
   }
   function CategoriaCampo_ROSSO_getInstance() {
-    static_init_11();
+    static_init_12();
     return CategoriaCampo_ROSSO_instance;
   }
   function CodiceRisanamento() {
@@ -33180,7 +34910,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     var codiciLavoro = destination;
     // Inline function 'kotlin.collections.map' call
-    var this_0 = get_entries_10();
+    var this_0 = get_entries_11();
     // Inline function 'kotlin.collections.mapTo' call
     var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
     var _iterator__ex2g4s_0 = this_0.iterator_jk1svi_k$();
@@ -33325,11 +35055,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function CreazioneDaBdn_getInstance() {
     return CreazioneDaBdn_instance;
   }
-  var static_init_called_12;
-  function static_init_12() {
-    if (static_init_called_12)
+  var static_init_called_13;
+  function static_init_13() {
+    if (static_init_called_13)
       return Unit_instance;
-    static_init_called_12 = true;
+    static_init_called_13 = true;
     Tono_VERDE_instance = new Tono('VERDE', 0);
     Tono_GIALLO_instance = new Tono('GIALLO', 1);
     Tono_BLU_instance = new Tono('BLU', 2);
@@ -34009,23 +35739,23 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return Companion_instance_39;
   }
   function Tono_VERDE_getInstance() {
-    static_init_12();
+    static_init_13();
     return Tono_VERDE_instance;
   }
   function Tono_GIALLO_getInstance() {
-    static_init_12();
+    static_init_13();
     return Tono_GIALLO_instance;
   }
   function Tono_BLU_getInstance() {
-    static_init_12();
+    static_init_13();
     return Tono_BLU_instance;
   }
   function Tono_ROSSO_getInstance() {
-    static_init_12();
+    static_init_13();
     return Tono_ROSSO_instance;
   }
   function Tono_VIOLA_getInstance() {
-    static_init_12();
+    static_init_13();
     return Tono_VIOLA_instance;
   }
   function DescrizioneProvetta(esito, tono, motivo, capo, segnalazioni, chi, stato, grezzi) {
@@ -34600,11 +36330,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return false;
     return true;
   };
-  var static_init_called_13;
-  function static_init_13() {
-    if (static_init_called_13)
+  var static_init_called_14;
+  function static_init_14() {
+    if (static_init_called_14)
       return Unit_instance;
-    static_init_called_13 = true;
+    static_init_called_14 = true;
     Riclassifica_DIVENTATA_PROBLEMATICA_instance = new Riclassifica('DIVENTATA_PROBLEMATICA', 0);
     Riclassifica_ORA_IN_LISTA_instance = new Riclassifica('ORA_IN_LISTA', 1);
     Riclassifica_AGGIORNATA_instance = new Riclassifica('AGGIORNATA', 2);
@@ -35621,198 +37351,253 @@ if (typeof String.prototype.startsWith === 'undefined') {
       }
     }
     var fatti = destination_0;
-    // Inline function 'kotlin.collections.map' call
-    // Inline function 'kotlin.collections.mapTo' call
-    var destination_1 = ArrayList_init_$Create$_0(collectionSizeOrDefault(righe, 10));
-    var _iterator__ex2g4s_2 = righe.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
-      var item = _iterator__ex2g4s_2.next_20eer_k$();
-      var tmp$ret$14;
-      $l$block_7: {
-        if (item.annullata_1) {
-          tmp$ret$14 = item;
-          break $l$block_7;
-        }
+    var vinte = HashSet_init_$Create$();
+    if (!(a == null)) {
+      var presi = HashSet_init_$Create$();
+      // Inline function 'kotlin.collections.filter' call
+      // Inline function 'kotlin.collections.filterTo' call
+      var destination_1 = ArrayList_init_$Create$();
+      var _iterator__ex2g4s_2 = righe.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
+        var element_2 = _iterator__ex2g4s_2.next_20eer_k$();
         var tmp_1;
-        if (item.esclusaPerProvetta_1) {
-          tmp_1 = true;
+        var tmp_2;
+        var tmp_3;
+        var tmp0_safe_receiver_0 = scelte.get_wei43m_k$(element_2.uid_1);
+        if (equals(tmp0_safe_receiver_0 == null ? null : tmp0_safe_receiver_0.soluzione_1, Soluzione_RICOLLOCATA_getInstance())) {
+          tmp_3 = !element_2.annullata_1;
         } else {
-          var tmp0_safe_receiver_0 = scelte.get_wei43m_k$(item.uid_1);
-          var tmp_2;
-          if (tmp0_safe_receiver_0 == null) {
-            tmp_2 = null;
-          } else {
-            // Inline function 'kotlin.let' call
-            tmp_2 = (tmp0_safe_receiver_0.soluzione_1.equals(Soluzione_ESCLUSA_getInstance()) && tmp0_safe_receiver_0.scartoGestione_1);
-          }
-          tmp_1 = tmp_2 === true;
+          tmp_3 = false;
+        }
+        if (tmp_3) {
+          tmp_2 = !element_2.persa_1;
+        } else {
+          tmp_2 = false;
+        }
+        if (tmp_2) {
+          tmp_1 = element_2.get_fraIProblematici_oa76rq_k$();
+        } else {
+          tmp_1 = false;
         }
         if (tmp_1) {
-          tmp$ret$14 = item.copy$default_q59os1_k$(VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, Soluzione_ESCLUSA_getInstance());
-          break $l$block_7;
+          destination_1.add_utx5q5_k$(element_2);
+        }
+      }
+      // Inline function 'kotlin.collections.sortedBy' call
+      // Inline function 'kotlin.comparisons.compareBy' call
+      var tmp_4 = ElencoProvette$conSoluzioni$lambda(scelte);
+      var tmp$ret$16 = new sam$kotlin_Comparator$0_9(tmp_4);
+      // Inline function 'kotlin.collections.forEach' call
+      var _iterator__ex2g4s_3 = sortedWith(destination_1, tmp$ret$16).iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
+        var element_3 = _iterator__ex2g4s_3.next_20eer_k$();
+        $l$block_2: {
+          var s = getValue(scelte, element_3.uid_1);
+          if (element_3.caratteristiche_1.get_wei43m_k$('dda_dichiarato') === 'true' && !(element_3.caratteristiche_1.get_wei43m_k$('dda_stato') === Stato_INGRESSO_REGISTRATO_getInstance().codice_1)) {
+            break $l$block_2;
+          }
+          var capo = a.classifica_7660ps_k$(element_3.specie_1 === 'capre' ? Specie_CAPRE_getInstance() : Specie_PECORE_getInstance(), s.capo_1, substringBefore(element_3.serie_1, _Char___init__impl__6a9atx(58)));
+          if (!capo.categoria_1.equals(CategoriaCampo_VERDE_getInstance()) || capo.problematica_1 || fatti.contains_aljjnj_k$(s.capo_1) || !presi.add_utx5q5_k$(s.capo_1)) {
+            break $l$block_2;
+          }
+          // Inline function 'kotlin.collections.plusAssign' call
+          var element_4 = element_3.uid_1;
+          vinte.add_utx5q5_k$(element_4);
+        }
+      }
+    }
+    // Inline function 'kotlin.collections.map' call
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_2 = ArrayList_init_$Create$_0(collectionSizeOrDefault(righe, 10));
+    var _iterator__ex2g4s_4 = righe.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s_4.next_20eer_k$();
+      var tmp$ret$22;
+      $l$block_9: {
+        if (item.annullata_1) {
+          tmp$ret$22 = item;
+          break $l$block_9;
+        }
+        var tmp_5;
+        if (item.esclusaPerProvetta_1) {
+          tmp_5 = true;
+        } else {
+          var tmp0_safe_receiver_1 = scelte.get_wei43m_k$(item.uid_1);
+          var tmp_6;
+          if (tmp0_safe_receiver_1 == null) {
+            tmp_6 = null;
+          } else {
+            // Inline function 'kotlin.let' call
+            tmp_6 = (tmp0_safe_receiver_1.soluzione_1.equals(Soluzione_ESCLUSA_getInstance()) && tmp0_safe_receiver_1.scartoGestione_1);
+          }
+          tmp_5 = tmp_6 === true;
+        }
+        if (tmp_5) {
+          tmp$ret$22 = item.copy$default_q59os1_k$(VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, Soluzione_ESCLUSA_getInstance());
+          break $l$block_9;
         }
         if (!item.get_fraIProblematici_oa76rq_k$() || item.persa_1) {
-          tmp$ret$14 = item;
-          break $l$block_7;
+          tmp$ret$22 = item;
+          break $l$block_9;
         }
         var tipo = TipologieProblemi_getInstance().tipo_5qq08s_k$(item);
         var tmp1_elvis_lhs = scelte.get_wei43m_k$(item.uid_1);
         var tmp2_elvis_lhs = tmp1_elvis_lhs == null ? item.caratteristiche_1.get_wei43m_k$('fattispecie') === 'lettura_dopo_attribuzione' && equals(item.riclassifica_1, Riclassifica_ORA_IN_LISTA_getInstance()) ? new SceltaSoluzione(Soluzione_NORMALIZZATA_getInstance()) : null : tmp1_elvis_lhs;
-        var tmp_3;
+        var tmp_7;
         if (tmp2_elvis_lhs == null) {
           var tmp3_safe_receiver = regole.get_wei43m_k$(tipo);
-          var tmp_4;
+          var tmp_8;
           if (tmp3_safe_receiver == null) {
-            tmp_4 = null;
+            tmp_8 = null;
           } else {
             // Inline function 'kotlin.takeUnless' call
-            var tmp_5;
+            var tmp_9;
             if (!(tmp3_safe_receiver.equals(Soluzione_ESCLUSA_getInstance()) && (!tipo.equals(TipoProblema_FUORI_ETA_getInstance()) || item.doppiaDiPersa_1))) {
-              tmp_5 = tmp3_safe_receiver;
+              tmp_9 = tmp3_safe_receiver;
             } else {
-              tmp_5 = null;
+              tmp_9 = null;
             }
-            tmp_4 = tmp_5;
+            tmp_8 = tmp_9;
           }
-          var tmp4_safe_receiver = tmp_4;
-          var tmp_6;
+          var tmp4_safe_receiver = tmp_8;
+          var tmp_10;
           if (tmp4_safe_receiver == null) {
-            tmp_6 = null;
+            tmp_10 = null;
           } else {
             // Inline function 'kotlin.let' call
-            tmp_6 = new SceltaSoluzione(tmp4_safe_receiver);
+            tmp_10 = new SceltaSoluzione(tmp4_safe_receiver);
           }
-          tmp_3 = tmp_6;
+          tmp_7 = tmp_10;
         } else {
-          tmp_3 = tmp2_elvis_lhs;
+          tmp_7 = tmp2_elvis_lhs;
         }
-        var tmp5_elvis_lhs = tmp_3;
-        var tmp_7;
+        var tmp5_elvis_lhs = tmp_7;
+        var tmp_11;
         if (tmp5_elvis_lhs == null) {
-          tmp$ret$14 = item;
-          break $l$block_7;
+          tmp$ret$22 = item;
+          break $l$block_9;
         } else {
-          tmp_7 = tmp5_elvis_lhs;
+          tmp_11 = tmp5_elvis_lhs;
         }
-        var s = tmp_7;
-        if (item.caratteristiche_1.get_wei43m_k$('dda_dichiarato') === 'true' && !(item.caratteristiche_1.get_wei43m_k$('dda_stato') === Stato_INGRESSO_REGISTRATO_getInstance().codice_1) && setOf_0([Soluzione_NORMALIZZATA_getInstance(), Soluzione_RICOLLOCATA_getInstance()]).contains_aljjnj_k$(s.soluzione_1)) {
-          tmp$ret$14 = item;
-          break $l$block_7;
+        var s_0 = tmp_11;
+        if (item.caratteristiche_1.get_wei43m_k$('dda_dichiarato') === 'true' && !(item.caratteristiche_1.get_wei43m_k$('dda_stato') === Stato_INGRESSO_REGISTRATO_getInstance().codice_1) && setOf_0([Soluzione_NORMALIZZATA_getInstance(), Soluzione_RICOLLOCATA_getInstance()]).contains_aljjnj_k$(s_0.soluzione_1)) {
+          tmp$ret$22 = item;
+          break $l$block_9;
         }
-        var tmp_8;
-        switch (s.soluzione_1.ordinal_1) {
+        var tmp_12;
+        switch (s_0.soluzione_1.ordinal_1) {
           case 0:
           case 1:
-            tmp_8 = item.copy$default_q59os1_k$(VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, s.soluzione_1, VOID, VOID, tipo);
+            tmp_12 = item.copy$default_q59os1_k$(VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, s_0.soluzione_1, VOID, VOID, tipo);
             break;
           case 2:
-            var tmp_9;
+            var tmp_13;
             if (!equals(item.riclassifica_1, Riclassifica_ORA_IN_LISTA_getInstance())) {
-              tmp_9 = item;
+              tmp_13 = item;
             } else {
-              var tmp_10;
+              var tmp_14;
               if (contains_8(item.serie_1, _Char___init__impl__6a9atx(58))) {
-                tmp_10 = substringBefore(item.serie_1, _Char___init__impl__6a9atx(58));
+                tmp_14 = substringBefore(item.serie_1, _Char___init__impl__6a9atx(58));
               } else {
                 var tmp7_elvis_lhs = item.caratteristiche_1.get_wei43m_k$('codice_stabilimento');
-                tmp_10 = tmp7_elvis_lhs == null ? '' : tmp7_elvis_lhs;
+                tmp_14 = tmp7_elvis_lhs == null ? '' : tmp7_elvis_lhs;
               }
-              var stabEffettivo = tmp_10;
-              var tmp_11;
+              var stabEffettivo = tmp_14;
+              var tmp_15;
               // Inline function 'kotlin.text.isNotEmpty' call
               if (charSequenceLength(stabEffettivo) > 0) {
-                tmp_11 = plus_5(item.altriDati_1, to('codice_stabilimento', stabEffettivo));
+                tmp_15 = plus_5(item.altriDati_1, to('codice_stabilimento', stabEffettivo));
               } else {
-                tmp_11 = item.altriDati_1;
+                tmp_15 = item.altriDati_1;
               }
-              var datiNormalizzati = tmp_11;
-              var tmp8_soluzione = s.soluzione_1;
+              var datiNormalizzati = tmp_15;
+              var tmp8_soluzione = s_0.soluzione_1;
               // Inline function 'kotlin.collections.filterKeys' call
               var this_0 = item.caratteristiche_1;
               var result = LinkedHashMap_init_$Create$();
               // Inline function 'kotlin.collections.iterator' call
-              var _iterator__ex2g4s_3 = this_0.get_entries_p20ztl_k$().iterator_jk1svi_k$();
-              while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
-                var entry = _iterator__ex2g4s_3.next_20eer_k$();
+              var _iterator__ex2g4s_5 = this_0.get_entries_p20ztl_k$().iterator_jk1svi_k$();
+              while (_iterator__ex2g4s_5.hasNext_bitz1p_k$()) {
+                var entry = _iterator__ex2g4s_5.next_20eer_k$();
                 if (!(entry.get_key_18j28a_k$() === 'acquisto_da')) {
                   result.put_4fpzoq_k$(entry.get_key_18j28a_k$(), entry.get_value_j01efc_k$());
                 }
               }
               var tmp9_caratteristiche = plus_4(result, datiNormalizzati);
-              tmp_9 = item.copy$default_q59os1_k$(VOID, VOID, VOID, VOID, VOID, VOID, tmp9_caratteristiche, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, tmp8_soluzione, VOID, VOID, tipo);
+              tmp_13 = item.copy$default_q59os1_k$(VOID, VOID, VOID, VOID, VOID, VOID, tmp9_caratteristiche, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, tmp8_soluzione, VOID, VOID, tipo);
             }
 
-            tmp_8 = tmp_9;
+            tmp_12 = tmp_13;
             break;
           case 3:
             if (a == null) {
-              tmp$ret$14 = item.copy$default_q59os1_k$(VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, s.soluzione_1, VOID, VOID, tipo);
-              break $l$block_7;
+              tmp$ret$22 = item.copy$default_q59os1_k$(VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, s_0.soluzione_1, VOID, VOID, tipo);
+              break $l$block_9;
             }
 
             var specie = item.specie_1 === 'capre' ? Specie_CAPRE_getInstance() : Specie_PECORE_getInstance();
-            var capo = a.classifica_7660ps_k$(specie, s.capo_1, substringBefore(item.serie_1, _Char___init__impl__6a9atx(58)));
-            if (!capo.categoria_1.equals(CategoriaCampo_VERDE_getInstance()) || capo.problematica_1 || fatti.contains_aljjnj_k$(s.capo_1)) {
-              tmp$ret$14 = item;
-              break $l$block_7;
+            var capo_0 = a.classifica_7660ps_k$(specie, s_0.capo_1, substringBefore(item.serie_1, _Char___init__impl__6a9atx(58)));
+            if (!capo_0.categoria_1.equals(CategoriaCampo_VERDE_getInstance()) || capo_0.problematica_1 || fatti.contains_aljjnj_k$(s_0.capo_1) || !vinte.contains_aljjnj_k$(item.uid_1)) {
+              tmp$ret$22 = item;
+              break $l$block_9;
             }
 
             // Inline function 'kotlin.collections.mapValues' call
 
-            var this_1 = CampiProvetta_instance.anagrafe_94sr9q_k$(a.pacchetto_1, s.capo_1, capo);
+            var this_1 = CampiProvetta_instance.anagrafe_94sr9q_k$(a.pacchetto_1, s_0.capo_1, capo_0);
             // Inline function 'kotlin.collections.mapValuesTo' call
 
-            var destination_2 = LinkedHashMap_init_$Create$_0(mapCapacity(this_1.get_size_woubt6_k$()));
+            var destination_3 = LinkedHashMap_init_$Create$_0(mapCapacity(this_1.get_size_woubt6_k$()));
             // Inline function 'kotlin.collections.associateByTo' call
 
-            var _iterator__ex2g4s_4 = this_1.get_entries_p20ztl_k$().iterator_jk1svi_k$();
-            while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
-              var element_2 = _iterator__ex2g4s_4.next_20eer_k$();
-              var tmp_12 = element_2.get_key_18j28a_k$();
-              var tmp$ret$29 = element_2.get_value_j01efc_k$().get_content_h02jrk_k$();
-              destination_2.put_4fpzoq_k$(tmp_12, tmp$ret$29);
+            var _iterator__ex2g4s_6 = this_1.get_entries_p20ztl_k$().iterator_jk1svi_k$();
+            while (_iterator__ex2g4s_6.hasNext_bitz1p_k$()) {
+              var element_5 = _iterator__ex2g4s_6.next_20eer_k$();
+              var tmp_16 = element_5.get_key_18j28a_k$();
+              var tmp$ret$37 = element_5.get_value_j01efc_k$().get_content_h02jrk_k$();
+              destination_3.put_4fpzoq_k$(tmp_16, tmp$ret$37);
             }
 
-            var nuovi = plus_5(destination_2, to('in_arvet', 'true'));
-            var tmp_13;
+            var nuovi = plus_5(destination_3, to('in_arvet', 'true'));
+            var tmp_17;
             if (contains_8(item.serie_1, _Char___init__impl__6a9atx(58))) {
-              tmp_13 = substringBefore(item.serie_1, _Char___init__impl__6a9atx(58));
+              tmp_17 = substringBefore(item.serie_1, _Char___init__impl__6a9atx(58));
             } else {
               var tmp10_elvis_lhs = item.caratteristiche_1.get_wei43m_k$('codice_stabilimento');
-              tmp_13 = tmp10_elvis_lhs == null ? capo.codiceStabilimento_1 : tmp10_elvis_lhs;
+              tmp_17 = tmp10_elvis_lhs == null ? capo_0.codiceStabilimento_1 : tmp10_elvis_lhs;
             }
 
-            var stabEffettivo_0 = tmp_13;
-            var tmp11_soluzione = s.soluzione_1;
-            var tmp12_contrassegno = s.capo_1;
+            var stabEffettivo_0 = tmp_17;
+            var tmp11_soluzione = s_0.soluzione_1;
+            var tmp12_contrassegno = s_0.capo_1;
             var tmp13_contrassegnoCampo = item.contrassegno_1;
-            var tmp14_sostituisciMarche = s.nelReport_1;
+            var tmp14_sostituisciMarche = s_0.nelReport_1;
             // Inline function 'kotlin.collections.filterKeys' call
 
             var this_2 = item.caratteristiche_1;
             var result_0 = LinkedHashMap_init_$Create$();
             // Inline function 'kotlin.collections.iterator' call
 
-            var _iterator__ex2g4s_5 = this_2.get_entries_p20ztl_k$().iterator_jk1svi_k$();
-            while (_iterator__ex2g4s_5.hasNext_bitz1p_k$()) {
-              var entry_0 = _iterator__ex2g4s_5.next_20eer_k$();
+            var _iterator__ex2g4s_7 = this_2.get_entries_p20ztl_k$().iterator_jk1svi_k$();
+            while (_iterator__ex2g4s_7.hasNext_bitz1p_k$()) {
+              var entry_0 = _iterator__ex2g4s_7.next_20eer_k$();
               if (!(entry_0.get_key_18j28a_k$() === 'acquisto_da')) {
                 result_0.put_4fpzoq_k$(entry_0.get_key_18j28a_k$(), entry_0.get_value_j01efc_k$());
               }
             }
 
             var tmp15_caratteristiche = minus_2(plus_5(plus_4(result_0, nuovi), to('codice_stabilimento', stabEffettivo_0)), 'sesso_corretto');
-            tmp_8 = item.copy$default_q59os1_k$(VOID, VOID, VOID, VOID, VOID, tmp12_contrassegno, tmp15_caratteristiche, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, tmp11_soluzione, tmp13_contrassegnoCampo, tmp14_sostituisciMarche, tipo);
+            tmp_12 = item.copy$default_q59os1_k$(VOID, VOID, VOID, VOID, VOID, tmp12_contrassegno, tmp15_caratteristiche, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, tmp11_soluzione, tmp13_contrassegnoCampo, tmp14_sostituisciMarche, tipo);
             break;
           default:
             noWhenBranchMatchedException();
             break;
         }
-        tmp$ret$14 = tmp_8;
+        tmp$ret$22 = tmp_12;
       }
-      destination_1.add_utx5q5_k$(tmp$ret$14);
+      destination_2.add_utx5q5_k$(tmp$ret$22);
     }
-    return destination_1;
+    return destination_2;
   }
   function ora_0($this, ts) {
     return oraLocale(ts);
@@ -35859,6 +37644,36 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return tmp;
   };
   protoOf(sam$kotlin_Comparator$0_8).hashCode = function () {
+    return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
+  };
+  function sam$kotlin_Comparator$0_9(function_0) {
+    this.function_1 = function_0;
+  }
+  protoOf(sam$kotlin_Comparator$0_9).compare_bczr_k$ = function (a, b) {
+    return this.function_1(a, b);
+  };
+  protoOf(sam$kotlin_Comparator$0_9).compare = function (a, b) {
+    return this.compare_bczr_k$(a, b);
+  };
+  protoOf(sam$kotlin_Comparator$0_9).getFunctionDelegate_jtodtf_k$ = function () {
+    return this.function_1;
+  };
+  protoOf(sam$kotlin_Comparator$0_9).equals = function (other) {
+    var tmp;
+    if (!(other == null) ? isInterface(other, Comparator) : false) {
+      var tmp_0;
+      if (!(other == null) ? isInterface(other, FunctionAdapter) : false) {
+        tmp_0 = equals(this.getFunctionDelegate_jtodtf_k$(), other.getFunctionDelegate_jtodtf_k$());
+      } else {
+        tmp_0 = false;
+      }
+      tmp = tmp_0;
+    } else {
+      tmp = false;
+    }
+    return tmp;
+  };
+  protoOf(sam$kotlin_Comparator$0_9).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function ElencoProvette$ORDINE_RIGHE$lambda(it) {
@@ -36073,6 +37888,14 @@ if (typeof String.prototype.startsWith === 'undefined') {
     // Inline function 'kotlin.let' call
     var it = v == null ? '' : v;
     return it === 'false' ? '' : it;
+  }
+  function ElencoProvette$conSoluzioni$lambda($scelte) {
+    return function (a, b) {
+      // Inline function 'kotlin.comparisons.compareValuesBy' call
+      var tmp = getValue($scelte, a.uid_1).ordine_1;
+      var tmp$ret$2 = getValue($scelte, b.uid_1).ordine_1;
+      return compareValues(tmp, tmp$ret$2);
+    };
   }
   function ElencoProvette() {
     ElencoProvette_instance = this;
@@ -37412,15 +39235,15 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return ElencoProvette_instance;
   }
   function Riclassifica_DIVENTATA_PROBLEMATICA_getInstance() {
-    static_init_13();
+    static_init_14();
     return Riclassifica_DIVENTATA_PROBLEMATICA_instance;
   }
   function Riclassifica_ORA_IN_LISTA_getInstance() {
-    static_init_13();
+    static_init_14();
     return Riclassifica_ORA_IN_LISTA_instance;
   }
   function Riclassifica_AGGIORNATA_getInstance() {
-    static_init_13();
+    static_init_14();
     return Riclassifica_AGGIORNATA_instance;
   }
   function Riepilogo(provette, perse, provvisorie) {
@@ -38576,11 +40399,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return false;
     return true;
   };
-  var static_init_called_14;
-  function static_init_14() {
-    if (static_init_called_14)
+  var static_init_called_15;
+  function static_init_15() {
+    if (static_init_called_15)
       return Unit_instance;
-    static_init_called_14 = true;
+    static_init_called_15 = true;
     Identificazione_ELETTRONICA_instance = new Identificazione('ELETTRONICA', 0, 'elettronica', true, 'codice elettronico letto per intero (lettore di microchip)');
     Identificazione_COMPLETA_instance = new Identificazione('COMPLETA', 1, 'completa', true, 'contrassegno digitato per intero');
     Identificazione_CIFRE_instance = new Identificazione('CIFRE', 2, 'cifre', false, 'scelto fra i contrassegni con le cifre digitate');
@@ -38603,7 +40426,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function Companion_40() {
   }
   protoOf(Companion_40).di_j0pbpe_k$ = function (codice) {
-    var tmp0 = get_entries_2();
+    var tmp0 = get_entries_3();
     var tmp$ret$0;
     $l$block: {
       // Inline function 'kotlin.collections.firstOrNull' call
@@ -38812,17 +40635,17 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function Companion_getInstance_40() {
     return Companion_instance_40;
   }
-  function values_2() {
-    static_init_14();
+  function values_3() {
+    static_init_15();
     return [Identificazione_ELETTRONICA_getInstance(), Identificazione_COMPLETA_getInstance(), Identificazione_CIFRE_getInstance(), Identificazione_ELENCO_getInstance(), Identificazione_ATTRIBUITA_getInstance(), Identificazione_NON_IDENTIFICATA_getInstance(), Identificazione_A_MANO_getInstance()];
   }
-  function get_entries_2() {
-    static_init_14();
-    if ($ENTRIES_2 == null)
-      $ENTRIES_2 = enumEntries(values_2());
-    return $ENTRIES_2;
+  function get_entries_3() {
+    static_init_15();
+    if ($ENTRIES_3 == null)
+      $ENTRIES_3 = enumEntries(values_3());
+    return $ENTRIES_3;
   }
-  var $ENTRIES_2;
+  var $ENTRIES_3;
   function Identificazione(name, ordinal, codice, certa, nome) {
     Enum.call(this, name, ordinal);
     this.codice_1 = codice;
@@ -38830,31 +40653,31 @@ if (typeof String.prototype.startsWith === 'undefined') {
     this.nome_1 = nome;
   }
   function Identificazione_ELETTRONICA_getInstance() {
-    static_init_14();
+    static_init_15();
     return Identificazione_ELETTRONICA_instance;
   }
   function Identificazione_COMPLETA_getInstance() {
-    static_init_14();
+    static_init_15();
     return Identificazione_COMPLETA_instance;
   }
   function Identificazione_CIFRE_getInstance() {
-    static_init_14();
+    static_init_15();
     return Identificazione_CIFRE_instance;
   }
   function Identificazione_ELENCO_getInstance() {
-    static_init_14();
+    static_init_15();
     return Identificazione_ELENCO_instance;
   }
   function Identificazione_ATTRIBUITA_getInstance() {
-    static_init_14();
+    static_init_15();
     return Identificazione_ATTRIBUITA_instance;
   }
   function Identificazione_NON_IDENTIFICATA_getInstance() {
-    static_init_14();
+    static_init_15();
     return Identificazione_NON_IDENTIFICATA_instance;
   }
   function Identificazione_A_MANO_getInstance() {
-    static_init_14();
+    static_init_15();
     return Identificazione_A_MANO_instance;
   }
   function Azione(id, tipo, dati) {
@@ -39373,7 +41196,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       var tmp_0 = a.dati_1.get_6bo4tg_k$('valore');
       scriviImpostazione('IMPOSTAZIONI_PROGETTO', new JsonObject(plus_4(tmp.datiChiudiBuchi_1wjg4c_k$((tmp_0 instanceof JsonPrimitive ? tmp_0 : THROW_CCE()).get_content_h02jrk_k$() === 'true'), marchio)));
     } else if (tmp0_subject === 'tardiva') {
-      var tmp0 = get_entries_10();
+      var tmp0 = get_entries_11();
       var tmp$ret$0;
       $l$block: {
         // Inline function 'kotlin.collections.first' call
@@ -39934,11 +41757,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function SessioneNome_getInstance() {
     return SessioneNome_instance;
   }
-  var static_init_called_15;
-  function static_init_15() {
-    if (static_init_called_15)
+  var static_init_called_16;
+  function static_init_16() {
+    if (static_init_called_16)
       return Unit_instance;
-    static_init_called_15 = true;
+    static_init_called_16 = true;
     LettereSpecie_SOLO_C_instance = new LettereSpecie('SOLO_C', 0, 'solo_c', 'Solo capre (C)');
     LettereSpecie_SOLO_P_instance = new LettereSpecie('SOLO_P', 1, 'solo_p', 'Solo pecore (P)');
     LettereSpecie_ENTRAMBE_instance = new LettereSpecie('ENTRAMBE', 2, 'entrambe', 'Ambedue (C e P)');
@@ -39957,7 +41780,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     this.SCELTE_UTENTE_1 = listOf_0([LettereSpecie_SOLO_C_getInstance(), LettereSpecie_SOLO_P_getInstance(), LettereSpecie_ENTRAMBE_getInstance()]);
   }
   protoOf(Companion_42).di_j0pbpe_k$ = function (codice) {
-    var tmp0 = get_entries_3();
+    var tmp0 = get_entries_4();
     var tmp$ret$0;
     $l$block: {
       // Inline function 'kotlin.collections.firstOrNull' call
@@ -39978,20 +41801,20 @@ if (typeof String.prototype.startsWith === 'undefined') {
   };
   var Companion_instance_42;
   function Companion_getInstance_42() {
-    static_init_15();
+    static_init_16();
     return Companion_instance_42;
   }
-  function values_3() {
-    static_init_15();
+  function values_4() {
+    static_init_16();
     return [LettereSpecie_SOLO_C_getInstance(), LettereSpecie_SOLO_P_getInstance(), LettereSpecie_ENTRAMBE_getInstance(), LettereSpecie_NESSUNA_getInstance()];
   }
-  function get_entries_3() {
-    static_init_15();
-    if ($ENTRIES_3 == null)
-      $ENTRIES_3 = enumEntries(values_3());
-    return $ENTRIES_3;
+  function get_entries_4() {
+    static_init_16();
+    if ($ENTRIES_4 == null)
+      $ENTRIES_4 = enumEntries(values_4());
+    return $ENTRIES_4;
   }
-  var $ENTRIES_3;
+  var $ENTRIES_4;
   function LettereSpecie(name, ordinal, codice, nome) {
     Enum.call(this, name, ordinal);
     this.codice_1 = codice;
@@ -40018,11 +41841,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  var static_init_called_16;
-  function static_init_16() {
-    if (static_init_called_16)
+  var static_init_called_17;
+  function static_init_17() {
+    if (static_init_called_17)
       return Unit_instance;
-    static_init_called_16 = true;
+    static_init_called_17 = true;
     FaseOperativa_CONFIGURAZIONE_instance = new FaseOperativa('CONFIGURAZIONE', 0, 'configurazione', 'Configurazione');
     FaseOperativa_CAMPIONAMENTO_APERTO_instance = new FaseOperativa('CAMPIONAMENTO_APERTO', 1, 'campionamento_aperto', 'Campionamento aperto');
     FaseOperativa_CAMPIONAMENTO_CHIUSO_instance = new FaseOperativa('CAMPIONAMENTO_CHIUSO', 2, 'campionamento_chiuso', 'Campionamento chiuso');
@@ -40037,7 +41860,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function Companion_43() {
   }
   protoOf(Companion_43).di_j0pbpe_k$ = function (codice) {
-    var tmp0 = get_entries_4();
+    var tmp0 = get_entries_5();
     var tmp$ret$0;
     $l$block: {
       // Inline function 'kotlin.collections.firstOrNull' call
@@ -40058,27 +41881,27 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function Companion_getInstance_43() {
     return Companion_instance_43;
   }
-  function values_4() {
-    static_init_16();
+  function values_5() {
+    static_init_17();
     return [FaseOperativa_CONFIGURAZIONE_getInstance(), FaseOperativa_CAMPIONAMENTO_APERTO_getInstance(), FaseOperativa_CAMPIONAMENTO_CHIUSO_getInstance()];
   }
-  function get_entries_4() {
-    static_init_16();
-    if ($ENTRIES_4 == null)
-      $ENTRIES_4 = enumEntries(values_4());
-    return $ENTRIES_4;
+  function get_entries_5() {
+    static_init_17();
+    if ($ENTRIES_5 == null)
+      $ENTRIES_5 = enumEntries(values_5());
+    return $ENTRIES_5;
   }
-  var $ENTRIES_4;
+  var $ENTRIES_5;
   function FaseOperativa(name, ordinal, codice, titolo) {
     Enum.call(this, name, ordinal);
     this.codice_1 = codice;
     this.titolo_1 = titolo;
   }
-  var static_init_called_17;
-  function static_init_17() {
-    if (static_init_called_17)
+  var static_init_called_18;
+  function static_init_18() {
+    if (static_init_called_18)
       return Unit_instance;
-    static_init_called_17 = true;
+    static_init_called_18 = true;
     VersoRiempimento_ALTO_BASSO_instance = new VersoRiempimento('ALTO_BASSO', 0, 'alto_basso', "Dall'alto verso il basso", 'Il numero 1 sta in alto a sinistra e le file di 10 scendono fino a 100 in basso a destra.');
     VersoRiempimento_BASSO_ALTO_instance = new VersoRiempimento('BASSO_ALTO', 1, 'basso_alto', "Dal basso verso l'alto", 'Il numero 1 sta in basso a sinistra e le file di 10 salgono fino a 100 in alto a destra.');
     if (Companion_instance_44 == null) {
@@ -40121,7 +41944,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   };
   var Companion_instance_44;
   function Companion_getInstance_44() {
-    static_init_17();
+    static_init_18();
     return Companion_instance_44;
   }
   function VersoRiempimento(name, ordinal, codice, titolo, descrizione) {
@@ -40884,6 +42707,12 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     var tmp$ret$2 = builder_0.build_bkh6qh_k$();
     builder.put_mrde5n_k$('sigle_veterinari', tmp$ret$2);
+    return builder.build_bkh6qh_k$();
+  };
+  protoOf(Companion_45).datiFaseOperativa_8ivxgz_k$ = function (fase) {
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder = new JsonObjectBuilder();
+    put(builder, 'fase_operativa', fase.codice_1);
     return builder.build_bkh6qh_k$();
   };
   protoOf(Companion_45).datiVersoRiempimento_96vf2n_k$ = function (verso) {
@@ -42067,7 +43896,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
                   var k_0 = element_9.get_key_18j28a_k$();
                   // Inline function 'kotlin.collections.component2' call
                   var v_1 = element_9.get_value_j01efc_k$();
-                  var tmp0_4 = get_entries_7();
+                  var tmp0_4 = get_entries_8();
                   var tmp$ret$194;
                   $l$block_14: {
                     // Inline function 'kotlin.collections.firstOrNull' call
@@ -43133,39 +44962,39 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return true;
   };
   function LettereSpecie_SOLO_C_getInstance() {
-    static_init_15();
+    static_init_16();
     return LettereSpecie_SOLO_C_instance;
   }
   function LettereSpecie_SOLO_P_getInstance() {
-    static_init_15();
+    static_init_16();
     return LettereSpecie_SOLO_P_instance;
   }
   function LettereSpecie_ENTRAMBE_getInstance() {
-    static_init_15();
+    static_init_16();
     return LettereSpecie_ENTRAMBE_instance;
   }
   function LettereSpecie_NESSUNA_getInstance() {
-    static_init_15();
+    static_init_16();
     return LettereSpecie_NESSUNA_instance;
   }
   function FaseOperativa_CONFIGURAZIONE_getInstance() {
-    static_init_16();
+    static_init_17();
     return FaseOperativa_CONFIGURAZIONE_instance;
   }
   function FaseOperativa_CAMPIONAMENTO_APERTO_getInstance() {
-    static_init_16();
+    static_init_17();
     return FaseOperativa_CAMPIONAMENTO_APERTO_instance;
   }
   function FaseOperativa_CAMPIONAMENTO_CHIUSO_getInstance() {
-    static_init_16();
+    static_init_17();
     return FaseOperativa_CAMPIONAMENTO_CHIUSO_instance;
   }
   function VersoRiempimento_ALTO_BASSO_getInstance() {
-    static_init_17();
+    static_init_18();
     return VersoRiempimento_ALTO_BASSO_instance;
   }
   function VersoRiempimento_BASSO_ALTO_getInstance() {
-    static_init_17();
+    static_init_18();
     return VersoRiempimento_BASSO_ALTO_instance;
   }
   function MessaggioRegia(id, testo, mittente, ts, sogliaPercentuale, destinatario) {
@@ -43493,33 +45322,6 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function NomeSeduta_getInstance() {
     return NomeSeduta_instance;
   }
-  function Candidato(capo, etaMesi, stessaRazza) {
-    this.capo_1 = capo;
-    this.etaMesi_1 = etaMesi;
-    this.stessaRazza_1 = stessaRazza;
-  }
-  protoOf(Candidato).toString = function () {
-    return 'Candidato(capo=' + this.capo_1.toString() + ', etaMesi=' + this.etaMesi_1 + ', stessaRazza=' + this.stessaRazza_1 + ')';
-  };
-  protoOf(Candidato).hashCode = function () {
-    var result = this.capo_1.hashCode();
-    result = imul(result, 31) + this.etaMesi_1 | 0;
-    result = imul(result, 31) + getBooleanHashCode(this.stessaRazza_1) | 0;
-    return result;
-  };
-  protoOf(Candidato).equals = function (other) {
-    if (this === other)
-      return true;
-    if (!(other instanceof Candidato))
-      return false;
-    if (!this.capo_1.equals(other.capo_1))
-      return false;
-    if (!(this.etaMesi_1 === other.etaMesi_1))
-      return false;
-    if (!(this.stessaRazza_1 === other.stessaRazza_1))
-      return false;
-    return true;
-  };
   function razzaCompatibile$norm(s) {
     // Inline function 'kotlin.text.trim' call
     // Inline function 'kotlin.text.uppercase' call
@@ -43530,17 +45332,6 @@ if (typeof String.prototype.startsWith === 'undefined') {
     // Inline function 'kotlin.let' call
     var it = razzaCompatibile$norm(s);
     return startsWith(it, 'METICC') || it === 'MTT';
-  }
-  function NonIdentificati$candidati$lambda(it) {
-    return !it.stessaRazza_1;
-  }
-  function NonIdentificati$candidati$lambda_0($centro) {
-    return function (it) {
-      return abs_0(it.etaMesi_1 - $centro | 0);
-    };
-  }
-  function NonIdentificati$candidati$lambda_1(it) {
-    return it.capo_1.contrassegno_1;
   }
   function NonIdentificati() {
     this.FATTISPECIE_1 = 'senza_contrassegno';
@@ -43636,144 +45427,6 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return sorted(destination_3);
   };
-  protoOf(NonIdentificati).candidati_xs6jzs_k$ = function (r, righe, attuali, max, cifre) {
-    // Inline function 'kotlin.text.filter' call
-    // Inline function 'kotlin.text.filterTo' call
-    var destination = StringBuilder_init_$Create$_0();
-    var inductionVariable = 0;
-    var last = charSequenceLength(cifre);
-    if (inductionVariable < last)
-      do {
-        var index = inductionVariable;
-        inductionVariable = inductionVariable + 1 | 0;
-        var element = charSequenceGet(cifre, index);
-        if (_Char___init__impl__6a9atx(48) <= element ? element <= _Char___init__impl__6a9atx(57) : false) {
-          destination.append_58al37_k$(element);
-        }
-      }
-       while (inductionVariable < last);
-    var cerca = destination.toString();
-    var tmp0_elvis_lhs = this.classe_iqwwgl_k$(r);
-    var tmp;
-    if (tmp0_elvis_lhs == null) {
-      return emptyList();
-    } else {
-      tmp = tmp0_elvis_lhs;
-    }
-    var classe = tmp;
-    // Inline function 'kotlin.text.ifBlank' call
-    var this_0 = r.get_sesso_iygpqs_k$();
-    var tmp_0;
-    if (isBlank(this_0)) {
-      return emptyList();
-    } else {
-      tmp_0 = this_0;
-    }
-    var sesso = tmp_0;
-    var stab = substringBefore(r.serie_1, _Char___init__impl__6a9atx(58));
-    // Inline function 'kotlin.text.orEmpty' call
-    var tmp0_elvis_lhs_0 = r.caratteristiche_1.get_wei43m_k$('ts_raccolta');
-    // Inline function 'kotlin.text.ifBlank' call
-    var this_1 = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
-    var tmp_1;
-    if (isBlank(this_1)) {
-      tmp_1 = r.ts_1;
-    } else {
-      tmp_1 = this_1;
-    }
-    var data = tmp_1;
-    // Inline function 'kotlin.text.orEmpty' call
-    var tmp0_elvis_lhs_1 = r.caratteristiche_1.get_wei43m_k$('razza');
-    var razza = tmp0_elvis_lhs_1 == null ? '' : tmp0_elvis_lhs_1;
-    var sp = r.specie_1 === 'capre' ? Specie_CAPRE_getInstance() : Specie_PECORE_getInstance();
-    var centro = classe.mesiCentrali_l507s8_k$(r.specie_1);
-    var arvet = RazzeArvet_getInstance().di_fczljh_k$(sp);
-    var razzaArvet = RazzeArvet_getInstance().inArvet_ybv88v_k$(razza, arvet);
-    // Inline function 'kotlin.collections.mapNotNull' call
-    var tmp0 = NonTrovati_instance.presentiNonPrelevati_33cxnm_k$(attuali, righe);
-    // Inline function 'kotlin.collections.mapNotNullTo' call
-    var destination_0 = ArrayList_init_$Create$();
-    // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s = tmp0.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
-      var element_0 = _iterator__ex2g4s.next_20eer_k$();
-      var tmp$ret$13;
-      $l$block_3: {
-        if (!(element_0.specie_1 === r.specie_1) || !(element_0.stabilimento_1 === stab) || !(element_0.sesso_1 === sesso) || !NonIdentificati_instance.razzaCompatibile_spiwtx_k$(razzaArvet, RazzeArvet_getInstance().inArvet_ybv88v_k$(element_0.razza_1, arvet))) {
-          tmp$ret$13 = null;
-          break $l$block_3;
-        }
-        var tmp_2;
-        // Inline function 'kotlin.text.isNotEmpty' call
-        if (charSequenceLength(cerca) > 0) {
-          // Inline function 'kotlin.text.filter' call
-          var tmp0_0 = element_0.contrassegno_1;
-          // Inline function 'kotlin.text.filterTo' call
-          var destination_1 = StringBuilder_init_$Create$_0();
-          var inductionVariable_0 = 0;
-          var last_0 = charSequenceLength(tmp0_0);
-          if (inductionVariable_0 < last_0)
-            do {
-              var index_0 = inductionVariable_0;
-              inductionVariable_0 = inductionVariable_0 + 1 | 0;
-              var element_1 = charSequenceGet(tmp0_0, index_0);
-              if (_Char___init__impl__6a9atx(48) <= element_1 ? element_1 <= _Char___init__impl__6a9atx(57) : false) {
-                destination_1.append_58al37_k$(element_1);
-              }
-            }
-             while (inductionVariable_0 < last_0);
-          var tmp$ret$15 = destination_1.toString();
-          tmp_2 = !contains_7(tmp$ret$15, cerca);
-        } else {
-          tmp_2 = false;
-        }
-        if (tmp_2) {
-          tmp$ret$13 = null;
-          break $l$block_3;
-        }
-        var tmp0_elvis_lhs_2 = ConfrontoNonPrelevati_getInstance().mesiDi_qcs6u3_k$(element_0.dataNascita_1, data);
-        var tmp_3;
-        if (tmp0_elvis_lhs_2 == null) {
-          tmp$ret$13 = null;
-          break $l$block_3;
-        } else {
-          tmp_3 = tmp0_elvis_lhs_2;
-        }
-        var mesi = tmp_3;
-        if (!classe.compatibile$default_agvtwy_k$(r.specie_1, mesi)) {
-          tmp$ret$13 = null;
-          break $l$block_3;
-        }
-        var cl = attuali.classificaPrelievo_b4hhe_k$(sp, element_0.contrassegno_1, element_0.stabilimento_1);
-        if (!cl.categoria_1.equals(CategoriaCampo_VERDE_getInstance()) || cl.problematica_1) {
-          tmp$ret$13 = null;
-          break $l$block_3;
-        }
-        // Inline function 'kotlin.text.trim' call
-        var this_2 = RazzeArvet_getInstance().inArvet_ybv88v_k$(element_0.razza_1, arvet);
-        var tmp_4 = toString_1(trim_0(isCharSequence(this_2) ? this_2 : THROW_CCE()));
-        // Inline function 'kotlin.text.trim' call
-        var tmp$ret$19 = toString_1(trim_0(isCharSequence(razzaArvet) ? razzaArvet : THROW_CCE()));
-        tmp$ret$13 = new Candidato(element_0, mesi, equals_0(tmp_4, tmp$ret$19, true));
-      }
-      var tmp0_safe_receiver = tmp$ret$13;
-      if (tmp0_safe_receiver == null)
-        null;
-      else {
-        // Inline function 'kotlin.let' call
-        destination_0.add_utx5q5_k$(tmp0_safe_receiver);
-      }
-    }
-    var tmp_5 = destination_0;
-    var tmp_6 = NonIdentificati$candidati$lambda;
-    var tmp_7 = NonIdentificati$candidati$lambda_0(centro);
-    return take(sortedWith(tmp_5, compareBy([tmp_6, tmp_7, NonIdentificati$candidati$lambda_1])), max);
-  };
-  protoOf(NonIdentificati).candidati$default_x3f5ui_k$ = function (r, righe, attuali, max, cifre, $super) {
-    max = max === VOID ? 30 : max;
-    cifre = cifre === VOID ? '' : cifre;
-    return $super === VOID ? this.candidati_xs6jzs_k$(r, righe, attuali, max, cifre) : $super.candidati_xs6jzs_k$.call(this, r, righe, attuali, max, cifre);
-  };
   var NonIdentificati_instance;
   function NonIdentificati_getInstance() {
     return NonIdentificati_instance;
@@ -43842,6 +45495,265 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function SottoEta_getInstance() {
     return SottoEta_instance;
   }
+  function VoceSchemaBdn(tipo, stabilimento, specie, marca, sesso, razza, nascita, classe, etichetta, provvisoria, note) {
+    this.tipo_1 = tipo;
+    this.stabilimento_1 = stabilimento;
+    this.specie_1 = specie;
+    this.marca_1 = marca;
+    this.sesso_1 = sesso;
+    this.razza_1 = razza;
+    this.nascita_1 = nascita;
+    this.classe_1 = classe;
+    this.etichetta_1 = etichetta;
+    this.provvisoria_1 = provvisoria;
+    this.note_1 = note;
+  }
+  protoOf(VoceSchemaBdn).toString = function () {
+    return 'VoceSchemaBdn(tipo=' + this.tipo_1 + ', stabilimento=' + this.stabilimento_1 + ', specie=' + this.specie_1 + ', marca=' + this.marca_1 + ', sesso=' + this.sesso_1 + ', razza=' + this.razza_1 + ', nascita=' + this.nascita_1 + ', classe=' + this.classe_1 + ', etichetta=' + this.etichetta_1 + ', provvisoria=' + this.provvisoria_1 + ', note=' + this.note_1 + ')';
+  };
+  protoOf(VoceSchemaBdn).hashCode = function () {
+    var result = getStringHashCode(this.tipo_1);
+    result = imul(result, 31) + getStringHashCode(this.stabilimento_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.specie_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.marca_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.sesso_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.razza_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.nascita_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.classe_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.etichetta_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.provvisoria_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.note_1) | 0;
+    return result;
+  };
+  protoOf(VoceSchemaBdn).equals = function (other) {
+    if (this === other)
+      return true;
+    if (!(other instanceof VoceSchemaBdn))
+      return false;
+    if (!(this.tipo_1 === other.tipo_1))
+      return false;
+    if (!(this.stabilimento_1 === other.stabilimento_1))
+      return false;
+    if (!(this.specie_1 === other.specie_1))
+      return false;
+    if (!(this.marca_1 === other.marca_1))
+      return false;
+    if (!(this.sesso_1 === other.sesso_1))
+      return false;
+    if (!(this.razza_1 === other.razza_1))
+      return false;
+    if (!(this.nascita_1 === other.nascita_1))
+      return false;
+    if (!(this.classe_1 === other.classe_1))
+      return false;
+    if (!(this.etichetta_1 === other.etichetta_1))
+      return false;
+    if (!(this.provvisoria_1 === other.provvisoria_1))
+      return false;
+    if (!(this.note_1 === other.note_1))
+      return false;
+    return true;
+  };
+  function cella($this, s) {
+    var tmp;
+    var tmp$ret$0;
+    $l$block: {
+      // Inline function 'kotlin.text.any' call
+      var inductionVariable = 0;
+      while (inductionVariable < charSequenceLength(s)) {
+        var element = charSequenceGet(s, inductionVariable);
+        inductionVariable = inductionVariable + 1 | 0;
+        if (element === _Char___init__impl__6a9atx(59) || element === _Char___init__impl__6a9atx(34) || element === _Char___init__impl__6a9atx(10)) {
+          tmp$ret$0 = true;
+          break $l$block;
+        }
+      }
+      tmp$ret$0 = false;
+    }
+    if (tmp$ret$0) {
+      tmp = '"' + replace(s, '"', '""') + '"';
+    } else {
+      tmp = s;
+    }
+    return tmp;
+  }
+  function SchemaBdn$voci$lambda(it) {
+    return !it.annullata_1 && !it.persa_1 && !equals(it.soluzione_1, Soluzione_ESCLUSA_getInstance());
+  }
+  function SchemaBdn$voci$lambda_0(r) {
+    var c = r.caratteristiche_1;
+    var nonId = NonIdentificati_instance.eNonIdentificata_g78cp5_k$(r);
+    var tmp;
+    if (nonId && NonIdentificati_instance.nonRisolta_hrylc1_k$(r)) {
+      tmp = 'Senza contrassegno: da risolvere';
+    } else if (nonId && equals(r.soluzione_1, Soluzione_RICOLLOCATA_getInstance())) {
+      tmp = 'Identit\xE0 probabile: rimarcare';
+    } else if (nonId) {
+      tmp = 'Marca assegnata';
+    } else if (c.get_wei43m_k$('marcata_in_campo') === 'true') {
+      tmp = 'Marca applicata in campo';
+    } else {
+      return null;
+    }
+    var tipo = tmp;
+    var tmp_0 = substringBefore(r.serie_1, _Char___init__impl__6a9atx(58));
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs = r.contrassegno_1;
+    var tmp_1 = tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
+    var tmp_2 = r.get_sesso_iygpqs_k$();
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs_0 = c.get_wei43m_k$('razza');
+    var tmp_3 = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs_1 = c.get_wei43m_k$('data_nascita');
+    var tmp_4 = tmp0_elvis_lhs_1 == null ? '' : tmp0_elvis_lhs_1;
+    var tmp0_safe_receiver = NonIdentificati_instance.classe_iqwwgl_k$(r);
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs_2 = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.nome_1;
+    var tmp_5 = tmp0_elvis_lhs_2 == null ? '' : tmp0_elvis_lhs_2;
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs_3 = c.get_wei43m_k$('identificazione_provvisoria');
+    var tmp_6 = tmp0_elvis_lhs_3 == null ? '' : tmp0_elvis_lhs_3;
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs_4 = c.get_wei43m_k$('note');
+    var tmp$ret$5 = tmp0_elvis_lhs_4 == null ? '' : tmp0_elvis_lhs_4;
+    return new VoceSchemaBdn(tipo, tmp_0, r.specie_1, tmp_1, tmp_2, tmp_3, tmp_4, tmp_5, r.etichetta_1, tmp_6, tmp$ret$5);
+  }
+  function SchemaBdn$voci$lambda_1(it) {
+    return it.stabilimento_1;
+  }
+  function SchemaBdn$voci$lambda_2(it) {
+    return it.specie_1;
+  }
+  function SchemaBdn$voci$lambda_3(it) {
+    return it.tipo_1;
+  }
+  function SchemaBdn$voci$lambda_4(it) {
+    return it.etichetta_1;
+  }
+  function SchemaBdn$csv$lambda(it) {
+    return cella(SchemaBdn_instance, it);
+  }
+  function SchemaBdn() {
+    this.IN_CAMPO_1 = 'Marca applicata in campo';
+    this.ASSEGNATA_1 = 'Marca assegnata';
+    this.RIMARCARE_1 = 'Identit\xE0 probabile: rimarcare';
+    this.DA_RISOLVERE_1 = 'Senza contrassegno: da risolvere';
+  }
+  protoOf(SchemaBdn).voci_5j6bih_k$ = function (righe) {
+    var tmp = asSequence(righe);
+    var tmp_0 = filter(tmp, SchemaBdn$voci$lambda);
+    var tmp_1 = mapNotNull(tmp_0, SchemaBdn$voci$lambda_0);
+    var tmp_2 = SchemaBdn$voci$lambda_1;
+    var tmp_3 = SchemaBdn$voci$lambda_2;
+    var tmp_4 = SchemaBdn$voci$lambda_3;
+    return toList_2(sortedWith_0(tmp_1, compareBy([tmp_2, tmp_3, tmp_4, SchemaBdn$voci$lambda_4])));
+  };
+  protoOf(SchemaBdn).csv_rpga4g_k$ = function (voci) {
+    // Inline function 'kotlin.text.buildString' call
+    // Inline function 'kotlin.apply' call
+    var this_0 = StringBuilder_init_$Create$_0();
+    this_0.append_22ad7x_k$('tipo;stabilimento;specie;marca_o_identita;sesso;razza;nascita_stimata;classe_eta;etichetta_provetta;identificazione_provvisoria;note\n');
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s = voci.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      var tmp = listOf_0([element.tipo_1, element.stabilimento_1, element.specie_1, element.marca_1, element.sesso_1, element.razza_1, element.nascita_1, element.classe_1, element.etichetta_1, element.provvisoria_1, element.note_1]);
+      this_0.append_22ad7x_k$(joinToString_0(tmp, ';', VOID, VOID, VOID, VOID, SchemaBdn$csv$lambda)).append_58al37_k$(_Char___init__impl__6a9atx(10));
+    }
+    return this_0.toString();
+  };
+  protoOf(SchemaBdn).testo_1cb3bt_k$ = function (voci, sottoEta) {
+    // Inline function 'kotlin.text.buildString' call
+    // Inline function 'kotlin.apply' call
+    var this_0 = StringBuilder_init_$Create$_0();
+    this_0.append_22ad7x_k$('DA REGISTRARE IN BDN (animali senza contrassegno e marche applicate in campo)\n');
+    if (voci.isEmpty_y1axqb_k$()) {
+      this_0.append_22ad7x_k$('Nessun capo.\n');
+    }
+    // Inline function 'kotlin.collections.groupBy' call
+    // Inline function 'kotlin.collections.groupByTo' call
+    var destination = LinkedHashMap_init_$Create$();
+    var _iterator__ex2g4s = voci.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      var key = element.tipo_1;
+      // Inline function 'kotlin.collections.getOrPut' call
+      var value = destination.get_wei43m_k$(key);
+      var tmp;
+      if (value == null) {
+        var answer = ArrayList_init_$Create$();
+        destination.put_4fpzoq_k$(key, answer);
+        tmp = answer;
+      } else {
+        tmp = value;
+      }
+      var list = tmp;
+      list.add_utx5q5_k$(element);
+    }
+    // Inline function 'kotlin.collections.forEach' call
+    // Inline function 'kotlin.collections.iterator' call
+    var _iterator__ex2g4s_0 = destination.get_entries_p20ztl_k$().iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
+      // Inline function 'kotlin.collections.component1' call
+      var tipo = element_0.get_key_18j28a_k$();
+      // Inline function 'kotlin.collections.component2' call
+      var l = element_0.get_value_j01efc_k$();
+      this_0.append_22ad7x_k$('\n' + tipo + ' (' + l.get_size_woubt6_k$() + ')\n');
+      // Inline function 'kotlin.collections.forEach' call
+      var _iterator__ex2g4s_1 = l.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
+        var element_1 = _iterator__ex2g4s_1.next_20eer_k$();
+        // Inline function 'kotlin.text.ifBlank' call
+        var this_1 = element_1.marca_1;
+        var tmp_0;
+        if (isBlank(this_1)) {
+          tmp_0 = '(marca da assegnare)';
+        } else {
+          tmp_0 = this_1;
+        }
+        var tmp_1 = tmp_0;
+        // Inline function 'kotlin.text.ifBlank' call
+        var this_2 = element_1.nascita_1;
+        var tmp_2;
+        if (isBlank(this_2)) {
+          tmp_2 = '?';
+        } else {
+          tmp_2 = this_2;
+        }
+        var tmp$ret$17 = tmp_2;
+        this_0.append_22ad7x_k$('- ' + tmp_1 + ' \xB7 ' + element_1.specie_1 + ' \xB7 ' + element_1.sesso_1 + ' \xB7 ' + element_1.razza_1 + ' \xB7 nato circa ' + tmp$ret$17);
+        // Inline function 'kotlin.text.isNotBlank' call
+        var this_3 = element_1.classe_1;
+        if (!isBlank(this_3)) {
+          // Inline function 'kotlin.text.lowercase' call
+          // Inline function 'kotlin.js.asDynamic' call
+          var tmp$ret$20 = element_1.classe_1.toLowerCase();
+          this_0.append_22ad7x_k$(' (' + tmp$ret$20 + ')');
+        }
+        this_0.append_22ad7x_k$(' \xB7 provetta ' + element_1.etichetta_1);
+        // Inline function 'kotlin.text.isNotBlank' call
+        var this_4 = element_1.provvisoria_1;
+        if (!isBlank(this_4)) {
+          this_0.append_22ad7x_k$(' \xB7 prov.: ' + element_1.provvisoria_1);
+        }
+        this_0.append_58al37_k$(_Char___init__impl__6a9atx(10));
+      }
+    }
+    var tmp0_elvis_lhs = sottoEta.get_wei43m_k$('pecore');
+    var p = tmp0_elvis_lhs == null ? 0 : tmp0_elvis_lhs;
+    var tmp1_elvis_lhs = sottoEta.get_wei43m_k$('capre');
+    var c = tmp1_elvis_lhs == null ? 0 : tmp1_elvis_lhs;
+    if ((p + c | 0) > 0) {
+      this_0.append_22ad7x_k$('\nAnimali sotto et\xE0 contati: pecore ' + p + ', capre ' + c + '.\n');
+    }
+    return this_0.toString();
+  };
+  var SchemaBdn_instance;
+  function SchemaBdn_getInstance() {
+    return SchemaBdn_instance;
+  }
   function NonTrovati$di$lambda(it) {
     return it.specie_1;
   }
@@ -43871,7 +45783,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     var lavoro = toSet_0(destination);
     // Inline function 'kotlin.collections.flatMap' call
-    var tmp0 = get_entries_10();
+    var tmp0 = get_entries_11();
     // Inline function 'kotlin.collections.flatMapTo' call
     var destination_0 = ArrayList_init_$Create$();
     var _iterator__ex2g4s_0 = tmp0.iterator_jk1svi_k$();
@@ -46059,11 +47971,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return p0.classifica_7660ps_k$(p0_0, p1, p2);
     }, 3, 0, 14, 'classifica', [p0]);
   }
-  var static_init_called_18;
-  function static_init_18() {
-    if (static_init_called_18)
+  var static_init_called_19;
+  function static_init_19() {
+    if (static_init_called_19)
       return Unit_instance;
-    static_init_called_18 = true;
+    static_init_called_19 = true;
     RuoloRegistro_LAVORO_instance = new RuoloRegistro('LAVORO', 0, 'lavoro', 'stabilimento di lavoro');
     RuoloRegistro_ALTRO_instance = new RuoloRegistro('ALTRO', 1, 'altro', 'altro stabilimento');
     RuoloRegistro_DDA_instance = new RuoloRegistro('DDA', 2, 'dda', 'acquisto con DDA');
@@ -46080,7 +47992,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function Companion_48() {
   }
   protoOf(Companion_48).di_j0pbpe_k$ = function (codice) {
-    var tmp0 = get_entries_5();
+    var tmp0 = get_entries_6();
     var tmp$ret$0;
     $l$block: {
       // Inline function 'kotlin.collections.firstOrNull' call
@@ -46100,17 +48012,17 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function Companion_getInstance_48() {
     return Companion_instance_48;
   }
-  function values_5() {
-    static_init_18();
+  function values_6() {
+    static_init_19();
     return [RuoloRegistro_LAVORO_getInstance(), RuoloRegistro_ALTRO_getInstance(), RuoloRegistro_DDA_getInstance(), RuoloRegistro_RITIRATO_getInstance()];
   }
-  function get_entries_5() {
-    static_init_18();
-    if ($ENTRIES_5 == null)
-      $ENTRIES_5 = enumEntries(values_5());
-    return $ENTRIES_5;
+  function get_entries_6() {
+    static_init_19();
+    if ($ENTRIES_6 == null)
+      $ENTRIES_6 = enumEntries(values_6());
+    return $ENTRIES_6;
   }
-  var $ENTRIES_5;
+  var $ENTRIES_6;
   function RuoloRegistro(name, ordinal, codice, nome) {
     Enum.call(this, name, ordinal);
     this.codice_1 = codice;
@@ -46959,19 +48871,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return RegistriCaricati_instance;
   }
   function RuoloRegistro_LAVORO_getInstance() {
-    static_init_18();
+    static_init_19();
     return RuoloRegistro_LAVORO_instance;
   }
   function RuoloRegistro_ALTRO_getInstance() {
-    static_init_18();
+    static_init_19();
     return RuoloRegistro_ALTRO_instance;
   }
   function RuoloRegistro_DDA_getInstance() {
-    static_init_18();
+    static_init_19();
     return RuoloRegistro_DDA_instance;
   }
   function RuoloRegistro_RITIRATO_getInstance() {
-    static_init_18();
+    static_init_19();
     return RuoloRegistro_RITIRATO_instance;
   }
   function prepara$testo($dati, k) {
@@ -47468,7 +49380,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return destination_4;
   }
-  function Voce(contrassegno, specie, categoria, sesso, razza, nascita, stab, den, cifre, etichettaNum, lettaNum, fuori) {
+  function Voce_0(contrassegno, specie, categoria, sesso, razza, nascita, stab, den, cifre, etichettaNum, lettaNum, fuori) {
     this.contrassegno_1 = contrassegno;
     this.specie_1 = specie;
     this.categoria_1 = categoria;
@@ -47482,7 +49394,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     this.lettaNum_1 = lettaNum;
     this.fuori_1 = fuori;
   }
-  protoOf(Voce).capo_ohk2z3_k$ = function (sue, ricercati) {
+  protoOf(Voce_0).capo_ohk2z3_k$ = function (sue, ricercati) {
     // Inline function 'kotlin.collections.filter' call
     // Inline function 'kotlin.collections.filterTo' call
     var destination = ArrayList_init_$Create$();
@@ -47561,7 +49473,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       // Inline function 'kotlin.let' call
       tmp_2 = GrammaticaEtichetta_getInstance().leggi_ayxnue_k$(etichettaNum);
     }
-    return new Voce(c, specie, categoria, sesso, razza, nascita, stab, den, tmp_1, etichettaNum, tmp_2, fuori);
+    return new Voce_0(c, specie, categoria, sesso, razza, nascita, stab, den, tmp_1, etichettaNum, tmp_2, fuori);
   }
   function Indice(pacchetto, serie, eta, codiciLavoro, voci, anagrafe, serieCopiate) {
     this.pacchetto_1 = pacchetto;
@@ -47595,7 +49507,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return tmp1_safe_receiver;
     }
     var voci = LinkedHashMap_init_$Create$();
-    var _iterator__ex2g4s = get_entries_10().iterator_jk1svi_k$();
+    var _iterator__ex2g4s = get_entries_11().iterator_jk1svi_k$();
     while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
       var sp = _iterator__ex2g4s.next_20eer_k$();
       var nome = sp.equals(Specie_PECORE_getInstance()) ? 'pecore' : 'capre';
@@ -48161,19 +50073,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var tmp1_safe_receiver = tmp_0;
     return tmp1_safe_receiver == null ? null : tmp1_safe_receiver.get_content_h02jrk_k$();
   }
-  function sam$kotlin_Comparator$0_9(function_0) {
+  function sam$kotlin_Comparator$0_10(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_9).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_10).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_9).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_10).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_9).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_10).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_9).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_10).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -48188,7 +50100,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_9).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_10).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function Ricercati$elenco$lambda(it) {
@@ -48622,7 +50534,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     // Inline function 'kotlin.collections.sortedBy' call
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp_0 = Ricercati$csv$lambda(trovati);
-    var tmp$ret$6 = new sam$kotlin_Comparator$0_9(tmp_0);
+    var tmp$ret$6 = new sam$kotlin_Comparator$0_10(tmp_0);
     // Inline function 'kotlin.collections.forEach' call
     var _iterator__ex2g4s_0 = sortedWith(voci, tmp$ret$6).iterator_jk1svi_k$();
     while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
@@ -48655,64 +50567,6 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function Ricercati_getInstance() {
     return Ricercati_instance;
   }
-  function CandidatoRicollocazione(capo, stessaRazza, giorniDiDifferenza) {
-    this.capo_1 = capo;
-    this.stessaRazza_1 = stessaRazza;
-    this.giorniDiDifferenza_1 = giorniDiDifferenza;
-  }
-  protoOf(CandidatoRicollocazione).toString = function () {
-    return 'CandidatoRicollocazione(capo=' + this.capo_1.toString() + ', stessaRazza=' + this.stessaRazza_1 + ', giorniDiDifferenza=' + this.giorniDiDifferenza_1 + ')';
-  };
-  protoOf(CandidatoRicollocazione).hashCode = function () {
-    var result = this.capo_1.hashCode();
-    result = imul(result, 31) + getBooleanHashCode(this.stessaRazza_1) | 0;
-    result = imul(result, 31) + (this.giorniDiDifferenza_1 == null ? 0 : this.giorniDiDifferenza_1) | 0;
-    return result;
-  };
-  protoOf(CandidatoRicollocazione).equals = function (other) {
-    if (this === other)
-      return true;
-    if (!(other instanceof CandidatoRicollocazione))
-      return false;
-    if (!this.capo_1.equals(other.capo_1))
-      return false;
-    if (!(this.stessaRazza_1 === other.stessaRazza_1))
-      return false;
-    if (!(this.giorniDiDifferenza_1 == other.giorniDiDifferenza_1))
-      return false;
-    return true;
-  };
-  function giorno($this, data) {
-    var tmp = Regex_init_$Create$_0('^([0-9]{2})/([0-9]{2})/([0-9]{4})$');
-    // Inline function 'kotlin.text.trim' call
-    var tmp$ret$0 = toString_1(trim_0(isCharSequence(data) ? data : THROW_CCE()));
-    var tmp0_elvis_lhs = tmp.find$default_xakyli_k$(tmp$ret$0);
-    var tmp_0;
-    if (tmp0_elvis_lhs == null) {
-      return null;
-    } else {
-      tmp_0 = tmp0_elvis_lhs;
-    }
-    var m = tmp_0;
-    var _destruct__k2r9zo = m.get_destructured_a9abdx_k$();
-    // Inline function 'kotlin.text.Destructured.component1' call
-    var g = _destruct__k2r9zo.match_1.get_groupValues_rkv314_k$().get_c1px32_k$(1);
-    // Inline function 'kotlin.text.Destructured.component2' call
-    var mm = _destruct__k2r9zo.match_1.get_groupValues_rkv314_k$().get_c1px32_k$(2);
-    // Inline function 'kotlin.text.Destructured.component3' call
-    var aa = _destruct__k2r9zo.match_1.get_groupValues_rkv314_k$().get_c1px32_k$(3);
-    return (imul(toInt(aa), 372) + imul(toInt(mm), 31) | 0) + toInt(g) | 0;
-  }
-  function Ricollocazione$candidati$lambda(it) {
-    return !it.stessaRazza_1;
-  }
-  function Ricollocazione$candidati$lambda_0(it) {
-    var tmp0_elvis_lhs = it.giorniDiDifferenza_1;
-    return tmp0_elvis_lhs == null ? 2147483647 : tmp0_elvis_lhs;
-  }
-  function Ricollocazione$candidati$lambda_1(it) {
-    return it.capo_1.contrassegno_1;
-  }
   function Ricollocazione() {
   }
   protoOf(Ricollocazione).contrassegniPrelevati_94el5c_k$ = function (righe) {
@@ -48736,83 +50590,6 @@ if (typeof String.prototype.startsWith === 'undefined') {
       addAll(destination_0, list);
     }
     return toSet_0(destination_0);
-  };
-  protoOf(Ricollocazione).candidati_852b26_k$ = function (r, righe, a, max) {
-    var specie = r.specie_1 === 'capre' ? Specie_CAPRE_getInstance() : Specie_PECORE_getInstance();
-    var stabilimento = substringBefore(r.serie_1, _Char___init__impl__6a9atx(58));
-    var presi = this.contrassegniPrelevati_94el5c_k$(righe);
-    var c = r.caratteristiche_1;
-    // Inline function 'kotlin.text.orEmpty' call
-    var tmp0_elvis_lhs = c.get_wei43m_k$('sesso_corretto');
-    // Inline function 'kotlin.text.ifBlank' call
-    var this_0 = tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
-    var tmp;
-    if (isBlank(this_0)) {
-      // Inline function 'kotlin.text.orEmpty' call
-      var tmp0_elvis_lhs_0 = c.get_wei43m_k$('sesso');
-      tmp = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
-    } else {
-      tmp = this_0;
-    }
-    var sesso = tmp;
-    // Inline function 'kotlin.text.orEmpty' call
-    var tmp0_elvis_lhs_1 = c.get_wei43m_k$('razza');
-    var razza = tmp0_elvis_lhs_1 == null ? '' : tmp0_elvis_lhs_1;
-    // Inline function 'kotlin.text.orEmpty' call
-    var tmp0_elvis_lhs_2 = c.get_wei43m_k$('data_nascita');
-    var tmp$ret$5 = tmp0_elvis_lhs_2 == null ? '' : tmp0_elvis_lhs_2;
-    var nascita = giorno(this, tmp$ret$5);
-    // Inline function 'kotlin.collections.filter' call
-    var tmp0 = a.pacchetto_1.specieDati_1.get_h9fx0k_k$(specie).presenti_1;
-    // Inline function 'kotlin.collections.filterTo' call
-    var destination = ArrayList_init_$Create$();
-    var _iterator__ex2g4s = tmp0.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
-      var element = _iterator__ex2g4s.next_20eer_k$();
-      if (element.codiceStabilimento_1 === stabilimento && !presi.contains_aljjnj_k$(element.contrassegno_1) && (isBlank(sesso) || element.sesso_1 === sesso)) {
-        destination.add_utx5q5_k$(element);
-      }
-    }
-    // Inline function 'kotlin.collections.map' call
-    // Inline function 'kotlin.collections.mapTo' call
-    var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination, 10));
-    var _iterator__ex2g4s_0 = destination.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
-      var item = _iterator__ex2g4s_0.next_20eer_k$();
-      var tmp_0;
-      // Inline function 'kotlin.text.isNotBlank' call
-      if (!isBlank(razza)) {
-        tmp_0 = item.razza_1 === razza;
-      } else {
-        tmp_0 = false;
-      }
-      var tmp_1 = tmp_0;
-      var tmp_2;
-      if (nascita == null) {
-        tmp_2 = null;
-      } else {
-        // Inline function 'kotlin.let' call
-        var tmp0_safe_receiver = giorno(Ricollocazione_instance, item.dataNascita_1);
-        var tmp_3;
-        if (tmp0_safe_receiver == null) {
-          tmp_3 = null;
-        } else {
-          // Inline function 'kotlin.let' call
-          tmp_3 = abs_0(tmp0_safe_receiver - nascita | 0);
-        }
-        tmp_2 = tmp_3;
-      }
-      var tmp$ret$11 = new CandidatoRicollocazione(item, tmp_1, tmp_2);
-      destination_0.add_utx5q5_k$(tmp$ret$11);
-    }
-    var tmp_4 = destination_0;
-    var tmp_5 = Ricollocazione$candidati$lambda;
-    var tmp_6 = Ricollocazione$candidati$lambda_0;
-    return take(sortedWith(tmp_4, compareBy([tmp_5, tmp_6, Ricollocazione$candidati$lambda_1])), max);
-  };
-  protoOf(Ricollocazione).candidati$default_bvmee2_k$ = function (r, righe, a, max, $super) {
-    max = max === VOID ? 15 : max;
-    return $super === VOID ? this.candidati_852b26_k$(r, righe, a, max) : $super.candidati_852b26_k$.call(this, r, righe, a, max);
   };
   var Ricollocazione_instance;
   function Ricollocazione_getInstance() {
@@ -49946,11 +51723,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function SchemaPlateau_getInstance() {
     return SchemaPlateau_instance;
   }
-  var static_init_called_19;
-  function static_init_19() {
-    if (static_init_called_19)
+  var static_init_called_20;
+  function static_init_20() {
+    if (static_init_called_20)
       return Unit_instance;
-    static_init_called_19 = true;
+    static_init_called_20 = true;
     Soluzione_CODA_instance = new Soluzione('CODA', 0, 'coda', 'In coda, ARVET a mano', 'in coda, ARVET a mano');
     Soluzione_ESCLUSA_instance = new Soluzione('ESCLUSA', 1, 'esclusa', 'Eliminata', 'eliminate');
     Soluzione_NORMALIZZATA_instance = new Soluzione('NORMALIZZATA', 2, 'normalizzata', 'Normalizzata', 'normalizzate');
@@ -49967,7 +51744,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function Companion_51() {
   }
   protoOf(Companion_51).di_j0pbpe_k$ = function (codice) {
-    var tmp0 = get_entries_6();
+    var tmp0 = get_entries_7();
     var tmp$ret$0;
     $l$block: {
       // Inline function 'kotlin.collections.firstOrNull' call
@@ -49987,40 +51764,43 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function Companion_getInstance_51() {
     return Companion_instance_51;
   }
-  function values_6() {
-    static_init_19();
+  function values_7() {
+    static_init_20();
     return [Soluzione_CODA_getInstance(), Soluzione_ESCLUSA_getInstance(), Soluzione_NORMALIZZATA_getInstance(), Soluzione_RICOLLOCATA_getInstance()];
   }
-  function get_entries_6() {
-    static_init_19();
-    if ($ENTRIES_6 == null)
-      $ENTRIES_6 = enumEntries(values_6());
-    return $ENTRIES_6;
+  function get_entries_7() {
+    static_init_20();
+    if ($ENTRIES_7 == null)
+      $ENTRIES_7 = enumEntries(values_7());
+    return $ENTRIES_7;
   }
-  var $ENTRIES_6;
+  var $ENTRIES_7;
   function Soluzione(name, ordinal, codice, nome, regola) {
     Enum.call(this, name, ordinal);
     this.codice_1 = codice;
     this.nome_1 = nome;
     this.regola_1 = regola;
   }
-  function SceltaSoluzione(soluzione, capo, nelReport, scartoGestione) {
+  function SceltaSoluzione(soluzione, capo, nelReport, scartoGestione, ordine) {
     capo = capo === VOID ? '' : capo;
     nelReport = nelReport === VOID ? false : nelReport;
     scartoGestione = scartoGestione === VOID ? false : scartoGestione;
+    ordine = ordine === VOID ? 0 : ordine;
     this.soluzione_1 = soluzione;
     this.capo_1 = capo;
     this.nelReport_1 = nelReport;
     this.scartoGestione_1 = scartoGestione;
+    this.ordine_1 = ordine;
   }
   protoOf(SceltaSoluzione).toString = function () {
-    return 'SceltaSoluzione(soluzione=' + this.soluzione_1.toString() + ', capo=' + this.capo_1 + ', nelReport=' + this.nelReport_1 + ', scartoGestione=' + this.scartoGestione_1 + ')';
+    return 'SceltaSoluzione(soluzione=' + this.soluzione_1.toString() + ', capo=' + this.capo_1 + ', nelReport=' + this.nelReport_1 + ', scartoGestione=' + this.scartoGestione_1 + ', ordine=' + this.ordine_1 + ')';
   };
   protoOf(SceltaSoluzione).hashCode = function () {
     var result = this.soluzione_1.hashCode();
     result = imul(result, 31) + getStringHashCode(this.capo_1) | 0;
     result = imul(result, 31) + getBooleanHashCode(this.nelReport_1) | 0;
     result = imul(result, 31) + getBooleanHashCode(this.scartoGestione_1) | 0;
+    result = imul(result, 31) + this.ordine_1 | 0;
     return result;
   };
   protoOf(SceltaSoluzione).equals = function (other) {
@@ -50035,6 +51815,8 @@ if (typeof String.prototype.startsWith === 'undefined') {
     if (!(this.nelReport_1 === other.nelReport_1))
       return false;
     if (!(this.scartoGestione_1 === other.scartoGestione_1))
+      return false;
+    if (!(this.ordine_1 === other.ordine_1))
       return false;
     return true;
   };
@@ -50293,6 +52075,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return emptyMap();
     var ammessi = RegiaImpostazioni_instance.ammessi_5kh1z5_k$(eventi, setOf_0(['SOLUZIONE', 'PROVETTA_MODIFICATA']));
     var out = HashMap_init_$Create$();
+    var ordine = 0;
     var _iterator__ex2g4s_0 = ordinatiCanonico(eventi).iterator_jk1svi_k$();
     $l$loop_2: while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
       var e = _iterator__ex2g4s_0.next_20eer_k$();
@@ -50353,6 +52136,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       var capo = tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
       if (equals(s, Soluzione_RICOLLOCATA_getInstance()) && isBlank(capo))
         continue $l$loop_2;
+      ordine = ordine + 1 | 0;
       var tmp_7;
       if (s == null) {
         tmp_7 = null;
@@ -50363,7 +52147,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
         var tmp_9 = (tmp0_safe_receiver_0 == null ? null : tmp0_safe_receiver_0.get_content_h02jrk_k$()) === 'true';
         var tmp_10 = e.dati_1.get_6bo4tg_k$('azione_gestione');
         var tmp1_safe_receiver_0 = tmp_10 instanceof JsonPrimitive ? tmp_10 : null;
-        tmp_7 = new SceltaSoluzione(s, capo, tmp_9, (tmp1_safe_receiver_0 == null ? null : tmp1_safe_receiver_0.get_content_h02jrk_k$()) === 'scarto');
+        tmp_7 = new SceltaSoluzione(s, capo, tmp_9, (tmp1_safe_receiver_0 == null ? null : tmp1_safe_receiver_0.get_content_h02jrk_k$()) === 'scarto', ordine);
       }
       var scelta = tmp_7;
       var tmp_11 = e.dati_1.get_6bo4tg_k$('uids');
@@ -50439,19 +52223,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return Soluzioni_instance;
   }
   function Soluzione_CODA_getInstance() {
-    static_init_19();
+    static_init_20();
     return Soluzione_CODA_instance;
   }
   function Soluzione_ESCLUSA_getInstance() {
-    static_init_19();
+    static_init_20();
     return Soluzione_ESCLUSA_instance;
   }
   function Soluzione_NORMALIZZATA_getInstance() {
-    static_init_19();
+    static_init_20();
     return Soluzione_NORMALIZZATA_instance;
   }
   function Soluzione_RICOLLOCATA_getInstance() {
-    static_init_19();
+    static_init_20();
     return Soluzione_RICOLLOCATA_instance;
   }
   function ConteggioOperatore(operatore, provette, ultimaOra) {
@@ -50949,11 +52733,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function Statistiche_getInstance() {
     return Statistiche_instance;
   }
-  var static_init_called_20;
-  function static_init_20() {
-    if (static_init_called_20)
+  var static_init_called_21;
+  function static_init_21() {
+    if (static_init_called_21)
       return Unit_instance;
-    static_init_called_20 = true;
+    static_init_called_21 = true;
     TipoProblema_DDA_instance = new TipoProblema('DDA', 0, 'Acquisti con DDA', 'Dichiarati capo per capo: verificare il documento e confermare l\u2019ingresso prima di normalizzare.');
     TipoProblema_DIVENTATE_instance = new TipoProblema('DIVENTATE', 1, 'Diventate fuori registro coi registri nuovi', 'Erano nella serie; coi registri caricati dopo il capo risulta uscito o di un altro stabilimento. Restano al loro numero e in sistemazione vanno in coda.');
     TipoProblema_ORA_IN_LISTA_instance = new TipoProblema('ORA_IN_LISTA', 2, 'Ora in lista coi registri nuovi', 'Erano fra i fuori registro; coi registri caricati dopo il capo \xE8 in lista (smarrito ritrovato, acquisto con DDA): si possono normalizzare.');
@@ -50987,17 +52771,17 @@ if (typeof String.prototype.startsWith === 'undefined') {
   var TipoProblema_FUORI_ETA_instance;
   var TipoProblema_NON_IN_ELENCO_instance;
   var TipoProblema_ALTRE_instance;
-  function values_7() {
-    static_init_20();
+  function values_8() {
+    static_init_21();
     return [TipoProblema_DDA_getInstance(), TipoProblema_DIVENTATE_getInstance(), TipoProblema_ORA_IN_LISTA_getInstance(), TipoProblema_SENZA_CONTRASSEGNO_getInstance(), TipoProblema_DA_RIATTRIBUIRE_getInstance(), TipoProblema_DOPPI_getInstance(), TipoProblema_SPECIE_getInstance(), TipoProblema_ALTRO_STABILIMENTO_getInstance(), TipoProblema_SMARRITI_getInstance(), TipoProblema_RUBATI_getInstance(), TipoProblema_MORTI_MACELLATI_getInstance(), TipoProblema_TRASFERITI_getInstance(), TipoProblema_MARCHE_getInstance(), TipoProblema_FUORI_ETA_getInstance(), TipoProblema_NON_IN_ELENCO_getInstance(), TipoProblema_ALTRE_getInstance()];
   }
-  function get_entries_7() {
-    static_init_20();
-    if ($ENTRIES_7 == null)
-      $ENTRIES_7 = enumEntries(values_7());
-    return $ENTRIES_7;
+  function get_entries_8() {
+    static_init_21();
+    if ($ENTRIES_8 == null)
+      $ENTRIES_8 = enumEntries(values_8());
+    return $ENTRIES_8;
   }
-  var $ENTRIES_7;
+  var $ENTRIES_8;
   function TipoProblema(name, ordinal, titolo, spiegazione) {
     Enum.call(this, name, ordinal);
     this.titolo_1 = titolo;
@@ -51045,74 +52829,74 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return TipologieProblemi_instance;
   }
   function TipoProblema_DDA_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_DDA_instance;
   }
   function TipoProblema_DIVENTATE_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_DIVENTATE_instance;
   }
   function TipoProblema_ORA_IN_LISTA_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_ORA_IN_LISTA_instance;
   }
   function TipoProblema_SENZA_CONTRASSEGNO_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_SENZA_CONTRASSEGNO_instance;
   }
   function TipoProblema_DA_RIATTRIBUIRE_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_DA_RIATTRIBUIRE_instance;
   }
   function TipoProblema_DOPPI_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_DOPPI_instance;
   }
   function TipoProblema_SPECIE_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_SPECIE_instance;
   }
   function TipoProblema_ALTRO_STABILIMENTO_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_ALTRO_STABILIMENTO_instance;
   }
   function TipoProblema_SMARRITI_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_SMARRITI_instance;
   }
   function TipoProblema_RUBATI_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_RUBATI_instance;
   }
   function TipoProblema_MORTI_MACELLATI_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_MORTI_MACELLATI_instance;
   }
   function TipoProblema_TRASFERITI_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_TRASFERITI_instance;
   }
   function TipoProblema_MARCHE_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_MARCHE_instance;
   }
   function TipoProblema_FUORI_ETA_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_FUORI_ETA_instance;
   }
   function TipoProblema_NON_IN_ELENCO_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_NON_IN_ELENCO_instance;
   }
   function TipoProblema_ALTRE_getInstance() {
-    static_init_20();
+    static_init_21();
     return TipoProblema_ALTRE_instance;
   }
-  var static_init_called_21;
-  function static_init_21() {
-    if (static_init_called_21)
+  var static_init_called_22;
+  function static_init_22() {
+    if (static_init_called_22)
       return Unit_instance;
-    static_init_called_21 = true;
+    static_init_called_22 = true;
     Segnalazione_DX_instance = new Segnalazione('DX', 0, 'orecchino_dx', 'DX elettronico', 'orecchino destro col transponder: manca o non si legge');
     Segnalazione_SX_instance = new Segnalazione('SX', 1, 'orecchino_sx', 'SX accessorio', 'orecchino sinistro: manca o non si legge');
     Segnalazione_BOLO_instance = new Segnalazione('BOLO', 2, 'bolo', 'Bolo', 'il lettore non legge il bolo');
@@ -51120,17 +52904,17 @@ if (typeof String.prototype.startsWith === 'undefined') {
   var Segnalazione_DX_instance;
   var Segnalazione_SX_instance;
   var Segnalazione_BOLO_instance;
-  function values_8() {
-    static_init_21();
+  function values_9() {
+    static_init_22();
     return [Segnalazione_DX_getInstance(), Segnalazione_SX_getInstance(), Segnalazione_BOLO_getInstance()];
   }
-  function get_entries_8() {
-    static_init_21();
-    if ($ENTRIES_8 == null)
-      $ENTRIES_8 = enumEntries(values_8());
-    return $ENTRIES_8;
+  function get_entries_9() {
+    static_init_22();
+    if ($ENTRIES_9 == null)
+      $ENTRIES_9 = enumEntries(values_9());
+    return $ENTRIES_9;
   }
-  var $ENTRIES_8;
+  var $ENTRIES_9;
   function Segnalazione(name, ordinal, campo, nome, spiegazione) {
     Enum.call(this, name, ordinal);
     this.campo_1 = campo;
@@ -51138,7 +52922,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     this.spiegazione_1 = spiegazione;
   }
   function segnalazioni(_this__u8e3s4) {
-    var tmp0 = get_entries_8();
+    var tmp0 = get_entries_9();
     // Inline function 'kotlin.collections.filterTo' call
     var destination = LinkedHashSet_init_$Create$();
     var _iterator__ex2g4s = tmp0.iterator_jk1svi_k$();
@@ -51607,15 +53391,15 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return Transponder_instance;
   }
   function Segnalazione_DX_getInstance() {
-    static_init_21();
+    static_init_22();
     return Segnalazione_DX_instance;
   }
   function Segnalazione_SX_getInstance() {
-    static_init_21();
+    static_init_22();
     return Segnalazione_SX_instance;
   }
   function Segnalazione_BOLO_getInstance() {
-    static_init_21();
+    static_init_22();
     return Segnalazione_BOLO_instance;
   }
   function registri($this, righe) {
@@ -52031,36 +53815,6 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return false;
     return true;
   };
-  function sam$kotlin_Comparator$0_10(function_0) {
-    this.function_1 = function_0;
-  }
-  protoOf(sam$kotlin_Comparator$0_10).compare_bczr_k$ = function (a, b) {
-    return this.function_1(a, b);
-  };
-  protoOf(sam$kotlin_Comparator$0_10).compare = function (a, b) {
-    return this.compare_bczr_k$(a, b);
-  };
-  protoOf(sam$kotlin_Comparator$0_10).getFunctionDelegate_jtodtf_k$ = function () {
-    return this.function_1;
-  };
-  protoOf(sam$kotlin_Comparator$0_10).equals = function (other) {
-    var tmp;
-    if (!(other == null) ? isInterface(other, Comparator) : false) {
-      var tmp_0;
-      if (!(other == null) ? isInterface(other, FunctionAdapter) : false) {
-        tmp_0 = equals(this.getFunctionDelegate_jtodtf_k$(), other.getFunctionDelegate_jtodtf_k$());
-      } else {
-        tmp_0 = false;
-      }
-      tmp = tmp_0;
-    } else {
-      tmp = false;
-    }
-    return tmp;
-  };
-  protoOf(sam$kotlin_Comparator$0_10).hashCode = function () {
-    return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
-  };
   function sam$kotlin_Comparator$0_11(function_0) {
     this.function_1 = function_0;
   }
@@ -52119,6 +53873,36 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return tmp;
   };
   protoOf(sam$kotlin_Comparator$0_12).hashCode = function () {
+    return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
+  };
+  function sam$kotlin_Comparator$0_13(function_0) {
+    this.function_1 = function_0;
+  }
+  protoOf(sam$kotlin_Comparator$0_13).compare_bczr_k$ = function (a, b) {
+    return this.function_1(a, b);
+  };
+  protoOf(sam$kotlin_Comparator$0_13).compare = function (a, b) {
+    return this.compare_bczr_k$(a, b);
+  };
+  protoOf(sam$kotlin_Comparator$0_13).getFunctionDelegate_jtodtf_k$ = function () {
+    return this.function_1;
+  };
+  protoOf(sam$kotlin_Comparator$0_13).equals = function (other) {
+    var tmp;
+    if (!(other == null) ? isInterface(other, Comparator) : false) {
+      var tmp_0;
+      if (!(other == null) ? isInterface(other, FunctionAdapter) : false) {
+        tmp_0 = equals(this.getFunctionDelegate_jtodtf_k$(), other.getFunctionDelegate_jtodtf_k$());
+      } else {
+        tmp_0 = false;
+      }
+      tmp = tmp_0;
+    } else {
+      tmp = false;
+    }
+    return tmp;
+  };
+  protoOf(sam$kotlin_Comparator$0_13).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function GuidaPosizionamento$abbinaProvetteANumeri$lambda(it) {
@@ -52390,7 +54174,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     if (numeriRimanenti.get_size_woubt6_k$() > 1) {
       // Inline function 'kotlin.comparisons.compareBy' call
       var tmp_1 = GuidaPosizionamento$abbinaProvetteANumeri$lambda_2;
-      var tmp$ret$4 = new sam$kotlin_Comparator$0_10(tmp_1);
+      var tmp$ret$4 = new sam$kotlin_Comparator$0_11(tmp_1);
       sortWith_0(numeriRimanenti, tmp$ret$4);
     }
     var tmp0 = candidatiRimanenti.get_size_woubt6_k$();
@@ -52575,7 +54359,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     // Inline function 'kotlin.collections.sortedBy' call
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp_4 = GuidaPosizionamento$passiFisici$lambda;
-    var tmp$ret$37 = new sam$kotlin_Comparator$0_11(tmp_4);
+    var tmp$ret$37 = new sam$kotlin_Comparator$0_12(tmp_4);
     return sortedWith(destination_3, tmp$ret$37);
   };
   protoOf(GuidaPosizionamento).righeGuida_gqhuoi_k$ = function (sistemazione, specie, righe, serie, statoRighe) {
@@ -52657,7 +54441,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     // Inline function 'kotlin.collections.sortedBy' call
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp_4 = GuidaPosizionamento$righeGuida$lambda;
-    var tmp$ret$20 = new sam$kotlin_Comparator$0_12(tmp_4);
+    var tmp$ret$20 = new sam$kotlin_Comparator$0_13(tmp_4);
     return sortedWith(destination_2, tmp$ret$20);
   };
   protoOf(GuidaPosizionamento).costruisciElementi_9ks1l1_k$ = function (numerazione, spostamenti, righeValide, letteraSerie, stabilimento, specie) {
@@ -56323,19 +58107,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   }
-  function sam$kotlin_Comparator$0_13(function_0) {
+  function sam$kotlin_Comparator$0_14(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_13).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_14).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_13).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_14).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_13).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_14).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_13).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_14).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -56350,7 +58134,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_13).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_14).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function ProduttivitaGestione$calcola$lambda(a, b) {
@@ -56585,7 +58369,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     // Inline function 'kotlin.collections.sortedBy' call
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp_1 = ProduttivitaGestione$calcola$lambda;
-    var tmp$ret$32 = new sam$kotlin_Comparator$0_13(tmp_1);
+    var tmp$ret$32 = new sam$kotlin_Comparator$0_14(tmp_1);
     var evGestione = sortedWith(destination_6, tmp$ret$32);
     // Inline function 'kotlin.collections.groupBy' call
     // Inline function 'kotlin.collections.groupByTo' call
@@ -59497,13 +61281,13 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return $this.$cachedSerializer$delegate_1.get_value_j01efc_k$();
   }
   function StatoBordoPlateau$Companion$_anonymous__adt3ga() {
-    return createSimpleEnumSerializer('io.github.uvesco.fejalog.fine.StatoBordoPlateau', values_9());
+    return createSimpleEnumSerializer('io.github.uvesco.fejalog.fine.StatoBordoPlateau', values_10());
   }
-  var static_init_called_22;
-  function static_init_22() {
-    if (static_init_called_22)
+  var static_init_called_23;
+  function static_init_23() {
+    if (static_init_called_23)
       return Unit_instance;
-    static_init_called_22 = true;
+    static_init_called_23 = true;
     StatoBordoPlateau_COMPLETO_instance = new StatoBordoPlateau('COMPLETO', 0, 'completo', 'Completo', '\u2713', '#1b8a3a');
     StatoBordoPlateau_DA_COMPLETARE_instance = new StatoBordoPlateau('DA_COMPLETARE', 1, 'da_completare', 'Da completare', '\u2026', '#f9a825');
     StatoBordoPlateau_DA_SVUOTARE_instance = new StatoBordoPlateau('DA_SVUOTARE', 2, 'da_svuotare', 'Da svuotare', '!', '#c62828');
@@ -59529,11 +61313,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
   };
   var Companion_instance_60;
   function Companion_getInstance_60() {
-    static_init_22();
+    static_init_23();
     return Companion_instance_60;
   }
-  function values_9() {
-    static_init_22();
+  function values_10() {
+    static_init_23();
     return [StatoBordoPlateau_COMPLETO_getInstance(), StatoBordoPlateau_DA_COMPLETARE_getInstance(), StatoBordoPlateau_DA_SVUOTARE_getInstance()];
   }
   function StatoBordoPlateau(name, ordinal, codice, etichetta, simbolo, coloreHex) {
@@ -59859,15 +61643,15 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return CalcoloBordoPlateau_instance;
   }
   function StatoBordoPlateau_COMPLETO_getInstance() {
-    static_init_22();
+    static_init_23();
     return StatoBordoPlateau_COMPLETO_instance;
   }
   function StatoBordoPlateau_DA_COMPLETARE_getInstance() {
-    static_init_22();
+    static_init_23();
     return StatoBordoPlateau_DA_COMPLETARE_instance;
   }
   function StatoBordoPlateau_DA_SVUOTARE_getInstance() {
-    static_init_22();
+    static_init_23();
     return StatoBordoPlateau_DA_SVUOTARE_instance;
   }
   function get_NOVITA() {
@@ -59875,11 +61659,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return NOVITA;
   }
   var NOVITA;
-  var static_init_called_23;
-  function static_init_23() {
-    if (static_init_called_23)
+  var static_init_called_24;
+  function static_init_24() {
+    if (static_init_called_24)
       return Unit_instance;
-    static_init_called_23 = true;
+    static_init_called_24 = true;
     Pubblicazione_NESSUNA_instance = new Pubblicazione('NESSUNA', 0);
     Pubblicazione_DEBUG_instance = new Pubblicazione('DEBUG', 1);
     Pubblicazione_RELEASE_instance = new Pubblicazione('RELEASE', 2);
@@ -59908,11 +61692,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
     this.pubblicazione_1 = !(this.versione_1 == null) && !this.sulSito_1 ? Pubblicazione_NESSUNA_getInstance() : !(this.versione_1 == null) ? Pubblicazione_RELEASE_getInstance() : pubblicazione;
   }
   function Pubblicazione_NESSUNA_getInstance() {
-    static_init_23();
+    static_init_24();
     return Pubblicazione_NESSUNA_instance;
   }
   function Pubblicazione_RELEASE_getInstance() {
-    static_init_23();
+    static_init_24();
     return Pubblicazione_RELEASE_instance;
   }
   var properties_initialized_Novita_kt_q4rozh;
@@ -60311,11 +62095,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function ElencoVeterinari_getInstance() {
     return ElencoVeterinari_instance;
   }
-  var static_init_called_24;
-  function static_init_24() {
-    if (static_init_called_24)
+  var static_init_called_25;
+  function static_init_25() {
+    if (static_init_called_25)
       return Unit_instance;
-    static_init_called_24 = true;
+    static_init_called_25 = true;
     SicurezzaWifi_WPA_instance = new SicurezzaWifi('WPA', 0, 'WPA');
     SicurezzaWifi_SAE_instance = new SicurezzaWifi('SAE', 1, 'SAE');
     SicurezzaWifi_APERTA_instance = new SicurezzaWifi('APERTA', 2, 'nopass');
@@ -60323,31 +62107,31 @@ if (typeof String.prototype.startsWith === 'undefined') {
   var SicurezzaWifi_WPA_instance;
   var SicurezzaWifi_SAE_instance;
   var SicurezzaWifi_APERTA_instance;
-  function values_10() {
-    static_init_24();
+  function values_11() {
+    static_init_25();
     return [SicurezzaWifi_WPA_getInstance(), SicurezzaWifi_SAE_getInstance(), SicurezzaWifi_APERTA_getInstance()];
   }
-  function get_entries_9() {
-    static_init_24();
-    if ($ENTRIES_9 == null)
-      $ENTRIES_9 = enumEntries(values_10());
-    return $ENTRIES_9;
+  function get_entries_10() {
+    static_init_25();
+    if ($ENTRIES_10 == null)
+      $ENTRIES_10 = enumEntries(values_11());
+    return $ENTRIES_10;
   }
-  var $ENTRIES_9;
+  var $ENTRIES_10;
   function SicurezzaWifi(name, ordinal, codice) {
     Enum.call(this, name, ordinal);
     this.codice_1 = codice;
   }
   function SicurezzaWifi_WPA_getInstance() {
-    static_init_24();
+    static_init_25();
     return SicurezzaWifi_WPA_instance;
   }
   function SicurezzaWifi_SAE_getInstance() {
-    static_init_24();
+    static_init_25();
     return SicurezzaWifi_SAE_instance;
   }
   function SicurezzaWifi_APERTA_getInstance() {
-    static_init_24();
+    static_init_25();
     return SicurezzaWifi_APERTA_instance;
   }
   function Companion_62() {
@@ -60488,7 +62272,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function leggi$rete(r) {
     if (r == null)
       return null;
-    var tmp0 = get_entries_9();
+    var tmp0 = get_entries_10();
     var tmp$ret$0;
     $l$block: {
       // Inline function 'kotlin.collections.firstOrNull' call
@@ -60847,15 +62631,15 @@ if (typeof String.prototype.startsWith === 'undefined') {
       // Inline function 'kotlin.comparisons.compareBy' call
       var tmp_0 = AssegnazioneNumeri$ordinaCapi$lambda;
       // Inline function 'kotlin.comparisons.thenBy' call
-      var this_0 = new sam$kotlin_Comparator$0_14(tmp_0);
+      var this_0 = new sam$kotlin_Comparator$0_15(tmp_0);
       var tmp_1 = AssegnazioneNumeri$ordinaCapi$lambda_0(this_0);
-      var tmp$ret$1 = new sam$kotlin_Comparator$0_14(tmp_1);
+      var tmp$ret$1 = new sam$kotlin_Comparator$0_15(tmp_1);
       tmp = sortedWith(capi, tmp$ret$1);
     } else {
       // Inline function 'kotlin.collections.sortedBy' call
       // Inline function 'kotlin.comparisons.compareBy' call
       var tmp_2 = AssegnazioneNumeri$ordinaCapi$lambda_1;
-      var tmp$ret$3 = new sam$kotlin_Comparator$0_14(tmp_2);
+      var tmp$ret$3 = new sam$kotlin_Comparator$0_15(tmp_2);
       tmp = sortedWith(capi, tmp$ret$3);
     }
     return tmp;
@@ -60983,19 +62767,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
         return 31;
     }
   }
-  function sam$kotlin_Comparator$0_14(function_0) {
+  function sam$kotlin_Comparator$0_15(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_14).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_15).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_14).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_15).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_14).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_15).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_14).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_15).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -61010,7 +62794,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_14).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_15).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function AssegnazioneNumeri$ordinaCapi$lambda(a, b) {
@@ -61292,21 +63076,21 @@ if (typeof String.prototype.startsWith === 'undefined') {
       new AssegnazioneNumeri();
     return AssegnazioneNumeri_instance;
   }
-  var static_init_called_25;
-  function static_init_25() {
-    if (static_init_called_25)
-      return Unit_instance;
-    static_init_called_25 = true;
-    FormaEtichetta_NUOVA_instance = new FormaEtichetta('NUOVA', 0);
-    FormaEtichetta_VECCHIA_instance = new FormaEtichetta('VECCHIA', 1);
-  }
-  var FormaEtichetta_NUOVA_instance;
-  var FormaEtichetta_VECCHIA_instance;
   var static_init_called_26;
   function static_init_26() {
     if (static_init_called_26)
       return Unit_instance;
     static_init_called_26 = true;
+    FormaEtichetta_NUOVA_instance = new FormaEtichetta('NUOVA', 0);
+    FormaEtichetta_VECCHIA_instance = new FormaEtichetta('VECCHIA', 1);
+  }
+  var FormaEtichetta_NUOVA_instance;
+  var FormaEtichetta_VECCHIA_instance;
+  var static_init_called_27;
+  function static_init_27() {
+    if (static_init_called_27)
+      return Unit_instance;
+    static_init_called_27 = true;
     TipoEtichetta_ORDINARIA_instance = new TipoEtichetta('ORDINARIA', 0);
     TipoEtichetta_ISOLATO_instance = new TipoEtichetta('ISOLATO', 1);
     TipoEtichetta_PROBLEMATICA_instance = new TipoEtichetta('PROBLEMATICA', 2);
@@ -62242,27 +64026,27 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return t;
   }
   function FormaEtichetta_NUOVA_getInstance() {
-    static_init_25();
+    static_init_26();
     return FormaEtichetta_NUOVA_instance;
   }
   function FormaEtichetta_VECCHIA_getInstance() {
-    static_init_25();
+    static_init_26();
     return FormaEtichetta_VECCHIA_instance;
   }
   function TipoEtichetta_ORDINARIA_getInstance() {
-    static_init_26();
+    static_init_27();
     return TipoEtichetta_ORDINARIA_instance;
   }
   function TipoEtichetta_ISOLATO_getInstance() {
-    static_init_26();
+    static_init_27();
     return TipoEtichetta_ISOLATO_instance;
   }
   function TipoEtichetta_PROBLEMATICA_getInstance() {
-    static_init_26();
+    static_init_27();
     return TipoEtichetta_PROBLEMATICA_instance;
   }
   function TipoEtichetta_PROVVISORIA_getInstance() {
-    static_init_26();
+    static_init_27();
     return TipoEtichetta_PROVVISORIA_instance;
   }
   function GrammaticaEtichetta() {
@@ -63414,11 +65198,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
     st = st === VOID ? null : st;
     return $super === VOID ? this.serieDi_y2762l_k$(id, st) : $super.serieDi_y2762l_k$.call(this, id, st);
   };
-  var static_init_called_27;
-  function static_init_27() {
-    if (static_init_called_27)
+  var static_init_called_28;
+  function static_init_28() {
+    if (static_init_called_28)
       return Unit_instance;
-    static_init_called_27 = true;
+    static_init_called_28 = true;
     Presenza_MAI_ENTRATO_instance = new Presenza('MAI_ENTRATO', 0, 'non ancora entrato');
     Presenza_AL_LAVORO_instance = new Presenza('AL_LAVORO', 1, 'al lavoro');
     Presenza_IN_PAUSA_instance = new Presenza('IN_PAUSA', 2, 'in pausa');
@@ -63563,31 +65347,31 @@ if (typeof String.prototype.startsWith === 'undefined') {
     this.testo_1 = testo;
   }
   function Presenza_MAI_ENTRATO_getInstance() {
-    static_init_27();
+    static_init_28();
     return Presenza_MAI_ENTRATO_instance;
   }
   function Presenza_AL_LAVORO_getInstance() {
-    static_init_27();
+    static_init_28();
     return Presenza_AL_LAVORO_instance;
   }
   function Presenza_IN_PAUSA_getInstance() {
-    static_init_27();
+    static_init_28();
     return Presenza_IN_PAUSA_instance;
   }
   function Presenza_PAUSA_REGIA_getInstance() {
-    static_init_27();
+    static_init_28();
     return Presenza_PAUSA_REGIA_instance;
   }
   function Presenza_HA_FINITO_getInstance() {
-    static_init_27();
+    static_init_28();
     return Presenza_HA_FINITO_instance;
   }
   function Presenza_ESCLUSO_getInstance() {
-    static_init_27();
+    static_init_28();
     return Presenza_ESCLUSO_instance;
   }
   function Presenza_RIMOSSO_getInstance() {
-    static_init_27();
+    static_init_28();
     return Presenza_RIMOSSO_instance;
   }
   function pulisci($this, ids) {
@@ -63827,19 +65611,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function conPrefissoEffettivo($this, s, imp, p) {
     return imp.usaSigleVeterinari_1 ? s.copy$default_clkdv2_k$(VOID, VOID, VOID, VOID, VOID, VOID, imp.cerchiettoStabilimento_mfl9ou_k$(s.get_stabilimento_353hxm_k$(), p)) : s;
   }
-  function sam$kotlin_Comparator$0_15(function_0) {
+  function sam$kotlin_Comparator$0_16(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_15).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_16).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_15).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_16).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_15).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_16).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_15).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_16).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -63854,7 +65638,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_15).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_16).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function SeriePacchetto$diEventi$lambda(it) {
@@ -64047,7 +65831,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
           var this_1 = item_2.numeriAssegnati_1.get_entries_p20ztl_k$();
           // Inline function 'kotlin.comparisons.compareBy' call
           var tmp_13 = SeriePacchetto$diEventi$lambda_2;
-          var tmp$ret$29 = new sam$kotlin_Comparator$0_15(tmp_13);
+          var tmp$ret$29 = new sam$kotlin_Comparator$0_16(tmp_13);
           // Inline function 'kotlin.collections.forEach' call
           var _iterator__ex2g4s_7 = sortedWith(this_1, tmp$ret$29).iterator_jk1svi_k$();
           while (_iterator__ex2g4s_7.hasNext_bitz1p_k$()) {
@@ -68397,19 +70181,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return false;
     return true;
   };
-  function sam$kotlin_Comparator$0_16(function_0) {
+  function sam$kotlin_Comparator$0_17(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_16).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_17).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_16).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_17).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_16).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_17).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_16).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_17).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -68424,7 +70208,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_16).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_17).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function TabellaNumerazione$righe$lambda(a, b) {
@@ -68478,7 +70262,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       var this_0 = serie.numeriAssegnati_1.get_entries_p20ztl_k$();
       // Inline function 'kotlin.comparisons.compareBy' call
       var tmp = TabellaNumerazione$righe$lambda;
-      var tmp$ret$8 = new sam$kotlin_Comparator$0_16(tmp);
+      var tmp$ret$8 = new sam$kotlin_Comparator$0_17(tmp);
       var _iterator__ex2g4s_2 = sortedWith(this_0, tmp$ret$8).iterator_jk1svi_k$();
       while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
         var _destruct__k2r9zo = _iterator__ex2g4s_2.next_20eer_k$();
@@ -69530,7 +71314,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return $this.$cachedSerializer$delegate_1.get_value_j01efc_k$();
   }
   function Specie$Companion$_anonymous__x8ou2w() {
-    var tmp = values_11();
+    var tmp = values_12();
     // Inline function 'kotlin.arrayOf' call
     // Inline function 'kotlin.js.unsafeCast' call
     // Inline function 'kotlin.js.asDynamic' call
@@ -69541,11 +71325,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var tmp$ret$3 = [null, null];
     return createAnnotatedEnumSerializer('io.github.uvesco.fejalog.pacchetto.Specie', tmp, tmp_0, tmp$ret$3, null);
   }
-  var static_init_called_28;
-  function static_init_28() {
-    if (static_init_called_28)
+  var static_init_called_29;
+  function static_init_29() {
+    if (static_init_called_29)
       return Unit_instance;
-    static_init_called_28 = true;
+    static_init_called_29 = true;
     Specie_PECORE_instance = new Specie('PECORE', 0);
     Specie_CAPRE_instance = new Specie('CAPRE', 1);
     if (Companion_instance_73 == null) {
@@ -69555,15 +71339,15 @@ if (typeof String.prototype.startsWith === 'undefined') {
   }
   var Specie_PECORE_instance;
   var Specie_CAPRE_instance;
-  function values_11() {
-    static_init_28();
+  function values_12() {
+    static_init_29();
     return [Specie_PECORE_getInstance(), Specie_CAPRE_getInstance()];
   }
-  function get_entries_10() {
-    static_init_28();
-    if ($ENTRIES_10 == null)
-      $ENTRIES_10 = enumEntries(values_11());
-    return $ENTRIES_10;
+  function get_entries_11() {
+    static_init_29();
+    if ($ENTRIES_11 == null)
+      $ENTRIES_11 = enumEntries(values_12());
+    return $ENTRIES_11;
   }
   function Companion_73() {
     Companion_instance_73 = this;
@@ -69579,10 +71363,10 @@ if (typeof String.prototype.startsWith === 'undefined') {
   };
   var Companion_instance_73;
   function Companion_getInstance_73() {
-    static_init_28();
+    static_init_29();
     return Companion_instance_73;
   }
-  var $ENTRIES_10;
+  var $ENTRIES_11;
   function Specie(name, ordinal) {
     Enum.call(this, name, ordinal);
   }
@@ -70104,7 +71888,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return $this.$cachedSerializer$delegate_1.get_value_j01efc_k$();
   }
   function ModoNumerazione$Companion$_anonymous__bxqpcd() {
-    var tmp = values_12();
+    var tmp = values_13();
     // Inline function 'kotlin.arrayOf' call
     // Inline function 'kotlin.js.unsafeCast' call
     // Inline function 'kotlin.js.asDynamic' call
@@ -70115,11 +71899,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var tmp$ret$3 = [null, null, null];
     return createAnnotatedEnumSerializer('io.github.uvesco.fejalog.pacchetto.ModoNumerazione', tmp, tmp_0, tmp$ret$3, null);
   }
-  var static_init_called_29;
-  function static_init_29() {
-    if (static_init_called_29)
+  var static_init_called_30;
+  function static_init_30() {
+    if (static_init_called_30)
       return Unit_instance;
-    static_init_called_29 = true;
+    static_init_called_30 = true;
     ModoNumerazione_GLOBALE_instance = new ModoNumerazione('GLOBALE', 0);
     ModoNumerazione_BLOCCHI_instance = new ModoNumerazione('BLOCCHI', 1);
     ModoNumerazione_PRENUMERATE_instance = new ModoNumerazione('PRENUMERATE', 2);
@@ -70131,8 +71915,8 @@ if (typeof String.prototype.startsWith === 'undefined') {
   var ModoNumerazione_GLOBALE_instance;
   var ModoNumerazione_BLOCCHI_instance;
   var ModoNumerazione_PRENUMERATE_instance;
-  function values_12() {
-    static_init_29();
+  function values_13() {
+    static_init_30();
     return [ModoNumerazione_GLOBALE_getInstance(), ModoNumerazione_BLOCCHI_getInstance(), ModoNumerazione_PRENUMERATE_getInstance()];
   }
   function Companion_77() {
@@ -70149,7 +71933,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   };
   var Companion_instance_77;
   function Companion_getInstance_77() {
-    static_init_29();
+    static_init_30();
     return Companion_instance_77;
   }
   function ModoNumerazione(name, ordinal) {
@@ -71517,23 +73301,23 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return true;
   };
   function Specie_PECORE_getInstance() {
-    static_init_28();
+    static_init_29();
     return Specie_PECORE_instance;
   }
   function Specie_CAPRE_getInstance() {
-    static_init_28();
+    static_init_29();
     return Specie_CAPRE_instance;
   }
   function ModoNumerazione_GLOBALE_getInstance() {
-    static_init_29();
+    static_init_30();
     return ModoNumerazione_GLOBALE_instance;
   }
   function ModoNumerazione_BLOCCHI_getInstance() {
-    static_init_29();
+    static_init_30();
     return ModoNumerazione_BLOCCHI_instance;
   }
   function ModoNumerazione_PRENUMERATE_getInstance() {
-    static_init_29();
+    static_init_30();
     return ModoNumerazione_PRENUMERATE_instance;
   }
   function Caricamento(eventi, contesi, avvisi) {
@@ -71953,19 +73737,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function Hash_getInstance() {
     return Hash_instance;
   }
-  function sam$kotlin_Comparator$0_17(function_0) {
+  function sam$kotlin_Comparator$0_18(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_17).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_18).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_17).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_18).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_17).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_18).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_17).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_18).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -71980,7 +73764,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_17).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_18).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function Impronta$Companion$di$lambda(a, b) {
@@ -72001,7 +73785,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var this_0 = teste.get_entries_p20ztl_k$();
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp_0 = Impronta$Companion$di$lambda;
-    var tmp$ret$1 = new sam$kotlin_Comparator$0_17(tmp_0);
+    var tmp$ret$1 = new sam$kotlin_Comparator$0_18(tmp_0);
     // Inline function 'kotlin.collections.map' call
     var this_1 = sortedWith(this_0, tmp$ret$1);
     // Inline function 'kotlin.collections.mapTo' call
@@ -74293,7 +76077,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
           var nomeTipo = element_22.get_key_18j28a_k$();
           // Inline function 'kotlin.collections.component2' call
           var s_0 = element_22.get_value_j01efc_k$();
-          var tmp0_0 = get_entries_7();
+          var tmp0_0 = get_entries_8();
           var tmp$ret$92;
           $l$block_9: {
             // Inline function 'kotlin.collections.firstOrNull' call
@@ -74450,19 +76234,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
     this_0.append_22ad7x_k$(value_11).append_58al37_k$(_Char___init__impl__6a9atx(10));
     return this_0.toString();
   }
-  function sam$kotlin_Comparator$0_18(function_0) {
+  function sam$kotlin_Comparator$0_19(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_18).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_19).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_18).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_19).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_18).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_19).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_18).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_19).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -74477,7 +76261,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_18).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_19).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function CreazioneSito$jsonManifesto$lambda($this$Json) {
@@ -74979,7 +76763,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     put_1(builder, 'veterinari_scartati', veterinari.scartate_1.get_size_woubt6_k$());
     put(builder, 'lettere_predefinite', Companion_getInstance_42().predefinita_5w9p6y_k$(a.dati_1).codice_1);
     // Inline function 'kotlin.collections.map' call
-    var this_10 = get_entries_7();
+    var this_10 = get_entries_8();
     // Inline function 'kotlin.collections.mapTo' call
     var destination_11 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_10, 10));
     var _iterator__ex2g4s_14 = this_10.iterator_jk1svi_k$();
@@ -75183,7 +76967,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
         tmp_20 = null;
       } else {
         var tmp_21 = testo_10(CreazioneSito_getInstance(), element_30, 'password');
-        var tmp0_4 = get_entries_9();
+        var tmp0_4 = get_entries_10();
         var tmp$ret$156;
         $l$block_3: {
           // Inline function 'kotlin.collections.firstOrNull' call
@@ -75266,7 +77050,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var this_23 = registro.tutti_1txb60_k$();
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp_25 = CreazioneSito$crea$lambda_2;
-    var tmp$ret$176 = new sam$kotlin_Comparator$0_18(tmp_25);
+    var tmp$ret$176 = new sam$kotlin_Comparator$0_19(tmp_25);
     var tutti = sortedWith(this_23, tmp$ret$176);
     var attuali = Companion_getInstance_47().di_55966q_k$(pacchetto, tutti);
     var imp = attuali.impostazioni_1;
@@ -76026,19 +77810,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
       new MaterialeCampo();
     return MaterialeCampo_instance;
   }
-  function sam$kotlin_Comparator$0_19(function_0) {
+  function sam$kotlin_Comparator$0_20(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_19).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_20).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_19).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_20).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_19).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_20).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_19).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_20).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -76053,7 +77837,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_19).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_20).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function NumerazioneStampe$prepara$lambda$lambda($p, $specie, $s, $mesi) {
@@ -76356,7 +78140,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
           // Inline function 'kotlin.collections.sortedBy' call
           // Inline function 'kotlin.comparisons.compareBy' call
           var tmp_2 = NumerazioneStampe$preparaFinale$lambda$lambda;
-          var tmp$ret$16 = new sam$kotlin_Comparator$0_19(tmp_2);
+          var tmp$ret$16 = new sam$kotlin_Comparator$0_20(tmp_2);
           var ordinati = sortedWith(numeri, tmp$ret$16);
           var tmp_3 = first(ordinati).provetta_1;
           var tmp$ret$13 = to(tmp_3, joinToString_0(ordinati, ', ', VOID, VOID, VOID, VOID, NumerazioneStampe$preparaFinale$lambda$lambda_0(element)));
@@ -76410,6 +78194,479 @@ if (typeof String.prototype.startsWith === 'undefined') {
   protoOf(ContestoLocale).scrivi_wtbgpw_k$ = function (valore) {
     this.corrente_1 = valore;
   };
+  function voceJson($this, v) {
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder = new JsonObjectBuilder();
+    put(builder, 'uid', v.uid_1);
+    put(builder, 'etichetta', v.etichetta_1);
+    put(builder, 'specie', v.specie_1);
+    put(builder, 'stabilimento', v.stabilimento_1);
+    put(builder, 'contrassegno', v.contrassegno_1);
+    put(builder, 'tipo', v.tipo_1.name_1);
+    put(builder, 'titolo', v.tipo_1.titolo_1);
+    put(builder, 'stato', v.stato_1.codice_1);
+    put(builder, 'esito', v.esito_1);
+    var tmp0_safe_receiver = v.soluzione_1;
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.codice_1;
+    var tmp$ret$2 = tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
+    put(builder, 'soluzione', tmp$ret$2);
+    put(builder, 'capo', v.capo_1);
+    put_1(builder, 'priorita', v.priorita_1);
+    put(builder, 'operatore', v.operatore_1);
+    put(builder, 'ts', v.ts_1);
+    return builder.build_bkh6qh_k$();
+  }
+  function BancoSito$destinazione$lambda($indice) {
+    return function (u, a) {
+      return $indice.fatta_6edtno_k$(u, a);
+    };
+  }
+  function BancoSito(s) {
+    this.s_1 = s;
+  }
+  protoOf(BancoSito).coda = function () {
+    var voci = Banco_getInstance().coda_atrewz_k$(this.s_1.righe_1sls7h_k$(), this.s_1.eventi_1);
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder = new JsonObjectBuilder();
+    // Inline function 'kotlin.collections.map' call
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination = ArrayList_init_$Create$_0(collectionSizeOrDefault(voci, 10));
+    var _iterator__ex2g4s = voci.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s.next_20eer_k$();
+      var tmp$ret$4 = voceJson(this, item);
+      destination.add_utx5q5_k$(tmp$ret$4);
+    }
+    builder.put_mrde5n_k$('voci', new JsonArray(destination));
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder_0 = new JsonObjectBuilder();
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s_0 = get_entries_1().iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s_0.next_20eer_k$();
+      var tmp$ret$9;
+      $l$block: {
+        // Inline function 'kotlin.collections.count' call
+        var tmp;
+        if (isInterface(voci, Collection)) {
+          tmp = voci.isEmpty_y1axqb_k$();
+        } else {
+          tmp = false;
+        }
+        if (tmp) {
+          tmp$ret$9 = 0;
+          break $l$block;
+        }
+        var count = 0;
+        var _iterator__ex2g4s_1 = voci.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
+          var element_0 = _iterator__ex2g4s_1.next_20eer_k$();
+          if (element_0.stato_1.equals(element)) {
+            count = count + 1 | 0;
+            checkCountOverflow(count);
+          }
+        }
+        tmp$ret$9 = count;
+      }
+      put_1(builder_0, element.codice_1, tmp$ret$9);
+    }
+    put_1(builder_0, 'totale', voci.get_size_woubt6_k$());
+    var tmp$ret$5 = builder_0.build_bkh6qh_k$();
+    builder.put_mrde5n_k$('conteggi', tmp$ret$5);
+    put_0(builder, 'chiusura_virtuale', this.s_1.chiusuraVirtuale_1);
+    put_0(builder, 'chiusura_virtuale_non_riuscita', this.s_1.chiusuraVirtualeNonRiuscita_1);
+    return builder.build_bkh6qh_k$().toString();
+  };
+  protoOf(BancoSito).scheda = function (uid, cifre) {
+    var tmp0_elvis_lhs = Banco_getInstance().scheda_656c6z_k$(uid, this.s_1.righe_1sls7h_k$(), this.s_1.attuali_b5qj86_k$(), this.s_1.eventi_1, cifre);
+    var tmp;
+    if (tmp0_elvis_lhs == null) {
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder = new JsonObjectBuilder();
+      put(builder, 'errore', 'provetta non trovata');
+      return builder.build_bkh6qh_k$().toString();
+    } else {
+      tmp = tmp0_elvis_lhs;
+    }
+    var sc = tmp;
+    var t = sc.voce_1.tipo_1;
+    var r = sc.registrato_1;
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder_0 = new JsonObjectBuilder();
+    builder_0.put_mrde5n_k$('voce', voceJson(this, sc.voce_1));
+    put_0(builder_0, 'fra_i_fuori_registro', sc.fraIFuoriRegistro_1);
+    // Inline function 'kotlin.collections.map' call
+    var this_0 = sc.scritta_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
+    var _iterator__ex2g4s = this_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s.next_20eer_k$();
+      var tmp$ret$6 = JsonPrimitive_0(item);
+      destination.add_utx5q5_k$(tmp$ret$6);
+    }
+    builder_0.put_mrde5n_k$('scritta', new JsonArray(destination));
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder_1 = new JsonObjectBuilder();
+    put(builder_1, 'codice', t.name_1);
+    put(builder_1, 'titolo', t.titolo_1);
+    put(builder_1, 'spiegazione', t.spiegazione_1);
+    var tmp$ret$7 = builder_1.build_bkh6qh_k$();
+    builder_0.put_mrde5n_k$('fattispecie', tmp$ret$7);
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder_2 = new JsonObjectBuilder();
+    var d = sc.descrizione_1;
+    put(builder_2, 'esito', d.esito_1);
+    put(builder_2, 'tono', d.tono_1.name_1);
+    var tmp0_safe_receiver = d.motivo_1;
+    var tmp_0;
+    if (tmp0_safe_receiver == null) {
+      tmp_0 = null;
+    } else {
+      // Inline function 'kotlin.let' call
+      tmp_0 = JsonPrimitive_0(tmp0_safe_receiver);
+    }
+    var tmp1_elvis_lhs = tmp_0;
+    builder_2.put_mrde5n_k$('motivo', tmp1_elvis_lhs == null ? JsonNull_getInstance() : tmp1_elvis_lhs);
+    put(builder_2, 'capo', d.capo_1);
+    put(builder_2, 'chi', d.chi_1);
+    // Inline function 'kotlin.collections.map' call
+    var this_1 = d.segnalazioni_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_1, 10));
+    var _iterator__ex2g4s_0 = this_1.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var item_0 = _iterator__ex2g4s_0.next_20eer_k$();
+      var tmp$ret$15 = JsonPrimitive_0(item_0);
+      destination_0.add_utx5q5_k$(tmp$ret$15);
+    }
+    builder_2.put_mrde5n_k$('segnalazioni', new JsonArray(destination_0));
+    // Inline function 'kotlin.collections.map' call
+    var this_2 = d.stato_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_1 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_2, 10));
+    var _iterator__ex2g4s_1 = this_2.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
+      var item_1 = _iterator__ex2g4s_1.next_20eer_k$();
+      var tmp$ret$18 = JsonPrimitive_0(item_1);
+      destination_1.add_utx5q5_k$(tmp$ret$18);
+    }
+    builder_2.put_mrde5n_k$('stato', new JsonArray(destination_1));
+    var tmp$ret$9 = builder_2.build_bkh6qh_k$();
+    builder_0.put_mrde5n_k$('descrizione', tmp$ret$9);
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder_3 = new JsonObjectBuilder();
+    put(builder_3, 'contrassegno', r.contrassegno_1);
+    put(builder_3, 'sesso', r.sesso_1);
+    put(builder_3, 'sesso_corretto', r.sessoCorretto_1);
+    put(builder_3, 'razza', r.razza_1);
+    put(builder_3, 'data_nascita', r.dataNascita_1);
+    put(builder_3, 'classe_eta', r.classeEta_1);
+    put(builder_3, 'provvisoria', r.provvisoria_1);
+    put(builder_3, 'note', r.note_1);
+    put(builder_3, 'operatore', r.operatore_1);
+    put(builder_3, 'ts', r.ts_1);
+    put_0(builder_3, 'isolato', r.isolato_1);
+    put_0(builder_3, 'doppio_in_campo', r.doppioInCampo_1);
+    put_0(builder_3, 'doppio_scoperto', r.doppioScoperto_1);
+    put_0(builder_3, 'marcata_in_campo', r.marcataInCampo_1);
+    var tmp$ret$19 = builder_3.build_bkh6qh_k$();
+    builder_0.put_mrde5n_k$('registrato', tmp$ret$19);
+    var tmp0_safe_receiver_0 = sc.bdn_1;
+    var tmp_1;
+    if (tmp0_safe_receiver_0 == null) {
+      tmp_1 = null;
+    } else {
+      // Inline function 'kotlin.let' call
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder_4 = new JsonObjectBuilder();
+      put(builder_4, 'contrassegno', tmp0_safe_receiver_0.contrassegno_1);
+      put(builder_4, 'sesso', tmp0_safe_receiver_0.sesso_1);
+      put(builder_4, 'razza', tmp0_safe_receiver_0.razza_1);
+      put(builder_4, 'nascita', tmp0_safe_receiver_0.nascita_1);
+      put(builder_4, 'stabilimento', tmp0_safe_receiver_0.stabilimento_1);
+      tmp_1 = builder_4.build_bkh6qh_k$();
+    }
+    var tmp1_elvis_lhs_0 = tmp_1;
+    builder_0.put_mrde5n_k$('bdn', tmp1_elvis_lhs_0 == null ? JsonNull_getInstance() : tmp1_elvis_lhs_0);
+    // Inline function 'kotlin.collections.map' call
+    var this_3 = sc.altreProvette_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_2 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_3, 10));
+    var _iterator__ex2g4s_2 = this_3.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
+      var item_2 = _iterator__ex2g4s_2.next_20eer_k$();
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder_5 = new JsonObjectBuilder();
+      put(builder_5, 'uid', item_2.uid_1);
+      put(builder_5, 'etichetta', item_2.etichetta_1);
+      put(builder_5, 'operatore', item_2.operatore_1);
+      put(builder_5, 'ts', item_2.ts_1);
+      var tmp$ret$27 = builder_5.build_bkh6qh_k$();
+      destination_2.add_utx5q5_k$(tmp$ret$27);
+    }
+    builder_0.put_mrde5n_k$('altre_provette', new JsonArray(destination_2));
+    // Inline function 'kotlin.collections.map' call
+    var this_4 = sc.compatibili_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_3 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_4, 10));
+    var _iterator__ex2g4s_3 = this_4.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
+      var item_3 = _iterator__ex2g4s_3.next_20eer_k$();
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder_6 = new JsonObjectBuilder();
+      put(builder_6, 'contrassegno', item_3.contrassegno_1);
+      put(builder_6, 'sesso', item_3.sesso_1);
+      put(builder_6, 'razza', item_3.razza_1);
+      put(builder_6, 'nascita', item_3.nascita_1);
+      put(builder_6, 'eta', item_3.eta_1);
+      var tmp0_safe_receiver_1 = item_3.numero_1;
+      var tmp_2;
+      if (tmp0_safe_receiver_1 == null) {
+        tmp_2 = null;
+      } else {
+        // Inline function 'kotlin.let' call
+        tmp_2 = JsonPrimitive_2(tmp0_safe_receiver_1);
+      }
+      var tmp1_elvis_lhs_1 = tmp_2;
+      builder_6.put_mrde5n_k$('numero', tmp1_elvis_lhs_1 == null ? JsonNull_getInstance() : tmp1_elvis_lhs_1);
+      put_0(builder_6, 'stessa_razza', item_3.stessaRazza_1);
+      // Inline function 'kotlin.collections.map' call
+      var this_5 = item_3.motivi_1;
+      // Inline function 'kotlin.collections.mapTo' call
+      var destination_4 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_5, 10));
+      var _iterator__ex2g4s_4 = this_5.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
+        var item_4 = _iterator__ex2g4s_4.next_20eer_k$();
+        var tmp$ret$39 = JsonPrimitive_0(item_4);
+        destination_4.add_utx5q5_k$(tmp$ret$39);
+      }
+      builder_6.put_mrde5n_k$('motivi', new JsonArray(destination_4));
+      var tmp$ret$32 = builder_6.build_bkh6qh_k$();
+      destination_3.add_utx5q5_k$(tmp$ret$32);
+    }
+    builder_0.put_mrde5n_k$('compatibili', new JsonArray(destination_3));
+    // Inline function 'kotlin.collections.map' call
+    var this_6 = sc.marcheLibere_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_5 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_6, 10));
+    var _iterator__ex2g4s_5 = this_6.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_5.hasNext_bitz1p_k$()) {
+      var item_5 = _iterator__ex2g4s_5.next_20eer_k$();
+      var tmp$ret$42 = JsonPrimitive_0(item_5);
+      destination_5.add_utx5q5_k$(tmp$ret$42);
+    }
+    builder_0.put_mrde5n_k$('marche_libere', new JsonArray(destination_5));
+    var tmp2_safe_receiver = sc.proposta_1;
+    var tmp_3;
+    if (tmp2_safe_receiver == null) {
+      tmp_3 = null;
+    } else {
+      // Inline function 'kotlin.let' call
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder_7 = new JsonObjectBuilder();
+      put(builder_7, 'testo', tmp2_safe_receiver.testo_1);
+      put(builder_7, 'perche', tmp2_safe_receiver.perche_1);
+      builder_7.put_mrde5n_k$('azioni', new JsonArray(tmp2_safe_receiver.azioni_1));
+      tmp_3 = builder_7.build_bkh6qh_k$();
+    }
+    var tmp3_elvis_lhs = tmp_3;
+    builder_0.put_mrde5n_k$('proposta', tmp3_elvis_lhs == null ? JsonNull_getInstance() : tmp3_elvis_lhs);
+    // Inline function 'kotlin.collections.map' call
+    var this_7 = sc.alternative_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_6 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_7, 10));
+    var _iterator__ex2g4s_6 = this_7.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_6.hasNext_bitz1p_k$()) {
+      var item_6 = _iterator__ex2g4s_6.next_20eer_k$();
+      var tmp$ret$49 = JsonPrimitive_0(item_6);
+      destination_6.add_utx5q5_k$(tmp$ret$49);
+    }
+    builder_0.put_mrde5n_k$('alternative', new JsonArray(destination_6));
+    return builder_0.build_bkh6qh_k$().toString();
+  };
+  protoOf(BancoSito).cerca = function (query) {
+    var scelte = Soluzioni_instance.di_4dh1u9_k$(this.s_1.eventi_1);
+    // Inline function 'kotlin.collections.map' call
+    var this_0 = Banco_getInstance().cerca_tzwqnq_k$(query, this.s_1.righe_1sls7h_k$());
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
+    var _iterator__ex2g4s = this_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s.next_20eer_k$();
+      var tmp;
+      if (Banco_getInstance().nelBanco_t8qvla_k$(item)) {
+        tmp = voceJson(this, Banco_getInstance().voce_cxeo19_k$(item, scelte));
+      } else {
+        // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+        var builder = new JsonObjectBuilder();
+        put(builder, 'uid', item.uid_1);
+        var tmp0_elvis_lhs = item.caratteristiche_1.get_wei43m_k$('etichetta_campo');
+        put(builder, 'etichetta', tmp0_elvis_lhs == null ? item.etichetta_1 : tmp0_elvis_lhs);
+        put(builder, 'specie', item.specie_1);
+        // Inline function 'kotlin.text.orEmpty' call
+        var tmp0_elvis_lhs_0 = item.contrassegno_1;
+        var tmp$ret$5 = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
+        put(builder, 'contrassegno', tmp$ret$5);
+        put(builder, 'stato', 'ordinaria');
+        var tmp1_safe_receiver = item.numero_1;
+        var tmp_0;
+        if (tmp1_safe_receiver == null) {
+          tmp_0 = null;
+        } else {
+          // Inline function 'kotlin.let' call
+          tmp_0 = JsonPrimitive_2(tmp1_safe_receiver);
+        }
+        var tmp2_elvis_lhs = tmp_0;
+        builder.put_mrde5n_k$('numero', tmp2_elvis_lhs == null ? JsonNull_getInstance() : tmp2_elvis_lhs);
+        put(builder, 'esito', item.persa_1 ? 'Persa' : 'Ordinaria: resta al suo numero');
+        tmp = builder.build_bkh6qh_k$();
+      }
+      var tmp$ret$2 = tmp;
+      destination.add_utx5q5_k$(tmp$ret$2);
+    }
+    return (new JsonArray(destination)).toString();
+  };
+  protoOf(BancoSito).applica = function (azioneJson) {
+    var ok = this.s_1.applica_egrwec_k$(get_jsonObject(Default_getInstance().parseToJsonElement_rqvr2k_k$(azioneJson)), true);
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder = new JsonObjectBuilder();
+    put_0(builder, 'ok', ok);
+    var tmp0_safe_receiver = this.s_1.ultimoRifiuto_1;
+    if (tmp0_safe_receiver == null)
+      null;
+    else {
+      // Inline function 'kotlin.let' call
+      put(builder, 'motivo', tmp0_safe_receiver);
+    }
+    return builder.build_bkh6qh_k$().toString();
+  };
+  protoOf(BancoSito).destinazione = function (uid) {
+    var tmp0 = this.s_1.righe_1sls7h_k$();
+    var tmp$ret$0;
+    $l$block: {
+      // Inline function 'kotlin.collections.firstOrNull' call
+      var _iterator__ex2g4s = tmp0.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+        var element = _iterator__ex2g4s.next_20eer_k$();
+        if (element.uid_1 === uid) {
+          tmp$ret$0 = element;
+          break $l$block;
+        }
+      }
+      tmp$ret$0 = null;
+    }
+    var tmp0_elvis_lhs = tmp$ret$0;
+    var tmp;
+    if (tmp0_elvis_lhs == null) {
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder = new JsonObjectBuilder();
+      put(builder, 'cosa', 'Provetta non trovata');
+      return builder.build_bkh6qh_k$().toString();
+    } else {
+      tmp = tmp0_elvis_lhs;
+    }
+    var r = tmp;
+    var motore = get_motoreRiordinoSito();
+    var stab = substringBefore(r.serie_1, _Char___init__impl__6a9atx(58));
+    var tmp_0;
+    if (motore == null) {
+      tmp_0 = null;
+    } else {
+      // Inline function 'kotlin.runCatching' call
+      var tmp_1;
+      try {
+        var invio = new InvioRiordino(this.s_1.originale_1, this.s_1.eventi_1, motore);
+        // Inline function 'kotlin.Companion.success' call
+        var value = invio.guida_692u4k_k$(stab, r.specie_1, invio.sistemazione_m8vvvk_k$(stab, true));
+        tmp_1 = _Result___init__impl__xyqfz8(value);
+      } catch ($p) {
+        var tmp_2;
+        if ($p instanceof Error) {
+          var e = $p;
+          // Inline function 'kotlin.Companion.failure' call
+          tmp_2 = _Result___init__impl__xyqfz8(createFailure(e));
+        } else {
+          throw $p;
+        }
+        tmp_1 = tmp_2;
+      }
+      // Inline function 'kotlin.getOrElse' call
+      var this_0 = tmp_1;
+      var exception = Result__exceptionOrNull_impl_p6xea9(this_0);
+      var tmp_3;
+      if (exception == null) {
+        tmp_3 = _Result___get_value__impl__bjfvqg(this_0);
+      } else {
+        // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+        var builder_0 = new JsonObjectBuilder();
+        var tmp0_elvis_lhs_0 = exception.message;
+        put(builder_0, 'cosa', 'Non riesco a calcolare il posto: ' + (tmp0_elvis_lhs_0 == null ? 'errore del motore' : tmp0_elvis_lhs_0));
+        return builder_0.build_bkh6qh_k$().toString();
+      }
+      tmp_0 = tmp_3;
+    }
+    var guida = tmp_0;
+    var indice = Companion_instance_52.di_4dh1u9_k$(this.s_1.eventi_1);
+    var occupati = Banco_getInstance().occupati_rgev84_k$(r, this.s_1.righe_1sls7h_k$(), this.s_1.attuali_b5qj86_k$().get_serie_iygor7_k$(), this.s_1.eventi_1, this.s_1.originale_1);
+    var tmp_4 = Banco_getInstance();
+    var d = tmp_4.destinazione_3y5t48_k$(r, guida, BancoSito$destinazione$lambda(indice), occupati);
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder_1 = new JsonObjectBuilder();
+    put(builder_1, 'cosa', d.cosa_1);
+    put_0(builder_1, 'da_parte', d.daParte_1);
+    var tmp0_safe_receiver = d.numero_1;
+    if (tmp0_safe_receiver == null)
+      null;
+    else {
+      // Inline function 'kotlin.let' call
+      put_1(builder_1, 'numero', tmp0_safe_receiver);
+    }
+    var tmp1_safe_receiver = d.plateau_1;
+    if (tmp1_safe_receiver == null)
+      null;
+    else {
+      // Inline function 'kotlin.let' call
+      put_1(builder_1, 'plateau', tmp1_safe_receiver);
+    }
+    var tmp2_safe_receiver = d.pozzetto_1;
+    if (tmp2_safe_receiver == null)
+      null;
+    else {
+      // Inline function 'kotlin.let' call
+      put_1(builder_1, 'pozzetto', tmp2_safe_receiver);
+    }
+    var tmp3_safe_receiver = Banco_getInstance().messa_srcj65_k$(uid, d);
+    if (tmp3_safe_receiver == null)
+      null;
+    else {
+      // Inline function 'kotlin.let' call
+      builder_1.put_mrde5n_k$('azione', tmp3_safe_receiver);
+    }
+    return builder_1.build_bkh6qh_k$().toString();
+  };
+  protoOf(BancoSito).risultato = function () {
+    return this.s_1.risultato_e62l0b_k$().toString();
+  };
+  protoOf(BancoSito).riordino = function () {
+    return riordinoRighe(this.s_1);
+  };
+  protoOf(BancoSito).cercaCapi = function (specie, query) {
+    return cercaCapiGestione(this.s_1, specie, query);
+  };
+  protoOf(BancoSito).numerazioneFinale = function (sistemazioniJson) {
+    return numerazioneFinale(this.s_1, sistemazioniJson);
+  };
+  protoOf(BancoSito).azioni = function () {
+    return (new JsonArray(this.s_1.azioniApplicate_1)).toString();
+  };
+  function apriBancoSito(progettoJson, azioniJson) {
+    return new BancoSito(sessione(progettoJson, azioniJson));
+  }
+  function get_motoreRiordinoSito() {
+    return motoreRiordinoSito;
+  }
   var motoreRiordinoSito;
   function creaProgettoSito(ingressoJson) {
     return CreazioneSito_getInstance().crea_2uaa4y_k$(get_jsonObject(Default_getInstance().parseToJsonElement_rqvr2k_k$(ingressoJson))).toString();
@@ -76475,29 +78732,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return (new JsonObject(plus_5(plus_5(dati, to('veterinari', JsonPrimitive_2(tmp$ret$0))), to('verso_riempimento', JsonPrimitive_0(a.impostazioni_1.versoRiempimento_1.codice_1))))).toString();
   }
   function numerazioneFinaleStampeSito(progettoJson, azioniJson, sistemazioniJson) {
-    var s = sessione(progettoJson, azioniJson);
-    var a = s.attuali_b5qj86_k$();
-    var righe = s.righe_1sls7h_k$();
-    var sistObj = get_jsonObject(Default_getInstance().parseToJsonElement_rqvr2k_k$(sistemazioniJson));
-    // Inline function 'kotlin.collections.mapValues' call
-    // Inline function 'kotlin.collections.mapValuesTo' call
-    var destination = LinkedHashMap_init_$Create$_0(mapCapacity(sistObj.get_size_woubt6_k$()));
-    // Inline function 'kotlin.collections.associateByTo' call
-    var _iterator__ex2g4s = sistObj.get_entries_p20ztl_k$().iterator_jk1svi_k$();
-    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
-      var element = _iterator__ex2g4s.next_20eer_k$();
-      var tmp = element.get_key_18j28a_k$();
-      // Inline function 'kotlin.collections.component1' call
-      var stab = element.get_key_18j28a_k$();
-      // Inline function 'kotlin.collections.component2' call
-      var d = element.get_value_j01efc_k$();
-      var stabObj = get_jsonObject(d);
-      var lettera = testo_11(stabObj, 'lettera');
-      var tmp$ret$4 = Riordino_getInstance().sistemazione_w0kbmg_k$(get_jsonObject(getValue(stabObj, 'dati')), stab, lettera);
-      destination.put_4fpzoq_k$(tmp, tmp$ret$4);
-    }
-    var sistemazioni = destination;
-    return NumerazioneStampe_instance.preparaFinale_qm8aut_k$(a, righe, sistemazioni).toString();
+    return numerazioneFinale(sessione(progettoJson, azioniJson), sistemazioniJson);
   }
   function riconciliaBackupSito(ingressiJson, firmaJson, adesso, ora, versioneApp) {
     var ingressiArray = get_jsonArray(Default_getInstance().parseToJsonElement_rqvr2k_k$(ingressiJson));
@@ -76610,7 +78845,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var this_5 = toList_1(destination_2);
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp_10 = riconciliaBackupSito$lambda;
-    var tmp$ret$26 = new sam$kotlin_Comparator$0_21(tmp_10);
+    var tmp$ret$26 = new sam$kotlin_Comparator$0_22(tmp_10);
     // Inline function 'kotlin.collections.forEach' call
     var _iterator__ex2g4s_3 = sortedWith(this_5, tmp$ret$26).iterator_jk1svi_k$();
     while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
@@ -76621,7 +78856,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       // Inline function 'kotlin.collections.sortedBy' call
       // Inline function 'kotlin.comparisons.compareBy' call
       var tmp_12 = riconciliaBackupSito$lambda_0;
-      var tmp$ret$30 = new sam$kotlin_Comparator$0_21(tmp_12);
+      var tmp$ret$30 = new sam$kotlin_Comparator$0_22(tmp_12);
       var tmp_13 = sortedWith(ev_0, tmp$ret$30);
       put(builder, tmp_11, joinToString_0(tmp_13, '', VOID, VOID, VOID, VOID, riconciliaBackupSito$lambda_1));
     }
@@ -76722,19 +78957,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return sessione(progettoJson, azioniJson).risultato_e62l0b_k$().toString();
   }
   function cercaCapiGestioneSito(progettoJson, azioniJson, specie, query) {
-    var s = sessione(progettoJson, azioniJson);
-    var a = s.attuali_b5qj86_k$();
-    // Inline function 'kotlin.collections.map' call
-    var this_0 = RicercaCapo_instance.cercaPerSpecie$default_3843ae_k$(query, a.pacchetto_1, s.righe_1sls7h_k$(), specie, VOID, VOID, a.get_serie_iygor7_k$(), a.impostazioni_1.etaDiagnosticaMesi_1);
-    // Inline function 'kotlin.collections.mapTo' call
-    var destination = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
-    var _iterator__ex2g4s = this_0.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
-      var item = _iterator__ex2g4s.next_20eer_k$();
-      var tmp$ret$2 = JsonPrimitive_0(item.contrassegno_1);
-      destination.add_utx5q5_k$(tmp$ret$2);
-    }
-    return (new JsonArray(destination)).toString();
+    return cercaCapiGestione(sessione(progettoJson, azioniJson), specie, query);
   }
   function chiaveSpuntaSito(rigaJson) {
     var o = get_jsonObject(Default_getInstance().parseToJsonElement_rqvr2k_k$(rigaJson));
@@ -76861,186 +79084,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return (new JsonArray(destination)).toString();
   }
   function riordinoRigheSito(progettoJson, azioniJson) {
-    var s = sessione(progettoJson, azioniJson);
-    var att = s.attuali_b5qj86_k$();
-    var rr = s.righe_1sls7h_k$();
-    var tmp = s.eventi_1;
-    // Inline function 'kotlin.checkNotNull' call
-    var tmp0 = motoreRiordinoSito;
-    var tmp$ret$1;
-    $l$block: {
-      // Inline function 'kotlin.checkNotNull' call
-      if (tmp0 == null) {
-        var message = 'Required value was null.';
-        throw IllegalStateException_init_$Create$_0(toString_1(message));
-      } else {
-        tmp$ret$1 = tmp0;
-        break $l$block;
-      }
-    }
-    var tmp$ret$0 = tmp$ret$1;
-    var invio = new InvioRiordino(s.originale_1, tmp, tmp$ret$0);
-    var indiceInvii = Companion_instance_52.di_4dh1u9_k$(s.eventi_1);
-    // Inline function 'kotlin.collections.flatMap' call
-    var tmp0_0 = att.pacchetto_1.config_1.stabilimentiLavoro_1;
-    // Inline function 'kotlin.collections.flatMapTo' call
-    var destination = ArrayList_init_$Create$();
-    var _iterator__ex2g4s = tmp0_0.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
-      var element = _iterator__ex2g4s.next_20eer_k$();
-      var base = invio.sistemazione_m8vvvk_k$(element.codice_1, true);
-      var corrente = invio.sistemazione$default_b5uosb_k$(element.codice_1);
-      // Inline function 'kotlin.collections.filter' call
-      var tmp0_1 = att.get_serie_iygor7_k$();
-      // Inline function 'kotlin.collections.filterTo' call
-      var destination_0 = ArrayList_init_$Create$();
-      var _iterator__ex2g4s_0 = tmp0_1.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
-        var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
-        if (substringBefore(element_0.id_1, _Char___init__impl__6a9atx(58)) === element.codice_1) {
-          destination_0.add_utx5q5_k$(element_0);
-        }
-      }
-      // Inline function 'kotlin.collections.map' call
-      // Inline function 'kotlin.collections.mapTo' call
-      var destination_1 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_0, 10));
-      var _iterator__ex2g4s_1 = destination_0.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
-        var item = _iterator__ex2g4s_1.next_20eer_k$();
-        // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-        var builder = new JsonObjectBuilder();
-        put(builder, 'codice', element.codice_1);
-        put(builder, 'specie', item.get_specie_jla71c_k$());
-        // Inline function 'kotlin.collections.orEmpty' call
-        var tmp0_elvis_lhs = corrente.numerazione_1.get_wei43m_k$(item.get_specie_jla71c_k$());
-        // Inline function 'kotlin.collections.map' call
-        var this_0 = tmp0_elvis_lhs == null ? emptyList() : tmp0_elvis_lhs;
-        // Inline function 'kotlin.collections.mapTo' call
-        var destination_2 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
-        var _iterator__ex2g4s_2 = this_0.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
-          var item_0 = _iterator__ex2g4s_2.next_20eer_k$();
-          var tmp$ret$18;
-          $l$block_1: {
-            // Inline function 'kotlin.collections.singleOrNull' call
-            var single = null;
-            var found = false;
-            var _iterator__ex2g4s_3 = rr.iterator_jk1svi_k$();
-            while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
-              var element_1 = _iterator__ex2g4s_3.next_20eer_k$();
-              var tmp_0;
-              var tmp_1;
-              var tmp_2;
-              if (element_1.serie_1 === item.id_1) {
-                var tmp_3;
-                if (element_1.uid_1 === item_0.uid_1) {
-                  tmp_3 = true;
-                } else {
-                  var tmp_4;
-                  // Inline function 'kotlin.text.isEmpty' call
-                  var this_1 = item_0.uid_1;
-                  if (charSequenceLength(this_1) === 0) {
-                    tmp_4 = element_1.contrassegno_1 === item_0.contrassegno_1;
-                  } else {
-                    tmp_4 = false;
-                  }
-                  tmp_3 = tmp_4;
-                }
-                tmp_2 = tmp_3;
-              } else {
-                tmp_2 = false;
-              }
-              if (tmp_2) {
-                tmp_1 = !element_1.annullata_1;
-              } else {
-                tmp_1 = false;
-              }
-              if (tmp_1) {
-                tmp_0 = !element_1.persa_1;
-              } else {
-                tmp_0 = false;
-              }
-              if (tmp_0) {
-                if (found) {
-                  tmp$ret$18 = null;
-                  break $l$block_1;
-                }
-                single = element_1;
-                found = true;
-              }
-            }
-            if (!found) {
-              tmp$ret$18 = null;
-              break $l$block_1;
-            }
-            tmp$ret$18 = single;
-          }
-          var r = tmp$ret$18;
-          // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-          var builder_0 = new JsonObjectBuilder();
-          put_1(builder_0, 'provetta', item_0.provetta_1);
-          // Inline function 'kotlin.text.orEmpty' call
-          var tmp0_elvis_lhs_0 = r == null ? null : r.uid_1;
-          var tmp$ret$23 = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
-          put(builder_0, 'uid', tmp$ret$23);
-          // Inline function 'kotlin.text.orEmpty' call
-          var tmp0_elvis_lhs_1 = r == null ? null : r.etichetta_1;
-          var tmp$ret$24 = tmp0_elvis_lhs_1 == null ? '' : tmp0_elvis_lhs_1;
-          put(builder_0, 'etichetta', tmp$ret$24);
-          put(builder_0, 'contrassegno', item_0.contrassegno_1);
-          var tmp$ret$17 = builder_0.build_bkh6qh_k$();
-          destination_2.add_utx5q5_k$(tmp$ret$17);
-        }
-        builder.put_mrde5n_k$('numerazione', new JsonArray(destination_2));
-        // Inline function 'kotlin.collections.map' call
-        var this_2 = invio.guida_692u4k_k$(element.codice_1, item.get_specie_jla71c_k$(), base);
-        // Inline function 'kotlin.collections.mapTo' call
-        var destination_3 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_2, 10));
-        var _iterator__ex2g4s_4 = this_2.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
-          var item_1 = _iterator__ex2g4s_4.next_20eer_k$();
-          // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-          var builder_1 = new JsonObjectBuilder();
-          put(builder_1, 'uid', item_1.uid_1);
-          put(builder_1, 'contrassegno', item_1.contrassegno_1);
-          put(builder_1, 'da', item_1.etichetta_1);
-          put_1(builder_1, 'plateau_da', item_1.da_1.plateau_1);
-          put_1(builder_1, 'pos_da', item_1.da_1.pozzettoPlateau_1);
-          put_0(builder_1, 'secchio', item_1.da_1.secchio_1);
-          put_1(builder_1, 'a_n', item_1.a_1);
-          put(builder_1, 'motivo', item_1.motivo_1);
-          var tmp0_safe_receiver = indiceInvii.destinazioneApplicata_l6jkgm_k$(item_1.uid_1, item_1.a_1);
-          var tmp_5;
-          if (tmp0_safe_receiver == null) {
-            tmp_5 = null;
-          } else {
-            // Inline function 'kotlin.let' call
-            tmp_5 = JsonPrimitive_2(tmp0_safe_receiver);
-          }
-          var tmp1_elvis_lhs = tmp_5;
-          builder_1.put_mrde5n_k$('applicata_a', tmp1_elvis_lhs == null ? JsonNull_getInstance() : tmp1_elvis_lhs);
-          var tmp_6;
-          if (indiceInvii.fatta_6edtno_k$(item_1.uid_1, item_1.a_1)) {
-            tmp_6 = true;
-          } else {
-            var tmp0_2 = indiceInvii.spunte_1;
-            // Inline function 'kotlin.collections.contains' call
-            // Inline function 'kotlin.collections.containsKey' call
-            var key = item_1.chiave_1;
-            tmp_6 = (isInterface(tmp0_2, KtMap) ? tmp0_2 : THROW_CCE()).containsKey_aw81wo_k$(key);
-          }
-          put_0(builder_1, 'fatta', tmp_6);
-          var tmp$ret$27 = builder_1.build_bkh6qh_k$();
-          destination_3.add_utx5q5_k$(tmp$ret$27);
-        }
-        builder.put_mrde5n_k$('guida', new JsonArray(destination_3));
-        var tmp$ret$11 = builder.build_bkh6qh_k$();
-        destination_1.add_utx5q5_k$(tmp$ret$11);
-      }
-      var list = destination_1;
-      addAll(destination, list);
-    }
-    return (new JsonArray(destination)).toString();
+    return riordinoRighe(sessione(progettoJson, azioniJson));
   }
   function ricercaGuidaSito(progettoJson, azioniJson, datiJson, opzioniJson) {
     var o = get_jsonObject(Default_getInstance().parseToJsonElement_rqvr2k_k$(opzioniJson));
@@ -77286,6 +79330,30 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var tmp$ret$16 = isInterface(this_15, KSerializer) ? this_15 : THROW_CCE();
     return this_13.encodeToString_k0apqx_k$(tmp$ret$16, res);
   }
+  function numerazioneFinale(s, sistemazioniJson) {
+    var a = s.attuali_b5qj86_k$();
+    var righe = s.righe_1sls7h_k$();
+    var sistObj = get_jsonObject(Default_getInstance().parseToJsonElement_rqvr2k_k$(sistemazioniJson));
+    // Inline function 'kotlin.collections.mapValues' call
+    // Inline function 'kotlin.collections.mapValuesTo' call
+    var destination = LinkedHashMap_init_$Create$_0(mapCapacity(sistObj.get_size_woubt6_k$()));
+    // Inline function 'kotlin.collections.associateByTo' call
+    var _iterator__ex2g4s = sistObj.get_entries_p20ztl_k$().iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      var tmp = element.get_key_18j28a_k$();
+      // Inline function 'kotlin.collections.component1' call
+      var stab = element.get_key_18j28a_k$();
+      // Inline function 'kotlin.collections.component2' call
+      var d = element.get_value_j01efc_k$();
+      var stabObj = get_jsonObject(d);
+      var lettera = testo_11(stabObj, 'lettera');
+      var tmp$ret$4 = Riordino_getInstance().sistemazione_w0kbmg_k$(get_jsonObject(getValue(stabObj, 'dati')), stab, lettera);
+      destination.put_4fpzoq_k$(tmp, tmp$ret$4);
+    }
+    var sistemazioni = destination;
+    return NumerazioneStampe_instance.preparaFinale_qm8aut_k$(a, righe, sistemazioni).toString();
+  }
   function eventi(testo) {
     var tmp0 = get_jsonArray(Default_getInstance().parseToJsonElement_rqvr2k_k$(testo));
     var tmp2_map_this = Companion_getInstance_86();
@@ -77315,6 +79383,201 @@ if (typeof String.prototype.startsWith === 'undefined') {
       }
     }
     return tmp;
+  }
+  function cercaCapiGestione(s, specie, query) {
+    var a = s.attuali_b5qj86_k$();
+    // Inline function 'kotlin.collections.map' call
+    var this_0 = RicercaCapo_instance.cercaPerSpecie$default_3843ae_k$(query, a.pacchetto_1, s.righe_1sls7h_k$(), specie, VOID, VOID, a.get_serie_iygor7_k$(), a.impostazioni_1.etaDiagnosticaMesi_1);
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
+    var _iterator__ex2g4s = this_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s.next_20eer_k$();
+      var tmp$ret$2 = JsonPrimitive_0(item.contrassegno_1);
+      destination.add_utx5q5_k$(tmp$ret$2);
+    }
+    return (new JsonArray(destination)).toString();
+  }
+  function riordinoRighe(s) {
+    var att = s.attuali_b5qj86_k$();
+    var rr = s.righe_1sls7h_k$();
+    var tmp = s.eventi_1;
+    // Inline function 'kotlin.checkNotNull' call
+    var tmp0 = motoreRiordinoSito;
+    var tmp$ret$1;
+    $l$block: {
+      // Inline function 'kotlin.checkNotNull' call
+      if (tmp0 == null) {
+        var message = 'Required value was null.';
+        throw IllegalStateException_init_$Create$_0(toString_1(message));
+      } else {
+        tmp$ret$1 = tmp0;
+        break $l$block;
+      }
+    }
+    var tmp$ret$0 = tmp$ret$1;
+    var invio = new InvioRiordino(s.originale_1, tmp, tmp$ret$0);
+    var indiceInvii = Companion_instance_52.di_4dh1u9_k$(s.eventi_1);
+    // Inline function 'kotlin.collections.flatMap' call
+    var tmp0_0 = att.pacchetto_1.config_1.stabilimentiLavoro_1;
+    // Inline function 'kotlin.collections.flatMapTo' call
+    var destination = ArrayList_init_$Create$();
+    var _iterator__ex2g4s = tmp0_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      var base = invio.sistemazione_m8vvvk_k$(element.codice_1, true);
+      var corrente = invio.sistemazione$default_b5uosb_k$(element.codice_1);
+      // Inline function 'kotlin.collections.filter' call
+      var tmp0_1 = att.get_serie_iygor7_k$();
+      // Inline function 'kotlin.collections.filterTo' call
+      var destination_0 = ArrayList_init_$Create$();
+      var _iterator__ex2g4s_0 = tmp0_1.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+        var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
+        if (substringBefore(element_0.id_1, _Char___init__impl__6a9atx(58)) === element.codice_1) {
+          destination_0.add_utx5q5_k$(element_0);
+        }
+      }
+      // Inline function 'kotlin.collections.map' call
+      // Inline function 'kotlin.collections.mapTo' call
+      var destination_1 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_0, 10));
+      var _iterator__ex2g4s_1 = destination_0.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
+        var item = _iterator__ex2g4s_1.next_20eer_k$();
+        // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+        var builder = new JsonObjectBuilder();
+        put(builder, 'codice', element.codice_1);
+        put(builder, 'specie', item.get_specie_jla71c_k$());
+        // Inline function 'kotlin.collections.orEmpty' call
+        var tmp0_elvis_lhs = corrente.numerazione_1.get_wei43m_k$(item.get_specie_jla71c_k$());
+        // Inline function 'kotlin.collections.map' call
+        var this_0 = tmp0_elvis_lhs == null ? emptyList() : tmp0_elvis_lhs;
+        // Inline function 'kotlin.collections.mapTo' call
+        var destination_2 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
+        var _iterator__ex2g4s_2 = this_0.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
+          var item_0 = _iterator__ex2g4s_2.next_20eer_k$();
+          var tmp$ret$18;
+          $l$block_1: {
+            // Inline function 'kotlin.collections.singleOrNull' call
+            var single = null;
+            var found = false;
+            var _iterator__ex2g4s_3 = rr.iterator_jk1svi_k$();
+            while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
+              var element_1 = _iterator__ex2g4s_3.next_20eer_k$();
+              var tmp_0;
+              var tmp_1;
+              var tmp_2;
+              if (element_1.serie_1 === item.id_1) {
+                var tmp_3;
+                if (element_1.uid_1 === item_0.uid_1) {
+                  tmp_3 = true;
+                } else {
+                  var tmp_4;
+                  // Inline function 'kotlin.text.isEmpty' call
+                  var this_1 = item_0.uid_1;
+                  if (charSequenceLength(this_1) === 0) {
+                    tmp_4 = element_1.contrassegno_1 === item_0.contrassegno_1;
+                  } else {
+                    tmp_4 = false;
+                  }
+                  tmp_3 = tmp_4;
+                }
+                tmp_2 = tmp_3;
+              } else {
+                tmp_2 = false;
+              }
+              if (tmp_2) {
+                tmp_1 = !element_1.annullata_1;
+              } else {
+                tmp_1 = false;
+              }
+              if (tmp_1) {
+                tmp_0 = !element_1.persa_1;
+              } else {
+                tmp_0 = false;
+              }
+              if (tmp_0) {
+                if (found) {
+                  tmp$ret$18 = null;
+                  break $l$block_1;
+                }
+                single = element_1;
+                found = true;
+              }
+            }
+            if (!found) {
+              tmp$ret$18 = null;
+              break $l$block_1;
+            }
+            tmp$ret$18 = single;
+          }
+          var r = tmp$ret$18;
+          // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+          var builder_0 = new JsonObjectBuilder();
+          put_1(builder_0, 'provetta', item_0.provetta_1);
+          // Inline function 'kotlin.text.orEmpty' call
+          var tmp0_elvis_lhs_0 = r == null ? null : r.uid_1;
+          var tmp$ret$23 = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
+          put(builder_0, 'uid', tmp$ret$23);
+          // Inline function 'kotlin.text.orEmpty' call
+          var tmp0_elvis_lhs_1 = r == null ? null : r.etichetta_1;
+          var tmp$ret$24 = tmp0_elvis_lhs_1 == null ? '' : tmp0_elvis_lhs_1;
+          put(builder_0, 'etichetta', tmp$ret$24);
+          put(builder_0, 'contrassegno', item_0.contrassegno_1);
+          var tmp$ret$17 = builder_0.build_bkh6qh_k$();
+          destination_2.add_utx5q5_k$(tmp$ret$17);
+        }
+        builder.put_mrde5n_k$('numerazione', new JsonArray(destination_2));
+        // Inline function 'kotlin.collections.map' call
+        var this_2 = invio.guida_692u4k_k$(element.codice_1, item.get_specie_jla71c_k$(), base);
+        // Inline function 'kotlin.collections.mapTo' call
+        var destination_3 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_2, 10));
+        var _iterator__ex2g4s_4 = this_2.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
+          var item_1 = _iterator__ex2g4s_4.next_20eer_k$();
+          // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+          var builder_1 = new JsonObjectBuilder();
+          put(builder_1, 'uid', item_1.uid_1);
+          put(builder_1, 'contrassegno', item_1.contrassegno_1);
+          put(builder_1, 'da', item_1.etichetta_1);
+          put_1(builder_1, 'plateau_da', item_1.da_1.plateau_1);
+          put_1(builder_1, 'pos_da', item_1.da_1.pozzettoPlateau_1);
+          put_0(builder_1, 'secchio', item_1.da_1.secchio_1);
+          put_1(builder_1, 'a_n', item_1.a_1);
+          put(builder_1, 'motivo', item_1.motivo_1);
+          var tmp0_safe_receiver = indiceInvii.destinazioneApplicata_l6jkgm_k$(item_1.uid_1, item_1.a_1);
+          var tmp_5;
+          if (tmp0_safe_receiver == null) {
+            tmp_5 = null;
+          } else {
+            // Inline function 'kotlin.let' call
+            tmp_5 = JsonPrimitive_2(tmp0_safe_receiver);
+          }
+          var tmp1_elvis_lhs = tmp_5;
+          builder_1.put_mrde5n_k$('applicata_a', tmp1_elvis_lhs == null ? JsonNull_getInstance() : tmp1_elvis_lhs);
+          var tmp_6;
+          if (indiceInvii.fatta_6edtno_k$(item_1.uid_1, item_1.a_1)) {
+            tmp_6 = true;
+          } else {
+            var tmp0_2 = indiceInvii.spunte_1;
+            // Inline function 'kotlin.collections.contains' call
+            // Inline function 'kotlin.collections.containsKey' call
+            var key = item_1.chiave_1;
+            tmp_6 = (isInterface(tmp0_2, KtMap) ? tmp0_2 : THROW_CCE()).containsKey_aw81wo_k$(key);
+          }
+          put_0(builder_1, 'fatta', tmp_6);
+          var tmp$ret$27 = builder_1.build_bkh6qh_k$();
+          destination_3.add_utx5q5_k$(tmp$ret$27);
+        }
+        builder.put_mrde5n_k$('guida', new JsonArray(destination_3));
+        var tmp$ret$11 = builder.build_bkh6qh_k$();
+        destination_1.add_utx5q5_k$(tmp$ret$11);
+      }
+      var list = destination_1;
+      addAll(destination, list);
+    }
+    return (new JsonArray(destination)).toString();
   }
   function chiave(k) {
     return (new JsonArray(listOf_0([JsonPrimitive_0(k.stabilimento_1), JsonPrimitive_0(k.specie_1), JsonPrimitive_0(k.contrassegno_1), JsonPrimitive_2(k.a_1)]))).toString();
@@ -77366,23 +79629,365 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var _iterator__ex2g4s = get_jsonArray(Default_getInstance().parseToJsonElement_rqvr2k_k$(azioniJson)).iterator_jk1svi_k$();
     while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
       var element = _iterator__ex2g4s.next_20eer_k$();
-      this_0.applica_pihv75_k$(get_jsonObject(element));
+      this_0.applica$default_e4dbak_k$(get_jsonObject(element));
     }
     return this_0;
   }
-  function sam$kotlin_Comparator$0_20(function_0) {
+  function _get_cAtt__d4647h($this) {
+    var tmp = $this.cAtt_1;
+    if (!(tmp == null))
+      return tmp;
+    else {
+      throwUninitializedPropertyAccessException('cAtt');
+    }
+  }
+  function _get_cStato__uo971p($this) {
+    var tmp = $this.cStato_1;
+    if (!(tmp == null))
+      return tmp;
+    else {
+      throwUninitializedPropertyAccessException('cStato');
+    }
+  }
+  function _get_cRighe__vb8z6n($this) {
+    var tmp = $this.cRighe_1;
+    if (!(tmp == null))
+      return tmp;
+    else {
+      throwUninitializedPropertyAccessException('cRighe');
+    }
+  }
+  function nuovoRegistro($this, ev) {
+    var r = new Registro($this.feedRegia_1, new ArchivioMemoria());
+    var ricevuti = r.ricevi$default_76owse_k$(ev);
+    // Inline function 'kotlin.check' call
+    if (!(ricevuti.contesi_1.isEmpty_y1axqb_k$() && ricevuti.scartati_1 === 0)) {
+      var message = 'registro incompleto o conteso';
+      throw IllegalStateException_init_$Create$_0(toString_1(message));
+    }
+    return r;
+  }
+  function aggiornaEventi($this) {
+    $this.eventi_1 = ordinatiCanonico($this.reg_1.tutti_1txb60_k$());
+    $this.revisione_1 = $this.revisione_1 + 1 | 0;
+  }
+  function assicuraRegia($this, ts) {
+    var tutti = $this.reg_1.tutti_1txb60_k$();
+    var tmp;
+    if ($this.stato_1tchi3_k$().regia_1 == null) {
+      var tmp$ret$0;
+      $l$block_0: {
+        // Inline function 'kotlin.collections.any' call
+        var tmp_0;
+        if (isInterface(tutti, Collection)) {
+          tmp_0 = tutti.isEmpty_y1axqb_k$();
+        } else {
+          tmp_0 = false;
+        }
+        if (tmp_0) {
+          tmp$ret$0 = false;
+          break $l$block_0;
+        }
+        var _iterator__ex2g4s = tutti.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+          var element = _iterator__ex2g4s.next_20eer_k$();
+          if (element.tipo_1 === 'REGIA') {
+            tmp$ret$0 = true;
+            break $l$block_0;
+          }
+        }
+        tmp$ret$0 = false;
+      }
+      tmp = tmp$ret$0;
+    } else {
+      tmp = false;
+    }
+    if (tmp) {
+      // Inline function 'kotlin.collections.filter' call
+      // Inline function 'kotlin.collections.filterTo' call
+      var destination = ArrayList_init_$Create$();
+      var _iterator__ex2g4s_0 = tutti.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+        var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
+        if (element_0.tipo_1 === 'REGIA') {
+          destination.add_utx5q5_k$(element_0);
+        }
+      }
+      // Inline function 'kotlin.collections.maxOf' call
+      var iterator = destination.iterator_jk1svi_k$();
+      if (!iterator.hasNext_bitz1p_k$())
+        throw NoSuchElementException_init_$Create$();
+      var tmp_1 = iterator.next_20eer_k$().dati_1.get_6bo4tg_k$('termine');
+      var tmp0_safe_receiver = tmp_1 instanceof JsonPrimitive ? tmp_1 : null;
+      var tmp1_elvis_lhs = tmp0_safe_receiver == null ? null : get_longOrNull(tmp0_safe_receiver);
+      var maxValue = tmp1_elvis_lhs == null ? new Long(0, 0) : tmp1_elvis_lhs;
+      while (iterator.hasNext_bitz1p_k$()) {
+        var tmp_2 = iterator.next_20eer_k$().dati_1.get_6bo4tg_k$('termine');
+        var tmp0_safe_receiver_0 = tmp_2 instanceof JsonPrimitive ? tmp_2 : null;
+        var tmp1_elvis_lhs_0 = tmp0_safe_receiver_0 == null ? null : get_longOrNull(tmp0_safe_receiver_0);
+        var v = tmp1_elvis_lhs_0 == null ? new Long(0, 0) : tmp1_elvis_lhs_0;
+        if (compareTo(maxValue, v) < 0) {
+          maxValue = v;
+        }
+      }
+      var termine = maxValue;
+      var tmp_3 = $this.reg_1;
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder = new JsonObjectBuilder();
+      // Inline function 'kotlin.Long.plus' call
+      var tmp$ret$10 = add(termine, fromInt(1));
+      put_1(builder, 'termine', tmp$ret$10);
+      put(builder, 'a', $this.feedRegia_1);
+      var tmp$ret$8 = builder.build_bkh6qh_k$();
+      tmp_3.scrivi_r1zfur_k$('REGIA', tmp$ret$8, 'Sito', ts);
+      aggiornaEventi($this);
+    }
+  }
+  function calcola($this) {
+    if ($this.cacheRev_1 === $this.revisione_1)
+      return Unit_instance;
+    $this.cAtt_1 = Companion_getInstance_47().di_55966q_k$($this.originale_1, $this.eventi_1);
+    $this.cStato_1 = Companion_getInstance_67().di$default_tuv5ya_k$($this.eventi_1, _get_cAtt__d4647h($this).get_serie_iygor7_k$());
+    $this.cRighe_1 = ElencoProvette_getInstance().di_wu4zn2_k$($this.eventi_1, _get_cStato__uo971p($this), _get_cAtt__d4647h($this));
+    $this.cacheRev_1 = $this.revisione_1;
+  }
+  function calcolaStatisticheCampo($this) {
+    var a = $this.attuali_b5qj86_k$();
+    var imp = a.impostazioni_1;
+    var evCampo = CategoriaGestione_getInstance().campionamento_87r8m7_k$($this.eventi_1);
+    var aCampo = Companion_getInstance_47().di_55966q_k$($this.originale_1, evCampo);
+    var righeCampo = ElencoProvette_getInstance().di_wu4zn2_k$(evCampo, Companion_getInstance_67().di$default_tuv5ya_k$(evCampo, aCampo.get_serie_iygor7_k$()), aCampo);
+    var coperture = Copertura_instance.di_ni43c7_k$(aCampo.pacchetto_1, righeCampo, imp.etaDiagnosticaMesi_1, a.get_serie_iygor7_k$());
+    // Inline function 'kotlin.collections.sumOf' call
+    var sum = 0;
+    var _iterator__ex2g4s = coperture.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      var tmp = sum;
+      sum = tmp + element.mancanti_1.get_size_woubt6_k$() | 0;
+    }
+    var mancantiTot = sum;
+    // Inline function 'kotlin.collections.sumOf' call
+    var sum_0 = 0;
+    var _iterator__ex2g4s_0 = coperture.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
+      var tmp_0 = sum_0;
+      sum_0 = tmp_0 + element_0.attesi_1 | 0;
+    }
+    var attesiTot = sum_0;
+    // Inline function 'kotlin.collections.mapNotNull' call
+    // Inline function 'kotlin.collections.mapNotNullTo' call
+    var destination = ArrayList_init_$Create$();
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s_1 = evCampo.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
+      var element_1 = _iterator__ex2g4s_1.next_20eer_k$();
+      var tmp0_safe_receiver = Data_getInstance().ms_9lyjo4_k$(element_1.ts_1);
+      if (tmp0_safe_receiver == null)
+        null;
+      else {
+        // Inline function 'kotlin.let' call
+        destination.add_utx5q5_k$(tmp0_safe_receiver);
+      }
+    }
+    var tmp0_elvis_lhs = maxOrNull(destination);
+    var adessoMs = tmp0_elvis_lhs == null ? new Long(0, 0) : tmp0_elvis_lhs;
+    var andamento = Companion_getInstance_34().di_rr013f_k$(righeCampo, evCampo, mancantiTot, attesiTot, adessoMs);
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder = new JsonObjectBuilder();
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s_2 = listOf_0([Specie_PECORE_getInstance(), Specie_CAPRE_getInstance()]).iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
+      var element_2 = _iterator__ex2g4s_2.next_20eer_k$();
+      var nomeSp = element_2.equals(Specie_PECORE_getInstance()) ? 'pecore' : 'capre';
+      var s = Statistiche_instance.di_19uqw0_k$(aCampo.pacchetto_1, righeCampo, element_2);
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder_0 = new JsonObjectBuilder();
+      put(builder_0, 'specie', s.specie_1);
+      put_1(builder_0, 'attesi', s.attesi_1);
+      put_1(builder_0, 'capiFatti', s.capiFatti_1);
+      put_1(builder_0, 'mancanti', s.mancanti_1);
+      put_1(builder_0, 'percentuale', s.get_percentuale_wio4v3_k$());
+      put_1(builder_0, 'provette', s.provette_1);
+      put_1(builder_0, 'problematiche', s.problematiche_1);
+      put_1(builder_0, 'provvisorie', s.provvisorie_1);
+      put_1(builder_0, 'perse', s.perse_1);
+      put_1(builder_0, 'numeriDoppi', s.numeriDoppi_1);
+      put_1(builder_0, 'doppiContrassegno', s.doppiContrassegno_1);
+      put_1(builder_0, 'maschiAttesi', s.maschiAttesi_1);
+      put_1(builder_0, 'maschiFatti', s.maschiFatti_1);
+      put_1(builder_0, 'capiCampionati', s.capiCampionati_1);
+      put_1(builder_0, 'lettiElettronicamente', s.lettiElettronicamente_1);
+      put_1(builder_0, 'percentualeElettronica', s.get_percentualeElettronica_q8kopf_k$());
+      var tmp0_safe_receiver_0 = s.senzaTransponder_1;
+      if (tmp0_safe_receiver_0 == null)
+        null;
+      else {
+        // Inline function 'kotlin.let' call
+        // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+        var builder_1 = new JsonObjectBuilder();
+        put_1(builder_1, 'totale', tmp0_safe_receiver_0.senzaTransponder_1);
+        put_1(builder_1, 'capi', tmp0_safe_receiver_0.capi_1);
+        put_1(builder_1, 'dx', tmp0_safe_receiver_0.dx_1);
+        put_1(builder_1, 'sx', tmp0_safe_receiver_0.sx_1);
+        put_1(builder_1, 'bolo', tmp0_safe_receiver_0.bolo_1);
+        put(builder_1, 'percentuale', tmp0_safe_receiver_0.get_percentuale_wio4v3_k$());
+        var tmp$ret$19 = builder_1.build_bkh6qh_k$();
+        builder_0.put_mrde5n_k$('senzaTransponder', tmp$ret$19);
+      }
+      var tmp$ret$15 = builder_0.build_bkh6qh_k$();
+      builder.put_mrde5n_k$(nomeSp, tmp$ret$15);
+    }
+    var statSpecie = builder.build_bkh6qh_k$();
+    // Inline function 'kotlin.collections.map' call
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(coperture, 10));
+    var _iterator__ex2g4s_3 = coperture.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s_3.next_20eer_k$();
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder_2 = new JsonObjectBuilder();
+      put(builder_2, 'specie', item.specie_1);
+      put_1(builder_2, 'attesi', item.attesi_1);
+      put_1(builder_2, 'registrati', item.registrati_1);
+      // Inline function 'kotlin.collections.map' call
+      var this_0 = item.mancanti_1;
+      // Inline function 'kotlin.collections.mapTo' call
+      var destination_1 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
+      var _iterator__ex2g4s_4 = this_0.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
+        var item_0 = _iterator__ex2g4s_4.next_20eer_k$();
+        var tmp$ret$28 = JsonPrimitive_0(item_0);
+        destination_1.add_utx5q5_k$(tmp$ret$28);
+      }
+      builder_2.put_mrde5n_k$('mancanti', new JsonArray(destination_1));
+      put_1(builder_2, 'percentuale', item.get_percentuale_wio4v3_k$());
+      var tmp$ret$23 = builder_2.build_bkh6qh_k$();
+      destination_0.add_utx5q5_k$(tmp$ret$23);
+    }
+    var coperturaJson = new JsonArray(destination_0);
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder_3 = new JsonObjectBuilder();
+    // Inline function 'kotlin.collections.map' call
+    var this_1 = andamento.operatori_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_2 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_1, 10));
+    var _iterator__ex2g4s_5 = this_1.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_5.hasNext_bitz1p_k$()) {
+      var item_1 = _iterator__ex2g4s_5.next_20eer_k$();
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder_4 = new JsonObjectBuilder();
+      put(builder_4, 'operatore', item_1.operatore_1);
+      put(builder_4, 'device', item_1.device_1);
+      put(builder_4, 'stato', item_1.stato_1.testo_1);
+      put_1(builder_4, 'provette', item_1.provette_1);
+      put_1(builder_4, 'problematiche', item_1.problematiche_1);
+      put_1(builder_4, 'ritmoMedio', item_1.ritmoMedio_1);
+      put_1(builder_4, 'ritmo20', item_1.ritmo20__1);
+      var tmp0_safe_receiver_1 = item_1.intervalloMedioMin_1;
+      var tmp_1;
+      if (tmp0_safe_receiver_1 == null) {
+        tmp_1 = null;
+      } else {
+        // Inline function 'kotlin.let' call
+        tmp_1 = JsonPrimitive_2(tmp0_safe_receiver_1);
+      }
+      var tmp1_elvis_lhs = tmp_1;
+      builder_4.put_mrde5n_k$('intervalloMedioMin', tmp1_elvis_lhs == null ? JsonNull_getInstance() : tmp1_elvis_lhs);
+      put(builder_4, 'ultima', item_1.ultima_1);
+      put_1(builder_4, 'minutiDiLavoro', item_1.minutiDiLavoro_1);
+      var tmp$ret$33 = builder_4.build_bkh6qh_k$();
+      destination_2.add_utx5q5_k$(tmp$ret$33);
+    }
+    builder_3.put_mrde5n_k$('operatori', new JsonArray(destination_2));
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder_5 = new JsonObjectBuilder();
+    put_1(builder_5, 'mancanti', andamento.stima_1.mancanti_1);
+    put_1(builder_5, 'provetteOra', andamento.stima_1.provetteOra_1);
+    var tmp0_safe_receiver_2 = andamento.stima_1.minuti_1;
+    var tmp_2;
+    if (tmp0_safe_receiver_2 == null) {
+      tmp_2 = null;
+    } else {
+      // Inline function 'kotlin.let' call
+      tmp_2 = JsonPrimitive_2(tmp0_safe_receiver_2);
+    }
+    var tmp1_elvis_lhs_0 = tmp_2;
+    builder_5.put_mrde5n_k$('minuti', tmp1_elvis_lhs_0 == null ? JsonNull_getInstance() : tmp1_elvis_lhs_0);
+    var tmp$ret$38 = builder_5.build_bkh6qh_k$();
+    builder_3.put_mrde5n_k$('stima', tmp$ret$38);
+    var andamentoJson = builder_3.build_bkh6qh_k$();
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder_6 = new JsonObjectBuilder();
+    builder_6.put_mrde5n_k$('specie', statSpecie);
+    // Inline function 'kotlin.collections.flatMap' call
+    var tmp0 = a.pacchetto_1.config_1.stabilimentiLavoro_1;
+    // Inline function 'kotlin.collections.flatMapTo' call
+    var destination_3 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_6 = tmp0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_6.hasNext_bitz1p_k$()) {
+      var element_3 = _iterator__ex2g4s_6.next_20eer_k$();
+      var pStab = a.pacchetto_1.copy$default_mdwsto_k$(VOID, VOID, VOID, VOID, VOID, VOID, a.pacchetto_1.config_1.copy$default_vsaehh_k$(listOf(element_3)));
+      // Inline function 'kotlin.collections.filter' call
+      // Inline function 'kotlin.collections.filterTo' call
+      var destination_4 = ArrayList_init_$Create$();
+      var _iterator__ex2g4s_7 = righeCampo.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_7.hasNext_bitz1p_k$()) {
+        var element_4 = _iterator__ex2g4s_7.next_20eer_k$();
+        if (substringBefore(element_4.serie_1, _Char___init__impl__6a9atx(58)) === element_3.codice_1) {
+          destination_4.add_utx5q5_k$(element_4);
+        }
+      }
+      var rStab = destination_4;
+      // Inline function 'kotlin.collections.map' call
+      var this_2 = get_entries_11();
+      // Inline function 'kotlin.collections.mapTo' call
+      var destination_5 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_2, 10));
+      var _iterator__ex2g4s_8 = this_2.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_8.hasNext_bitz1p_k$()) {
+        var item_2 = _iterator__ex2g4s_8.next_20eer_k$();
+        var sStab = Statistiche_instance.di_19uqw0_k$(pStab, rStab, item_2);
+        // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+        var builder_7 = new JsonObjectBuilder();
+        put(builder_7, 'stabilimento', element_3.codice_1);
+        put(builder_7, 'specie', sStab.specie_1);
+        put_1(builder_7, 'attesi', sStab.attesi_1);
+        put_1(builder_7, 'capiFatti', sStab.capiFatti_1);
+        put_1(builder_7, 'mancanti', sStab.mancanti_1);
+        put_1(builder_7, 'percentuale', sStab.get_percentuale_wio4v3_k$());
+        put_1(builder_7, 'provette', sStab.provette_1);
+        var tmp$ret$52 = builder_7.build_bkh6qh_k$();
+        destination_5.add_utx5q5_k$(tmp$ret$52);
+      }
+      var list = destination_5;
+      addAll(destination_3, list);
+    }
+    builder_6.put_mrde5n_k$('stabilimenti', new JsonArray(destination_3));
+    builder_6.put_mrde5n_k$('copertura', coperturaJson);
+    builder_6.put_mrde5n_k$('andamento', andamentoJson);
+    return builder_6.build_bkh6qh_k$();
+  }
+  function _get_backupBase__d4o24o($this) {
+    var tmp0 = $this.backupBase$delegate_1;
+    var tmp = KProperty1;
+    // Inline function 'kotlin.getValue' call
+    getPropertyCallableRef('backupBase', 1, tmp, SessioneSito$_get_backupBase_$ref_4y65d7(), null);
+    return tmp0.get_value_j01efc_k$();
+  }
+  function sam$kotlin_Comparator$0_21(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_20).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_21).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_20).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_21).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_20).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_21).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_20).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_21).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -77397,9 +80002,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_20).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_21).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
+  function SessioneSito$statisticheCampo$delegate$lambda(this$0) {
+    return function () {
+      return calcolaStatisticheCampo(this$0);
+    };
+  }
+  function SessioneSito$_get_statisticheCampo_$ref_sgyhst() {
+    return constructCallableReference(function (p0) {
+      return p0.get_statisticheCampo_3zsuwm_k$();
+    }, 1, 0, 21);
+  }
   function applica$scrivi(r, op, ts, tipo, dati) {
     return r.scrivi_r1zfur_k$(tipo, dati, op, ts);
   }
@@ -77420,10 +80035,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return applica$scrivi($r, $op, $ts, t, d);
     };
   }
-  function SessioneSito$risultato$lambda(it) {
-    return it.riga_1.etichetta_1;
-  }
-  function SessioneSito$risultato$lambda_0($originaliAttuali, this$0) {
+  function SessioneSito$backupBase$delegate$lambda$lambda($originaliAttuali, this$0) {
     return function ($this$putJsonObject) {
       put($this$putJsonObject, 'nome', NomeSeduta_instance.di_ca0lwf_k$($originaliAttuali.pacchetto_1, NomeSeduta_instance.inizio_wln73a_k$(this$0.eventiOriginali_1)));
       put($this$putJsonObject, 'descrizione', $originaliAttuali.pacchetto_1.sessione_1.descrizione_1);
@@ -77432,7 +80044,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return Unit_instance;
     };
   }
-  function SessioneSito$risultato$lambda_1(this$0, $impronta) {
+  function SessioneSito$backupBase$delegate$lambda$lambda_0(this$0, $impronta) {
     return function ($this$putJsonObject) {
       put_1($this$putJsonObject, 'eventi', this$0.eventiOriginali_1.get_size_woubt6_k$());
       // Inline function 'kotlin.collections.map' call
@@ -77450,7 +80062,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return Unit_instance;
     };
   }
-  function SessioneSito$risultato$lambda_2($salvatoDaOrig) {
+  function SessioneSito$backupBase$delegate$lambda$lambda_1($salvatoDaOrig) {
     return function ($this$putJsonObject) {
       var tmp0_safe_receiver = $salvatoDaOrig;
       var tmp1_elvis_lhs = tmp0_safe_receiver == null ? null : testo_11(tmp0_safe_receiver, 'nome');
@@ -77475,7 +80087,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return Unit_instance;
     };
   }
-  function SessioneSito$risultato$lambda$lambda($st, $r) {
+  function SessioneSito$backupBase$delegate$lambda$lambda$lambda($st, $r) {
     return function ($this$addJsonObject) {
       put($this$addJsonObject, 'file', 'export/export_accettazione_' + $st.codice_1 + '_fejalog.json');
       put($this$addJsonObject, 'stabilimento', $st.codice_1);
@@ -77485,7 +80097,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return Unit_instance;
     };
   }
-  function SessioneSito$risultato$lambda_3($originaliAttuali, $originaliRighe) {
+  function SessioneSito$backupBase$delegate$lambda$lambda_2($originaliAttuali, $originaliRighe) {
     return function ($this$putJsonArray) {
       // Inline function 'kotlin.collections.forEach' call
       var _iterator__ex2g4s = $originaliAttuali.pacchetto_1.config_1.stabilimentiLavoro_1.iterator_jk1svi_k$();
@@ -77493,28 +80105,191 @@ if (typeof String.prototype.startsWith === 'undefined') {
         var element = _iterator__ex2g4s.next_20eer_k$();
         var r = EsportatoreCampo_instance.riepilogo_s3mahu_k$($originaliRighe, element.codice_1);
         if (r.provette_1 > 0) {
-          addJsonObject($this$putJsonArray, SessioneSito$risultato$lambda$lambda(element, r));
+          addJsonObject($this$putJsonArray, SessioneSito$backupBase$delegate$lambda$lambda$lambda(element, r));
         }
       }
       return Unit_instance;
     };
   }
-  function SessioneSito$risultato$lambda_4(a, b) {
+  function SessioneSito$backupBase$delegate$lambda$lambda_3(a, b) {
     // Inline function 'kotlin.comparisons.compareValuesBy' call
     var tmp = a.first_1;
     var tmp$ret$2 = b.first_1;
     return compareValues(tmp, tmp$ret$2);
   }
-  function SessioneSito$risultato$lambda_5(a, b) {
+  function SessioneSito$backupBase$delegate$lambda$lambda_4(a, b) {
     // Inline function 'kotlin.comparisons.compareValuesBy' call
     var tmp = a.seq_1;
     var tmp$ret$2 = b.seq_1;
     return compareValues(tmp, tmp$ret$2);
   }
-  function SessioneSito$risultato$lambda_6(it) {
+  function SessioneSito$backupBase$delegate$lambda$lambda_5(it) {
     return it.canonico_1uktq2_k$() + '\n';
   }
-  function SessioneSito$risultato$lambda_7($this$Json) {
+  function SessioneSito$backupBase$delegate$lambda(this$0) {
+    return function () {
+      var originaliAttuali = Companion_getInstance_47().di_55966q_k$(this$0.originale_1, this$0.eventiOriginali_1);
+      var originaliStato = Companion_getInstance_67().di$default_tuv5ya_k$(this$0.eventiOriginali_1, originaliAttuali.get_serie_iygor7_k$());
+      var originaliRighe = ElencoProvette_getInstance().di_wu4zn2_k$(this$0.eventiOriginali_1, originaliStato, originaliAttuali);
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder = new JsonObjectBuilder();
+      put(builder, 'pacchetto.json', toString_1(getValue(this$0.progetto_1, 'pacchetto')));
+      var tmp = Companion_getInstance_87();
+      // Inline function 'kotlin.collections.groupBy' call
+      var tmp0 = this$0.eventiOriginali_1;
+      // Inline function 'kotlin.collections.groupByTo' call
+      var destination = LinkedHashMap_init_$Create$();
+      var _iterator__ex2g4s = tmp0.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+        var element = _iterator__ex2g4s.next_20eer_k$();
+        var key = element.feed_1;
+        // Inline function 'kotlin.collections.getOrPut' call
+        var value = destination.get_wei43m_k$(key);
+        var tmp_0;
+        if (value == null) {
+          var answer = ArrayList_init_$Create$();
+          destination.put_4fpzoq_k$(key, answer);
+          tmp_0 = answer;
+        } else {
+          tmp_0 = value;
+        }
+        var list = tmp_0;
+        list.add_utx5q5_k$(element);
+      }
+      // Inline function 'kotlin.collections.mapValues' call
+      // Inline function 'kotlin.collections.mapValuesTo' call
+      var destination_0 = LinkedHashMap_init_$Create$_0(mapCapacity(destination.get_size_woubt6_k$()));
+      // Inline function 'kotlin.collections.associateByTo' call
+      var _iterator__ex2g4s_0 = destination.get_entries_p20ztl_k$().iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+        var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
+        var tmp_1 = element_0.get_key_18j28a_k$();
+        // Inline function 'kotlin.collections.component2' call
+        var ev = element_0.get_value_j01efc_k$();
+        var tmp$ret$13;
+        $l$block: {
+          // Inline function 'kotlin.collections.maxBy' call
+          var iterator = ev.iterator_jk1svi_k$();
+          if (!iterator.hasNext_bitz1p_k$())
+            throw NoSuchElementException_init_$Create$();
+          var maxElem = iterator.next_20eer_k$();
+          if (!iterator.hasNext_bitz1p_k$()) {
+            tmp$ret$13 = maxElem;
+            break $l$block;
+          }
+          var maxValue = maxElem.seq_1;
+          do {
+            var e = iterator.next_20eer_k$();
+            var v = e.seq_1;
+            if (compareTo(maxValue, v) < 0) {
+              maxElem = e;
+              maxValue = v;
+            }
+          }
+           while (iterator.hasNext_bitz1p_k$());
+          tmp$ret$13 = maxElem;
+        }
+        var tmp$ret$11 = tmp$ret$13.get_testa_iz0icm_k$();
+        destination_0.put_4fpzoq_k$(tmp_1, tmp$ret$11);
+      }
+      var impronta = tmp.di_i4iulq_k$(destination_0).sha256__1;
+      var tmp0_safe_receiver = lastOrNull(this$0.eventiOriginali_1);
+      var tmp1_elvis_lhs = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.ts_1;
+      var adessoIso = tmp1_elvis_lhs == null ? '' : tmp1_elvis_lhs;
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder_0 = new JsonObjectBuilder();
+      put(builder_0, 'formato', 'fejalog-backup');
+      put_1(builder_0, 'versione', 1);
+      put(builder_0, 'creato_il', adessoIso);
+      put(builder_0, 'app', 'sito');
+      putJsonObject(builder_0, 'seduta', SessioneSito$backupBase$delegate$lambda$lambda(originaliAttuali, this$0));
+      putJsonObject(builder_0, 'registro', SessioneSito$backupBase$delegate$lambda$lambda_0(this$0, impronta));
+      var tmp_2 = this$0.progetto_1.get_6bo4tg_k$('manifesto');
+      var tmp0_safe_receiver_0 = tmp_2 instanceof JsonObject ? tmp_2 : null;
+      var tmp_3 = tmp0_safe_receiver_0 == null ? null : tmp0_safe_receiver_0.get_6bo4tg_k$('salvato_da');
+      var salvatoDaOrig = tmp_3 instanceof JsonObject ? tmp_3 : null;
+      putJsonObject(builder_0, 'salvato_da', SessioneSito$backupBase$delegate$lambda$lambda_1(salvatoDaOrig));
+      putJsonArray(builder_0, 'export', SessioneSito$backupBase$delegate$lambda$lambda_2(originaliAttuali, originaliRighe));
+      var manifestoAggiornato = builder_0.build_bkh6qh_k$();
+      var tmp_4 = this$0.progetto_1.get_6bo4tg_k$('manifesto');
+      var tmp2_safe_receiver = tmp_4 instanceof JsonObject ? tmp_4 : null;
+      var reteOriginale = tmp2_safe_receiver == null ? null : tmp2_safe_receiver.get_6bo4tg_k$('rete');
+      var tmp_5;
+      if (reteOriginale == null) {
+        tmp_5 = null;
+      } else {
+        // Inline function 'kotlin.let' call
+        tmp_5 = mapOf(to('rete', reteOriginale));
+      }
+      var tmp4_elvis_lhs = tmp_5;
+      put(builder, 'backup.json', (new JsonObject(plus_4(manifestoAggiornato, tmp4_elvis_lhs == null ? emptyMap() : tmp4_elvis_lhs))).toString());
+      var csvChiave = TabellaNumerazione_instance.generaCsv_5hkjdj_k$(originaliAttuali.pacchetto_1, originaliAttuali.get_serie_iygor7_k$());
+      put(builder, 'numerazione_chiave.csv', csvChiave);
+      put(builder, 'LEGGIMI.txt', 'Registro originale conservato. Le azioni del sito sono in fejalog-modifiche.json: importarle sulla Regia con anteprima.\r\n');
+      // Inline function 'kotlin.collections.groupBy' call
+      var tmp0_0 = this$0.eventiOriginali_1;
+      // Inline function 'kotlin.collections.groupByTo' call
+      var destination_1 = LinkedHashMap_init_$Create$();
+      var _iterator__ex2g4s_1 = tmp0_0.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
+        var element_1 = _iterator__ex2g4s_1.next_20eer_k$();
+        var key_0 = element_1.feed_1;
+        // Inline function 'kotlin.collections.getOrPut' call
+        var value_0 = destination_1.get_wei43m_k$(key_0);
+        var tmp_6;
+        if (value_0 == null) {
+          var answer_0 = ArrayList_init_$Create$();
+          destination_1.put_4fpzoq_k$(key_0, answer_0);
+          tmp_6 = answer_0;
+        } else {
+          tmp_6 = value_0;
+        }
+        var list_0 = tmp_6;
+        list_0.add_utx5q5_k$(element_1);
+      }
+      // Inline function 'kotlin.collections.sortedBy' call
+      var this_0 = toList_1(destination_1);
+      // Inline function 'kotlin.comparisons.compareBy' call
+      var tmp_7 = SessioneSito$backupBase$delegate$lambda$lambda_3;
+      var tmp$ret$26 = new sam$kotlin_Comparator$0_21(tmp_7);
+      // Inline function 'kotlin.collections.forEach' call
+      var _iterator__ex2g4s_2 = sortedWith(this_0, tmp$ret$26).iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
+        var element_2 = _iterator__ex2g4s_2.next_20eer_k$();
+        var feed = element_2.component1_7eebsc_k$();
+        var ev_0 = element_2.component2_7eebsb_k$();
+        var tmp_8 = 'registro/' + feed + '.jsonl';
+        // Inline function 'kotlin.collections.sortedBy' call
+        // Inline function 'kotlin.comparisons.compareBy' call
+        var tmp_9 = SessioneSito$backupBase$delegate$lambda$lambda_4;
+        var tmp$ret$30 = new sam$kotlin_Comparator$0_21(tmp_9);
+        var tmp_10 = sortedWith(ev_0, tmp$ret$30);
+        put(builder, tmp_8, joinToString_0(tmp_10, '', VOID, VOID, VOID, VOID, SessioneSito$backupBase$delegate$lambda$lambda_5));
+      }
+      // Inline function 'kotlin.collections.forEach' call
+      var _iterator__ex2g4s_3 = originaliAttuali.pacchetto_1.config_1.stabilimentiLavoro_1.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
+        var element_3 = _iterator__ex2g4s_3.next_20eer_k$();
+        var r = EsportatoreCampo_instance.riepilogo_s3mahu_k$(originaliRighe, element_3.codice_1);
+        if (r.provette_1 > 0) {
+          var exp = EsportatoreCampo_instance.crea_qd9rni_k$(originaliAttuali.pacchetto_1, this$0.eventiOriginali_1, originaliRighe, element_3.codice_1, adessoIso, 'sito', impronta);
+          put(builder, 'export/export_accettazione_' + element_3.codice_1 + '_fejalog.json', exp.toString());
+        }
+      }
+      put(builder, '_impronta', impronta);
+      put(builder, '_adesso', adessoIso);
+      return builder.build_bkh6qh_k$();
+    };
+  }
+  function SessioneSito$_get_backupBase_$ref_4y65d7() {
+    return constructCallableReference(function (p0) {
+      return _get_backupBase__d4o24o(p0);
+    }, 1, 0, 22);
+  }
+  function SessioneSito$risultato$lambda(it) {
+    return it.riga_1.etichetta_1;
+  }
+  function SessioneSito$risultato$lambda_0($this$Json) {
     $this$Json.encodeDefaults_1 = true;
     return Unit_instance;
   }
@@ -77522,27 +80297,89 @@ if (typeof String.prototype.startsWith === 'undefined') {
     progetto = progetto === VOID ? new JsonObject(emptyMap()) : progetto;
     this.originale_1 = originale;
     this.progetto_1 = progetto;
-    this.eventiOriginali_1 = iniziali;
+    this.eventiOriginali_1 = ordinatiCanonico(iniziali);
     var tmp = this;
     // Inline function 'kotlin.collections.mutableListOf' call
     tmp.azioniApplicate_1 = ArrayList_init_$Create$();
-    this.eventi_1 = iniziali;
     var tmp_0 = this;
     // Inline function 'kotlin.collections.mutableListOf' call
     tmp_0.applicate_1 = ArrayList_init_$Create$();
     var tmp_1 = this;
     // Inline function 'kotlin.collections.mutableListOf' call
     tmp_1.rifiutate_1 = ArrayList_init_$Create$();
+    this.revisione_1 = 0;
+    this.cacheRev_1 = -1;
+    var att0 = Companion_getInstance_47().di_55966q_k$(this.originale_1, this.eventiOriginali_1);
+    var stato0 = Companion_getInstance_67().di$default_tuv5ya_k$(this.eventiOriginali_1, att0.get_serie_iygor7_k$());
+    var tmp_2 = this;
+    var tmp0_elvis_lhs = stato0.regia_1;
+    var tmp_3;
+    if (tmp0_elvis_lhs == null) {
+      var tmp1_safe_receiver = firstOrNull(this.eventiOriginali_1);
+      tmp_3 = tmp1_safe_receiver == null ? null : tmp1_safe_receiver.feed_1;
+    } else {
+      tmp_3 = tmp0_elvis_lhs;
+    }
+    var tmp2_elvis_lhs = tmp_3;
+    tmp_2.feedRegia_1 = tmp2_elvis_lhs == null ? 'sito-anteprima' : tmp2_elvis_lhs;
+    this.reg_1 = nuovoRegistro(this, this.eventiOriginali_1);
+    this.eventi_1 = this.eventiOriginali_1;
+    this.faseBackup_1 = att0.impostazioni_1.faseOperativa_1;
+    var chiusa = false;
+    if (this.faseBackup_1.equals(FaseOperativa_CAMPIONAMENTO_APERTO_getInstance())) {
+      var tmp3_safe_receiver = lastOrNull(this.eventiOriginali_1);
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_0 = tmp3_safe_receiver == null ? null : tmp3_safe_receiver.ts_1;
+      var tmp$ret$3 = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
+      assicuraRegia(this, tmp$ret$3);
+      var tmp_4 = this.reg_1;
+      var tmp_5 = Companion_getInstance_45().datiFaseOperativa_8ivxgz_k$(FaseOperativa_CAMPIONAMENTO_CHIUSO_getInstance());
+      var tmp4_safe_receiver = lastOrNull(this.eventiOriginali_1);
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_1 = tmp4_safe_receiver == null ? null : tmp4_safe_receiver.ts_1;
+      var tmp$ret$4 = tmp0_elvis_lhs_1 == null ? '' : tmp0_elvis_lhs_1;
+      tmp_4.scrivi_r1zfur_k$('IMPOSTAZIONI_PROGETTO', tmp_5, 'Sito', tmp$ret$4);
+      aggiornaEventi(this);
+      chiusa = this.attuali_b5qj86_k$().impostazioni_1.faseOperativa_1.equals(FaseOperativa_CAMPIONAMENTO_CHIUSO_getInstance());
+      if (!chiusa) {
+        this.reg_1 = nuovoRegistro(this, this.eventiOriginali_1);
+        this.eventi_1 = this.eventiOriginali_1;
+        this.revisione_1 = this.revisione_1 + 1 | 0;
+      }
+    }
+    this.chiusuraVirtuale_1 = chiusa;
+    this.chiusuraVirtualeNonRiuscita_1 = (this.faseBackup_1.equals(FaseOperativa_CAMPIONAMENTO_APERTO_getInstance()) && !chiusa);
+    var tmp_6 = this;
+    tmp_6.statisticheCampo$delegate_1 = lazy_0(SessioneSito$statisticheCampo$delegate$lambda(this));
+    this.ultimoRifiuto_1 = null;
+    var tmp_7 = this;
+    tmp_7.backupBase$delegate_1 = lazy_0(SessioneSito$backupBase$delegate$lambda(this));
   }
   protoOf(SessioneSito).attuali_b5qj86_k$ = function () {
-    return Companion_getInstance_47().di_55966q_k$(this.originale_1, this.eventi_1);
+    calcola(this);
+    return _get_cAtt__d4647h(this);
+  };
+  protoOf(SessioneSito).stato_1tchi3_k$ = function () {
+    calcola(this);
+    return _get_cStato__uo971p(this);
   };
   protoOf(SessioneSito).righe_1sls7h_k$ = function () {
-    var a = this.attuali_b5qj86_k$();
-    return ElencoProvette_getInstance().di_wu4zn2_k$(this.eventi_1, Companion_getInstance_67().di$default_tuv5ya_k$(this.eventi_1, a.get_serie_iygor7_k$()), a);
+    calcola(this);
+    return _get_cRighe__vb8z6n(this);
   };
-  protoOf(SessioneSito).applica_pihv75_k$ = function (azione) {
+  protoOf(SessioneSito).get_statisticheCampo_3zsuwm_k$ = function () {
+    var tmp0 = this.statisticheCampo$delegate_1;
+    var tmp = KProperty1;
+    // Inline function 'kotlin.getValue' call
+    getPropertyCallableRef('statisticheCampo', 1, tmp, SessioneSito$_get_statisticheCampo_$ref_sgyhst(), null);
+    return tmp0.get_value_j01efc_k$();
+  };
+  protoOf(SessioneSito).applica_egrwec_k$ = function (azione, interattiva) {
     var id = testo_11(azione, 'id');
+    this.ultimoRifiuto_1 = null;
+    var primaEventi = this.eventi_1;
+    var primaRev = this.revisione_1;
+    var primaN = this.reg_1.tutti_1txb60_k$().get_size_woubt6_k$();
     try {
       // Inline function 'kotlin.text.isNotBlank' call
       // Inline function 'kotlin.require' call
@@ -77581,277 +80418,193 @@ if (typeof String.prototype.startsWith === 'undefined') {
         tmp = tmp$ret$3;
       }
       if (tmp)
-        return Unit_instance;
-      var a = this.attuali_b5qj86_k$();
-      var stato = Companion_getInstance_67().di$default_tuv5ya_k$(this.eventi_1, a.get_serie_iygor7_k$());
-      var tmp0_elvis_lhs = stato.regia_1;
-      var tmp_1;
-      if (tmp0_elvis_lhs == null) {
-        var tmp1_safe_receiver = firstOrNull(this.eventi_1);
-        tmp_1 = tmp1_safe_receiver == null ? null : tmp1_safe_receiver.feed_1;
-      } else {
-        tmp_1 = tmp0_elvis_lhs;
-      }
-      var tmp2_elvis_lhs = tmp_1;
-      var feed = tmp2_elvis_lhs == null ? 'sito-anteprima' : tmp2_elvis_lhs;
-      var r = new Registro(feed, new ArchivioMemoria());
-      var ricevuti = r.ricevi$default_76owse_k$(this.eventi_1);
-      // Inline function 'kotlin.check' call
-      if (!(ricevuti.contesi_1.isEmpty_y1axqb_k$() && ricevuti.scartati_1 === 0)) {
-        var message_0 = 'registro incompleto o conteso';
-        throw IllegalStateException_init_$Create$_0(toString_1(message_0));
-      }
+        return true;
       // Inline function 'kotlin.text.ifEmpty' call
       var this_0 = testo_11(azione, 'ts');
-      var tmp_2;
+      var tmp_1;
       // Inline function 'kotlin.text.isEmpty' call
       if (charSequenceLength(this_0) === 0) {
         var tmp0_safe_receiver = lastOrNull(this.eventi_1);
         // Inline function 'kotlin.text.orEmpty' call
-        var tmp0_elvis_lhs_0 = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.ts_1;
-        tmp_2 = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
+        var tmp0_elvis_lhs = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.ts_1;
+        tmp_1 = tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
       } else {
-        tmp_2 = this_0;
+        tmp_1 = this_0;
       }
-      var ts = tmp_2;
+      var ts = tmp_1;
       // Inline function 'kotlin.text.ifEmpty' call
       var this_1 = testo_11(azione, 'nome');
-      var tmp_3;
+      var tmp_2;
       // Inline function 'kotlin.text.isEmpty' call
       if (charSequenceLength(this_1) === 0) {
-        tmp_3 = 'Sito';
+        tmp_2 = 'Sito';
       } else {
-        tmp_3 = this_1;
+        tmp_2 = this_1;
       }
-      var op = tmp_3;
-      var tmp_4;
-      if (stato.regia_1 == null) {
-        var tmp0_0 = this.eventi_1;
-        var tmp$ret$14;
-        $l$block_2: {
-          // Inline function 'kotlin.collections.any' call
-          var tmp_5;
-          if (isInterface(tmp0_0, Collection)) {
-            tmp_5 = tmp0_0.isEmpty_y1axqb_k$();
-          } else {
-            tmp_5 = false;
-          }
-          if (tmp_5) {
-            tmp$ret$14 = false;
-            break $l$block_2;
-          }
-          var _iterator__ex2g4s_0 = tmp0_0.iterator_jk1svi_k$();
-          while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
-            var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
-            if (element_0.tipo_1 === 'REGIA') {
-              tmp$ret$14 = true;
-              break $l$block_2;
-            }
-          }
-          tmp$ret$14 = false;
-        }
-        tmp_4 = tmp$ret$14;
-      } else {
-        tmp_4 = false;
-      }
-      if (tmp_4) {
-        // Inline function 'kotlin.collections.filter' call
-        var tmp0_1 = this.eventi_1;
-        // Inline function 'kotlin.collections.filterTo' call
-        var destination = ArrayList_init_$Create$();
-        var _iterator__ex2g4s_1 = tmp0_1.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
-          var element_1 = _iterator__ex2g4s_1.next_20eer_k$();
-          if (element_1.tipo_1 === 'REGIA') {
-            destination.add_utx5q5_k$(element_1);
-          }
-        }
-        // Inline function 'kotlin.collections.maxOf' call
-        var iterator = destination.iterator_jk1svi_k$();
-        if (!iterator.hasNext_bitz1p_k$())
-          throw NoSuchElementException_init_$Create$();
-        var tmp_6 = iterator.next_20eer_k$().dati_1.get_6bo4tg_k$('termine');
-        var tmp0_safe_receiver_0 = tmp_6 instanceof JsonPrimitive ? tmp_6 : null;
-        var tmp1_elvis_lhs = tmp0_safe_receiver_0 == null ? null : get_longOrNull(tmp0_safe_receiver_0);
-        var maxValue = tmp1_elvis_lhs == null ? new Long(0, 0) : tmp1_elvis_lhs;
-        while (iterator.hasNext_bitz1p_k$()) {
-          var tmp_7 = iterator.next_20eer_k$().dati_1.get_6bo4tg_k$('termine');
-          var tmp0_safe_receiver_1 = tmp_7 instanceof JsonPrimitive ? tmp_7 : null;
-          var tmp1_elvis_lhs_0 = tmp0_safe_receiver_1 == null ? null : get_longOrNull(tmp0_safe_receiver_1);
-          var v = tmp1_elvis_lhs_0 == null ? new Long(0, 0) : tmp1_elvis_lhs_0;
-          if (compareTo(maxValue, v) < 0) {
-            maxValue = v;
-          }
-        }
-        var termine = maxValue;
-        // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-        var builder = new JsonObjectBuilder();
-        // Inline function 'kotlin.Long.plus' call
-        var tmp$ret$24 = add(termine, fromInt(1));
-        put_1(builder, 'termine', tmp$ret$24);
-        put(builder, 'a', feed);
-        var tmp$ret$22 = builder.build_bkh6qh_k$();
-        applica$scrivi(r, op, ts, 'REGIA', tmp$ret$22);
-      }
-      var tmp3_subject = testo_11(azione, 'tipo');
-      if (tmp3_subject === 'riordino') {
-        var tmp0_2 = motoreRiordinoSito;
-        var tmp$ret$25;
-        $l$block_3: {
+      var op = tmp_2;
+      assicuraRegia(this, ts);
+      var a = this.attuali_b5qj86_k$();
+      var stato = this.stato_1tchi3_k$();
+      var feed = this.feedRegia_1;
+      var r = this.reg_1;
+      var tmp0_subject = testo_11(azione, 'tipo');
+      if (tmp0_subject === 'riordino') {
+        var tmp0_0 = motoreRiordinoSito;
+        var tmp$ret$12;
+        $l$block_1: {
           // Inline function 'kotlin.checkNotNull' call
-          if (tmp0_2 == null) {
-            var message_1 = 'Driver di fine lavori non disponibile';
-            throw IllegalStateException_init_$Create$_0(toString_1(message_1));
+          if (tmp0_0 == null) {
+            var message_0 = 'Driver di fine lavori non disponibile';
+            throw IllegalStateException_init_$Create$_0(toString_1(message_0));
           } else {
-            tmp$ret$25 = tmp0_2;
-            break $l$block_3;
+            tmp$ret$12 = tmp0_0;
+            break $l$block_1;
           }
         }
-        var motore = tmp$ret$25;
+        var motore = tmp$ret$12;
         var imp = new ImportaModifiche(r, new OperazioniCampo(r, new Numeratore(r, a.get_serie_iygor7_k$())), this.originale_1, motore);
         // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-        var builder_0 = new JsonObjectBuilder();
-        put(builder_0, 'formato', 'fejalog-modifiche');
-        put_1(builder_0, 'versione', 4);
+        var builder = new JsonObjectBuilder();
+        put(builder, 'formato', 'fejalog-modifiche');
+        put_1(builder, 'versione', 4);
         // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-        var builder_1 = new JsonObjectBuilder();
-        put(builder_1, 'pacchetto_id', this.originale_1.id_1);
-        put(builder_1, 'pacchetto_sha256', this.originale_1.sha256__1);
-        var tmp$ret$29 = builder_1.build_bkh6qh_k$();
-        builder_0.put_mrde5n_k$('origine', tmp$ret$29);
-        builder_0.put_mrde5n_k$('azioni', new JsonArray(listOf(azione)));
-        var file = builder_0.build_bkh6qh_k$();
+        var builder_0 = new JsonObjectBuilder();
+        put(builder_0, 'pacchetto_id', this.originale_1.id_1);
+        put(builder_0, 'pacchetto_sha256', this.originale_1.sha256__1);
+        var tmp$ret$16 = builder_0.build_bkh6qh_k$();
+        builder.put_mrde5n_k$('origine', tmp$ret$16);
+        builder.put_mrde5n_k$('azioni', new JsonArray(listOf(azione)));
+        var file = builder.build_bkh6qh_k$();
         var anteprima = imp.anteprima_706xjc_k$(file.toString(), this.righe_1sls7h_k$(), NonTrovati_instance.di_tjhwu7_k$(a, this.righe_1sls7h_k$(), a.impostazioni_1.etaDiagnosticaMesi_1), true);
         // Inline function 'kotlin.check' call
         if (!(anteprima.errore_1 == null)) {
           // Inline function 'kotlin.text.orEmpty' call
-          var tmp0_elvis_lhs_1 = anteprima.errore_1;
-          var message_2 = tmp0_elvis_lhs_1 == null ? '' : tmp0_elvis_lhs_1;
-          throw IllegalStateException_init_$Create$_0(toString_1(message_2));
+          var tmp0_elvis_lhs_0 = anteprima.errore_1;
+          var message_1 = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
+          throw IllegalStateException_init_$Create$_0(toString_1(message_1));
         }
         // Inline function 'kotlin.check' call
         if (!anteprima.scartate_1.isEmpty_y1axqb_k$()) {
-          var message_3 = first(anteprima.scartate_1).motivo_1;
-          throw IllegalStateException_init_$Create$_0(toString_1(message_3));
+          var message_2 = first(anteprima.scartate_1).motivo_1;
+          throw IllegalStateException_init_$Create$_0(toString_1(message_2));
         }
-        var tmp_8 = SessioneSito$applica$lambda(this, r);
-        var tmp_9 = SessioneSito$applica$lambda_0(this, r);
-        var esito = imp.applica$default_85n45d_k$(anteprima, op, ts, tmp_8, tmp_9, SessioneSito$applica$lambda_1(r, op, ts), true);
+        var tmp_3 = SessioneSito$applica$lambda(this, r);
+        var tmp_4 = SessioneSito$applica$lambda_0(this, r);
+        var esito = imp.applica$default_85n45d_k$(anteprima, op, ts, tmp_3, tmp_4, SessioneSito$applica$lambda_1(r, op, ts), true);
         // Inline function 'kotlin.check' call
         if (!esito.scartate_1.isEmpty_y1axqb_k$()) {
-          var message_4 = first(esito.scartate_1).motivo_1;
-          throw IllegalStateException_init_$Create$_0(toString_1(message_4));
+          var message_3 = first(esito.scartate_1).motivo_1;
+          throw IllegalStateException_init_$Create$_0(toString_1(message_3));
         }
-      } else if (tmp3_subject === 'soluzione') {
+      } else if (tmp0_subject === 'soluzione') {
         var uid = testo_11(azione, 'uid');
-        var tmp0_3 = this.righe_1sls7h_k$();
-        var tmp$ret$38;
-        $l$block_4: {
+        var tmp0_1 = this.righe_1sls7h_k$();
+        var tmp$ret$25;
+        $l$block_2: {
           // Inline function 'kotlin.collections.firstOrNull' call
-          var _iterator__ex2g4s_2 = tmp0_3.iterator_jk1svi_k$();
-          while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
-            var element_2 = _iterator__ex2g4s_2.next_20eer_k$();
-            if (element_2.uid_1 === uid && !element_2.annullata_1 && !element_2.persa_1) {
-              tmp$ret$38 = element_2;
-              break $l$block_4;
+          var _iterator__ex2g4s_0 = tmp0_1.iterator_jk1svi_k$();
+          while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+            var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
+            if (element_0.uid_1 === uid && !element_0.annullata_1 && !element_0.persa_1) {
+              tmp$ret$25 = element_0;
+              break $l$block_2;
             }
           }
-          tmp$ret$38 = null;
+          tmp$ret$25 = null;
         }
-        var tmp4_elvis_lhs = tmp$ret$38;
-        var tmp_10;
-        if (tmp4_elvis_lhs == null) {
+        var tmp1_elvis_lhs = tmp$ret$25;
+        var tmp_5;
+        if (tmp1_elvis_lhs == null) {
           // Inline function 'kotlin.error' call
-          var message_5 = 'provetta ' + uid + ' non trovata';
-          throw IllegalStateException_init_$Create$_0(toString_1(message_5));
+          var message_4 = 'provetta ' + uid + ' non trovata';
+          throw IllegalStateException_init_$Create$_0(toString_1(message_4));
         } else {
-          tmp_10 = tmp4_elvis_lhs;
+          tmp_5 = tmp1_elvis_lhs;
         }
-        var riga = tmp_10;
+        var riga = tmp_5;
         // Inline function 'kotlin.require' call
         if (!riga.get_fraIProblematici_oa76rq_k$()) {
-          var message_6 = 'la provetta non \xE8 una problematica';
-          throw IllegalArgumentException_init_$Create$_0(toString_1(message_6));
+          var message_5 = 'la provetta non \xE8 una problematica';
+          throw IllegalArgumentException_init_$Create$_0(toString_1(message_5));
         }
         var codice = testo_11(azione, 'soluzione');
         var sol = Companion_instance_51.di_j0pbpe_k$(codice);
         // Inline function 'kotlin.require' call
         if (!(setOf_0(['', 'regola']).contains_aljjnj_k$(codice) || !(sol == null))) {
-          var message_7 = 'soluzione non riconosciuta';
-          throw IllegalArgumentException_init_$Create$_0(toString_1(message_7));
+          var message_6 = 'soluzione non riconosciuta';
+          throw IllegalArgumentException_init_$Create$_0(toString_1(message_6));
         }
         // Inline function 'kotlin.require' call
         if (!!equals(sol, Soluzione_RICOLLOCATA_getInstance())) {
-          var message_8 = "La ricollocazione si sceglie nell'app.";
-          throw IllegalArgumentException_init_$Create$_0(toString_1(message_8));
+          var message_7 = "La ricollocazione si sceglie nell'app.";
+          throw IllegalArgumentException_init_$Create$_0(toString_1(message_7));
         }
         // Inline function 'kotlin.require' call
         if (!(sol == null || TipologieProblemi_getInstance().soluzioni_ln7an6_k$(riga).contains_aljjnj_k$(sol))) {
-          var message_9 = 'soluzione non ammessa per questa provetta';
-          throw IllegalArgumentException_init_$Create$_0(toString_1(message_9));
+          var message_8 = 'soluzione non ammessa per questa provetta';
+          throw IllegalArgumentException_init_$Create$_0(toString_1(message_8));
         }
         applica$scrivi(r, op, ts, 'SOLUZIONE', Soluzioni_instance.dati$default_t1lg82_k$(listOf(uid), sol));
         if (!(sol == null)) {
-          var dopo = r.tutti_1txb60_k$();
-          var attualiDopo = Companion_getInstance_47().di_55966q_k$(this.originale_1, dopo);
-          var tmp0_4 = ElencoProvette_getInstance().di_wu4zn2_k$(dopo, Companion_getInstance_67().di$default_tuv5ya_k$(dopo, attualiDopo.get_serie_iygor7_k$()), attualiDopo);
-          var tmp$ret$49;
-          $l$block_5: {
+          aggiornaEventi(this);
+          var tmp0_2 = this.righe_1sls7h_k$();
+          var tmp$ret$36;
+          $l$block_3: {
             // Inline function 'kotlin.collections.first' call
-            var _iterator__ex2g4s_3 = tmp0_4.iterator_jk1svi_k$();
-            while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
-              var element_3 = _iterator__ex2g4s_3.next_20eer_k$();
-              if (element_3.uid_1 === uid) {
-                tmp$ret$49 = element_3;
-                break $l$block_5;
+            var _iterator__ex2g4s_1 = tmp0_2.iterator_jk1svi_k$();
+            while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
+              var element_1 = _iterator__ex2g4s_1.next_20eer_k$();
+              if (element_1.uid_1 === uid) {
+                tmp$ret$36 = element_1;
+                break $l$block_3;
               }
             }
             throw NoSuchElementException_init_$Create$_0('Collection contains no element matching the predicate.');
           }
           // Inline function 'kotlin.check' call
-          if (!equals(tmp$ret$49.soluzione_1, sol)) {
-            var message_10 = 'La soluzione richiesta non \xE8 applicabile allo stato attuale della provetta.';
-            throw IllegalStateException_init_$Create$_0(toString_1(message_10));
+          if (!equals(tmp$ret$36.soluzione_1, sol)) {
+            var message_9 = 'La soluzione richiesta non \xE8 applicabile allo stato attuale della provetta.';
+            throw IllegalStateException_init_$Create$_0(toString_1(message_9));
           }
         }
-      } else if (tmp3_subject === 'tardiva') {
+      } else if (tmp0_subject === 'tardiva') {
         var sp = testo_11(azione, 'specie');
         var contr = testo_11(azione, 'contrassegno');
         var stab = testo_11(azione, 'stabilimento');
-        var tmp0_5 = NonTrovati_instance.di_tjhwu7_k$(a, this.righe_1sls7h_k$(), a.impostazioni_1.etaDiagnosticaMesi_1);
-        var tmp$ret$53;
-        $l$block_7: {
+        var tmp0_3 = NonTrovati_instance.di_tjhwu7_k$(a, this.righe_1sls7h_k$(), a.impostazioni_1.etaDiagnosticaMesi_1);
+        var tmp$ret$40;
+        $l$block_5: {
           // Inline function 'kotlin.collections.any' call
-          var tmp_11;
-          if (isInterface(tmp0_5, Collection)) {
-            tmp_11 = tmp0_5.isEmpty_y1axqb_k$();
+          var tmp_6;
+          if (isInterface(tmp0_3, Collection)) {
+            tmp_6 = tmp0_3.isEmpty_y1axqb_k$();
           } else {
-            tmp_11 = false;
+            tmp_6 = false;
           }
-          if (tmp_11) {
-            tmp$ret$53 = false;
-            break $l$block_7;
+          if (tmp_6) {
+            tmp$ret$40 = false;
+            break $l$block_5;
           }
-          var _iterator__ex2g4s_4 = tmp0_5.iterator_jk1svi_k$();
-          while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
-            var element_4 = _iterator__ex2g4s_4.next_20eer_k$();
-            if (element_4.specie_1 === sp && element_4.contrassegno_1 === contr && element_4.stabilimento_1 === stab) {
-              tmp$ret$53 = true;
-              break $l$block_7;
+          var _iterator__ex2g4s_2 = tmp0_3.iterator_jk1svi_k$();
+          while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
+            var element_2 = _iterator__ex2g4s_2.next_20eer_k$();
+            if (element_2.specie_1 === sp && element_2.contrassegno_1 === contr && element_2.stabilimento_1 === stab) {
+              tmp$ret$40 = true;
+              break $l$block_5;
             }
           }
-          tmp$ret$53 = false;
+          tmp$ret$40 = false;
         }
         // Inline function 'kotlin.require' call
-        if (!tmp$ret$53) {
-          var message_11 = 'il capo non \xE8 fra i non prelevati';
-          throw IllegalArgumentException_init_$Create$_0(toString_1(message_11));
+        if (!tmp$ret$40) {
+          var message_10 = 'il capo non \xE8 fra i non prelevati';
+          throw IllegalArgumentException_init_$Create$_0(toString_1(message_10));
         }
         var classificato = a.classificaPrelievo_b4hhe_k$(sp === 'capre' ? Specie_CAPRE_getInstance() : Specie_PECORE_getInstance(), contr, stab);
-        var tmp_12 = CampiProvetta_instance;
-        var tmp_13 = Identificazione_ELENCO_getInstance();
-        var tmp5_elvis_lhs = intero_7(azione, 'candidati');
-        var campi = tmp_12.crea$default_ja8y8q_k$(a.pacchetto_1, sp, contr, classificato, '', false, VOID, VOID, VOID, VOID, VOID, VOID, VOID, ts, tmp_13, tmp5_elvis_lhs == null ? 0 : tmp5_elvis_lhs);
+        var tmp_7 = CampiProvetta_instance;
+        var tmp_8 = Identificazione_ELENCO_getInstance();
+        var tmp2_elvis_lhs = intero_7(azione, 'candidati');
+        var campi = tmp_7.crea$default_ja8y8q_k$(a.pacchetto_1, sp, contr, classificato, '', false, VOID, VOID, VOID, VOID, VOID, VOID, VOID, ts, tmp_8, tmp2_elvis_lhs == null ? 0 : tmp2_elvis_lhs);
         // Inline function 'kotlin.text.trim' call
         var this_2 = testo_11(azione, 'etichetta');
         // Inline function 'kotlin.text.uppercase' call
@@ -77860,53 +80613,53 @@ if (typeof String.prototype.startsWith === 'undefined') {
         // Inline function 'kotlin.collections.map' call
         var this_3 = stato.etichetteEmesse_1;
         // Inline function 'kotlin.collections.mapTo' call
-        var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_3, 10));
-        var _iterator__ex2g4s_5 = this_3.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_5.hasNext_bitz1p_k$()) {
-          var item = _iterator__ex2g4s_5.next_20eer_k$();
+        var destination = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_3, 10));
+        var _iterator__ex2g4s_3 = this_3.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
+          var item = _iterator__ex2g4s_3.next_20eer_k$();
           // Inline function 'kotlin.text.uppercase' call
           // Inline function 'kotlin.js.asDynamic' call
-          var tmp$ret$62 = item.toUpperCase();
-          destination_0.add_utx5q5_k$(tmp$ret$62);
+          var tmp$ret$49 = item.toUpperCase();
+          destination.add_utx5q5_k$(tmp$ret$49);
         }
         // Inline function 'kotlin.check' call
-        if (!!destination_0.contains_aljjnj_k$(et)) {
-          var message_12 = "L'etichetta " + et + ' esiste gi\xE0: due provette non possono avere la stessa scritta.';
-          throw IllegalStateException_init_$Create$_0(toString_1(message_12));
+        if (!!destination.contains_aljjnj_k$(et)) {
+          var message_11 = "L'etichetta " + et + ' esiste gi\xE0: due provette non possono avere la stessa scritta.';
+          throw IllegalStateException_init_$Create$_0(toString_1(message_11));
         }
-        var tmp0_6 = a.get_serie_iygor7_k$();
-        var tmp$ret$67;
-        $l$block_8: {
+        var tmp0_4 = a.get_serie_iygor7_k$();
+        var tmp$ret$54;
+        $l$block_6: {
           // Inline function 'kotlin.collections.first' call
-          var _iterator__ex2g4s_6 = tmp0_6.iterator_jk1svi_k$();
-          while (_iterator__ex2g4s_6.hasNext_bitz1p_k$()) {
-            var element_5 = _iterator__ex2g4s_6.next_20eer_k$();
-            if (element_5.id_1 === stab + ':' + sp) {
-              tmp$ret$67 = element_5;
-              break $l$block_8;
+          var _iterator__ex2g4s_4 = tmp0_4.iterator_jk1svi_k$();
+          while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
+            var element_3 = _iterator__ex2g4s_4.next_20eer_k$();
+            if (element_3.id_1 === stab + ':' + sp) {
+              tmp$ret$54 = element_3;
+              break $l$block_6;
             }
           }
           throw NoSuchElementException_init_$Create$_0('Collection contains no element matching the predicate.');
         }
-        var serie = tmp$ret$67;
+        var serie = tmp$ret$54;
         // Inline function 'kotlin.require' call
         if (!(a.impostazioni_1.usaSigleVeterinari_1 ? !(GrammaticaEtichetta_getInstance().leggi_ayxnue_k$(et) == null) : et === serie.get_prefisso_hx09de_k$() + serie.numeroAssegnato_7u91xq_k$(contr) || Regex_init_$Create$_0('[A-Z]{1,3}[0-9]+').matches_evli6i_k$(et))) {
-          var message_13 = a.impostazioni_1.usaSigleVeterinari_1 ? 'Etichetta non riconosciuta: copia la scritta completa della provetta.' : 'Etichetta non riconosciuta: il numero assegnato o una sigla con il numero (A3).';
-          throw IllegalArgumentException_init_$Create$_0(toString_1(message_13));
+          var message_12 = a.impostazioni_1.usaSigleVeterinari_1 ? 'Etichetta non riconosciuta: copia la scritta completa della provetta.' : 'Etichetta non riconosciuta: il numero assegnato o una sigla con il numero (A3).';
+          throw IllegalArgumentException_init_$Create$_0(toString_1(message_12));
         }
-        var tmp_14 = new OperazioniCampo(r, new Numeratore(r, a.get_serie_iygor7_k$()));
-        var tmp_15 = testo_11(azione, 'nota');
+        var tmp_9 = new OperazioniCampo(r, new Numeratore(r, a.get_serie_iygor7_k$()));
+        var tmp_10 = testo_11(azione, 'nota');
         // Inline function 'kotlin.text.ifBlank' call
         var this_4 = testo_11(azione, 'nome');
-        var tmp_16;
+        var tmp_11;
         if (isBlank(this_4)) {
-          tmp_16 = 'sito';
+          tmp_11 = 'sito';
         } else {
-          tmp_16 = this_4;
+          tmp_11 = this_4;
         }
-        var tmp$ret$71 = tmp_16;
-        tmp_14.registraTardiva$default_avacqq_k$(serie.id_1, contr, et, tmp_15 + ' (dal sito, ' + tmp$ret$71 + ')', 'sito-' + id, op, ts, campi, true);
-      } else if (AzioniProvettaSito_getInstance().tipi_1.contains_aljjnj_k$(tmp3_subject)) {
+        var tmp$ret$58 = tmp_11;
+        tmp_9.registraTardiva$default_avacqq_k$(serie.id_1, contr, et, tmp_10 + ' (dal sito, ' + tmp$ret$58 + ')', 'sito-' + id, op, ts, campi, true);
+      } else if (AzioniProvettaSito_getInstance().tipi_1.contains_aljjnj_k$(tmp0_subject)) {
         var campi_0 = AzioniProvettaSito_getInstance().prepara_d2gmmo_k$(azione, a, this.righe_1sls7h_k$(), this.eventi_1, feed);
         var operazioni = new OperazioniCampo(r, new Numeratore(r, a.get_serie_iygor7_k$()));
         switch (testo_11(azione, 'tipo')) {
@@ -77945,95 +80698,95 @@ if (typeof String.prototype.startsWith === 'undefined') {
             operazioni.modifica_wkq3rf_k$(testo_11(azione, 'uid'), campi_0, op, ts);
             break;
         }
-      } else if (tmp3_subject === 'chiudi_buchi') {
-        var tmp_17 = Companion_getInstance_45();
-        var tmp_18 = azione.get_6bo4tg_k$('valore');
-        var tmp7_safe_receiver = tmp_18 instanceof JsonPrimitive ? tmp_18 : null;
-        var tmp8_elvis_lhs = tmp7_safe_receiver == null ? null : get_booleanOrNull(tmp7_safe_receiver);
-        var tmp_19;
-        if (tmp8_elvis_lhs == null) {
+      } else if (tmp0_subject === 'chiudi_buchi') {
+        var tmp_12 = Companion_getInstance_45();
+        var tmp_13 = azione.get_6bo4tg_k$('valore');
+        var tmp4_safe_receiver = tmp_13 instanceof JsonPrimitive ? tmp_13 : null;
+        var tmp5_elvis_lhs = tmp4_safe_receiver == null ? null : get_booleanOrNull(tmp4_safe_receiver);
+        var tmp_14;
+        if (tmp5_elvis_lhs == null) {
           // Inline function 'kotlin.error' call
-          var message_14 = 'valore non booleano';
-          throw IllegalStateException_init_$Create$_0(toString_1(message_14));
+          var message_13 = 'valore non booleano';
+          throw IllegalStateException_init_$Create$_0(toString_1(message_13));
         } else {
-          tmp_19 = tmp8_elvis_lhs;
+          tmp_14 = tmp5_elvis_lhs;
         }
-        applica$scrivi(r, op, ts, 'IMPOSTAZIONI_PROGETTO', tmp_17.datiChiudiBuchi_1wjg4c_k$(tmp_19));
-      } else if (tmp3_subject === 'spunta' || tmp3_subject === 'spostamento' || (tmp3_subject === 'scambio' || tmp3_subject === 'annullo_scambio')) {
+        applica$scrivi(r, op, ts, 'IMPOSTAZIONI_PROGETTO', tmp_12.datiChiudiBuchi_1wjg4c_k$(tmp_14));
+      } else if (tmp0_subject === 'spunta' || tmp0_subject === 'spostamento' || (tmp0_subject === 'scambio' || tmp0_subject === 'annullo_scambio')) {
         // Inline function 'kotlin.check' call
         if (!a.impostazioni_1.faseOperativa_1.equals(FaseOperativa_CAMPIONAMENTO_CHIUSO_getInstance())) {
-          var message_15 = 'Il Riordino si fa a campionamento chiuso.';
-          throw IllegalStateException_init_$Create$_0(toString_1(message_15));
+          var message_14 = 'Il Riordino si fa a campionamento chiuso.';
+          throw IllegalStateException_init_$Create$_0(toString_1(message_14));
         }
         var stab_0 = testo_11(azione, 'stabilimento');
         var sp_0 = testo_11(azione, 'specie');
         var contr_0 = testo_11(azione, 'contrassegno');
         switch (testo_11(azione, 'tipo')) {
           case 'spunta':
-            var tmp10_elvis_lhs = intero_7(azione, 'a');
-            var tmp_20;
-            if (tmp10_elvis_lhs == null) {
+            var tmp7_elvis_lhs = intero_7(azione, 'a');
+            var tmp_15;
+            if (tmp7_elvis_lhs == null) {
               // Inline function 'kotlin.error' call
-              var message_16 = 'destinazione mancante';
-              throw IllegalStateException_init_$Create$_0(toString_1(message_16));
+              var message_15 = 'destinazione mancante';
+              throw IllegalStateException_init_$Create$_0(toString_1(message_15));
             } else {
-              tmp_20 = tmp10_elvis_lhs;
+              tmp_15 = tmp7_elvis_lhs;
             }
 
-            var destinazione = tmp_20;
+            var destinazione = tmp_15;
             // Inline function 'kotlin.require' call
 
             if (!(destinazione > 0)) {
-              var message_17 = 'destinazione non valida';
-              throw IllegalArgumentException_init_$Create$_0(toString_1(message_17));
+              var message_16 = 'destinazione non valida';
+              throw IllegalArgumentException_init_$Create$_0(toString_1(message_16));
             }
 
-            var tmp_21 = azione.get_6bo4tg_k$('fatto');
-            var tmp11_safe_receiver = tmp_21 instanceof JsonPrimitive ? tmp_21 : null;
-            var tmp12_elvis_lhs = tmp11_safe_receiver == null ? null : get_booleanOrNull(tmp11_safe_receiver);
-            var tmp_22;
-            if (tmp12_elvis_lhs == null) {
+            var tmp_16 = azione.get_6bo4tg_k$('fatto');
+            var tmp8_safe_receiver = tmp_16 instanceof JsonPrimitive ? tmp_16 : null;
+            var tmp9_elvis_lhs = tmp8_safe_receiver == null ? null : get_booleanOrNull(tmp8_safe_receiver);
+            var tmp_17;
+            if (tmp9_elvis_lhs == null) {
               // Inline function 'kotlin.error' call
-              var message_18 = 'spunta non booleana';
-              throw IllegalStateException_init_$Create$_0(toString_1(message_18));
+              var message_17 = 'spunta non booleana';
+              throw IllegalStateException_init_$Create$_0(toString_1(message_17));
             } else {
-              tmp_22 = tmp12_elvis_lhs;
+              tmp_17 = tmp9_elvis_lhs;
             }
 
-            var fatto = tmp_22;
+            var fatto = tmp_17;
             // Inline function 'kotlinx.serialization.json.buildJsonObject' call
 
-            var builder_2 = new JsonObjectBuilder();
-            put(builder_2, 'stabilimento', stab_0);
-            put(builder_2, 'specie', sp_0);
-            put(builder_2, 'contrassegno', contr_0);
-            put(builder_2, 'da', testo_11(azione, 'da'));
-            put_1(builder_2, 'a', destinazione);
-            put_0(builder_2, 'fatto', fatto);
-            var tmp0_safe_receiver_2 = opzionale(azione, 'uid');
-            if (tmp0_safe_receiver_2 == null)
+            var builder_1 = new JsonObjectBuilder();
+            put(builder_1, 'stabilimento', stab_0);
+            put(builder_1, 'specie', sp_0);
+            put(builder_1, 'contrassegno', contr_0);
+            put(builder_1, 'da', testo_11(azione, 'da'));
+            put_1(builder_1, 'a', destinazione);
+            put_0(builder_1, 'fatto', fatto);
+            var tmp0_safe_receiver_0 = opzionale(azione, 'uid');
+            if (tmp0_safe_receiver_0 == null)
               null;
             else {
               // Inline function 'kotlin.let' call
-              put(builder_2, 'uid', tmp0_safe_receiver_2);
+              put(builder_1, 'uid', tmp0_safe_receiver_0);
             }
 
-            var tmp$ret$80 = builder_2.build_bkh6qh_k$();
-            applica$scrivi(r, op, ts, 'PROVETTA_SPOSTATA', tmp$ret$80);
+            var tmp$ret$67 = builder_1.build_bkh6qh_k$();
+            applica$scrivi(r, op, ts, 'PROVETTA_SPOSTATA', tmp$ret$67);
             break;
           case 'spostamento':
-            var tmp_23 = Riordino_getInstance();
-            var tmp13_elvis_lhs = intero_7(azione, 'provetta');
-            var tmp_24;
-            if (tmp13_elvis_lhs == null) {
+            var tmp_18 = Riordino_getInstance();
+            var tmp10_elvis_lhs = intero_7(azione, 'provetta');
+            var tmp_19;
+            if (tmp10_elvis_lhs == null) {
               // Inline function 'kotlin.error' call
-              var message_19 = 'numero mancante';
-              throw IllegalStateException_init_$Create$_0(toString_1(message_19));
+              var message_18 = 'numero mancante';
+              throw IllegalStateException_init_$Create$_0(toString_1(message_18));
             } else {
-              tmp_24 = tmp13_elvis_lhs;
+              tmp_19 = tmp10_elvis_lhs;
             }
 
-            applica$scrivi(r, op, ts, 'SISTEMAZIONE_SPOSTAMENTO', tmp_23.datiSpostamento_mad5bn_k$(id, stab_0, sp_0, contr_0, tmp_24, testo_11(azione, 'quando')));
+            applica$scrivi(r, op, ts, 'SISTEMAZIONE_SPOSTAMENTO', tmp_18.datiSpostamento_mad5bn_k$(id, stab_0, sp_0, contr_0, tmp_19, testo_11(azione, 'quando')));
             break;
           case 'scambio':
             applica$scrivi(r, op, ts, 'SISTEMAZIONE_SCAMBIO', Riordino_getInstance().datiScambio_yf09j4_k$(id, stab_0, sp_0, testo_11(azione, 'a'), testo_11(azione, 'b')));
@@ -78044,31 +80797,48 @@ if (typeof String.prototype.startsWith === 'undefined') {
         }
       } else {
         // Inline function 'kotlin.error' call
-        var message_20 = 'azione non riconosciuta';
-        throw IllegalStateException_init_$Create$_0(toString_1(message_20));
+        var message_19 = 'azione non riconosciuta';
+        throw IllegalStateException_init_$Create$_0(toString_1(message_19));
       }
-      this.eventi_1 = r.tutti_1txb60_k$();
+      if (!(this.reg_1.tutti_1txb60_k$().get_size_woubt6_k$() === this.eventi_1.get_size_woubt6_k$())) {
+        aggiornaEventi(this);
+      }
       // Inline function 'kotlin.collections.plusAssign' call
       this.applicate_1.add_utx5q5_k$(id);
       // Inline function 'kotlin.collections.plusAssign' call
       this.azioniApplicate_1.add_utx5q5_k$(azione);
+      return true;
     } catch ($p) {
       if ($p instanceof Exception) {
         var e = $p;
-        var tmp0_7 = this.rifiutate_1;
-        // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-        var builder_3 = new JsonObjectBuilder();
-        put(builder_3, 'id', id);
-        put(builder_3, 'stabilimento', testo_11(azione, 'stabilimento'));
-        var tmp0_elvis_lhs_2 = e.message;
-        put(builder_3, 'motivo', tmp0_elvis_lhs_2 == null ? 'azione rifiutata' : tmp0_elvis_lhs_2);
-        // Inline function 'kotlin.collections.plusAssign' call
-        var element_6 = builder_3.build_bkh6qh_k$();
-        tmp0_7.add_utx5q5_k$(element_6);
+        if (!(this.reg_1.tutti_1txb60_k$().get_size_woubt6_k$() === primaN))
+          this.reg_1 = nuovoRegistro(this, primaEventi);
+        this.eventi_1 = primaEventi;
+        this.revisione_1 = primaRev;
+        var tmp_20 = this;
+        var tmp11_elvis_lhs = e.message;
+        tmp_20.ultimoRifiuto_1 = tmp11_elvis_lhs == null ? 'azione rifiutata' : tmp11_elvis_lhs;
+        if (!interattiva) {
+          var tmp0_5 = this.rifiutate_1;
+          // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+          var builder_2 = new JsonObjectBuilder();
+          put(builder_2, 'id', id);
+          put(builder_2, 'stabilimento', testo_11(azione, 'stabilimento'));
+          var tmp0_elvis_lhs_1 = e.message;
+          put(builder_2, 'motivo', tmp0_elvis_lhs_1 == null ? 'azione rifiutata' : tmp0_elvis_lhs_1);
+          // Inline function 'kotlin.collections.plusAssign' call
+          var element_4 = builder_2.build_bkh6qh_k$();
+          tmp0_5.add_utx5q5_k$(element_4);
+        }
+        return false;
       } else {
         throw $p;
       }
     }
+  };
+  protoOf(SessioneSito).applica$default_e4dbak_k$ = function (azione, interattiva, $super) {
+    interattiva = interattiva === VOID ? false : interattiva;
+    return $super === VOID ? this.applica_egrwec_k$(azione, interattiva) : $super.applica_egrwec_k$.call(this, azione, interattiva);
   };
   protoOf(SessioneSito).risultato_e62l0b_k$ = function () {
     var a = this.attuali_b5qj86_k$();
@@ -78076,25 +80846,90 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var imp = a.impostazioni_1;
     var ammessi = RegiaImpostazioni_instance.ammessi_5kh1z5_k$(this.eventi_1, setOf_0(['IMPOSTAZIONI_PROGETTO', 'SOLUZIONE', 'PROVETTA_POSATA']));
     var tipi = setOf_0(['IMPOSTAZIONI_PROGETTO', 'SOLUZIONE', 'PROVETTA_POSATA']);
-    var stato = Companion_getInstance_67().di$default_tuv5ya_k$(this.eventi_1, a.get_serie_iygor7_k$());
+    var stato = this.stato_1tchi3_k$();
+    // Inline function 'kotlin.collections.associateBy' call
+    var capacity = coerceAtLeast(mapCapacity(collectionSizeOrDefault(righe, 10)), 16);
+    // Inline function 'kotlin.collections.associateByTo' call
+    var destination = LinkedHashMap_init_$Create$_0(capacity);
+    var _iterator__ex2g4s = righe.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      var tmp$ret$2 = element.uid_1;
+      destination.put_4fpzoq_k$(tmp$ret$2, element);
+    }
+    var perUid = destination;
+    var eventiPerUid = HashMap_init_$Create$();
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s_0 = this.eventi_1.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
+      // Inline function 'kotlin.collections.buildSet' call
+      // Inline function 'kotlin.collections.buildSetInternal' call
+      // Inline function 'kotlin.apply' call
+      var this_0 = LinkedHashSet_init_$Create$();
+      var tmp0_safe_receiver = opzionale(element_0.dati_1, 'uid');
+      if (tmp0_safe_receiver == null)
+        null;
+      else {
+        // Inline function 'kotlin.let' call
+        this_0.add_utx5q5_k$(tmp0_safe_receiver);
+      }
+      var tmp = element_0.dati_1.get_6bo4tg_k$('uids');
+      // Inline function 'kotlin.collections.orEmpty' call
+      var tmp0_elvis_lhs = tmp instanceof JsonArray ? tmp : null;
+      // Inline function 'kotlin.collections.forEach' call
+      var _iterator__ex2g4s_1 = (tmp0_elvis_lhs == null ? emptyList() : tmp0_elvis_lhs).iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
+        var element_1 = _iterator__ex2g4s_1.next_20eer_k$();
+        var tmp0_safe_receiver_0 = element_1 instanceof JsonPrimitive ? element_1 : null;
+        var tmp1_safe_receiver = tmp0_safe_receiver_0 == null ? null : get_contentOrNull(tmp0_safe_receiver_0);
+        if (tmp1_safe_receiver == null)
+          null;
+        else {
+          // Inline function 'kotlin.let' call
+          this_0.add_utx5q5_k$(tmp1_safe_receiver);
+        }
+      }
+      var uids = this_0.build_nmwvly_k$();
+      // Inline function 'kotlin.collections.forEach' call
+      var _iterator__ex2g4s_2 = uids.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
+        var element_2 = _iterator__ex2g4s_2.next_20eer_k$();
+        // Inline function 'kotlin.collections.getOrPut' call
+        var value = eventiPerUid.get_wei43m_k$(element_2);
+        var tmp_0;
+        if (value == null) {
+          // Inline function 'kotlin.collections.mutableListOf' call
+          var answer = ArrayList_init_$Create$();
+          eventiPerUid.put_4fpzoq_k$(element_2, answer);
+          tmp_0 = answer;
+        } else {
+          tmp_0 = value;
+        }
+        tmp_0.add_utx5q5_k$(element_0);
+      }
+    }
+    var dda = AcquistiDda_instance.di_4dh1u9_k$(this.eventi_1);
     var indiceGestione = Companion_instance_52.di_4dh1u9_k$(this.eventi_1);
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
     var builder = new JsonObjectBuilder();
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
     var builder_0 = new JsonObjectBuilder();
-    put(builder_0, 'fase', imp.faseOperativa_1.codice_1);
+    put(builder_0, 'fase', this.faseBackup_1.codice_1);
     put_0(builder_0, 'campionamento_avviato', imp.campionamentoAvviato_1);
+    put_0(builder_0, 'chiusura_virtuale', this.chiusuraVirtuale_1);
+    put_0(builder_0, 'chiusura_virtuale_non_riuscita', this.chiusuraVirtualeNonRiuscita_1);
     put_0(builder_0, 'riordino_iniziato', imp.riordinoIniziato_1);
     put_0(builder_0, 'chiudi_buchi', imp.chiudiBuchi_1);
-    var tmp0_safe_receiver = imp.etaDiagnosticaMesi_1;
-    var tmp;
-    if (tmp0_safe_receiver == null) {
-      tmp = null;
+    var tmp0_safe_receiver_1 = imp.etaDiagnosticaMesi_1;
+    var tmp_1;
+    if (tmp0_safe_receiver_1 == null) {
+      tmp_1 = null;
     } else {
       // Inline function 'kotlin.let' call
-      tmp = JsonPrimitive_2(tmp0_safe_receiver);
+      tmp_1 = JsonPrimitive_2(tmp0_safe_receiver_1);
     }
-    var tmp1_elvis_lhs = tmp;
+    var tmp1_elvis_lhs = tmp_1;
     builder_0.put_mrde5n_k$('eta_diagnostica_mesi', tmp1_elvis_lhs == null ? JsonNull_getInstance() : tmp1_elvis_lhs);
     put(builder_0, 'verso_riempimento', imp.versoRiempimento_1.codice_1);
     put_0(builder_0, 'problematici_in_sequenza', imp.problematiciInSequenza_1);
@@ -78102,74 +80937,61 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var builder_1 = new JsonObjectBuilder();
     // Inline function 'kotlin.collections.forEach' call
     // Inline function 'kotlin.collections.iterator' call
-    var _iterator__ex2g4s = imp.soluzioniPerTipo_1.get_entries_p20ztl_k$().iterator_jk1svi_k$();
-    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
-      var element = _iterator__ex2g4s.next_20eer_k$();
+    var _iterator__ex2g4s_3 = imp.soluzioniPerTipo_1.get_entries_p20ztl_k$().iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
+      var element_3 = _iterator__ex2g4s_3.next_20eer_k$();
       // Inline function 'kotlin.collections.component1' call
-      var t = element.get_key_18j28a_k$();
+      var t = element_3.get_key_18j28a_k$();
       // Inline function 'kotlin.collections.component2' call
-      var s = element.get_value_j01efc_k$();
+      var s = element_3.get_value_j01efc_k$();
       put(builder_1, t.name_1, s.codice_1);
     }
-    var tmp$ret$6 = builder_1.build_bkh6qh_k$();
-    builder_0.put_mrde5n_k$('regole', tmp$ret$6);
-    var tmp$ret$2 = builder_0.build_bkh6qh_k$();
-    builder.put_mrde5n_k$('impostazioni', tmp$ret$2);
+    var tmp$ret$27 = builder_1.build_bkh6qh_k$();
+    builder_0.put_mrde5n_k$('regole', tmp$ret$27);
+    var tmp$ret$23 = builder_0.build_bkh6qh_k$();
+    builder.put_mrde5n_k$('impostazioni', tmp$ret$23);
     // Inline function 'kotlin.collections.map' call
-    var this_0 = sorted(stato.etichetteEmesse_1);
+    var this_1 = sorted(stato.etichetteEmesse_1);
     // Inline function 'kotlin.collections.mapTo' call
-    var destination = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
-    var _iterator__ex2g4s_0 = this_0.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
-      var item = _iterator__ex2g4s_0.next_20eer_k$();
-      var tmp$ret$15 = JsonPrimitive_0(item);
-      destination.add_utx5q5_k$(tmp$ret$15);
+    var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_1, 10));
+    var _iterator__ex2g4s_4 = this_1.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s_4.next_20eer_k$();
+      var tmp$ret$36 = JsonPrimitive_0(item);
+      destination_0.add_utx5q5_k$(tmp$ret$36);
     }
-    builder.put_mrde5n_k$('etichette', new JsonArray(destination));
+    builder.put_mrde5n_k$('etichette', new JsonArray(destination_0));
     builder.put_mrde5n_k$('partenze', FineLavori_instance.partenze_oz8mgz_k$(righe, a.get_serie_iygor7_k$(), this.eventi_1, this.originale_1));
-    var tmp_0 = Default_getInstance();
+    var tmp_2 = Default_getInstance();
     var tmp0 = Default_getInstance();
     // Inline function 'kotlinx.serialization.json.Json.encodeToString' call
-    var value = PlateauAttuale_instance.di_4jqvut_k$(righe, a.get_serie_iygor7_k$(), this.eventi_1, this.originale_1);
+    var value_0 = PlateauAttuale_instance.di_4jqvut_k$(righe, a.get_serie_iygor7_k$(), this.eventi_1, this.originale_1);
     // Inline function 'kotlinx.serialization.serializer' call
-    var this_1 = tmp0.get_serializersModule_piitvg_k$();
+    var this_2 = tmp0.get_serializersModule_piitvg_k$();
     // Inline function 'kotlinx.serialization.internal.cast' call
-    var this_2 = serializer(this_1, createKType(getKClass(KtList), arrayOf([createInvariantKTypeProjection(createKType(getKClass(Cella), arrayOf([]), false))]), false));
-    var tmp$ret$17 = isInterface(this_2, KSerializer) ? this_2 : THROW_CCE();
-    var tmp$ret$16 = tmp0.encodeToString_k0apqx_k$(tmp$ret$17, value);
-    builder.put_mrde5n_k$('plateauAttuale', tmp_0.parseToJsonElement_rqvr2k_k$(tmp$ret$16));
+    var this_3 = serializer(this_2, createKType(getKClass(KtList), arrayOf([createInvariantKTypeProjection(createKType(getKClass(Cella), arrayOf([]), false))]), false));
+    var tmp$ret$38 = isInterface(this_3, KSerializer) ? this_3 : THROW_CCE();
+    var tmp$ret$37 = tmp0.encodeToString_k0apqx_k$(tmp$ret$38, value_0);
+    builder.put_mrde5n_k$('plateauAttuale', tmp_2.parseToJsonElement_rqvr2k_k$(tmp$ret$37));
     // Inline function 'kotlin.collections.map' call
-    var this_3 = a.get_serie_iygor7_k$();
-    // Inline function 'kotlin.collections.mapTo' call
-    var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_3, 10));
-    var _iterator__ex2g4s_1 = this_3.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
-      var item_0 = _iterator__ex2g4s_1.next_20eer_k$();
-      var tmp$ret$21 = JsonPrimitive_0(item_0.id_1);
-      destination_0.add_utx5q5_k$(tmp$ret$21);
-    }
-    builder.put_mrde5n_k$('seriePlateau', new JsonArray(destination_0));
-    // Inline function 'kotlin.collections.map' call
-    var this_4 = PosizioniRiordino_instance.di_4jqvut_k$(righe, a.get_serie_iygor7_k$(), this.eventi_1, this.originale_1);
+    var this_4 = a.get_serie_iygor7_k$();
     // Inline function 'kotlin.collections.mapTo' call
     var destination_1 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_4, 10));
-    var _iterator__ex2g4s_2 = this_4.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
-      var item_1 = _iterator__ex2g4s_2.next_20eer_k$();
-      var tmp$ret$25;
-      $l$block: {
-        // Inline function 'kotlin.collections.first' call
-        var _iterator__ex2g4s_3 = righe.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
-          var element_0 = _iterator__ex2g4s_3.next_20eer_k$();
-          if (element_0.uid_1 === item_1.uid_1) {
-            tmp$ret$25 = element_0;
-            break $l$block;
-          }
-        }
-        throw NoSuchElementException_init_$Create$_0('Collection contains no element matching the predicate.');
-      }
-      var r = tmp$ret$25;
+    var _iterator__ex2g4s_5 = this_4.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_5.hasNext_bitz1p_k$()) {
+      var item_0 = _iterator__ex2g4s_5.next_20eer_k$();
+      var tmp$ret$42 = JsonPrimitive_0(item_0.id_1);
+      destination_1.add_utx5q5_k$(tmp$ret$42);
+    }
+    builder.put_mrde5n_k$('seriePlateau', new JsonArray(destination_1));
+    // Inline function 'kotlin.collections.map' call
+    var this_5 = PosizioniRiordino_instance.di_4jqvut_k$(righe, a.get_serie_iygor7_k$(), this.eventi_1, this.originale_1);
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_2 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_5, 10));
+    var _iterator__ex2g4s_6 = this_5.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_6.hasNext_bitz1p_k$()) {
+      var item_1 = _iterator__ex2g4s_6.next_20eer_k$();
+      var r = getValue(perUid, item_1.uid_1);
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
       var builder_2 = new JsonObjectBuilder();
       put(builder_2, 'uid', item_1.uid_1);
@@ -78179,304 +81001,304 @@ if (typeof String.prototype.startsWith === 'undefined') {
       put_1(builder_2, 'pozzetto', item_1.pozzetto_1);
       put(builder_2, 'etichetta', r.etichetta_1);
       put(builder_2, 'contrassegno', r.contrassegno_1);
-      var tmp$ret$24 = builder_2.build_bkh6qh_k$();
-      destination_1.add_utx5q5_k$(tmp$ret$24);
+      var tmp$ret$45 = builder_2.build_bkh6qh_k$();
+      destination_2.add_utx5q5_k$(tmp$ret$45);
     }
-    builder.put_mrde5n_k$('posizioniAttuali', new JsonArray(destination_1));
+    builder.put_mrde5n_k$('posizioniAttuali', new JsonArray(destination_2));
     // Inline function 'kotlin.collections.filter' call
     var tmp0_0 = this.eventi_1;
     // Inline function 'kotlin.collections.filterTo' call
-    var destination_2 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_4 = tmp0_0.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
-      var element_1 = _iterator__ex2g4s_4.next_20eer_k$();
-      if (!tipi.contains_aljjnj_k$(element_1.tipo_1) || ammessi.contains_aljjnj_k$(to(element_1.feed_1, element_1.seq_1))) {
-        destination_2.add_utx5q5_k$(element_1);
+    var destination_3 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_7 = tmp0_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_7.hasNext_bitz1p_k$()) {
+      var element_4 = _iterator__ex2g4s_7.next_20eer_k$();
+      if (!tipi.contains_aljjnj_k$(element_4.tipo_1) || ammessi.contains_aljjnj_k$(to(element_4.feed_1, element_4.seq_1))) {
+        destination_3.add_utx5q5_k$(element_4);
       }
     }
     // Inline function 'kotlin.collections.map' call
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_3 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_2, 10));
-    var _iterator__ex2g4s_5 = destination_2.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_5.hasNext_bitz1p_k$()) {
-      var item_2 = _iterator__ex2g4s_5.next_20eer_k$();
-      var tmp$ret$34 = item_2.json_1y4mg_k$();
-      destination_3.add_utx5q5_k$(tmp$ret$34);
+    var destination_4 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_3, 10));
+    var _iterator__ex2g4s_8 = destination_3.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_8.hasNext_bitz1p_k$()) {
+      var item_2 = _iterator__ex2g4s_8.next_20eer_k$();
+      var tmp$ret$53 = item_2.json_1y4mg_k$();
+      destination_4.add_utx5q5_k$(tmp$ret$53);
     }
-    builder.put_mrde5n_k$('eventiEfficaci', new JsonArray(destination_3));
+    builder.put_mrde5n_k$('eventiEfficaci', new JsonArray(destination_4));
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
     var builder_3 = new JsonObjectBuilder();
     // Inline function 'kotlin.collections.forEach' call
     // Inline function 'kotlin.collections.iterator' call
-    var _iterator__ex2g4s_6 = indiceGestione.spunte_1.get_entries_p20ztl_k$().iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_6.hasNext_bitz1p_k$()) {
-      var element_2 = _iterator__ex2g4s_6.next_20eer_k$();
+    var _iterator__ex2g4s_9 = indiceGestione.spunte_1.get_entries_p20ztl_k$().iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_9.hasNext_bitz1p_k$()) {
+      var element_5 = _iterator__ex2g4s_9.next_20eer_k$();
       // Inline function 'kotlin.collections.component1' call
-      var k = element_2.get_key_18j28a_k$();
+      var k = element_5.get_key_18j28a_k$();
       // Inline function 'kotlin.collections.component2' call
-      var e = element_2.get_value_j01efc_k$();
+      var e = element_5.get_value_j01efc_k$();
       builder_3.put_mrde5n_k$(chiave(k), e.dati_1);
     }
-    var tmp$ret$35 = builder_3.build_bkh6qh_k$();
-    builder.put_mrde5n_k$('spunte', tmp$ret$35);
+    var tmp$ret$54 = builder_3.build_bkh6qh_k$();
+    builder.put_mrde5n_k$('spunte', tmp$ret$54);
     // Inline function 'kotlin.collections.map' call
-    var this_5 = get_entries_7();
+    var this_6 = get_entries_8();
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_4 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_5, 10));
-    var _iterator__ex2g4s_7 = this_5.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_7.hasNext_bitz1p_k$()) {
-      var item_3 = _iterator__ex2g4s_7.next_20eer_k$();
+    var destination_5 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_6, 10));
+    var _iterator__ex2g4s_10 = this_6.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_10.hasNext_bitz1p_k$()) {
+      var item_3 = _iterator__ex2g4s_10.next_20eer_k$();
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
       var builder_4 = new JsonObjectBuilder();
       put(builder_4, 'codice', item_3.name_1);
       put(builder_4, 'titolo', item_3.titolo_1);
       put(builder_4, 'spiegazione', item_3.spiegazione_1);
       // Inline function 'kotlin.collections.map' call
-      var this_6 = TipologieProblemi_getInstance().soluzioniPerTipo_eynt4s_k$(item_3);
+      var this_7 = TipologieProblemi_getInstance().soluzioniPerTipo_eynt4s_k$(item_3);
       // Inline function 'kotlin.collections.mapTo' call
-      var destination_5 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_6, 10));
-      var _iterator__ex2g4s_8 = this_6.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_8.hasNext_bitz1p_k$()) {
-        var item_4 = _iterator__ex2g4s_8.next_20eer_k$();
-        var tmp$ret$49 = JsonPrimitive_0(item_4.codice_1);
-        destination_5.add_utx5q5_k$(tmp$ret$49);
+      var destination_6 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_7, 10));
+      var _iterator__ex2g4s_11 = this_7.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_11.hasNext_bitz1p_k$()) {
+        var item_4 = _iterator__ex2g4s_11.next_20eer_k$();
+        var tmp$ret$68 = JsonPrimitive_0(item_4.codice_1);
+        destination_6.add_utx5q5_k$(tmp$ret$68);
       }
-      builder_4.put_mrde5n_k$('soluzioni', new JsonArray(destination_5));
-      var tmp$ret$44 = builder_4.build_bkh6qh_k$();
-      destination_4.add_utx5q5_k$(tmp$ret$44);
+      builder_4.put_mrde5n_k$('soluzioni', new JsonArray(destination_6));
+      var tmp$ret$63 = builder_4.build_bkh6qh_k$();
+      destination_5.add_utx5q5_k$(tmp$ret$63);
     }
-    builder.put_mrde5n_k$('tipologie', new JsonArray(destination_4));
+    builder.put_mrde5n_k$('tipologie', new JsonArray(destination_5));
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
     var builder_5 = new JsonObjectBuilder();
     // Inline function 'kotlin.collections.filter' call
     // Inline function 'kotlin.collections.filterTo' call
-    var destination_6 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_9 = righe.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_9.hasNext_bitz1p_k$()) {
-      var element_3 = _iterator__ex2g4s_9.next_20eer_k$();
-      if (element_3.get_fraIProblematici_oa76rq_k$() && !element_3.annullata_1 && !element_3.persa_1) {
-        destination_6.add_utx5q5_k$(element_3);
+    var destination_7 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_12 = righe.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_12.hasNext_bitz1p_k$()) {
+      var element_6 = _iterator__ex2g4s_12.next_20eer_k$();
+      if (element_6.get_fraIProblematici_oa76rq_k$() && !element_6.annullata_1 && !element_6.persa_1) {
+        destination_7.add_utx5q5_k$(element_6);
       }
     }
     // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_10 = destination_6.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_10.hasNext_bitz1p_k$()) {
-      var element_4 = _iterator__ex2g4s_10.next_20eer_k$();
+    var _iterator__ex2g4s_13 = destination_7.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_13.hasNext_bitz1p_k$()) {
+      var element_7 = _iterator__ex2g4s_13.next_20eer_k$();
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
       var builder_6 = new JsonObjectBuilder();
-      put(builder_6, 'tipo', TipologieProblemi_getInstance().tipo_5qq08s_k$(element_4).name_1);
+      put(builder_6, 'tipo', TipologieProblemi_getInstance().tipo_5qq08s_k$(element_7).name_1);
       // Inline function 'kotlin.collections.filter' call
-      var tmp0_1 = TipologieProblemi_getInstance().soluzioni_ln7an6_k$(element_4);
+      var tmp0_1 = TipologieProblemi_getInstance().soluzioni_ln7an6_k$(element_7);
       // Inline function 'kotlin.collections.filterTo' call
-      var destination_7 = ArrayList_init_$Create$();
-      var _iterator__ex2g4s_11 = tmp0_1.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_11.hasNext_bitz1p_k$()) {
-        var element_5 = _iterator__ex2g4s_11.next_20eer_k$();
-        if (!element_5.equals(Soluzione_RICOLLOCATA_getInstance())) {
-          destination_7.add_utx5q5_k$(element_5);
+      var destination_8 = ArrayList_init_$Create$();
+      var _iterator__ex2g4s_14 = tmp0_1.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_14.hasNext_bitz1p_k$()) {
+        var element_8 = _iterator__ex2g4s_14.next_20eer_k$();
+        if (!element_8.equals(Soluzione_RICOLLOCATA_getInstance())) {
+          destination_8.add_utx5q5_k$(element_8);
         }
       }
       // Inline function 'kotlin.collections.map' call
       // Inline function 'kotlin.collections.mapTo' call
-      var destination_8 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_7, 10));
-      var _iterator__ex2g4s_12 = destination_7.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_12.hasNext_bitz1p_k$()) {
-        var item_5 = _iterator__ex2g4s_12.next_20eer_k$();
-        var tmp$ret$64 = JsonPrimitive_0(item_5.codice_1);
-        destination_8.add_utx5q5_k$(tmp$ret$64);
+      var destination_9 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_8, 10));
+      var _iterator__ex2g4s_15 = destination_8.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_15.hasNext_bitz1p_k$()) {
+        var item_5 = _iterator__ex2g4s_15.next_20eer_k$();
+        var tmp$ret$83 = JsonPrimitive_0(item_5.codice_1);
+        destination_9.add_utx5q5_k$(tmp$ret$83);
       }
-      builder_6.put_mrde5n_k$('soluzioni', new JsonArray(destination_8));
-      var tmp$ret$57 = builder_6.build_bkh6qh_k$();
-      builder_5.put_mrde5n_k$(element_4.uid_1, tmp$ret$57);
+      builder_6.put_mrde5n_k$('soluzioni', new JsonArray(destination_9));
+      var tmp$ret$76 = builder_6.build_bkh6qh_k$();
+      builder_5.put_mrde5n_k$(element_7.uid_1, tmp$ret$76);
     }
-    var tmp$ret$50 = builder_5.build_bkh6qh_k$();
-    builder.put_mrde5n_k$('problemi', tmp$ret$50);
+    var tmp$ret$69 = builder_5.build_bkh6qh_k$();
+    builder.put_mrde5n_k$('problemi', tmp$ret$69);
     // Inline function 'kotlin.collections.map' call
-    var this_7 = NonTrovati_instance.di_tjhwu7_k$(a, righe, imp.etaDiagnosticaMesi_1);
+    var this_8 = NonTrovati_instance.di_tjhwu7_k$(a, righe, imp.etaDiagnosticaMesi_1);
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_9 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_7, 10));
-    var _iterator__ex2g4s_13 = this_7.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_13.hasNext_bitz1p_k$()) {
-      var item_6 = _iterator__ex2g4s_13.next_20eer_k$();
-      var tmp_1 = capoJson(item_6);
+    var destination_10 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_8, 10));
+    var _iterator__ex2g4s_16 = this_8.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_16.hasNext_bitz1p_k$()) {
+      var item_6 = _iterator__ex2g4s_16.next_20eer_k$();
+      var tmp_3 = capoJson(item_6);
       var tmp0_2 = a.get_serie_iygor7_k$();
-      var tmp$ret$68;
+      var tmp$ret$87;
+      $l$block: {
+        // Inline function 'kotlin.collections.firstOrNull' call
+        var _iterator__ex2g4s_17 = tmp0_2.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_17.hasNext_bitz1p_k$()) {
+          var element_9 = _iterator__ex2g4s_17.next_20eer_k$();
+          if (element_9.id_1 === item_6.stabilimento_1 + ':' + item_6.specie_1) {
+            tmp$ret$87 = element_9;
+            break $l$block;
+          }
+        }
+        tmp$ret$87 = null;
+      }
+      var tmp0_safe_receiver_2 = tmp$ret$87;
+      var tmp_4;
+      if (tmp0_safe_receiver_2 == null) {
+        tmp_4 = null;
+      } else {
+        // Inline function 'kotlin.let' call
+        var tmp_5 = tmp0_safe_receiver_2.get_prefisso_hx09de_k$();
+        var tmp0_elvis_lhs_0 = item_6.numeroAssegnato_1;
+        tmp_4 = tmp_5 + toString_1(tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0);
+      }
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_1 = tmp_4;
+      var tmp$ret$91 = tmp0_elvis_lhs_1 == null ? '' : tmp0_elvis_lhs_1;
+      var tmp$ret$86 = new JsonObject(plus_5(tmp_3, to('etichettaAssegnata', JsonPrimitive_0(tmp$ret$91))));
+      destination_10.add_utx5q5_k$(tmp$ret$86);
+    }
+    builder.put_mrde5n_k$('nonPrelevati', new JsonArray(destination_10));
+    // Inline function 'kotlin.collections.map' call
+    var this_9 = a.pacchetto_1.config_1.stabilimentiLavoro_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_11 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_9, 10));
+    var _iterator__ex2g4s_18 = this_9.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_18.hasNext_bitz1p_k$()) {
+      var item_7 = _iterator__ex2g4s_18.next_20eer_k$();
+      var tmp_6 = this.progetto_1.get_6bo4tg_k$('esporti');
+      // Inline function 'kotlin.collections.orEmpty' call
+      var tmp0_elvis_lhs_2 = tmp_6 instanceof JsonArray ? tmp_6 : null;
+      // Inline function 'kotlin.collections.map' call
+      var this_10 = tmp0_elvis_lhs_2 == null ? emptyList() : tmp0_elvis_lhs_2;
+      // Inline function 'kotlin.collections.mapTo' call
+      var destination_12 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_10, 10));
+      var _iterator__ex2g4s_19 = this_10.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_19.hasNext_bitz1p_k$()) {
+        var item_8 = _iterator__ex2g4s_19.next_20eer_k$();
+        var tmp$ret$98 = get_jsonObject(item_8);
+        destination_12.add_utx5q5_k$(tmp$ret$98);
+      }
+      var tmp$ret$99;
       $l$block_0: {
         // Inline function 'kotlin.collections.firstOrNull' call
-        var _iterator__ex2g4s_14 = tmp0_2.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_14.hasNext_bitz1p_k$()) {
-          var element_6 = _iterator__ex2g4s_14.next_20eer_k$();
-          if (element_6.id_1 === item_6.stabilimento_1 + ':' + item_6.specie_1) {
-            tmp$ret$68 = element_6;
+        var _iterator__ex2g4s_20 = destination_12.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_20.hasNext_bitz1p_k$()) {
+          var element_10 = _iterator__ex2g4s_20.next_20eer_k$();
+          if (testo_11(element_10, 'codice') === item_7.codice_1) {
+            tmp$ret$99 = element_10;
             break $l$block_0;
           }
         }
-        tmp$ret$68 = null;
+        tmp$ret$99 = null;
       }
-      var tmp0_safe_receiver_0 = tmp$ret$68;
-      var tmp_2;
-      if (tmp0_safe_receiver_0 == null) {
-        tmp_2 = null;
-      } else {
-        // Inline function 'kotlin.let' call
-        var tmp_3 = tmp0_safe_receiver_0.get_prefisso_hx09de_k$();
-        var tmp0_elvis_lhs = item_6.numeroAssegnato_1;
-        tmp_2 = tmp_3 + toString_1(tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs);
-      }
-      // Inline function 'kotlin.text.orEmpty' call
-      var tmp0_elvis_lhs_0 = tmp_2;
-      var tmp$ret$72 = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
-      var tmp$ret$67 = new JsonObject(plus_5(tmp_1, to('etichettaAssegnata', JsonPrimitive_0(tmp$ret$72))));
-      destination_9.add_utx5q5_k$(tmp$ret$67);
-    }
-    builder.put_mrde5n_k$('nonPrelevati', new JsonArray(destination_9));
-    // Inline function 'kotlin.collections.map' call
-    var this_8 = a.pacchetto_1.config_1.stabilimentiLavoro_1;
-    // Inline function 'kotlin.collections.mapTo' call
-    var destination_10 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_8, 10));
-    var _iterator__ex2g4s_15 = this_8.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_15.hasNext_bitz1p_k$()) {
-      var item_7 = _iterator__ex2g4s_15.next_20eer_k$();
-      var tmp_4 = this.progetto_1.get_6bo4tg_k$('esporti');
-      // Inline function 'kotlin.collections.orEmpty' call
-      var tmp0_elvis_lhs_1 = tmp_4 instanceof JsonArray ? tmp_4 : null;
-      // Inline function 'kotlin.collections.map' call
-      var this_9 = tmp0_elvis_lhs_1 == null ? emptyList() : tmp0_elvis_lhs_1;
-      // Inline function 'kotlin.collections.mapTo' call
-      var destination_11 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_9, 10));
-      var _iterator__ex2g4s_16 = this_9.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_16.hasNext_bitz1p_k$()) {
-        var item_8 = _iterator__ex2g4s_16.next_20eer_k$();
-        var tmp$ret$79 = get_jsonObject(item_8);
-        destination_11.add_utx5q5_k$(tmp$ret$79);
-      }
-      var tmp$ret$80;
-      $l$block_1: {
-        // Inline function 'kotlin.collections.firstOrNull' call
-        var _iterator__ex2g4s_17 = destination_11.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_17.hasNext_bitz1p_k$()) {
-          var element_7 = _iterator__ex2g4s_17.next_20eer_k$();
-          if (testo_11(element_7, 'codice') === item_7.codice_1) {
-            tmp$ret$80 = element_7;
-            break $l$block_1;
-          }
-        }
-        tmp$ret$80 = null;
-      }
-      var precedente = tmp$ret$80;
+      var precedente = tmp$ret$99;
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
       var builder_7 = new JsonObjectBuilder();
       put(builder_7, 'codice', item_7.codice_1);
       var tmp1_elvis_lhs_0 = precedente == null ? null : precedente.get_6bo4tg_k$('file');
       builder_7.put_mrde5n_k$('file', tmp1_elvis_lhs_0 == null ? JsonNull_getInstance() : tmp1_elvis_lhs_0);
-      var tmp_5 = this.progetto_1.get_6bo4tg_k$('manifesto');
-      var manifesto = tmp_5 instanceof JsonObject ? tmp_5 : null;
-      var tmp_6 = precedente == null ? null : precedente.get_6bo4tg_k$('export');
-      var tmp3_safe_receiver = tmp_6 instanceof JsonObject ? tmp_6 : null;
-      var tmp_7 = tmp3_safe_receiver == null ? null : tmp3_safe_receiver.get_6bo4tg_k$('fejalog');
-      var metaOriginale = tmp_7 instanceof JsonObject ? tmp_7 : null;
-      var tmp_8 = EsportatoreCampo_instance;
-      var tmp_9 = this.eventi_1;
+      var tmp_7 = this.progetto_1.get_6bo4tg_k$('manifesto');
+      var manifesto = tmp_7 instanceof JsonObject ? tmp_7 : null;
+      var tmp_8 = precedente == null ? null : precedente.get_6bo4tg_k$('export');
+      var tmp3_safe_receiver = tmp_8 instanceof JsonObject ? tmp_8 : null;
+      var tmp_9 = tmp3_safe_receiver == null ? null : tmp3_safe_receiver.get_6bo4tg_k$('fejalog');
+      var metaOriginale = tmp_9 instanceof JsonObject ? tmp_9 : null;
+      var tmp_10 = EsportatoreCampo_instance;
+      var tmp_11 = this.eventi_1;
       // Inline function 'kotlin.text.orEmpty' call
-      var tmp0_elvis_lhs_2 = manifesto == null ? null : testo_11(manifesto, 'creato_il');
-      var tmp_10 = tmp0_elvis_lhs_2 == null ? '' : tmp0_elvis_lhs_2;
+      var tmp0_elvis_lhs_3 = manifesto == null ? null : testo_11(manifesto, 'creato_il');
+      var tmp_12 = tmp0_elvis_lhs_3 == null ? '' : tmp0_elvis_lhs_3;
       var tmp6_elvis_lhs = metaOriginale == null ? null : testo_11(metaOriginale, 'versione');
-      var tmp_11 = tmp6_elvis_lhs == null ? 'sito' : tmp6_elvis_lhs;
-      var tmp_12 = manifesto == null ? null : manifesto.get_6bo4tg_k$('registro');
-      var tmp8_safe_receiver = tmp_12 instanceof JsonObject ? tmp_12 : null;
+      var tmp_13 = tmp6_elvis_lhs == null ? 'sito' : tmp6_elvis_lhs;
+      var tmp_14 = manifesto == null ? null : manifesto.get_6bo4tg_k$('registro');
+      var tmp8_safe_receiver = tmp_14 instanceof JsonObject ? tmp_14 : null;
       // Inline function 'kotlin.text.orEmpty' call
-      var tmp0_elvis_lhs_3 = tmp8_safe_receiver == null ? null : testo_11(tmp8_safe_receiver, 'impronta');
-      var tmp$ret$85 = tmp0_elvis_lhs_3 == null ? '' : tmp0_elvis_lhs_3;
-      builder_7.put_mrde5n_k$('export', tmp_8.crea_qd9rni_k$(a.pacchetto_1, tmp_9, righe, item_7.codice_1, tmp_10, tmp_11, tmp$ret$85));
+      var tmp0_elvis_lhs_4 = tmp8_safe_receiver == null ? null : testo_11(tmp8_safe_receiver, 'impronta');
+      var tmp$ret$104 = tmp0_elvis_lhs_4 == null ? '' : tmp0_elvis_lhs_4;
+      builder_7.put_mrde5n_k$('export', tmp_10.crea_qd9rni_k$(a.pacchetto_1, tmp_11, righe, item_7.codice_1, tmp_12, tmp_13, tmp$ret$104));
       // Inline function 'kotlin.collections.filter' call
       var tmp0_3 = this.rifiutate_1;
       // Inline function 'kotlin.collections.filterTo' call
-      var destination_12 = ArrayList_init_$Create$();
-      var _iterator__ex2g4s_18 = tmp0_3.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_18.hasNext_bitz1p_k$()) {
-        var element_8 = _iterator__ex2g4s_18.next_20eer_k$();
+      var destination_13 = ArrayList_init_$Create$();
+      var _iterator__ex2g4s_21 = tmp0_3.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_21.hasNext_bitz1p_k$()) {
+        var element_11 = _iterator__ex2g4s_21.next_20eer_k$();
         // Inline function 'kotlin.text.ifEmpty' call
-        var this_10 = testo_11(element_8, 'stabilimento');
-        var tmp_13;
+        var this_11 = testo_11(element_11, 'stabilimento');
+        var tmp_15;
         // Inline function 'kotlin.text.isEmpty' call
-        if (charSequenceLength(this_10) === 0) {
-          tmp_13 = first(a.pacchetto_1.config_1.stabilimentiLavoro_1).codice_1;
+        if (charSequenceLength(this_11) === 0) {
+          tmp_15 = first(a.pacchetto_1.config_1.stabilimentiLavoro_1).codice_1;
         } else {
-          tmp_13 = this_10;
+          tmp_15 = this_11;
         }
-        if (tmp_13 === item_7.codice_1) {
-          destination_12.add_utx5q5_k$(element_8);
+        if (tmp_15 === item_7.codice_1) {
+          destination_13.add_utx5q5_k$(element_11);
         }
       }
       // Inline function 'kotlin.collections.map' call
       // Inline function 'kotlin.collections.mapTo' call
-      var destination_13 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_12, 10));
-      var _iterator__ex2g4s_19 = destination_12.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_19.hasNext_bitz1p_k$()) {
-        var item_9 = _iterator__ex2g4s_19.next_20eer_k$();
-        var tmp$ret$94 = JsonPrimitive_0(testo_11(item_9, 'motivo'));
-        destination_13.add_utx5q5_k$(tmp$ret$94);
+      var destination_14 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_13, 10));
+      var _iterator__ex2g4s_22 = destination_13.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_22.hasNext_bitz1p_k$()) {
+        var item_9 = _iterator__ex2g4s_22.next_20eer_k$();
+        var tmp$ret$113 = JsonPrimitive_0(testo_11(item_9, 'motivo'));
+        destination_14.add_utx5q5_k$(tmp$ret$113);
       }
-      builder_7.put_mrde5n_k$('errori', new JsonArray(destination_13));
-      var tmp$ret$75 = builder_7.build_bkh6qh_k$();
-      destination_10.add_utx5q5_k$(tmp$ret$75);
+      builder_7.put_mrde5n_k$('errori', new JsonArray(destination_14));
+      var tmp$ret$94 = builder_7.build_bkh6qh_k$();
+      destination_11.add_utx5q5_k$(tmp$ret$94);
     }
-    builder.put_mrde5n_k$('esporti', new JsonArray(destination_10));
+    builder.put_mrde5n_k$('esporti', new JsonArray(destination_11));
     // Inline function 'kotlin.collections.map' call
-    var this_11 = a.pacchetto_1.config_1.stabilimentiLavoro_1;
+    var this_12 = a.pacchetto_1.config_1.stabilimentiLavoro_1;
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_14 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_11, 10));
-    var _iterator__ex2g4s_20 = this_11.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_20.hasNext_bitz1p_k$()) {
-      var item_10 = _iterator__ex2g4s_20.next_20eer_k$();
+    var destination_15 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_12, 10));
+    var _iterator__ex2g4s_23 = this_12.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_23.hasNext_bitz1p_k$()) {
+      var item_10 = _iterator__ex2g4s_23.next_20eer_k$();
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
       var builder_8 = new JsonObjectBuilder();
       put(builder_8, 'codice', item_10.codice_1);
       put(builder_8, 'lettera', item_10.lettera_1);
       put(builder_8, 'denominazione', item_10.denominazione_1);
-      var tmp$ret$97 = builder_8.build_bkh6qh_k$();
-      destination_14.add_utx5q5_k$(tmp$ret$97);
+      var tmp$ret$116 = builder_8.build_bkh6qh_k$();
+      destination_15.add_utx5q5_k$(tmp$ret$116);
     }
-    builder.put_mrde5n_k$('stabilimenti', new JsonArray(destination_14));
+    builder.put_mrde5n_k$('stabilimenti', new JsonArray(destination_15));
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
     var builder_9 = new JsonObjectBuilder();
     // Inline function 'kotlin.collections.filter' call
     var tmp0_4 = this.eventi_1;
     // Inline function 'kotlin.collections.filterTo' call
-    var destination_15 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_21 = tmp0_4.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_21.hasNext_bitz1p_k$()) {
-      var element_9 = _iterator__ex2g4s_21.next_20eer_k$();
-      if (!(element_9.dati_1.get_6bo4tg_k$('riga_uid') == null)) {
-        destination_15.add_utx5q5_k$(element_9);
+    var destination_16 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_24 = tmp0_4.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_24.hasNext_bitz1p_k$()) {
+      var element_12 = _iterator__ex2g4s_24.next_20eer_k$();
+      if (!(element_12.dati_1.get_6bo4tg_k$('riga_uid') == null)) {
+        destination_16.add_utx5q5_k$(element_12);
       }
     }
     // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_22 = destination_15.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_22.hasNext_bitz1p_k$()) {
-      var element_10 = _iterator__ex2g4s_22.next_20eer_k$();
-      builder_9.put_mrde5n_k$(testo_11(element_10.dati_1, 'riga_uid'), ensureNotNull(element_10.dati_1.get_6bo4tg_k$('suggerita')));
+    var _iterator__ex2g4s_25 = destination_16.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_25.hasNext_bitz1p_k$()) {
+      var element_13 = _iterator__ex2g4s_25.next_20eer_k$();
+      builder_9.put_mrde5n_k$(testo_11(element_13.dati_1, 'riga_uid'), ensureNotNull(element_13.dati_1.get_6bo4tg_k$('suggerita')));
     }
-    var tmp$ret$100 = builder_9.build_bkh6qh_k$();
-    builder.put_mrde5n_k$('riordinoFatte', tmp$ret$100);
+    var tmp$ret$119 = builder_9.build_bkh6qh_k$();
+    builder.put_mrde5n_k$('riordinoFatte', tmp$ret$119);
     // Inline function 'kotlin.collections.map' call
-    var this_12 = this.applicate_1;
+    var this_13 = this.applicate_1;
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_16 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_12, 10));
-    var _iterator__ex2g4s_23 = this_12.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_23.hasNext_bitz1p_k$()) {
-      var item_11 = _iterator__ex2g4s_23.next_20eer_k$();
-      var tmp$ret$109 = JsonPrimitive_0(item_11);
-      destination_16.add_utx5q5_k$(tmp$ret$109);
+    var destination_17 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_13, 10));
+    var _iterator__ex2g4s_26 = this_13.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_26.hasNext_bitz1p_k$()) {
+      var item_11 = _iterator__ex2g4s_26.next_20eer_k$();
+      var tmp$ret$128 = JsonPrimitive_0(item_11);
+      destination_17.add_utx5q5_k$(tmp$ret$128);
     }
-    builder.put_mrde5n_k$('applicate', new JsonArray(destination_16));
+    builder.put_mrde5n_k$('applicate', new JsonArray(destination_17));
     builder.put_mrde5n_k$('rifiutate', new JsonArray(this.rifiutate_1));
     // Inline function 'kotlin.collections.map' call
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_17 = ArrayList_init_$Create$_0(collectionSizeOrDefault(righe, 10));
-    var _iterator__ex2g4s_24 = righe.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_24.hasNext_bitz1p_k$()) {
-      var item_12 = _iterator__ex2g4s_24.next_20eer_k$();
+    var destination_18 = ArrayList_init_$Create$_0(collectionSizeOrDefault(righe, 10));
+    var _iterator__ex2g4s_27 = righe.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_27.hasNext_bitz1p_k$()) {
+      var item_12 = _iterator__ex2g4s_27.next_20eer_k$();
       var d = Companion_instance_39.di$default_ume0ct_k$(item_12, a.pacchetto_1.razze_1, a.pacchetto_1.decodificaUscite_1, a.pacchetto_1.config_1.stabilimentiLavoro_1.get_size_woubt6_k$() > 1);
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
       var builder_10 = new JsonObjectBuilder();
@@ -78484,25 +81306,25 @@ if (typeof String.prototype.startsWith === 'undefined') {
       put(builder_10, 'serie', item_12.serie_1);
       put(builder_10, 'specie', item_12.specie_1);
       put(builder_10, 'etichetta', item_12.etichetta_1);
-      var tmp0_safe_receiver_1 = item_12.numero_1;
-      var tmp_14;
-      if (tmp0_safe_receiver_1 == null) {
-        tmp_14 = null;
+      var tmp0_safe_receiver_3 = item_12.numero_1;
+      var tmp_16;
+      if (tmp0_safe_receiver_3 == null) {
+        tmp_16 = null;
       } else {
         // Inline function 'kotlin.let' call
-        tmp_14 = JsonPrimitive_2(tmp0_safe_receiver_1);
+        tmp_16 = JsonPrimitive_2(tmp0_safe_receiver_3);
       }
-      var tmp1_elvis_lhs_1 = tmp_14;
+      var tmp1_elvis_lhs_1 = tmp_16;
       builder_10.put_mrde5n_k$('numero', tmp1_elvis_lhs_1 == null ? JsonNull_getInstance() : tmp1_elvis_lhs_1);
       var tmp2_safe_receiver = item_12.contrassegno_1;
-      var tmp_15;
+      var tmp_17;
       if (tmp2_safe_receiver == null) {
-        tmp_15 = null;
+        tmp_17 = null;
       } else {
         // Inline function 'kotlin.let' call
-        tmp_15 = JsonPrimitive_0(tmp2_safe_receiver);
+        tmp_17 = JsonPrimitive_0(tmp2_safe_receiver);
       }
-      var tmp3_elvis_lhs = tmp_15;
+      var tmp3_elvis_lhs = tmp_17;
       builder_10.put_mrde5n_k$('contrassegno', tmp3_elvis_lhs == null ? JsonNull_getInstance() : tmp3_elvis_lhs);
       put(builder_10, 'operatore', item_12.operatore_1);
       put(builder_10, 'device', item_12.device_1);
@@ -78510,14 +81332,14 @@ if (typeof String.prototype.startsWith === 'undefined') {
       put(builder_10, 'sesso', item_12.get_sesso_iygpqs_k$());
       put(builder_10, 'stabilimento', substringBefore(item_12.serie_1, _Char___init__impl__6a9atx(58)));
       var tmp4_safe_receiver = item_12.lettera_1;
-      var tmp_16;
+      var tmp_18;
       if (tmp4_safe_receiver == null) {
-        tmp_16 = null;
+        tmp_18 = null;
       } else {
         // Inline function 'kotlin.let' call
-        tmp_16 = JsonPrimitive_0(tmp4_safe_receiver);
+        tmp_18 = JsonPrimitive_0(tmp4_safe_receiver);
       }
-      var tmp5_elvis_lhs = tmp_16;
+      var tmp5_elvis_lhs = tmp_18;
       builder_10.put_mrde5n_k$('lettera', tmp5_elvis_lhs == null ? JsonNull_getInstance() : tmp5_elvis_lhs);
       put_0(builder_10, 'problematica', item_12.problematica_1);
       put_0(builder_10, 'fraIProblematici', item_12.get_fraIProblematici_oa76rq_k$());
@@ -78530,84 +81352,42 @@ if (typeof String.prototype.startsWith === 'undefined') {
       put_0(builder_10, 'consegnata', item_12.consegnata_1);
       var tmp6_safe_receiver = item_12.soluzione_1;
       var tmp7_safe_receiver = tmp6_safe_receiver == null ? null : tmp6_safe_receiver.codice_1;
-      var tmp_17;
+      var tmp_19;
       if (tmp7_safe_receiver == null) {
-        tmp_17 = null;
+        tmp_19 = null;
       } else {
         // Inline function 'kotlin.let' call
-        tmp_17 = JsonPrimitive_0(tmp7_safe_receiver);
+        tmp_19 = JsonPrimitive_0(tmp7_safe_receiver);
       }
-      var tmp8_elvis_lhs = tmp_17;
+      var tmp8_elvis_lhs = tmp_19;
       builder_10.put_mrde5n_k$('soluzione', tmp8_elvis_lhs == null ? JsonNull_getInstance() : tmp8_elvis_lhs);
       // Inline function 'kotlin.collections.map' call
-      var this_13 = item_12.storia_1;
+      var this_14 = item_12.storia_1;
       // Inline function 'kotlin.collections.mapTo' call
-      var destination_18 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_13, 10));
-      var _iterator__ex2g4s_25 = this_13.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_25.hasNext_bitz1p_k$()) {
-        var item_13 = _iterator__ex2g4s_25.next_20eer_k$();
-        var tmp$ret$125 = JsonPrimitive_0(item_13);
-        destination_18.add_utx5q5_k$(tmp$ret$125);
-      }
-      builder_10.put_mrde5n_k$('storia', new JsonArray(destination_18));
-      // Inline function 'kotlin.collections.filter' call
-      var tmp0_5 = this.eventi_1;
-      // Inline function 'kotlin.collections.filterTo' call
-      var destination_19 = ArrayList_init_$Create$();
-      var _iterator__ex2g4s_26 = tmp0_5.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_26.hasNext_bitz1p_k$()) {
-        var element_11 = _iterator__ex2g4s_26.next_20eer_k$();
-        var tmp_18;
-        if (testo_11(element_11.dati_1, 'uid') === item_12.uid_1) {
-          tmp_18 = true;
-        } else {
-          var tmp_19 = element_11.dati_1.get_6bo4tg_k$('uids');
-          // Inline function 'kotlin.collections.orEmpty' call
-          var tmp0_elvis_lhs_4 = tmp_19 instanceof JsonArray ? tmp_19 : null;
-          var tmp0_6 = tmp0_elvis_lhs_4 == null ? emptyList() : tmp0_elvis_lhs_4;
-          var tmp$ret$130;
-          $l$block_3: {
-            // Inline function 'kotlin.collections.any' call
-            var tmp_20;
-            if (isInterface(tmp0_6, Collection)) {
-              tmp_20 = tmp0_6.isEmpty_y1axqb_k$();
-            } else {
-              tmp_20 = false;
-            }
-            if (tmp_20) {
-              tmp$ret$130 = false;
-              break $l$block_3;
-            }
-            var _iterator__ex2g4s_27 = tmp0_6.iterator_jk1svi_k$();
-            while (_iterator__ex2g4s_27.hasNext_bitz1p_k$()) {
-              var element_12 = _iterator__ex2g4s_27.next_20eer_k$();
-              var tmp0_safe_receiver_2 = element_12 instanceof JsonPrimitive ? element_12 : null;
-              if ((tmp0_safe_receiver_2 == null ? null : tmp0_safe_receiver_2.get_content_h02jrk_k$()) === item_12.uid_1) {
-                tmp$ret$130 = true;
-                break $l$block_3;
-              }
-            }
-            tmp$ret$130 = false;
-          }
-          tmp_18 = tmp$ret$130;
-        }
-        if (tmp_18) {
-          destination_19.add_utx5q5_k$(element_11);
-        }
-      }
-      // Inline function 'kotlin.collections.map' call
-      // Inline function 'kotlin.collections.mapTo' call
-      var destination_20 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_19, 10));
-      var _iterator__ex2g4s_28 = destination_19.iterator_jk1svi_k$();
+      var destination_19 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_14, 10));
+      var _iterator__ex2g4s_28 = this_14.iterator_jk1svi_k$();
       while (_iterator__ex2g4s_28.hasNext_bitz1p_k$()) {
-        var item_14 = _iterator__ex2g4s_28.next_20eer_k$();
+        var item_13 = _iterator__ex2g4s_28.next_20eer_k$();
+        var tmp$ret$144 = JsonPrimitive_0(item_13);
+        destination_19.add_utx5q5_k$(tmp$ret$144);
+      }
+      builder_10.put_mrde5n_k$('storia', new JsonArray(destination_19));
+      // Inline function 'kotlin.collections.orEmpty' call
+      var tmp0_elvis_lhs_5 = eventiPerUid.get_wei43m_k$(item_12.uid_1);
+      // Inline function 'kotlin.collections.map' call
+      var this_15 = tmp0_elvis_lhs_5 == null ? emptyList() : tmp0_elvis_lhs_5;
+      // Inline function 'kotlin.collections.mapTo' call
+      var destination_20 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_15, 10));
+      var _iterator__ex2g4s_29 = this_15.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_29.hasNext_bitz1p_k$()) {
+        var item_14 = _iterator__ex2g4s_29.next_20eer_k$();
         // Inline function 'kotlinx.serialization.json.buildJsonObject' call
         var builder_11 = new JsonObjectBuilder();
         put(builder_11, 'tipo', item_14.tipo_1);
         put(builder_11, 'op', item_14.op_1);
         put(builder_11, 'ts', item_14.ts_1);
-        var tmp$ret$134 = builder_11.build_bkh6qh_k$();
-        destination_20.add_utx5q5_k$(tmp$ret$134);
+        var tmp$ret$148 = builder_11.build_bkh6qh_k$();
+        destination_20.add_utx5q5_k$(tmp$ret$148);
       }
       builder_10.put_mrde5n_k$('eventi', new JsonArray(destination_20));
       var tmp9_safe_receiver = item_12.get_identificazione_xnk4do_k$();
@@ -78615,25 +81395,25 @@ if (typeof String.prototype.startsWith === 'undefined') {
       put(builder_10, 'identificazione', tmp10_elvis_lhs == null ? '' : tmp10_elvis_lhs);
       put_1(builder_10, 'candidati', item_12.get_candidati_gxd87y_k$());
       // Inline function 'kotlin.text.orEmpty' call
-      var tmp0_elvis_lhs_5 = item_12.caratteristiche_1.get_wei43m_k$('note');
-      var tmp$ret$137 = tmp0_elvis_lhs_5 == null ? '' : tmp0_elvis_lhs_5;
-      put(builder_10, 'note', tmp$ret$137);
+      var tmp0_elvis_lhs_6 = item_12.caratteristiche_1.get_wei43m_k$('note');
+      var tmp$ret$151 = tmp0_elvis_lhs_6 == null ? '' : tmp0_elvis_lhs_6;
+      put(builder_10, 'note', tmp$ret$151);
       put_0(builder_10, 'orecchino_sx', item_12.caratteristiche_1.get_wei43m_k$('orecchino_sx') === 'true');
       put_0(builder_10, 'orecchino_dx', item_12.caratteristiche_1.get_wei43m_k$('orecchino_dx') === 'true');
       put_0(builder_10, 'bolo', item_12.caratteristiche_1.get_wei43m_k$('bolo') === 'true');
       put_0(builder_10, 'senza_transponder', item_12.caratteristiche_1.get_wei43m_k$('senza_transponder') === 'true');
       // Inline function 'kotlin.text.orEmpty' call
-      var tmp0_elvis_lhs_6 = item_12.caratteristiche_1.get_wei43m_k$('sesso_corretto');
-      var tmp$ret$138 = tmp0_elvis_lhs_6 == null ? '' : tmp0_elvis_lhs_6;
-      put(builder_10, 'sesso_corretto', tmp$ret$138);
+      var tmp0_elvis_lhs_7 = item_12.caratteristiche_1.get_wei43m_k$('sesso_corretto');
+      var tmp$ret$152 = tmp0_elvis_lhs_7 == null ? '' : tmp0_elvis_lhs_7;
+      put(builder_10, 'sesso_corretto', tmp$ret$152);
       // Inline function 'kotlin.text.orEmpty' call
-      var tmp0_elvis_lhs_7 = item_12.caratteristiche_1.get_wei43m_k$('categoria');
-      var tmp$ret$139 = tmp0_elvis_lhs_7 == null ? '' : tmp0_elvis_lhs_7;
-      put(builder_10, 'categoria', tmp$ret$139);
-      var tmp11_safe_receiver = AcquistiDda_instance.di_4dh1u9_k$(this.eventi_1).get_wei43m_k$(item_12.uid_1);
-      var tmp_21;
+      var tmp0_elvis_lhs_8 = item_12.caratteristiche_1.get_wei43m_k$('categoria');
+      var tmp$ret$153 = tmp0_elvis_lhs_8 == null ? '' : tmp0_elvis_lhs_8;
+      put(builder_10, 'categoria', tmp$ret$153);
+      var tmp11_safe_receiver = dda.get_wei43m_k$(item_12.uid_1);
+      var tmp_20;
       if (tmp11_safe_receiver == null) {
-        tmp_21 = null;
+        tmp_20 = null;
       } else {
         // Inline function 'kotlin.let' call
         // Inline function 'kotlinx.serialization.json.buildJsonObject' call
@@ -78641,985 +81421,744 @@ if (typeof String.prototype.startsWith === 'undefined') {
         put(builder_12, 'stato', tmp11_safe_receiver.stato_1.codice_1);
         put(builder_12, 'titolo', tmp11_safe_receiver.stato_1.titolo_1);
         put(builder_12, 'nota', tmp11_safe_receiver.nota_1);
-        tmp_21 = builder_12.build_bkh6qh_k$();
+        tmp_20 = builder_12.build_bkh6qh_k$();
       }
-      var tmp12_elvis_lhs = tmp_21;
+      var tmp12_elvis_lhs = tmp_20;
       builder_10.put_mrde5n_k$('dda', tmp12_elvis_lhs == null ? JsonNull_getInstance() : tmp12_elvis_lhs);
-      var tmp_22;
-      if (item_12.get_fraIProblematici_oa76rq_k$() && !item_12.annullata_1 && !item_12.persa_1) {
+      var tmp_21;
+      if (item_12.get_fraIProblematici_oa76rq_k$() && !item_12.annullata_1 && !item_12.persa_1 && !contains_5(setOf_0([Soluzione_RICOLLOCATA_getInstance(), Soluzione_ESCLUSA_getInstance(), Soluzione_NORMALIZZATA_getInstance()]), item_12.soluzione_1)) {
         // Inline function 'kotlin.collections.map' call
-        var this_14 = Ricollocazione_instance.candidati$default_bvmee2_k$(item_12, righe, a);
+        var this_16 = AssentiCompatibili_instance.di$default_b0mgbw_k$(item_12, righe, a);
         // Inline function 'kotlin.collections.mapTo' call
-        var destination_21 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_14, 10));
-        var _iterator__ex2g4s_29 = this_14.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_29.hasNext_bitz1p_k$()) {
-          var item_15 = _iterator__ex2g4s_29.next_20eer_k$();
+        var destination_21 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_16, 10));
+        var _iterator__ex2g4s_30 = this_16.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_30.hasNext_bitz1p_k$()) {
+          var item_15 = _iterator__ex2g4s_30.next_20eer_k$();
           // Inline function 'kotlinx.serialization.json.buildJsonObject' call
           var builder_13 = new JsonObjectBuilder();
           put(builder_13, 'contrassegno', item_15.capo_1.contrassegno_1);
           put(builder_13, 'sesso', item_15.capo_1.sesso_1);
           put(builder_13, 'razza', item_15.capo_1.razza_1);
           put(builder_13, 'dataNascita', item_15.capo_1.dataNascita_1);
-          var tmp$ret$146 = builder_13.build_bkh6qh_k$();
-          destination_21.add_utx5q5_k$(tmp$ret$146);
+          var tmp$ret$160 = builder_13.build_bkh6qh_k$();
+          destination_21.add_utx5q5_k$(tmp$ret$160);
         }
-        tmp_22 = destination_21;
+        tmp_21 = destination_21;
       } else {
-        tmp_22 = emptyList();
+        tmp_21 = emptyList();
       }
-      builder_10.put_mrde5n_k$('candidatiSoluzione', new JsonArray(tmp_22));
+      builder_10.put_mrde5n_k$('candidatiSoluzione', new JsonArray(tmp_21));
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
       var builder_14 = new JsonObjectBuilder();
       put(builder_14, 'esito', d.esito_1);
       put(builder_14, 'tono', d.tono_1.name_1);
-      var tmp0_safe_receiver_3 = d.motivo_1;
-      var tmp_23;
-      if (tmp0_safe_receiver_3 == null) {
-        tmp_23 = null;
+      var tmp0_safe_receiver_4 = d.motivo_1;
+      var tmp_22;
+      if (tmp0_safe_receiver_4 == null) {
+        tmp_22 = null;
       } else {
         // Inline function 'kotlin.let' call
-        tmp_23 = JsonPrimitive_0(tmp0_safe_receiver_3);
+        tmp_22 = JsonPrimitive_0(tmp0_safe_receiver_4);
       }
-      var tmp1_elvis_lhs_2 = tmp_23;
+      var tmp1_elvis_lhs_2 = tmp_22;
       builder_14.put_mrde5n_k$('motivo', tmp1_elvis_lhs_2 == null ? JsonNull_getInstance() : tmp1_elvis_lhs_2);
       put(builder_14, 'capo', d.capo_1);
       // Inline function 'kotlin.collections.map' call
-      var this_15 = d.segnalazioni_1;
+      var this_17 = d.segnalazioni_1;
       // Inline function 'kotlin.collections.mapTo' call
-      var destination_22 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_15, 10));
-      var _iterator__ex2g4s_30 = this_15.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_30.hasNext_bitz1p_k$()) {
-        var item_16 = _iterator__ex2g4s_30.next_20eer_k$();
-        var tmp$ret$155 = JsonPrimitive_0(item_16);
-        destination_22.add_utx5q5_k$(tmp$ret$155);
+      var destination_22 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_17, 10));
+      var _iterator__ex2g4s_31 = this_17.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_31.hasNext_bitz1p_k$()) {
+        var item_16 = _iterator__ex2g4s_31.next_20eer_k$();
+        var tmp$ret$169 = JsonPrimitive_0(item_16);
+        destination_22.add_utx5q5_k$(tmp$ret$169);
       }
       builder_14.put_mrde5n_k$('segnalazioni', new JsonArray(destination_22));
       put(builder_14, 'chi', d.chi_1);
       // Inline function 'kotlin.collections.map' call
-      var this_16 = d.stato_1;
+      var this_18 = d.stato_1;
       // Inline function 'kotlin.collections.mapTo' call
-      var destination_23 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_16, 10));
-      var _iterator__ex2g4s_31 = this_16.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_31.hasNext_bitz1p_k$()) {
-        var item_17 = _iterator__ex2g4s_31.next_20eer_k$();
-        var tmp$ret$158 = JsonPrimitive_0(item_17);
-        destination_23.add_utx5q5_k$(tmp$ret$158);
+      var destination_23 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_18, 10));
+      var _iterator__ex2g4s_32 = this_18.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_32.hasNext_bitz1p_k$()) {
+        var item_17 = _iterator__ex2g4s_32.next_20eer_k$();
+        var tmp$ret$172 = JsonPrimitive_0(item_17);
+        destination_23.add_utx5q5_k$(tmp$ret$172);
       }
       builder_14.put_mrde5n_k$('stato', new JsonArray(destination_23));
       // Inline function 'kotlin.collections.map' call
-      var this_17 = d.grezzi_1;
+      var this_19 = d.grezzi_1;
       // Inline function 'kotlin.collections.mapTo' call
-      var destination_24 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_17, 10));
-      var _iterator__ex2g4s_32 = this_17.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_32.hasNext_bitz1p_k$()) {
-        var item_18 = _iterator__ex2g4s_32.next_20eer_k$();
+      var destination_24 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_19, 10));
+      var _iterator__ex2g4s_33 = this_19.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_33.hasNext_bitz1p_k$()) {
+        var item_18 = _iterator__ex2g4s_33.next_20eer_k$();
         var k_0 = item_18.component1_7eebsc_k$();
         var v = item_18.component2_7eebsb_k$();
         // Inline function 'kotlinx.serialization.json.buildJsonObject' call
         var builder_15 = new JsonObjectBuilder();
         put(builder_15, 'chiave', k_0);
         put(builder_15, 'valore', v);
-        var tmp$ret$161 = builder_15.build_bkh6qh_k$();
-        destination_24.add_utx5q5_k$(tmp$ret$161);
+        var tmp$ret$175 = builder_15.build_bkh6qh_k$();
+        destination_24.add_utx5q5_k$(tmp$ret$175);
       }
       builder_14.put_mrde5n_k$('grezzi', new JsonArray(destination_24));
-      var tmp$ret$149 = builder_14.build_bkh6qh_k$();
-      builder_10.put_mrde5n_k$('descrizione', tmp$ret$149);
-      var tmp$ret$112 = builder_10.build_bkh6qh_k$();
-      destination_17.add_utx5q5_k$(tmp$ret$112);
+      var tmp$ret$163 = builder_14.build_bkh6qh_k$();
+      builder_10.put_mrde5n_k$('descrizione', tmp$ret$163);
+      var tmp$ret$131 = builder_10.build_bkh6qh_k$();
+      destination_18.add_utx5q5_k$(tmp$ret$131);
     }
-    var provetteArray = new JsonArray(destination_17);
+    var provetteArray = new JsonArray(destination_18);
     builder.put_mrde5n_k$('provette', provetteArray);
-    var evCampo = CategoriaGestione_getInstance().campionamento_87r8m7_k$(this.eventi_1);
-    var aCampo = Companion_getInstance_47().di_55966q_k$(this.originale_1, evCampo);
-    var righeCampo = ElencoProvette_getInstance().di_wu4zn2_k$(evCampo, Companion_getInstance_67().di$default_tuv5ya_k$(evCampo, aCampo.get_serie_iygor7_k$()), aCampo);
-    var coperture = Copertura_instance.di_ni43c7_k$(aCampo.pacchetto_1, righeCampo, imp.etaDiagnosticaMesi_1, a.get_serie_iygor7_k$());
-    // Inline function 'kotlin.collections.sumOf' call
-    var sum = 0;
-    var _iterator__ex2g4s_33 = coperture.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_33.hasNext_bitz1p_k$()) {
-      var element_13 = _iterator__ex2g4s_33.next_20eer_k$();
-      var tmp_24 = sum;
-      sum = tmp_24 + element_13.mancanti_1.get_size_woubt6_k$() | 0;
-    }
-    var mancantiTot = sum;
-    // Inline function 'kotlin.collections.sumOf' call
-    var sum_0 = 0;
-    var _iterator__ex2g4s_34 = coperture.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_34.hasNext_bitz1p_k$()) {
-      var element_14 = _iterator__ex2g4s_34.next_20eer_k$();
-      var tmp_25 = sum_0;
-      sum_0 = tmp_25 + element_14.attesi_1 | 0;
-    }
-    var attesiTot = sum_0;
-    // Inline function 'kotlin.collections.mapNotNull' call
-    // Inline function 'kotlin.collections.mapNotNullTo' call
-    var destination_25 = ArrayList_init_$Create$();
-    // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_35 = evCampo.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_35.hasNext_bitz1p_k$()) {
-      var element_15 = _iterator__ex2g4s_35.next_20eer_k$();
-      var tmp0_safe_receiver_4 = Data_getInstance().ms_9lyjo4_k$(element_15.ts_1);
-      if (tmp0_safe_receiver_4 == null)
-        null;
-      else {
-        // Inline function 'kotlin.let' call
-        destination_25.add_utx5q5_k$(tmp0_safe_receiver_4);
-      }
-    }
-    var tmp0_elvis_lhs_8 = maxOrNull(destination_25);
-    var adessoMs = tmp0_elvis_lhs_8 == null ? new Long(0, 0) : tmp0_elvis_lhs_8;
-    var andamento = Companion_getInstance_34().di_rr013f_k$(righeCampo, evCampo, mancantiTot, attesiTot, adessoMs);
-    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-    var builder_16 = new JsonObjectBuilder();
-    // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_36 = listOf_0([Specie_PECORE_getInstance(), Specie_CAPRE_getInstance()]).iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_36.hasNext_bitz1p_k$()) {
-      var element_16 = _iterator__ex2g4s_36.next_20eer_k$();
-      var nomeSp = element_16.equals(Specie_PECORE_getInstance()) ? 'pecore' : 'capre';
-      var s_0 = Statistiche_instance.di_19uqw0_k$(aCampo.pacchetto_1, righeCampo, element_16);
-      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-      var builder_17 = new JsonObjectBuilder();
-      put(builder_17, 'specie', s_0.specie_1);
-      put_1(builder_17, 'attesi', s_0.attesi_1);
-      put_1(builder_17, 'capiFatti', s_0.capiFatti_1);
-      put_1(builder_17, 'mancanti', s_0.mancanti_1);
-      put_1(builder_17, 'percentuale', s_0.get_percentuale_wio4v3_k$());
-      put_1(builder_17, 'provette', s_0.provette_1);
-      put_1(builder_17, 'problematiche', s_0.problematiche_1);
-      put_1(builder_17, 'provvisorie', s_0.provvisorie_1);
-      put_1(builder_17, 'perse', s_0.perse_1);
-      put_1(builder_17, 'numeriDoppi', s_0.numeriDoppi_1);
-      put_1(builder_17, 'doppiContrassegno', s_0.doppiContrassegno_1);
-      put_1(builder_17, 'maschiAttesi', s_0.maschiAttesi_1);
-      put_1(builder_17, 'maschiFatti', s_0.maschiFatti_1);
-      put_1(builder_17, 'capiCampionati', s_0.capiCampionati_1);
-      put_1(builder_17, 'lettiElettronicamente', s_0.lettiElettronicamente_1);
-      put_1(builder_17, 'percentualeElettronica', s_0.get_percentualeElettronica_q8kopf_k$());
-      var tmp0_safe_receiver_5 = s_0.senzaTransponder_1;
-      if (tmp0_safe_receiver_5 == null)
-        null;
-      else {
-        // Inline function 'kotlin.let' call
-        // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-        var builder_18 = new JsonObjectBuilder();
-        put_1(builder_18, 'totale', tmp0_safe_receiver_5.senzaTransponder_1);
-        put_1(builder_18, 'capi', tmp0_safe_receiver_5.capi_1);
-        put_1(builder_18, 'dx', tmp0_safe_receiver_5.dx_1);
-        put_1(builder_18, 'sx', tmp0_safe_receiver_5.sx_1);
-        put_1(builder_18, 'bolo', tmp0_safe_receiver_5.bolo_1);
-        put(builder_18, 'percentuale', tmp0_safe_receiver_5.get_percentuale_wio4v3_k$());
-        var tmp$ret$183 = builder_18.build_bkh6qh_k$();
-        builder_17.put_mrde5n_k$('senzaTransponder', tmp$ret$183);
-      }
-      var tmp$ret$179 = builder_17.build_bkh6qh_k$();
-      builder_16.put_mrde5n_k$(nomeSp, tmp$ret$179);
-    }
-    var statSpecie = builder_16.build_bkh6qh_k$();
-    // Inline function 'kotlin.collections.map' call
-    // Inline function 'kotlin.collections.mapTo' call
-    var destination_26 = ArrayList_init_$Create$_0(collectionSizeOrDefault(coperture, 10));
-    var _iterator__ex2g4s_37 = coperture.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_37.hasNext_bitz1p_k$()) {
-      var item_19 = _iterator__ex2g4s_37.next_20eer_k$();
-      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-      var builder_19 = new JsonObjectBuilder();
-      put(builder_19, 'specie', item_19.specie_1);
-      put_1(builder_19, 'attesi', item_19.attesi_1);
-      put_1(builder_19, 'registrati', item_19.registrati_1);
-      // Inline function 'kotlin.collections.map' call
-      var this_18 = item_19.mancanti_1;
-      // Inline function 'kotlin.collections.mapTo' call
-      var destination_27 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_18, 10));
-      var _iterator__ex2g4s_38 = this_18.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_38.hasNext_bitz1p_k$()) {
-        var item_20 = _iterator__ex2g4s_38.next_20eer_k$();
-        var tmp$ret$192 = JsonPrimitive_0(item_20);
-        destination_27.add_utx5q5_k$(tmp$ret$192);
-      }
-      builder_19.put_mrde5n_k$('mancanti', new JsonArray(destination_27));
-      put_1(builder_19, 'percentuale', item_19.get_percentuale_wio4v3_k$());
-      var tmp$ret$187 = builder_19.build_bkh6qh_k$();
-      destination_26.add_utx5q5_k$(tmp$ret$187);
-    }
-    var coperturaJson = new JsonArray(destination_26);
-    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-    var builder_20 = new JsonObjectBuilder();
-    // Inline function 'kotlin.collections.map' call
-    var this_19 = andamento.operatori_1;
-    // Inline function 'kotlin.collections.mapTo' call
-    var destination_28 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_19, 10));
-    var _iterator__ex2g4s_39 = this_19.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_39.hasNext_bitz1p_k$()) {
-      var item_21 = _iterator__ex2g4s_39.next_20eer_k$();
-      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-      var builder_21 = new JsonObjectBuilder();
-      put(builder_21, 'operatore', item_21.operatore_1);
-      put(builder_21, 'device', item_21.device_1);
-      put(builder_21, 'stato', item_21.stato_1.testo_1);
-      put_1(builder_21, 'provette', item_21.provette_1);
-      put_1(builder_21, 'problematiche', item_21.problematiche_1);
-      put_1(builder_21, 'ritmoMedio', item_21.ritmoMedio_1);
-      put_1(builder_21, 'ritmo20', item_21.ritmo20__1);
-      var tmp0_safe_receiver_6 = item_21.intervalloMedioMin_1;
-      var tmp_26;
-      if (tmp0_safe_receiver_6 == null) {
-        tmp_26 = null;
-      } else {
-        // Inline function 'kotlin.let' call
-        tmp_26 = JsonPrimitive_2(tmp0_safe_receiver_6);
-      }
-      var tmp1_elvis_lhs_3 = tmp_26;
-      builder_21.put_mrde5n_k$('intervalloMedioMin', tmp1_elvis_lhs_3 == null ? JsonNull_getInstance() : tmp1_elvis_lhs_3);
-      put(builder_21, 'ultima', item_21.ultima_1);
-      put_1(builder_21, 'minutiDiLavoro', item_21.minutiDiLavoro_1);
-      var tmp$ret$197 = builder_21.build_bkh6qh_k$();
-      destination_28.add_utx5q5_k$(tmp$ret$197);
-    }
-    builder_20.put_mrde5n_k$('operatori', new JsonArray(destination_28));
-    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-    var builder_22 = new JsonObjectBuilder();
-    put_1(builder_22, 'mancanti', andamento.stima_1.mancanti_1);
-    put_1(builder_22, 'provetteOra', andamento.stima_1.provetteOra_1);
-    var tmp0_safe_receiver_7 = andamento.stima_1.minuti_1;
-    var tmp_27;
-    if (tmp0_safe_receiver_7 == null) {
-      tmp_27 = null;
-    } else {
-      // Inline function 'kotlin.let' call
-      tmp_27 = JsonPrimitive_2(tmp0_safe_receiver_7);
-    }
-    var tmp1_elvis_lhs_4 = tmp_27;
-    builder_22.put_mrde5n_k$('minuti', tmp1_elvis_lhs_4 == null ? JsonNull_getInstance() : tmp1_elvis_lhs_4);
-    var tmp$ret$202 = builder_22.build_bkh6qh_k$();
-    builder_20.put_mrde5n_k$('stima', tmp$ret$202);
-    var andamentoJson = builder_20.build_bkh6qh_k$();
-    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-    var builder_23 = new JsonObjectBuilder();
-    builder_23.put_mrde5n_k$('specie', statSpecie);
-    // Inline function 'kotlin.collections.flatMap' call
-    var tmp0_7 = a.pacchetto_1.config_1.stabilimentiLavoro_1;
-    // Inline function 'kotlin.collections.flatMapTo' call
-    var destination_29 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_40 = tmp0_7.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_40.hasNext_bitz1p_k$()) {
-      var element_17 = _iterator__ex2g4s_40.next_20eer_k$();
-      var pStab = a.pacchetto_1.copy$default_mdwsto_k$(VOID, VOID, VOID, VOID, VOID, VOID, a.pacchetto_1.config_1.copy$default_vsaehh_k$(listOf(element_17)));
-      // Inline function 'kotlin.collections.filter' call
-      // Inline function 'kotlin.collections.filterTo' call
-      var destination_30 = ArrayList_init_$Create$();
-      var _iterator__ex2g4s_41 = righeCampo.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_41.hasNext_bitz1p_k$()) {
-        var element_18 = _iterator__ex2g4s_41.next_20eer_k$();
-        if (substringBefore(element_18.serie_1, _Char___init__impl__6a9atx(58)) === element_17.codice_1) {
-          destination_30.add_utx5q5_k$(element_18);
-        }
-      }
-      var rStab = destination_30;
-      // Inline function 'kotlin.collections.map' call
-      var this_20 = get_entries_10();
-      // Inline function 'kotlin.collections.mapTo' call
-      var destination_31 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_20, 10));
-      var _iterator__ex2g4s_42 = this_20.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_42.hasNext_bitz1p_k$()) {
-        var item_22 = _iterator__ex2g4s_42.next_20eer_k$();
-        var sStab = Statistiche_instance.di_19uqw0_k$(pStab, rStab, item_22);
-        // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-        var builder_24 = new JsonObjectBuilder();
-        put(builder_24, 'stabilimento', element_17.codice_1);
-        put(builder_24, 'specie', sStab.specie_1);
-        put_1(builder_24, 'attesi', sStab.attesi_1);
-        put_1(builder_24, 'capiFatti', sStab.capiFatti_1);
-        put_1(builder_24, 'mancanti', sStab.mancanti_1);
-        put_1(builder_24, 'percentuale', sStab.get_percentuale_wio4v3_k$());
-        put_1(builder_24, 'provette', sStab.provette_1);
-        var tmp$ret$216 = builder_24.build_bkh6qh_k$();
-        destination_31.add_utx5q5_k$(tmp$ret$216);
-      }
-      var list = destination_31;
-      addAll(destination_29, list);
-    }
-    builder_23.put_mrde5n_k$('stabilimenti', new JsonArray(destination_29));
-    builder_23.put_mrde5n_k$('copertura', coperturaJson);
-    builder_23.put_mrde5n_k$('andamento', andamentoJson);
-    var tmp$ret$206 = builder_23.build_bkh6qh_k$();
-    builder.put_mrde5n_k$('statistiche', tmp$ret$206);
+    builder.put_mrde5n_k$('statistiche', this.get_statisticheCampo_3zsuwm_k$());
     var doppiScoperti = DoppiScoperti_instance.di_f1yo41_k$(righe);
     // Inline function 'kotlin.collections.filter' call
-    var tmp0_8 = this.eventi_1;
+    var tmp0_5 = this.eventi_1;
     // Inline function 'kotlin.collections.filterTo' call
-    var destination_32 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_43 = tmp0_8.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_43.hasNext_bitz1p_k$()) {
-      var element_19 = _iterator__ex2g4s_43.next_20eer_k$();
-      var tmp_28;
-      if (element_19.tipo_1 === 'DOPPIO_VISTO') {
+    var destination_25 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_34 = tmp0_5.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_34.hasNext_bitz1p_k$()) {
+      var element_14 = _iterator__ex2g4s_34.next_20eer_k$();
+      var tmp_23;
+      if (element_14.tipo_1 === 'DOPPIO_VISTO') {
         var tmp0_elvis_lhs_9 = stato.regia_1;
-        var tmp_29;
+        var tmp_24;
         if (tmp0_elvis_lhs_9 == null) {
-          var tmp1_safe_receiver = firstOrNull(this.eventi_1);
-          tmp_29 = tmp1_safe_receiver == null ? null : tmp1_safe_receiver.feed_1;
+          var tmp1_safe_receiver_0 = firstOrNull(this.eventi_1);
+          tmp_24 = tmp1_safe_receiver_0 == null ? null : tmp1_safe_receiver_0.feed_1;
         } else {
-          tmp_29 = tmp0_elvis_lhs_9;
+          tmp_24 = tmp0_elvis_lhs_9;
         }
-        tmp_28 = element_19.feed_1 === tmp_29;
+        tmp_23 = element_14.feed_1 === tmp_24;
       } else {
-        tmp_28 = false;
+        tmp_23 = false;
       }
-      if (tmp_28) {
-        destination_32.add_utx5q5_k$(element_19);
+      if (tmp_23) {
+        destination_25.add_utx5q5_k$(element_14);
       }
     }
     // Inline function 'kotlin.collections.mapNotNullTo' call
-    var destination_33 = HashSet_init_$Create$();
+    var destination_26 = HashSet_init_$Create$();
     // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_44 = destination_32.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_44.hasNext_bitz1p_k$()) {
-      var element_20 = _iterator__ex2g4s_44.next_20eer_k$();
-      var tmp_30 = element_20.dati_1.get_6bo4tg_k$('uid');
-      var tmp0_safe_receiver_8 = tmp_30 instanceof JsonPrimitive ? tmp_30 : null;
-      var tmp0_safe_receiver_9 = tmp0_safe_receiver_8 == null ? null : tmp0_safe_receiver_8.get_content_h02jrk_k$();
-      if (tmp0_safe_receiver_9 == null)
+    var _iterator__ex2g4s_35 = destination_25.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_35.hasNext_bitz1p_k$()) {
+      var element_15 = _iterator__ex2g4s_35.next_20eer_k$();
+      var tmp_25 = element_15.dati_1.get_6bo4tg_k$('uid');
+      var tmp0_safe_receiver_5 = tmp_25 instanceof JsonPrimitive ? tmp_25 : null;
+      var tmp0_safe_receiver_6 = tmp0_safe_receiver_5 == null ? null : tmp0_safe_receiver_5.get_content_h02jrk_k$();
+      if (tmp0_safe_receiver_6 == null)
         null;
       else {
         // Inline function 'kotlin.let' call
-        destination_33.add_utx5q5_k$(tmp0_safe_receiver_9);
+        destination_26.add_utx5q5_k$(tmp0_safe_receiver_6);
       }
     }
-    var vistiDoppiSet = destination_33;
+    var vistiDoppiSet = destination_26;
     var elencoRicercati = Ricercati_instance.elenco_5kramu_k$(a.pacchetto_1.ricercati_1, this.eventi_1);
     var ricercatiTrovati = Ricercati_instance.trovati_z6r9hf_k$(elencoRicercati, righe);
     // Inline function 'kotlin.collections.filter' call
-    var tmp0_9 = this.eventi_1;
+    var tmp0_6 = this.eventi_1;
     // Inline function 'kotlin.collections.filterTo' call
-    var destination_34 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_45 = tmp0_9.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_45.hasNext_bitz1p_k$()) {
-      var element_21 = _iterator__ex2g4s_45.next_20eer_k$();
-      var tmp_31;
-      if (element_21.tipo_1 === 'RICERCATO_VISTO') {
+    var destination_27 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_36 = tmp0_6.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_36.hasNext_bitz1p_k$()) {
+      var element_16 = _iterator__ex2g4s_36.next_20eer_k$();
+      var tmp_26;
+      if (element_16.tipo_1 === 'RICERCATO_VISTO') {
         var tmp0_elvis_lhs_10 = stato.regia_1;
-        var tmp_32;
+        var tmp_27;
         if (tmp0_elvis_lhs_10 == null) {
-          var tmp1_safe_receiver_0 = firstOrNull(this.eventi_1);
-          tmp_32 = tmp1_safe_receiver_0 == null ? null : tmp1_safe_receiver_0.feed_1;
+          var tmp1_safe_receiver_1 = firstOrNull(this.eventi_1);
+          tmp_27 = tmp1_safe_receiver_1 == null ? null : tmp1_safe_receiver_1.feed_1;
         } else {
-          tmp_32 = tmp0_elvis_lhs_10;
+          tmp_27 = tmp0_elvis_lhs_10;
         }
-        tmp_31 = element_21.feed_1 === tmp_32;
+        tmp_26 = element_16.feed_1 === tmp_27;
       } else {
-        tmp_31 = false;
+        tmp_26 = false;
       }
-      if (tmp_31) {
-        destination_34.add_utx5q5_k$(element_21);
+      if (tmp_26) {
+        destination_27.add_utx5q5_k$(element_16);
       }
     }
     // Inline function 'kotlin.collections.mapNotNullTo' call
-    var destination_35 = HashSet_init_$Create$();
+    var destination_28 = HashSet_init_$Create$();
     // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_46 = destination_34.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_46.hasNext_bitz1p_k$()) {
-      var element_22 = _iterator__ex2g4s_46.next_20eer_k$();
-      var tmp_33 = element_22.dati_1.get_6bo4tg_k$('uid');
-      var tmp0_safe_receiver_10 = tmp_33 instanceof JsonPrimitive ? tmp_33 : null;
-      var tmp0_safe_receiver_11 = tmp0_safe_receiver_10 == null ? null : tmp0_safe_receiver_10.get_content_h02jrk_k$();
-      if (tmp0_safe_receiver_11 == null)
+    var _iterator__ex2g4s_37 = destination_27.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_37.hasNext_bitz1p_k$()) {
+      var element_17 = _iterator__ex2g4s_37.next_20eer_k$();
+      var tmp_28 = element_17.dati_1.get_6bo4tg_k$('uid');
+      var tmp0_safe_receiver_7 = tmp_28 instanceof JsonPrimitive ? tmp_28 : null;
+      var tmp0_safe_receiver_8 = tmp0_safe_receiver_7 == null ? null : tmp0_safe_receiver_7.get_content_h02jrk_k$();
+      if (tmp0_safe_receiver_8 == null)
         null;
       else {
         // Inline function 'kotlin.let' call
-        destination_35.add_utx5q5_k$(tmp0_safe_receiver_11);
+        destination_28.add_utx5q5_k$(tmp0_safe_receiver_8);
       }
     }
-    var vistiRicercatiSet = destination_35;
+    var vistiRicercatiSet = destination_28;
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-    var builder_25 = new JsonObjectBuilder();
+    var builder_16 = new JsonObjectBuilder();
     // Inline function 'kotlin.collections.map' call
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_36 = ArrayList_init_$Create$_0(collectionSizeOrDefault(doppiScoperti, 10));
-    var _iterator__ex2g4s_47 = doppiScoperti.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_47.hasNext_bitz1p_k$()) {
-      var item_23 = _iterator__ex2g4s_47.next_20eer_k$();
+    var destination_29 = ArrayList_init_$Create$_0(collectionSizeOrDefault(doppiScoperti, 10));
+    var _iterator__ex2g4s_38 = doppiScoperti.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_38.hasNext_bitz1p_k$()) {
+      var item_19 = _iterator__ex2g4s_38.next_20eer_k$();
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-      var builder_26 = new JsonObjectBuilder();
-      put(builder_26, 'contrassegno', item_23.get_contrassegno_b2vqdv_k$());
-      put(builder_26, 'testo', item_23.get_testo_iz0id0_k$());
-      put_0(builder_26, 'visto', vistiDoppiSet.contains_aljjnj_k$(item_23.doppia_1.uid_1));
+      var builder_17 = new JsonObjectBuilder();
+      put(builder_17, 'contrassegno', item_19.get_contrassegno_b2vqdv_k$());
+      put(builder_17, 'testo', item_19.get_testo_iz0id0_k$());
+      put_0(builder_17, 'visto', vistiDoppiSet.contains_aljjnj_k$(item_19.doppia_1.uid_1));
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-      var builder_27 = new JsonObjectBuilder();
-      put(builder_27, 'uid', item_23.prima_1.uid_1);
-      put(builder_27, 'etichetta', item_23.prima_1.etichetta_1);
-      put(builder_27, 'operatore', item_23.prima_1.operatore_1);
-      put(builder_27, 'ts', item_23.prima_1.ts_1);
-      var tmp0_safe_receiver_12 = item_23.prima_1.get_identificazione_xnk4do_k$();
-      var tmp1_elvis_lhs_5 = tmp0_safe_receiver_12 == null ? null : tmp0_safe_receiver_12.name_1;
-      put(builder_27, 'identificazione', tmp1_elvis_lhs_5 == null ? '' : tmp1_elvis_lhs_5);
-      put_1(builder_27, 'candidati', item_23.prima_1.get_candidati_gxd87y_k$());
-      var tmp$ret$244 = builder_27.build_bkh6qh_k$();
-      builder_26.put_mrde5n_k$('prima', tmp$ret$244);
+      var builder_18 = new JsonObjectBuilder();
+      put(builder_18, 'uid', item_19.prima_1.uid_1);
+      put(builder_18, 'etichetta', item_19.prima_1.etichetta_1);
+      put(builder_18, 'operatore', item_19.prima_1.operatore_1);
+      put(builder_18, 'ts', item_19.prima_1.ts_1);
+      var tmp0_safe_receiver_9 = item_19.prima_1.get_identificazione_xnk4do_k$();
+      var tmp1_elvis_lhs_3 = tmp0_safe_receiver_9 == null ? null : tmp0_safe_receiver_9.name_1;
+      put(builder_18, 'identificazione', tmp1_elvis_lhs_3 == null ? '' : tmp1_elvis_lhs_3);
+      put_1(builder_18, 'candidati', item_19.prima_1.get_candidati_gxd87y_k$());
+      var tmp$ret$203 = builder_18.build_bkh6qh_k$();
+      builder_17.put_mrde5n_k$('prima', tmp$ret$203);
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-      var builder_28 = new JsonObjectBuilder();
-      put(builder_28, 'uid', item_23.doppia_1.uid_1);
-      put(builder_28, 'etichetta', item_23.doppia_1.etichetta_1);
-      put(builder_28, 'operatore', item_23.doppia_1.operatore_1);
-      put(builder_28, 'ts', item_23.doppia_1.ts_1);
-      var tmp0_safe_receiver_13 = item_23.doppia_1.get_identificazione_xnk4do_k$();
-      var tmp1_elvis_lhs_6 = tmp0_safe_receiver_13 == null ? null : tmp0_safe_receiver_13.name_1;
-      put(builder_28, 'identificazione', tmp1_elvis_lhs_6 == null ? '' : tmp1_elvis_lhs_6);
-      put_1(builder_28, 'candidati', item_23.doppia_1.get_candidati_gxd87y_k$());
-      var tmp$ret$246 = builder_28.build_bkh6qh_k$();
-      builder_26.put_mrde5n_k$('doppia', tmp$ret$246);
-      var tmp$ret$241 = builder_26.build_bkh6qh_k$();
-      destination_36.add_utx5q5_k$(tmp$ret$241);
+      var builder_19 = new JsonObjectBuilder();
+      put(builder_19, 'uid', item_19.doppia_1.uid_1);
+      put(builder_19, 'etichetta', item_19.doppia_1.etichetta_1);
+      put(builder_19, 'operatore', item_19.doppia_1.operatore_1);
+      put(builder_19, 'ts', item_19.doppia_1.ts_1);
+      var tmp0_safe_receiver_10 = item_19.doppia_1.get_identificazione_xnk4do_k$();
+      var tmp1_elvis_lhs_4 = tmp0_safe_receiver_10 == null ? null : tmp0_safe_receiver_10.name_1;
+      put(builder_19, 'identificazione', tmp1_elvis_lhs_4 == null ? '' : tmp1_elvis_lhs_4);
+      put_1(builder_19, 'candidati', item_19.doppia_1.get_candidati_gxd87y_k$());
+      var tmp$ret$205 = builder_19.build_bkh6qh_k$();
+      builder_17.put_mrde5n_k$('doppia', tmp$ret$205);
+      var tmp$ret$200 = builder_17.build_bkh6qh_k$();
+      destination_29.add_utx5q5_k$(tmp$ret$200);
     }
-    builder_25.put_mrde5n_k$('doppiScoperti', new JsonArray(destination_36));
+    builder_16.put_mrde5n_k$('doppiScoperti', new JsonArray(destination_29));
     // Inline function 'kotlin.collections.map' call
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_37 = ArrayList_init_$Create$_0(collectionSizeOrDefault(ricercatiTrovati, 10));
-    var _iterator__ex2g4s_48 = ricercatiTrovati.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_48.hasNext_bitz1p_k$()) {
-      var item_24 = _iterator__ex2g4s_48.next_20eer_k$();
+    var destination_30 = ArrayList_init_$Create$_0(collectionSizeOrDefault(ricercatiTrovati, 10));
+    var _iterator__ex2g4s_39 = ricercatiTrovati.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_39.hasNext_bitz1p_k$()) {
+      var item_20 = _iterator__ex2g4s_39.next_20eer_k$();
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-      var builder_29 = new JsonObjectBuilder();
+      var builder_20 = new JsonObjectBuilder();
       // Inline function 'kotlin.text.orEmpty' call
-      var tmp0_elvis_lhs_11 = item_24.riga_1.contrassegno_1;
-      var tmp$ret$253 = tmp0_elvis_lhs_11 == null ? '' : tmp0_elvis_lhs_11;
-      put(builder_29, 'contrassegno', tmp$ret$253);
-      put(builder_29, 'provetta', item_24.riga_1.etichetta_1);
-      put(builder_29, 'uid', item_24.riga_1.uid_1);
-      put(builder_29, 'nota', item_24.voce_1.ricercato_1.nota_1);
-      put(builder_29, 'cosaFare', item_24.voce_1.get_cosaFare_vwmle9_k$());
-      put(builder_29, 'fonte', item_24.voce_1.fonte_1);
-      put(builder_29, 'operatore', item_24.riga_1.operatore_1);
-      put(builder_29, 'ts', item_24.riga_1.ts_1);
-      put_0(builder_29, 'visto', vistiRicercatiSet.contains_aljjnj_k$(item_24.riga_1.uid_1) || !(item_24.riga_1.caratteristiche_1.get_wei43m_k$('ricercato') == null));
-      put(builder_29, 'testo', item_24.get_testo_iz0id0_k$());
-      var tmp$ret$250 = builder_29.build_bkh6qh_k$();
-      destination_37.add_utx5q5_k$(tmp$ret$250);
+      var tmp0_elvis_lhs_11 = item_20.riga_1.contrassegno_1;
+      var tmp$ret$212 = tmp0_elvis_lhs_11 == null ? '' : tmp0_elvis_lhs_11;
+      put(builder_20, 'contrassegno', tmp$ret$212);
+      put(builder_20, 'provetta', item_20.riga_1.etichetta_1);
+      put(builder_20, 'uid', item_20.riga_1.uid_1);
+      put(builder_20, 'nota', item_20.voce_1.ricercato_1.nota_1);
+      put(builder_20, 'cosaFare', item_20.voce_1.get_cosaFare_vwmle9_k$());
+      put(builder_20, 'fonte', item_20.voce_1.fonte_1);
+      put(builder_20, 'operatore', item_20.riga_1.operatore_1);
+      put(builder_20, 'ts', item_20.riga_1.ts_1);
+      put_0(builder_20, 'visto', vistiRicercatiSet.contains_aljjnj_k$(item_20.riga_1.uid_1) || !(item_20.riga_1.caratteristiche_1.get_wei43m_k$('ricercato') == null));
+      put(builder_20, 'testo', item_20.get_testo_iz0id0_k$());
+      var tmp$ret$209 = builder_20.build_bkh6qh_k$();
+      destination_30.add_utx5q5_k$(tmp$ret$209);
     }
-    builder_25.put_mrde5n_k$('ricercatiTrovati', new JsonArray(destination_37));
+    builder_16.put_mrde5n_k$('ricercatiTrovati', new JsonArray(destination_30));
     // Inline function 'kotlin.collections.filter' call
     // Inline function 'kotlin.collections.filterTo' call
-    var destination_38 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_49 = righe.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_49.hasNext_bitz1p_k$()) {
-      var element_23 = _iterator__ex2g4s_49.next_20eer_k$();
-      if (!element_23.annullata_1 && (element_23.caratteristiche_1.get_wei43m_k$('collisione_simultanea') === 'true' || element_23.caratteristiche_1.get_wei43m_k$('collisione_attiva') === 'true')) {
-        destination_38.add_utx5q5_k$(element_23);
+    var destination_31 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_40 = righe.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_40.hasNext_bitz1p_k$()) {
+      var element_18 = _iterator__ex2g4s_40.next_20eer_k$();
+      if (!element_18.annullata_1 && (element_18.caratteristiche_1.get_wei43m_k$('collisione_simultanea') === 'true' || element_18.caratteristiche_1.get_wei43m_k$('collisione_attiva') === 'true')) {
+        destination_31.add_utx5q5_k$(element_18);
       }
     }
     // Inline function 'kotlin.collections.map' call
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_39 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_38, 10));
-    var _iterator__ex2g4s_50 = destination_38.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_50.hasNext_bitz1p_k$()) {
-      var item_25 = _iterator__ex2g4s_50.next_20eer_k$();
+    var destination_32 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_31, 10));
+    var _iterator__ex2g4s_41 = destination_31.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_41.hasNext_bitz1p_k$()) {
+      var item_21 = _iterator__ex2g4s_41.next_20eer_k$();
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-      var builder_30 = new JsonObjectBuilder();
-      put(builder_30, 'uid', item_25.uid_1);
-      put(builder_30, 'etichetta', item_25.etichetta_1);
+      var builder_21 = new JsonObjectBuilder();
+      put(builder_21, 'uid', item_21.uid_1);
+      put(builder_21, 'etichetta', item_21.etichetta_1);
       // Inline function 'kotlin.text.orEmpty' call
-      var tmp0_elvis_lhs_12 = item_25.contrassegno_1;
-      var tmp$ret$262 = tmp0_elvis_lhs_12 == null ? '' : tmp0_elvis_lhs_12;
-      put(builder_30, 'contrassegno', tmp$ret$262);
-      put(builder_30, 'operatore', item_25.operatore_1);
-      var tmp$ret$259 = builder_30.build_bkh6qh_k$();
-      destination_39.add_utx5q5_k$(tmp$ret$259);
+      var tmp0_elvis_lhs_12 = item_21.contrassegno_1;
+      var tmp$ret$221 = tmp0_elvis_lhs_12 == null ? '' : tmp0_elvis_lhs_12;
+      put(builder_21, 'contrassegno', tmp$ret$221);
+      put(builder_21, 'operatore', item_21.operatore_1);
+      var tmp$ret$218 = builder_21.build_bkh6qh_k$();
+      destination_32.add_utx5q5_k$(tmp$ret$218);
     }
-    builder_25.put_mrde5n_k$('collisioni', new JsonArray(destination_39));
+    builder_16.put_mrde5n_k$('collisioni', new JsonArray(destination_32));
     // Inline function 'kotlin.collections.filter' call
     // Inline function 'kotlin.collections.filterTo' call
-    var destination_40 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_51 = righe.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_51.hasNext_bitz1p_k$()) {
-      var element_24 = _iterator__ex2g4s_51.next_20eer_k$();
-      if (!element_24.annullata_1 && element_24.caratteristiche_1.get_wei43m_k$('controllo_doppi') === 'incompleto') {
-        destination_40.add_utx5q5_k$(element_24);
+    var destination_33 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_42 = righe.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_42.hasNext_bitz1p_k$()) {
+      var element_19 = _iterator__ex2g4s_42.next_20eer_k$();
+      if (!element_19.annullata_1 && element_19.caratteristiche_1.get_wei43m_k$('controllo_doppi') === 'incompleto') {
+        destination_33.add_utx5q5_k$(element_19);
       }
     }
     // Inline function 'kotlin.collections.map' call
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_41 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_40, 10));
-    var _iterator__ex2g4s_52 = destination_40.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_52.hasNext_bitz1p_k$()) {
-      var item_26 = _iterator__ex2g4s_52.next_20eer_k$();
+    var destination_34 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_33, 10));
+    var _iterator__ex2g4s_43 = destination_33.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_43.hasNext_bitz1p_k$()) {
+      var item_22 = _iterator__ex2g4s_43.next_20eer_k$();
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-      var builder_31 = new JsonObjectBuilder();
-      put(builder_31, 'uid', item_26.uid_1);
-      put(builder_31, 'etichetta', item_26.etichetta_1);
+      var builder_22 = new JsonObjectBuilder();
+      put(builder_22, 'uid', item_22.uid_1);
+      put(builder_22, 'etichetta', item_22.etichetta_1);
       // Inline function 'kotlin.text.orEmpty' call
-      var tmp0_elvis_lhs_13 = item_26.contrassegno_1;
-      var tmp$ret$271 = tmp0_elvis_lhs_13 == null ? '' : tmp0_elvis_lhs_13;
-      put(builder_31, 'contrassegno', tmp$ret$271);
-      put(builder_31, 'operatore', item_26.operatore_1);
+      var tmp0_elvis_lhs_13 = item_22.contrassegno_1;
+      var tmp$ret$230 = tmp0_elvis_lhs_13 == null ? '' : tmp0_elvis_lhs_13;
+      put(builder_22, 'contrassegno', tmp$ret$230);
+      put(builder_22, 'operatore', item_22.operatore_1);
       // Inline function 'kotlin.text.orEmpty' call
-      var tmp0_elvis_lhs_14 = item_26.caratteristiche_1.get_wei43m_k$('non_visti');
-      var tmp$ret$272 = tmp0_elvis_lhs_14 == null ? '' : tmp0_elvis_lhs_14;
-      put(builder_31, 'nonVisti', tmp$ret$272);
-      var tmp$ret$268 = builder_31.build_bkh6qh_k$();
-      destination_41.add_utx5q5_k$(tmp$ret$268);
+      var tmp0_elvis_lhs_14 = item_22.caratteristiche_1.get_wei43m_k$('non_visti');
+      var tmp$ret$231 = tmp0_elvis_lhs_14 == null ? '' : tmp0_elvis_lhs_14;
+      put(builder_22, 'nonVisti', tmp$ret$231);
+      var tmp$ret$227 = builder_22.build_bkh6qh_k$();
+      destination_34.add_utx5q5_k$(tmp$ret$227);
     }
-    builder_25.put_mrde5n_k$('controlloIncompleto', new JsonArray(destination_41));
+    builder_16.put_mrde5n_k$('controlloIncompleto', new JsonArray(destination_34));
     // Inline function 'kotlin.collections.filter' call
-    var tmp0_10 = this.eventi_1;
+    var tmp0_7 = this.eventi_1;
     // Inline function 'kotlin.collections.filterTo' call
-    var destination_42 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_53 = tmp0_10.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_53.hasNext_bitz1p_k$()) {
-      var element_25 = _iterator__ex2g4s_53.next_20eer_k$();
-      if (element_25.tipo_1 === 'DEVICE_USCITO') {
-        destination_42.add_utx5q5_k$(element_25);
+    var destination_35 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_44 = tmp0_7.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_44.hasNext_bitz1p_k$()) {
+      var element_20 = _iterator__ex2g4s_44.next_20eer_k$();
+      if (element_20.tipo_1 === 'DEVICE_USCITO') {
+        destination_35.add_utx5q5_k$(element_20);
       }
     }
     // Inline function 'kotlin.collections.mapNotNull' call
     // Inline function 'kotlin.collections.mapNotNullTo' call
-    var destination_43 = ArrayList_init_$Create$();
+    var destination_36 = ArrayList_init_$Create$();
     // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_54 = destination_42.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_54.hasNext_bitz1p_k$()) {
-      var element_26 = _iterator__ex2g4s_54.next_20eer_k$();
-      var tmp_34 = element_26.dati_1.get_6bo4tg_k$('device');
-      var tmp0_safe_receiver_14 = tmp_34 instanceof JsonPrimitive ? tmp_34 : null;
-      var tmp0_safe_receiver_15 = tmp0_safe_receiver_14 == null ? null : tmp0_safe_receiver_14.get_content_h02jrk_k$();
-      if (tmp0_safe_receiver_15 == null)
+    var _iterator__ex2g4s_45 = destination_35.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_45.hasNext_bitz1p_k$()) {
+      var element_21 = _iterator__ex2g4s_45.next_20eer_k$();
+      var tmp_29 = element_21.dati_1.get_6bo4tg_k$('device');
+      var tmp0_safe_receiver_11 = tmp_29 instanceof JsonPrimitive ? tmp_29 : null;
+      var tmp0_safe_receiver_12 = tmp0_safe_receiver_11 == null ? null : tmp0_safe_receiver_11.get_content_h02jrk_k$();
+      if (tmp0_safe_receiver_12 == null)
         null;
       else {
         // Inline function 'kotlin.let' call
-        destination_43.add_utx5q5_k$(tmp0_safe_receiver_15);
+        destination_36.add_utx5q5_k$(tmp0_safe_receiver_12);
       }
     }
     // Inline function 'kotlin.collections.filter' call
-    var tmp0_11 = distinct(destination_43);
+    var tmp0_8 = distinct(destination_36);
     // Inline function 'kotlin.collections.filterTo' call
-    var destination_44 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_55 = tmp0_11.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_55.hasNext_bitz1p_k$()) {
-      var element_27 = _iterator__ex2g4s_55.next_20eer_k$();
-      if (!stato.attivi_n9u9np_k$().contains_aljjnj_k$(element_27) && Companion_instance_65.di_xksiwb_k$(this.eventi_1, element_27).equals(Presenza_ESCLUSO_getInstance())) {
-        destination_44.add_utx5q5_k$(element_27);
+    var destination_37 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_46 = tmp0_8.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_46.hasNext_bitz1p_k$()) {
+      var element_22 = _iterator__ex2g4s_46.next_20eer_k$();
+      if (!stato.attivi_n9u9np_k$().contains_aljjnj_k$(element_22) && Companion_instance_65.di_xksiwb_k$(this.eventi_1, element_22).equals(Presenza_ESCLUSO_getInstance())) {
+        destination_37.add_utx5q5_k$(element_22);
       }
     }
-    var uscitiOEsclusi = destination_44;
+    var uscitiOEsclusi = destination_37;
     // Inline function 'kotlin.collections.map' call
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_45 = ArrayList_init_$Create$_0(collectionSizeOrDefault(uscitiOEsclusi, 10));
-    var _iterator__ex2g4s_56 = uscitiOEsclusi.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_56.hasNext_bitz1p_k$()) {
-      var item_27 = _iterator__ex2g4s_56.next_20eer_k$();
-      var op = stato.operatore_snjg4n_k$(item_27);
+    var destination_38 = ArrayList_init_$Create$_0(collectionSizeOrDefault(uscitiOEsclusi, 10));
+    var _iterator__ex2g4s_47 = uscitiOEsclusi.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_47.hasNext_bitz1p_k$()) {
+      var item_23 = _iterator__ex2g4s_47.next_20eer_k$();
+      var op = stato.operatore_snjg4n_k$(item_23);
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-      var builder_32 = new JsonObjectBuilder();
-      put(builder_32, 'device', item_27);
-      var tmp_35;
+      var builder_23 = new JsonObjectBuilder();
+      put(builder_23, 'device', item_23);
+      var tmp_30;
       if (op == null) {
-        tmp_35 = null;
+        tmp_30 = null;
       } else {
         // Inline function 'kotlin.let' call
-        tmp_35 = NomiOperatori_instance.completo_yg5yoq_k$(op);
+        tmp_30 = NomiOperatori_instance.completo_yg5yoq_k$(op);
       }
-      var tmp1_elvis_lhs_7 = tmp_35;
-      put(builder_32, 'operatore', tmp1_elvis_lhs_7 == null ? take_1(item_27, 8) : tmp1_elvis_lhs_7);
+      var tmp1_elvis_lhs_5 = tmp_30;
+      put(builder_23, 'operatore', tmp1_elvis_lhs_5 == null ? take_1(item_23, 8) : tmp1_elvis_lhs_5);
       // Inline function 'kotlin.text.orEmpty' call
-      var tmp0_elvis_lhs_15 = stato.dispositivo_b7mc7d_k$(item_27);
-      var tmp$ret$293 = tmp0_elvis_lhs_15 == null ? '' : tmp0_elvis_lhs_15;
-      put(builder_32, 'dispositivo', tmp$ret$293);
-      var tmp$ret$288 = builder_32.build_bkh6qh_k$();
-      destination_45.add_utx5q5_k$(tmp$ret$288);
+      var tmp0_elvis_lhs_15 = stato.dispositivo_b7mc7d_k$(item_23);
+      var tmp$ret$252 = tmp0_elvis_lhs_15 == null ? '' : tmp0_elvis_lhs_15;
+      put(builder_23, 'dispositivo', tmp$ret$252);
+      var tmp$ret$247 = builder_23.build_bkh6qh_k$();
+      destination_38.add_utx5q5_k$(tmp$ret$247);
     }
-    builder_25.put_mrde5n_k$('deviceMaiRientrati', new JsonArray(destination_45));
-    var avvisiJson = builder_25.build_bkh6qh_k$();
+    builder_16.put_mrde5n_k$('deviceMaiRientrati', new JsonArray(destination_38));
+    var avvisiJson = builder_16.build_bkh6qh_k$();
     builder.put_mrde5n_k$('avvisi', avvisiJson);
     put(builder, 'senzaTransponderCsv', Transponder_instance.csv_drd5o0_k$(righe));
     put(builder, 'ricercatiCsv', elencoRicercati.isEmpty_y1axqb_k$() ? '' : Ricercati_instance.csv_e6gzp4_k$(elencoRicercati, righe));
+    var schemaBdn = SchemaBdn_instance.voci_5j6bih_k$(righe);
+    var sottoEta = SottoEta_instance.totali_1tzzht_k$(this.eventi_1);
+    var tmp_31;
+    // Inline function 'kotlin.collections.isNotEmpty' call
+    if (!schemaBdn.isEmpty_y1axqb_k$()) {
+      tmp_31 = true;
+    } else {
+      var tmp0_9 = sottoEta.get_values_ksazhn_k$();
+      var tmp$ret$254;
+      $l$block_2: {
+        // Inline function 'kotlin.collections.any' call
+        var tmp_32;
+        if (isInterface(tmp0_9, Collection)) {
+          tmp_32 = tmp0_9.isEmpty_y1axqb_k$();
+        } else {
+          tmp_32 = false;
+        }
+        if (tmp_32) {
+          tmp$ret$254 = false;
+          break $l$block_2;
+        }
+        var _iterator__ex2g4s_48 = tmp0_9.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_48.hasNext_bitz1p_k$()) {
+          var element_23 = _iterator__ex2g4s_48.next_20eer_k$();
+          if (element_23 > 0) {
+            tmp$ret$254 = true;
+            break $l$block_2;
+          }
+        }
+        tmp$ret$254 = false;
+      }
+      tmp_31 = tmp$ret$254;
+    }
+    var conSchema = tmp_31;
+    put(builder, 'registrazioneBdnCsv', conSchema ? SchemaBdn_instance.csv_rpga4g_k$(schemaBdn) : '');
+    put(builder, 'daRegistrareInBdnTxt', conSchema ? SchemaBdn_instance.testo_1cb3bt_k$(schemaBdn, sottoEta) : '');
+    var tmp0_safe_receiver_13 = firstOrNull(a.pacchetto_1.config_1.stabilimentiLavoro_1);
+    var principaleBdn = tmp0_safe_receiver_13 == null ? null : tmp0_safe_receiver_13.codice_1;
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-    var builder_33 = new JsonObjectBuilder();
+    var builder_24 = new JsonObjectBuilder();
     // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_57 = a.pacchetto_1.config_1.stabilimentiLavoro_1.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_57.hasNext_bitz1p_k$()) {
-      var element_28 = _iterator__ex2g4s_57.next_20eer_k$();
+    var _iterator__ex2g4s_49 = a.pacchetto_1.config_1.stabilimentiLavoro_1.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_49.hasNext_bitz1p_k$()) {
+      var element_24 = _iterator__ex2g4s_49.next_20eer_k$();
       // Inline function 'kotlin.collections.filter' call
       // Inline function 'kotlin.collections.filterTo' call
-      var destination_46 = ArrayList_init_$Create$();
-      var _iterator__ex2g4s_58 = ricercatiTrovati.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_58.hasNext_bitz1p_k$()) {
-        var element_29 = _iterator__ex2g4s_58.next_20eer_k$();
-        if (substringBefore(element_29.riga_1.serie_1, _Char___init__impl__6a9atx(58)) === element_28.codice_1) {
-          destination_46.add_utx5q5_k$(element_29);
+      var destination_39 = ArrayList_init_$Create$();
+      var _iterator__ex2g4s_50 = schemaBdn.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_50.hasNext_bitz1p_k$()) {
+        var element_25 = _iterator__ex2g4s_50.next_20eer_k$();
+        if (element_25.stabilimento_1 === element_24.codice_1) {
+          destination_39.add_utx5q5_k$(element_25);
         }
       }
-      var trovatStab = destination_46;
+      var voci = destination_39;
+      var se = element_24.codice_1 === principaleBdn ? sottoEta : emptyMap();
+      var tmp_33;
+      // Inline function 'kotlin.collections.isNotEmpty' call
+      if (!voci.isEmpty_y1axqb_k$()) {
+        tmp_33 = true;
+      } else {
+        var tmp0_10 = se.get_values_ksazhn_k$();
+        var tmp$ret$264;
+        $l$block_4: {
+          // Inline function 'kotlin.collections.any' call
+          var tmp_34;
+          if (isInterface(tmp0_10, Collection)) {
+            tmp_34 = tmp0_10.isEmpty_y1axqb_k$();
+          } else {
+            tmp_34 = false;
+          }
+          if (tmp_34) {
+            tmp$ret$264 = false;
+            break $l$block_4;
+          }
+          var _iterator__ex2g4s_51 = tmp0_10.iterator_jk1svi_k$();
+          while (_iterator__ex2g4s_51.hasNext_bitz1p_k$()) {
+            var element_26 = _iterator__ex2g4s_51.next_20eer_k$();
+            if (element_26 > 0) {
+              tmp$ret$264 = true;
+              break $l$block_4;
+            }
+          }
+          tmp$ret$264 = false;
+        }
+        tmp_33 = tmp$ret$264;
+      }
+      if (tmp_33) {
+        put(builder_24, element_24.codice_1, SchemaBdn_instance.testo_1cb3bt_k$(voci, se));
+      }
+    }
+    var tmp$ret$256 = builder_24.build_bkh6qh_k$();
+    builder.put_mrde5n_k$('daRegistrareInBdnPerStab', tmp$ret$256);
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder_25 = new JsonObjectBuilder();
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s_52 = a.pacchetto_1.config_1.stabilimentiLavoro_1.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_52.hasNext_bitz1p_k$()) {
+      var element_27 = _iterator__ex2g4s_52.next_20eer_k$();
+      // Inline function 'kotlin.collections.filter' call
+      // Inline function 'kotlin.collections.filterTo' call
+      var destination_40 = ArrayList_init_$Create$();
+      var _iterator__ex2g4s_53 = ricercatiTrovati.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_53.hasNext_bitz1p_k$()) {
+        var element_28 = _iterator__ex2g4s_53.next_20eer_k$();
+        if (substringBefore(element_28.riga_1.serie_1, _Char___init__impl__6a9atx(58)) === element_27.codice_1) {
+          destination_40.add_utx5q5_k$(element_28);
+        }
+      }
+      var trovatStab = destination_40;
       // Inline function 'kotlinx.serialization.json.buildJsonArray' call
-      var builder_34 = new JsonArrayBuilder();
+      var builder_26 = new JsonArrayBuilder();
       // Inline function 'kotlin.collections.groupBy' call
       // Inline function 'kotlin.collections.groupByTo' call
-      var destination_47 = LinkedHashMap_init_$Create$();
-      var _iterator__ex2g4s_59 = trovatStab.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_59.hasNext_bitz1p_k$()) {
-        var element_30 = _iterator__ex2g4s_59.next_20eer_k$();
+      var destination_41 = LinkedHashMap_init_$Create$();
+      var _iterator__ex2g4s_54 = trovatStab.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_54.hasNext_bitz1p_k$()) {
+        var element_29 = _iterator__ex2g4s_54.next_20eer_k$();
         // Inline function 'kotlin.text.orEmpty' call
-        var tmp0_elvis_lhs_16 = element_30.riga_1.contrassegno_1;
-        var tmp$ret$306 = tmp0_elvis_lhs_16 == null ? '' : tmp0_elvis_lhs_16;
-        var key = to(element_30.riga_1.specie_1, tmp$ret$306);
+        var tmp0_elvis_lhs_16 = element_29.riga_1.contrassegno_1;
+        var tmp$ret$278 = tmp0_elvis_lhs_16 == null ? '' : tmp0_elvis_lhs_16;
+        var key = to(element_29.riga_1.specie_1, tmp$ret$278);
         // Inline function 'kotlin.collections.getOrPut' call
-        var value_0 = destination_47.get_wei43m_k$(key);
-        var tmp_36;
-        if (value_0 == null) {
-          var answer = ArrayList_init_$Create$();
-          destination_47.put_4fpzoq_k$(key, answer);
-          tmp_36 = answer;
+        var value_1 = destination_41.get_wei43m_k$(key);
+        var tmp_35;
+        if (value_1 == null) {
+          var answer_0 = ArrayList_init_$Create$();
+          destination_41.put_4fpzoq_k$(key, answer_0);
+          tmp_35 = answer_0;
         } else {
-          tmp_36 = value_0;
+          tmp_35 = value_1;
         }
-        var list_0 = tmp_36;
-        list_0.add_utx5q5_k$(element_30);
+        var list = tmp_35;
+        list.add_utx5q5_k$(element_29);
       }
       // Inline function 'kotlin.collections.forEach' call
       // Inline function 'kotlin.collections.iterator' call
-      var _iterator__ex2g4s_60 = destination_47.get_entries_p20ztl_k$().iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_60.hasNext_bitz1p_k$()) {
-        var element_31 = _iterator__ex2g4s_60.next_20eer_k$();
+      var _iterator__ex2g4s_55 = destination_41.get_entries_p20ztl_k$().iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_55.hasNext_bitz1p_k$()) {
+        var element_30 = _iterator__ex2g4s_55.next_20eer_k$();
         // Inline function 'kotlin.collections.component1' call
-        var chiave_0 = element_31.get_key_18j28a_k$();
+        var chiave_0 = element_30.get_key_18j28a_k$();
         // Inline function 'kotlin.collections.component2' call
-        var trovati = element_31.get_value_j01efc_k$();
+        var trovati = element_30.get_value_j01efc_k$();
         var r_0 = first(trovati);
         // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-        var builder_35 = new JsonObjectBuilder();
-        put(builder_35, 'contrassegno', chiave_0.second_1);
-        put(builder_35, 'specie', chiave_0.first_1);
-        put(builder_35, 'provetta', joinToString_0(trovati, ', ', VOID, VOID, VOID, VOID, SessioneSito$risultato$lambda));
+        var builder_27 = new JsonObjectBuilder();
+        put(builder_27, 'contrassegno', chiave_0.second_1);
+        put(builder_27, 'specie', chiave_0.first_1);
+        put(builder_27, 'provetta', joinToString_0(trovati, ', ', VOID, VOID, VOID, VOID, SessioneSito$risultato$lambda));
         // Inline function 'kotlin.collections.filter' call
-        var tmp0_12 = listOf_0([r_0.voce_1.ricercato_1.nota_1, r_0.voce_1.get_cosaFare_vwmle9_k$()]);
+        var tmp0_11 = listOf_0([r_0.voce_1.ricercato_1.nota_1, r_0.voce_1.get_cosaFare_vwmle9_k$()]);
         // Inline function 'kotlin.collections.filterTo' call
-        var destination_48 = ArrayList_init_$Create$();
-        var _iterator__ex2g4s_61 = tmp0_12.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_61.hasNext_bitz1p_k$()) {
-          var element_32 = _iterator__ex2g4s_61.next_20eer_k$();
+        var destination_42 = ArrayList_init_$Create$();
+        var _iterator__ex2g4s_56 = tmp0_11.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_56.hasNext_bitz1p_k$()) {
+          var element_31 = _iterator__ex2g4s_56.next_20eer_k$();
           // Inline function 'kotlin.text.isNotBlank' call
-          if (!isBlank(element_32)) {
-            destination_48.add_utx5q5_k$(element_32);
+          if (!isBlank(element_31)) {
+            destination_42.add_utx5q5_k$(element_31);
           }
         }
-        put(builder_35, 'cosa', joinToString_0(destination_48, ' \xB7 '));
-        var tmp$ret$314 = builder_35.build_bkh6qh_k$();
-        builder_34.add_i0x14v_k$(tmp$ret$314);
+        put(builder_27, 'cosa', joinToString_0(destination_42, ' \xB7 '));
+        var tmp$ret$286 = builder_27.build_bkh6qh_k$();
+        builder_26.add_i0x14v_k$(tmp$ret$286);
       }
-      var tmp$ret$301 = builder_34.build_bkh6qh_k$();
-      builder_33.put_mrde5n_k$(element_28.codice_1, tmp$ret$301);
+      var tmp$ret$273 = builder_26.build_bkh6qh_k$();
+      builder_25.put_mrde5n_k$(element_27.codice_1, tmp$ret$273);
     }
-    var ricercatiPerStab = builder_33.build_bkh6qh_k$();
+    var ricercatiPerStab = builder_25.build_bkh6qh_k$();
     builder.put_mrde5n_k$('ricercatiPerStabilimento', ricercatiPerStab);
-    var originaliAttuali = Companion_getInstance_47().di_55966q_k$(this.originale_1, this.eventiOriginali_1);
-    var originaliStato = Companion_getInstance_67().di$default_tuv5ya_k$(this.eventiOriginali_1, originaliAttuali.get_serie_iygor7_k$());
-    var originaliRighe = ElencoProvette_getInstance().di_wu4zn2_k$(this.eventiOriginali_1, originaliStato, originaliAttuali);
+    var impronta = get_jsonPrimitive(getValue(_get_backupBase__d4o24o(this), '_impronta')).get_content_h02jrk_k$();
+    var adessoIso = get_jsonPrimitive(getValue(_get_backupBase__d4o24o(this), '_adesso')).get_content_h02jrk_k$();
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-    var builder_36 = new JsonObjectBuilder();
-    put(builder_36, 'pacchetto.json', toString_1(getValue(this.progetto_1, 'pacchetto')));
-    var tmp_37 = Companion_getInstance_87();
-    // Inline function 'kotlin.collections.groupBy' call
-    var tmp0_13 = this.eventiOriginali_1;
-    // Inline function 'kotlin.collections.groupByTo' call
-    var destination_49 = LinkedHashMap_init_$Create$();
-    var _iterator__ex2g4s_62 = tmp0_13.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_62.hasNext_bitz1p_k$()) {
-      var element_33 = _iterator__ex2g4s_62.next_20eer_k$();
-      var key_0 = element_33.feed_1;
-      // Inline function 'kotlin.collections.getOrPut' call
-      var value_1 = destination_49.get_wei43m_k$(key_0);
-      var tmp_38;
-      if (value_1 == null) {
-        var answer_0 = ArrayList_init_$Create$();
-        destination_49.put_4fpzoq_k$(key_0, answer_0);
-        tmp_38 = answer_0;
-      } else {
-        tmp_38 = value_1;
+    var builder_28 = new JsonObjectBuilder();
+    // Inline function 'kotlin.collections.filterKeys' call
+    var this_20 = _get_backupBase__d4o24o(this);
+    var result = LinkedHashMap_init_$Create$();
+    // Inline function 'kotlin.collections.iterator' call
+    var _iterator__ex2g4s_57 = this_20.get_entries_p20ztl_k$().iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_57.hasNext_bitz1p_k$()) {
+      var entry = _iterator__ex2g4s_57.next_20eer_k$();
+      var it = entry.get_key_18j28a_k$();
+      if (!startsWith(it, '_')) {
+        result.put_4fpzoq_k$(entry.get_key_18j28a_k$(), entry.get_value_j01efc_k$());
       }
-      var list_1 = tmp_38;
-      list_1.add_utx5q5_k$(element_33);
     }
-    // Inline function 'kotlin.collections.mapValues' call
-    // Inline function 'kotlin.collections.mapValuesTo' call
-    var destination_50 = LinkedHashMap_init_$Create$_0(mapCapacity(destination_49.get_size_woubt6_k$()));
-    // Inline function 'kotlin.collections.associateByTo' call
-    var _iterator__ex2g4s_63 = destination_49.get_entries_p20ztl_k$().iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_63.hasNext_bitz1p_k$()) {
-      var element_34 = _iterator__ex2g4s_63.next_20eer_k$();
-      var tmp_39 = element_34.get_key_18j28a_k$();
+    // Inline function 'kotlin.collections.forEach' call
+    // Inline function 'kotlin.collections.iterator' call
+    var _iterator__ex2g4s_58 = result.get_entries_p20ztl_k$().iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_58.hasNext_bitz1p_k$()) {
+      var element_32 = _iterator__ex2g4s_58.next_20eer_k$();
+      // Inline function 'kotlin.collections.component1' call
+      var k_1 = element_32.get_key_18j28a_k$();
       // Inline function 'kotlin.collections.component2' call
-      var ev = element_34.get_value_j01efc_k$();
-      var tmp$ret$333;
-      $l$block_4: {
-        // Inline function 'kotlin.collections.maxBy' call
-        var iterator = ev.iterator_jk1svi_k$();
-        if (!iterator.hasNext_bitz1p_k$())
-          throw NoSuchElementException_init_$Create$();
-        var maxElem = iterator.next_20eer_k$();
-        if (!iterator.hasNext_bitz1p_k$()) {
-          tmp$ret$333 = maxElem;
-          break $l$block_4;
-        }
-        var maxValue = maxElem.seq_1;
-        do {
-          var e_0 = iterator.next_20eer_k$();
-          var v_0 = e_0.seq_1;
-          if (compareTo(maxValue, v_0) < 0) {
-            maxElem = e_0;
-            maxValue = v_0;
-          }
-        }
-         while (iterator.hasNext_bitz1p_k$());
-        tmp$ret$333 = maxElem;
-      }
-      var tmp$ret$331 = tmp$ret$333.get_testa_iz0icm_k$();
-      destination_50.put_4fpzoq_k$(tmp_39, tmp$ret$331);
+      var v_0 = element_32.get_value_j01efc_k$();
+      builder_28.put_mrde5n_k$(k_1, v_0);
     }
-    var impronta = tmp_37.di_i4iulq_k$(destination_50).sha256__1;
-    var tmp0_safe_receiver_16 = lastOrNull(this.eventiOriginali_1);
-    var tmp1_elvis_lhs_8 = tmp0_safe_receiver_16 == null ? null : tmp0_safe_receiver_16.ts_1;
-    var adessoIso = tmp1_elvis_lhs_8 == null ? '' : tmp1_elvis_lhs_8;
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-    var builder_37 = new JsonObjectBuilder();
-    put(builder_37, 'formato', 'fejalog-backup');
-    put_1(builder_37, 'versione', 1);
-    put(builder_37, 'creato_il', adessoIso);
-    put(builder_37, 'app', 'sito');
-    putJsonObject(builder_37, 'seduta', SessioneSito$risultato$lambda_0(originaliAttuali, this));
-    putJsonObject(builder_37, 'registro', SessioneSito$risultato$lambda_1(this, impronta));
-    var tmp_40 = this.progetto_1.get_6bo4tg_k$('manifesto');
-    var tmp0_safe_receiver_17 = tmp_40 instanceof JsonObject ? tmp_40 : null;
-    var tmp_41 = tmp0_safe_receiver_17 == null ? null : tmp0_safe_receiver_17.get_6bo4tg_k$('salvato_da');
-    var salvatoDaOrig = tmp_41 instanceof JsonObject ? tmp_41 : null;
-    putJsonObject(builder_37, 'salvato_da', SessioneSito$risultato$lambda_2(salvatoDaOrig));
-    putJsonArray(builder_37, 'export', SessioneSito$risultato$lambda_3(originaliAttuali, originaliRighe));
-    var manifestoAggiornato = builder_37.build_bkh6qh_k$();
-    var tmp_42 = this.progetto_1.get_6bo4tg_k$('manifesto');
-    var tmp2_safe_receiver_0 = tmp_42 instanceof JsonObject ? tmp_42 : null;
-    var reteOriginale = tmp2_safe_receiver_0 == null ? null : tmp2_safe_receiver_0.get_6bo4tg_k$('rete');
-    var tmp_43;
-    if (reteOriginale == null) {
-      tmp_43 = null;
-    } else {
-      // Inline function 'kotlin.let' call
-      tmp_43 = mapOf(to('rete', reteOriginale));
-    }
-    var tmp4_elvis_lhs = tmp_43;
-    put(builder_36, 'backup.json', (new JsonObject(plus_4(manifestoAggiornato, tmp4_elvis_lhs == null ? emptyMap() : tmp4_elvis_lhs))).toString());
-    var csvChiave = TabellaNumerazione_instance.generaCsv_5hkjdj_k$(originaliAttuali.pacchetto_1, originaliAttuali.get_serie_iygor7_k$());
-    put(builder_36, 'numerazione_chiave.csv', csvChiave);
-    put(builder_36, 'LEGGIMI.txt', 'Registro originale conservato. Le azioni del sito sono in fejalog-modifiche.json: importarle sulla Regia con anteprima.\r\n');
+    var builder_29 = new JsonObjectBuilder();
+    put(builder_29, 'formato', 'fejalog-modifiche');
+    put_1(builder_29, 'versione', 4);
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-    var builder_38 = new JsonObjectBuilder();
-    put(builder_38, 'formato', 'fejalog-modifiche');
-    put_1(builder_38, 'versione', 4);
-    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
-    var builder_39 = new JsonObjectBuilder();
-    put(builder_39, 'pacchetto_id', this.originale_1.id_1);
-    put(builder_39, 'pacchetto_sha256', this.originale_1.sha256__1);
-    put(builder_39, 'impronta', impronta);
-    put(builder_39, 'creato_il', adessoIso);
-    put(builder_39, 'nome', 'Sito');
-    var tmp$ret$342 = builder_39.build_bkh6qh_k$();
-    builder_38.put_mrde5n_k$('origine', tmp$ret$342);
+    var builder_30 = new JsonObjectBuilder();
+    put(builder_30, 'pacchetto_id', this.originale_1.id_1);
+    put(builder_30, 'pacchetto_sha256', this.originale_1.sha256__1);
+    put(builder_30, 'impronta', impronta);
+    put(builder_30, 'creato_il', adessoIso);
+    put(builder_30, 'nome', 'Sito');
+    var tmp$ret$304 = builder_30.build_bkh6qh_k$();
+    builder_29.put_mrde5n_k$('origine', tmp$ret$304);
     // Inline function 'kotlin.collections.filter' call
-    var tmp0_14 = this.azioniApplicate_1;
+    var tmp0_12 = this.azioniApplicate_1;
     // Inline function 'kotlin.collections.filterTo' call
-    var destination_51 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_64 = tmp0_14.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_64.hasNext_bitz1p_k$()) {
-      var element_35 = _iterator__ex2g4s_64.next_20eer_k$();
-      if (!(testo_11(element_35, 'tipo') === 'spunta') && !(testo_11(element_35, 'tipo') === 'annullo_scambio')) {
-        destination_51.add_utx5q5_k$(element_35);
+    var destination_43 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_59 = tmp0_12.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_59.hasNext_bitz1p_k$()) {
+      var element_33 = _iterator__ex2g4s_59.next_20eer_k$();
+      if (!(testo_11(element_33, 'tipo') === 'spunta') && !(testo_11(element_33, 'tipo') === 'annullo_scambio')) {
+        destination_43.add_utx5q5_k$(element_33);
       }
     }
-    builder_38.put_mrde5n_k$('azioni', new JsonArray(destination_51));
-    var tmp$ret$340 = builder_38.build_bkh6qh_k$();
-    put(builder_36, 'fejalog-modifiche.json', tmp$ret$340.toString());
-    // Inline function 'kotlin.collections.groupBy' call
-    var tmp0_15 = this.eventiOriginali_1;
-    // Inline function 'kotlin.collections.groupByTo' call
-    var destination_52 = LinkedHashMap_init_$Create$();
-    var _iterator__ex2g4s_65 = tmp0_15.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_65.hasNext_bitz1p_k$()) {
-      var element_36 = _iterator__ex2g4s_65.next_20eer_k$();
-      var key_1 = element_36.feed_1;
-      // Inline function 'kotlin.collections.getOrPut' call
-      var value_2 = destination_52.get_wei43m_k$(key_1);
-      var tmp_44;
-      if (value_2 == null) {
-        var answer_1 = ArrayList_init_$Create$();
-        destination_52.put_4fpzoq_k$(key_1, answer_1);
-        tmp_44 = answer_1;
-      } else {
-        tmp_44 = value_2;
-      }
-      var list_2 = tmp_44;
-      list_2.add_utx5q5_k$(element_36);
-    }
-    // Inline function 'kotlin.collections.sortedBy' call
-    var this_21 = toList_1(destination_52);
-    // Inline function 'kotlin.comparisons.compareBy' call
-    var tmp_45 = SessioneSito$risultato$lambda_4;
-    var tmp$ret$353 = new sam$kotlin_Comparator$0_20(tmp_45);
-    // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_66 = sortedWith(this_21, tmp$ret$353).iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_66.hasNext_bitz1p_k$()) {
-      var element_37 = _iterator__ex2g4s_66.next_20eer_k$();
-      var feed = element_37.component1_7eebsc_k$();
-      var ev_0 = element_37.component2_7eebsb_k$();
-      var tmp_46 = 'registro/' + feed + '.jsonl';
-      // Inline function 'kotlin.collections.sortedBy' call
-      // Inline function 'kotlin.comparisons.compareBy' call
-      var tmp_47 = SessioneSito$risultato$lambda_5;
-      var tmp$ret$357 = new sam$kotlin_Comparator$0_20(tmp_47);
-      var tmp_48 = sortedWith(ev_0, tmp$ret$357);
-      put(builder_36, tmp_46, joinToString_0(tmp_48, '', VOID, VOID, VOID, VOID, SessioneSito$risultato$lambda_6));
-    }
-    // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_67 = originaliAttuali.pacchetto_1.config_1.stabilimentiLavoro_1.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_67.hasNext_bitz1p_k$()) {
-      var element_38 = _iterator__ex2g4s_67.next_20eer_k$();
-      var r_1 = EsportatoreCampo_instance.riepilogo_s3mahu_k$(originaliRighe, element_38.codice_1);
-      if (r_1.provette_1 > 0) {
-        var exp = EsportatoreCampo_instance.crea_qd9rni_k$(originaliAttuali.pacchetto_1, this.eventiOriginali_1, originaliRighe, element_38.codice_1, adessoIso, 'sito', impronta);
-        put(builder_36, 'export/export_accettazione_' + element_38.codice_1 + '_fejalog.json', exp.toString());
-      }
-    }
-    var backupFiles = builder_36.build_bkh6qh_k$();
-    put(builder, 'riepilogoProblematiciCsv', RiepilogoProblematici_instance.calcola_s4it9i_k$(a.pacchetto_1, this.eventi_1, righe).generaCsvUfficio_7qynbh_k$());
-    var tmp_49 = Default_getInstance();
-    var tmp0_16 = Default_getInstance();
+    builder_29.put_mrde5n_k$('azioni', new JsonArray(destination_43));
+    var tmp$ret$302 = builder_29.build_bkh6qh_k$();
+    put(builder_28, 'fejalog-modifiche.json', tmp$ret$302.toString());
+    var backupFiles = builder_28.build_bkh6qh_k$();
+    var riepilogo = RiepilogoProblematici_instance.calcola_s4it9i_k$(a.pacchetto_1, this.eventi_1, righe);
+    put(builder, 'riepilogoProblematiciCsv', riepilogo.generaCsvUfficio_7qynbh_k$());
+    var tmp_36 = Default_getInstance();
     // Inline function 'kotlinx.serialization.json.Json.encodeToString' call
-    var value_3 = RiepilogoProblematici_instance.calcola_s4it9i_k$(a.pacchetto_1, this.eventi_1, righe);
+    var this_21 = Default_getInstance();
     // Inline function 'kotlinx.serialization.serializer' call
-    var this_22 = tmp0_16.get_serializersModule_piitvg_k$();
+    var this_22 = this_21.get_serializersModule_piitvg_k$();
     // Inline function 'kotlinx.serialization.internal.cast' call
     var this_23 = serializer(this_22, createKType(getKClass(DatiRiepilogoProblematici), arrayOf([]), false));
-    var tmp$ret$361 = isInterface(this_23, KSerializer) ? this_23 : THROW_CCE();
-    var tmp$ret$360 = tmp0_16.encodeToString_k0apqx_k$(tmp$ret$361, value_3);
-    builder.put_mrde5n_k$('riepilogoProblematici', tmp_49.parseToJsonElement_rqvr2k_k$(tmp$ret$360));
-    var tmp1_safe_receiver_1 = motoreRiordinoSito;
-    var tmp_50;
-    if (tmp1_safe_receiver_1 == null) {
-      tmp_50 = null;
+    var tmp$ret$310 = isInterface(this_23, KSerializer) ? this_23 : THROW_CCE();
+    var tmp$ret$309 = this_21.encodeToString_k0apqx_k$(tmp$ret$310, riepilogo);
+    builder.put_mrde5n_k$('riepilogoProblematici', tmp_36.parseToJsonElement_rqvr2k_k$(tmp$ret$309));
+    var tmp1_safe_receiver_2 = motoreRiordinoSito;
+    var tmp_37;
+    if (tmp1_safe_receiver_2 == null) {
+      tmp_37 = null;
     } else {
       // Inline function 'kotlin.let' call
-      var i = new InvioRiordino(this.originale_1, this.eventi_1, tmp1_safe_receiver_1);
+      var i = new InvioRiordino(this.originale_1, this.eventi_1, tmp1_safe_receiver_2);
       // Inline function 'kotlin.runCatching' call
-      var tmp_51;
+      var tmp_38;
       try {
         // Inline function 'kotlin.collections.associate' call
         var this_24 = a.pacchetto_1.config_1.stabilimentiLavoro_1;
-        var capacity = coerceAtLeast(mapCapacity(collectionSizeOrDefault(this_24, 10)), 16);
+        var capacity_0 = coerceAtLeast(mapCapacity(collectionSizeOrDefault(this_24, 10)), 16);
         // Inline function 'kotlin.collections.associateTo' call
-        var destination_53 = LinkedHashMap_init_$Create$_0(capacity);
-        var _iterator__ex2g4s_68 = this_24.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_68.hasNext_bitz1p_k$()) {
-          var element_39 = _iterator__ex2g4s_68.next_20eer_k$();
+        var destination_44 = LinkedHashMap_init_$Create$_0(capacity_0);
+        var _iterator__ex2g4s_60 = this_24.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_60.hasNext_bitz1p_k$()) {
+          var element_34 = _iterator__ex2g4s_60.next_20eer_k$();
           // Inline function 'kotlin.collections.plusAssign' call
-          var pair = to(element_39.codice_1, i.sistemazione_m8vvvk_k$(element_39.codice_1, true));
-          destination_53.put_4fpzoq_k$(pair.first_1, pair.second_1);
+          var pair = to(element_34.codice_1, i.sistemazione_m8vvvk_k$(element_34.codice_1, true));
+          destination_44.put_4fpzoq_k$(pair.first_1, pair.second_1);
         }
-        var basi = destination_53;
+        var basi = destination_44;
         // Inline function 'kotlin.collections.flatMap' call
-        var tmp0_17 = a.get_serie_iygor7_k$();
+        var tmp0_13 = a.get_serie_iygor7_k$();
         // Inline function 'kotlin.collections.flatMapTo' call
-        var destination_54 = ArrayList_init_$Create$();
-        var _iterator__ex2g4s_69 = tmp0_17.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_69.hasNext_bitz1p_k$()) {
-          var element_40 = _iterator__ex2g4s_69.next_20eer_k$();
-          var list_3 = i.guida_692u4k_k$(substringBefore(element_40.id_1, _Char___init__impl__6a9atx(58)), element_40.get_specie_jla71c_k$(), getValue(basi, substringBefore(element_40.id_1, _Char___init__impl__6a9atx(58))));
-          addAll(destination_54, list_3);
+        var destination_45 = ArrayList_init_$Create$();
+        var _iterator__ex2g4s_61 = tmp0_13.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_61.hasNext_bitz1p_k$()) {
+          var element_35 = _iterator__ex2g4s_61.next_20eer_k$();
+          var list_0 = i.guida_692u4k_k$(substringBefore(element_35.id_1, _Char___init__impl__6a9atx(58)), element_35.get_specie_jla71c_k$(), getValue(basi, substringBefore(element_35.id_1, _Char___init__impl__6a9atx(58))));
+          addAll(destination_45, list_0);
         }
         // Inline function 'kotlin.Companion.success' call
-        tmp_51 = _Result___init__impl__xyqfz8(destination_54);
+        tmp_38 = _Result___init__impl__xyqfz8(destination_45);
       } catch ($p) {
-        var tmp_52;
+        var tmp_39;
         if ($p instanceof Error) {
-          var e_1 = $p;
+          var e_0 = $p;
           // Inline function 'kotlin.Companion.failure' call
-          tmp_52 = _Result___init__impl__xyqfz8(createFailure(e_1));
+          tmp_39 = _Result___init__impl__xyqfz8(createFailure(e_0));
         } else {
           throw $p;
         }
-        tmp_51 = tmp_52;
+        tmp_38 = tmp_39;
       }
       // Inline function 'kotlin.Result.getOrNull' call
-      var this_25 = tmp_51;
-      tmp_50 = _Result___get_isFailure__impl__jpiriv(this_25) ? null : _Result___get_value__impl__bjfvqg(this_25);
+      var this_25 = tmp_38;
+      tmp_37 = _Result___get_isFailure__impl__jpiriv(this_25) ? null : _Result___get_value__impl__bjfvqg(this_25);
     }
-    var guidaGestione = tmp_50;
-    var tmp_53;
+    var guidaGestione = tmp_37;
+    var tmp_40;
     if (guidaGestione == null) {
-      tmp_53 = null;
+      tmp_40 = null;
     } else {
-      var tmp$ret$377;
+      var tmp$ret$326;
       $l$block_5: {
         // Inline function 'kotlin.collections.count' call
-        var tmp_54;
+        var tmp_41;
         if (isInterface(guidaGestione, Collection)) {
-          tmp_54 = guidaGestione.isEmpty_y1axqb_k$();
+          tmp_41 = guidaGestione.isEmpty_y1axqb_k$();
         } else {
-          tmp_54 = false;
+          tmp_41 = false;
         }
-        if (tmp_54) {
-          tmp$ret$377 = 0;
+        if (tmp_41) {
+          tmp$ret$326 = 0;
           break $l$block_5;
         }
         var count = 0;
-        var _iterator__ex2g4s_70 = guidaGestione.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_70.hasNext_bitz1p_k$()) {
-          var element_41 = _iterator__ex2g4s_70.next_20eer_k$();
-          var tmp_55;
-          if (indiceGestione.fatta_6edtno_k$(element_41.uid_1, element_41.a_1)) {
-            tmp_55 = true;
+        var _iterator__ex2g4s_62 = guidaGestione.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_62.hasNext_bitz1p_k$()) {
+          var element_36 = _iterator__ex2g4s_62.next_20eer_k$();
+          var tmp_42;
+          if (indiceGestione.fatta_6edtno_k$(element_36.uid_1, element_36.a_1)) {
+            tmp_42 = true;
           } else {
-            var tmp0_18 = indiceGestione.spunte_1;
+            var tmp0_14 = indiceGestione.spunte_1;
             // Inline function 'kotlin.collections.contains' call
             // Inline function 'kotlin.collections.containsKey' call
-            var key_2 = element_41.chiave_1;
-            tmp_55 = (isInterface(tmp0_18, KtMap) ? tmp0_18 : THROW_CCE()).containsKey_aw81wo_k$(key_2);
+            var key_0 = element_36.chiave_1;
+            tmp_42 = (isInterface(tmp0_14, KtMap) ? tmp0_14 : THROW_CCE()).containsKey_aw81wo_k$(key_0);
           }
-          if (tmp_55) {
+          if (tmp_42) {
             count = count + 1 | 0;
             checkCountOverflow(count);
           }
         }
-        tmp$ret$377 = count;
+        tmp$ret$326 = count;
       }
-      tmp_53 = tmp$ret$377;
+      tmp_40 = tmp$ret$326;
     }
-    var tmp3_elvis_lhs_0 = tmp_53;
+    var tmp3_elvis_lhs_0 = tmp_40;
     var fatteGestione = tmp3_elvis_lhs_0 == null ? 0 : tmp3_elvis_lhs_0;
-    var tmp_56 = Default_getInstance();
-    var tmp0_19 = Json_0(VOID, SessioneSito$risultato$lambda_7);
-    var tmp_57 = ProduttivitaGestione_getInstance();
-    var tmp_58 = this.eventi_1;
-    var tmp_59 = a.get_serie_iygor7_k$();
+    var tmp_43 = Default_getInstance();
+    var tmp0_15 = Json_0(VOID, SessioneSito$risultato$lambda_0);
+    var tmp_44 = ProduttivitaGestione_getInstance();
+    var tmp_45 = this.eventi_1;
+    var tmp_46 = a.get_serie_iygor7_k$();
     var tmp5_elvis_lhs_0 = guidaGestione == null ? null : guidaGestione.get_size_woubt6_k$();
     // Inline function 'kotlinx.serialization.json.Json.encodeToString' call
-    var value_4 = tmp_57.calcola_wqtup6_k$(a.pacchetto_1, tmp_58, righe, tmp_59, tmp5_elvis_lhs_0 == null ? 0 : tmp5_elvis_lhs_0, fatteGestione, indiceGestione);
+    var value_2 = tmp_44.calcola_wqtup6_k$(a.pacchetto_1, tmp_45, righe, tmp_46, tmp5_elvis_lhs_0 == null ? 0 : tmp5_elvis_lhs_0, fatteGestione, indiceGestione);
     // Inline function 'kotlinx.serialization.serializer' call
-    var this_26 = tmp0_19.get_serializersModule_piitvg_k$();
+    var this_26 = tmp0_15.get_serializersModule_piitvg_k$();
     // Inline function 'kotlinx.serialization.internal.cast' call
     var this_27 = serializer(this_26, createKType(getKClass(StatoAvanzamentoGestione), arrayOf([]), false));
-    var tmp$ret$382 = isInterface(this_27, KSerializer) ? this_27 : THROW_CCE();
-    var tmp$ret$381 = tmp0_19.encodeToString_k0apqx_k$(tmp$ret$382, value_4);
-    builder.put_mrde5n_k$('produttivitaGestione', tmp_56.parseToJsonElement_rqvr2k_k$(tmp$ret$381));
+    var tmp$ret$331 = isInterface(this_27, KSerializer) ? this_27 : THROW_CCE();
+    var tmp$ret$330 = tmp0_15.encodeToString_k0apqx_k$(tmp$ret$331, value_2);
+    builder.put_mrde5n_k$('produttivitaGestione', tmp_43.parseToJsonElement_rqvr2k_k$(tmp$ret$330));
     builder.put_mrde5n_k$('backupFiles', backupFiles);
     return builder.build_bkh6qh_k$();
   };
-  function sam$kotlin_Comparator$0_21(function_0) {
+  function sam$kotlin_Comparator$0_22(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_21).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_22).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_21).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_22).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_21).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_22).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_21).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_22).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -79634,7 +82173,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_21).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_22).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function riconciliaBackupSito$lambda(a, b) {
@@ -79773,7 +82312,9 @@ if (typeof String.prototype.startsWith === 'undefined') {
   RedactedKey_instance = new RedactedKey();
   Companion_instance_30 = new Companion_30();
   Companion_instance_31 = new Companion_31();
+  Accantonate_instance = new Accantonate();
   AcquistiDda_instance = new AcquistiDda();
+  AssentiCompatibili_instance = new AssentiCompatibili();
   Companion_instance_35 = new Companion_35();
   Companion_instance_36 = new Companion_36();
   CampiProvetta_instance = new CampiProvetta();
@@ -79792,6 +82333,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   NomeSeduta_instance = new NomeSeduta();
   NonIdentificati_instance = new NonIdentificati();
   SottoEta_instance = new SottoEta();
+  SchemaBdn_instance = new SchemaBdn();
   NonTrovati_instance = new NonTrovati();
   Companion_instance_46 = new Companion_46();
   Persona_instance = new Persona();
@@ -79857,30 +82399,37 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var uvesco = github.uvesco || (github.uvesco = {});
     var fejalog = uvesco.fejalog || (uvesco.fejalog = {});
     var prova = fejalog.prova || (fejalog.prova = {});
-    prova.creaProgettoSito = creaProgettoSito;
-    prova.cercaPlateauSito = cercaPlateauSito;
-    prova.posizionePlateauSito = posizionePlateauSito;
-    prova.materialeSito = materialeSito;
-    prova.numerazioneStampeSito = numerazioneStampeSito;
-    prova.numerazioneFinaleStampeSito = numerazioneFinaleStampeSito;
-    prova.riconciliaBackupSito = riconciliaBackupSito;
-    prova.impostazioniDaEventi = impostazioniDaEventi;
-    prova.etichetteDaEventi = etichetteDaEventi;
-    prova.statoSito = statoSito;
-    prova.applicaSito = applicaSito;
-    prova.cercaCapiGestioneSito = cercaCapiGestioneSito;
-    prova.chiaveSpuntaSito = chiaveSpuntaSito;
-    prova.confrontoSito = confrontoSito;
-    prova.inEtaSito = inEtaSito;
-    prova.guidaSito = guidaSito;
-    prova.riordinoRigheSito = riordinoRigheSito;
-    prova.ricercaGuidaSito = ricercaGuidaSito;
-    prova.analizzaEtichettaSito = analizzaEtichettaSito;
-    prova.corrispondeRicercaEtichettaSito = corrispondeRicercaEtichettaSito;
-    prova.configuraMotoreRiordinoSito = configuraMotoreRiordinoSito;
-    prova.calcolaBordoPlateauSito = calcolaBordoPlateauSito;
-    prova.riepilogoProblematiciSito = riepilogoProblematiciSito;
-    prova.produttivitaGestioneSito = produttivitaGestioneSito;
+    prova.BancoSito = BancoSito;
+    prova.apriBancoSito = apriBancoSito;
+    var io_0 = _.io || (_.io = {});
+    var github_0 = io_0.github || (io_0.github = {});
+    var uvesco_0 = github_0.uvesco || (github_0.uvesco = {});
+    var fejalog_0 = uvesco_0.fejalog || (uvesco_0.fejalog = {});
+    var prova_0 = fejalog_0.prova || (fejalog_0.prova = {});
+    prova_0.creaProgettoSito = creaProgettoSito;
+    prova_0.cercaPlateauSito = cercaPlateauSito;
+    prova_0.posizionePlateauSito = posizionePlateauSito;
+    prova_0.materialeSito = materialeSito;
+    prova_0.numerazioneStampeSito = numerazioneStampeSito;
+    prova_0.numerazioneFinaleStampeSito = numerazioneFinaleStampeSito;
+    prova_0.riconciliaBackupSito = riconciliaBackupSito;
+    prova_0.impostazioniDaEventi = impostazioniDaEventi;
+    prova_0.etichetteDaEventi = etichetteDaEventi;
+    prova_0.statoSito = statoSito;
+    prova_0.applicaSito = applicaSito;
+    prova_0.cercaCapiGestioneSito = cercaCapiGestioneSito;
+    prova_0.chiaveSpuntaSito = chiaveSpuntaSito;
+    prova_0.confrontoSito = confrontoSito;
+    prova_0.inEtaSito = inEtaSito;
+    prova_0.guidaSito = guidaSito;
+    prova_0.riordinoRigheSito = riordinoRigheSito;
+    prova_0.ricercaGuidaSito = ricercaGuidaSito;
+    prova_0.analizzaEtichettaSito = analizzaEtichettaSito;
+    prova_0.corrispondeRicercaEtichettaSito = corrispondeRicercaEtichettaSito;
+    prova_0.configuraMotoreRiordinoSito = configuraMotoreRiordinoSito;
+    prova_0.calcolaBordoPlateauSito = calcolaBordoPlateauSito;
+    prova_0.riepilogoProblematiciSito = riepilogoProblematiciSito;
+    prova_0.produttivitaGestioneSito = produttivitaGestioneSito;
   }
   $jsExportAll$(_);
   //endregion

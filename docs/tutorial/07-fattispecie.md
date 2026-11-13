@@ -36,8 +36,8 @@ Nel kit avanzato controlla anche i capi **solo usciti dagli stabilimenti chiusi*
 
 ### Fuori età e identificazione incompleta
 
-- **Fuori età diagnostica**: usa il kit a cinque stabilimenti con soglia **12 mesi** e data della seduta **24/10/2026**. Scegli `IT066000010012`, nato il 19/11/2025, dalla sezione giovani fra 6 e 12 mesi. Se lo prelevi, è fuori registro senza numero ordinario; in Soluzione problemi la scelta predefinita è **Eliminata**. Anche i giovani sotto sei mesi vanno provati. Le età delle schede sono riferite alla data del kit.
-- **Senza contrassegno**: prima di esaurire i presenti, simula un animale senza marche e usa il tasto omonimo, con sesso, razza ed età compatibile. L'identificazione resta **attribuita**, DX e SX da sostituire. Se poi prelevi il candidato con le marche, la precedente attribuita va fra le **Attribuite da riattribuire**: controllala con la Regia. È una simulazione; il caso resta da provare sul campo.
+- **Fuori età diagnostica**: usa il kit a cinque stabilimenti con soglia **12 mesi** e data della seduta **24/10/2026**. Scegli `IT066000010012`, nato il 19/11/2025, dalla sezione giovani fra 6 e 12 mesi. Se lo prelevi, è fuori registro senza numero ordinario; alla fine la Regia sceglie se inserirlo in coda o eliminarlo (nessuna scelta predefinita). Anche i giovani sotto sei mesi vanno provati. Le età delle schede sono riferite alla data del kit.
+- **Senza contrassegno**: simula un animale senza marche e usa il tasto omonimo, con sesso, denti, razza e la sigla della provetta come identificazione provvisoria. In campo non si sceglie nessun capo: dopo la chiusura, nel Banco del sito, la proposta è il capo assente più simile o una marca disponibile.
 - **Orecchino o bolo illeggibile**: su un'ordinaria prova DX, SX e bolo da sostituire. DX o bolo segnalati compaiono fra i senza transponder; la segnalazione non basta a trasformarla in fuori registro.
 - **Sesso discordante**: su una scheda presente verifica il comando di correzione del sesso e la nota in Ultime; controlla il dato nelle uscite finali.
 
@@ -91,7 +91,7 @@ Nel kit avanzato controlla anche i capi **solo usciti dagli stabilimenti chiusi*
 </div>
 
 !!! info "Fuori registro e lettere"
-    I fuori registro prendono il **codice fuori registro mostrato** con riquadro rosso e istruzione *«scrivi sempre il contrassegno COMPLETO»*, e vanno nei **plateau fuori registro** (nei progetti nuovi in sequenza unica per l’intero progetto, in ordine di consegna; nei progetti pregressi resta lo schema precedente). **Non tutti finiscono in coda**: la Regia sceglie la soluzione prima del riordino. Le eliminate non hanno numero finale né invio ARVET; i fuori età sono eliminati per impostazione predefinita.
+    I fuori registro prendono il **codice fuori registro mostrato** con riquadro rosso e istruzione *«scrivi sempre il contrassegno COMPLETO»*, e vanno nel **secchio** (nei progetti pregressi resta il plateau fuori registro). La Regia li decide uno alla volta nel Banco: in coda, a un capo, eliminata la singola provetta, persa o rimandata. Le eliminate non hanno numero finale né invio ARVET; per i fuori età la Regia sceglie alla fine, senza predefinito.
 
 ### Completa il controllo nelle altre lezioni
 

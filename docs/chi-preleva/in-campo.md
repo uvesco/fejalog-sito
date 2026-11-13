@@ -42,7 +42,7 @@ Controlla orecchini DX/SX, bolo ed eventuali note. Premi **Conferma** e attendi 
 
 Per un animale privo di marche auricolari e bolo: tocca **Senza contrassegno**. **Non si cerca e non si sceglie alcun capo in anagrafe** durante il campionamento (si farà in ufficio a fine lavori per evitare doppi prelievi).
 
-1. Inserisci sesso, età stimata dai denti (denti da latte, 2, 4, 6 denti, bocca piena, bocca consumata), razza stimata («Meticcio» vale per tutte) e un eventuale segno provvisorio (orecchino ASL, numero sulla schiena).
+1. Inserisci sesso, età stimata dai denti (denti da latte, 2, 4, 6 denti, bocca piena, bocca consumata), razza stimata («Meticcio» vale per tutte) e come segno provvisorio la sigla della provetta, scritta anche sulla schiena: [i fuori registro in campo](fuori-registro.md).
 2. L'app genera il codice provvisorio: scrivi numero e dati somatici sul tubo.
 3. Consegna la provetta alla Regia: andrà nel secchio dei fuori registro.
 
