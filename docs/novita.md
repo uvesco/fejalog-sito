@@ -8,13 +8,59 @@ Ogni versione elenca ciò che è cambiato dalla precedente pubblicata, comprese 
 
 | Versione | Data | Scarica |
 |---|---|---|
-| [0.5.5](#v0-5-5) · ultima | 11/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/schede_kit_cinque_stabilimenti.pdf) |
+| [0.5.6](#v0-5-6) · ultima | 13/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.6/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.6/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.6/schede_kit_cinque_stabilimenti.pdf) |
+| [0.5.5](#v0-5-5) | 11/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/schede_kit_cinque_stabilimenti.pdf) |
 | [0.4.0](#v0-4-0) | 05/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/schede_kit_cinque_stabilimenti.pdf) |
 | [0.3.0](#v0-3-0) | 28/10/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.3.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.3.0/kit_prova_888TO999.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.3.0/schede_kit_prova_888TO999.pdf) |
 | [0.2.0](#v0-2-0) | 21/10/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.2.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.2.0/kit_prova_888TO999.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.2.0/schede_kit_prova_888TO999.pdf) |
 | [0.1.0](#v0-1-0) | 16/10/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/kit_prova_888TO999.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/schede_kit_prova_888TO999.pdf) |
 
 Una versione precedente non si installa sopra una più recente: prima salva un backup, poi disinstalla l'app (i progetti nel telefono si perdono), infine installa la versione scelta. Per installare: [Scarica](scarica.md).
+
+## Versione 0.5.6 · 13/11/2026 { #v0-5-6 }
+
+Per il risanamento del 16/11: la Regia dà l'app giusta ai palmari con un'altra versione, che si aggiornano dal tablet sulla Wi-Fi del progetto; sul sito gli snippet scaricano dalla BDN registri e marche e da ARVET i 2/33, e «Crea il progetto» prepara anche le stampe pre-campo e i 2/33 precompilati; «fuori registro» al posto di «problematici», nessuna eliminazione per tipologia e fuori età decisi alla fine; sito più semplice e istruzioni per i veterinari in ordine.
+
+[Scarica l'app](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.6/fejalog.apk){ .md-button .md-button--primary }
+[Kit di prova](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.6/kit_prova_cinque_stabilimenti.zip){ .md-button }
+[Schede da stampare](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.6/schede_kit_cinque_stabilimenti.pdf){ .md-button }
+
+[Pagina della release su GitHub](https://github.com/uvesco/fejalog-sito/releases/tag/v0.5.6)
+
+### Novità
+
+- I fuori età non hanno più una soluzione predefinita: in Gestione campioni › Problemi da risolvere la Regia sceglie alla fine se inserirli tutti (in coda) o eliminarli tutti; finché non sceglie sono segnati «da decidere».
+- Nell'app e nel sito i «problematici» si chiamano «fuori registro».
+- Il palmare con una versione diversa si aggiorna dalla Regia sulla Wi-Fi del progetto: dopo il rifiuto, nella pagina Rete, «Aggiorna dalla Regia» scarica dal tablet la stessa build e apre l'installazione di Android (che chiede di confermare e, la prima volta, di consentire a Fejalog di installare app). Funziona dai palmari che hanno già questa build; per quelli più vecchi resta il QR dell'app sotto il QR d'ingresso.
+- Sul sito, «Crea il progetto»: le reti del progetto si esportano in un CSV e si ricaricano negli altri progetti sulle stesse reti (SSID;password;note;sicurezza, lo stesso reti.csv delle reti salvate dell'app); con più stabilimenti si può togliere la lettera dal principale.
+- La Regia dà l'app giusta a un palmare con una versione diversa: nella pagina del QR d'ingresso, «Mostra il QR per scaricare l'app». Il palmare lo inquadra con la fotocamera e scarica dal tablet la stessa build della Regia, sulla Wi-Fi del progetto, anche senza internet; il tablet smette di servirla quando si lascia la pagina.
+- Sul sito, Strumenti › Scarica dalla BDN e da ARVET: dai codici degli stabilimenti da campionare (e, a scelta, dall'export dello storico pascoli) uno snippet scarica dalla BDN in un solo zip i registri storici di tutti gli allevamenti ovini e caprini, anche chiusi, e le marche a magazzino; un secondo snippet scarica da ARVET i 2/33 degli stessi stabilimenti. Gli zip si caricano così come sono in «Crea il progetto», che ora ha anche la scheda delle stampe pre-campo e dei 2/33 precompilati.
+
+### Miglioramenti
+
+- Foglio per i veterinari, checklist e briefing più brevi: che cosa fare la sera prima, che cosa scrivere sulla provetta con un esempio per ogni riquadro (neutro, blu, rosso, senza contrassegno), le ordinarie nei plateau e i fuori registro nel secchio, come rientra chi è stato escluso.
+- «Aggiorna dalla Regia»: dopo lo scarico l'app dice di confermare «Installa» e, se compare Google Play Protect, di aprire «Altri dettagli» e installare senza l'analisi (provato sui telefoni: lo scarico dal tablet di 80 MB dura circa 40 secondi).
+- Nessuna tipologia di provette si elimina in blocco (salvo i fuori età per scelta della Regia): l'eliminazione resta solo per la singola provetta, scelta a mano.
+- Sul sito, «Crea il progetto»: veterinari e capi ricercati in due sezioni, «Regole di numerazione» con la lettera dello stabilimento principale (sì o no), niente regole dei fuori registro; negli snippet BDN e ARVET una crocetta chiude la finestrella senza ricaricare la pagina.
+- Il tablet offre la sua app sulla rete del progetto per tutta la seduta (solo il file, solo alla rete locale), senza dover tenere aperta la pagina del QR.
+- Sul sito, «Crea il progetto»: le regole dei problematici partono tutte da «in coda, ARVET a mano», tranne «ora in lista coi registri nuovi», che si normalizzano.
+- Gli snippet per la BDN e per ARVET mettono nei nomi dei file la data e l'ora dello scarico (AAAAMMGG\_HHMMSS).
+- Il sito è più semplice: la pagina iniziale spiega Fejalog in sette punti, il menu ha meno voci, il veterinario ha tre pagine (prima del campo, in campo, se qualcosa va storto); in fondo a ogni pagina la data dell'ultimo aggiornamento.
+- Con più stabilimenti, sotto la scritta da copiare sulla provetta l'app dice di scrivere anche la lettera dello stabilimento nel cerchietto (es. Ⓧ125).
+- Il foglio per i veterinari («Manda le istruzioni») spiega la configurazione iniziale in tre passi: Utente, Dispositivo e permessi.
+- Il sito è in quattro schede: Inizia qui, Strumenti, Documentazione, Formazione; le schede si vedono anche sul telefono.
+- Il messaggio della build diversa dice al palmare dove prendere l'app giusta.
+
+### Correzioni
+
+- Progetto creato sul sito e aperto sul tablet: il registro del sito non compare più fra i device della Rete e della Gestione dispositivi (prima si vedeva «sito-… \[SIGLA DA CONFERMARE\] · non ancora entrato»).
+- Il tablet offre la sua app sulla porta 47802: nella build 2026-11-12-2211 usava la 47801, la stessa della pagina per il PC via USB.
+- Stampe pre-campo: la pagina non scorre più da sola in fondo a ogni ricalcolo e lo schema del tavolo è più grande, con le etichette dei plateau leggibili (stabilimento, specie e numero del plateau, numeri delle provette).
+- Sul sito, «Crea il progetto»: le sigle proposte ai veterinari non sono mai uguali (prima le iniziali, poi le alternative) e una sigla scritta a mano già proposta per un altro è rifiutata.
+- Il riepilogo.txt degli zip scaricati con gli snippet della BDN e di ARVET non si carica più fra i file del progetto, né sul tablet né sul sito.
+- Nel foglio A3 delle provette e dei contrassegni le provette degli stabilimenti con la lettera hanno di nuovo il cerchietto (Ⓧ125): prima si stampava solo il numero.
+- Sul sito tornano le icone e i diagrammi delle fasi e dell'architettura; gli elenchi non escono più su una riga sola.
+- In «Crea il progetto» le marche senza specie si possono dare a pecore e capre insieme («Ambedue»).
 
 ## Versione 0.5.5 · 11/11/2026 { #v0-5-5 }
 

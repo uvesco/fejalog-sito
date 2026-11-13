@@ -1,30 +1,28 @@
 # Scarica
 
-Qui si scarica l'**ultima versione** pubblicata. In [Versioni e novità](novita.md) trovi le note
-e i download di tutte le versioni, anche quelle precedenti.
+Qui puoi scaricare l'**ultima versione** di Fejalog. In [Versioni e novità](novita.md) trovi le note e i file di tutte le versioni pubblicate.
 
-| File | Che cos'è |
+> **Per i veterinari prelevatori**: scarica **soltanto il file `fejalog.apk`** sul tuo telefono Android prima di partire.
+
+| File | Destinatario e contenuto |
 |---|---|
-| [**fejalog.apk**](https://github.com/uvesco/fejalog-sito/releases/latest/download/fejalog.apk) | l'app, firmata, per Android 11 o più recente |
-| [**kit_prova_cinque_stabilimenti.zip**](https://github.com/uvesco/fejalog-sito/releases/latest/download/kit_prova_cinque_stabilimenti.zip) | il [kit di prova](kit.md): file della BDN, pacchetto, ricercati, registri da caricare in corsa |
-| [**schede_kit_cinque_stabilimenti.pdf**](https://github.com/uvesco/fejalog-sito/releases/latest/download/schede_kit_cinque_stabilimenti.pdf) | le schede da stampare (A4, 307 pagine); stampa solo le sezioni utili |
+| [**fejalog.apk**](https://github.com/uvesco/fejalog-sito/releases/latest/download/fejalog.apk) | **L'app per Android 11 o più recente** (l'unico file necessario per chi preleva) |
+| [**kit_prova_cinque_stabilimenti.zip**](https://github.com/uvesco/fejalog-sito/releases/latest/download/kit_prova_cinque_stabilimenti.zip) | Il [kit di prova](kit.md) con dati fittizi per simulazioni al PC |
+| [**schede_kit_cinque_stabilimenti.pdf**](https://github.com/uvesco/fejalog-sito/releases/latest/download/schede_kit_cinque_stabilimenti.pdf) | Schede con codici a barre da stampare per prove e addestramento |
 
-## Installare l'APK
+## Come installare l'app
 
-Fejalog non è sul Play Store: si installa dal file («sideload»).
+Scarica l'app sul telefono a casa o in ufficio con connessione internet attiva:
 
-1. Sul device apri il link di **fejalog.apk** (oppure copia il file nei Download).
-2. Tocca il file scaricato. La prima volta Android chiede di **consentire l'installazione da questa origine** (il
-   browser o il gestore di file): consenti e torna indietro.
-3. **Installa**. Play Protect può avvisare che l'app è sconosciuta: «Installa comunque».
-4. Apri Fejalog: parte dall'**Avvio rapido**.
+1. Sul telefono tocca il link [**fejalog.apk**](https://github.com/uvesco/fejalog-sito/releases/latest/download/fejalog.apk) per scaricare il file.
+2. Al termine del download, tocca il file appena scaricato (nelle notifiche o nei Download).
+3. Se Android mostra l'avviso di sicurezza per le app esterne, tocca **Impostazioni** e attiva **Consenti da questa origine** (il browser o il gestore file), poi torna indietro.
+4. Tocca **Installa**. Se Google Play Protect segnala che l'applicazione è sconosciuta, tocca **Altri dettagli** e poi **Installa comunque**.
+5. Apri Fejalog: ti accoglierà la schermata di configurazione iniziale (vedi [Prima del campo](chi-preleva/primo-avvio.md)).
 
-??? tip "Il lettore di microchip"
-    Si abbina al device in Bluetooth come una **tastiera** (impostazioni Bluetooth del device). Fejalog riconosce da
-    solo il codice elettronico (`0380…` o `380…` più 12 cifre, anche di altri paesi). Un lettore di barcode in modalità
-    tastiera fa lo stesso con le schede del kit.
+??? tip "Il lettore di microchip Bluetooth"
+    Si abbina al telefono via Bluetooth come una **tastiera esterna** (profilo HID / Slave Mode). Fejalog riconosce automaticamente i codici transponder (`380…` o `0380…`). La guida passo passo è in [Prima del campo](chi-preleva/primo-avvio.md#lettore-di-microchip-bluetooth-allflex-awr250).
 
 ## Aggiornare
 
-La versione nuova si installa **sopra** quella vecchia: i progetti restano. Conviene aggiornare tutti i device
-dello stesso progetto, a lavoro fermo.
+La versione aggiornata si installa direttamente **sopra** quella precedente, senza bisogno di disinstallarla: i progetti e i dati memorizzati restano intatti. Ricorda che in campo tutti i telefoni della squadra devono avere la stessa versione della Regia.

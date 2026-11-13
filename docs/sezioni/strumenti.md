@@ -2,6 +2,8 @@
 
 Le pagine che **fanno un lavoro** nel browser, sul computer: si caricano file, si scelgono le opzioni, si scarica il risultato. Niente esce dal browser.
 
+> **Per i veterinari prelevatori**: questa sezione è riservata al responsabile che prepara il progetto o esegue la chiusura al PC. Se devi prelevare in stalla, consulta direttamente le schede in [Chi preleva](documentazione.md).
+
 **Prima del campo**
 
 - [Scarica dalla BDN e da ARVET](../strumenti/scarica-bdn.md): due snippet; uno scarica in un solo zip i registri storici e le marche degli allevamenti da campionare e di quelli dei pascoli comuni, l'altro i modelli 2/33 da ARVET.

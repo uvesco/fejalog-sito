@@ -35,6 +35,17 @@ l'accettazione in ARVET.
 
 </div>
 
+!!! tip "Prima di lunedì: 5 passi per chi preleva (10 minuti la sera prima)"
+    Per chi preleva è semplicissimo: installi l'app, scrivi il tuo nome e in stalla inquadri il QR sul tablet del coordinatore.
+
+    1. **Installa l'app** sul telefono Android: [Scarica fejalog.apk](scarica.md). Se compare l'avviso di sicurezza, tocca *Installa comunque*.
+    2. **Inserisci il tuo nome**: in Fejalog vai in *Menu ☰ › Impostazioni › Utente* (Nome, Cognome, CF) e in *Dispositivo* scrivi il nome del telefono (es. «A55 Mario»).
+    3. **Permessi e batteria**: in *Impostazioni › Dispositivo › Prima di cominciare*, tocca *Concedi i permessi che mancano*, imposta la batteria su *Senza restrizioni* e spegni il risparmio energetico.
+    4. **Lettore Bluetooth** (se disponibile): associa il lettore Allflex in modalità tastiera (*HID / Slave Mode*): [guida al lettore](chi-preleva/primo-avvio.md#lettore-di-microchip-bluetooth-allflex-awr250).
+    5. **Prepara lo zaino**: telefono al 100%, power bank con cavo, fascia da braccio, pennarello indelebile nero e i QR Wi-Fi del responsabile: [Checklist del veterinario](checklist-veterinari.md).
+
+    👉 Guida completa passo passo: [Prima del campo](chi-preleva/primo-avvio.md).
+
 ## 1. Che cosa fa e perché conviene
 
 - **Doppi e capi fuori registro scoperti subito**: mentre prelevi, l'app avvisa se quel capo l'ha già prelevato un
@@ -67,9 +78,7 @@ peggiore di un guasto totale, ogni provetta si ricollega al suo capo **anche sen
 - La **Regia** di solito è un tablet al banco: coordina la squadra, riceve le provette e guida il riempimento dei
   plateau. Anche un telefono può fare da Regia.
 - Un **router Wi-Fi** (o l'hotspot del tablet) crea una rete locale, **senza internet**, a cui si collegano tutti.
-- Un **libro mastro** con tutti gli eventi è condiviso da tutti i device e si aggiorna a ogni evento: ognuno ha tutto e
-  può fare un backup in qualsiasi momento. Oggi la rete è a stella (i palmari parlano con la Regia, che rimanda a
-  tutti); è in prova una rete a maglia, dove gli eventi passano in tutte le direzioni.
+- Un **registro condiviso** con tutti gli eventi è sincronizzato su tutti i telefoni e si aggiorna a ogni prelievo: ognuno ha la storia completa e può salvare un backup in qualsiasi momento.
 - Si può anche lavorare **da soli, senza rete**.
 
 [Fasi di lavoro e ruoli](inizia-qui/fasi-e-ruoli.md) · [Sotto il cofano](riferimento/sotto-il-cofano/index.md)

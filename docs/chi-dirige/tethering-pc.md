@@ -4,6 +4,9 @@
 
 **Collega la Regia al PC con un cavo dati USB, attiva Tethering USB su Android e avvia il server in Fejalog.** Nel browser Windows apri l'indirizzo mostrato dall'app e inserisci il PIN. Il tablet resta la Regia: dopo il PIN, sul tablet accetta le modifiche per questa sessione. Gli invii validi si applicano automaticamente, con esiti per riga.
 
+!!! tip "Alternativa senza cavo: il backup ZIP"
+    Se il PC dell'ufficio o i criteri di sicurezza dell'ASL bloccano il tethering USB, nessun problema: esporta semplicemente il file di backup ZIP della Regia (tramite Google Drive, email o chiavetta USB) e caricalo direttamente nello strumento [Fine lavori sul computer](../strumenti/fine-lavori.md) sul sito web.
+
 ## Cosa serve
 
 - Il progetto aperto sulla Regia, a **campionamento chiuso**.

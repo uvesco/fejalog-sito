@@ -11,7 +11,8 @@ La postazione della Regia è il punto in cui confluiscono tutte le provette prel
 Per una seduta di profilassi tipo con più veterinari prelevatori occorrono:
 
 - **Tavolo da campo pieghevole**: robusto e stabile, con piano dimensionato usando il calcolo del materiale e le misure inserite.
-- **Plateau da 100 pozzetti**: rack standard a nido d'ape da 10 × 10 pozzetti, dimensioni fisiche **18 × 15 cm** (con il lato lungo da 18 cm parallelo alle righe).
+- **Plateau da 100 pozzetti**: rack standard a nido d'ape da 10 × 10 pozzetti, dimensioni fisiche **18 × 15 cm** (con il lato lungo da 18 cm parallelo alle righe), solo per le serie ordinarie.
+- **Secchio o vaschetta per i fuori registro**: contenitore separato per le provette fuori registro (non vanno nei plateau).
 - **Provette sottovuoto (Vacutainer)**: non scritte, calcolate con margine e scorta.
 - **Aghi monouso sottovuoto**: pari o superiori al numero totale di provette previste.
 - **Pennarelli indelebili**: a punta fine (0.8–1.0 mm), colore nero, ad asciugatura rapida, resistenti a umidità, grasso e basse temperature. Portane sempre almeno 4 o 5 di scorta.
@@ -31,7 +32,7 @@ Il calcolo esatto del fabbisogno si effettua direttamente in Fejalog (**Configur
 ### Che cosa conta il calcolo
 
 - **Plateau ordinari**: per ogni serie serve spazio fino al massimo numero assegnato, anche se ci sono buchi. Si arrotonda al centinaio successivo: con il solo numero 101 servono comunque due plateau.
-- **Fuori registro**: nei progetti nuovi, un solo plateau fuori registro in uso sul tavolo e la scorta indicata dal calcolo fuori tavolo.
+- **Fuori registro**: non hanno plateau; vanno nel secchio (o vaschetta separata) sul tavolo.
 - **Provette**: numero di capi numerati, più margine e scorta scelti dalla Regia (inizialmente 10% e 5%). Ciascuna percentuale si arrotonda separatamente all'intero superiore: con un capo e i valori iniziali il totale è tre provette.
 - **Pennarelli**: il riepilogo ne conta uno per veterinario; prepara anche quelli di riserva che ritieni necessari.
 
@@ -64,9 +65,9 @@ La disposizione fisica sul tavolo deve rispecchiare fedelmente lo schema logico 
 |  [FOGLIO QR WI-FI]    [FOGLIO GENERICO 1-100]    [STAMPE 2/33 E A3]  |
 |                                                                       |
 |  +-----------------+   +---------------------+   +-----------------+  |
-|  | PLATEAU ORD. 1  |   |    TABLET REGIA     |   | PLATEAU PROBL.  |  |
-|  | (Serie Pecore)  |   |  (Due pannelli:     |   | (Unico in uso   |  |
-|  |                 |   |   Ricevi | Plateau) |   |  sul tavolo)    |  |
+|  | PLATEAU ORD. 1  |   |    TABLET REGIA     |   | SECCHIO/VASCHET |  |
+|  | (Serie Pecore)  |   |  (Due pannelli:     |   | FUORI REGISTRO  |  |
+|  |                 |   |   Ricevi | Plateau) |   | (provette a p.) |  |
 |  +-----------------+   +---------------------+   +-----------------+  |
 |                                                                       |
 |  [SCATOLA PROVETTE NON SCRITTE]              [PENNARELLI INDELEBILI]  |
@@ -79,10 +80,9 @@ La disposizione fisica sul tavolo deve rispecchiare fedelmente lo schema logico 
 
 1. **Posizione riparata**: posiziona il tavolo vicino all'uscita della corsia o dei recinti di prelievo, ma al riparo da polvere, correnti d'aria e pioggia.
 2. **Il tablet al centro**: mantieni il tablet orientato verso di te, con il pannello sinistro («Ricevi») e il pannello destro («Plateau / Metti qui») ben visibili contemporaneamente.
-3. **Separazione netta dei plateau**:
+3. **Separazione netta dei campioni**:
    - A sinistra o davanti a te: i plateau della serie ordinaria attiva;
-   - A destra (o separato visivamente): l'**unico plateau fuori registro in uso**;
-   - **Toglilo dal tavolo**: quando il plateau dei fuori registro raggiunge i 100 pozzetti, l'app mostra un promemoria (*«Plateau fuori registro N pieno: toglilo dal tavolo»*). Mettilo da parte, contrassegnalo con un'etichetta (es. «Fuori registro 1») e posiziona sul tavolo un nuovo plateau vuoto.
+   - A destra (separato): il **secchio o vaschetta dei fuori registro**. Le provette fuori registro non occupano pozzetti nei plateau ordinari: vanno nel secchio e si prenderanno una alla volta a fine lavori nel Riordino.
 4. **Il foglio generico 1–100**: fissalo sul tavolo accanto ai plateau con nastro adesivo da carrozziere. Serve a ricordare a chiunque riponga provette l'ordine corretto di riempimento: **file per file, mai a serpente**.
 
 ---
@@ -93,7 +93,7 @@ La disposizione fisica sul tavolo deve rispecchiare fedelmente lo schema logico 
 |---|---|---|
 | **Provette non scritte esaurite a metà lavoro** | Alto numero di capi non in elenco o errori di prelievo superiori al margine. | Attingi immediatamente alla scorta prudenziale (5%); se insufficiente, fai convergere le provette disponibili sui capi con priorità diagnostica. |
 | **Pennarello che non scrive sulla plastica bagnata** | Condensa o sangue sulla provetta; pennarello non adatto. | Asciuga la provetta con carta assorbente prima di scrivere; usa pennarelli indelebili ad asciugatura istantanea dedicati. |
-| **Plateau fuori registro confuso con l'ordinario** | Mancata separazione sul tavolo da campo. | Applica una striscia di nastro colorato o scrivi chiaramente «PROBL» sul bordo del plateau fuori registro. Rispetta la regola: un solo plateau fuori registro sul tavolo alla volta. |
+| **Provetta fuori registro finita nel plateau ordinario** | Errore manuale di smistamento alla consegna. | Togli subito la provetta dal plateau ordinario e riponila nel secchio dei fuori registro. |
 | **Pozzetto fisico già occupato da un'altra provetta** | Errore manuale di inserimento o riempimento non conforme allo schema dell'app. | Controlla immediatamente il riquadro «Metti qui» e la vista Plateau della Regia. Se necessario, verifica il numero della provetta presente e controlla il posto registrato prima di posare altri campioni. |
 
 ---

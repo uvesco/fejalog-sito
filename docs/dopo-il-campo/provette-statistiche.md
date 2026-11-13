@@ -38,12 +38,13 @@ La scheda raggruppa automaticamente tutte le situazioni critiche rilevate sul ca
 - **Verifica DDA (Documento di Accompagnamento)**: per capi acquistati da altri stabilimenti con DDA dichiarato in campo, la Regia verifica e registra se il DDA è valido prima di normalizzare il campione;
 - **Doppi prelievi confermati**: campioni prelevati due volte per errore o necessità diagnostica.
 
-### Applicazione di regole massive
-Per ogni tipologia, scegli fra le soluzioni offerte dalla pagina. Puoi applicare una regola alla tipologia oppure intervenire sulla singola provetta:
+### Gestione dei fuori registro e soluzioni ammesse
+Per ogni tipologia di fuori registro, Fejalog vieta l'eliminazione sistematica dei campioni di sangue: ogni provetta prelevata va preservata e inserita negli invii. Le opzioni disponibili sono:
 
-- **In coda, ARVET a mano**: il motore assegna i numeri finali in coda; leggi il riepilogo degli inserimenti automatici e di quelli da completare a mano.
-- **Eliminata**: il campione viene messo da parte, senza numero finale né invio ARVET; la storia rimane.
-- **Normalizzata**, quando disponibile: usa questa soluzione solo dopo aver verificato i dati del capo.
+- **In coda, ARVET a mano**: il motore assegna i numeri finali in coda; leggi il riepilogo degli inserimenti automatici e di quelli da completare a mano in ARVET.
+- **Normalizzata**, quando disponibile (es. capi verificati col DDA o confermati in anagrafe): il campione viene trattato regolarmente.
+- **Fuori età**: la Regia decide a fine lavori in Gestione campioni se metterli in coda («In coda») o scartarli («Eliminate»); fino alla scelta restano «da decidere» e contano temporaneamente come in coda.
+- **Scarto di singole provette**: l'eliminazione non è mai applicabile a un'intera tipologia, ma è riservata esclusivamente a singoli campioni fisicamente deteriorati, rovesciati o rotti.
 
 Nella scheda **Avvisi** esamina anche doppi scoperti, capi ricercati, collisioni, controlli incompleti e dispositivi mai rientrati. «Visto» prepara una presa visione da riportare nell'app.
 

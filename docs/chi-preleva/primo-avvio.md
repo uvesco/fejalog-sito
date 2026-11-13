@@ -1,37 +1,28 @@
 # Prima del campo: il telefono e il materiale
 
-> **A chi serve**: veterinari prelevatori (gli stessi passi valgono per il tablet della Regia) · **Tempo**: una decina di
-> minuti, **una volta sola**
+> **A chi serve**: veterinari prelevatori (i controlli del telefono valgono anche per la Regia) · **Tempo**: 10 minuti la sera prima, **una volta sola**
 
-Da fare a casa o in ufficio, prima della giornata, quando il telefono ha ancora internet per scaricare l'app. Dopo, in
-campo, internet non serve più. I passi: installare l'app, dire chi sei, dare un nome al telefono, concedere i permessi,
-sistemare i controlli del telefono (batteria e Wi-Fi), salvare le reti del progetto e preparare il materiale. In fondo,
-come Fejalog gestisce la batteria durante il lavoro.
+!!! tip "Prima di lunedì: 5 passi rapidi per chi preleva"
+    Se hai solo 10 minuti stasera, segui questi 5 passi in ordine:
 
-!!! tip "In breve"
-    ☰ Menu › **Impostazioni › Utente**: nome, cognome, codice fiscale › **Salva**.
-    **Impostazioni › Dispositivo**: nome del telefono › **Salva**; poi, nel riquadro **«Prima di cominciare»**,
-    **«Concedi i permessi che mancano»** e sistema tutte le voci con la ✗ rossa.
+    1. **Passo 1: Installa l'app**: scarica [fejalog.apk](../scarica.md) sul tuo telefono Android (versione 11 o successiva). Se Android o Play Protect mostrano un avviso di sicurezza, tocca «Altri dettagli» e poi «Installa comunque».
+    2. **Passo 2: Inserisci il tuo nome**: apri Fejalog, vai in *Menu ☰ › Impostazioni › Utente*, scrivi Nome, Cognome e Codice Fiscale e tocca **Salva**. Poi in *Impostazioni › Dispositivo* inserisci un nome chiaro per il telefono (es. «A55 Mario») e premi **Salva**.
+    3. **Passo 3: Permessi e batteria**: in *Impostazioni › Dispositivo › Prima di cominciare*, tocca «Concedi i permessi che mancano» (posizione precisa, notifiche, fotocamera), imposta la batteria di Fejalog su «Senza restrizioni» e spegni il risparmio energetico del telefono.
+    4. **Passo 4: Abbina il lettore di microchip Bluetooth** (se disponibile): configura il lettore Allflex in modalità tastiera (*HID / Slave Mode*) e associalo al telefono seguendo la [guida al lettore](#lettore-di-microchip-bluetooth-allflex-awr250) più sotto.
+    5. **Passo 5: Salva la Wi-Fi e prepara lo zaino**: inquadra con la fotocamera il foglio del QR Wi-Fi del responsabile; metti nello zaino il telefono carico al 100%, un power bank con cavo da 1 metro, la fascia da braccio e un pennarello indelebile nero. Consulta la [Checklist del veterinario](../checklist-veterinari.md).
+
+Da fare a casa o in ufficio prima della giornata di profilassi, quando hai una connessione internet per scaricare l'app. In campo internet non servirà più.
 
 ## 1. Installa l'app
 
 1. Il telefono deve avere **Android 11 o più recente**.
-2. Apri il link dell'APK che ti manda il responsabile (o la pagina [Scarica l'app](../scarica.md)) e scarica il file.
-3. Tocca il file scaricato. La prima volta Android chiede di **consentire l'installazione da questa origine** (il
-   browser, WhatsApp o il gestore di file): consenti e torna indietro.
-4. **Installa**. Se Play Protect avvisa che l'app è sconosciuta: «Altri dettagli» › **«Installa comunque»**.
+2. Apri il link che ti manda il responsabile (o la pagina [Scarica l'app](../scarica.md)) e tocca il file `fejalog.apk`.
+3. Tocca il file scaricato. La prima volta Android chiede di **consentire l'installazione da questa origine** (il browser o il gestore file): tocca Impostazioni, consenti e torna indietro.
+4. Tocca **Installa**. Se Google Play Protect avvisa che l'app è sconosciuta, tocca «Altri dettagli» e poi **«Installa comunque»**.
 
 !!! warning "La stessa versione del tablet"
-    In campo tutti i telefoni devono avere **la stessa versione dell'app della Regia**: un telefono con una versione
-    diversa non entra nel progetto. Installa quella che ti indica il responsabile. Se in campo ti accorgi di avere una
-    versione diversa, la Regia te la dà al volo, sulla Wi-Fi del progetto e anche senza internet: nella pagina Rete,
-    dopo il rifiuto, tocca **«Aggiorna dalla Regia»** e conferma «Installa» nella finestra di Android (la prima volta
-    Android chiede anche di consentire a Fejalog di installare app; se compare Google Play Protect, come al primo
-    passo: «Altri dettagli» e installa senza l'analisi). Se la tua versione è troppo vecchia per avere quel tasto,
-    la Regia tocca «Mostra il QR per scaricare l'app» sotto il QR d'ingresso e tu lo inquadri con la fotocamera. Una
-    versione nuova si installa sopra quella vecchia: i progetti restano.
-
-    «Fejalog» e «Fejalog debug» sono due app distinte, coi loro dati: usa quella che ti indica il responsabile.
+    In campo tutti i telefoni devono avere **la stessa versione dell'app della Regia**: telefoni con versioni diverse non possono lavorare insieme. Installa la versione indicata dal responsabile.
+    Se in campo ti accorgi di avere una versione diversa, la Regia può passarti l'APK aggiornato direttamente sulla Wi-Fi locale: sotto il QR d'ingresso la Regia tocca «Mostra il QR per scaricare l'app» e tu lo inquadri con la fotocamera per installare l'aggiornamento. Una versione aggiornata si installa sopra quella vecchia senza perdere i dati.
 
 ## 2. Chi sei: Impostazioni › Utente
 
@@ -100,8 +91,18 @@ da controllare a mano (Android non lascia leggere quell'impostazione alle app). 
 
 I dati mobili possono restare accesi.
 
-Se usi un **lettore di microchip Bluetooth**, associalo al telefono come tastiera: i passi per l'Allflex AWR250 sono nel
-[foglio per i veterinari](../veterinari.md).
+## Lettore di microchip Bluetooth (Allflex AWR250)
+
+Fejalog supporta la ricerca immediata del capo tramite i lettori di microchip transponder (bolo endoruminale o orecchino elettronico DX).
+Per configurare il lettore Allflex AWR250 in dotazione ai Servizi Veterinari in modalità tastiera Bluetooth (*HID / Slave Mode*):
+
+1. **Sul lettore**: accendi e premi il tasto centrale per aprire il Menu.
+2. Vai su **Setup › Interface Setup › Bluetooth**.
+3. Seleziona **Set Bluetooth Mode** e impostalo su **Slave Mode**.
+4. Seleziona **Set BT Profile** e impostalo su **HID** (Human Interface Device / tastiera).
+5. **Sul telefono**: apri **Impostazioni di Android › Bluetooth › Associa nuovo dispositivo**.
+6. Seleziona il lettore (es. `AWR250_...`) e conferma l'accoppiamento (se richiesto codice PIN: `0000` o `1234`).
+7. **In campionamento**: nella schermata di ricerca di Fejalog, leggendo il transponder il codice (`380...` o `0380...`) entra direttamente nel campo di ricerca con invio automatico, selezionando il capo senza toccare lo schermo.
 
 ## 6. Le reti del progetto
 

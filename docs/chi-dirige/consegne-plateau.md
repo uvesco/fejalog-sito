@@ -28,8 +28,8 @@ Quando un veterinario si avvicina al tavolo e consegna il lotto di provette:
 1. **Tocca «Ricevi (N)»**: accanto al nome del veterinario compare il pulsante verde con il numero esatto di campioni in attesa di consegna. Toccando «Ricevi», la Regia conferma la presa in carico formale dei campioni.
 2. **I colori cambiano a video**: sullo schema del Plateau le provette consegnate passano istantaneamente da un colore pastello attenuato a un **colore pieno e brillante**, a testimonianza dell'avvenuta ricezione fisica.
 3. **Segui l'elenco «Metti qui»**: in calce al pannello di destra compare l'elenco dettagliato delle provette appena ricevute con l'indicazione precisa:
-   - Quale plateau prendere sul tavolo (es. *Plateau 1* o *Plateau Fuori registro*);
-   - In quale pozzetto esatto infilare la provetta (da 1 a 100, secondo il verso di riempimento stabilito).
+   - Quale plateau ordinario prendere sul tavolo (es. *Plateau 1*), oppure l'indicazione del secchio per i fuori registro;
+   - In quale pozzetto esatto infilare la provetta ordinaria (da 1 a 100, secondo il verso di riempimento stabilito).
 
 ---
 
@@ -42,37 +42,32 @@ Dopo la conferma della ricezione, l'app genera nel registro l'evento immutabile 
 ### Provette ordinarie e provette da isolato non doppie
 
 - **Provette ordinarie**: vanno direttamente nel pozzetto corrispondente al loro numero definitivo preassegnato nella serie ordinaria (es. provetta 47 va al pozzetto 47 del Plateau 1).
-- **Provette prelevate da isolato senza duplicati (con il suffisso mostrato dall’app)**: vanno **subito nel pozzetto del loro numero naturale** (pozzetto 28 del Plateau 2) e non nella riga fuori registro.  
+- **Provette prelevate da isolato senza duplicati (con il suffisso mostrato dall’app)**: vanno **subito nel pozzetto del loro numero naturale** (pozzetto 28 del Plateau 2) e non nel secchio dei fuori registro.  
   > *Regola operativa*: collocare subito al loro posto gli isolati che non risultano doppi azzera inutili spostamenti durante il riordino finale di fine seduta.
 
-### Fuori registro in sequenza unica: «Toglilo dal tavolo»
-I campioni fuori registro (capi smarriti, rubati, fuori età, di altri stabilimenti, doppi confermati e collisioni) seguono un flusso separato:
+### Fuori registro: nel secchio dedicato
+I campioni fuori registro (capi smarriti, rubati, fuori età, di altri stabilimenti, doppi confermati e animali senza contrassegno) seguono un flusso separato:
 
-1. Vanno posizionati nel **primo pozzetto libero disponibile** nel plateau dei fuori registro, in rigoroso ordine di consegna cronologica (indipendentemente da specie e stabilimento).
-2. Sul tavolo della Regia deve essere presente **un solo plateau fuori registro in uso alla volta**.
-3. Quando una consegna completa un plateau fuori registro, compare il promemoria:  
-   **«Plateau fuori registro N pieno: toglilo dal tavolo»**.
-4. Una consegna può interessare più plateau: controlla tutte le destinazioni in «Metti qui». Sposta il plateau colmo fuori dal piano di lavoro, contrassegnalo con la sua etichetta e colloca al suo posto un plateau vuoto per i fuori registro successivi.
+1. Non occupano pozzetti nei plateau ordinari: vanno riposti direttamente nel **secchio dedicato** (o vaschetta separata) sul tavolo da campo.
+2. Le provette fuori registro non richiedono numerazione né posa ordinata durante il campionamento: a fine seduta nel Riordino verranno riprese una alla volta dalla provetta fisica per assegnare l'esito o riempire eventuali buchi.
+3. Solo nei progetti creati prima del 7/11 i fuori registro si posavano ancora in **un solo plateau dei fuori registro** sul tavolo, nel primo pozzetto libero: quando è pieno, **toglilo dal tavolo** e aprine un altro. L'app riconosce da sola quale dei due modi vale per il progetto.
 
 ---
 
 ## 4. Cosa fare con i capi senza contrassegno
 
-Se durante la profilassi vengono presentati animali che hanno perso entrambi i marchi auricolari o il bolo (lasciati tipicamente alla fine per non rallentare la corsia), si utilizza la funzione **«Senza contrassegno»** (disponibile sul palmare o sul tablet della Regia solo a campionamento aperto):
+Se durante la profilassi vengono presentati animali che hanno perso entrambi i marchi auricolari o il bolo (lasciati tipicamente alla fine per non rallentare la corsia), si utilizza la funzione **«Senza contrassegno»** (disponibile sul palmare o sul tablet della Regia a campionamento aperto):
 
-1. **Tocca «Senza contrassegno»**: si apre la maschera di attribuzione anagrafica.
-2. **Imposta i filtri somatici**:
+1. **Tocca «Senza contrassegno»**: non si cerca né si sceglie alcun animale in anagrafe durante il campionamento, per evitare con certezza prelievi doppi.
+2. **Imposta i dati somatici**:
    - Specie e stabilimento di lavoro;
    - Sesso (Maschio o Femmina);
-   - Razza (oppure «Non so» se meticcio o non distinguibile);
-   - Intervallo di età in anni a scatti di 6 mesi (es. da 2 a 3 anni e mezzo).
-3. **Scegli fra i candidati**: Fejalog visualizza l'elenco dei capi presenti in anagrafe non ancora prelevati che rispondono ai criteri indicati.
-4. **Conferma normale**: selezionato il capo, si apre il normale foglio di conferma:
-   - Il campione riceve il numero ordinario del capo attribuito;
-   - La modalità di identificazione viene registrata come `attribuita`;
-   - Entrambe le caselle «Orecchino DX» e «Orecchino SX» vengono automaticamente spuntate come «da sostituire».
-5. **Cosa succede se in seguito compare il capo reale con le marche?**  
-   Se successivamente viene trovato e campionato l'animale vero con il suo contrassegno originale, il sistema dà precedenza assoluta al contrassegno reale letto. La provetta precedentemente attribuita viene riclassificata automaticamente tra i **fuori registro**, da esaminare a fine lavori. Questo caso non è ancora stato verificato su dispositivi fisici.
+   - Classe di età stimata dalla dentizione (denti da latte, 2, 4, 6 denti, bocca piena, bocca consumata);
+   - Razza stimata («Meticcio» vale per tutte);
+   - Eventuale identificazione provvisoria libera (orecchino ASL, numero sulla schiena).
+3. **Conferma e scritta sulla provetta**: l'app genera un codice provvisorio e indica la scritta da copiare sul tubo (numero provvisorio e dati somatici).
+4. **Collocazione**: la provetta viene consegnata alla Regia e va nel secchio dei fuori registro.
+5. **Gestione a fine lavori**: dopo la chiusura del campionamento, la Regia esamina i non prelevati compatibili con l'animale («Ha perso le marche») per attribuire il contrassegno corretto, oppure assegna una marca disponibile se l'animale non era mai stato registrato («Mai identificato»).
 
 ---
 
@@ -82,7 +77,7 @@ Se durante la profilassi vengono presentati animali che hanno perso entrambi i m
 |---|---|---|
 | **Il veterinario consegna provette ma a video risultano 0** | Il palmare ha lavorato isolato e non ha ancora sincronizzato i dati con la Wi-Fi. | Chiedi al veterinario di avvicinarsi al router finché l'icona di rete non diventa verde; non appena compaiono sul tablet, tocca «Ricevi». |
 | **Il pozzetto fisico indicato da «Metti qui» è già occupato** | Una provetta precedente è stata infilata per errore nel foro sbagliato. | Tocca il pozzetto sullo schermo del tablet: leggi il contrassegno che dovrebbe trovarsi lì, rintraccia la provetta fuori posto nel plateau e correggi la collocazione fisica prima di posare il nuovo campione. |
-| **Provetta fuori registro arrivata senza scritta completa** | Il veterinario non ha copiato tutto il codice dal riquadro rosso. | Prima di posare la provetta nel plateau, scrivi immediatamente con il pennarello il contrassegno BDN completo e l'etichetta completa mostrata dall'app sul corpo della provetta. |
+| **Provetta fuori registro arrivata senza scritta completa** | Il veterinario non ha copiato tutto il codice dal riquadro rosso. | Prima di posare la provetta nel secchio dei fuori registro, scrivi immediatamente con il pennarello il contrassegno BDN completo e l'etichetta mostrata dall'app sul corpo della provetta. |
 | **Provette cadute o rovinate durante il passaggio** | Incidente materiale al tavolo. | Se il campione è utilizzabile, asciugalo e riscrivi l'etichetta; se la provetta è rotta, seleziona la provetta su Fejalog e tocca «Annulla provetta». L'etichetta non verrà riutilizzata e il capo andrà riprelevato come fuori registro. |
 
 ---

@@ -2,7 +2,10 @@
 
 > **A chi serve**: al responsabile della Regia che crea il progetto, importa l'anagrafe BDN e fissa le regole di profilassi · **Tempo di lettura**: 4 minuti
 
-La preparazione del progetto sulla Regia trasforma i dati anagrafici ufficiali scaricati dalla BDN nel piano operativo di campionamento. Tutte le scelte fondamentali — come identificare le specie, quali lettere attribuire agli stabilimenti e in quale verso riempire i plateau fisici — si decidono qui, prima di aprire il campionamento.
+La preparazione del progetto trasforma i dati anagrafici scaricati dalla BDN nel piano operativo di campionamento. Tutte le scelte fondamentali — come identificare le specie, quali lettere attribuire agli stabilimenti e in quale verso riempire i plateau fisici — si decidono qui, prima di aprire il campionamento.
+
+!!! tip "Il flusso consigliato: prepara al PC la sera prima"
+    Il modo più semplice e rapido è creare il progetto al computer con lo strumento [Crea il progetto sul sito](../strumenti/crea-progetto.md): carichi lo zip della BDN, imposti regole e veterinari, scarichi lo **snapshot** (il file `.fejalog-backup`), lo copi sul tablet della Regia (tramite Google Drive, email o chiavetta USB) e lo apri in Fejalog con **Progetto › Apri progetto**. Il progetto è subito pronto per la checklist e l'avvio. In alternativa, puoi crearlo direttamente sul tablet seguendo i passi qui sotto.
 
 ---
 
@@ -51,8 +54,8 @@ In **1. Parametri e regole**, la Regia stabilisce come verranno riempiti fisicam
 - **Dal basso verso l'alto**: il pozzetto 1 si trova in basso a sinistra.  
 Entrambi i versi seguono rigorosamente la numerazione ordinata riga per riga (mai a serpente).
 
-### Passo 6: Fuori registro in sequenza unica
-Sempre in **1. Parametri e regole**, nei progetti nuovi, i campioni fuori registro, i doppi prelievi e i capi fuori registro confluiscono in un'**unica sequenza progressiva per tutto il progetto**, indipendentemente da stabilimento e specie. Sul tavolo della Regia è presente un solo plateau fuori registro alla volta; quando raggiunge 100 provette, viene archiviato e sostituito dal successivo.
+### Passo 6: Fuori registro nel secchio
+I campioni fuori registro, i doppi prelievi e i capi senza contrassegno confluiscono nel **secchio dedicato** (o vaschetta separata) sul tavolo, senza occupare pozzetti nei plateau ordinari. A fine lavori nel Riordino verranno ripresi uno alla volta dalla provetta fisica per assegnare l'esito o riempire i buchi.
 
 ### Passo 7: Capi ricercati
 
@@ -70,7 +73,7 @@ Quando la Regia preme **«Avvia campionamento»** in **Configurazione › 5. Che
 | **Lettere di specie** | **CONGELATE** | Impedisce che etichette già scritte con il pennarello cambino significato a metà lavoro. |
 | **Lettere di stabilimento** | **CONGELATE** | Garantisce la tracciabilità univoca dei lotti tra allevamenti diversi. |
 | **Stabilimento principale** | **CONGELATO** | I secondari restano aggiungibili in corsa, senza togliere quelli già presenti. |
-| **Sequenza fuori registro** | **CONGELATA** | I pozzetti dei fuori registro vengono assegnati in ordine di arrivo alla consegna. |
+| **Sequenza fuori registro** | **CONGELATA** | I fuori registro vanno nel secchio dedicato e vengono gestiti alla fine nel Riordino. |
 | **Numeri preassegnati** | **CONGELATI** | I numeri già assegnati restano riservati; i numeri finali si calcolano nel Riordino. |
 
 L'età diagnostica può essere cambiata dalla Regia anche durante il campionamento, con doppia conferma; i parametri congelati restano visibili in sola lettura col motivo del blocco; la modalità di rete, i registri e le regole per i fuori registro restano aggiornabili dalla Regia anche dopo l'avvio. I numeri già assegnati non vengono ricalcolati da zero.

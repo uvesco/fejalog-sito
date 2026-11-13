@@ -70,7 +70,7 @@ Una provetta scritta senza conferma deve essere recuperata nel registro.
 
 Consegna le provette alla Regia.
 
-- La Regia le riceve con «Ricevi» e le mette nei plateau.
+- La Regia le riceve con «Ricevi»: le ordinarie vanno nei plateau, i fuori registro nel secchio.
 
 ## 10. Se un telefono sparisce
 

@@ -22,11 +22,14 @@ Risposte pratiche ai dubbi più frequenti di chi usa Fejalog con il palmare dura
 ---
 
 ### Cosa devo scrivere esattamente con il pennarello sulla provetta?
-Segui il riquadro della scritta, distinto dalla banda colorata del capo:
+Controlla il riquadro dell'etichetta nel foglio di conferma:
 
-- **Neutro**: solo l'etichetta mostrata;
-- **Blu**, ordinario da isolato: solo l'etichetta completa del suffisso; non tutto il contrassegno;
-- **Rosso**, fuori registro: tutta la scritta mostrata, con il **contrassegno completo**.
+| Riquadro dell'app | Cosa scrivere sulla provetta | Esempio |
+|---|---|---|
+| **Neutro** (ordinario, controllo completo) | Scrivi **solo il numero** (e la lettera dello stabilimento se secondario) | `125` oppure `Ⓧ125` |
+| **Blu** (ordinario, squadra non allineata) | Scrivi **solo numero e sigla** | `125-UV` |
+| **Rosso** (fuori registro: uscito, doppio, altro stab.) | Scrivi **numero e contrassegno completo** | `UV-15 C`<br>`IT066000000113` |
+| **Senza contrassegno** (animale senza marche) | Scrivi **numero provvisorio e dati dell'animale** | `UV-16 C`<br>`senza marca · F · bocca piena · Sarda` |
 
 ---
 
@@ -66,7 +69,7 @@ Nel registro l'annullo viene memorizzato come evento formale di rettifica: l'eti
 ---
 
 ### Chi assegna i pozzetti fisici nei plateau?
-**La Regia.** Il palmare partecipa solo alla fase di campionamento (vedi [Fasi di lavoro e ruoli](../inizia-qui/fasi-e-ruoli.md)); la collocazione nei plateau e la successiva gestione sono a carico della Regia. A campionamento aperto, i veterinari prelevatori consegnano periodicamente le provette raccolte al tavolo del coordinatore. Il responsabile tocca **«Ricevi»** per prendere in carico i campioni e li alloggia nei pozzetti dei plateau da 100 posti secondo lo schema visualizzato a video.
+**La Regia.** Il palmare partecipa solo alla fase di campionamento (vedi [Fasi di lavoro e ruoli](../inizia-qui/fasi-e-ruoli.md)); la collocazione delle provette e la successiva gestione sono a carico della Regia. A campionamento aperto, i veterinari prelevatori consegnano periodicamente le provette raccolte al tavolo del coordinatore. Il responsabile tocca **«Ricevi»** per confermare la presa in carico e alloggia le provette ordinarie nei pozzetti dei plateau da 100 posti secondo lo schema a video, mentre le provette fuori registro vanno direttamente nel secchio dedicato.
 
 ---
 

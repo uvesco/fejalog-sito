@@ -2,10 +2,12 @@
 
 **Come si fa**, per ruolo e per fase. Se è la prima volta, parti da [Cos'è Fejalog](../index.md).
 
-- **Chi preleva**: [prima del campo](../chi-preleva/primo-avvio.md) (installazione, configurazione del telefono,
-  materiale), [in campo](../chi-preleva/in-campo.md), [se qualcosa va storto](../chi-preleva/cosa-succede-se.md). Da
-  stampare o mandare: la [checklist del veterinario](../checklist-veterinari.md) e il
-  [foglio per i veterinari](../veterinari.md).
+!!! tip "Da dove cominciare in base al tempo a disposizione"
+    - **Hai 5 minuti prima di iniziare a prelevare?** Leggi la scheda pratica [In campo](../chi-preleva/in-campo.md).
+    - **Sei a casa la sera prima?** Segui i 5 passi in [Prima del campo](../chi-preleva/primo-avvio.md).
+    - **Sei il coordinatore della seduta?** Parti dalla [Checklist del responsabile](../checklist-responsabile.md).
+
+- **Chi preleva**: [prima del campo](../chi-preleva/primo-avvio.md) (installazione, configurazione del telefono, lettore microchip, materiale), [in campo](../chi-preleva/in-campo.md), [se qualcosa va storto](../chi-preleva/cosa-succede-se.md). Da stampare: la [checklist del veterinario](../checklist-veterinari.md) (1 pagina A4); da girare su WhatsApp: il [foglio per i veterinari](../veterinari.md).
 - **Chi dirige (la Regia)**: la [checklist del responsabile](../checklist-responsabile.md), poi
   [requisiti](../chi-dirige/requisiti.md), [attrezzatura](../chi-dirige/attrezzatura-materiale.md) e
   [rete](../chi-dirige/rete.md), [avvio](../chi-dirige/avvio.md), [consegne e plateau](../chi-dirige/consegne-plateau.md),

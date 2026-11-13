@@ -24,8 +24,8 @@
 
 ## 5. Il capo è senza contrassegno
 
-**Cosa fai:** usa **Senza contrassegno**, scegli sesso, razza ed età compatibile e controlla il capo proposto prima di confermare. Se non trovi candidati, chiedi alla Regia.
-**Cosa resta:** l'identificazione è indicata come attribuita, DX/SX sono da sostituire. Se dopo compare il capo con le sue marche, avvisa la Regia; il caso è previsto, non ancora provato sul campo.
+**Cosa fai:** tocca **Senza contrassegno**. Non cercare e non selezionare alcun animale in anagrafe durante il campionamento (si farà in ufficio a fine giornata per non rischiare prelievi doppi). Inserisci sesso, età stimata dai denti, razza stimata e un eventuale segno provvisorio (orecchino ASL, numero sulla schiena). L'app genera il codice provvisorio: scrivi numero e dati somatici sulla provetta e consegnala alla Regia (andrà nel secchio dei fuori registro).
+**Cosa resta:** l'animale è registrato come non identificato. L'attribuzione al capo anagrafico o l'assegnazione a una marca disponibile avverrà con calma dopo la chiusura del campionamento.
 
 ## 6. La batteria è scarica
 
@@ -49,12 +49,20 @@
 
 ## 10. Il contrassegno non è registrato su un capo
 
-**Cosa fai:** distingui la **marca disponibile** (blu) dal codice **in nessun registro caricato** (Forzato). Per entrambi servono sesso, razza e nascita; per il forzato digita il contrassegno intero. Se il problema è soltanto la pagina della specie sbagliata, cambia specie prima di confermare.
-**Cosa resta:** è una provetta fuori registro. «Non nei file caricati» non significa necessariamente «assente dalla BDN»: la Regia verifica anche gli input.
+**Cosa fai:** sia per una **marca disponibile** sia per un capo **in nessun registro caricato** (forzato), il riquadro dell'etichetta è rosso (fuori registro). Servono obbligatoriamente sesso, razza e data di nascita; per il forzato digita il contrassegno completo. Scrivi tutta la dicitura del riquadro rosso sulla provetta. Se il problema era solo la specie sbagliata, cambia specie prima di confermare.
+**Cosa resta:** è una provetta fuori registro che andrà nel secchio dei fuori registro. A fine seduta la Regia deciderà la sistemazione.
 
 ## 11. La Regia mette in pausa il tuo palmare o ti allontani dalla rete
 
-**Cosa fai:** l'app blocca l'inserimento dei prelievi e mostra lo stato di pausa imposto dalla Regia (ad esempio se il palmare si è disconnesso all'improvviso o per riorganizzare i prelievi). Se ti allontani dalla rete, mettiti in pausa da **Campionamento › Pausa e ripresa**: altrimenti tutti passano alla gestione provvisoria, con i doppi non controllati. La Regia può comunque metterti in pausa. Per riprendere dalla pausa della Regia, ricollegati alla rete e premi **Riprendi** (solo da **Campionamento › Pausa e ripresa**) oppure attendi che la Regia tocchi **Riattiva**. Dopo una pausa propria riprendi anche alla prima provetta.
-**Cosa resta:** tutti i prelievi salvati in precedenza restano conservati sul dispositivo.
+**Cosa fai:** se ti allontani dalla rete, mettiti in pausa da **Campionamento › Pausa e ripresa**: altrimenti per tutta la squadra i doppi non sono controllati in diretta. La Regia può comunque metterti in pausa o escluderti se il telefono non risponde da più di 2 minuti. Per riprendere da una pausa tocca **Riprendi** in Pausa e ripresa (o attendi la riattivazione della Regia). Se invece la Regia ti ha escluso definitivamente, per rientrare devi inquadrare di nuovo il QR d'ingresso della Regia con **menu › Progetto › Entra col QR**.
+**Cosa resta:** tutti i prelievi salvati in precedenza restano conservati sul dispositivo e si sincronizzano al rientro.
+
+## 12. Il lettore di microchip Bluetooth si scollega
+
+**Cosa fai:** controlla che sia acceso e tocca il tasto di lettura per riattivare la connessione Bluetooth. Se non si riconnette subito, non bloccare la corsia: digita a mano le ultime cifre del codice sul tastierino a schermo di Fejalog e seleziona il capo trovato.
+
+## 13. Il pennarello non scrive o la provetta è bagnata
+
+**Cosa fai:** asciuga la plastica della provetta con carta assorbente prima di scrivere. Tieni sempre nello zaino o in tasca un secondo pennarello indelebile nero di scorta.
 
 [Tutte le anomalie e le soluzioni](../anomalie.md) · [In campo](in-campo.md) · [Domande](domande.md) · [Checklist](../checklist-veterinari.md)
