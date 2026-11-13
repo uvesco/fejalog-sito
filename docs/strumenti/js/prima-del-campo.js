@@ -33,7 +33,7 @@
     }
     var campi=[['veterinari','Veterinari previsti',1,1,999],['margine','Margine provette (%)',10,0,100],['scorta','Scorta provette (%)',5,0,100],['larghezzaPlateau','Larghezza plateau, lato delle righe (cm)',18,1,100],['profonditaPlateau','Profondità plateau (cm)',15,1,100],['spazio','Spazio fra i plateau (cm)',2,0,100],['larghezzaTavolo','Larghezza massima del tavolo (cm)',180,1,10000]];
     el('materiale').innerHTML='<h2>Materiale</h2><p>Tutti i plateau ordinari devono stare sul tavolo nel Riordino. La scorta dei fuori registro resta fuori tavolo.</p><div id="prima-parametri" class="fej-form">'+
-      '<p><label>Verso di riempimento dei plateau<select id="prima-verso"><option value="alto_basso">Dall’alto verso il basso (predefinito: 1 in alto a sinistra)</option><option value="basso_alto">Dal basso verso l’alto (1 in basso a sinistra)</option></select></label></p>'+
+      '<p><label>Verso di riempimento dei plateau<select id="prima-verso"><option value="alto_basso">Dall’alto verso il basso (predefinito: 1 in alto a sinistra)</option><option value="basso_alto">Dal basso verso l’alto (1 in basso a sinistra)</option></select></label> <span id="prima-verso-nota" class="fej-tenue"></span></p>'+
       '</div><div id="prima-calcolo" role="status" aria-live="polite"></div><div id="prima-schema"></div><div id="prima-stampe-materiale"></div>'+
       '<h3>Wi-Fi: fogli d’ingresso col QR</h3><p>Un foglio A4 per ogni rete del progetto (router, hotspot del tablet). SSID e password restano nella pagina e finiscono solo nei fogli che scarichi.</p>'+
       '<div id="prima-reti" class="fej-form"></div><p><button type="button" id="prima-rete-aggiungi">Aggiungi una rete</button> '+
@@ -99,12 +99,10 @@
     function aggiornaMateriale(){
       el('calcolo').textContent='';el('schema').textContent='';el('stampe-materiale').textContent='';
       var verso=el('verso').value==='basso_alto'?'basso_alto':'alto_basso';
-      var altroVerso=verso==='alto_basso'?'basso_alto':'alto_basso';
-      // Il foglio 1–100 è generico: non richiede registri, né il calcolo del materiale.
-      [verso,altroVerso].forEach(function(v){
-        var foglio=Stampe.foglioRiempimento(v);
-        if(foglio.ok)scarica(el('stampe-materiale'),'foglio_riempimento_1-100_'+v+'_A4.html',foglio.html);
-      });
+      // Il foglio 1–100 è generico: non richiede registri, né il calcolo del materiale. Solo quello del verso scelto
+      // (utente, 13/11: «una volta selezionato il verso di riempimento del plateau deve essere scaricabile solo quello giusto»).
+      var foglio=Stampe.foglioRiempimento(verso);
+      if(foglio.ok)scarica(el('stampe-materiale'),'foglio_riempimento_1-100_'+verso+'_A4.html',foglio.html);
       if(!dati)return;
       try{
         var o={};campi.forEach(function(c){var v=el(c[0]).value;if(!/^\d+$/.test(v))throw new Error('Completa le impostazioni con numeri interi.');o[c[0]]=Number(v);});
@@ -129,7 +127,7 @@
     }
     el('csv').onchange=function(){
       var file=this.files[0], v=++versione;
-      dati=null;el('htm').disabled=true;el('htm').value='';el('esiti').textContent='';el('a3').textContent='';el('avvisi').textContent='';aggiornaMateriale();
+      dati=null;el('htm').disabled=true;el('htm').value='';el('esiti').textContent='';el('a3').textContent='';el('avvisi').textContent='';el('verso').disabled=false;el('verso-nota').textContent='';aggiornaMateriale();
       if(!file){el('stato').textContent='Scegli la chiave della numerazione.';return;}
       el('stato').textContent='Lettura della numerazione…';
       var carica;
@@ -145,7 +143,8 @@
         if(v!==versione)return;
         dati=d;el('htm').disabled=false;
         if(d.veterinari)el('veterinari').value=d.veterinari;
-        if(d.verso_riempimento==='alto_basso' || d.verso_riempimento==='basso_alto')el('verso').value=d.verso_riempimento;
+        // il verso deciso nel progetto non si cambia qui: si cambia nella configurazione del progetto
+        if(d.verso_riempimento==='alto_basso' || d.verso_riempimento==='basso_alto'){el('verso').value=d.verso_riempimento;el('verso').disabled=true;el('verso-nota').textContent='È il verso del progetto: si cambia nella configurazione del progetto (sul sito al passo 6 di «Crea il progetto»).';}
         aggiornaMateriale();
         el('stato').textContent='Numerazione caricata: '+dati.serie.length+' serie.';
         avvisi(el('avvisi'),dati.avvisi);
@@ -204,7 +203,7 @@
       /** La numerazione dallo snapshot creato nella pagina (byte dello zip fejalog-backup), al posto del CSV o del backup scelto a mano. */
       caricaBackup: function(byteZip){
         var v=++versione;
-        dati=null;el('htm').disabled=true;el('htm').value='';el('esiti').textContent='';el('a3').textContent='';el('avvisi').textContent='';aggiornaMateriale();
+        dati=null;el('htm').disabled=true;el('htm').value='';el('esiti').textContent='';el('a3').textContent='';el('avvisi').textContent='';el('verso').disabled=false;el('verso-nota').textContent='';aggiornaMateriale();
         el('stato').textContent='Lettura della numerazione del progetto…';
         usa(Promise.resolve(byteZip).then(function(b){return FejProgetto.leggiBackup(b);}).then(function(P){if(!P.verifica.ok)throw new Error('Verifica del progetto non riuscita.');return FejDominio.numerazioneStampe(P);}),v);
       }

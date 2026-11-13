@@ -32,7 +32,7 @@ Il sito lavora sul computer e conserva le azioni nel browser. Il registro del ba
 Apri **Plateau**. Il cursore **Passo** e i pulsanti avanti/indietro ripercorrono registrazioni e pose. Arriva all'ultimo passo, scegli una serie e tocca un pozzetto occupato per vedere la sua provetta.
 Puoi esaminare i bordi colorati dei plateau (verde per completo, giallo da completare, rosso per i fuori registro) e le azioni sulla singola provetta (spostamento con proposta di scambio, scarto con motivo o contrassegno modificato).
 
-Il simulatore usa il verso salvato nel progetto: **non si cambia dopo l'avvio**. Per confrontare i due versi apri [Stampe pre-campo](../strumenti/prima-del-campo.md), anche senza caricare dati, e apri i due fogli generici **1–100 alto→basso e basso→alto**. Il pozzetto 1 cambia lato; le file restano da sinistra a destra, senza serpente. È un confronto delle stampe, non una modifica al backup chiuso.
+Il simulatore usa il verso salvato nel progetto: **non si cambia dopo l'avvio**. Per confrontare i due versi apri [Stampe pre-campo](../strumenti/prima-del-campo.md) senza caricare dati e scegli prima un verso, poi l'altro: si scarica solo il foglio generico **1–100** del verso scelto. Il pozzetto 1 cambia lato; le file restano da sinistra a destra, senza serpente. È un confronto delle stampe, non una modifica al backup chiuso.
 
 ### 4. Risolvi un problema
 
