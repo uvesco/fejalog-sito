@@ -270,6 +270,18 @@
       .then(function (h) { return capoDaScheda(leggiDoc(h)); });
   }
 
+  /** Manda il risultato alla pagina di Fejalog che ha aperto questa scheda (stessa origine data dallo snippet). */
+  function inviaAllaPagina(file) {
+    var dest = globale.opener;
+    if (!dest || dest.closed || !cfg.origine) return false;
+    try { dest.postMessage({ fejalog: 'verifica-bdn', file: file }, cfg.origine); } catch (e) { return false; }
+    globale.addEventListener('message', function (ev) {
+      if (ev.origin !== cfg.origine || !ev.data || ev.data.fejalog !== 'verifica-bdn-ricevuta') return;
+      fase('Fatto: il risultato è arrivato nella pagina di Fejalog (' + (ev.data.caricati || 0) + ' contrassegni).');
+    });
+    return true;
+  }
+
   var codici = cfg.codici, risultati = [];
   (async function () {
     for (var n = 0; n < codici.length; n++) {
@@ -301,10 +313,39 @@
     q('barra').style.width = '100%';
     var file = { formato: FORMATO, versione: 1, timbro: cfg.timbro, cercati: codici.length, risultati: risultati };
     globale.__BDN_VERIFICA_ESITO__ = file;
-    if (cfg.senzaFile) { fase('Fatto (prova senza file): ' + risultati.length + ' contrassegni.'); return; }
-    scarica('fejalog_verifica_bdn_' + cfg.timbro + '.json', JSON.stringify(file, null, 1), 'application/json');
-    scarica('fejalog_verifica_bdn_' + cfg.timbro + '.csv', csv(risultati), 'text/csv');
-    fase('Fatto: ' + risultati.length + ' di ' + codici.length + ' contrassegni. Carica il file .json in Fejalog, accanto al backup.');
-    q('nota').textContent = 'Il .csv è lo stesso elenco da leggere a colpo d\'occhio. Puoi chiudere questo riquadro.';
+    var testo = JSON.stringify(file, null, 1), nomeJson = 'fejalog_verifica_bdn_' + cfg.timbro + '.json';
+    // Caricamento diretto (utente, 14/11): se la BDN è stata aperta dalla pagina di Fejalog («Apri la BDN»), il risultato
+    // torna da solo a quella pagina; la pagina risponde «ricevuto». Altrimenti restano il file e «Copia il risultato».
+    var inviato = inviaAllaPagina(file);
+    // Se lo scaricamento non parte (Chrome lo può bloccare), il risultato resta qui: si scarica di nuovo o si copia e si
+    // incolla nella pagina di Fejalog (utente, 14/11: «deve esserci modo di caricarlo se non si carica da solo»).
+    if (!cfg.senzaFile) scarica(nomeJson, testo, 'application/json');
+    fase('Fatto: ' + risultati.length + ' di ' + codici.length + ' contrassegni.');
+    var tasti = document.createElement('div');
+    tasti.style.cssText = 'margin-top:8px;display:flex;flex-wrap:wrap;gap:6px';
+    function tasto(etichetta, azione) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = etichetta;
+      b.style.cssText = 'padding:6px 10px;border:1px solid #2e5e3e;border-radius:6px;background:#fff;color:#2e5e3e;cursor:pointer;font:13px system-ui,sans-serif';
+      b.onclick = azione; tasti.appendChild(b); return b;
+    }
+    tasto('Scarica il file per Fejalog (.json)', function () { scarica(nomeJson, testo, 'application/json'); });
+    tasto('Scarica l\'elenco (.csv)', function () { scarica('fejalog_verifica_bdn_' + cfg.timbro + '.csv', csv(risultati), 'text/csv'); });
+    var copia = tasto('Copia il risultato', function () {
+      function fatto() { copia.textContent = 'Copiato ✓'; }
+      function aMano() {
+        var t = document.createElement('textarea'); t.value = testo; t.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+        document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); fatto(); } catch (e) { copia.textContent = 'Non riesco a copiare'; }
+        t.remove();
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(testo).then(fatto, aMano); else aMano();
+    });
+    pannello.insertBefore(tasti, q('nota'));
+    q('nota').textContent = (inviato ? 'Risultato mandato alla pagina di Fejalog che ha aperto la BDN: guarda lì se è arrivato. ' : '') +
+      (cfg.senzaFile ? '' : 'Il file ' + nomeJson + ' è nella cartella dei download. ') +
+      'Caricalo in Fejalog accanto al backup (sito: Carica › Risultato della BDN; tablet: Soluzioni › Verifica in BDN). ' +
+      'Se il file non c\'è, scaricalo di nuovo qui, oppure «Copia il risultato» e incollalo nella pagina di Fejalog. ' +
+      'Il .csv è lo stesso elenco da leggere a colpo d\'occhio.';
   })().catch(function (e) { fase('Errore: ' + (e && e.message ? e.message : e)); finito = true; clearInterval(orologio); });
 })(typeof window !== 'undefined' ? window : this);

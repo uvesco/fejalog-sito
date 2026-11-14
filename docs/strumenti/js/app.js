@@ -72,7 +72,6 @@ function ricalcola() {
   try {
     S.dueTrentatreFinali = []; // I numeri finali dipendono da tutte le azioni.
     S.banco = Dominio.apriBanco(S.P, S.stato.azioni());
-    (S.verificaBdnTesti || []).forEach(function (t) { S.banco.caricaVerificaBdn(t); });
     bancoUI.dest = {}; // la sessione è nuova: i posti calcolati prima non valgono più
     var tenute = S.banco.azioni().map(function (a) { return a.id; });
     var scartate = S.stato.azioni().filter(function (a) { return tenute.indexOf(a.id) < 0; });
@@ -290,6 +289,11 @@ function schedaCarica() {
    L'elenco dei contrassegni fuori registro senza anagrafica BDN nell'app, lo snippet da incollare nella console della BDN
    (bdn-verifica-motore.js: Interrogazioni › Capi e › Identificativi, uno alla volta, sola lettura) e il caricamento del
    file che scarica. I dati compaiono nella scheda di ogni provetta, accanto a quelli scritti in campo. */
+function aggiornaAnagrafeBdn() {
+  S.stato.sostituisci(S.banco.azioni());
+  S.dueTrentatreFinali = []; bancoUI.dest = {};
+  aggiornaRisultato();
+}
 function sezioneVerificaBdn() {
   var d = h('div');
   d.appendChild(h('h3', null, 'Verifica dei contrassegni in BDN'));
@@ -297,7 +301,7 @@ function sezioneVerificaBdn() {
   try { elenco = S.banco.daVerificareBdn(!!S.verificaBdnTutte); } catch (e) { d.appendChild(h('p', { class: 'fej-errore' }, 'Elenco non disponibile: ' + e.message)); return d; }
   d.appendChild(h('p', null, 'Per le provette fuori registro di cui l\'app non ha i dati della BDN (contrassegni non registrati, non in elenco, ' +
     'nuove identificazioni in campo, altri stabilimenti, DDA) lo snippet cerca ogni contrassegno nella BDN, fra i capi e fra gli ' +
-    'identificativi, e scarica un file da caricare qui sotto: i dati compaiono nella scheda di ogni provetta, accanto a quelli scritti in campo.'));
+    'identificativi, e scarica un file da caricare qui sotto: i capi e le marche disponibili si aggiungono all’anagrafe del progetto. I registri già caricati hanno precedenza. Il confronto coi dati del campo resta nella scheda; l’integrazione va in «Esporta per l’app».'));
   d.appendChild(h('label', null, h('input', { type: 'checkbox', checked: !!S.verificaBdnTutte, onchange: function (ev) { S.verificaBdnTutte = ev.target.checked; disegna(); } }),
     ' Anche le altre provette fuori registro (usciti, smarriti, rubati…)'));
   var cercati = elenco.filter(function (v) { return v.cercato; }).length, strani = elenco.filter(function (v) { return v.avviso_formato; });
@@ -307,7 +311,8 @@ function sezioneVerificaBdn() {
     return h('li', null, v.contrassegno + ' (' + v.etichette.join(', ') + '): ' + v.avviso_formato);
   })));
   if (elenco.length) {
-    var cfg = { codici: elenco.map(function (v) { return { contrassegno: v.contrassegno, etichette: v.etichette }; }), data: new Date().toISOString().slice(0, 10).replace(/-/g, '') };
+    var cfg = { codici: elenco.map(function (v) { return { contrassegno: v.contrassegno, etichette: v.etichette }; }), data: new Date().toISOString().slice(0, 10).replace(/-/g, ''),
+      origine: location.origin };
     var urlMotore = new URL(base + 'bdn-verifica-motore.js', location.href).href;
     var esito = h('span', { role: 'status' });
     d.appendChild(h('p', null,
@@ -320,22 +325,47 @@ function sezioneVerificaBdn() {
           scarica('snippet_bdn_verifica_' + cfg.data + '.js', 'text/javascript', 'window.__BDN_VERIFICA__ = ' + JSON.stringify(cfg) + ';\n' + t);
         }).catch(function (e) { esito.textContent = ' Non riesco a preparare lo snippet: ' + e.message; });
       } }, 'Scarica lo snippet completo'), esito));
-    d.appendChild(h('p', { class: 'fej-tenue' }, 'Sul PC entra nella BDN ovicaprini col ruolo di Servizio Veterinario, apri Dati › Interrogazioni › Capi, ' +
-      'poi la console (F12 › Console), incolla e premi Invio. Lo snippet fa solo letture, una alla volta: circa 3 secondi per contrassegno.'));
+    d.appendChild(h('p', null, h('button', { type: 'button', class: 'md-button', id: 'fej-apri-bdn', onclick: function () {
+      // senza «noopener»: la scheda della BDN deve poter rimandare qui il risultato (postMessage verso questa origine)
+      S.finestraBdn = window.open('https://www.vetinfo.it/ovicaprini/home2.pl', 'fejalog_bdn');
+    } }, 'Apri la BDN in una scheda'), ' ', h('span', { class: 'fej-tenue' }, 'Aperta da qui, la BDN rimanda il risultato a questa pagina da sola.')));
+    d.appendChild(h('p', { class: 'fej-tenue' }, 'Sul PC entra nella BDN ovicaprini col ruolo di Servizio Veterinario (meglio dalla scheda aperta col tasto qui sopra), ' +
+      'apri la console (F12 › Console), incolla e premi Invio. Lo snippet fa solo letture, una alla volta: circa 3 secondi per contrassegno. ' +
+      'Alla fine il risultato arriva qui da solo; se non arriva, il file .json scaricato o «Copia il risultato» del riquadro dello snippet.'));
+  }
+  function caricaRisultato(t) {
+    var r = S.banco.caricaVerificaBdn(t);
+    if (r.errore) { S.messaggio = r.errore; messaggio(); return; }
+    aggiornaAnagrafeBdn();
+    S.messaggio = '✓ Dati della BDN caricati: ' + r.caricati + ' contrassegni. Li trovi nella scheda di ogni provetta.';
+    disegna();
   }
   d.appendChild(h('p', null, h('label', null, 'Risultato della BDN (fejalog_verifica_bdn_….json): ', h('input', { type: 'file', accept: '.json,application/json', onchange: function (ev) {
     var f = ev.target.files && ev.target.files[0];
     if (!f) return;
-    f.text().then(function (t) {
-      var r = S.banco.caricaVerificaBdn(t);
-      if (r.errore) { S.messaggio = r.errore; messaggio(); return; }
-      S.verificaBdnTesti = (S.verificaBdnTesti || []).concat([t]);
-      S.messaggio = '✓ Dati della BDN caricati: ' + r.caricati + ' contrassegni. Li trovi nella scheda di ogni provetta.';
-      disegna();
-    });
+    f.text().then(caricaRisultato);
   } }))));
+  // se il file non è stato scaricato: «Copia il risultato» nel riquadro dello snippet e qui «Incolla»
+  var incolla = h('textarea', { id: 'fej-verifica-incolla', rows: 3, style: 'width:100%;box-sizing:border-box', placeholder: 'Oppure incolla qui il risultato copiato dallo snippet («Copia il risultato»)', 'aria-label': 'Risultato della BDN incollato' });
+  d.appendChild(incolla);
+  d.appendChild(h('p', null, h('button', { type: 'button', id: 'fej-verifica-carica-incollato', onclick: function () {
+    var t = incolla.value.trim();
+    if (!t) { S.messaggio = 'Incolla prima il risultato copiato dallo snippet.'; messaggio(); return; }
+    caricaRisultato(t);
+  } }, 'Carica il risultato incollato')));
   return d;
 }
+/* Il risultato dello snippet che arriva da solo dalla scheda della BDN aperta qui («Apri la BDN»). */
+window.addEventListener('message', function (ev) {
+  if (ev.origin !== 'https://www.vetinfo.it' || !ev.data || ev.data.fejalog !== 'verifica-bdn' || !ev.data.file) return;
+  if (!S.banco) { S.messaggio = 'Risultato della BDN arrivato, ma prima carica il backup.'; messaggio(); return; }
+  var t = JSON.stringify(ev.data.file), r = S.banco.caricaVerificaBdn(t);
+  if (r.errore) { S.messaggio = r.errore; messaggio(); return; }
+  aggiornaAnagrafeBdn();
+  S.messaggio = '✓ Dati della BDN arrivati dalla scheda della BDN: ' + r.caricati + ' contrassegni. Li trovi nella scheda di ogni provetta.';
+  try { ev.source.postMessage({ fejalog: 'verifica-bdn-ricevuta', caricati: r.caricati }, ev.origin); } catch (e) { /* la scheda può essere chiusa */ }
+  disegna();
+});
 function testoCortoVerifica(cfg, urlMotore) {
   return 'window.__BDN_VERIFICA__ = ' + JSON.stringify(cfg) + ';\n' +
     "fetch(" + JSON.stringify(urlMotore + '?v=' + cfg.data) + ").then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })" +
