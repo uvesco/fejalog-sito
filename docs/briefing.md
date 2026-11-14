@@ -57,7 +57,7 @@ Per un animale senza nessuna marca usa «Senza contrassegno» nel Campionamento,
 
 - Scegli sesso, età dai denti e razza («Meticcio» vale per tutte). Come identificazione provvisoria scrivi la sigla della provetta (per esempio UV-16) e scrivila anche sulla schiena dell'animale. Non si sceglie nessun capo.
 - Scrivi sulla provetta tutte le righe suggerite: sono la copia di riserva dei dati. Il capo si sceglie dopo la chiusura del campionamento.
-- Con «Applica ora una marca disponibile» marchi subito l'animale. Gli animali sotto età si contano a parte con +1 e −1, mentre li marchi col colore: così non si contano due volte.
+- Se l'allevatore lo marca subito con una marca in giacenza: «Nuova identificazione», con sesso, età e razza scritti anche sulla provetta. Gli animali sotto età si contano a parte con +1 e −1, mentre li marchi col colore: così non si contano due volte.
 
 ## 8. Marcare i fuori registro
 

@@ -72,6 +72,7 @@ function ricalcola() {
   try {
     S.dueTrentatreFinali = []; // I numeri finali dipendono da tutte le azioni.
     S.banco = Dominio.apriBanco(S.P, S.stato.azioni());
+    (S.verificaBdnTesti || []).forEach(function (t) { S.banco.caricaVerificaBdn(t); });
     bancoUI.dest = {}; // la sessione è nuova: i posti calcolati prima non valgono più
     var tenute = S.banco.azioni().map(function (a) { return a.id; });
     var scartate = S.stato.azioni().filter(function (a) { return tenute.indexOf(a.id) < 0; });
@@ -118,10 +119,11 @@ function azione(tipo, dati) {
 function togli(id) { S.stato.rimuovi(id); ricalcola(); }
 
 /* ---- schede ---- */
-/* Le schede (revisione dell'utente, 2026-11-13: «troppo complesso»): il Banco al posto di Provette, Problemi e Non
-   trovati; quelle di prima restano sotto «Altri strumenti» finché il Banco non è provato. */
-var SCHEDE = [['carica', 'Carica'], ['avvisi', 'Avvisi'], ['banco', 'Banco'], ['riordino', 'Riordino'], ['plateau', 'Plateau'], ['snippet', 'Snippet ARVET'], ['uscite', 'Uscite'], ['esporta', 'Esporta per l\'app']];
-var SCHEDE_ALTRE = [['provette', 'Provette'], ['problemi', 'Problemi'], ['nontrovati', 'Non trovati'], ['statistiche', 'Statistiche']];
+/* Le schede (revisione dell'utente, 2026-11-13: «troppo complesso»; seconda revisione del 14/11: «Problemi» diventa
+   «Tipologie», il colpo d'occhio, coi «Non trovati» come sezione «Assenti»; il Banco si chiama «Soluzioni»; Provette e
+   Statistiche sotto «Altri strumenti»). Gli identificativi interni delle schede restano. */
+var SCHEDE = [['carica', 'Carica'], ['avvisi', 'Avvisi'], ['problemi', 'Tipologie'], ['banco', 'Soluzioni'], ['riordino', 'Riordino'], ['plateau', 'Plateau'], ['snippet', 'Snippet ARVET'], ['uscite', 'Uscite'], ['esporta', 'Esporta per l\'app']];
+var SCHEDE_ALTRE = [['provette', 'Provette'], ['statistiche', 'Statistiche']];
 var tabs = h('div', { class: 'fej-tabs', role: 'tablist' });
 var corpo = h('div', { class: 'fej-corpo' });
 radice.appendChild(tabs); radice.appendChild(msgEl); radice.appendChild(corpo);
@@ -136,7 +138,7 @@ function disegna() {
   }
   SCHEDE.filter(function (s) { return !pc || !!S.P || s[0] === 'carica'; }).forEach(function (s) { tastoScheda(tabs, s); });
   if (S.P) {
-    var altre = h('div', { class: 'fej-tabs-altre', role: 'tablist', 'aria-label': 'Strumenti di prima' }, h('span', { class: 'fej-guida' }, 'Strumenti di prima: '));
+    var altre = h('div', { class: 'fej-tabs-altre', role: 'tablist', 'aria-label': 'Altri strumenti' }, h('span', { class: 'fej-guida' }, 'Altri strumenti: '));
     SCHEDE_ALTRE.forEach(function (s) { tastoScheda(altre, s); });
     tabs.appendChild(altre);
   }
@@ -181,7 +183,7 @@ function apriProgetto(P) {
     S.stato.sostituisci(unite);
   }
   S.dueTrentatreFinali = []; S.apertaProvetta = null; S.modificandoProvetta = null; S.annullandoProvetta = null;
-  S.filtroStabProvette = ''; S.ap = null; S.esito = null; S.banco = null; S.riordinoCache = null; S.apVecchio = false;
+  S.filtroStabProvette = ''; S.ap = null; S.esito = null; S.banco = null; S.riordinoCache = null; S.apVecchio = false; S.verificaBdnTesti = [];
   bancoUI.uid = null; bancoUI.cerca = ''; bancoUI.risultati = null; bancoUI.dest = {}; bancoUI.aperto = null; bancoUI.motivo = '';
   var pendenti = P.modifichePendenti;
   if (pendenti) {
@@ -280,13 +282,71 @@ function schedaCarica() {
   }
   pBottoni.appendChild(h('button', { type: 'button', onclick: function () { if (confirm('Ricominciare da capo? Si perdono le azioni fatte su questo backup.')) { S.stato.azzera(); ricalcola(); } } }, 'Ricomincia da capo'));
   d.appendChild(pBottoni);
+  if (S.banco) d.appendChild(sezioneVerificaBdn());
   return d;
+}
+
+/* ---- Verifica dei contrassegni in BDN (utente, 2026-11-14) ----
+   L'elenco dei contrassegni fuori registro senza anagrafica BDN nell'app, lo snippet da incollare nella console della BDN
+   (bdn-verifica-motore.js: Interrogazioni › Capi e › Identificativi, uno alla volta, sola lettura) e il caricamento del
+   file che scarica. I dati compaiono nella scheda di ogni provetta, accanto a quelli scritti in campo. */
+function sezioneVerificaBdn() {
+  var d = h('div');
+  d.appendChild(h('h3', null, 'Verifica dei contrassegni in BDN'));
+  var elenco = [];
+  try { elenco = S.banco.daVerificareBdn(!!S.verificaBdnTutte); } catch (e) { d.appendChild(h('p', { class: 'fej-errore' }, 'Elenco non disponibile: ' + e.message)); return d; }
+  d.appendChild(h('p', null, 'Per le provette fuori registro di cui l\'app non ha i dati della BDN (contrassegni non registrati, non in elenco, ' +
+    'nuove identificazioni in campo, altri stabilimenti, DDA) lo snippet cerca ogni contrassegno nella BDN, fra i capi e fra gli ' +
+    'identificativi, e scarica un file da caricare qui sotto: i dati compaiono nella scheda di ogni provetta, accanto a quelli scritti in campo.'));
+  d.appendChild(h('label', null, h('input', { type: 'checkbox', checked: !!S.verificaBdnTutte, onchange: function (ev) { S.verificaBdnTutte = ev.target.checked; disegna(); } }),
+    ' Anche le altre provette fuori registro (usciti, smarriti, rubati…)'));
+  var cercati = elenco.filter(function (v) { return v.cercato; }).length, strani = elenco.filter(function (v) { return v.avviso_formato; });
+  d.appendChild(h('p', null, elenco.length + ' contrassegni da cercare' + (cercati ? ', ' + cercati + ' già cercati' : '') +
+    (strani.length ? '; ' + strani.length + ' con un formato inusuale (controlla la lettura)' : '') + '.'));
+  if (strani.length) d.appendChild(h('ul', { class: 'fej-avviso' }, strani.slice(0, 20).map(function (v) {
+    return h('li', null, v.contrassegno + ' (' + v.etichette.join(', ') + '): ' + v.avviso_formato);
+  })));
+  if (elenco.length) {
+    var cfg = { codici: elenco.map(function (v) { return { contrassegno: v.contrassegno, etichette: v.etichette }; }), data: new Date().toISOString().slice(0, 10).replace(/-/g, '') };
+    var urlMotore = new URL(base + 'bdn-verifica-motore.js', location.href).href;
+    var esito = h('span', { role: 'status' });
+    d.appendChild(h('p', null,
+      h('button', { type: 'button', class: 'md-button', onclick: function () {
+        navigator.clipboard.writeText(testoCortoVerifica(cfg, urlMotore)).then(function () { esito.textContent = ' Copiato: incollalo nella console della BDN.'; },
+          function () { esito.textContent = ' Non riesco a copiare: usa «Scarica lo snippet completo».'; });
+      } }, 'Copia lo snippet per la BDN'), ' ',
+      h('button', { type: 'button', class: 'md-button', onclick: function () {
+        fetch(urlMotore).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); }).then(function (t) {
+          scarica('snippet_bdn_verifica_' + cfg.data + '.js', 'text/javascript', 'window.__BDN_VERIFICA__ = ' + JSON.stringify(cfg) + ';\n' + t);
+        }).catch(function (e) { esito.textContent = ' Non riesco a preparare lo snippet: ' + e.message; });
+      } }, 'Scarica lo snippet completo'), esito));
+    d.appendChild(h('p', { class: 'fej-tenue' }, 'Sul PC entra nella BDN ovicaprini col ruolo di Servizio Veterinario, apri Dati › Interrogazioni › Capi, ' +
+      'poi la console (F12 › Console), incolla e premi Invio. Lo snippet fa solo letture, una alla volta: circa 3 secondi per contrassegno.'));
+  }
+  d.appendChild(h('p', null, h('label', null, 'Risultato della BDN (fejalog_verifica_bdn_….json): ', h('input', { type: 'file', accept: '.json,application/json', onchange: function (ev) {
+    var f = ev.target.files && ev.target.files[0];
+    if (!f) return;
+    f.text().then(function (t) {
+      var r = S.banco.caricaVerificaBdn(t);
+      if (r.errore) { S.messaggio = r.errore; messaggio(); return; }
+      S.verificaBdnTesti = (S.verificaBdnTesti || []).concat([t]);
+      S.messaggio = '✓ Dati della BDN caricati: ' + r.caricati + ' contrassegni. Li trovi nella scheda di ogni provetta.';
+      disegna();
+    });
+  } }))));
+  return d;
+}
+function testoCortoVerifica(cfg, urlMotore) {
+  return 'window.__BDN_VERIFICA__ = ' + JSON.stringify(cfg) + ';\n' +
+    "fetch(" + JSON.stringify(urlMotore + '?v=' + cfg.data) + ").then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })" +
+    ".then(function (t) { new Function(t)(); })" +
+    ".catch(function (e) { console.log('Fejalog: non riesco a caricare lo snippet dal sito (' + e.message + '): usa «Scarica lo snippet completo».'); });\n";
 }
 
 function schedaAvvisi() {
   var d = h('div', { class: 'fej-scheda-avvisi' });
   d.appendChild(h('p', null, 'Che cosa controllare prima di sistemare le provette. Ogni tipo si apre e si chiude dal titolo. ' +
-    '«Visto» dice soltanto che la Regia ha controllato l\'avviso: non cambia la provetta. I doppi si decidono nel Banco.'));
+    '«Visto» dice soltanto che la Regia ha controllato l\'avviso: non cambia la provetta. I doppi si decidono in Soluzioni.'));
 
   var avv = (S.ap && S.ap.avvisi) || { doppiScoperti: [], ricercatiTrovati: [], collisioni: [], controlloIncompleto: [], deviceMaiRientrati: [] };
   /* Ogni tipo di avviso si apre e si chiude dal titolo (utente, 2026-11-13), con una riga che dice a che cosa serve. */
@@ -299,7 +359,7 @@ function schedaAvvisi() {
 
   // 1. Doppi contrassegni scoperti
   var secDoppi = sezione('Doppi contrassegni scoperti', avv.doppiScoperti.length, avv.doppiScoperti.length > 0,
-    'Lo stesso contrassegno su due provette, visto riunendo i registri dei device: la seconda va decisa nel Banco (di solito si toglie, se era lo stesso animale).');
+    'Lo stesso contrassegno su due provette, visto riunendo i registri dei device: la seconda va decisa in Soluzioni (di solito si toglie, se era lo stesso animale).');
   if (!avv.doppiScoperti.length) {
     secDoppi.appendChild(h('p', { class: 'fej-tenue' }, 'Nessun doppio contrassegno scoperto dopo il prelievo.'));
   } else {
@@ -311,7 +371,7 @@ function schedaAvvisi() {
       riga.appendChild(document.createTextNode(' '));
       riga.appendChild(h('span', null, 'Provetta ' + dop.prima.etichetta + ' (' + dop.prima.operatore + ') e provetta ' + dop.doppia.etichetta + ' (' + dop.doppia.operatore + ')'));
       riga.appendChild(document.createTextNode(' '));
-      if (S.banco) { riga.appendChild(h('button', { type: 'button', onclick: function () { apriNelBanco(dop.doppia.uid); } }, 'Apri nel Banco')); riga.appendChild(document.createTextNode(' ')); }
+      if (S.banco) { riga.appendChild(h('button', { type: 'button', onclick: function () { apriNelBanco(dop.doppia.uid); } }, 'Apri in Soluzioni')); riga.appendChild(document.createTextNode(' ')); }
       if (dop.visto) {
         riga.appendChild(h('span', { class: 'fej-ok', style: 'margin-left: .5rem;' }, '✓ Visto'));
       } else {
@@ -388,7 +448,7 @@ function schedaAvvisi() {
     secInc.appendChild(h('p', { class: 'fej-tenue' }, 'Tutte le provette sono state prelevate con controllo doppi completo.'));
   } else {
     secInc.appendChild(h('p', { id: 'fej-incompleti-riepilogo' }, avv.controlloIncompleto.length + ' provette prese col controllo incompleto, ricontrollate sul registro intero: ' +
-      (avv.doppiScoperti.length ? avv.doppiScoperti.length + (avv.doppiScoperti.length === 1 ? ' doppio vero, nel Banco.' : ' doppi veri, nel Banco.') : 'nessun doppio. Non serve fare altro.')));
+      (avv.doppiScoperti.length ? avv.doppiScoperti.length + (avv.doppiScoperti.length === 1 ? ' doppio vero, in Soluzioni.' : ' doppi veri, in Soluzioni.') : 'nessun doppio. Non serve fare altro.')));
     var elencoInc = h('details', null, h('summary', null, 'Elenco delle provette'));
     secInc.appendChild(elencoInc);
     avv.controlloIncompleto.forEach(function (inc) {
@@ -660,6 +720,14 @@ function schedaDettaglioProvetta(r) {
       }},'Conferma')));
   }
 
+  if (S.banco) {
+    var nota = h('textarea', { rows: 2 }, S.banco.scheda(r.uid, '').nota_allevatore || '');
+    d.appendChild(h('div', null, h('label', null, 'Nota per l’allevatore ', nota),
+      h('button', { type: 'button', onclick: function () {
+        azione('modifica_provetta', S.banco.notaAllevatore(r.uid, nota.value));
+      } }, 'Salva nota per l’allevatore')));
+  }
+
   if (r.eventi && r.eventi.length) {
     d.appendChild(h('h4', null, 'Eventi della provetta'));
     d.appendChild(h('table', null, r.eventi.map(function (ev) {
@@ -838,7 +906,9 @@ var NOMI_SOL = { '': 'Predefinita', coda: 'In coda, ARVET a mano', esclusa: 'Eli
 
 function schedaProblemi() {
   var d = h('div');
-  d.appendChild(h('p', null, 'Le provette che non vanno in ARVET da sole, per tipologia. Scegli che cosa farne; la scelta vale per i file che produci qui e si può riportare nell\'app dalla scheda «Esporta per l\'app».'));
+  d.appendChild(h('p', null, 'Il colpo d\'occhio: le provette fuori registro per tipologia e, in fondo, gli assenti (i capi in età che non hanno una provetta). ' +
+    'Ogni provetta si decide in Soluzioni; qui si vedono quante sono, i dati della BDN se li hai caricati (scheda Carica) e la regola per tipologia.'));
+  try { S.verificheBdnUid = S.banco ? S.banco.verificheBdn() : {}; } catch (e) { S.verificheBdnUid = {}; }
   var recs = tuttiRecord().filter(function (r) { return S.ap.problemi[r.uid]; });
   d.appendChild(h('input', { type: 'search', placeholder: 'Cerca: etichetta, contrassegno, cifre', value: S.cerca, 'aria-label': 'Cerca', oninput: function (ev) { S.cerca = ev.target.value; disegna(); var i = corpo.querySelector('input[type=search]'); if (i) { i.focus(); i.setSelectionRange(S.cerca.length, S.cerca.length); } } }));
   var q = S.cerca.trim().toLowerCase();
@@ -861,6 +931,15 @@ function schedaProblemi() {
     righe.forEach(function (r) { det.appendChild(rigaProblema(r)); });
     d.appendChild(det);
   });
+  // Gli assenti (utente, 14/11: «Non trovati rinominerei in "Assenti" e li metterei in una sezione a parte […] gli altri
+  // sono provette problematiche, questi provette che mancano»)
+  var nAss = (S.ap.nonPrelevati || []).length;
+  var detA = h('details', { open: S.tipoAperto === '__assenti' ? true : null, id: 'fej-assenti' });
+  detA.addEventListener('toggle', function () { if (detA.open) S.tipoAperto = '__assenti'; });
+  detA.appendChild(h('summary', null, 'Assenti: capi in età senza provetta (' + nAss + ')'));
+  detA.appendChild(schedaNonTrovati());
+  d.appendChild(h('h3', null, 'Assenti'));
+  d.appendChild(detA);
   return d;
 }
 function soluzioneSelect(attuale, onCambia, conVuoto, soluzioni) {
@@ -880,7 +959,13 @@ function rigaProblema(r) {
     contr ? bottoneCopia(contr) : null, ' ',
     h('span', { class: 'fej-tenue' }, [r.sesso, r.razza, r.data_nascita, r.operatore].filter(Boolean).join(' · ')), ' ',
     soluzioneSelect(str(r.soluzione), function (v) { azione('soluzione', { uid: r.uid, etichetta: r.etichetta, contrassegno: r.contrassegno, specie: r.specie, stabilimento: r.codice_stabilimento, soluzione: v }); }, false, S.ap.problemi[r.uid].soluzioni), ' ',
-    h('button', { type: 'button', onclick: function () { S.aperta = aperta ? null : r.uid; disegna(); } }, aperta ? 'Chiudi scheda' : 'Scheda'));
+    h('button', { type: 'button', onclick: function () { S.aperta = aperta ? null : r.uid; disegna(); } }, aperta ? 'Chiudi scheda' : 'Scheda'),
+    S.banco ? h('button', { type: 'button', onclick: function () { apriNelBanco(r.uid); } }, 'Decidi in Soluzioni') : null);
+  var vb = (S.verificheBdnUid || {})[r.uid];
+  if (vb) {
+    if (vb.formato) div.appendChild(h('div', { class: 'fej-avviso' }, vb.formato));
+    if (vb.cercato) div.appendChild(h('div', { class: vb.tono === 'CONFERMA' ? 'fej-ok' : 'fej-avviso' }, 'BDN: ' + vb.sintesi + (vb.discordanze.length ? ' ' + vb.discordanze.join(' ') : '')));
+  }
   if (aperta) div.appendChild(schedaProvetta(r));
   return div;
 }
@@ -1015,6 +1100,9 @@ function schedaRiordino() {
   try { righe = righeRiordino(); } catch (e) { return h('p', {role: 'alert'}, e.message); }
   // Riordino dalla provetta in mano: etichetta, contrassegno o sue ultime cifre; con più corrispondenze restano tutte.
   var tutteLeRighe = righe;
+  var postiBanco = S.banco ? S.banco.coda().conteggi : {};
+  d.appendChild(h('p', { role: 'status' }, 'Da posare ' + righe.filter(function (r) { return !r.g.fatta; }).length +
+    ' · Nel contenitore ARVET a mano ' + (postiBanco.nel_contenitore || 0)));
   var q = String(riordinoUI.inMano || '').replace(/\s+/g, '').toUpperCase();
   if (q) {
     var grado = function (r) {
@@ -1680,7 +1768,7 @@ function sceltaBanco(uid, azioni, dopo) {
     try { no = applicaSullaSessione(a); } catch (e) { no = e.message; }
     if (no) { S.messaggio = 'Non applicata: ' + no; disegna(); return false; }
   }
-  bancoUI.aperto = null; bancoUI.motivo = '';
+  bancoUI.aperto = null; bancoUI.motivo = ''; bancoUI.dest = {};
   try { bancoUI.dest[uid] = dopo === false ? null : S.banco.destinazione(uid); } catch (e) { bancoUI.dest[uid] = { cosa: 'Posto non calcolato: ' + e.message }; }
   S.messaggio = 'Scelta registrata.'; disegna(); return true;
 }
@@ -1689,12 +1777,12 @@ function rigaDati(etichetta, campo, bdn) {
 }
 function schedaBanco() {
   var d = h('div', { class: 'fej-banco', id: 'fej-banco' }), coda;
-  try { coda = S.banco.coda(); } catch (e) { d.appendChild(h('p', { class: 'fej-errore' }, 'Il Banco non è disponibile: ' + e.message)); return d; }
+  try { coda = S.banco.coda(); } catch (e) { d.appendChild(h('p', { class: 'fej-errore' }, 'Soluzioni non disponibile: ' + e.message)); return d; }
   var c = coda.conteggi;
   d.appendChild(h('p', { class: 'fej-guida' }, 'Prendi una provetta dal secchio e scrivi quello che c’è sopra (o leggi il contrassegno col lettore), oppure «Prendi la prossima». ' +
-    'Guarda la proposta: conferma o scegli un’alternativa, poi metti la provetta dove dice il Banco. Se non sai ancora, «Rimanda»: la provetta va nel contenitore delle accantonate.'));
+    'Guarda la proposta: conferma o scegli un’alternativa, poi metti la provetta dove dice Soluzioni. Se non sai ancora, «Rimanda»: la provetta va nel contenitore «Accantonate». Al banco servono tre contenitori con il nome scritto: «Accantonate», «Tolte» e, per ogni specie, «ARVET a mano» (più «Da posare», se Soluzioni lo chiede).'));
   d.appendChild(h('p', { class: 'fej-banco-conteggi', id: 'fej-banco-conteggi', role: 'status' },
-    h('strong', null, 'Da decidere ' + c.da_decidere), ' · Accantonate ' + c.accantonata + ' · Decise ' + c.decisa + ' · Tolte ' + c.tolta + ' · Perse ' + c.persa + ' · Totale ' + c.totale));
+    h('strong', null, 'Da decidere ' + c.da_decidere), ' · Accantonate ' + c.accantonata + ' · Decise ' + c.decisa + ' · Tolte ' + c.tolta + ' · Perse ' + c.persa + ' · Totale ' + c.totale + ' · Da posare ' + c.da_posare + ' · Nel contenitore ARVET a mano ' + c.nel_contenitore));
   var inp = h('input', { type: 'search', id: 'fej-banco-cerca', value: bancoUI.cerca, autocomplete: 'off', placeholder: 'Scritta della provetta o cifre del contrassegno',
     onkeydown: function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); cercaBanco(inp.value); } } });
   d.appendChild(h('div', { class: 'fej-banco-testa' },
@@ -1739,6 +1827,22 @@ function schedaProvettaBanco(uid) {
   if (s.descrizione.segnalazioni.length) tb.appendChild(rigaDati('Segnalazioni', s.descrizione.segnalazioni.join(' · '), ''));
   tab.appendChild(tb);
   box.appendChild(h('div', { class: 'fej-tabella-scorre' }, tab));
+  var notaAllevatore = h('textarea', { id: 'fej-nota-allevatore', rows: 2 }, s.nota_allevatore || '');
+  box.appendChild(h('div', null, h('label', { for: 'fej-nota-allevatore' }, 'Nota per l’allevatore'), notaAllevatore,
+    h('button', { type: 'button', id: 'fej-salva-nota-allevatore', onclick: function () {
+      sceltaBanco(uid, [S.banco.notaAllevatore(uid, notaAllevatore.value)], false);
+    } }, 'Salva nota per l’allevatore')));
+
+  if (s.formato_contrassegno) box.appendChild(h('p', { class: 'fej-avviso' }, s.formato_contrassegno));
+  var vb = s.verifica_bdn;
+  if (vb) {
+    var classeVb = vb.tono === 'CONFERMA' ? 'fej-ok' : vb.tono === 'NON_TROVATO' && /Non ancora cercato/.test(vb.sintesi) ? 'fej-tenue' : 'fej-avviso';
+    var boxVb = h('div', { class: 'fej-banco-bdn ' + classeVb }, h('p', null, h('strong', null, 'Verifica in BDN: '), vb.sintesi));
+    if (vb.righe.length) boxVb.appendChild(h('ul', null, vb.righe.map(function (x) { return h('li', null, x); })));
+    if (vb.discordanze.length) boxVb.appendChild(h('ul', { class: 'fej-errore' }, vb.discordanze.map(function (x) { return h('li', null, x); })));
+    if (/Non ancora cercato/.test(vb.sintesi)) boxVb.appendChild(h('p', { class: 'fej-tenue' }, 'Lo snippet per la BDN si prepara nella scheda Carica.'));
+    box.appendChild(boxVb);
+  }
   if (r.doppio_in_campo) box.appendChild(h('p', null, 'In campo il veterinario ha scelto «Preleva come doppio»: ha visto un altro animale con la stessa marca.'));
   if (r.doppio_scoperto && !r.doppio_in_campo) box.appendChild(h('p', null, 'Doppio scoperto alla riunione dei device: di solito lo stesso animale preso due volte.'));
   if (s.altre_provette.length) box.appendChild(h('p', null, 'Stesso contrassegno anche su: ', s.altre_provette.map(function (o) { return o.etichetta + ' (' + o.operatore + ')'; }).join(', '), '.'));
@@ -1788,7 +1892,7 @@ function alternativeBanco(uid, s) {
       sel, ' ', h('button', { type: 'button', onclick: function () { var m = bancoUI.marca || (s.marche_libere[0] || ''); if (m) sceltaBanco(uid, [{ tipo: 'riattribuzione', uid: uid, contrassegno: m }, { tipo: 'soluzione', uid: uid, soluzione: 'coda' }]); } }, 'Registra su questa marca')));
   }
   if (bancoUI.aperto === 'scarto' || bancoUI.aperto === 'persa' || bancoUI.aperto === 'rimanda') {
-    var k = bancoUI.aperto, testo = { scarto: 'Perché la togli (non va in ARVET; si può annullare)', persa: 'Dove o come è stata persa', rimanda: 'Perché rimandi (va nel contenitore delle accantonate)' }[k];
+    var k = bancoUI.aperto, testo = { scarto: 'Perché la togli (non va in ARVET; si può annullare)', persa: 'Dove o come è stata persa', rimanda: 'Perché rimandi (va nel contenitore «Accantonate»)' }[k];
     var campo = h('input', { type: 'text', id: 'fej-banco-motivo', value: bancoUI.motivo, oninput: function (ev) { bancoUI.motivo = ev.target.value; } });
     var pann = h('div', { class: 'fej-banco-pannello' }, h('label', { for: 'fej-banco-motivo' }, testo + ' '), campo);
     if (k === 'rimanda') pann.appendChild(h('div', null, MOTIVI_RIMANDO.map(function (m) { return h('button', { type: 'button', class: 'fej-copia', onclick: function () { bancoUI.motivo = m; campo.value = m; } }, m); })));

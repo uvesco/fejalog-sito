@@ -30,12 +30,18 @@ return {
       scheda: function (uid, cifre) { return JSON.parse(b.scheda(String(uid), String(cifre || ''))); },
       cerca: function (q) { return JSON.parse(b.cerca(String(q || ''))); },
       applica: function (a) { return JSON.parse(b.applica(json(a))); },
+      notaAllevatore: function (uid, testo) { return JSON.parse(b.notaAllevatore(String(uid), String(testo || ''))); },
       destinazione: function (uid) { return JSON.parse(b.destinazione(String(uid))); },
       risultato: function () { return JSON.parse(b.risultato()); },
       riordino: function () { return JSON.parse(b.riordino()); },
       cercaCapi: function (specie, query) { return JSON.parse(b.cercaCapi(String(specie), String(query || ''))); },
       numerazioneFinale: function (sistemazioni) { return JSON.parse(b.numerazioneFinale(json(sistemazioni || {}))); },
-      azioni: function () { return JSON.parse(b.azioni()); }
+      azioni: function () { return JSON.parse(b.azioni()); },
+      /* Verifica in BDN dei contrassegni fuori registro (2026-11-14): elenco per lo snippet e risultati caricati. */
+      daVerificareBdn: function (tutte) { return JSON.parse(b.daVerificareBdn(!!tutte)); },
+      caricaVerificaBdn: function (testo) { return JSON.parse(b.caricaVerificaBdn(String(testo || ''))); },
+      avvisoFormato: function (codice) { return b.avvisoFormato(String(codice || '')) || null; },
+      verificheBdn: function () { return JSON.parse(b.verificheBdn()); }
     };
   },
   cercaPlateau: function (celle, query) { return JSON.parse(api.cercaPlateauSito(json(celle), String(query || ''))); },

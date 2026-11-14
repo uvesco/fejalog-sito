@@ -24,8 +24,8 @@ Le azioni eseguite sul computer non sovrascrivono né alterano direttamente il r
 |    TABLET REGIA    |---------------------------->|     SITO WEB       |
 |  (Campionamento    |                             |  (Browser del PC)  |
 |   chiuso)          |                             |                    |
-|                    |                             | • Provette e filtri|
-|                    |                             | • Non trovati / 5? |
+|                    |                             | • Tipologie        |
+|                    |                             | • Soluzioni        |
 |                    |                             | • Riordino plateau |
 |                    |   fejalog-modifiche.json    | • 2/33 finale      |
 |  Importa modifiche |<----------------------------| • Snippet ARVET    |
@@ -63,8 +63,9 @@ Quando utilizzi gli strumenti per esercitazione, formazione o per testare il flu
 |---|---|---|
 | **Riconciliazione dei backup** | Verifica l'integrità del registro e unisce gli archivi di palmari che hanno lavorato isolati fuori rete. | [Guida alla riconciliazione](../dopo-il-campo/riconcilia-backup.md) |
 | **Controllo provette e modifiche** | Ricerca avanzata campioni, correzione note e sesso, segnalazione orecchini e bolo da sostituire. | [Controllo provette e statistiche](../dopo-il-campo/provette-statistiche.md) |
-| **Problemi da risolvere** | Trattamento massivo o puntuale delle casistiche anomale (marche disponibili, uscite, altri stabilimenti, DDA). | [Controllo provette e statistiche](../dopo-il-campo/provette-statistiche.md) |
-| **Non trovati e registrazione tardiva** | Distinta dei capi non prelevati e algoritmo di confronto somiglianza (`5?`) per recuperare provette rovinate. | [Controllo provette e statistiche](../dopo-il-campo/provette-statistiche.md) |
+| **Verifica in BDN** (scheda Carica) | Snippet da incollare nella BDN: cerca uno alla volta, fra i capi e fra gli identificativi, i contrassegni fuori registro che l'app non conosce; il file che scarica si carica accanto al backup. | [In campo: i fuori registro](../chi-preleva/fuori-registro.md) |
+| **Tipologie** | Il colpo d'occhio: le provette fuori registro per tipologia, coi dati della BDN, e gli **Assenti** (capi in età senza provetta) con il confronto `5?` e la registrazione tardiva. | [Controllo provette e statistiche](../dopo-il-campo/provette-statistiche.md) |
+| **Soluzioni** | Le provette fuori registro una alla volta: proposta, alternative, dati del campo e della BDN, e dove metterla. | [In campo: i fuori registro](../chi-preleva/fuori-registro.md) |
 | **Statistiche e rendiconto** | Quadratura capi vs provette, riepilogo anomalie e andamento dei prelievi per persona fisica. | [Controllo provette e statistiche](../dopo-il-campo/provette-statistiche.md) |
 | **Riordino dei plateau** | Calcolo della sistemazione, chiusura buchi e guida con invio singolo o selezione per invii in gruppo al numero suggerito. | [Controllo provette e statistiche](../dopo-il-campo/provette-statistiche.md) |
 | **Il modello 2/33 finale** | Modello 2/33 impaginato secondo lo standard ARVET con numeri di provetta definitivi e maschi in grigio. | [Il modello 2/33 finale](../dopo-il-campo/modello-233-finale.md) |

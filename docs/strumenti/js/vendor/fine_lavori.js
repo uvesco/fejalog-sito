@@ -286,6 +286,7 @@ function testoAllevatore(t) {
     return 'al capo che porta ' + r.da + ' (' + (SP[r.specie] || r.specie) + ') vanno messe le marche di ' + r.a +
       (r.provetta ? ' (provetta ' + r.provetta + ')' : '');
   });
+  sez('Note per l’allevatore', t.noteAllevatore, function (r) { return capo(r) + ', provetta ' + r.provetta + ': ' + r.nota; });
   sez('Presenti in BDN non provati', t.nonProvati, capo);
   if (vuoto) R.push('', 'Niente da fare.');
   return R.join('\n') + '\n';
@@ -445,7 +446,13 @@ function calcola(inp) {
     if (!g) { g = { codice: r.venditore, motivo: r.motivo, capi: [] }; dda.push(g); }
     g.capi.push(r);
   });
+  var noteAllevatore = fin.map(function (r) {
+    var parti = String(r.note || '').split(' — '), prefisso = "Per l'allevatore: ";
+    var nota = parti.filter(function (p) { return p.indexOf(prefisso) === 0; }).pop();
+    return nota ? {contrassegno: r.contrassegno, specie: r.specie, provetta: finale(r.specie, r.contrassegno), nota: nota.slice(prefisso.length)} : null;
+  }).filter(Boolean);
   var fa = [];
+  if (noteAllevatore.length) fa.push(foglio('note_allevatore', ['contrassegno', 'specie', 'provetta', 'nota'], noteAllevatore, ['contrassegno']));
   if (ddaIndividuali.length) fa.push(foglio("verifica_dda", ["contrassegno", "specie", "etichetta", "dda_stato", "dda_nota", "attivita"], ddaIndividuali, ["contrassegno"]));
   if (ddaRighe.length) fa.push(foglio('acquisti_dda', ['venditore', 'motivo', 'contrassegno', 'specie'], ddaRighe, ['contrassegno']));
   if (mc.length) fa.push(foglio('marche_da_cambiare', ['specie', 'porta', 'mettere', 'provetta'], mc.map(function (r) {
@@ -496,7 +503,7 @@ function calcola(inp) {
     stx.push({ specie: sp, n: rp.senza_transponder, capi: rp.capi });
   });
   var allevatore = testoAllevatore({ denominazione: inp.stabilimento.denominazione, codice: cod, data: inp.data, marche: ms, sesso: cs,
-    smarriti: sr, nonProvati: np, senzaTransponder: stx, ricercati: inp.ricercati || [], ddaIndividuali: ddaIndividuali, acquistiDda: dda, marcheDaCambiare: mc });
+    smarriti: sr, nonProvati: np, senzaTransponder: stx, ricercati: inp.ricercati || [], ddaIndividuali: ddaIndividuali, acquistiDda: dda, marcheDaCambiare: mc, noteAllevatore: noteAllevatore });
   testo('cose_da_fare' + suff + '.txt', 'text/plain', allevatore);
   // le anomalie per l'analisi fra stabilimenti e fra anni (contratti/anomalie.schema.json): lo stesso JSON di svet-tools
   var anomalie = M.anomalieStabilimento(fin, presenti.pecore, presenti.capre, { codice: cod,
