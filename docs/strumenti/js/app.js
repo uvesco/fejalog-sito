@@ -1387,6 +1387,10 @@ function sezioneAllevatore(primoStab) {
   if (S.ap && S.ap.registrazioneBdnCsv) d.appendChild(h('p', null, h('button', { type: 'button', onclick: function () {
     scarica('registrazione_bdn_' + primoStab + '_' + S.esito.stamp + '.csv', 'text/csv;charset=utf-8', '\uFEFF' + S.ap.registrazioneBdnCsv.replace(/\r?\n/g, '\r\n'));
   } }, 'Capi da registrare in BDN (CSV, tutto il progetto)')));
+  // la corrispondenza marcatura provvisoria → capo da rimarcare (utente, 2026-11-14)
+  if (S.ap && S.ap.animaliDaRimarcareCsv) d.appendChild(h('p', null, h('button', { type: 'button', id: 'fej-btn-rimarcare', onclick: function () {
+    scarica('animali_da_rimarcare_' + primoStab + '_' + S.esito.stamp + '.csv', 'text/csv;charset=utf-8', '\uFEFF' + S.ap.animaliDaRimarcareCsv.replace(/\r?\n/g, '\r\n'));
+  } }, 'Animali da rimarcare: marcatura provvisoria → capo (CSV)')));
   return d;
 }
 function filesDi(estensione, prefisso) {
@@ -1435,6 +1439,7 @@ function schedaUscite() {
       if (S.ap && S.ap.registrazioneBdnCsv) {
         voci.push({ name: 'registrazione_bdn_' + primoStab + '_' + S.esito.stamp + '.csv', data: '\uFEFF' + S.ap.registrazioneBdnCsv.replace(/\r?\n/g, '\r\n') });
         voci.push({ name: 'da_registrare_in_bdn_' + primoStab + '_' + S.esito.stamp + '.txt', data: S.ap.daRegistrareInBdnTxt });
+        if (S.ap.animaliDaRimarcareCsv) voci.push({ name: 'animali_da_rimarcare_' + primoStab + '_' + S.esito.stamp + '.csv', data: '\uFEFF' + S.ap.animaliDaRimarcareCsv.replace(/\r?\n/g, '\r\n') });
       }
       if (S.ap && S.ap.ricercatiCsv) {
         voci.push({
