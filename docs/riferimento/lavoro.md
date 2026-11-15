@@ -4,7 +4,7 @@
 
 ## Cercare il capo
 
-- Sul tastierino le ultime cifre del contrassegno (bastano 3–6), anche se comincia per IT: compaiono i capi che finiscono con quelle cifre, poi quelli che le contengono. Nel Campionamento si cerca solo per contrassegno, mai per numero di provetta.
+- Sul tastierino le ultime cifre del contrassegno (bastano 2–6), anche se comincia per IT: compaiono i capi che finiscono con quelle cifre, poi quelli che le contengono. Nel Campionamento si cerca solo per contrassegno, mai per numero di provetta.
 - Col lettore di microchip Bluetooth il codice entra da solo (380 o 0380 più 12 cifre, o di un altro paese): se il capo è uno solo, Invio lo sceglie.
 - Cambia fra pecore e capre con le schede, lo scorrimento di lato o le frecce destra/sinistra: il codice letto o digitato resta nel campo e la ricerca riparte nella nuova specie.
 - Se cambi specie con la conferma aperta, il foglio si chiude: con un solo capo compatibile si riapre per quello, altrimenti resta l'elenco. Riaprendo lo stesso capo ritrovi note, marche e scelte; con un capo diverso ricontrollale.
@@ -34,6 +34,18 @@
 - Montoni e becchi prendono un numero dalla riserva maschi, in testa; se non ce n'è, il foglio lo dice e si sistemano a fine lavoro.
 - Senza numeri confermati (fuori rete, o un collega che non risponde) la provetta è provvisoria, A•1: si riscrive col numero definitivo in sistemazione.
 - Il numero di campo resta sempre leggibile: in sistemazione non si cancella e non si copre; si barra con una riga sola e si scrive accanto il numero finale (vedi Riordino dei plateau).
+
+## Animale non nel progetto
+
+- Se le cifre digitate o il codice letto non trovano nessun capo, sotto «Nessun capo» tocca «Non è nel progetto: inseriscilo». L’inserimento forzato riprende solo il codice della ricerca corrente: controllalo e completalo se hai digitato soltanto le ultime cifre. Nella conferma servono sesso, razza e data di nascita.
+
+## Animale senza marche
+
+- Tocca «Senza contrassegno», sempre visibile sopra il tastierino anche quando è nascosto. Registra sesso, età dai denti e razza; scrivi la sigla provvisoria sulla provetta e sull’animale. L’identità si risolve in Soluzioni dopo la chiusura del campionamento.
+
+## Marca applicata ora
+
+- Tocca «Nuova identificazione», sempre accanto a «Senza contrassegno»: scegli lo stabilimento se richiesto, registra i dati dell’animale e cerca la marca in giacenza che l’allevatore applica ora, anche dell’altra specie. Copia sulla provetta tutte le righe suggerite.
 
 ## Quando il capo non si trova
 

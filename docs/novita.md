@@ -8,7 +8,7 @@ Ogni versione elenca ciò che è cambiato dalla precedente pubblicata, comprese 
 
 | Versione | Data | Scarica |
 |---|---|---|
-| [0.5.6](#v0-5-6) · ultima | 13/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.6/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.6/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.6/schede_kit_cinque_stabilimenti.pdf) |
+| [0.5.7](#v0-5-7) · ultima | 15/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/schede_kit_cinque_stabilimenti.pdf) |
 | [0.5.5](#v0-5-5) | 11/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/schede_kit_cinque_stabilimenti.pdf) |
 | [0.4.0](#v0-4-0) | 05/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/schede_kit_cinque_stabilimenti.pdf) |
 | [0.3.0](#v0-3-0) | 28/10/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.3.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.3.0/kit_prova_888TO999.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.3.0/schede_kit_prova_888TO999.pdf) |
@@ -17,18 +17,25 @@ Ogni versione elenca ciò che è cambiato dalla precedente pubblicata, comprese 
 
 Una versione precedente non si installa sopra una più recente: prima salva un backup, poi disinstalla l'app (i progetti nel telefono si perdono), infine installa la versione scelta. Per installare: [Scarica](scarica.md).
 
-## Versione 0.5.6 · 13/11/2026 { #v0-5-6 }
+## Versione 0.5.7 · 15/11/2026 { #v0-5-7 }
 
-Per il risanamento del 16/11: la Regia dà l'app giusta ai palmari con un'altra versione, che si aggiornano dal tablet sulla Wi-Fi del progetto; sul sito gli snippet scaricano dalla BDN registri e marche e da ARVET i 2/33, e «Crea il progetto» prepara anche le stampe pre-campo e i 2/33 precompilati; «fuori registro» al posto di «problematici», nessuna eliminazione per tipologia e fuori età decisi alla fine; sito più semplice e istruzioni per i veterinari in ordine.
+Per il risanamento del 16/11 e la sistemazione delle provette: la verifica in BDN porta nel progetto i capi e le marche trovati e le provette si riclassificano da sole; «Nuova identificazione» registra l'animale marcato sul momento con una marca in giacenza; «Soluzioni» dice dove mettere ogni provetta (al numero del capo, nel primo buco o nel suo contenitore), così il Riordino resta per i casi residui; in Campionamento l'animale fuori dal progetto e quello senza contrassegno si inseriscono da tasti sempre visibili.
 
-[Scarica l'app](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.6/fejalog.apk){ .md-button .md-button--primary }
-[Kit di prova](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.6/kit_prova_cinque_stabilimenti.zip){ .md-button }
-[Schede da stampare](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.6/schede_kit_cinque_stabilimenti.pdf){ .md-button }
+[Scarica l'app](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/fejalog.apk){ .md-button .md-button--primary }
+[Kit di prova](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/kit_prova_cinque_stabilimenti.zip){ .md-button }
+[Schede da stampare](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/schede_kit_cinque_stabilimenti.pdf){ .md-button }
 
-[Pagina della release su GitHub](https://github.com/uvesco/fejalog-sito/releases/tag/v0.5.6)
+[Pagina della release su GitHub](https://github.com/uvesco/fejalog-sito/releases/tag/v0.5.7)
 
 ### Novità
 
+- Verifica in BDN: caricato il risultato dello snippet, i contrassegni trovati in BDN entrano nel progetto come capi (con sesso, razza, nascita, stabilimento e stato) e le provette si riclassificano da sole: altro stabilimento, ora in lista, uscito, contrassegno non registrato confermato; quelli non trovati restano da ricontrollare. Dal sito arriva al tablet con le altre modifiche.
+- Sul sito, «Apri la BDN in una scheda»: lo snippet, finito, rimanda il risultato da solo alla pagina; se non arriva, il file scaricato o «Copia il risultato» e incolla.
+- Soluzioni: la provetta si prende in mano una volta sola. Attribuita a un capo assente va subito al numero di quel capo; quella che va in ARVET da sola va subito nel primo buco libero della serie (finiti i buchi, in fondo) e con «L'ho messa lì» esce dal Riordino.
+- Soluzioni: le provette con ARVET a mano vanno nel contenitore «ARVET a mano» della loro specie, in fila: la scheda dice il numero nella fila; alla fine il Riordino le mette in fondo alla serie. Anche «Accantonate», «Tolte» e «Da posare» hanno il loro contenitore, col nome da scrivere sulla scatola.
+- Nella scheda della provetta la «Nota per l'allevatore», che va nel report per l'allevatore.
+- Campionamento: «Nuova identificazione», per l'animale senza marche a cui l'allevatore applica subito una marca in giacenza, anche dell'altra specie: lo stabilimento, poi sesso, età dai denti e razza, poi la marca cercata con le sue cifre. La provetta va fra i fuori registro, nelle «Nuove identificazioni in campo».
+- Gestione campioni › Soluzioni: «Verifica in BDN» carica il file dello snippet del sito e mostra per ogni provetta i dati della BDN (capo e marca) accanto a quelli scritti in campo, con le differenze.
 - I fuori età non hanno più una soluzione predefinita: in Gestione campioni › Problemi da risolvere la Regia sceglie alla fine se inserirli tutti (in coda) o eliminarli tutti; finché non sceglie sono segnati «da decidere».
 - Nell'app e nel sito i «problematici» si chiamano «fuori registro».
 - Il palmare con una versione diversa si aggiorna dalla Regia sulla Wi-Fi del progetto: dopo il rifiuto, nella pagina Rete, «Aggiorna dalla Regia» scarica dal tablet la stessa build e apre l'installazione di Android (che chiede di confermare e, la prima volta, di consentire a Fejalog di installare app). Funziona dai palmari che hanno già questa build; per quelli più vecchi resta il QR dell'app sotto il QR d'ingresso.
@@ -38,6 +45,10 @@ Per il risanamento del 16/11: la Regia dà l'app giusta ai palmari con un'altra 
 
 ### Miglioramenti
 
+- Campionamento: «Non è nel progetto: inseriscilo» sotto la ricerca senza risultati; «Senza contrassegno» e «Nuova identificazione» sempre visibili, anche senza tastierino. I tre casi sono spiegati anche nell’aiuto.
+- Verifica in BDN: se la marca risulta applicata e il capo non si trova col suo codice, lo snippet apre la scheda del capo dalla marca; se la marca è su un capo con un altro codice, la scheda lo segnala.
+- Un avviso, che non blocca, quando il contrassegno ha un formato inusuale (una cifra in più o in meno, una lettera fra le cifre).
+- Nomi nuovi: «Soluzioni» al posto di «Banco», «Tipologie», «Assenti», «Smarriti ritrovati», «Rubati ritrovati», «Contrassegni non registrati».
 - Foglio per i veterinari, checklist e briefing più brevi: che cosa fare la sera prima, che cosa scrivere sulla provetta con un esempio per ogni riquadro (neutro, blu, rosso, senza contrassegno), le ordinarie nei plateau e i fuori registro nel secchio, come rientra chi è stato escluso.
 - «Aggiorna dalla Regia»: dopo lo scarico l'app dice di confermare «Installa» e, se compare Google Play Protect, di aprire «Altri dettagli» e installare senza l'analisi (provato sui telefoni: lo scarico dal tablet di 80 MB dura circa 40 secondi).
 - Nessuna tipologia di provette si elimina in blocco (salvo i fuori età per scelta della Regia): l'eliminazione resta solo per la singola provetta, scelta a mano.
@@ -53,6 +64,13 @@ Per il risanamento del 16/11: la Regia dà l'app giusta ai palmari con un'altra 
 
 ### Correzioni
 
+- Verifica in BDN: i capi trovati non tolgono più gli altri capi dello stabilimento dalle «cose da fare» e dal report per l'allevatore; fra due verifiche dello stesso capo vale l'ultima; il capo si trova anche dal codice elettronico letto in campo; una marca applicata in campo che la BDN trova già sul capo si può normalizzare.
+- Il file delle modifiche del sito senza verifica in BDN si apre anche su un tablet con la versione precedente.
+- Rete: una Regia che si annuncia ancora non sparisce dall'elenco dei progetti dopo 2 minuti.
+- L’inserimento forzato riprende soltanto il codice della ricerca corrente, mai quello dell’animale precedente.
+- Campionamento in orizzontale: testata compatta e comandi scorrevoli. Nel foglio anagrafico i campi seguono la tastiera e «Avanti» passa al campo successivo.
+- Ultime: schede Pecore e Capre a larghezza intera; anche le conferme mancate e i filtri scorrono con l’elenco.
+- Ricerca dei progetti: annunci vecchi rimossi dall’elenco e ricerca riavviata al ritorno nella pagina o al cambio progetto.
 - Progetto creato sul sito e aperto sul tablet: il registro del sito non compare più fra i device della Rete e della Gestione dispositivi (prima si vedeva «sito-… \[SIGLA DA CONFERMARE\] · non ancora entrato»).
 - Il tablet offre la sua app sulla porta 47802: nella build 2026-11-12-2211 usava la 47801, la stessa della pagina per il PC via USB.
 - Stampe pre-campo: la pagina non scorre più da sola in fondo a ogni ricalcolo e lo schema del tavolo è più grande, con le etichette dei plateau leggibili (stabilimento, specie e numero del plateau, numeri delle provette).
