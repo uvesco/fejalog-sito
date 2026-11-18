@@ -487,10 +487,10 @@ function sezioneVerificaBdn() {
   var elenco = [];
   try { elenco = S.banco.daVerificareBdn(!!S.verificaBdnTutte); } catch (e) { d.appendChild(h('p', { class: 'fej-errore' }, 'Elenco non disponibile: ' + e.message)); return d; }
   d.appendChild(h('p', null, 'Per le provette fuori registro di cui l\'app non ha i dati della BDN (contrassegni non registrati, non in elenco, ' +
-    'nuove identificazioni in campo, altri stabilimenti, DDA) lo snippet cerca ogni contrassegno nella BDN, fra i capi e fra gli ' +
+    'nuove identificazioni in campo, altri stabilimenti, DDA) e per i capi che il registro dà usciti (morti, macellati, trasferiti: la BDN dice se oggi sono vivi, e dove, o morti) lo snippet cerca ogni contrassegno nella BDN, fra i capi e fra gli ' +
     'identificativi, e scarica un file da caricare qui sotto: i capi e le marche disponibili si aggiungono all’anagrafe del progetto. I registri già caricati hanno precedenza. Il confronto coi dati del campo resta nella scheda; l’integrazione va in «Esporta per l’app».'));
   d.appendChild(h('label', null, h('input', { type: 'checkbox', checked: !!S.verificaBdnTutte, onchange: function (ev) { S.verificaBdnTutte = ev.target.checked; disegna(); } }),
-    ' Anche le altre provette fuori registro (usciti, smarriti, rubati…)'));
+    ' Anche le altre provette fuori registro (smarriti, rubati, doppi…)'));
   var cercati = elenco.filter(function (v) { return v.cercato; }).length, strani = elenco.filter(function (v) { return v.avviso_formato; });
   d.appendChild(h('p', null, elenco.length + ' contrassegni da cercare' + (cercati ? ', ' + cercati + ' già cercati' : '') +
     (strani.length ? '; ' + strani.length + ' con un formato inusuale (controlla la lettura)' : '') + '.'));
@@ -2107,6 +2107,11 @@ function schedaProvettaBanco(uid) {
   if (vb) {
     var classeVb = vb.tono === 'CONFERMA' ? 'fej-ok' : vb.tono === 'NON_TROVATO' && /Non ancora cercato/.test(vb.sintesi) ? 'fej-tenue' : 'fej-avviso';
     var boxVb = h('div', { class: 'fej-banco-bdn ' + classeVb }, h('p', null, h('strong', null, 'Verifica in BDN: '), vb.sintesi));
+    // per i capi usciti: oggi in BDN è vivo (e dove) o morto (utente, 2026-11-18)
+    var uscitoBdn = v.tipo === 'MORTI_MACELLATI' || v.tipo === 'TRASFERITI';
+    if (vb.stato_capo) boxVb.appendChild(h('p', { id: 'fej-banco-stato-capo' }, h('strong', null, 'Oggi in BDN il capo è: '), h('strong', { class: /^viv/i.test(vb.stato_capo) ? 'fej-ok' : 'fej-errore' }, vb.stato_capo), '.',
+      uscitoBdn ? ' La via più ragionevole resta attribuire la provetta a un capo non prelevato compatibile.' : ''));
+    else if (uscitoBdn && /Non ancora cercato/.test(vb.sintesi)) boxVb.appendChild(h('p', { class: 'fej-tenue' }, 'Lo snippet della BDN dice anche se il capo uscito oggi è vivo o morto.'));
     if (vb.righe.length) boxVb.appendChild(h('ul', null, vb.righe.map(function (x) { return h('li', null, x); })));
     if (vb.discordanze.length) boxVb.appendChild(h('ul', { class: 'fej-errore' }, vb.discordanze.map(function (x) { return h('li', null, x); })));
     if (/Non ancora cercato/.test(vb.sintesi)) boxVb.appendChild(h('p', { class: 'fej-tenue' }, 'Lo snippet per la BDN si prepara nella scheda Carica.'));
@@ -2545,7 +2550,7 @@ function vistaTabella(st) {
 function vistaSmista(st) {
   var d = h('div', { id: 'fej-smista' }), voci = {}; st.coda.voci.forEach(function (v) { voci[v.uid] = v; });
   var righe = st.smista.ordine.map(function (u) { return voci[u]; }).filter(function (v) { return !!v; });
-  if (st.smista.dalTablet) d.appendChild(h('p', { class: 'fej-ok', id: 'fej-smista-tablet', role: 'status' }, 'I posti li ha dati la Regia sul tablet: le provette sono già nel plateau dei fuori registro, in ordine di consegna. ' +
+  if (st.smista.dalTablet) d.appendChild(h('p', { class: 'fej-ok', id: 'fej-smista-tablet', role: 'status' }, 'I posti li ha dati la Regia sul tablet: le provette sono già nel plateau dei fuori registro, nell’ordine in cui le ha prese in mano. ' +
     (st.smista.senzaPosto ? st.smista.senzaPosto + ' non hanno ancora un posto: mettile dopo l’ultima, ai posti indicati qui sotto. ' : 'Non c’è niente da smistare. ') + 'Le fasi le richiamano per posto, un tipo di problema alla volta.'));
   else d.appendChild(h('p', { class: 'fej-tenue' }, 'Se il regista ha già cominciato a dare i posti sul tablet, salva da lì un backup nuovo e carica quello: i posti dati qui restano solo in questo browser, e il tablet riparte dal suo primo posto libero.'));
   var q = String(sistUI.inMano || '').replace(/\s+/g, '').toUpperCase();
