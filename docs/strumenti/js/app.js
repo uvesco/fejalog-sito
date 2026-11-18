@@ -2110,7 +2110,7 @@ function schedaProvettaBanco(uid) {
     // per i capi usciti: oggi in BDN è vivo (e dove) o morto (utente, 2026-11-18)
     var uscitoBdn = v.tipo === 'MORTI_MACELLATI' || v.tipo === 'TRASFERITI';
     if (vb.stato_capo) boxVb.appendChild(h('p', { id: 'fej-banco-stato-capo' }, h('strong', null, 'Oggi in BDN il capo è: '), h('strong', { class: /^viv/i.test(vb.stato_capo) ? 'fej-ok' : 'fej-errore' }, vb.stato_capo), '.',
-      uscitoBdn ? ' La via più ragionevole resta attribuire la provetta a un capo non prelevato compatibile.' : ''));
+      uscitoBdn ? ' La via più ragionevole resta attribuire la provetta a un capo presente e non prelevato: non uscito dal registro storico né con un documento di accompagnamento, caricato prima o dopo il campionamento.' : ''));
     else if (uscitoBdn && /Non ancora cercato/.test(vb.sintesi)) boxVb.appendChild(h('p', { class: 'fej-tenue' }, 'Lo snippet della BDN dice anche se il capo uscito oggi è vivo o morto.'));
     if (vb.righe.length) boxVb.appendChild(h('ul', null, vb.righe.map(function (x) { return h('li', null, x); })));
     if (vb.discordanze.length) boxVb.appendChild(h('ul', { class: 'fej-errore' }, vb.discordanze.map(function (x) { return h('li', null, x); })));
