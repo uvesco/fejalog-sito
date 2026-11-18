@@ -7,6 +7,9 @@
 })(typeof self !== 'undefined' ? self : this, function (Reti, Reg) {
 'use strict';
 
+/* La cartella degli script del sito (per l'indirizzo dello snippet delle uscite per modello): si legge qui, al caricamento. */
+var BASE_JS = (typeof document !== 'undefined' && document.currentScript && document.currentScript.src) ? document.currentScript.src.replace(/[^/]*$/, '') : '';
+
 /* Byte → carattere, come ISO-8859-1 di Java (la BDN scrive così): identico su JVM e nel browser, senza TextDecoder
    (il cui «iso-8859-1» è in realtà windows-1252). */
 function latin1(u8) {
@@ -81,14 +84,14 @@ function monta(radice, deps) {
   var Dominio = deps.dominio, Zip = deps.zip, Progetto = deps.progetto || w.FejProgetto;
   var adesso = deps.adesso ? deps.adesso() : new Date();
   var stato = {
-    file: [], specieFile: {}, veterinariCsv: '', veterinariNome: '', ricercatiCsv: '', ricercatiNome: '',
+    file: [], specieFile: {}, veterinariCsv: '', veterinariNome: '', ricercatiCsv: '', ricercatiNome: '', usciteModello: [],
     stabilimenti: null, principale: '', descrizione: '', data: oggi(adesso), etaMesi: 6, lettere: '',
     problematiciInSequenza: true, verso: 'alto_basso', sigle: {}, priorita: [], reti: [], regole: {}, cerchiettoPrincipale: null,
     id: deps.id || uuid(w), creatoIl: deps.creatoIl || isoSenzaMillisecondi(adesso), messaggio: '', esito: null, occupato: false,
     // il progetto ripreso: la sua identità (cambia se cambia il contenuto) e la chiave della numerazione già stampata
     riferimento: null, numerazioneRipresa: '', ripresoDa: '', avvisoIdentita: ''
   };
-  var codiciVisti = '', veterinariVisti = '';
+  var codiciVisti = '', veterinariVisti = ''; var usciteViste = '';
 
   function h(tag, attrs) {
     var e = d.createElement(tag);
@@ -153,6 +156,7 @@ function monta(radice, deps) {
     Object.keys(stato.sigle).forEach(function (k) { if (String(stato.sigle[k]).trim()) sigle[k] = String(stato.sigle[k]).trim().toUpperCase(); });
     return {
       file: stato.file, specie_file: stato.specieFile, veterinari_csv: stato.veterinariCsv, ricercati_csv: stato.ricercatiCsv,
+      uscite_modello: (stato.usciteModello || []).map(function (u) { return u.testo; }),
       id: stato.id, creato_il: stato.creatoIl, data: stato.data, descrizione: stato.descrizione,
       stabilimenti: stato.stabilimenti || [], principale: stato.principale,
       eta_mesi: stato.etaMesi, lettere_specie: stato.lettere, problematici_in_sequenza: stato.problematiciInSequenza,
@@ -224,7 +228,7 @@ function monta(radice, deps) {
   function scelteCorrenti() {
     return {
       file: stato.file, specie_file: stato.specieFile, veterinari_csv: stato.veterinariCsv, veterinari_nome: stato.veterinariNome,
-      ricercati_csv: stato.ricercatiCsv, ricercati_nome: stato.ricercatiNome, stabilimenti: stato.stabilimenti || [], principale: stato.principale,
+      ricercati_csv: stato.ricercatiCsv, ricercati_nome: stato.ricercatiNome, uscite_modello: stato.usciteModello || [], stabilimenti: stato.stabilimenti || [], principale: stato.principale,
       descrizione: stato.descrizione, data: stato.data, eta_mesi: stato.etaMesi, lettere: stato.lettere, problematici_in_sequenza: stato.problematiciInSequenza,
       verso: stato.verso, sigle: stato.sigle, priorita: stato.priorita, reti: stato.reti, cerchietto_principale: stato.cerchiettoPrincipale
     };
@@ -234,6 +238,7 @@ function monta(radice, deps) {
       file: (sc.file || []).map(function (f) { return { nome: String(f.nome), contenuto: String(f.contenuto) }; }), specieFile: sc.specie_file || {},
       veterinariCsv: sc.veterinari_csv || '', veterinariNome: sc.veterinari_csv ? sc.veterinari_nome || 'elenco del progetto ripreso' : '',
       ricercatiCsv: sc.ricercati_csv || '', ricercatiNome: sc.ricercati_csv ? sc.ricercati_nome || 'ricercati del progetto ripreso' : '',
+      usciteModello: Array.isArray(sc.uscite_modello) ? sc.uscite_modello : [],
       stabilimenti: sc.stabilimenti && sc.stabilimenti.length ? sc.stabilimenti.slice() : null, principale: sc.principale || '',
       descrizione: sc.descrizione || '', data: sc.data || stato.data, etaMesi: typeof sc.eta_mesi === 'number' ? sc.eta_mesi : 6, lettere: sc.lettere || '',
       problematiciInSequenza: sc.problematici_in_sequenza !== false, verso: sc.verso === 'basso_alto' ? 'basso_alto' : 'alto_basso',
@@ -306,6 +311,57 @@ function monta(radice, deps) {
     c.appendChild(h('p', null, h('label', null, 'Capi ricercati (CSV codice;nota;azione;segno) ', ric), ' ',
       stato.ricercatiNome ? [stato.ricercatiNome, ' ', bottone('Togli', function () { stato.ricercatiCsv = ''; stato.ricercatiNome = ''; ricalcola(true); renderRicercati(); })] : 'nessuno'));
     c.appendChild(h('p', { class: 'fej-tenue' }, 'Facoltativo: i capi da cercare in campo (marcare col segno, isolare), col motivo e cosa fare. La Regia ne aggiunge altri anche durante il lavoro.'));
+  }
+
+  /* Le uscite per modello degli ultimi 7 giorni, già nella preparazione (utente, 2026-11-18): la BDN aggiorna il registro fino a
+     7 giorni dopo il documento di accompagnamento; i capi usciti non si numerano e in campo non si cercano. */
+  function renderUscite() {
+    var c = sez.uscite; if (!c) return; svuota(c);
+    var Tab = deps.tabella || w.FejTabella, X = deps.xlsx || w.AccXlsx, e = stato.esito || {};
+    c.appendChild(h('p', null, 'La BDN aggiorna il registro di stalla fino a 7 giorni dopo il documento di accompagnamento: un capo venduto o macellato da pochi giorni risulta ancora presente, prende un numero e in campo lo si cerca per niente. ' +
+      'Carica qui le uscite per modello dell’ultima settimana (lo snippet le legge dalle Movimentazioni della BDN): quei capi non vengono numerati. Si possono aggiungere anche dopo, in Fine lavori › Carica.'));
+    var inp = h('input', { type: 'file', id: 'crea-uscite-file', accept: '.json,.xlsx,.csv,application/json', multiple: true });
+    function aggiungi(nome, testo) { stato.usciteModello = (stato.usciteModello || []).filter(function (u) { return u.testo !== testo; }).concat([{ nome: nome, testo: testo }]); }
+    inp.addEventListener('change', function () {
+      var lista = Array.prototype.slice.call(inp.files || []);
+      Promise.all(lista.map(function (f) {
+        if (/\.json$/i.test(f.name)) return leggiTesto(f).then(function (t) { aggiungi(f.name, t); });
+        if (!Tab) throw new Error('la lettura dei modelli compilati a mano non è disponibile');
+        return f.arrayBuffer().then(function (b) { return Tab.leggi(f.name, b); }).then(function (righe) {
+          var r = Tab.usciteModello(righe, new Date().toISOString().slice(0, 19).replace(/[-:T]/g, ''));
+          if (r.errori.length) throw new Error(f.name + ': ' + r.errori.slice(0, 4).join('; '));
+          if (!r.file.uscite.length) throw new Error(f.name + ': nessuna riga compilata (le righe ESEMPIO non contano)');
+          aggiungi(f.name, JSON.stringify(r.file));
+        });
+      })).catch(function (err) { stato.messaggio = 'Uscite per modello non caricate: ' + err.message; })
+        .then(function () { inp.value = ''; ricalcola(true); renderUscite(); });
+    });
+    c.appendChild(h('p', null, h('label', null, 'Uscite per modello (il .json dello snippet, oppure il modello .xlsx o .csv compilato a mano) ', inp), ' ',
+      Tab && X ? bottone('Scarica il modello da compilare a mano (.xlsx)', function () { scarica(Tab.MODELLI.uscite.nome + '.xlsx', X.xlsxBuild(Tab.fogliModello('uscite')), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'); }) : ''));
+    // lo snippet per la BDN, con gli stabilimenti scelti e la finestra che finisce alla data del progetto
+    var codici = (stato.stabilimenti && stato.stabilimenti.length ? stato.stabilimenti : (e.codici || []).map(function (x) { return x.codice || x; })).filter(Boolean);
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(stato.data || ''), al = m ? m[3] + '/' + m[2] + '/' + m[1] : '';
+    var oggi = new Date().toISOString().slice(0, 10), futuro = m && stato.data > oggi;
+    var cfg = { stabilimenti: codici, giorni: 7, al: futuro ? '' : al, data: oggi.replace(/-/g, ''), origine: (w.location && w.location.origin) || '' };
+    var urlMotore = (BASE_JS || '') + 'bdn-uscite-modello-motore.js', esito = h('span', { role: 'status' });
+    if (codici.length) c.appendChild(h('p', null,
+      bottone('Copia lo snippet per la BDN', function () {
+        var t = 'window.__BDN_USCITE_MODELLO__ = ' + JSON.stringify(cfg) + ';\nfetch(' + JSON.stringify(urlMotore + '?v=' + cfg.data) + ').then(function (r) { if (!r.ok) throw new Error(\'HTTP \' + r.status); return r.text(); }).then(function (t) { new Function(t)(); }).catch(function (e) { console.log(\'Fejalog: non riesco a caricare lo snippet dal sito (\' + e.message + \')\'); });\n';
+        w.navigator.clipboard.writeText(t).then(function () { esito.textContent = ' Copiato: incollalo nella console della BDN (F12 › Console), nella scheda dove hai fatto l’accesso.'; }, function () { esito.textContent = ' Non riesco a copiare.'; });
+      }, { class: 'md-button' }), ' ', h('span', { class: 'fej-tenue' }, 'Stabilimenti: ' + codici.join(', ') + ' · modelli dei 7 giorni prima ' + (cfg.al ? 'del ' + cfg.al : 'di oggi') + '.'), esito));
+    else c.appendChild(h('p', { class: 'fej-tenue' }, 'Lo snippet per la BDN compare dopo aver caricato i registri e scelto gli stabilimenti.'));
+    (stato.usciteModello || []).forEach(function (u) {
+      c.appendChild(h('p', null, u.nome + ' ', bottone('Togli', function () { stato.usciteModello = stato.usciteModello.filter(function (x) { return x !== u; }); ricalcola(true); renderUscite(); })));
+    });
+    var um = e.uscite_modello;
+    if (um && um.nei_file) {
+      c.appendChild(h('p', { class: 'fej-ok', role: 'status', id: 'crea-uscite-esito' }, '✓ ' + um.nei_file + ' capi usciti con modello nei file: ' + um.applicate + ' erano presenti nei registri e non vengono numerati' +
+        (um.nei_file > um.applicate ? '; ' + (um.nei_file - um.applicate) + ' non sono fra i presenti dei registri caricati.' : '.')));
+      var t = h('table', { class: 'fej-banco-dati' }, h('thead', null, h('tr', null, ['Contrassegno', 'Stabilimento', 'Specie', 'Data', 'Uscita', 'Nel progetto'].map(function (x) { return h('th', { scope: 'col' }, x); }))));
+      var tb = h('tbody');
+      um.capi.slice(0, 80).forEach(function (u) { tb.appendChild(h('tr', null, h('td', null, u.contrassegno), h('td', null, u.stabilimento), h('td', null, u.specie), h('td', null, u.data), h('td', null, u.tipo + (u.destinazione ? ' · ' + u.destinazione : '')), h('td', null, u.applicata ? 'tolto dai presenti: non numerato' : 'non era fra i presenti'))); });
+      t.appendChild(tb); c.appendChild(h('div', { class: 'fej-tabella-scorre' }, t));
+    } else if (!(stato.usciteModello || []).length) c.appendChild(h('p', { class: 'fej-tenue' }, 'Nessuna uscita per modello caricata.'));
   }
 
   function renderStabilimenti() {
@@ -541,6 +597,8 @@ function monta(radice, deps) {
       if (i) i.setAttribute('placeholder', v.proposta);
       if (t) t.textContent = 'vuota: la Regia assegna ' + v.proposta;
     });
+    var usc = JSON.stringify(e.uscite_modello || null) + '|' + codici + '|' + stato.data + '|' + (stato.usciteModello || []).length;
+    if (usc !== usciteViste) { usciteViste = usc; renderUscite(); }
     renderScelte();
     renderAnteprima(); renderSnapshot(); renderSalva(); aggiornaStampe();
   }
@@ -583,24 +641,25 @@ function monta(radice, deps) {
   } else radice.appendChild(pannelloCrea);
   pannelloCrea.appendChild(msg);
   function ricomincia() {
-    Object.assign(stato, { file: [], specieFile: {}, veterinariCsv: '', veterinariNome: '', ricercatiCsv: '', ricercatiNome: '', stabilimenti: null, principale: '', descrizione: '',
+    Object.assign(stato, { file: [], specieFile: {}, veterinariCsv: '', veterinariNome: '', ricercatiCsv: '', ricercatiNome: '', usciteModello: [], stabilimenti: null, principale: '', descrizione: '',
       etaMesi: 6, lettere: '', problematiciInSequenza: true, verso: 'alto_basso', sigle: {}, priorita: [], reti: [], regole: {}, cerchiettoPrincipale: null, id: uuid(w),
       creatoIl: isoSenzaMillisecondi(deps.adesso ? deps.adesso() : new Date()), messaggio: '', esito: null,
       riferimento: null, numerazioneRipresa: '', ripresoDa: '', avvisoIdentita: '' });
-    codiciVisti = veterinariVisti = ''; calcola(); aggiorna(); renderFile(); renderElenco(); renderRicercati(); renderRiprendi();
+    codiciVisti = veterinariVisti = ''; calcola(); aggiorna(); renderFile(); renderElenco(); renderRicercati(); renderUscite(); renderRiprendi();
   }
   pannelloCrea.appendChild(h('p', null, bottone('Ricomincia da capo', ricomincia)));
   pannelloCrea.appendChild(sezione('riprendi', '0 · Riprendi un progetto (facoltativo)'));
   pannelloCrea.appendChild(sezione('file', '1 · File della BDN'));
   pannelloCrea.appendChild(sezione('elenco', '2 · Elenco dei veterinari'));
   pannelloCrea.appendChild(sezione('ricercati', '3 · Capi ricercati (facoltativo)'));
+  pannelloCrea.appendChild(sezione('uscite', '3 bis · Capi usciti con un modello negli ultimi 7 giorni (consigliato)'));
   pannelloCrea.appendChild(sezione('stabilimenti', '4 · Stabilimenti e progetto'));
   pannelloCrea.appendChild(sezione('scelte', '5 · Regole di numerazione'));
   pannelloCrea.appendChild(sezione('configurazione', '6 · Configurazione della Regia'));
   pannelloCrea.appendChild(sezione('anteprima', '7 · Anteprima della numerazione'));
   pannelloCrea.appendChild(sezione('snapshot', '8 · Snapshot per la Regia'));
   pannelloCrea.appendChild(sezione('salva', '9 · Salva il progetto per cambiarlo dopo'));
-  calcola(); aggiorna(); renderFile(); renderElenco(); renderRicercati(); renderRiprendi();
+  calcola(); aggiorna(); renderFile(); renderElenco(); renderRicercati(); renderUscite(); renderRiprendi();
   return { stato: stato, ricalcola: function () { ricalcola(true); } };
 }
 

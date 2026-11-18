@@ -106,8 +106,8 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForInterface(Entry, 'Entry');
   initMetadataForInterface(KtMap, 'Map');
   initMetadataForInterface(MutableIterable, 'MutableIterable');
-  initMetadataForInterface(KtMutableSet, 'MutableSet', VOID, VOID, [KtSet, MutableIterable, Collection]);
-  initMetadataForInterface(KtMutableList, 'MutableList', VOID, VOID, [KtList, MutableIterable, Collection]);
+  initMetadataForInterface(KtMutableSet, 'MutableSet', VOID, VOID, [KtSet, Collection, MutableIterable]);
+  initMetadataForInterface(KtMutableList, 'MutableList', VOID, VOID, [KtList, Collection, MutableIterable]);
   initMetadataForInterface(KtMutableMap, 'MutableMap', VOID, VOID, [KtMap]);
   initMetadataForCompanion(Companion_0);
   initMetadataForClass(Enum, 'Enum', VOID, VOID, [Comparable]);
@@ -127,7 +127,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForInterface(Comparator, 'Comparator');
   initMetadataForObject(Unit, 'Unit');
   initMetadataForClass(AbstractCollection, 'AbstractCollection', VOID, VOID, [Collection]);
-  initMetadataForClass(AbstractMutableCollection, 'AbstractMutableCollection', VOID, AbstractCollection, [MutableIterable, Collection]);
+  initMetadataForClass(AbstractMutableCollection, 'AbstractMutableCollection', VOID, AbstractCollection, [Collection, MutableIterable]);
   initMetadataForClass(IteratorImpl, 'IteratorImpl');
   initMetadataForClass(ListIteratorImpl, 'ListIteratorImpl', VOID, IteratorImpl);
   initMetadataForClass(AbstractMutableList, 'AbstractMutableList', VOID, AbstractMutableCollection, [KtMutableList]);
@@ -140,7 +140,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(ArrayList, 'ArrayList', ArrayList_init_$Create$, AbstractMutableList, [KtMutableList, RandomAccess]);
   initMetadataForClass(HashMap, 'HashMap', HashMap_init_$Create$, AbstractMutableMap, [KtMutableMap]);
   initMetadataForClass(HashMapKeys, 'HashMapKeys', VOID, AbstractMutableSet, [KtMutableSet]);
-  initMetadataForClass(HashMapValues, 'HashMapValues', VOID, AbstractMutableCollection, [MutableIterable, Collection]);
+  initMetadataForClass(HashMapValues, 'HashMapValues', VOID, AbstractMutableCollection, [Collection, MutableIterable]);
   initMetadataForClass(HashMapEntrySetBase, 'HashMapEntrySetBase', VOID, AbstractMutableSet, [KtMutableSet]);
   initMetadataForClass(HashMapEntrySet, 'HashMapEntrySet', VOID, HashMapEntrySetBase);
   initMetadataForClass(HashMapKeysDefault$iterator$1);
@@ -754,6 +754,10 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(VersoRiempimento, 'VersoRiempimento', VOID, Enum);
   initMetadataForCompanion(Companion_46);
   initMetadataForClass(ImpostazioniProgetto, 'ImpostazioniProgetto', ImpostazioniProgetto);
+  initMetadataForClass(Provetta, 'Provetta');
+  initMetadataForClass(Risultato_0, 'Risultato');
+  initMetadataForClass(sam$kotlin_Comparator$0_10, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForObject(Interrogazione, 'Interrogazione');
   initMetadataForClass(MessaggioRegia, 'MessaggioRegia');
   initMetadataForObject(MessaggiRegia, 'MessaggiRegia');
   initMetadataForObject(NomeSeduta, 'NomeSeduta');
@@ -795,7 +799,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(ElencoRicercati, 'ElencoRicercati');
   initMetadataForClass(RicercatoTrovato, 'RicercatoTrovato');
   initMetadataForClass(Lettura, 'Lettura');
-  initMetadataForClass(sam$kotlin_Comparator$0_10, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_11, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(Ricercati, 'Ricercati');
   initMetadataForObject(Ricollocazione, 'Ricollocazione');
   initMetadataForClass(ProvettaPosata, 'ProvettaPosata');
@@ -818,19 +822,21 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForObject(Statistiche, 'Statistiche');
   initMetadataForClass(TipoProblema, 'TipoProblema', VOID, Enum);
   initMetadataForClass(GruppoProblemi, 'GruppoProblemi');
-  initMetadataForClass(sam$kotlin_Comparator$0_11, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_12, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(TipologieProblemi, 'TipologieProblemi');
   initMetadataForClass(Segnalazione, 'Segnalazione', VOID, Enum);
   initMetadataForClass(CapoSegnalato, 'CapoSegnalato');
   initMetadataForClass(RiepilogoTransponder, 'RiepilogoTransponder');
   initMetadataForObject(Transponder, 'Transponder');
+  initMetadataForClass(Uscita, 'Uscita');
+  initMetadataForObject(UsciteModello, 'UsciteModello');
   initMetadataForClass(DaVerificare, 'DaVerificare');
   initMetadataForClass(Capo, 'Capo');
   initMetadataForClass(Marca, 'Marca');
-  initMetadataForClass(Risultato_0, 'Risultato');
+  initMetadataForClass(Risultato_1, 'Risultato');
   initMetadataForClass(Tono_0, 'Tono', VOID, Enum);
   initMetadataForClass(Diagnosi, 'Diagnosi');
-  initMetadataForClass(sam$kotlin_Comparator$0_12, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_13, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(VerificaBdn, 'VerificaBdn');
   initMetadataForObject(FineLavori, 'FineLavori');
   initMetadataForClass(PassoFisico, 'PassoFisico');
@@ -840,9 +846,9 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForObject(NessunRisultato, 'NessunRisultato');
   initMetadataForClass(Univoco, 'Univoco');
   initMetadataForClass(Ambiguo, 'Ambiguo');
-  initMetadataForClass(sam$kotlin_Comparator$0_13, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForClass(sam$kotlin_Comparator$0_14, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForClass(sam$kotlin_Comparator$0_15, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_16, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(GuidaPosizionamento, 'GuidaPosizionamento');
   initMetadataForClass(Ambito, 'Ambito');
   initMetadataForClass(Riferimento, 'Riferimento');
@@ -867,7 +873,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForCompanion(Companion_57);
   initMetadataForObject($serializer_1, '$serializer', VOID, VOID, [GeneratedSerializer]);
   initMetadataForClass(StatoAvanzamentoGestione, 'StatoAvanzamentoGestione', VOID, VOID, VOID, VOID, VOID, {0: $serializer_getInstance_1});
-  initMetadataForClass(sam$kotlin_Comparator$0_16, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_17, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(ProduttivitaGestione, 'ProduttivitaGestione');
   initMetadataForCompanion(Companion_58);
   initMetadataForObject($serializer_2, '$serializer', VOID, VOID, [GeneratedSerializer]);
@@ -907,7 +913,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForObject(SceltaOperatore, 'SceltaOperatore');
   initMetadataForClass(AssegnazioneSerie, 'AssegnazioneSerie');
   initMetadataForClass(DataCivile, 'DataCivile');
-  initMetadataForClass(sam$kotlin_Comparator$0_17, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_18, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(AssegnazioneNumeri, 'AssegnazioneNumeri');
   initMetadataForClass(FormaEtichetta, 'FormaEtichetta', VOID, Enum);
   initMetadataForClass(TipoEtichetta, 'TipoEtichetta', VOID, Enum);
@@ -933,7 +939,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForCompanion(Companion_67);
   initMetadataForClass(Titolarita, 'Titolarita', Titolarita);
   initMetadataForObject(RegiaImpostazioni, 'RegiaImpostazioni');
-  initMetadataForClass(sam$kotlin_Comparator$0_18, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_19, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(SeriePacchetto, 'SeriePacchetto');
   initMetadataForObject(SigleVeterinari, 'SigleVeterinari');
   initMetadataForClass(Serie, 'Serie');
@@ -941,7 +947,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForCompanion(Companion_68);
   initMetadataForClass(StatoNumeri, 'StatoNumeri');
   initMetadataForClass(RigaNumerazione, 'RigaNumerazione');
-  initMetadataForClass(sam$kotlin_Comparator$0_19, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_20, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(TabellaNumerazione, 'TabellaNumerazione');
   initMetadataForClass(Valido_0, 'Valido');
   initMetadataForClass(Rifiutato_0, 'Rifiutato');
@@ -1008,7 +1014,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(Evento, 'Evento');
   initMetadataForClass(Testa, 'Testa');
   initMetadataForObject(Hash, 'Hash');
-  initMetadataForClass(sam$kotlin_Comparator$0_20, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_21, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForCompanion(Companion_88);
   initMetadataForClass(Impronta, 'Impronta');
   initMetadataForObject(Jcs, 'Jcs');
@@ -1022,19 +1028,20 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(DatiBackupIngresso, 'DatiBackupIngresso');
   initMetadataForClass(RisultatoUnione, 'RisultatoUnione');
   initMetadataForObject(RiconciliazioneBackup, 'RiconciliazioneBackup');
-  initMetadataForClass(sam$kotlin_Comparator$0_21, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_22, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(CreazioneSito, 'CreazioneSito');
   initMetadataForCompanion(Companion_89);
   initMetadataForObject($serializer_22, '$serializer', VOID, VOID, [GeneratedSerializer]);
   initMetadataForClass(OpzioniMateriale, 'OpzioniMateriale', OpzioniMateriale, VOID, VOID, VOID, VOID, {0: $serializer_getInstance_22});
   initMetadataForObject(MaterialeCampo, 'MaterialeCampo');
-  initMetadataForClass(sam$kotlin_Comparator$0_22, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(sam$kotlin_Comparator$0_23, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   initMetadataForObject(NumerazioneStampe, 'NumerazioneStampe');
   initMetadataForClass(ContestoLocale, 'ContestoLocale', ContestoLocale);
+  initMetadataForClass(Foto_0, 'Foto');
   initMetadataForClass(BancoSito, 'BancoSito');
-  initMetadataForClass(sam$kotlin_Comparator$0_23, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
-  initMetadataForClass(SessioneSito, 'SessioneSito');
   initMetadataForClass(sam$kotlin_Comparator$0_24, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
+  initMetadataForClass(SessioneSito, 'SessioneSito');
+  initMetadataForClass(sam$kotlin_Comparator$0_25, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
   //endregion
   function CharSequence() {
   }
@@ -27207,6 +27214,17 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp$ret$0;
   };
+  protoOf(AnalisiBdn).copy_fr92p2_k$ = function (registri, dati, codiciStabilimento, diagnostiche, marche) {
+    return new AnalisiBdn(registri, dati, codiciStabilimento, diagnostiche, marche);
+  };
+  protoOf(AnalisiBdn).copy$default_zbxv7t_k$ = function (registri, dati, codiciStabilimento, diagnostiche, marche, $super) {
+    registri = registri === VOID ? this.registri_1 : registri;
+    dati = dati === VOID ? this.dati_1 : dati;
+    codiciStabilimento = codiciStabilimento === VOID ? this.codiciStabilimento_1 : codiciStabilimento;
+    diagnostiche = diagnostiche === VOID ? this.diagnostiche_1 : diagnostiche;
+    marche = marche === VOID ? this.marche_1 : marche;
+    return $super === VOID ? this.copy_fr92p2_k$(registri, dati, codiciStabilimento, diagnostiche, marche) : $super.copy_fr92p2_k$.call(this, registri, dati, codiciStabilimento, diagnostiche, marche);
+  };
   protoOf(AnalisiBdn).toString = function () {
     return 'AnalisiBdn(registri=' + toString_1(this.registri_1) + ', dati=' + this.dati_1.toString() + ', codiciStabilimento=' + toString_1(this.codiciStabilimento_1) + ', diagnostiche=' + toString_1(this.diagnostiche_1) + ', marche=' + toString_1(this.marche_1) + ')';
   };
@@ -41488,7 +41506,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
           var list_2 = tmp0_elvis_lhs_1 == null ? emptyList() : tmp0_elvis_lhs_1;
           addAll(destination_5, list_2);
         }
-        builder.add_i0x14v_k$(voce(tmp_1, ultima.copy$default_ge4kcq_k$(VOID, tmp_2, tmp_3, 'integrazione dalla verifica BDN', tmp_4, tmp_5, tmp_6, distinct(destination_5))));
+        builder.add_i0x14v_k$(voce(tmp_1, ultima.copy$default_l06jio_k$(VOID, tmp_2, tmp_3, 'integrazione dalla verifica BDN', tmp_4, tmp_5, tmp_6, distinct(destination_5))));
       }
     }
     return builder.build_bkh6qh_k$();
@@ -42773,42 +42791,63 @@ if (typeof String.prototype.startsWith === 'undefined') {
       var tmp$ret$0 = tmp_0;
       var tmp1_safe_receiver = Result__exceptionOrNull_impl_p6xea9(tmp$ret$0);
       tmp = tmp1_safe_receiver == null ? null : tmp1_safe_receiver.message;
-    } else if (tmp0_subject === 'soluzione') {
+    } else if (tmp0_subject === 'uscite_modello') {
+      // Inline function 'kotlin.runCatching' call
       var tmp_2;
+      try {
+        // Inline function 'kotlin.Companion.success' call
+        var value_0 = UsciteModello_getInstance().dati_8tlcb_k$(a.dati_1);
+        tmp_2 = _Result___init__impl__xyqfz8(value_0);
+      } catch ($p_0) {
+        var tmp_3;
+        if ($p_0 instanceof Error) {
+          var e_0 = $p_0;
+          // Inline function 'kotlin.Companion.failure' call
+          tmp_3 = _Result___init__impl__xyqfz8(createFailure(e_0));
+        } else {
+          throw $p_0;
+        }
+        tmp_2 = tmp_3;
+      }
+      var tmp$ret$4 = tmp_2;
+      var tmp2_safe_receiver = Result__exceptionOrNull_impl_p6xea9(tmp$ret$4);
+      tmp = tmp2_safe_receiver == null ? null : tmp2_safe_receiver.message;
+    } else if (tmp0_subject === 'soluzione') {
+      var tmp_4;
       var tmp0 = c.utili_1;
-      var tmp$ret$4;
+      var tmp$ret$8;
       $l$block_0: {
         // Inline function 'kotlin.collections.none' call
-        var tmp_3;
+        var tmp_5;
         if (isInterface(tmp0, Collection)) {
-          tmp_3 = tmp0.isEmpty_y1axqb_k$();
+          tmp_5 = tmp0.isEmpty_y1axqb_k$();
         } else {
-          tmp_3 = false;
+          tmp_5 = false;
         }
-        if (tmp_3) {
-          tmp$ret$4 = true;
+        if (tmp_5) {
+          tmp$ret$8 = true;
           break $l$block_0;
         }
         var _iterator__ex2g4s = tmp0.iterator_jk1svi_k$();
         while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
           var element = _iterator__ex2g4s.next_20eer_k$();
           if (element.uid_1 === a.testo_z88b7n_k$('uid')) {
-            tmp$ret$4 = false;
+            tmp$ret$8 = false;
             break $l$block_0;
           }
         }
-        tmp$ret$4 = true;
+        tmp$ret$8 = true;
       }
-      if (tmp$ret$4) {
-        tmp_2 = "la provetta non c'\xE8 pi\xF9 nel progetto";
+      if (tmp$ret$8) {
+        tmp_4 = "la provetta non c'\xE8 pi\xF9 nel progetto";
       } else {
         if (!Companion_getInstance_42().SOLUZIONI_1.contains_aljjnj_k$(a.testo_z88b7n_k$('soluzione'))) {
-          tmp_2 = 'soluzione \xAB' + a.testo_z88b7n_k$('soluzione') + '\xBB non importabile dal sito';
+          tmp_4 = 'soluzione \xAB' + a.testo_z88b7n_k$('soluzione') + '\xBB non importabile dal sito';
         } else {
-          tmp_2 = null;
+          tmp_4 = null;
         }
       }
-      tmp = tmp_2;
+      tmp = tmp_4;
     } else if (tmp0_subject === 'tardiva') {
       tmp = c.capi_1.get_wei43m_k$(to(a.testo_z88b7n_k$('specie'), a.testo_z88b7n_k$('contrassegno'))) == null ? 'il capo ' + a.testo_z88b7n_k$('contrassegno') + ' non \xE8 pi\xF9 fra i non prelevati' : !(getValue(c.capi_1, to(a.testo_z88b7n_k$('specie'), a.testo_z88b7n_k$('contrassegno'))).stabilimento_1 === a.testo_z88b7n_k$('stabilimento')) ? 'lo stabilimento non \xE8 quello del capo' : isBlank(a.testo_z88b7n_k$('etichetta')) || isBlank(a.testo_z88b7n_k$('nota')) ? "mancano l'etichetta o la nota" : null;
     } else if (tmp0_subject === 'riordino') {
@@ -42818,49 +42857,49 @@ if (typeof String.prototype.startsWith === 'undefined') {
     } else if (tmp0_subject === 'spostamento') {
       tmp = valida$riga(c, a, a.testo_z88b7n_k$('contrassegno')) == null ? 'il capo ' + a.testo_z88b7n_k$('contrassegno') + ' non ha una provetta valida' : !(substringBefore(ensureNotNull(valida$riga(c, a, a.testo_z88b7n_k$('contrassegno'))).serie_1, _Char___init__impl__6a9atx(58)) === a.testo_z88b7n_k$('stabilimento')) ? 'lo stabilimento non \xE8 quello del capo' : a.intero_st032f_k$('provetta') == null || ensureNotNull(a.intero_st032f_k$('provetta')) < 1 ? 'numero non valido' : !setOf_0(['', 'prima', 'dopo']).contains_aljjnj_k$(a.testo_z88b7n_k$('quando')) ? 'momento dello spostamento non valido' : null;
     } else if (tmp0_subject === 'scambio') {
-      var tmp_4;
+      var tmp_6;
       if (a.testo_z88b7n_k$('a') === a.testo_z88b7n_k$('b')) {
-        tmp_4 = 'i due capi sono lo stesso';
+        tmp_6 = 'i due capi sono lo stesso';
       } else {
         if (valida$riga(c, a, a.testo_z88b7n_k$('a')) == null || valida$riga(c, a, a.testo_z88b7n_k$('b')) == null) {
-          tmp_4 = 'uno dei due capi non ha una provetta valida';
+          tmp_6 = 'uno dei due capi non ha una provetta valida';
         } else {
           var tmp0_0 = listOf_0([ensureNotNull(valida$riga(c, a, a.testo_z88b7n_k$('a'))), ensureNotNull(valida$riga(c, a, a.testo_z88b7n_k$('b')))]);
-          var tmp$ret$6;
+          var tmp$ret$10;
           $l$block_2: {
             // Inline function 'kotlin.collections.any' call
-            var tmp_5;
+            var tmp_7;
             if (isInterface(tmp0_0, Collection)) {
-              tmp_5 = tmp0_0.isEmpty_y1axqb_k$();
+              tmp_7 = tmp0_0.isEmpty_y1axqb_k$();
             } else {
-              tmp_5 = false;
+              tmp_7 = false;
             }
-            if (tmp_5) {
-              tmp$ret$6 = false;
+            if (tmp_7) {
+              tmp$ret$10 = false;
               break $l$block_2;
             }
             var _iterator__ex2g4s_0 = tmp0_0.iterator_jk1svi_k$();
             while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
               var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
               if (!(substringBefore(element_0.serie_1, _Char___init__impl__6a9atx(58)) === a.testo_z88b7n_k$('stabilimento'))) {
-                tmp$ret$6 = true;
+                tmp$ret$10 = true;
                 break $l$block_2;
               }
             }
-            tmp$ret$6 = false;
+            tmp$ret$10 = false;
           }
-          if (tmp$ret$6) {
-            tmp_4 = 'lo stabilimento non \xE8 quello dei due capi';
+          if (tmp$ret$10) {
+            tmp_6 = 'lo stabilimento non \xE8 quello dei due capi';
           } else {
-            tmp_4 = null;
+            tmp_6 = null;
           }
         }
       }
-      tmp = tmp_4;
+      tmp = tmp_6;
     } else if (tmp0_subject === 'chiudi_buchi') {
-      var tmp_6 = a.dati_1.get_6bo4tg_k$('valore');
-      var tmp2_safe_receiver = tmp_6 instanceof JsonPrimitive ? tmp_6 : null;
-      var v = tmp2_safe_receiver == null ? null : tmp2_safe_receiver.get_content_h02jrk_k$();
+      var tmp_8 = a.dati_1.get_6bo4tg_k$('valore');
+      var tmp3_safe_receiver = tmp_8 instanceof JsonPrimitive ? tmp_8 : null;
+      var v = tmp3_safe_receiver == null ? null : tmp3_safe_receiver.get_content_h02jrk_k$();
       switch (v) {
         case 'true':
         case 'false':
@@ -42872,25 +42911,25 @@ if (typeof String.prototype.startsWith === 'undefined') {
       }
     } else if (AzioniProvettaSito_getInstance().tipi_1.contains_aljjnj_k$(tmp0_subject)) {
       // Inline function 'kotlin.runCatching' call
-      var tmp_7;
+      var tmp_9;
       try {
         // Inline function 'kotlin.Companion.success' call
-        var value_0 = AzioniProvettaSito_getInstance().prepara_d2gmmo_k$(a.dati_1, attuali($this), righe($this), $this.registro_1.tutti_1txb60_k$(), $this.registro_1.mioFeed_1);
-        tmp_7 = _Result___init__impl__xyqfz8(value_0);
-      } catch ($p_0) {
-        var tmp_8;
-        if ($p_0 instanceof Error) {
-          var e_0 = $p_0;
+        var value_1 = AzioniProvettaSito_getInstance().prepara_d2gmmo_k$(a.dati_1, attuali($this), righe($this), $this.registro_1.tutti_1txb60_k$(), $this.registro_1.mioFeed_1);
+        tmp_9 = _Result___init__impl__xyqfz8(value_1);
+      } catch ($p_1) {
+        var tmp_10;
+        if ($p_1 instanceof Error) {
+          var e_1 = $p_1;
           // Inline function 'kotlin.Companion.failure' call
-          tmp_8 = _Result___init__impl__xyqfz8(createFailure(e_0));
+          tmp_10 = _Result___init__impl__xyqfz8(createFailure(e_1));
         } else {
-          throw $p_0;
+          throw $p_1;
         }
-        tmp_7 = tmp_8;
+        tmp_9 = tmp_10;
       }
-      var tmp$ret$8 = tmp_7;
-      var tmp3_safe_receiver = Result__exceptionOrNull_impl_p6xea9(tmp$ret$8);
-      tmp = tmp3_safe_receiver == null ? null : tmp3_safe_receiver.message;
+      var tmp$ret$12 = tmp_9;
+      var tmp4_safe_receiver = Result__exceptionOrNull_impl_p6xea9(tmp$ret$12);
+      tmp = tmp4_safe_receiver == null ? null : tmp4_safe_receiver.message;
     } else {
       tmp = 'azione \xAB' + a.tipo_1 + '\xBB sconosciuta';
     }
@@ -43169,6 +43208,8 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var tmp0_subject = a.tipo_1;
     if (tmp0_subject === 'anagrafe_bdn')
       scriviImpostazione('REGISTRO_CARICATO', new JsonObject(plus_4(AnagrafeBdn_instance.dati_8tlcb_k$(a.dati_1), marchio)));
+    else if (tmp0_subject === 'uscite_modello')
+      scriviImpostazione('REGISTRO_CARICATO', new JsonObject(plus_4(UsciteModello_getInstance().dati_8tlcb_k$(a.dati_1), marchio)));
     else if (tmp0_subject === 'riordino') {
       var p = Companion_getInstance_54().di_l5yg3q_k$($this.pacchetto_1, $this.registro_1.tutti_1txb60_k$(), $this.motore_1).prepara_p6gdne_k$(a.dati_1);
       $this.registro_1.scrivi_r1zfur_k$(p.tipo_1, new JsonObject(plus_4(p.dati_1, marchio)), operatore, ts);
@@ -43332,9 +43373,10 @@ if (typeof String.prototype.startsWith === 'undefined') {
       var _iterator__ex2g4s = azioni.iterator_jk1svi_k$();
       while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
         var element = _iterator__ex2g4s.next_20eer_k$();
-        var tmp_1 = element.get_6bo4tg_k$('tipo');
-        var tmp0_safe_receiver = tmp_1 instanceof JsonPrimitive ? tmp_1 : null;
-        if ((tmp0_safe_receiver == null ? null : tmp0_safe_receiver.get_content_h02jrk_k$()) === 'anagrafe_bdn') {
+        var tmp_1 = setOf_0(['anagrafe_bdn', 'uscite_modello']);
+        var tmp_2 = element.get_6bo4tg_k$('tipo');
+        var tmp0_safe_receiver = tmp_2 instanceof JsonPrimitive ? tmp_2 : null;
+        if (contains_5(tmp_1, tmp0_safe_receiver == null ? null : tmp0_safe_receiver.get_content_h02jrk_k$())) {
           tmp$ret$0 = true;
           break $l$block_0;
         }
@@ -43554,7 +43596,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       }
       var tmp_11;
       var tmp_12;
-      if (a.tipo_1 === 'anagrafe_bdn') {
+      if (a.tipo_1 === 'anagrafe_bdn' || a.tipo_1 === 'uscite_modello') {
         tmp_12 = (ver == null ? 0 : ver) < 5;
       } else {
         tmp_12 = false;
@@ -47030,6 +47072,856 @@ if (typeof String.prototype.startsWith === 'undefined') {
     static_init_20();
     return VersoRiempimento_BASSO_ALTO_instance;
   }
+  function Provetta(uid, etichetta, numero, stato, operatore, ts, lettoInCampo, capo, serie) {
+    serie = serie === VOID ? '' : serie;
+    this.uid_1 = uid;
+    this.etichetta_1 = etichetta;
+    this.numero_1 = numero;
+    this.stato_1 = stato;
+    this.operatore_1 = operatore;
+    this.ts_1 = ts;
+    this.lettoInCampo_1 = lettoInCampo;
+    this.capo_1 = capo;
+    this.serie_1 = serie;
+  }
+  protoOf(Provetta).toString = function () {
+    return 'Provetta(uid=' + this.uid_1 + ', etichetta=' + this.etichetta_1 + ', numero=' + this.numero_1 + ', stato=' + this.stato_1 + ', operatore=' + this.operatore_1 + ', ts=' + this.ts_1 + ', lettoInCampo=' + this.lettoInCampo_1 + ', capo=' + this.capo_1 + ', serie=' + this.serie_1 + ')';
+  };
+  protoOf(Provetta).hashCode = function () {
+    var result = getStringHashCode(this.uid_1);
+    result = imul(result, 31) + getStringHashCode(this.etichetta_1) | 0;
+    result = imul(result, 31) + (this.numero_1 == null ? 0 : this.numero_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.stato_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.operatore_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.ts_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.lettoInCampo_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.capo_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.serie_1) | 0;
+    return result;
+  };
+  protoOf(Provetta).equals = function (other) {
+    if (this === other)
+      return true;
+    if (!(other instanceof Provetta))
+      return false;
+    if (!(this.uid_1 === other.uid_1))
+      return false;
+    if (!(this.etichetta_1 === other.etichetta_1))
+      return false;
+    if (!(this.numero_1 == other.numero_1))
+      return false;
+    if (!(this.stato_1 === other.stato_1))
+      return false;
+    if (!(this.operatore_1 === other.operatore_1))
+      return false;
+    if (!(this.ts_1 === other.ts_1))
+      return false;
+    if (!(this.lettoInCampo_1 === other.lettoInCampo_1))
+      return false;
+    if (!(this.capo_1 === other.capo_1))
+      return false;
+    if (!(this.serie_1 === other.serie_1))
+      return false;
+    return true;
+  };
+  function Risultato_0(contrassegno, specie, stabilimento, sesso, razza, nascita, stato, descrizione, uscita, numeroAssegnato, provette, per) {
+    this.contrassegno_1 = contrassegno;
+    this.specie_1 = specie;
+    this.stabilimento_1 = stabilimento;
+    this.sesso_1 = sesso;
+    this.razza_1 = razza;
+    this.nascita_1 = nascita;
+    this.stato_1 = stato;
+    this.descrizione_1 = descrizione;
+    this.uscita_1 = uscita;
+    this.numeroAssegnato_1 = numeroAssegnato;
+    this.provette_1 = provette;
+    this.per_1 = per;
+  }
+  protoOf(Risultato_0).toString = function () {
+    return 'Risultato(contrassegno=' + this.contrassegno_1 + ', specie=' + this.specie_1 + ', stabilimento=' + this.stabilimento_1 + ', sesso=' + this.sesso_1 + ', razza=' + this.razza_1 + ', nascita=' + this.nascita_1 + ', stato=' + this.stato_1 + ', descrizione=' + this.descrizione_1 + ', uscita=' + toString_0(this.uscita_1) + ', numeroAssegnato=' + this.numeroAssegnato_1 + ', provette=' + toString_1(this.provette_1) + ', per=' + this.per_1 + ')';
+  };
+  protoOf(Risultato_0).hashCode = function () {
+    var result = getStringHashCode(this.contrassegno_1);
+    result = imul(result, 31) + getStringHashCode(this.specie_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.stabilimento_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.sesso_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.razza_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.nascita_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.stato_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.descrizione_1) | 0;
+    result = imul(result, 31) + (this.uscita_1 == null ? 0 : this.uscita_1.hashCode()) | 0;
+    result = imul(result, 31) + (this.numeroAssegnato_1 == null ? 0 : this.numeroAssegnato_1) | 0;
+    result = imul(result, 31) + hashCode_0(this.provette_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.per_1) | 0;
+    return result;
+  };
+  protoOf(Risultato_0).equals = function (other) {
+    if (this === other)
+      return true;
+    if (!(other instanceof Risultato_0))
+      return false;
+    if (!(this.contrassegno_1 === other.contrassegno_1))
+      return false;
+    if (!(this.specie_1 === other.specie_1))
+      return false;
+    if (!(this.stabilimento_1 === other.stabilimento_1))
+      return false;
+    if (!(this.sesso_1 === other.sesso_1))
+      return false;
+    if (!(this.razza_1 === other.razza_1))
+      return false;
+    if (!(this.nascita_1 === other.nascita_1))
+      return false;
+    if (!(this.stato_1 === other.stato_1))
+      return false;
+    if (!(this.descrizione_1 === other.descrizione_1))
+      return false;
+    if (!equals(this.uscita_1, other.uscita_1))
+      return false;
+    if (!(this.numeroAssegnato_1 == other.numeroAssegnato_1))
+      return false;
+    if (!equals(this.provette_1, other.provette_1))
+      return false;
+    if (!(this.per_1 === other.per_1))
+      return false;
+    return true;
+  };
+  function cifre($this, s) {
+    // Inline function 'kotlin.text.filter' call
+    // Inline function 'kotlin.text.filterTo' call
+    var destination = StringBuilder_init_$Create$_0();
+    var inductionVariable = 0;
+    var last = charSequenceLength(s);
+    if (inductionVariable < last)
+      do {
+        var index = inductionVariable;
+        inductionVariable = inductionVariable + 1 | 0;
+        var element = charSequenceGet(s, index);
+        if (isDigit(element)) {
+          destination.append_58al37_k$(element);
+        }
+      }
+       while (inductionVariable < last);
+    return destination.toString();
+  }
+  function statoProvetta($this, r) {
+    return r.annullata_1 ? 'annullata' : r.persa_1 ? 'persa' : equals(r.soluzione_1, Soluzione_ESCLUSA_getInstance()) ? 'tolta' : r.get_fraIProblematici_oa76rq_k$() ? 'fuori registro' : 'ordinaria';
+  }
+  function letto_0($this, r) {
+    var tmp = FormatoContrassegno_getInstance();
+    var tmp0_elvis_lhs = r.contrassegnoCampo_1;
+    var tmp_0;
+    if (tmp0_elvis_lhs == null) {
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_0 = r.contrassegno_1;
+      tmp_0 = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
+    } else {
+      tmp_0 = tmp0_elvis_lhs;
+    }
+    return tmp.normalizza_nonmor_k$(tmp_0);
+  }
+  function finale($this, r) {
+    var tmp = FormatoContrassegno_getInstance();
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs = r.contrassegno_1;
+    var tmp$ret$0 = tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
+    return tmp.normalizza_nonmor_k$(tmp$ret$0);
+  }
+  function scritta($this, r) {
+    var tmp0_elvis_lhs = r.caratteristiche_1.get_wei43m_k$('etichetta_campo');
+    // Inline function 'kotlin.text.uppercase' call
+    // Inline function 'kotlin.js.asDynamic' call
+    return substringBefore(tmp0_elvis_lhs == null ? r.etichetta_1 : tmp0_elvis_lhs, _Char___init__impl__6a9atx(32)).toUpperCase();
+  }
+  function sam$kotlin_Comparator$0_10(function_0) {
+    this.function_1 = function_0;
+  }
+  protoOf(sam$kotlin_Comparator$0_10).compare_bczr_k$ = function (a, b) {
+    return this.function_1(a, b);
+  };
+  protoOf(sam$kotlin_Comparator$0_10).compare = function (a, b) {
+    return this.compare_bczr_k$(a, b);
+  };
+  protoOf(sam$kotlin_Comparator$0_10).getFunctionDelegate_jtodtf_k$ = function () {
+    return this.function_1;
+  };
+  protoOf(sam$kotlin_Comparator$0_10).equals = function (other) {
+    var tmp;
+    if (!(other == null) ? isInterface(other, Comparator) : false) {
+      var tmp_0;
+      if (!(other == null) ? isInterface(other, FunctionAdapter) : false) {
+        tmp_0 = equals(this.getFunctionDelegate_jtodtf_k$(), other.getFunctionDelegate_jtodtf_k$());
+      } else {
+        tmp_0 = false;
+      }
+      tmp = tmp_0;
+    } else {
+      tmp = false;
+    }
+    return tmp;
+  };
+  protoOf(sam$kotlin_Comparator$0_10).hashCode = function () {
+    return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
+  };
+  function Interrogazione$cerca$provetteDi$lambda(a, b) {
+    // Inline function 'kotlin.comparisons.compareValuesBy' call
+    var tmp = a.lamport_1;
+    var tmp$ret$2 = b.lamport_1;
+    return compareValues(tmp, tmp$ret$2);
+  }
+  function cerca$rango(q, qc, soloCifre, c) {
+    var tmp;
+    if (c === q) {
+      tmp = 0;
+    } else {
+      var tmp_0;
+      // Inline function 'kotlin.text.isNotEmpty' call
+      if (charSequenceLength(qc) > 0) {
+        tmp_0 = endsWith(cifre(Interrogazione_instance, c), qc);
+      } else {
+        tmp_0 = false;
+      }
+      if (tmp_0) {
+        tmp = 1;
+      } else {
+        if (qc.length >= 4 && contains_7(cifre(Interrogazione_instance, c), qc)) {
+          tmp = 2;
+        } else {
+          if (!soloCifre && q.length >= 4 && contains_7(c, q)) {
+            tmp = 2;
+          } else {
+            tmp = 9;
+          }
+        }
+      }
+    }
+    return tmp;
+  }
+  function Interrogazione$cerca$lambda(it) {
+    return it.second_1;
+  }
+  function Interrogazione$cerca$lambda_0(it) {
+    return it.first_1;
+  }
+  function cerca$capoDi(r) {
+    // Inline function 'kotlin.text.ifBlank' call
+    var this_0 = finale(Interrogazione_instance, r);
+    var tmp;
+    if (isBlank(this_0)) {
+      tmp = letto_0(Interrogazione_instance, r);
+    } else {
+      tmp = this_0;
+    }
+    return tmp;
+  }
+  function cerca$provetteDi($righe, c) {
+    // Inline function 'kotlin.collections.filter' call
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination = ArrayList_init_$Create$();
+    var _iterator__ex2g4s = $righe.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      if (finale(Interrogazione_instance, element) === c || letto_0(Interrogazione_instance, element) === c) {
+        destination.add_utx5q5_k$(element);
+      }
+    }
+    // Inline function 'kotlin.collections.sortedBy' call
+    // Inline function 'kotlin.comparisons.compareBy' call
+    var tmp = Interrogazione$cerca$provetteDi$lambda;
+    var tmp$ret$4 = new sam$kotlin_Comparator$0_10(tmp);
+    // Inline function 'kotlin.collections.map' call
+    var this_0 = sortedWith(destination, tmp$ret$4);
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
+    var _iterator__ex2g4s_0 = this_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s_0.next_20eer_k$();
+      var tmp0_elvis_lhs = item.caratteristiche_1.get_wei43m_k$('etichetta_campo');
+      var tmp_0 = tmp0_elvis_lhs == null ? item.etichetta_1 : tmp0_elvis_lhs;
+      var tmp_1 = statoProvetta(Interrogazione_instance, item);
+      // Inline function 'kotlin.takeIf' call
+      var this_1 = letto_0(Interrogazione_instance, item);
+      var tmp_2;
+      if (!(this_1 === finale(Interrogazione_instance, item))) {
+        tmp_2 = this_1;
+      } else {
+        tmp_2 = null;
+      }
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_0 = tmp_2;
+      var tmp$ret$10 = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
+      var tmp$ret$7 = new Provetta(item.uid_1, tmp_0, item.numero_1, tmp_1, item.operatore_1, item.ts_1, tmp$ret$10, finale(Interrogazione_instance, item), item.serie_1);
+      destination_0.add_utx5q5_k$(tmp$ret$7);
+    }
+    return destination_0;
+  }
+  function Interrogazione() {
+  }
+  protoOf(Interrogazione).cerca_kvqm9v_k$ = function (query, righe, a, eventi, max) {
+    // Inline function 'kotlin.text.trim' call
+    // Inline function 'kotlin.text.uppercase' call
+    // Inline function 'kotlin.js.asDynamic' call
+    var tmp$ret$1 = toString_1(trim_0(isCharSequence(query) ? query : THROW_CCE())).toUpperCase();
+    var q = replace(tmp$ret$1, ' ', '');
+    if (q.length < 2)
+      return emptyList();
+    var tmp$ret$3;
+    $l$block: {
+      // Inline function 'kotlin.text.all' call
+      var inductionVariable = 0;
+      while (inductionVariable < charSequenceLength(q)) {
+        var element = charSequenceGet(q, inductionVariable);
+        inductionVariable = inductionVariable + 1 | 0;
+        if (!isDigit(element)) {
+          tmp$ret$3 = false;
+          break $l$block;
+        }
+      }
+      tmp$ret$3 = true;
+    }
+    var soloCifre = tmp$ret$3;
+    var p = a.pacchetto_1;
+    // Inline function 'kotlin.collections.map' call
+    var this_0 = p.registri_1.pecore_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
+    var _iterator__ex2g4s = this_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s.next_20eer_k$();
+      var tmp$ret$7 = to(Specie_PECORE_getInstance(), item);
+      destination.add_utx5q5_k$(tmp$ret$7);
+    }
+    var tmp = destination;
+    // Inline function 'kotlin.collections.map' call
+    var this_1 = p.registri_1.capre_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_1, 10));
+    var _iterator__ex2g4s_0 = this_1.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var item_0 = _iterator__ex2g4s_0.next_20eer_k$();
+      var tmp$ret$10 = to(Specie_CAPRE_getInstance(), item_0);
+      destination_0.add_utx5q5_k$(tmp$ret$10);
+    }
+    var registri = plus(tmp, destination_0);
+    // Inline function 'kotlin.collections.groupBy' call
+    // Inline function 'kotlin.collections.groupByTo' call
+    var destination_1 = LinkedHashMap_init_$Create$();
+    var _iterator__ex2g4s_1 = registri.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
+      var element_0 = _iterator__ex2g4s_1.next_20eer_k$();
+      var key = FormatoContrassegno_getInstance().normalizza_nonmor_k$(element_0.second_1.contrassegno_1);
+      // Inline function 'kotlin.collections.getOrPut' call
+      var value = destination_1.get_wei43m_k$(key);
+      var tmp_0;
+      if (value == null) {
+        var answer = ArrayList_init_$Create$();
+        destination_1.put_4fpzoq_k$(key, answer);
+        tmp_0 = answer;
+      } else {
+        tmp_0 = value;
+      }
+      var list = tmp_0;
+      list.add_utx5q5_k$(element_0);
+    }
+    var perCapo = destination_1;
+    var uscite = UsciteModello_getInstance().inVigore$default_ku6td_k$(eventi);
+    // Inline function 'kotlin.collections.map' call
+    var this_2 = p.specieDati_1.pecore_1.disponibili_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_2 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_2, 10));
+    var _iterator__ex2g4s_2 = this_2.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
+      var item_1 = _iterator__ex2g4s_2.next_20eer_k$();
+      var tmp$ret$18 = to(item_1.contrassegno_1, 'pecore');
+      destination_2.add_utx5q5_k$(tmp$ret$18);
+    }
+    var tmp_1 = destination_2;
+    // Inline function 'kotlin.collections.map' call
+    var this_3 = p.specieDati_1.capre_1.disponibili_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_3 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_3, 10));
+    var _iterator__ex2g4s_3 = this_3.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
+      var item_2 = _iterator__ex2g4s_3.next_20eer_k$();
+      var tmp$ret$21 = to(item_2.contrassegno_1, 'capre');
+      destination_3.add_utx5q5_k$(tmp$ret$21);
+    }
+    // Inline function 'kotlin.collections.associate' call
+    var this_4 = plus(tmp_1, destination_3);
+    var capacity = coerceAtLeast(mapCapacity(collectionSizeOrDefault(this_4, 10)), 16);
+    // Inline function 'kotlin.collections.associateTo' call
+    var destination_4 = LinkedHashMap_init_$Create$_0(capacity);
+    var _iterator__ex2g4s_4 = this_4.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
+      var element_1 = _iterator__ex2g4s_4.next_20eer_k$();
+      // Inline function 'kotlin.collections.plusAssign' call
+      var pair = to(FormatoContrassegno_getInstance().normalizza_nonmor_k$(element_1.first_1), element_1.second_1);
+      destination_4.put_4fpzoq_k$(pair.first_1, pair.second_1);
+    }
+    var marche = destination_4;
+    // Inline function 'kotlin.collections.filter' call
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination_5 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_5 = righe.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_5.hasNext_bitz1p_k$()) {
+      var element_2 = _iterator__ex2g4s_5.next_20eer_k$();
+      var s = scritta(Interrogazione_instance, element_2);
+      var tmp_2;
+      if (s === q || startsWith(s, q)) {
+        tmp_2 = true;
+      } else {
+        var tmp_3;
+        if (soloCifre) {
+          var tmp0_safe_receiver = element_2.numero_1;
+          tmp_3 = (tmp0_safe_receiver == null ? null : tmp0_safe_receiver.toString()) === q;
+        } else {
+          tmp_3 = false;
+        }
+        tmp_2 = tmp_3;
+      }
+      if (tmp_2) {
+        destination_5.add_utx5q5_k$(element_2);
+      }
+    }
+    var provetteTrovate = destination_5;
+    var tutti = LinkedHashSet_init_$Create$();
+    // Inline function 'kotlin.collections.plusAssign' call
+    var elements = perCapo.get_keys_wop4xp_k$();
+    addAll(tutti, elements);
+    // Inline function 'kotlin.collections.plusAssign' call
+    var elements_0 = marche.get_keys_wop4xp_k$();
+    addAll(tutti, elements_0);
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s_6 = righe.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_6.hasNext_bitz1p_k$()) {
+      var element_3 = _iterator__ex2g4s_6.next_20eer_k$();
+      // Inline function 'kotlin.takeIf' call
+      var this_5 = letto_0(Interrogazione_instance, element_3);
+      var tmp_4;
+      // Inline function 'kotlin.text.isNotBlank' call
+      if (!isBlank(this_5)) {
+        tmp_4 = this_5;
+      } else {
+        tmp_4 = null;
+      }
+      var tmp0_safe_receiver_0 = tmp_4;
+      if (tmp0_safe_receiver_0 == null)
+        null;
+      else {
+        // Inline function 'kotlin.let' call
+        tutti.add_utx5q5_k$(tmp0_safe_receiver_0);
+      }
+      // Inline function 'kotlin.takeIf' call
+      var this_6 = finale(Interrogazione_instance, element_3);
+      var tmp_5;
+      // Inline function 'kotlin.text.isNotBlank' call
+      if (!isBlank(this_6)) {
+        tmp_5 = this_6;
+      } else {
+        tmp_5 = null;
+      }
+      var tmp1_safe_receiver = tmp_5;
+      if (tmp1_safe_receiver == null)
+        null;
+      else {
+        // Inline function 'kotlin.let' call
+        tutti.add_utx5q5_k$(tmp1_safe_receiver);
+      }
+    }
+    var comeContrassegno = soloCifre || Regex_init_$Create$_0('[A-Z]{2}[0-9]{4,}').matches_evli6i_k$(q);
+    var qc = comeContrassegno ? cifre(this, q) : '';
+    // Inline function 'kotlin.collections.map' call
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_6 = ArrayList_init_$Create$_0(collectionSizeOrDefault(tutti, 10));
+    var _iterator__ex2g4s_7 = tutti.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_7.hasNext_bitz1p_k$()) {
+      var item_3 = _iterator__ex2g4s_7.next_20eer_k$();
+      var tmp$ret$45 = to(item_3, cerca$rango(q, qc, soloCifre, item_3));
+      destination_6.add_utx5q5_k$(tmp$ret$45);
+    }
+    // Inline function 'kotlin.collections.filter' call
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination_7 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_8 = destination_6.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_8.hasNext_bitz1p_k$()) {
+      var element_4 = _iterator__ex2g4s_8.next_20eer_k$();
+      if (element_4.second_1 < 9) {
+        destination_7.add_utx5q5_k$(element_4);
+      }
+    }
+    var tmp_6 = destination_7;
+    var tmp_7 = Interrogazione$cerca$lambda;
+    // Inline function 'kotlin.collections.map' call
+    var this_7 = sortedWith(tmp_6, compareBy([tmp_7, Interrogazione$cerca$lambda_0]));
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_8 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_7, 10));
+    var _iterator__ex2g4s_9 = this_7.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_9.hasNext_bitz1p_k$()) {
+      var item_4 = _iterator__ex2g4s_9.next_20eer_k$();
+      var tmp$ret$51 = item_4.first_1;
+      destination_8.add_utx5q5_k$(tmp$ret$51);
+    }
+    var perContrassegno = destination_8;
+    var chiavi = LinkedHashMap_init_$Create$();
+    // Inline function 'kotlin.collections.filter' call
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination_9 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_10 = provetteTrovate.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_10.hasNext_bitz1p_k$()) {
+      var element_5 = _iterator__ex2g4s_10.next_20eer_k$();
+      var tmp_8;
+      if (scritta(Interrogazione_instance, element_5) === q) {
+        tmp_8 = true;
+      } else {
+        var tmp_9;
+        if (soloCifre) {
+          var tmp0_safe_receiver_1 = element_5.numero_1;
+          tmp_9 = (tmp0_safe_receiver_1 == null ? null : tmp0_safe_receiver_1.toString()) === q;
+        } else {
+          tmp_9 = false;
+        }
+        tmp_8 = tmp_9;
+      }
+      if (tmp_8) {
+        destination_9.add_utx5q5_k$(element_5);
+      }
+    }
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s_11 = destination_9.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_11.hasNext_bitz1p_k$()) {
+      var element_6 = _iterator__ex2g4s_11.next_20eer_k$();
+      // Inline function 'kotlin.takeIf' call
+      var this_8 = cerca$capoDi(element_6);
+      var tmp_10;
+      // Inline function 'kotlin.text.isNotBlank' call
+      if (!isBlank(this_8)) {
+        tmp_10 = this_8;
+      } else {
+        tmp_10 = null;
+      }
+      var tmp0_safe_receiver_2 = tmp_10;
+      if (tmp0_safe_receiver_2 == null)
+        null;
+      else {
+        // Inline function 'kotlin.let' call
+        // Inline function 'kotlin.collections.contains' call
+        // Inline function 'kotlin.collections.containsKey' call
+        if (!(isInterface(chiavi, KtMap) ? chiavi : THROW_CCE()).containsKey_aw81wo_k$(tmp0_safe_receiver_2)) {
+          // Inline function 'kotlin.collections.set' call
+          var value_0 = 'provetta';
+          chiavi.put_4fpzoq_k$(tmp0_safe_receiver_2, value_0);
+        }
+      }
+    }
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s_12 = perContrassegno.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_12.hasNext_bitz1p_k$()) {
+      var element_7 = _iterator__ex2g4s_12.next_20eer_k$();
+      // Inline function 'kotlin.collections.contains' call
+      // Inline function 'kotlin.collections.containsKey' call
+      if (!(isInterface(chiavi, KtMap) ? chiavi : THROW_CCE()).containsKey_aw81wo_k$(element_7)) {
+        // Inline function 'kotlin.collections.set' call
+        var value_1 = 'contrassegno';
+        chiavi.put_4fpzoq_k$(element_7, value_1);
+      }
+    }
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s_13 = provetteTrovate.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_13.hasNext_bitz1p_k$()) {
+      var element_8 = _iterator__ex2g4s_13.next_20eer_k$();
+      // Inline function 'kotlin.takeIf' call
+      var this_9 = cerca$capoDi(element_8);
+      var tmp_11;
+      // Inline function 'kotlin.text.isNotBlank' call
+      if (!isBlank(this_9)) {
+        tmp_11 = this_9;
+      } else {
+        tmp_11 = null;
+      }
+      var tmp0_safe_receiver_3 = tmp_11;
+      if (tmp0_safe_receiver_3 == null)
+        null;
+      else {
+        // Inline function 'kotlin.let' call
+        // Inline function 'kotlin.collections.contains' call
+        // Inline function 'kotlin.collections.containsKey' call
+        if (!(isInterface(chiavi, KtMap) ? chiavi : THROW_CCE()).containsKey_aw81wo_k$(tmp0_safe_receiver_3)) {
+          // Inline function 'kotlin.collections.set' call
+          var value_2 = 'provetta';
+          chiavi.put_4fpzoq_k$(tmp0_safe_receiver_3, value_2);
+        }
+      }
+    }
+    // Inline function 'kotlin.collections.map' call
+    var this_10 = take(chiavi.get_entries_p20ztl_k$(), max);
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_10 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_10, 10));
+    var _iterator__ex2g4s_14 = this_10.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_14.hasNext_bitz1p_k$()) {
+      var item_5 = _iterator__ex2g4s_14.next_20eer_k$();
+      // Inline function 'kotlin.collections.component1' call
+      var c = item_5.get_key_18j28a_k$();
+      // Inline function 'kotlin.collections.component2' call
+      var per = item_5.get_value_j01efc_k$();
+      // Inline function 'kotlin.collections.orEmpty' call
+      var tmp0_elvis_lhs = perCapo.get_wei43m_k$(c);
+      var voci = tmp0_elvis_lhs == null ? emptyList() : tmp0_elvis_lhs;
+      var tmp$ret$86;
+      $l$block_0: {
+        // Inline function 'kotlin.collections.firstOrNull' call
+        var _iterator__ex2g4s_15 = voci.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_15.hasNext_bitz1p_k$()) {
+          var element_9 = _iterator__ex2g4s_15.next_20eer_k$();
+          if (element_9.second_1.presente_1) {
+            tmp$ret$86 = element_9;
+            break $l$block_0;
+          }
+        }
+        tmp$ret$86 = null;
+      }
+      var tmp0_elvis_lhs_0 = tmp$ret$86;
+      var riga = tmp0_elvis_lhs_0 == null ? firstOrNull(voci) : tmp0_elvis_lhs_0;
+      var u = uscite.get_wei43m_k$(c);
+      var tmp2_safe_receiver = riga == null ? null : riga.first_1;
+      var tmp_12;
+      if (tmp2_safe_receiver == null) {
+        tmp_12 = null;
+      } else {
+        // Inline function 'kotlin.let' call
+        tmp_12 = tmp2_safe_receiver.equals(Specie_CAPRE_getInstance()) ? 'capre' : 'pecore';
+      }
+      var tmp3_elvis_lhs = tmp_12;
+      var tmp4_elvis_lhs = tmp3_elvis_lhs == null ? marche.get_wei43m_k$(c) : tmp3_elvis_lhs;
+      var tmp_13;
+      if (tmp4_elvis_lhs == null) {
+        var tmp$ret$90;
+        $l$block_1: {
+          // Inline function 'kotlin.collections.firstOrNull' call
+          var _iterator__ex2g4s_16 = righe.iterator_jk1svi_k$();
+          while (_iterator__ex2g4s_16.hasNext_bitz1p_k$()) {
+            var element_10 = _iterator__ex2g4s_16.next_20eer_k$();
+            if (finale(Interrogazione_instance, element_10) === c || letto_0(Interrogazione_instance, element_10) === c) {
+              tmp$ret$90 = element_10;
+              break $l$block_1;
+            }
+          }
+          tmp$ret$90 = null;
+        }
+        var tmp5_safe_receiver = tmp$ret$90;
+        // Inline function 'kotlin.text.orEmpty' call
+        var tmp0_elvis_lhs_1 = tmp5_safe_receiver == null ? null : tmp5_safe_receiver.specie_1;
+        tmp_13 = tmp0_elvis_lhs_1 == null ? '' : tmp0_elvis_lhs_1;
+      } else {
+        tmp_13 = tmp4_elvis_lhs;
+      }
+      var specie = tmp_13;
+      var tmp0 = a.get_serie_iygor7_k$();
+      var tmp$ret$93;
+      $l$block_2: {
+        // Inline function 'kotlin.collections.firstNotNullOfOrNull' call
+        var _iterator__ex2g4s_17 = tmp0.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_17.hasNext_bitz1p_k$()) {
+          var element_11 = _iterator__ex2g4s_17.next_20eer_k$();
+          var tmp0_elvis_lhs_2 = element_11.numeroAssegnato_7u91xq_k$(c);
+          var tmp_14;
+          if (tmp0_elvis_lhs_2 == null) {
+            var tmp2_safe_receiver_0 = riga == null ? null : riga.second_1;
+            var tmp3_safe_receiver = tmp2_safe_receiver_0 == null ? null : tmp2_safe_receiver_0.contrassegno_1;
+            var tmp_15;
+            if (tmp3_safe_receiver == null) {
+              tmp_15 = null;
+            } else {
+              // Inline function 'kotlin.let' call
+              tmp_15 = element_11.numeroAssegnato_7u91xq_k$(tmp3_safe_receiver);
+            }
+            tmp_14 = tmp_15;
+          } else {
+            tmp_14 = tmp0_elvis_lhs_2;
+          }
+          var result = tmp_14;
+          if (!(result == null)) {
+            tmp$ret$93 = result;
+            break $l$block_2;
+          }
+        }
+        tmp$ret$93 = null;
+      }
+      var numero = tmp$ret$93;
+      var tmp_16;
+      if (!(u == null)) {
+        tmp_16 = to('uscito_modello', u.get_testo_iz0id0_k$());
+      } else {
+        var tmp_17;
+        if (riga == null) {
+          // Inline function 'kotlin.collections.contains' call
+          // Inline function 'kotlin.collections.containsKey' call
+          tmp_17 = (isInterface(marche, KtMap) ? marche : THROW_CCE()).containsKey_aw81wo_k$(c);
+        } else {
+          tmp_17 = false;
+        }
+        if (tmp_17) {
+          tmp_16 = to('marca', 'Contrassegno non registrato su un capo (marca disponibile)');
+        } else {
+          if (riga == null) {
+            tmp_16 = to('non_in_elenco', 'Non \xE8 in nessun registro caricato');
+          } else {
+            if (riga.second_1.presente_1) {
+              tmp_16 = to('presente', 'Presente nel registro');
+            } else {
+              // Inline function 'kotlin.takeIf' call
+              var this_11 = riga.second_1.dataUscita_1;
+              var tmp_18;
+              // Inline function 'kotlin.text.isNotBlank' call
+              if (!isBlank(this_11)) {
+                tmp_18 = this_11;
+              } else {
+                tmp_18 = null;
+              }
+              var tmp6_safe_receiver = tmp_18;
+              var tmp_19;
+              if (tmp6_safe_receiver == null) {
+                tmp_19 = null;
+              } else {
+                // Inline function 'kotlin.let' call
+                tmp_19 = ' il ' + tmp6_safe_receiver;
+              }
+              // Inline function 'kotlin.text.orEmpty' call
+              var tmp0_elvis_lhs_3 = tmp_19;
+              var tmp_20 = 'Uscito' + (tmp0_elvis_lhs_3 == null ? '' : tmp0_elvis_lhs_3);
+              var tmp7_safe_receiver = p.decodificaUscite_1.get_wei43m_k$(riga.second_1.motivoUscita_1);
+              var tmp_21;
+              if (tmp7_safe_receiver == null) {
+                tmp_21 = null;
+              } else {
+                // Inline function 'kotlin.let' call
+                // Inline function 'kotlin.text.lowercase' call
+                // Inline function 'kotlin.js.asDynamic' call
+                tmp_21 = ': ' + tmp7_safe_receiver.toLowerCase();
+              }
+              var tmp8_elvis_lhs = tmp_21;
+              var tmp_22;
+              if (tmp8_elvis_lhs == null) {
+                // Inline function 'kotlin.takeIf' call
+                var this_12 = riga.second_1.motivoUscita_1;
+                var tmp_23;
+                // Inline function 'kotlin.text.isNotBlank' call
+                if (!isBlank(this_12)) {
+                  tmp_23 = this_12;
+                } else {
+                  tmp_23 = null;
+                }
+                var tmp9_safe_receiver = tmp_23;
+                var tmp_24;
+                if (tmp9_safe_receiver == null) {
+                  tmp_24 = null;
+                } else {
+                  // Inline function 'kotlin.let' call
+                  tmp_24 = ' (motivo ' + tmp9_safe_receiver + ')';
+                }
+                // Inline function 'kotlin.text.orEmpty' call
+                var tmp0_elvis_lhs_4 = tmp_24;
+                tmp_22 = tmp0_elvis_lhs_4 == null ? '' : tmp0_elvis_lhs_4;
+              } else {
+                tmp_22 = tmp8_elvis_lhs;
+              }
+              tmp_16 = to('uscito', tmp_20 + tmp_22);
+            }
+          }
+        }
+      }
+      var _destruct__k2r9zo = tmp_16;
+      var stato = _destruct__k2r9zo.component1_7eebsc_k$();
+      var descr = _destruct__k2r9zo.component2_7eebsb_k$();
+      var tmp11_safe_receiver = riga == null ? null : riga.second_1;
+      var tmp12_elvis_lhs = tmp11_safe_receiver == null ? null : tmp11_safe_receiver.codiceStabilimento_1;
+      var tmp_25;
+      if (tmp12_elvis_lhs == null) {
+        // Inline function 'kotlin.text.orEmpty' call
+        var tmp0_elvis_lhs_5 = u == null ? null : u.stabilimento_1;
+        tmp_25 = tmp0_elvis_lhs_5 == null ? '' : tmp0_elvis_lhs_5;
+      } else {
+        tmp_25 = tmp12_elvis_lhs;
+      }
+      var tmp_26 = tmp_25;
+      var tmp15_safe_receiver = riga == null ? null : riga.second_1;
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_6 = tmp15_safe_receiver == null ? null : tmp15_safe_receiver.sesso_1;
+      var tmp_27 = tmp0_elvis_lhs_6 == null ? '' : tmp0_elvis_lhs_6;
+      var tmp17_safe_receiver = riga == null ? null : riga.second_1;
+      var tmp18_safe_receiver = tmp17_safe_receiver == null ? null : tmp17_safe_receiver.razza_1;
+      var tmp_28;
+      if (tmp18_safe_receiver == null) {
+        tmp_28 = null;
+      } else {
+        // Inline function 'kotlin.let' call
+        var tmp0_safe_receiver_4 = p.razze_1.get_wei43m_k$(tmp18_safe_receiver);
+        var tmp_29;
+        if (tmp0_safe_receiver_4 == null) {
+          tmp_29 = null;
+        } else {
+          // Inline function 'kotlin.takeIf' call
+          var tmp_30;
+          // Inline function 'kotlin.text.isNotBlank' call
+          if (!isBlank(tmp0_safe_receiver_4)) {
+            tmp_30 = tmp0_safe_receiver_4;
+          } else {
+            tmp_30 = null;
+          }
+          tmp_29 = tmp_30;
+        }
+        var tmp1_elvis_lhs = tmp_29;
+        tmp_28 = tmp1_elvis_lhs == null ? tmp18_safe_receiver : tmp1_elvis_lhs;
+      }
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_7 = tmp_28;
+      var tmp_31 = tmp0_elvis_lhs_7 == null ? '' : tmp0_elvis_lhs_7;
+      var tmp20_safe_receiver = riga == null ? null : riga.second_1;
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_8 = tmp20_safe_receiver == null ? null : tmp20_safe_receiver.dataNascita_1;
+      var tmp$ret$123 = tmp0_elvis_lhs_8 == null ? '' : tmp0_elvis_lhs_8;
+      var tmp$ret$82 = new Risultato_0(c, specie, tmp_26, tmp_27, tmp_31, tmp$ret$123, stato, descr, u, numero, cerca$provetteDi(righe, c), per);
+      destination_10.add_utx5q5_k$(tmp$ret$82);
+    }
+    var out = destination_10;
+    // Inline function 'kotlin.collections.filter' call
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination_11 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_18 = provetteTrovate.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_18.hasNext_bitz1p_k$()) {
+      var element_12 = _iterator__ex2g4s_18.next_20eer_k$();
+      if (isBlank(finale(Interrogazione_instance, element_12)) && isBlank(letto_0(Interrogazione_instance, element_12))) {
+        destination_11.add_utx5q5_k$(element_12);
+      }
+    }
+    // Inline function 'kotlin.collections.map' call
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_12 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_11, 10));
+    var _iterator__ex2g4s_19 = destination_11.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_19.hasNext_bitz1p_k$()) {
+      var item_6 = _iterator__ex2g4s_19.next_20eer_k$();
+      var tmp_32 = substringBefore(item_6.serie_1, _Char___init__impl__6a9atx(58));
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_9 = item_6.caratteristiche_1.get_wei43m_k$('sesso');
+      var tmp_33 = tmp0_elvis_lhs_9 == null ? '' : tmp0_elvis_lhs_9;
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_10 = item_6.caratteristiche_1.get_wei43m_k$('razza');
+      var tmp_34 = tmp0_elvis_lhs_10 == null ? '' : tmp0_elvis_lhs_10;
+      var tmp0_elvis_lhs_11 = item_6.caratteristiche_1.get_wei43m_k$('etichetta_campo');
+      var tmp$ret$129 = new Risultato_0('', item_6.specie_1, tmp_32, tmp_33, tmp_34, '', 'senza_contrassegno', 'Animale senza contrassegno', null, null, listOf(new Provetta(item_6.uid_1, tmp0_elvis_lhs_11 == null ? item_6.etichetta_1 : tmp0_elvis_lhs_11, item_6.numero_1, statoProvetta(Interrogazione_instance, item_6), item_6.operatore_1, item_6.ts_1, '', '', item_6.serie_1)), 'provetta');
+      destination_12.add_utx5q5_k$(tmp$ret$129);
+    }
+    var senza = destination_12;
+    return take(plus(out, senza), max);
+  };
+  protoOf(Interrogazione).cerca$default_n2029q_k$ = function (query, righe, a, eventi, max, $super) {
+    max = max === VOID ? 30 : max;
+    return $super === VOID ? this.cerca_kvqm9v_k$(query, righe, a, eventi, max) : $super.cerca_kvqm9v_k$.call(this, query, righe, a, eventi, max);
+  };
+  var Interrogazione_instance;
+  function Interrogazione_getInstance() {
+    return Interrogazione_instance;
+  }
   function MessaggioRegia(id, testo, mittente, ts, sogliaPercentuale, destinatario) {
     sogliaPercentuale = sogliaPercentuale === VOID ? null : sogliaPercentuale;
     destinatario = destinatario === VOID ? 'TUTTI' : destinatario;
@@ -49999,6 +50891,33 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return distinct(plus(tmp, destination_0));
   }
+  function effettivo$conUscite(usciteModello, righe) {
+    var tmp;
+    if (usciteModello.isEmpty_y1axqb_k$()) {
+      tmp = righe;
+    } else {
+      // Inline function 'kotlin.collections.map' call
+      // Inline function 'kotlin.collections.mapTo' call
+      var destination = ArrayList_init_$Create$_0(collectionSizeOrDefault(righe, 10));
+      var _iterator__ex2g4s = righe.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+        var item = _iterator__ex2g4s.next_20eer_k$();
+        var u = usciteModello.get_wei43m_k$(FormatoContrassegno_getInstance().normalizza_nonmor_k$(item.contrassegno_1));
+        var tmp_0;
+        if (!(u == null) && item.presente_1 && isBlank(item.motivoUscita_1)) {
+          var tmp0_dataUscita = u.dataUscita_1;
+          var tmp1_motivoUscita = u.motivoUscita_1;
+          tmp_0 = item.copy$default_1sbqoy_k$(VOID, VOID, VOID, VOID, VOID, tmp0_dataUscita, tmp1_motivoUscita, VOID, VOID, false);
+        } else {
+          tmp_0 = item;
+        }
+        var tmp$ret$2 = tmp_0;
+        destination.add_utx5q5_k$(tmp$ret$2);
+      }
+      tmp = destination;
+    }
+    return tmp;
+  }
   function Companion_48() {
     Companion_instance_48 = this;
     this.recenti_1 = emptyList();
@@ -50202,156 +51121,189 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var _iterator__ex2g4s_0 = attivi.iterator_jk1svi_k$();
     while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
       var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
-      if (!element_0.aggiuntivo_1) {
+      if (element_0.usciteRecenti_1) {
         destination_0.add_utx5q5_k$(element_0);
       }
     }
-    var ordinari = destination_0;
-    // Inline function 'kotlin.collections.flatMap' call
-    // Inline function 'kotlin.collections.flatMapTo' call
+    var uscite = destination_0;
+    // Inline function 'kotlin.collections.filter' call
+    // Inline function 'kotlin.collections.filterTo' call
     var destination_1 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_1 = ordinari.iterator_jk1svi_k$();
+    var _iterator__ex2g4s_1 = attivi.iterator_jk1svi_k$();
     while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
       var element_1 = _iterator__ex2g4s_1.next_20eer_k$();
-      // Inline function 'kotlin.collections.orEmpty' call
-      var tmp0_elvis_lhs = element_1.righe_1;
-      var list = tmp0_elvis_lhs == null ? emptyList() : tmp0_elvis_lhs;
-      addAll(destination_1, list);
+      if (!element_1.aggiuntivo_1 && !element_1.usciteRecenti_1) {
+        destination_1.add_utx5q5_k$(element_1);
+      }
     }
-    var nuove = destination_1;
+    var ordinari = destination_1;
+    // Inline function 'kotlin.collections.flatMap' call
     // Inline function 'kotlin.collections.flatMapTo' call
-    var destination_2 = HashSet_init_$Create$();
+    var destination_2 = ArrayList_init_$Create$();
     var _iterator__ex2g4s_2 = ordinari.iterator_jk1svi_k$();
     while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
       var element_2 = _iterator__ex2g4s_2.next_20eer_k$();
       // Inline function 'kotlin.collections.orEmpty' call
-      var tmp0_elvis_lhs_0 = element_2.righe_1;
+      var tmp0_elvis_lhs = element_2.righe_1;
+      var list = tmp0_elvis_lhs == null ? emptyList() : tmp0_elvis_lhs;
+      addAll(destination_2, list);
+    }
+    var nuove = destination_2;
+    // Inline function 'kotlin.collections.flatMapTo' call
+    var destination_3 = HashSet_init_$Create$();
+    var _iterator__ex2g4s_3 = ordinari.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
+      var element_3 = _iterator__ex2g4s_3.next_20eer_k$();
+      // Inline function 'kotlin.collections.orEmpty' call
+      var tmp0_elvis_lhs_0 = element_3.righe_1;
       // Inline function 'kotlin.collections.mapNotNull' call
       var tmp0 = tmp0_elvis_lhs_0 == null ? emptyList() : tmp0_elvis_lhs_0;
       // Inline function 'kotlin.collections.mapNotNullTo' call
-      var destination_3 = ArrayList_init_$Create$();
+      var destination_4 = ArrayList_init_$Create$();
       // Inline function 'kotlin.collections.forEach' call
-      var _iterator__ex2g4s_3 = tmp0.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
-        var element_3 = _iterator__ex2g4s_3.next_20eer_k$();
-        var tmp0_safe_receiver = ImportatoreBdn_getInstance().specieDi_kwb7dm_k$(element_3);
+      var _iterator__ex2g4s_4 = tmp0.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
+        var element_4 = _iterator__ex2g4s_4.next_20eer_k$();
+        var tmp0_safe_receiver = ImportatoreBdn_getInstance().specieDi_kwb7dm_k$(element_4);
         var tmp;
         if (tmp0_safe_receiver == null) {
           tmp = null;
         } else {
           // Inline function 'kotlin.let' call
-          tmp = RegistriCaricati_getInstance().allevamento_alkmv8_k$(element_2.codice_1, tmp0_safe_receiver, element_3);
+          tmp = RegistriCaricati_getInstance().allevamento_alkmv8_k$(element_3.codice_1, tmp0_safe_receiver, element_4);
         }
         var tmp0_safe_receiver_0 = tmp;
         if (tmp0_safe_receiver_0 == null)
           null;
         else {
           // Inline function 'kotlin.let' call
-          destination_3.add_utx5q5_k$(tmp0_safe_receiver_0);
+          destination_4.add_utx5q5_k$(tmp0_safe_receiver_0);
         }
       }
-      var list_0 = destination_3;
-      addAll(destination_2, list_0);
+      var list_0 = destination_4;
+      addAll(destination_3, list_0);
     }
-    var sostituiti = destination_2;
+    var sostituiti = destination_3;
     var primaPecore = effettivo$registri(base, sostituiti, nuove, Specie_PECORE_getInstance());
     var primaCapre = effettivo$registri(base, sostituiti, nuove, Specie_CAPRE_getInstance());
     var tmp0_0 = plus(primaPecore, primaCapre);
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_4 = HashSet_init_$Create$();
-    var _iterator__ex2g4s_4 = tmp0_0.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
-      var item = _iterator__ex2g4s_4.next_20eer_k$();
-      var tmp$ret$23 = FormatoContrassegno_getInstance().normalizza_nonmor_k$(item.contrassegno_1);
-      destination_4.add_utx5q5_k$(tmp$ret$23);
+    var destination_5 = HashSet_init_$Create$();
+    var _iterator__ex2g4s_5 = tmp0_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_5.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s_5.next_20eer_k$();
+      var tmp$ret$26 = FormatoContrassegno_getInstance().normalizza_nonmor_k$(item.contrassegno_1);
+      destination_5.add_utx5q5_k$(tmp$ret$26);
     }
-    var noti = destination_4;
+    var noti = destination_5;
     // Inline function 'kotlin.collections.filter' call
     // Inline function 'kotlin.collections.filterTo' call
-    var destination_5 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_5 = attivi.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_5.hasNext_bitz1p_k$()) {
-      var element_4 = _iterator__ex2g4s_5.next_20eer_k$();
-      if (element_4.aggiuntivo_1) {
-        destination_5.add_utx5q5_k$(element_4);
+    var destination_6 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_6 = attivi.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_6.hasNext_bitz1p_k$()) {
+      var element_5 = _iterator__ex2g4s_6.next_20eer_k$();
+      if (element_5.aggiuntivo_1 && !element_5.usciteRecenti_1) {
+        destination_6.add_utx5q5_k$(element_5);
       }
     }
     // Inline function 'kotlin.collections.flatMap' call
-    var tmp0_1 = asReversed(destination_5);
+    var tmp0_1 = asReversed(destination_6);
     // Inline function 'kotlin.collections.flatMapTo' call
-    var destination_6 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_6 = tmp0_1.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_6.hasNext_bitz1p_k$()) {
-      var element_5 = _iterator__ex2g4s_6.next_20eer_k$();
-      // Inline function 'kotlin.collections.orEmpty' call
-      var tmp0_elvis_lhs_1 = element_5.righe_1;
-      var list_1 = tmp0_elvis_lhs_1 == null ? emptyList() : tmp0_elvis_lhs_1;
-      addAll(destination_6, list_1);
-    }
-    // Inline function 'kotlin.collections.filter' call
-    // Inline function 'kotlin.collections.filterTo' call
     var destination_7 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_7 = destination_6.iterator_jk1svi_k$();
+    var _iterator__ex2g4s_7 = tmp0_1.iterator_jk1svi_k$();
     while (_iterator__ex2g4s_7.hasNext_bitz1p_k$()) {
       var element_6 = _iterator__ex2g4s_7.next_20eer_k$();
-      if (noti.add_utx5q5_k$(FormatoContrassegno_getInstance().normalizza_nonmor_k$(element_6.contrassegno_1))) {
-        destination_7.add_utx5q5_k$(element_6);
-      }
+      // Inline function 'kotlin.collections.orEmpty' call
+      var tmp0_elvis_lhs_1 = element_6.righe_1;
+      var list_1 = tmp0_elvis_lhs_1 == null ? emptyList() : tmp0_elvis_lhs_1;
+      addAll(destination_7, list_1);
     }
-    var aggiunte = asReversed(destination_7);
     // Inline function 'kotlin.collections.filter' call
     // Inline function 'kotlin.collections.filterTo' call
     var destination_8 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_8 = aggiunte.iterator_jk1svi_k$();
+    var _iterator__ex2g4s_8 = destination_7.iterator_jk1svi_k$();
     while (_iterator__ex2g4s_8.hasNext_bitz1p_k$()) {
       var element_7 = _iterator__ex2g4s_8.next_20eer_k$();
-      if (equals(ImportatoreBdn_getInstance().specieDi_kwb7dm_k$(element_7), Specie_PECORE_getInstance())) {
+      if (noti.add_utx5q5_k$(FormatoContrassegno_getInstance().normalizza_nonmor_k$(element_7.contrassegno_1))) {
         destination_8.add_utx5q5_k$(element_7);
       }
     }
-    var pecore = plus(primaPecore, destination_8);
-    // Inline function 'kotlin.collections.filter' call
-    // Inline function 'kotlin.collections.filterTo' call
+    var aggiunte = asReversed(destination_8);
+    // Inline function 'kotlin.collections.flatMap' call
+    // Inline function 'kotlin.collections.flatMapTo' call
     var destination_9 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_9 = aggiunte.iterator_jk1svi_k$();
+    var _iterator__ex2g4s_9 = uscite.iterator_jk1svi_k$();
     while (_iterator__ex2g4s_9.hasNext_bitz1p_k$()) {
       var element_8 = _iterator__ex2g4s_9.next_20eer_k$();
-      if (equals(ImportatoreBdn_getInstance().specieDi_kwb7dm_k$(element_8), Specie_CAPRE_getInstance())) {
-        destination_9.add_utx5q5_k$(element_8);
-      }
+      // Inline function 'kotlin.collections.orEmpty' call
+      var tmp0_elvis_lhs_2 = element_8.righe_1;
+      var list_2 = tmp0_elvis_lhs_2 == null ? emptyList() : tmp0_elvis_lhs_2;
+      addAll(destination_9, list_2);
     }
-    var capre = plus(primaCapre, destination_9);
-    // Inline function 'kotlin.collections.map' call
-    var this_0 = plus(nuove, aggiunte);
-    // Inline function 'kotlin.collections.mapTo' call
-    var destination_10 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
-    var _iterator__ex2g4s_10 = this_0.iterator_jk1svi_k$();
+    // Inline function 'kotlin.collections.associateBy' call
+    var capacity = coerceAtLeast(mapCapacity(collectionSizeOrDefault(destination_9, 10)), 16);
+    // Inline function 'kotlin.collections.associateByTo' call
+    var destination_10 = LinkedHashMap_init_$Create$_0(capacity);
+    var _iterator__ex2g4s_10 = destination_9.iterator_jk1svi_k$();
     while (_iterator__ex2g4s_10.hasNext_bitz1p_k$()) {
-      var item_0 = _iterator__ex2g4s_10.next_20eer_k$();
-      var tmp$ret$42 = item_0.razza_1;
-      destination_10.add_utx5q5_k$(tmp$ret$42);
+      var element_9 = _iterator__ex2g4s_10.next_20eer_k$();
+      var tmp$ret$43 = FormatoContrassegno_getInstance().normalizza_nonmor_k$(element_9.contrassegno_1);
+      destination_10.put_4fpzoq_k$(tmp$ret$43, element_9);
     }
+    var usciteModello = destination_10;
     // Inline function 'kotlin.collections.filter' call
     // Inline function 'kotlin.collections.filterTo' call
     var destination_11 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_11 = destination_10.iterator_jk1svi_k$();
+    var _iterator__ex2g4s_11 = aggiunte.iterator_jk1svi_k$();
     while (_iterator__ex2g4s_11.hasNext_bitz1p_k$()) {
-      var element_9 = _iterator__ex2g4s_11.next_20eer_k$();
+      var element_10 = _iterator__ex2g4s_11.next_20eer_k$();
+      if (equals(ImportatoreBdn_getInstance().specieDi_kwb7dm_k$(element_10), Specie_PECORE_getInstance())) {
+        destination_11.add_utx5q5_k$(element_10);
+      }
+    }
+    var pecore = effettivo$conUscite(usciteModello, plus(primaPecore, destination_11));
+    // Inline function 'kotlin.collections.filter' call
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination_12 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_12 = aggiunte.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_12.hasNext_bitz1p_k$()) {
+      var element_11 = _iterator__ex2g4s_12.next_20eer_k$();
+      if (equals(ImportatoreBdn_getInstance().specieDi_kwb7dm_k$(element_11), Specie_CAPRE_getInstance())) {
+        destination_12.add_utx5q5_k$(element_11);
+      }
+    }
+    var capre = effettivo$conUscite(usciteModello, plus(primaCapre, destination_12));
+    // Inline function 'kotlin.collections.map' call
+    var this_0 = plus(nuove, aggiunte);
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_13 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
+    var _iterator__ex2g4s_13 = this_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_13.hasNext_bitz1p_k$()) {
+      var item_0 = _iterator__ex2g4s_13.next_20eer_k$();
+      var tmp$ret$52 = item_0.razza_1;
+      destination_13.add_utx5q5_k$(tmp$ret$52);
+    }
+    // Inline function 'kotlin.collections.filter' call
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination_14 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_14 = destination_13.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_14.hasNext_bitz1p_k$()) {
+      var element_12 = _iterator__ex2g4s_14.next_20eer_k$();
       var tmp_0;
       // Inline function 'kotlin.text.isNotBlank' call
-      if (!isBlank(element_9)) {
+      if (!isBlank(element_12)) {
         // Inline function 'kotlin.collections.contains' call
         // Inline function 'kotlin.collections.containsKey' call
         var this_1 = base.razze_1;
-        tmp_0 = !(isInterface(this_1, KtMap) ? this_1 : THROW_CCE()).containsKey_aw81wo_k$(element_9);
+        tmp_0 = !(isInterface(this_1, KtMap) ? this_1 : THROW_CCE()).containsKey_aw81wo_k$(element_12);
       } else {
         tmp_0 = false;
       }
       if (tmp_0) {
-        destination_11.add_utx5q5_k$(element_9);
+        destination_14.add_utx5q5_k$(element_12);
       }
     }
-    var razzeNuove = distinct(destination_11);
+    var razzeNuove = distinct(destination_14);
     var tmp0_registri = new Registri(pecore, capre);
     var tmp1_specieDati = new SpecieDati(ImportatoreBdn_getInstance().classifica_n8ycv8_k$(pecore, effettivo$marche(base, attivi, Specie_PECORE_getInstance())), ImportatoreBdn_getInstance().classifica_n8ycv8_k$(capre, effettivo$marche(base, attivi, Specie_CAPRE_getInstance())));
     var tmp_1;
@@ -50361,10 +51313,10 @@ if (typeof String.prototype.startsWith === 'undefined') {
       // Inline function 'kotlin.collections.associateWith' call
       var result = LinkedHashMap_init_$Create$_0(coerceAtLeast(mapCapacity(collectionSizeOrDefault(razzeNuove, 10)), 16));
       // Inline function 'kotlin.collections.associateWithTo' call
-      var _iterator__ex2g4s_12 = razzeNuove.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_12.hasNext_bitz1p_k$()) {
-        var element_10 = _iterator__ex2g4s_12.next_20eer_k$();
-        result.put_4fpzoq_k$(element_10, '');
+      var _iterator__ex2g4s_15 = razzeNuove.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_15.hasNext_bitz1p_k$()) {
+        var element_13 = _iterator__ex2g4s_15.next_20eer_k$();
+        result.put_4fpzoq_k$(element_13, '');
       }
       tmp_1 = plus_4(base.razze_1, result);
     }
@@ -50639,9 +51591,10 @@ if (typeof String.prototype.startsWith === 'undefined') {
     this.codice_1 = codice;
     this.nome_1 = nome;
   }
-  function RegistroCaricato(codice, ruolo, verso, motivo, fonte, righe, marchePecore, marcheCapre, op, ts, iniziale, bloccato, aggiuntivo) {
+  function RegistroCaricato(codice, ruolo, verso, motivo, fonte, righe, marchePecore, marcheCapre, op, ts, iniziale, bloccato, aggiuntivo, usciteRecenti) {
     bloccato = bloccato === VOID ? false : bloccato;
     aggiuntivo = aggiuntivo === VOID ? false : aggiuntivo;
+    usciteRecenti = usciteRecenti === VOID ? false : usciteRecenti;
     this.codice_1 = codice;
     this.ruolo_1 = ruolo;
     this.verso_1 = verso;
@@ -50655,14 +51608,15 @@ if (typeof String.prototype.startsWith === 'undefined') {
     this.iniziale_1 = iniziale;
     this.bloccato_1 = bloccato;
     this.aggiuntivo_1 = aggiuntivo;
+    this.usciteRecenti_1 = usciteRecenti;
   }
   protoOf(RegistroCaricato).marche_yxhf2o_k$ = function (specie) {
     return specie.equals(Specie_PECORE_getInstance()) ? this.marchePecore_1 : this.marcheCapre_1;
   };
-  protoOf(RegistroCaricato).copy_hkobpk_k$ = function (codice, ruolo, verso, motivo, fonte, righe, marchePecore, marcheCapre, op, ts, iniziale, bloccato, aggiuntivo) {
-    return new RegistroCaricato(codice, ruolo, verso, motivo, fonte, righe, marchePecore, marcheCapre, op, ts, iniziale, bloccato, aggiuntivo);
+  protoOf(RegistroCaricato).copy_79tpf_k$ = function (codice, ruolo, verso, motivo, fonte, righe, marchePecore, marcheCapre, op, ts, iniziale, bloccato, aggiuntivo, usciteRecenti) {
+    return new RegistroCaricato(codice, ruolo, verso, motivo, fonte, righe, marchePecore, marcheCapre, op, ts, iniziale, bloccato, aggiuntivo, usciteRecenti);
   };
-  protoOf(RegistroCaricato).copy$default_ge4kcq_k$ = function (codice, ruolo, verso, motivo, fonte, righe, marchePecore, marcheCapre, op, ts, iniziale, bloccato, aggiuntivo, $super) {
+  protoOf(RegistroCaricato).copy$default_l06jio_k$ = function (codice, ruolo, verso, motivo, fonte, righe, marchePecore, marcheCapre, op, ts, iniziale, bloccato, aggiuntivo, usciteRecenti, $super) {
     codice = codice === VOID ? this.codice_1 : codice;
     ruolo = ruolo === VOID ? this.ruolo_1 : ruolo;
     verso = verso === VOID ? this.verso_1 : verso;
@@ -50676,10 +51630,11 @@ if (typeof String.prototype.startsWith === 'undefined') {
     iniziale = iniziale === VOID ? this.iniziale_1 : iniziale;
     bloccato = bloccato === VOID ? this.bloccato_1 : bloccato;
     aggiuntivo = aggiuntivo === VOID ? this.aggiuntivo_1 : aggiuntivo;
-    return $super === VOID ? this.copy_hkobpk_k$(codice, ruolo, verso, motivo, fonte, righe, marchePecore, marcheCapre, op, ts, iniziale, bloccato, aggiuntivo) : $super.copy_hkobpk_k$.call(this, codice, ruolo, verso, motivo, fonte, righe, marchePecore, marcheCapre, op, ts, iniziale, bloccato, aggiuntivo);
+    usciteRecenti = usciteRecenti === VOID ? this.usciteRecenti_1 : usciteRecenti;
+    return $super === VOID ? this.copy_79tpf_k$(codice, ruolo, verso, motivo, fonte, righe, marchePecore, marcheCapre, op, ts, iniziale, bloccato, aggiuntivo, usciteRecenti) : $super.copy_79tpf_k$.call(this, codice, ruolo, verso, motivo, fonte, righe, marchePecore, marcheCapre, op, ts, iniziale, bloccato, aggiuntivo, usciteRecenti);
   };
   protoOf(RegistroCaricato).toString = function () {
-    return 'RegistroCaricato(codice=' + this.codice_1 + ', ruolo=' + this.ruolo_1.toString() + ', verso=' + this.verso_1 + ', motivo=' + this.motivo_1 + ', fonte=' + this.fonte_1 + ', righe=' + toString_0(this.righe_1) + ', marchePecore=' + toString_0(this.marchePecore_1) + ', marcheCapre=' + toString_0(this.marcheCapre_1) + ', op=' + this.op_1 + ', ts=' + this.ts_1 + ', iniziale=' + this.iniziale_1 + ', bloccato=' + this.bloccato_1 + ', aggiuntivo=' + this.aggiuntivo_1 + ')';
+    return 'RegistroCaricato(codice=' + this.codice_1 + ', ruolo=' + this.ruolo_1.toString() + ', verso=' + this.verso_1 + ', motivo=' + this.motivo_1 + ', fonte=' + this.fonte_1 + ', righe=' + toString_0(this.righe_1) + ', marchePecore=' + toString_0(this.marchePecore_1) + ', marcheCapre=' + toString_0(this.marcheCapre_1) + ', op=' + this.op_1 + ', ts=' + this.ts_1 + ', iniziale=' + this.iniziale_1 + ', bloccato=' + this.bloccato_1 + ', aggiuntivo=' + this.aggiuntivo_1 + ', usciteRecenti=' + this.usciteRecenti_1 + ')';
   };
   protoOf(RegistroCaricato).hashCode = function () {
     var result = getStringHashCode(this.codice_1);
@@ -50695,6 +51650,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     result = imul(result, 31) + getBooleanHashCode(this.iniziale_1) | 0;
     result = imul(result, 31) + getBooleanHashCode(this.bloccato_1) | 0;
     result = imul(result, 31) + getBooleanHashCode(this.aggiuntivo_1) | 0;
+    result = imul(result, 31) + getBooleanHashCode(this.usciteRecenti_1) | 0;
     return result;
   };
   protoOf(RegistroCaricato).equals = function (other) {
@@ -50727,6 +51683,8 @@ if (typeof String.prototype.startsWith === 'undefined') {
     if (!(this.bloccato_1 === other.bloccato_1))
       return false;
     if (!(this.aggiuntivo_1 === other.aggiuntivo_1))
+      return false;
+    if (!(this.usciteRecenti_1 === other.usciteRecenti_1))
       return false;
     return true;
   };
@@ -51135,7 +52093,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var tmp = RegistriCaricati$di$lambda;
     var tmp_0 = RegistriCaricati$di$lambda_0;
     var _iterator__ex2g4s = sortedWith(eventi, compareBy([tmp, tmp_0, RegistriCaricati$di$lambda_1])).iterator_jk1svi_k$();
-    $l$loop_9: while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+    $l$loop_10: while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
       var e = _iterator__ex2g4s.next_20eer_k$();
       switch (e.tipo_1) {
         case 'IMPOSTAZIONI_PROGETTO':
@@ -51181,7 +52139,16 @@ if (typeof String.prototype.startsWith === 'undefined') {
               // Inline function 'kotlin.collections.plusAssign' call
               var elements = AnagrafeBdn_instance.registri_7b8eeg_k$(e, lavoro);
               addAll(integrati, elements);
-              continue $l$loop_9;
+              continue $l$loop_10;
+            }
+            // Inline function 'kotlin.collections.contains' call
+            // Inline function 'kotlin.collections.containsKey' call
+            var key_0 = 'uscite_modello';
+            if ((isInterface(d, KtMap) ? d : THROW_CCE()).containsKey_aw81wo_k$(key_0)) {
+              // Inline function 'kotlin.collections.plusAssign' call
+              var elements_0 = UsciteModello_getInstance().registri_6fgftm_k$(e);
+              addAll(integrati, elements_0);
+              continue $l$loop_10;
             }
             var tmp3_safe_receiver = testo_4(this, d, 'codice');
             var tmp_2;
@@ -51203,7 +52170,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
             var tmp5_elvis_lhs = tmp_3;
             var tmp_4;
             if (tmp5_elvis_lhs == null) {
-              continue $l$loop_9;
+              continue $l$loop_10;
             } else {
               tmp_4 = tmp5_elvis_lhs;
             }
@@ -51211,7 +52178,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
             var tmp6_elvis_lhs = Companion_instance_49.di_j0pbpe_k$(testo_4(this, d, 'ruolo'));
             var tmp_5;
             if (tmp6_elvis_lhs == null) {
-              continue $l$loop_9;
+              continue $l$loop_10;
             } else {
               tmp_5 = tmp6_elvis_lhs;
             }
@@ -51220,10 +52187,10 @@ if (typeof String.prototype.startsWith === 'undefined') {
               // Inline function 'kotlin.collections.set' call
               var value = leggi_1(this, e, codice, letto, '', true);
               iniziali.put_4fpzoq_k$(codice, value);
-              continue $l$loop_9;
+              continue $l$loop_10;
             }
             if (isBlank(codice))
-              continue $l$loop_9;
+              continue $l$loop_10;
             var prima = caricati.get_wei43m_k$(codice);
             var ruolo = lavoro.contains_aljjnj_k$(codice) ? letto.equals(RuoloRegistro_RITIRATO_getInstance()) ? RuoloRegistro_RITIRATO_getInstance() : RuoloRegistro_LAVORO_getInstance() : letto.equals(RuoloRegistro_LAVORO_getInstance()) ? RuoloRegistro_ALTRO_getInstance() : letto;
             var tmp_6;
@@ -51258,7 +52225,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
             var verso = tmp_6;
             if (!(prima == null) && prima.bloccato_1) {
               if (ruolo.equals(RuoloRegistro_RITIRATO_getInstance()))
-                continue $l$loop_9;
+                continue $l$loop_10;
               ruolo = prima.ruolo_1;
               verso = prima.verso_1;
             }
@@ -51270,22 +52237,22 @@ if (typeof String.prototype.startsWith === 'undefined') {
                 tmp_10 = false;
               }
               if (tmp_10)
-                continue $l$loop_9;
+                continue $l$loop_10;
               caricati.remove_gppy8k_k$(codice);
-              continue $l$loop_9;
+              continue $l$loop_10;
             }
             var nuovo = leggi_1(this, e, codice, ruolo, verso, false);
             var tmp_11;
             if (ruolo.equals(RuoloRegistro_LAVORO_getInstance()) && aperto && !(nuovo.righe_1 == null)) {
               // Inline function 'kotlin.collections.orEmpty' call
               var tmp0_elvis_lhs_0 = prima == null ? null : prima.righe_1;
-              var tmp$ret$13 = tmp0_elvis_lhs_0 == null ? emptyList() : tmp0_elvis_lhs_0;
-              tmp_11 = this.sostituisceAllevamenti_odhwf5_k$(codice, nuovo.righe_1, plus(righeDiPartenza, tmp$ret$13));
+              var tmp$ret$16 = tmp0_elvis_lhs_0 == null ? emptyList() : tmp0_elvis_lhs_0;
+              tmp_11 = this.sostituisceAllevamenti_odhwf5_k$(codice, nuovo.righe_1, plus(righeDiPartenza, tmp$ret$16));
             } else {
               tmp_11 = false;
             }
             if (tmp_11)
-              continue $l$loop_9;
+              continue $l$loop_10;
             var tmp17_righe = this.unisciRighe_906ax8_k$(prima == null ? null : prima.righe_1, nuovo.righe_1);
             var tmp12_elvis_lhs = nuovo.marchePecore_1;
             var tmp_12;
@@ -51316,7 +52283,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
             var tmp20_fonte = tmp_14;
             var tmp21_bloccato = (prima == null ? null : prima.bloccato_1) === true;
             // Inline function 'kotlin.collections.set' call
-            var value_0 = nuovo.copy$default_ge4kcq_k$(VOID, VOID, VOID, VOID, tmp20_fonte, tmp17_righe, tmp18_marchePecore, tmp19_marcheCapre, VOID, VOID, VOID, tmp21_bloccato);
+            var value_0 = nuovo.copy$default_l06jio_k$(VOID, VOID, VOID, VOID, tmp20_fonte, tmp17_righe, tmp18_marchePecore, tmp19_marcheCapre, VOID, VOID, VOID, tmp21_bloccato);
             caricati.put_4fpzoq_k$(codice, value_0);
           }
 
@@ -51344,7 +52311,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
           var tmp24_elvis_lhs = tmp_16;
           var tmp_17;
           if (tmp24_elvis_lhs == null) {
-            continue $l$loop_9;
+            continue $l$loop_10;
           } else {
             tmp_17 = tmp24_elvis_lhs;
           }
@@ -51353,7 +52320,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
           var tmp25_elvis_lhs = caricati.get_wei43m_k$(c);
           var tmp_18;
           if (tmp25_elvis_lhs == null) {
-            continue $l$loop_9;
+            continue $l$loop_10;
           } else {
             tmp_18 = tmp25_elvis_lhs;
           }
@@ -51361,7 +52328,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
           var r = tmp_18;
           if (!lavoro.contains_aljjnj_k$(c) && !r.bloccato_1) {
             // Inline function 'kotlin.collections.set' call
-            var value_1 = r.copy$default_ge4kcq_k$(VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, true);
+            var value_1 = r.copy$default_l06jio_k$(VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, true);
             caricati.put_4fpzoq_k$(c, value_1);
           }
 
@@ -52716,19 +53683,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var tmp1_safe_receiver = tmp_0;
     return tmp1_safe_receiver == null ? null : tmp1_safe_receiver.get_content_h02jrk_k$();
   }
-  function sam$kotlin_Comparator$0_10(function_0) {
+  function sam$kotlin_Comparator$0_11(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_10).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_11).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_10).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_11).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_10).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_11).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_10).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_11).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -52743,7 +53710,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_10).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_11).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function Ricercati$elenco$lambda(it) {
@@ -53177,7 +54144,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     // Inline function 'kotlin.collections.sortedBy' call
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp_0 = Ricercati$csv$lambda(trovati);
-    var tmp$ret$6 = new sam$kotlin_Comparator$0_10(tmp_0);
+    var tmp$ret$6 = new sam$kotlin_Comparator$0_11(tmp_0);
     // Inline function 'kotlin.collections.forEach' call
     var _iterator__ex2g4s_0 = sortedWith(voci, tmp$ret$6).iterator_jk1svi_k$();
     while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
@@ -55468,19 +56435,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return false;
     return true;
   };
-  function sam$kotlin_Comparator$0_11(function_0) {
+  function sam$kotlin_Comparator$0_12(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_11).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_12).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_11).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_12).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_11).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_12).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_11).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_12).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -55495,7 +56462,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_11).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_12).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function TipologieProblemi$di$lambda(a, b) {
@@ -55551,7 +56518,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var this_0 = toList_1(destination_0);
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp_0 = TipologieProblemi$di$lambda;
-    var tmp$ret$9 = new sam$kotlin_Comparator$0_11(tmp_0);
+    var tmp$ret$9 = new sam$kotlin_Comparator$0_12(tmp_0);
     // Inline function 'kotlin.collections.map' call
     var this_1 = sortedWith(this_0, tmp$ret$9);
     // Inline function 'kotlin.collections.mapTo' call
@@ -55564,7 +56531,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       // Inline function 'kotlin.collections.sortedBy' call
       // Inline function 'kotlin.comparisons.compareBy' call
       var tmp_1 = TipologieProblemi$di$lambda_0;
-      var tmp$ret$14 = new sam$kotlin_Comparator$0_11(tmp_1);
+      var tmp$ret$14 = new sam$kotlin_Comparator$0_12(tmp_1);
       var tmp$ret$13 = sortedWith(l, tmp$ret$14);
       var tmp$ret$12 = new GruppoProblemi(t, tmp$ret$13);
       destination_1.add_utx5q5_k$(tmp$ret$12);
@@ -56186,6 +57153,465 @@ if (typeof String.prototype.startsWith === 'undefined') {
     static_init_24();
     return Segnalazione_BOLO_instance;
   }
+  function Uscita(stabilimento, specie, contrassegno, data, tipo, modello, destinazione, destinazioneCodice) {
+    destinazioneCodice = destinazioneCodice === VOID ? '' : destinazioneCodice;
+    this.stabilimento_1 = stabilimento;
+    this.specie_1 = specie;
+    this.contrassegno_1 = contrassegno;
+    this.data_1 = data;
+    this.tipo_1 = tipo;
+    this.modello_1 = modello;
+    this.destinazione_1 = destinazione;
+    this.destinazioneCodice_1 = destinazioneCodice;
+  }
+  protoOf(Uscita).get_testo_iz0id0_k$ = function () {
+    var tmp = 'Uscito il ' + this.data_1;
+    // Inline function 'kotlin.text.ifBlank' call
+    var this_0 = this.destinazioneCodice_1;
+    var tmp_0;
+    if (isBlank(this_0)) {
+      tmp_0 = this.destinazione_1;
+    } else {
+      tmp_0 = this_0;
+    }
+    // Inline function 'kotlin.takeIf' call
+    var this_1 = tmp_0;
+    var tmp_1;
+    // Inline function 'kotlin.text.isNotBlank' call
+    if (!isBlank(this_1)) {
+      tmp_1 = this_1;
+    } else {
+      tmp_1 = null;
+    }
+    var tmp0_safe_receiver = tmp_1;
+    var tmp_2;
+    if (tmp0_safe_receiver == null) {
+      tmp_2 = null;
+    } else {
+      // Inline function 'kotlin.let' call
+      tmp_2 = ' verso ' + tmp0_safe_receiver;
+    }
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs = tmp_2;
+    var tmp_3 = tmp + (tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs);
+    var tmp_4;
+    // Inline function 'kotlin.text.isNotBlank' call
+    var this_2 = this.modello_1;
+    if (!isBlank(this_2)) {
+      tmp_4 = ' con documento ' + this.modello_1;
+    } else {
+      tmp_4 = '';
+    }
+    return tmp_3 + tmp_4;
+  };
+  protoOf(Uscita).get_motivo_gqqdnd_k$ = function () {
+    return this.tipo_1 === 'macello' ? 'M' : 'V';
+  };
+  protoOf(Uscita).toString = function () {
+    return 'Uscita(stabilimento=' + this.stabilimento_1 + ', specie=' + this.specie_1 + ', contrassegno=' + this.contrassegno_1 + ', data=' + this.data_1 + ', tipo=' + this.tipo_1 + ', modello=' + this.modello_1 + ', destinazione=' + this.destinazione_1 + ', destinazioneCodice=' + this.destinazioneCodice_1 + ')';
+  };
+  protoOf(Uscita).hashCode = function () {
+    var result = getStringHashCode(this.stabilimento_1);
+    result = imul(result, 31) + getStringHashCode(this.specie_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.contrassegno_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.data_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.tipo_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.modello_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.destinazione_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.destinazioneCodice_1) | 0;
+    return result;
+  };
+  protoOf(Uscita).equals = function (other) {
+    if (this === other)
+      return true;
+    if (!(other instanceof Uscita))
+      return false;
+    if (!(this.stabilimento_1 === other.stabilimento_1))
+      return false;
+    if (!(this.specie_1 === other.specie_1))
+      return false;
+    if (!(this.contrassegno_1 === other.contrassegno_1))
+      return false;
+    if (!(this.data_1 === other.data_1))
+      return false;
+    if (!(this.tipo_1 === other.tipo_1))
+      return false;
+    if (!(this.modello_1 === other.modello_1))
+      return false;
+    if (!(this.destinazione_1 === other.destinazione_1))
+      return false;
+    if (!(this.destinazioneCodice_1 === other.destinazioneCodice_1))
+      return false;
+    return true;
+  };
+  function s_0($this, $receiver, k) {
+    var tmp = $receiver.get_6bo4tg_k$(k);
+    var tmp0_safe_receiver = tmp instanceof JsonPrimitive ? tmp : null;
+    var tmp_0;
+    if (tmp0_safe_receiver == null) {
+      tmp_0 = null;
+    } else {
+      // Inline function 'kotlin.takeIf' call
+      var tmp_1;
+      if (tmp0_safe_receiver.get_isString_zep7bw_k$()) {
+        tmp_1 = tmp0_safe_receiver;
+      } else {
+        tmp_1 = null;
+      }
+      tmp_0 = tmp_1;
+    }
+    var tmp1_safe_receiver = tmp_0;
+    var tmp2_safe_receiver = tmp1_safe_receiver == null ? null : tmp1_safe_receiver.get_content_h02jrk_k$();
+    var tmp_2;
+    if (tmp2_safe_receiver == null) {
+      tmp_2 = null;
+    } else {
+      // Inline function 'kotlin.text.trim' call
+      tmp_2 = toString_1(trim_0(isCharSequence(tmp2_safe_receiver) ? tmp2_safe_receiver : THROW_CCE()));
+    }
+    // Inline function 'kotlin.text.orEmpty' call
+    var tmp0_elvis_lhs = tmp_2;
+    return tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
+  }
+  function UsciteModello$inVigore$lambda(it) {
+    return it.lamport_1;
+  }
+  function UsciteModello$inVigore$lambda_0(it) {
+    return it.feed_1;
+  }
+  function UsciteModello$inVigore$lambda_1(it) {
+    return it.seq_1;
+  }
+  function UsciteModello() {
+    UsciteModello_instance = this;
+    this.FORMATO_1 = 'fejalog-uscite-modello';
+    this.AZIONE_1 = 'uscite_modello';
+    this.CAMPO_1 = 'uscite_modello';
+    this.TIPI_1 = setOf_0(['macello', 'vendita', 'altro']);
+    this.DATA_1 = Regex_init_$Create$_0('\\d{2}/\\d{2}/\\d{4}');
+  }
+  protoOf(UsciteModello).file_y21pj2_k$ = function (testo) {
+    // Inline function 'kotlin.runCatching' call
+    var tmp;
+    try {
+      // Inline function 'kotlin.Companion.success' call
+      var value = get_jsonObject(Default_getInstance().parseToJsonElement_rqvr2k_k$(removePrefix(testo, '\uFEFF')));
+      tmp = _Result___init__impl__xyqfz8(value);
+    } catch ($p) {
+      var tmp_0;
+      if ($p instanceof Error) {
+        var e = $p;
+        // Inline function 'kotlin.Companion.failure' call
+        tmp_0 = _Result___init__impl__xyqfz8(createFailure(e));
+      } else {
+        throw $p;
+      }
+      tmp = tmp_0;
+    }
+    // Inline function 'kotlin.getOrElse' call
+    var this_0 = tmp;
+    var exception = Result__exceptionOrNull_impl_p6xea9(this_0);
+    var tmp_1;
+    if (exception == null) {
+      tmp_1 = _Result___get_value__impl__bjfvqg(this_0);
+    } else {
+      throw IllegalArgumentException_init_$Create$_0('Il file non \xE8 il risultato dello snippet delle uscite per modello (JSON non valido).');
+    }
+    var o = tmp_1;
+    // Inline function 'kotlin.require' call
+    if (!(s_0(this, o, 'formato') === 'fejalog-uscite-modello')) {
+      var message = 'Il file non \xE8 un fejalog-uscite-modello.';
+      throw IllegalArgumentException_init_$Create$_0(toString_1(message));
+    }
+    // Inline function 'kotlin.require' call
+    if (!equals(o.get_6bo4tg_k$('versione'), JsonPrimitive_0(1))) {
+      var message_0 = 'Versione delle uscite per modello non valida.';
+      throw IllegalArgumentException_init_$Create$_0(toString_1(message_0));
+    }
+    // Inline function 'kotlin.text.isNotBlank' call
+    var this_1 = s_0(this, o, 'timbro');
+    // Inline function 'kotlin.require' call
+    if (!!isBlank(this_1)) {
+      var message_1 = 'Manca il timbro delle uscite per modello.';
+      throw IllegalArgumentException_init_$Create$_0(toString_1(message_1));
+    }
+    var tmp_2 = o.get_6bo4tg_k$('uscite');
+    var tmp0_elvis_lhs = tmp_2 instanceof JsonArray ? tmp_2 : null;
+    var tmp_3;
+    if (tmp0_elvis_lhs == null) {
+      throw IllegalArgumentException_init_$Create$_0('Mancano le uscite per modello.');
+    } else {
+      tmp_3 = tmp0_elvis_lhs;
+    }
+    var uscite = tmp_3;
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s = uscite.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      var tmp0_elvis_lhs_0 = element instanceof JsonObject ? element : null;
+      var tmp_4;
+      if (tmp0_elvis_lhs_0 == null) {
+        throw IllegalArgumentException_init_$Create$_0('Uscita per modello non valida.');
+      } else {
+        tmp_4 = tmp0_elvis_lhs_0;
+      }
+      var u = tmp_4;
+      // Inline function 'kotlin.text.isNotBlank' call
+      var this_2 = FormatoContrassegno_getInstance().normalizza_nonmor_k$(s_0(UsciteModello_getInstance(), u, 'contrassegno'));
+      // Inline function 'kotlin.require' call
+      if (!!isBlank(this_2)) {
+        var message_2 = 'Uscita senza contrassegno.';
+        throw IllegalArgumentException_init_$Create$_0(toString_1(message_2));
+      }
+      // Inline function 'kotlin.text.isNotBlank' call
+      var this_3 = s_0(UsciteModello_getInstance(), u, 'stabilimento');
+      // Inline function 'kotlin.require' call
+      if (!!isBlank(this_3)) {
+        var message_3 = 'Uscita senza stabilimento.';
+        throw IllegalArgumentException_init_$Create$_0(toString_1(message_3));
+      }
+      // Inline function 'kotlin.require' call
+      if (!UsciteModello_getInstance().DATA_1.matches_evli6i_k$(s_0(UsciteModello_getInstance(), u, 'data'))) {
+        var message_4 = 'Data del modello non valida (gg/mm/aaaa): ' + s_0(UsciteModello_getInstance(), u, 'data') + '.';
+        throw IllegalArgumentException_init_$Create$_0(toString_1(message_4));
+      }
+      // Inline function 'kotlin.require' call
+      if (!UsciteModello_getInstance().TIPI_1.contains_aljjnj_k$(s_0(UsciteModello_getInstance(), u, 'tipo'))) {
+        var message_5 = 'Tipo di uscita non valido: ' + s_0(UsciteModello_getInstance(), u, 'tipo') + ' (macello, vendita, altro).';
+        throw IllegalArgumentException_init_$Create$_0(toString_1(message_5));
+      }
+    }
+    Hash_instance.sha256Canonico_ig3cgj_k$(o);
+    return o;
+  };
+  protoOf(UsciteModello).uscite_7g5js8_k$ = function (o) {
+    var tmp = o.get_6bo4tg_k$('uscite');
+    // Inline function 'kotlin.collections.orEmpty' call
+    var tmp0_elvis_lhs = tmp instanceof JsonArray ? tmp : null;
+    // Inline function 'kotlin.collections.mapNotNull' call
+    var tmp0 = tmp0_elvis_lhs == null ? emptyList() : tmp0_elvis_lhs;
+    // Inline function 'kotlin.collections.mapNotNullTo' call
+    var destination = ArrayList_init_$Create$();
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s = tmp0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      var tmp$ret$5;
+      $l$block: {
+        var tmp0_elvis_lhs_0 = element instanceof JsonObject ? element : null;
+        var tmp_0;
+        if (tmp0_elvis_lhs_0 == null) {
+          tmp$ret$5 = null;
+          break $l$block;
+        } else {
+          tmp_0 = tmp0_elvis_lhs_0;
+        }
+        var u = tmp_0;
+        // Inline function 'kotlin.text.uppercase' call
+        // Inline function 'kotlin.js.asDynamic' call
+        var tmp_1 = s_0(UsciteModello_getInstance(), u, 'stabilimento').toUpperCase();
+        var tmp_2 = s_0(UsciteModello_getInstance(), u, 'specie');
+        var tmp_3 = FormatoContrassegno_getInstance().normalizza_nonmor_k$(s_0(UsciteModello_getInstance(), u, 'contrassegno'));
+        var tmp_4 = s_0(UsciteModello_getInstance(), u, 'data');
+        var tmp_5 = s_0(UsciteModello_getInstance(), u, 'tipo');
+        var tmp_6 = s_0(UsciteModello_getInstance(), u, 'modello');
+        var tmp_7 = s_0(UsciteModello_getInstance(), u, 'destinazione');
+        // Inline function 'kotlin.text.uppercase' call
+        // Inline function 'kotlin.js.asDynamic' call
+        var tmp$ret$8 = s_0(UsciteModello_getInstance(), u, 'destinazione_codice').toUpperCase();
+        tmp$ret$5 = new Uscita(tmp_1, tmp_2, tmp_3, tmp_4, tmp_5, tmp_6, tmp_7, tmp$ret$8);
+      }
+      var tmp0_safe_receiver = tmp$ret$5;
+      if (tmp0_safe_receiver == null)
+        null;
+      else {
+        // Inline function 'kotlin.let' call
+        destination.add_utx5q5_k$(tmp0_safe_receiver);
+      }
+    }
+    return destination;
+  };
+  protoOf(UsciteModello).azione_icm9na_k$ = function (testo, ts) {
+    var o = this.file_y21pj2_k$(testo);
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder = new JsonObjectBuilder();
+    put(builder, 'tipo', 'uscite_modello');
+    put(builder, 'id', 'mod-' + Hash_instance.sha256Canonico_ig3cgj_k$(o));
+    put(builder, 'ts', ts);
+    builder.put_mrde5n_k$('risultato', o);
+    return builder.build_bkh6qh_k$();
+  };
+  protoOf(UsciteModello).dati_8tlcb_k$ = function (azione) {
+    var tmp = azione.get_6bo4tg_k$('risultato');
+    var tmp0_elvis_lhs = tmp instanceof JsonObject ? tmp : null;
+    var tmp_0;
+    if (tmp0_elvis_lhs == null) {
+      throw IllegalArgumentException_init_$Create$_0('Mancano le uscite per modello.');
+    } else {
+      tmp_0 = tmp0_elvis_lhs;
+    }
+    var o = tmp_0;
+    this.file_y21pj2_k$(o.toString());
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder = new JsonObjectBuilder();
+    builder.put_mrde5n_k$('uscite_modello', o);
+    put(builder, 'fonte', 'uscite per modello ' + s_0(UsciteModello_getInstance(), o, 'timbro'));
+    return builder.build_bkh6qh_k$();
+  };
+  protoOf(UsciteModello).registri_6fgftm_k$ = function (e) {
+    var tmp = e.dati_1.get_6bo4tg_k$('uscite_modello');
+    var tmp0_elvis_lhs = tmp instanceof JsonObject ? tmp : null;
+    var tmp_0;
+    if (tmp0_elvis_lhs == null) {
+      return emptyList();
+    } else {
+      tmp_0 = tmp0_elvis_lhs;
+    }
+    var o = tmp_0;
+    // Inline function 'kotlin.runCatching' call
+    var tmp_1;
+    try {
+      this.file_y21pj2_k$(o.toString());
+      // Inline function 'kotlin.Companion.success' call
+      var value = this.uscite_7g5js8_k$(o);
+      tmp_1 = _Result___init__impl__xyqfz8(value);
+    } catch ($p) {
+      var tmp_2;
+      if ($p instanceof Error) {
+        var e_0 = $p;
+        // Inline function 'kotlin.Companion.failure' call
+        tmp_2 = _Result___init__impl__xyqfz8(createFailure(e_0));
+      } else {
+        throw $p;
+      }
+      tmp_1 = tmp_2;
+    }
+    // Inline function 'kotlin.Result.getOrNull' call
+    var this_0 = tmp_1;
+    var tmp1_elvis_lhs = _Result___get_isFailure__impl__jpiriv(this_0) ? null : _Result___get_value__impl__bjfvqg(this_0);
+    var tmp_3;
+    if (tmp1_elvis_lhs == null) {
+      return emptyList();
+    } else {
+      tmp_3 = tmp1_elvis_lhs;
+    }
+    var lista = tmp_3;
+    // Inline function 'kotlin.collections.groupBy' call
+    // Inline function 'kotlin.collections.groupByTo' call
+    var destination = LinkedHashMap_init_$Create$();
+    var _iterator__ex2g4s = lista.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      var key = element.stabilimento_1;
+      // Inline function 'kotlin.collections.getOrPut' call
+      var value_0 = destination.get_wei43m_k$(key);
+      var tmp_4;
+      if (value_0 == null) {
+        var answer = ArrayList_init_$Create$();
+        destination.put_4fpzoq_k$(key, answer);
+        tmp_4 = answer;
+      } else {
+        tmp_4 = value_0;
+      }
+      var list = tmp_4;
+      list.add_utx5q5_k$(element);
+    }
+    // Inline function 'kotlin.collections.map' call
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_0 = ArrayList_init_$Create$_0(destination.get_size_woubt6_k$());
+    // Inline function 'kotlin.collections.iterator' call
+    var _iterator__ex2g4s_0 = destination.get_entries_p20ztl_k$().iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s_0.next_20eer_k$();
+      // Inline function 'kotlin.collections.component1' call
+      var codice = item.get_key_18j28a_k$();
+      // Inline function 'kotlin.collections.component2' call
+      var usc = item.get_value_j01efc_k$();
+      var tmp_5 = RuoloRegistro_ALTRO_getInstance();
+      var tmp_6 = 'uscite per modello ' + s_0(UsciteModello_getInstance(), o, 'timbro');
+      // Inline function 'kotlin.collections.map' call
+      // Inline function 'kotlin.collections.mapTo' call
+      var destination_1 = ArrayList_init_$Create$_0(collectionSizeOrDefault(usc, 10));
+      var _iterator__ex2g4s_1 = usc.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
+        var item_0 = _iterator__ex2g4s_1.next_20eer_k$();
+        var tmp$ret$18 = new RigaRegistro(item_0.contrassegno_1, item_0.specie_1 === 'capre' ? 'CAPRINI' : 'OVINI', '', '', '', item_0.data_1, item_0.get_motivo_gqqdnd_k$(), codice, '', false);
+        destination_1.add_utx5q5_k$(tmp$ret$18);
+      }
+      var tmp$ret$13 = new RegistroCaricato(codice, tmp_5, '', '', tmp_6, destination_1, null, null, e.op_1, e.ts_1, false, VOID, VOID, true);
+      destination_0.add_utx5q5_k$(tmp$ret$13);
+    }
+    return destination_0;
+  };
+  protoOf(UsciteModello).inVigore_baf1hh_k$ = function (eventi, lavoro) {
+    var m = LinkedHashMap_init_$Create$();
+    var ammessi = RegiaImpostazioni_instance.ammessi_5kh1z5_k$(eventi, setOf('REGISTRO_CARICATO'));
+    var tmp = UsciteModello$inVigore$lambda;
+    var tmp_0 = UsciteModello$inVigore$lambda_0;
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s = sortedWith(eventi, compareBy([tmp, tmp_0, UsciteModello$inVigore$lambda_1])).iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      $l$block: {
+        if (element.tipo_1 === 'REGISTRO_CARICATO' && ammessi.contains_aljjnj_k$(to(element.feed_1, element.seq_1))) {
+          var tmp_1 = element.dati_1.get_6bo4tg_k$('uscite_modello');
+          var tmp0_elvis_lhs = tmp_1 instanceof JsonObject ? tmp_1 : null;
+          var tmp_2;
+          if (tmp0_elvis_lhs == null) {
+            break $l$block;
+          } else {
+            tmp_2 = tmp0_elvis_lhs;
+          }
+          var o = tmp_2;
+          // Inline function 'kotlin.runCatching' call
+          var this_0 = UsciteModello_getInstance();
+          var tmp_3;
+          try {
+            this_0.file_y21pj2_k$(o.toString());
+            // Inline function 'kotlin.Companion.success' call
+            var value = this_0.uscite_7g5js8_k$(o);
+            tmp_3 = _Result___init__impl__xyqfz8(value);
+          } catch ($p) {
+            var tmp_4;
+            if ($p instanceof Error) {
+              var e = $p;
+              // Inline function 'kotlin.Companion.failure' call
+              tmp_4 = _Result___init__impl__xyqfz8(createFailure(e));
+            } else {
+              throw $p;
+            }
+            tmp_3 = tmp_4;
+          }
+          // Inline function 'kotlin.Result.getOrNull' call
+          var this_1 = tmp_3;
+          var tmp1_safe_receiver = _Result___get_isFailure__impl__jpiriv(this_1) ? null : _Result___get_value__impl__bjfvqg(this_1);
+          if (tmp1_safe_receiver == null)
+            null;
+          else {
+            // Inline function 'kotlin.collections.forEach' call
+            var _iterator__ex2g4s_0 = tmp1_safe_receiver.iterator_jk1svi_k$();
+            while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+              var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
+              // Inline function 'kotlin.collections.set' call
+              var key = element_0.contrassegno_1;
+              m.put_4fpzoq_k$(key, element_0);
+            }
+          }
+        }
+      }
+    }
+    return m;
+  };
+  protoOf(UsciteModello).inVigore$default_ku6td_k$ = function (eventi, lavoro, $super) {
+    lavoro = lavoro === VOID ? emptyList() : lavoro;
+    return $super === VOID ? this.inVigore_baf1hh_k$(eventi, lavoro) : $super.inVigore_baf1hh_k$.call(this, eventi, lavoro);
+  };
+  var UsciteModello_instance;
+  function UsciteModello_getInstance() {
+    if (UsciteModello_instance == null)
+      new UsciteModello();
+    return UsciteModello_instance;
+  }
   var static_init_called_25;
   function static_init_25() {
     if (static_init_called_25)
@@ -56334,29 +57760,29 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return false;
     return true;
   };
-  function Risultato_0(contrassegno, capi, marca, errore) {
+  function Risultato_1(contrassegno, capi, marca, errore) {
     this.contrassegno_1 = contrassegno;
     this.capi_1 = capi;
     this.marca_1 = marca;
     this.errore_1 = errore;
   }
-  protoOf(Risultato_0).get_capo_wojxuu_k$ = function () {
+  protoOf(Risultato_1).get_capo_wojxuu_k$ = function () {
     return singleOrNull(this.capi_1);
   };
-  protoOf(Risultato_0).toString = function () {
+  protoOf(Risultato_1).toString = function () {
     return 'Risultato(contrassegno=' + this.contrassegno_1 + ', capi=' + toString_1(this.capi_1) + ', marca=' + toString_0(this.marca_1) + ', errore=' + this.errore_1 + ')';
   };
-  protoOf(Risultato_0).hashCode = function () {
+  protoOf(Risultato_1).hashCode = function () {
     var result = getStringHashCode(this.contrassegno_1);
     result = imul(result, 31) + hashCode_0(this.capi_1) | 0;
     result = imul(result, 31) + (this.marca_1 == null ? 0 : this.marca_1.hashCode()) | 0;
     result = imul(result, 31) + getStringHashCode(this.errore_1) | 0;
     return result;
   };
-  protoOf(Risultato_0).equals = function (other) {
+  protoOf(Risultato_1).equals = function (other) {
     if (this === other)
       return true;
-    if (!(other instanceof Risultato_0))
+    if (!(other instanceof Risultato_1))
       return false;
     if (!(this.contrassegno_1 === other.contrassegno_1))
       return false;
@@ -56430,7 +57856,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var y = tmp_0;
     return abs_0(x - y | 0);
   }
-  function s_0($this, $receiver, k) {
+  function s_1($this, $receiver, k) {
     var tmp = $receiver.get_6bo4tg_k$(k);
     var tmp0_safe_receiver = tmp instanceof JsonPrimitive ? tmp : null;
     var tmp1_safe_receiver = tmp0_safe_receiver == null ? null : get_contentOrNull(tmp0_safe_receiver);
@@ -56445,19 +57871,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var tmp0_elvis_lhs = tmp_0;
     return tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
   }
-  function sam$kotlin_Comparator$0_12(function_0) {
+  function sam$kotlin_Comparator$0_13(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_12).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_13).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_12).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_13).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_12).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_13).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_12).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_13).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -56472,7 +57898,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_12).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_13).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function VerificaBdn$daVerificare$lambda(a, b) {
@@ -56691,7 +58117,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     // Inline function 'kotlin.collections.sortedBy' call
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp_5 = VerificaBdn$daVerificare$lambda;
-    var tmp$ret$39 = new sam$kotlin_Comparator$0_12(tmp_5);
+    var tmp$ret$39 = new sam$kotlin_Comparator$0_13(tmp_5);
     return sortedWith(destination_4, tmp$ret$39);
   };
   protoOf(VerificaBdn).leggi_ayxnue_k$ = function (testo) {
@@ -56723,8 +58149,8 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     var radice = tmp_1;
     // Inline function 'kotlin.require' call
-    if (!(s_0(this, radice, 'formato') === 'fejalog-verifica-bdn')) {
-      var message = 'Il file non \xE8 il risultato dello snippet della BDN (formato \xAB' + s_0(VerificaBdn_getInstance(), radice, 'formato') + '\xBB).';
+    if (!(s_1(this, radice, 'formato') === 'fejalog-verifica-bdn')) {
+      var message = 'Il file non \xE8 il risultato dello snippet della BDN (formato \xAB' + s_1(VerificaBdn_getInstance(), radice, 'formato') + '\xBB).';
       throw IllegalArgumentException_init_$Create$_0(toString_1(message));
     }
     var tmp0_safe_receiver = radice.get_6bo4tg_k$('versione');
@@ -56762,7 +58188,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var _iterator__ex2g4s_0 = destination.iterator_jk1svi_k$();
     while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
       var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
-      var codice = FormatoContrassegno_getInstance().normalizza_nonmor_k$(s_0(VerificaBdn_getInstance(), element_0, 'contrassegno'));
+      var codice = FormatoContrassegno_getInstance().normalizza_nonmor_k$(s_1(VerificaBdn_getInstance(), element_0, 'contrassegno'));
       var tmp_3 = element_0.get_6bo4tg_k$('capi');
       // Inline function 'kotlin.collections.orEmpty' call
       var tmp0_elvis_lhs = tmp_3 instanceof JsonArray ? tmp_3 : null;
@@ -56788,7 +58214,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       var _iterator__ex2g4s_2 = destination_1.iterator_jk1svi_k$();
       while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
         var item = _iterator__ex2g4s_2.next_20eer_k$();
-        var tmp$ret$30 = new Capo(s_0(VerificaBdn_getInstance(), item, 'codice'), s_0(VerificaBdn_getInstance(), item, 'sesso'), s_0(VerificaBdn_getInstance(), item, 'razza'), s_0(VerificaBdn_getInstance(), item, 'specie'), s_0(VerificaBdn_getInstance(), item, 'nascita'), s_0(VerificaBdn_getInstance(), item, 'precedente'), s_0(VerificaBdn_getInstance(), item, 'elettronico'), s_0(VerificaBdn_getInstance(), item, 'stato'), s_0(VerificaBdn_getInstance(), item, 'stabilimento'), s_0(VerificaBdn_getInstance(), item, 'dalla_marca') === 'true');
+        var tmp$ret$30 = new Capo(s_1(VerificaBdn_getInstance(), item, 'codice'), s_1(VerificaBdn_getInstance(), item, 'sesso'), s_1(VerificaBdn_getInstance(), item, 'razza'), s_1(VerificaBdn_getInstance(), item, 'specie'), s_1(VerificaBdn_getInstance(), item, 'nascita'), s_1(VerificaBdn_getInstance(), item, 'precedente'), s_1(VerificaBdn_getInstance(), item, 'elettronico'), s_1(VerificaBdn_getInstance(), item, 'stato'), s_1(VerificaBdn_getInstance(), item, 'stabilimento'), s_1(VerificaBdn_getInstance(), item, 'dalla_marca') === 'true');
         destination_2.add_utx5q5_k$(tmp$ret$30);
       }
       var tmp_4 = destination_2;
@@ -56799,10 +58225,10 @@ if (typeof String.prototype.startsWith === 'undefined') {
         tmp_6 = null;
       } else {
         // Inline function 'kotlin.let' call
-        tmp_6 = new Marca(s_0(VerificaBdn_getInstance(), tmp0_safe_receiver_2, 'codice'), s_0(VerificaBdn_getInstance(), tmp0_safe_receiver_2, 'stato'), s_0(VerificaBdn_getInstance(), tmp0_safe_receiver_2, 'tipo_richiesta'), s_0(VerificaBdn_getInstance(), tmp0_safe_receiver_2, 'tipo_marca'), s_0(VerificaBdn_getInstance(), tmp0_safe_receiver_2, 'allevamento'), s_0(VerificaBdn_getInstance(), tmp0_safe_receiver_2, 'specie'), s_0(VerificaBdn_getInstance(), tmp0_safe_receiver_2, 'data_richiesta'));
+        tmp_6 = new Marca(s_1(VerificaBdn_getInstance(), tmp0_safe_receiver_2, 'codice'), s_1(VerificaBdn_getInstance(), tmp0_safe_receiver_2, 'stato'), s_1(VerificaBdn_getInstance(), tmp0_safe_receiver_2, 'tipo_richiesta'), s_1(VerificaBdn_getInstance(), tmp0_safe_receiver_2, 'tipo_marca'), s_1(VerificaBdn_getInstance(), tmp0_safe_receiver_2, 'allevamento'), s_1(VerificaBdn_getInstance(), tmp0_safe_receiver_2, 'specie'), s_1(VerificaBdn_getInstance(), tmp0_safe_receiver_2, 'data_richiesta'));
       }
       // Inline function 'kotlin.collections.plusAssign' call
-      var pair = to(codice, new Risultato_0(codice, tmp_4, tmp_6, s_0(VerificaBdn_getInstance(), element_0, 'errore')));
+      var pair = to(codice, new Risultato_1(codice, tmp_4, tmp_6, s_1(VerificaBdn_getInstance(), element_0, 'errore')));
       destination_0.put_4fpzoq_k$(pair.first_1, pair.second_1);
     }
     return destination_0;
@@ -57563,36 +58989,6 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return false;
     return true;
   };
-  function sam$kotlin_Comparator$0_13(function_0) {
-    this.function_1 = function_0;
-  }
-  protoOf(sam$kotlin_Comparator$0_13).compare_bczr_k$ = function (a, b) {
-    return this.function_1(a, b);
-  };
-  protoOf(sam$kotlin_Comparator$0_13).compare = function (a, b) {
-    return this.compare_bczr_k$(a, b);
-  };
-  protoOf(sam$kotlin_Comparator$0_13).getFunctionDelegate_jtodtf_k$ = function () {
-    return this.function_1;
-  };
-  protoOf(sam$kotlin_Comparator$0_13).equals = function (other) {
-    var tmp;
-    if (!(other == null) ? isInterface(other, Comparator) : false) {
-      var tmp_0;
-      if (!(other == null) ? isInterface(other, FunctionAdapter) : false) {
-        tmp_0 = equals(this.getFunctionDelegate_jtodtf_k$(), other.getFunctionDelegate_jtodtf_k$());
-      } else {
-        tmp_0 = false;
-      }
-      tmp = tmp_0;
-    } else {
-      tmp = false;
-    }
-    return tmp;
-  };
-  protoOf(sam$kotlin_Comparator$0_13).hashCode = function () {
-    return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
-  };
   function sam$kotlin_Comparator$0_14(function_0) {
     this.function_1 = function_0;
   }
@@ -57651,6 +59047,36 @@ if (typeof String.prototype.startsWith === 'undefined') {
     return tmp;
   };
   protoOf(sam$kotlin_Comparator$0_15).hashCode = function () {
+    return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
+  };
+  function sam$kotlin_Comparator$0_16(function_0) {
+    this.function_1 = function_0;
+  }
+  protoOf(sam$kotlin_Comparator$0_16).compare_bczr_k$ = function (a, b) {
+    return this.function_1(a, b);
+  };
+  protoOf(sam$kotlin_Comparator$0_16).compare = function (a, b) {
+    return this.compare_bczr_k$(a, b);
+  };
+  protoOf(sam$kotlin_Comparator$0_16).getFunctionDelegate_jtodtf_k$ = function () {
+    return this.function_1;
+  };
+  protoOf(sam$kotlin_Comparator$0_16).equals = function (other) {
+    var tmp;
+    if (!(other == null) ? isInterface(other, Comparator) : false) {
+      var tmp_0;
+      if (!(other == null) ? isInterface(other, FunctionAdapter) : false) {
+        tmp_0 = equals(this.getFunctionDelegate_jtodtf_k$(), other.getFunctionDelegate_jtodtf_k$());
+      } else {
+        tmp_0 = false;
+      }
+      tmp = tmp_0;
+    } else {
+      tmp = false;
+    }
+    return tmp;
+  };
+  protoOf(sam$kotlin_Comparator$0_16).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function GuidaPosizionamento$abbinaProvetteANumeri$lambda(it) {
@@ -57922,7 +59348,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     if (numeriRimanenti.get_size_woubt6_k$() > 1) {
       // Inline function 'kotlin.comparisons.compareBy' call
       var tmp_1 = GuidaPosizionamento$abbinaProvetteANumeri$lambda_2;
-      var tmp$ret$4 = new sam$kotlin_Comparator$0_13(tmp_1);
+      var tmp$ret$4 = new sam$kotlin_Comparator$0_14(tmp_1);
       sortWith_0(numeriRimanenti, tmp$ret$4);
     }
     var tmp0 = candidatiRimanenti.get_size_woubt6_k$();
@@ -58107,7 +59533,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     // Inline function 'kotlin.collections.sortedBy' call
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp_4 = GuidaPosizionamento$passiFisici$lambda;
-    var tmp$ret$37 = new sam$kotlin_Comparator$0_14(tmp_4);
+    var tmp$ret$37 = new sam$kotlin_Comparator$0_15(tmp_4);
     return sortedWith(destination_3, tmp$ret$37);
   };
   protoOf(GuidaPosizionamento).righeGuida_gqhuoi_k$ = function (sistemazione, specie, righe, serie, statoRighe) {
@@ -58189,7 +59615,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     // Inline function 'kotlin.collections.sortedBy' call
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp_4 = GuidaPosizionamento$righeGuida$lambda;
-    var tmp$ret$20 = new sam$kotlin_Comparator$0_15(tmp_4);
+    var tmp$ret$20 = new sam$kotlin_Comparator$0_16(tmp_4);
     return sortedWith(destination_2, tmp$ret$20);
   };
   protoOf(GuidaPosizionamento).costruisciElementi_9ks1l1_k$ = function (numerazione, spostamenti, righeValide, letteraSerie, stabilimento, specie) {
@@ -62532,19 +63958,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   }
-  function sam$kotlin_Comparator$0_16(function_0) {
+  function sam$kotlin_Comparator$0_17(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_16).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_17).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_16).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_17).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_16).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_17).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_16).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_17).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -62559,7 +63985,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_16).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_17).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function ProduttivitaGestione$calcola$lambda(a, b) {
@@ -62794,7 +64220,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     // Inline function 'kotlin.collections.sortedBy' call
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp_1 = ProduttivitaGestione$calcola$lambda;
-    var tmp$ret$32 = new sam$kotlin_Comparator$0_16(tmp_1);
+    var tmp$ret$32 = new sam$kotlin_Comparator$0_17(tmp_1);
     var evGestione = sortedWith(destination_6, tmp$ret$32);
     // Inline function 'kotlin.collections.groupBy' call
     // Inline function 'kotlin.collections.groupByTo' call
@@ -66128,178 +67554,179 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function _init_properties_Novita_kt__yjl2f3() {
     if (!properties_initialized_Novita_kt_q4rozh) {
       properties_initialized_Novita_kt_q4rozh = true;
-      var tmp = new Novita('2026-11-18-1015', '18/11/2026, build 10:15', listOf_0(["Elimina una provetta registrata per errore (animale o specie sbagliati, provetta vuota): la casella \xABRegistrata per errore\xBB toglie il doppio dall'altra registrazione dello stesso capo.", 'La Regia pu\xF2 eliminare anche una provetta gi\xE0 consegnata o posata: il numero torna al capo, e il foglio ricorda di buttare la provetta gi\xE0 scritta.']), VOID, VOID, listOf_0(["Nei doppi, accanto alla proposta, un tasto \xABScambio\xBB a un clic (sito e tablet): l'allevatore tiene la marca al secondo animale e si corregge l'etichetta dell'altra provetta.", "I doppi: la ristampa \xE8 un indizio. La proposta segue il secondo animale prelevato, l'unico marcato in un altro colore e recuperato dall'allevatore."]), listOf('Una provetta gi\xE0 consegnata non si elimina pi\xF9 da un palmare: la elimina la Regia.'));
-      var tmp_0 = new Novita('2026-11-18-0656', '18/11/2026, build 06:56', emptyList(), VOID, VOID, listOf('Sul sito, in \xABFine lavori sul computer\xBB e negli altri strumenti, i tasti hanno bordo e rilievo, i campi da compilare un bordo arancione e le schede si riconoscono come schede.'), listOf_0(['Un capo riattribuito o spostato e poi annullato prima della consegna non riapre pi\xF9 il numero al capo di partenza.', "Sul sito, nei doppi la ristampa \xE8 un indizio: la proposta resta di attribuire a un capo assente il secondo animale prelevato (l'unico marcato in un altro colore e recuperato), anche se \xE8 l'originale; se l'allevatore fa il contrario si attribuisce l'altra provetta."]));
-      var tmp_1 = new Novita('2026-11-17-2300', '17/11/2026, build 23:00', listOf_0(["Doppi: se il capo l'hai appena registrato tu (ultimi 5 prelievi o 10 minuti) una conferma in pi\xF9, col tasto principale su \xAB\xC8 lo stesso: non prelevare\xBB.", "Doppi: nel foglio di \xABPreleva come doppio\xBB si tocca il numero di ristampa dell'auricolare (0 = originale); per il primo animale, se si ritrova, da Ultime \u203A Modifica.", 'Dopo un annullo il capo torna da prelevare col suo numero, se la provetta annullata non era stata consegnata; il foglio ricorda di buttare la provetta gi\xE0 scritta.', "Campionamento con l'elenco dei propri prelievi e un tasto \xAB+\xBB, a scelta in Impostazioni \u203A Dispositivo.", 'Sul sito, \xABFine lavori sul computer\xBB: una sola scheda Sistemazione, in ordine fisso (smista, di chi \xE8, al loro posto, in fondo, chiudi i buchi), con la cronologia e \xABAnnulla\xBB, il salvataggio su disco a ogni azione e la ripresa dopo aver ricaricato la pagina.', "Sul sito, \xABEsito del risanamento\xBB per l'allevatore: una pagina discorsiva con gli elenchi capo per capo e l'Excel."]), VOID, VOID, listOf_0(['I caratteri non seguono pi\xF9 le impostazioni del telefono: il tastierino resta intero; \xABCaratteri: Normali / Grandi\xBB in Impostazioni \u203A Dispositivo.', 'Tastierino pi\xF9 grande: via la scritta sotto, i comandi in una riga.', 'La data di nascita si suggerisce come gg.mm.aaaa: punto, trattino e barra vanno tutti bene.', "Scelto fra pi\xF9 candidati un capo dell'altra specie, l'app chiede conferma (\xABNei registri \xE8 una pecora\u2026\xBB).", 'Lo snippet ARVET si ottiene sempre: se non \xE8 conforme lo dice e porta solo le righe sicure; accanto, \xABSvuota i numeri\xBB per la doppia accettazione dei maschi.', 'Sul sito le pose delle provette sono molto pi\xF9 rapide.']), listOf('Un capo registrato, annullato e poi prelevato davvero non finisce pi\xF9 fra i doppi.'));
+      var tmp = new Novita('2026-11-18-1208', '18/11/2026, build 12:08', listOf_0(["Dopo un annullo il numero torna al capo anche se la consegna alla Regia \xE8 venuta dopo l'annullo (una consegna copre per intervallo anche le provette annullate).", "Sul sito, scheda Carica: \xABUscite per modello negli ultimi 7 giorni\xBB. La BDN si aggiorna fino a 7 giorni dopo il modello: quei capi non sono pi\xF9 proposti come assenti e il report per l'allevatore li elenca a parte."]), VOID, VOID, listOf('Il tablet importa dal file delle modifiche v5 anche le uscite per modello.'));
+      var tmp_0 = new Novita('2026-11-18-1015', '18/11/2026, build 10:15', listOf_0(["Elimina una provetta registrata per errore (animale o specie sbagliati, provetta vuota): la casella \xABRegistrata per errore\xBB toglie il doppio dall'altra registrazione dello stesso capo.", 'La Regia pu\xF2 eliminare anche una provetta gi\xE0 consegnata o posata: il numero torna al capo, e il foglio ricorda di buttare la provetta gi\xE0 scritta.']), VOID, VOID, listOf_0(["Nei doppi, accanto alla proposta, un tasto \xABScambio\xBB a un clic (sito e tablet): l'allevatore tiene la marca al secondo animale e si corregge l'etichetta dell'altra provetta.", "I doppi: la ristampa \xE8 un indizio. La proposta segue il secondo animale prelevato, l'unico marcato in un altro colore e recuperato dall'allevatore."]), listOf('Una provetta gi\xE0 consegnata non si elimina pi\xF9 da un palmare: la elimina la Regia.'));
+      var tmp_1 = new Novita('2026-11-18-0656', '18/11/2026, build 06:56', emptyList(), VOID, VOID, listOf('Sul sito, in \xABFine lavori sul computer\xBB e negli altri strumenti, i tasti hanno bordo e rilievo, i campi da compilare un bordo arancione e le schede si riconoscono come schede.'), listOf_0(['Un capo riattribuito o spostato e poi annullato prima della consegna non riapre pi\xF9 il numero al capo di partenza.', "Sul sito, nei doppi la ristampa \xE8 un indizio: la proposta resta di attribuire a un capo assente il secondo animale prelevato (l'unico marcato in un altro colore e recuperato), anche se \xE8 l'originale; se l'allevatore fa il contrario si attribuisce l'altra provetta."]));
+      var tmp_2 = new Novita('2026-11-17-2300', '17/11/2026, build 23:00', listOf_0(["Doppi: se il capo l'hai appena registrato tu (ultimi 5 prelievi o 10 minuti) una conferma in pi\xF9, col tasto principale su \xAB\xC8 lo stesso: non prelevare\xBB.", "Doppi: nel foglio di \xABPreleva come doppio\xBB si tocca il numero di ristampa dell'auricolare (0 = originale); per il primo animale, se si ritrova, da Ultime \u203A Modifica.", 'Dopo un annullo il capo torna da prelevare col suo numero, se la provetta annullata non era stata consegnata; il foglio ricorda di buttare la provetta gi\xE0 scritta.', "Campionamento con l'elenco dei propri prelievi e un tasto \xAB+\xBB, a scelta in Impostazioni \u203A Dispositivo.", 'Sul sito, \xABFine lavori sul computer\xBB: una sola scheda Sistemazione, in ordine fisso (smista, di chi \xE8, al loro posto, in fondo, chiudi i buchi), con la cronologia e \xABAnnulla\xBB, il salvataggio su disco a ogni azione e la ripresa dopo aver ricaricato la pagina.', "Sul sito, \xABEsito del risanamento\xBB per l'allevatore: una pagina discorsiva con gli elenchi capo per capo e l'Excel."]), VOID, VOID, listOf_0(['I caratteri non seguono pi\xF9 le impostazioni del telefono: il tastierino resta intero; \xABCaratteri: Normali / Grandi\xBB in Impostazioni \u203A Dispositivo.', 'Tastierino pi\xF9 grande: via la scritta sotto, i comandi in una riga.', 'La data di nascita si suggerisce come gg.mm.aaaa: punto, trattino e barra vanno tutti bene.', "Scelto fra pi\xF9 candidati un capo dell'altra specie, l'app chiede conferma (\xABNei registri \xE8 una pecora\u2026\xBB).", 'Lo snippet ARVET si ottiene sempre: se non \xE8 conforme lo dice e porta solo le righe sicure; accanto, \xABSvuota i numeri\xBB per la doppia accettazione dei maschi.', 'Sul sito le pose delle provette sono molto pi\xF9 rapide.']), listOf('Un capo registrato, annullato e poi prelevato davvero non finisce pi\xF9 fra i doppi.'));
       var tmp0_voci = emptyList();
       var tmp1_correzioni = listOf_0(["Verifica in BDN: i capi trovati non tolgono pi\xF9 gli altri capi dello stabilimento dalle \xABcose da fare\xBB e dal report per l'allevatore; fra due verifiche dello stesso capo vale l'ultima; il capo si trova anche dal codice elettronico letto in campo; una marca applicata in campo che la BDN trova gi\xE0 sul capo si pu\xF2 normalizzare.", 'Il file delle modifiche del sito senza verifica in BDN si apre anche su un tablet con la versione precedente.', "Rete: una Regia che si annuncia ancora non sparisce dall'elenco dei progetti dopo 2 minuti."]);
-      var tmp_2 = new Novita('2026-11-15-2014', '15/11/2026', tmp0_voci, '0.5.7', VOID, VOID, tmp1_correzioni, "Per il risanamento del 16/11 e la sistemazione delle provette: la verifica in BDN porta nel progetto i capi e le marche trovati e le provette si riclassificano da sole; \xABNuova identificazione\xBB registra l'animale marcato sul momento con una marca in giacenza; \xABSoluzioni\xBB dice dove mettere ogni provetta (al numero del capo, nel primo buco o nel suo contenitore), cos\xEC il Riordino resta per i casi residui; in Campionamento l'animale fuori dal progetto e quello senza contrassegno si inseriscono da tasti sempre visibili.");
-      var tmp_3 = new Novita('2026-11-15-1130', '15/11/2026, build 11:30', emptyList(), VOID, VOID, listOf('Campionamento: \xABNon \xE8 nel progetto: inseriscilo\xBB sotto la ricerca senza risultati; \xABSenza contrassegno\xBB e \xABNuova identificazione\xBB sempre visibili, anche senza tastierino. I tre casi sono spiegati anche nell\u2019aiuto.'), listOf_0(['L\u2019inserimento forzato riprende soltanto il codice della ricerca corrente, mai quello dell\u2019animale precedente.', 'Campionamento in orizzontale: testata compatta e comandi scorrevoli. Nel foglio anagrafico i campi seguono la tastiera e \xABAvanti\xBB passa al campo successivo.', 'Ultime: schede Pecore e Capre a larghezza intera; anche le conferme mancate e i filtri scorrono con l\u2019elenco.', 'Ricerca dei progetti: annunci vecchi rimossi dall\u2019elenco e ricerca riavviata al ritorno nella pagina o al cambio progetto.']));
-      var tmp_4 = new Novita('2026-11-14-1220', '14/11/2026', listOf_0(['Verifica in BDN: caricato il risultato dello snippet, i contrassegni trovati in BDN entrano nel progetto come capi (con sesso, razza, nascita, stabilimento e stato) e le provette si riclassificano da sole: altro stabilimento, ora in lista, uscito, contrassegno non registrato confermato; quelli non trovati restano da ricontrollare. Dal sito arriva al tablet con le altre modifiche.', 'Sul sito, \xABApri la BDN in una scheda\xBB: lo snippet, finito, rimanda il risultato da solo alla pagina; se non arriva, il file scaricato o \xABCopia il risultato\xBB e incolla.']));
-      var tmp_5 = new Novita('2026-11-14-1045', '14/11/2026', listOf_0(["Soluzioni: la provetta si prende in mano una volta sola. Attribuita a un capo assente va subito al numero di quel capo; quella che va in ARVET da sola va subito nel primo buco libero della serie (finiti i buchi, in fondo) e con \xABL'ho messa l\xEC\xBB esce dal Riordino.", 'Soluzioni: le provette con ARVET a mano vanno nel contenitore \xABARVET a mano\xBB della loro specie, in fila: la scheda dice il numero nella fila; alla fine il Riordino le mette in fondo alla serie. Anche \xABAccantonate\xBB, \xABTolte\xBB e \xABDa posare\xBB hanno il loro contenitore, col nome da scrivere sulla scatola.', "Nella scheda della provetta la \xABNota per l'allevatore\xBB, che va nel report per l'allevatore."]), VOID, VOID, listOf('Verifica in BDN: se la marca risulta applicata e il capo non si trova col suo codice, lo snippet apre la scheda del capo dalla marca; se la marca \xE8 su un capo con un altro codice, la scheda lo segnala.'));
-      var tmp_6 = new Novita('2026-11-14-1010', '14/11/2026', listOf_0(["Campionamento: \xABNuova identificazione\xBB, per l'animale senza marche a cui l'allevatore applica subito una marca in giacenza, anche dell'altra specie: lo stabilimento, poi sesso, et\xE0 dai denti e razza, poi la marca cercata con le sue cifre. La provetta va fra i fuori registro, nelle \xABNuove identificazioni in campo\xBB.", 'Gestione campioni \u203A Soluzioni: \xABVerifica in BDN\xBB carica il file dello snippet del sito e mostra per ogni provetta i dati della BDN (capo e marca) accanto a quelli scritti in campo, con le differenze.']), VOID, VOID, listOf_0(['Un avviso, che non blocca, quando il contrassegno ha un formato inusuale (una cifra in pi\xF9 o in meno, una lettera fra le cifre).', 'Nomi nuovi: \xABSoluzioni\xBB al posto di \xABBanco\xBB, \xABTipologie\xBB, \xABAssenti\xBB, \xABSmarriti ritrovati\xBB, \xABRubati ritrovati\xBB, \xABContrassegni non registrati\xBB.']));
+      var tmp_3 = new Novita('2026-11-15-2014', '15/11/2026', tmp0_voci, '0.5.7', VOID, VOID, tmp1_correzioni, "Per il risanamento del 16/11 e la sistemazione delle provette: la verifica in BDN porta nel progetto i capi e le marche trovati e le provette si riclassificano da sole; \xABNuova identificazione\xBB registra l'animale marcato sul momento con una marca in giacenza; \xABSoluzioni\xBB dice dove mettere ogni provetta (al numero del capo, nel primo buco o nel suo contenitore), cos\xEC il Riordino resta per i casi residui; in Campionamento l'animale fuori dal progetto e quello senza contrassegno si inseriscono da tasti sempre visibili.");
+      var tmp_4 = new Novita('2026-11-15-1130', '15/11/2026, build 11:30', emptyList(), VOID, VOID, listOf('Campionamento: \xABNon \xE8 nel progetto: inseriscilo\xBB sotto la ricerca senza risultati; \xABSenza contrassegno\xBB e \xABNuova identificazione\xBB sempre visibili, anche senza tastierino. I tre casi sono spiegati anche nell\u2019aiuto.'), listOf_0(['L\u2019inserimento forzato riprende soltanto il codice della ricerca corrente, mai quello dell\u2019animale precedente.', 'Campionamento in orizzontale: testata compatta e comandi scorrevoli. Nel foglio anagrafico i campi seguono la tastiera e \xABAvanti\xBB passa al campo successivo.', 'Ultime: schede Pecore e Capre a larghezza intera; anche le conferme mancate e i filtri scorrono con l\u2019elenco.', 'Ricerca dei progetti: annunci vecchi rimossi dall\u2019elenco e ricerca riavviata al ritorno nella pagina o al cambio progetto.']));
+      var tmp_5 = new Novita('2026-11-14-1220', '14/11/2026', listOf_0(['Verifica in BDN: caricato il risultato dello snippet, i contrassegni trovati in BDN entrano nel progetto come capi (con sesso, razza, nascita, stabilimento e stato) e le provette si riclassificano da sole: altro stabilimento, ora in lista, uscito, contrassegno non registrato confermato; quelli non trovati restano da ricontrollare. Dal sito arriva al tablet con le altre modifiche.', 'Sul sito, \xABApri la BDN in una scheda\xBB: lo snippet, finito, rimanda il risultato da solo alla pagina; se non arriva, il file scaricato o \xABCopia il risultato\xBB e incolla.']));
+      var tmp_6 = new Novita('2026-11-14-1045', '14/11/2026', listOf_0(["Soluzioni: la provetta si prende in mano una volta sola. Attribuita a un capo assente va subito al numero di quel capo; quella che va in ARVET da sola va subito nel primo buco libero della serie (finiti i buchi, in fondo) e con \xABL'ho messa l\xEC\xBB esce dal Riordino.", 'Soluzioni: le provette con ARVET a mano vanno nel contenitore \xABARVET a mano\xBB della loro specie, in fila: la scheda dice il numero nella fila; alla fine il Riordino le mette in fondo alla serie. Anche \xABAccantonate\xBB, \xABTolte\xBB e \xABDa posare\xBB hanno il loro contenitore, col nome da scrivere sulla scatola.', "Nella scheda della provetta la \xABNota per l'allevatore\xBB, che va nel report per l'allevatore."]), VOID, VOID, listOf('Verifica in BDN: se la marca risulta applicata e il capo non si trova col suo codice, lo snippet apre la scheda del capo dalla marca; se la marca \xE8 su un capo con un altro codice, la scheda lo segnala.'));
+      var tmp_7 = new Novita('2026-11-14-1010', '14/11/2026', listOf_0(["Campionamento: \xABNuova identificazione\xBB, per l'animale senza marche a cui l'allevatore applica subito una marca in giacenza, anche dell'altra specie: lo stabilimento, poi sesso, et\xE0 dai denti e razza, poi la marca cercata con le sue cifre. La provetta va fra i fuori registro, nelle \xABNuove identificazioni in campo\xBB.", 'Gestione campioni \u203A Soluzioni: \xABVerifica in BDN\xBB carica il file dello snippet del sito e mostra per ogni provetta i dati della BDN (capo e marca) accanto a quelli scritti in campo, con le differenze.']), VOID, VOID, listOf_0(['Un avviso, che non blocca, quando il contrassegno ha un formato inusuale (una cifra in pi\xF9 o in meno, una lettera fra le cifre).', 'Nomi nuovi: \xABSoluzioni\xBB al posto di \xABBanco\xBB, \xABTipologie\xBB, \xABAssenti\xBB, \xABSmarriti ritrovati\xBB, \xABRubati ritrovati\xBB, \xABContrassegni non registrati\xBB.']));
       var tmp2_voci = emptyList();
       var tmp3_miglioramenti = listOf('Foglio per i veterinari, checklist e briefing pi\xF9 brevi: che cosa fare la sera prima, che cosa scrivere sulla provetta con un esempio per ogni riquadro (neutro, blu, rosso, senza contrassegno), le ordinarie nei plateau e i fuori registro nel secchio, come rientra chi \xE8 stato escluso.');
-      var tmp_7 = new Novita('2026-11-13-1527', '13/11/2026', tmp2_voci, '0.5.6', VOID, tmp3_miglioramenti, VOID, "Per il risanamento del 16/11: la Regia d\xE0 l'app giusta ai palmari con un'altra versione, che si aggiornano dal tablet sulla Wi-Fi del progetto; sul sito gli snippet scaricano dalla BDN registri e marche e da ARVET i 2/33, e \xABCrea il progetto\xBB prepara anche le stampe pre-campo e i 2/33 precompilati; \xABfuori registro\xBB al posto di \xABproblematici\xBB, nessuna eliminazione per tipologia e fuori et\xE0 decisi alla fine; sito pi\xF9 semplice e istruzioni per i veterinari in ordine.", false);
-      var tmp_8 = new Novita('2026-11-12-2350', '12/11/2026', emptyList(), VOID, VOID, listOf("\xABAggiorna dalla Regia\xBB: dopo lo scarico l'app dice di confermare \xABInstalla\xBB e, se compare Google Play Protect, di aprire \xABAltri dettagli\xBB e installare senza l'analisi (provato sui telefoni: lo scarico dal tablet di 80 MB dura circa 40 secondi)."), listOf('Progetto creato sul sito e aperto sul tablet: il registro del sito non compare pi\xF9 fra i device della Rete e della Gestione dispositivi (prima si vedeva \xABsito-\u2026 [SIGLA DA CONFERMARE] \xB7 non ancora entrato\xBB).'));
-      var tmp_9 = new Novita('2026-11-12-2242', '12/11/2026', listOf_0(['I fuori et\xE0 non hanno pi\xF9 una soluzione predefinita: in Gestione campioni \u203A Problemi da risolvere la Regia sceglie alla fine se inserirli tutti (in coda) o eliminarli tutti; finch\xE9 non sceglie sono segnati \xABda decidere\xBB.', "Nell'app e nel sito i \xABproblematici\xBB si chiamano \xABfuori registro\xBB."]), VOID, VOID, listOf_0(["Nessuna tipologia di provette si elimina in blocco (salvo i fuori et\xE0 per scelta della Regia): l'eliminazione resta solo per la singola provetta, scelta a mano.", 'Sul sito, \xABCrea il progetto\xBB: veterinari e capi ricercati in due sezioni, \xABRegole di numerazione\xBB con la lettera dello stabilimento principale (s\xEC o no), niente regole dei fuori registro; negli snippet BDN e ARVET una crocetta chiude la finestrella senza ricaricare la pagina.']), listOf_0(['Il tablet offre la sua app sulla porta 47802: nella build 2026-11-12-2211 usava la 47801, la stessa della pagina per il PC via USB.', 'Stampe pre-campo: la pagina non scorre pi\xF9 da sola in fondo a ogni ricalcolo e lo schema del tavolo \xE8 pi\xF9 grande, con le etichette dei plateau leggibili (stabilimento, specie e numero del plateau, numeri delle provette).', 'Sul sito, \xABCrea il progetto\xBB: le sigle proposte ai veterinari non sono mai uguali (prima le iniziali, poi le alternative) e una sigla scritta a mano gi\xE0 proposta per un altro \xE8 rifiutata.']));
-      var tmp_10 = new Novita('2026-11-12-2211', '12/11/2026', listOf("Il palmare con una versione diversa si aggiorna dalla Regia sulla Wi-Fi del progetto: dopo il rifiuto, nella pagina Rete, \xABAggiorna dalla Regia\xBB scarica dal tablet la stessa build e apre l'installazione di Android (che chiede di confermare e, la prima volta, di consentire a Fejalog di installare app). Funziona dai palmari che hanno gi\xE0 questa build; per quelli pi\xF9 vecchi resta il QR dell'app sotto il QR d'ingresso."), VOID, VOID, listOf('Il tablet offre la sua app sulla rete del progetto per tutta la seduta (solo il file, solo alla rete locale), senza dover tenere aperta la pagina del QR.'));
-      var tmp_11 = new Novita('2026-11-12-2200', '12/11/2026', listOf("Sul sito, \xABCrea il progetto\xBB: le reti del progetto si esportano in un CSV e si ricaricano negli altri progetti sulle stesse reti (SSID;password;note;sicurezza, lo stesso reti.csv delle reti salvate dell'app); con pi\xF9 stabilimenti si pu\xF2 togliere la lettera dal principale."), VOID, VOID, listOf_0(['Sul sito, \xABCrea il progetto\xBB: le regole dei problematici partono tutte da \xABin coda, ARVET a mano\xBB, tranne \xABora in lista coi registri nuovi\xBB, che si normalizzano.', "Gli snippet per la BDN e per ARVET mettono nei nomi dei file la data e l'ora dello scarico (AAAAMMGG_HHMMSS).", "Il sito \xE8 pi\xF9 semplice: la pagina iniziale spiega Fejalog in sette punti, il menu ha meno voci, il veterinario ha tre pagine (prima del campo, in campo, se qualcosa va storto); in fondo a ogni pagina la data dell'ultimo aggiornamento."]), listOf('Il riepilogo.txt degli zip scaricati con gli snippet della BDN e di ARVET non si carica pi\xF9 fra i file del progetto, n\xE9 sul tablet n\xE9 sul sito.'));
-      var tmp_12 = new Novita('2026-11-12-1645', '12/11/2026', emptyList(), VOID, VOID, listOf_0(["Con pi\xF9 stabilimenti, sotto la scritta da copiare sulla provetta l'app dice di scrivere anche la lettera dello stabilimento nel cerchietto (es. \u24CD125).", 'Il foglio per i veterinari (\xABManda le istruzioni\xBB) spiega la configurazione iniziale in tre passi: Utente, Dispositivo e permessi.']), listOf('Nel foglio A3 delle provette e dei contrassegni le provette degli stabilimenti con la lettera hanno di nuovo il cerchietto (\u24CD125): prima si stampava solo il numero.'));
-      var tmp_13 = new Novita('2026-11-12-1630', '12/11/2026', listOf_0(["La Regia d\xE0 l'app giusta a un palmare con una versione diversa: nella pagina del QR d'ingresso, \xABMostra il QR per scaricare l'app\xBB. Il palmare lo inquadra con la fotocamera e scarica dal tablet la stessa build della Regia, sulla Wi-Fi del progetto, anche senza internet; il tablet smette di servirla quando si lascia la pagina.", "Sul sito, Strumenti \u203A Scarica dalla BDN e da ARVET: dai codici degli stabilimenti da campionare (e, a scelta, dall'export dello storico pascoli) uno snippet scarica dalla BDN in un solo zip i registri storici di tutti gli allevamenti ovini e caprini, anche chiusi, e le marche a magazzino; un secondo snippet scarica da ARVET i 2/33 degli stessi stabilimenti. Gli zip si caricano cos\xEC come sono in \xABCrea il progetto\xBB, che ora ha anche la scheda delle stampe pre-campo e dei 2/33 precompilati."]), VOID, VOID, listOf_0(['Il sito \xE8 in quattro schede: Inizia qui, Strumenti, Documentazione, Formazione; le schede si vedono anche sul telefono.', "Il messaggio della build diversa dice al palmare dove prendere l'app giusta."]), listOf_0(["Sul sito tornano le icone e i diagrammi delle fasi e dell'architettura; gli elenchi non escono pi\xF9 su una riga sola.", 'In \xABCrea il progetto\xBB le marche senza specie si possono dare a pecore e capre insieme (\xABAmbedue\xBB).']));
+      var tmp_8 = new Novita('2026-11-13-1527', '13/11/2026', tmp2_voci, '0.5.6', VOID, tmp3_miglioramenti, VOID, "Per il risanamento del 16/11: la Regia d\xE0 l'app giusta ai palmari con un'altra versione, che si aggiornano dal tablet sulla Wi-Fi del progetto; sul sito gli snippet scaricano dalla BDN registri e marche e da ARVET i 2/33, e \xABCrea il progetto\xBB prepara anche le stampe pre-campo e i 2/33 precompilati; \xABfuori registro\xBB al posto di \xABproblematici\xBB, nessuna eliminazione per tipologia e fuori et\xE0 decisi alla fine; sito pi\xF9 semplice e istruzioni per i veterinari in ordine.", false);
+      var tmp_9 = new Novita('2026-11-12-2350', '12/11/2026', emptyList(), VOID, VOID, listOf("\xABAggiorna dalla Regia\xBB: dopo lo scarico l'app dice di confermare \xABInstalla\xBB e, se compare Google Play Protect, di aprire \xABAltri dettagli\xBB e installare senza l'analisi (provato sui telefoni: lo scarico dal tablet di 80 MB dura circa 40 secondi)."), listOf('Progetto creato sul sito e aperto sul tablet: il registro del sito non compare pi\xF9 fra i device della Rete e della Gestione dispositivi (prima si vedeva \xABsito-\u2026 [SIGLA DA CONFERMARE] \xB7 non ancora entrato\xBB).'));
+      var tmp_10 = new Novita('2026-11-12-2242', '12/11/2026', listOf_0(['I fuori et\xE0 non hanno pi\xF9 una soluzione predefinita: in Gestione campioni \u203A Problemi da risolvere la Regia sceglie alla fine se inserirli tutti (in coda) o eliminarli tutti; finch\xE9 non sceglie sono segnati \xABda decidere\xBB.', "Nell'app e nel sito i \xABproblematici\xBB si chiamano \xABfuori registro\xBB."]), VOID, VOID, listOf_0(["Nessuna tipologia di provette si elimina in blocco (salvo i fuori et\xE0 per scelta della Regia): l'eliminazione resta solo per la singola provetta, scelta a mano.", 'Sul sito, \xABCrea il progetto\xBB: veterinari e capi ricercati in due sezioni, \xABRegole di numerazione\xBB con la lettera dello stabilimento principale (s\xEC o no), niente regole dei fuori registro; negli snippet BDN e ARVET una crocetta chiude la finestrella senza ricaricare la pagina.']), listOf_0(['Il tablet offre la sua app sulla porta 47802: nella build 2026-11-12-2211 usava la 47801, la stessa della pagina per il PC via USB.', 'Stampe pre-campo: la pagina non scorre pi\xF9 da sola in fondo a ogni ricalcolo e lo schema del tavolo \xE8 pi\xF9 grande, con le etichette dei plateau leggibili (stabilimento, specie e numero del plateau, numeri delle provette).', 'Sul sito, \xABCrea il progetto\xBB: le sigle proposte ai veterinari non sono mai uguali (prima le iniziali, poi le alternative) e una sigla scritta a mano gi\xE0 proposta per un altro \xE8 rifiutata.']));
+      var tmp_11 = new Novita('2026-11-12-2211', '12/11/2026', listOf("Il palmare con una versione diversa si aggiorna dalla Regia sulla Wi-Fi del progetto: dopo il rifiuto, nella pagina Rete, \xABAggiorna dalla Regia\xBB scarica dal tablet la stessa build e apre l'installazione di Android (che chiede di confermare e, la prima volta, di consentire a Fejalog di installare app). Funziona dai palmari che hanno gi\xE0 questa build; per quelli pi\xF9 vecchi resta il QR dell'app sotto il QR d'ingresso."), VOID, VOID, listOf('Il tablet offre la sua app sulla rete del progetto per tutta la seduta (solo il file, solo alla rete locale), senza dover tenere aperta la pagina del QR.'));
+      var tmp_12 = new Novita('2026-11-12-2200', '12/11/2026', listOf("Sul sito, \xABCrea il progetto\xBB: le reti del progetto si esportano in un CSV e si ricaricano negli altri progetti sulle stesse reti (SSID;password;note;sicurezza, lo stesso reti.csv delle reti salvate dell'app); con pi\xF9 stabilimenti si pu\xF2 togliere la lettera dal principale."), VOID, VOID, listOf_0(['Sul sito, \xABCrea il progetto\xBB: le regole dei problematici partono tutte da \xABin coda, ARVET a mano\xBB, tranne \xABora in lista coi registri nuovi\xBB, che si normalizzano.', "Gli snippet per la BDN e per ARVET mettono nei nomi dei file la data e l'ora dello scarico (AAAAMMGG_HHMMSS).", "Il sito \xE8 pi\xF9 semplice: la pagina iniziale spiega Fejalog in sette punti, il menu ha meno voci, il veterinario ha tre pagine (prima del campo, in campo, se qualcosa va storto); in fondo a ogni pagina la data dell'ultimo aggiornamento."]), listOf('Il riepilogo.txt degli zip scaricati con gli snippet della BDN e di ARVET non si carica pi\xF9 fra i file del progetto, n\xE9 sul tablet n\xE9 sul sito.'));
+      var tmp_13 = new Novita('2026-11-12-1645', '12/11/2026', emptyList(), VOID, VOID, listOf_0(["Con pi\xF9 stabilimenti, sotto la scritta da copiare sulla provetta l'app dice di scrivere anche la lettera dello stabilimento nel cerchietto (es. \u24CD125).", 'Il foglio per i veterinari (\xABManda le istruzioni\xBB) spiega la configurazione iniziale in tre passi: Utente, Dispositivo e permessi.']), listOf('Nel foglio A3 delle provette e dei contrassegni le provette degli stabilimenti con la lettera hanno di nuovo il cerchietto (\u24CD125): prima si stampava solo il numero.'));
+      var tmp_14 = new Novita('2026-11-12-1630', '12/11/2026', listOf_0(["La Regia d\xE0 l'app giusta a un palmare con una versione diversa: nella pagina del QR d'ingresso, \xABMostra il QR per scaricare l'app\xBB. Il palmare lo inquadra con la fotocamera e scarica dal tablet la stessa build della Regia, sulla Wi-Fi del progetto, anche senza internet; il tablet smette di servirla quando si lascia la pagina.", "Sul sito, Strumenti \u203A Scarica dalla BDN e da ARVET: dai codici degli stabilimenti da campionare (e, a scelta, dall'export dello storico pascoli) uno snippet scarica dalla BDN in un solo zip i registri storici di tutti gli allevamenti ovini e caprini, anche chiusi, e le marche a magazzino; un secondo snippet scarica da ARVET i 2/33 degli stessi stabilimenti. Gli zip si caricano cos\xEC come sono in \xABCrea il progetto\xBB, che ora ha anche la scheda delle stampe pre-campo e dei 2/33 precompilati."]), VOID, VOID, listOf_0(['Il sito \xE8 in quattro schede: Inizia qui, Strumenti, Documentazione, Formazione; le schede si vedono anche sul telefono.', "Il messaggio della build diversa dice al palmare dove prendere l'app giusta."]), listOf_0(["Sul sito tornano le icone e i diagrammi delle fasi e dell'architettura; gli elenchi non escono pi\xF9 su una riga sola.", 'In \xABCrea il progetto\xBB le marche senza specie si possono dare a pecore e capre insieme (\xABAmbedue\xBB).']));
       var tmp4_voci = listOf_0(["Sul sito, Strumenti \u203A Crea progetto: si crea il progetto nel browser dai file BDN (registri e contrassegni, pi\xF9 allevamenti per stabilimento), con l'elenco dei veterinari, et\xE0 e lettere, sigle, priorit\xE0 della regia, reti, verso di riempimento e regole dei problematici; si scarica la tabella della numerazione e lo \xABsnapshot per la Regia\xBB, che il tablet apre con Progetto \u203A Apri progetto \u203A Riprendi da un backup. Stessa numerazione del progetto creato sul tablet con gli stessi file; nessun dato esce dal browser.", "Sul sito, Strumenti \u203A Simulatore del gregge: per imparare l'app coi telefoni veri, il sito mostra le pecore una alla volta (anche orecchini o bolo mancanti, marche disponibili, animali senza contrassegno con denti, razza e sesso, errori di sesso) e la Regia e i palmari campionano come in campo."]);
-      var tmp_14 = new Novita('2026-11-11-2130', '11/11/2026', tmp4_voci, '0.5.5', VOID, VOID, VOID, "Per il risanamento del 16/11: la rete torna da sola dopo la caduta del router e l'offline automatico si spegne al ritorno della Wi-Fi, nessun palmare diventa Regia da solo, la Regia ha la Gestione dispositivi e l'aggiornamento d'emergenza del registro in un tasto, pi\xF9 allevamenti nello stesso stabilimento; sul sito si crea il progetto e c'\xE8 il simulatore del gregge per il tutorial coi telefoni veri.");
-      var tmp_15 = new Novita('2026-11-10-2210', '10/11/2026, build 22:10', listOf_0(["Campionamento \u203A Gestione dispositivi (solo la Regia in rete): QR d'ingresso in testa, filtri Presenti / Solo attivi / Tutti, per ogni palmare il semaforo della rete (stessa regola dell'icona di rete), batteria, da quanto non risponde, provette; tasti Ricevi, Pausa / Riattiva ed Escludi definitivamente (si rientra solo col QR, \xABRiprendi\xBB non basta). Si apre anche dalla pagina Regia e dal tasto accanto a \xABFatte\xBB.", "Registri BDN \u203A \xABAggiorna il registro (emergenza)\xBB: la procedura in quattro passi guidati (chiusura con la conferma della Checklist, attesa che tutti siano allineati con l'elenco dei non allineati e il rimando alla Gestione dispositivi, caricamento con anteprima, riapertura). I numeri gi\xE0 dati restano."]), VOID, VOID, listOf_0(["L'esclusione definitiva di chi \xE8 in pausa o escluso si fa subito, anche se \xE8 collegato; per chi \xE8 al lavoro e collegato prima la pausa.", 'La Regia chiama lei i palmari al lavoro che non le sono collegati: se il tablet torna sulla Wi-Fi con un altro indirizzo, i palmari lo ritrovano subito.', 'Offline: quello automatico si accende solo senza Wi-Fi e si spegne da solo quando torna; quello scelto a mano resta finch\xE9 non si tocca \xABTorna online\xBB (in Rete e sotto la banda).', "Nessun palmare si fa Regia da solo: il telefono che ha preso la regia d'emergenza col tasto, se cade e torna, non la riprende da s\xE9. Il tablet tornato riprende la regia come prima."]), listOf('Difesa anche nel registro: un caricamento che sostituisce il registro di un allevamento gi\xE0 caricato, scritto a campionamento aperto, non vale su nessun device (nemmeno il ritorno al pacchetto); vale a campionamento chiuso, e un allevamento nuovo si aggiunge sempre.'));
+      var tmp_15 = new Novita('2026-11-11-2130', '11/11/2026', tmp4_voci, '0.5.5', VOID, VOID, VOID, "Per il risanamento del 16/11: la rete torna da sola dopo la caduta del router e l'offline automatico si spegne al ritorno della Wi-Fi, nessun palmare diventa Regia da solo, la Regia ha la Gestione dispositivi e l'aggiornamento d'emergenza del registro in un tasto, pi\xF9 allevamenti nello stesso stabilimento; sul sito si crea il progetto e c'\xE8 il simulatore del gregge per il tutorial coi telefoni veri.");
+      var tmp_16 = new Novita('2026-11-10-2210', '10/11/2026, build 22:10', listOf_0(["Campionamento \u203A Gestione dispositivi (solo la Regia in rete): QR d'ingresso in testa, filtri Presenti / Solo attivi / Tutti, per ogni palmare il semaforo della rete (stessa regola dell'icona di rete), batteria, da quanto non risponde, provette; tasti Ricevi, Pausa / Riattiva ed Escludi definitivamente (si rientra solo col QR, \xABRiprendi\xBB non basta). Si apre anche dalla pagina Regia e dal tasto accanto a \xABFatte\xBB.", "Registri BDN \u203A \xABAggiorna il registro (emergenza)\xBB: la procedura in quattro passi guidati (chiusura con la conferma della Checklist, attesa che tutti siano allineati con l'elenco dei non allineati e il rimando alla Gestione dispositivi, caricamento con anteprima, riapertura). I numeri gi\xE0 dati restano."]), VOID, VOID, listOf_0(["L'esclusione definitiva di chi \xE8 in pausa o escluso si fa subito, anche se \xE8 collegato; per chi \xE8 al lavoro e collegato prima la pausa.", 'La Regia chiama lei i palmari al lavoro che non le sono collegati: se il tablet torna sulla Wi-Fi con un altro indirizzo, i palmari lo ritrovano subito.', 'Offline: quello automatico si accende solo senza Wi-Fi e si spegne da solo quando torna; quello scelto a mano resta finch\xE9 non si tocca \xABTorna online\xBB (in Rete e sotto la banda).', "Nessun palmare si fa Regia da solo: il telefono che ha preso la regia d'emergenza col tasto, se cade e torna, non la riprende da s\xE9. Il tablet tornato riprende la regia come prima."]), listOf('Difesa anche nel registro: un caricamento che sostituisce il registro di un allevamento gi\xE0 caricato, scritto a campionamento aperto, non vale su nessun device (nemmeno il ritorno al pacchetto); vale a campionamento chiuso, e un allevamento nuovo si aggiunge sempre.'));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$0 = emptyList();
-      var tmp_16 = new Novita('2026-11-10-1208', '10/11/2026, build 12:08', tmp$ret$0, VOID, VOID, listOf_0(["Con tutti collegati meno provette \xABda isolato\xBB (125-UV): alla conferma l'app aspetta al massimo un secondo e mezzo che arrivino le conferme dei colleghi, invece di decidere nell'attimo in cui \xE8 appena arrivata la provetta di un altro.", "A campionamento aperto il registro di un allevamento gi\xE0 caricato non si sostituisce pi\xF9 e non si torna al pacchetto: la pagina dei registri spiega la procedura d'emergenza (chiudi il campionamento, controlla in Rete che tutti siano allineati, carica, riapri). I numeri gi\xE0 dati restano. Un allevamento nuovo, un altro stabilimento o un DDA si caricano come prima."]), listOf('Pi\xF9 allevamenti nello stesso stabilimento (un file BDN per proprietario): il registro aggiornato di un allevamento caricato in corsa toglieva anche i capi degli altri allevamenti dello stesso codice. Ora sostituisce solo i suoi.'));
+      var tmp_17 = new Novita('2026-11-10-1208', '10/11/2026, build 12:08', tmp$ret$0, VOID, VOID, listOf_0(["Con tutti collegati meno provette \xABda isolato\xBB (125-UV): alla conferma l'app aspetta al massimo un secondo e mezzo che arrivino le conferme dei colleghi, invece di decidere nell'attimo in cui \xE8 appena arrivata la provetta di un altro.", "A campionamento aperto il registro di un allevamento gi\xE0 caricato non si sostituisce pi\xF9 e non si torna al pacchetto: la pagina dei registri spiega la procedura d'emergenza (chiudi il campionamento, controlla in Rete che tutti siano allineati, carica, riapri). I numeri gi\xE0 dati restano. Un allevamento nuovo, un altro stabilimento o un DDA si caricano come prima."]), listOf('Pi\xF9 allevamenti nello stesso stabilimento (un file BDN per proprietario): il registro aggiornato di un allevamento caricato in corsa toglieva anche i capi degli altri allevamenti dello stesso codice. Ora sostituisce solo i suoi.'));
       // Inline function 'kotlin.collections.listOf' call
       var tmp5_voci = emptyList();
       var tmp6_miglioramenti = listOf_0(["Con molti capi e molti palmari l'app lavora meno: una consegna, una provetta messa nel plateau, una pausa, una ripresa o un ingresso non fanno pi\xF9 ricalcolare tutto l'elenco su ogni telefono.", "Checklist del responsabile: stampare il QR Wi-Fi di ogni rete prevista, compreso l'hotspot del tablet, perch\xE9 ogni telefono le salvi prima di partire."]);
       var tmp7_correzioni = listOf("Creando il progetto dai file BDN, sul tablet o dal PC, i capi sotto l'et\xE0 diagnostica prendevano un numero: ora l'et\xE0 si fissa prima dei registri. Se dopo si cambia l'et\xE0 o si aggiunge un registro o uno stabilimento, i capi nuovi vanno in fondo e i numeri gi\xE0 dati non cambiano.");
-      var tmp_17 = new Novita('2026-11-09-0711', '09/11/2026', tmp5_voci, '0.5.4', VOID, tmp6_miglioramenti, tmp7_correzioni, "Creando il progetto dai file BDN i capi sotto l'et\xE0 diagnostica non prendono pi\xF9 un numero; con molti capi e molti palmari l'app ricalcola molto meno.", false);
+      var tmp_18 = new Novita('2026-11-09-0711', '09/11/2026', tmp5_voci, '0.5.4', VOID, tmp6_miglioramenti, tmp7_correzioni, "Creando il progetto dai file BDN i capi sotto l'et\xE0 diagnostica non prendono pi\xF9 un numero; con molti capi e molti palmari l'app ricalcola molto meno.", false);
       // Inline function 'kotlin.collections.listOf' call
       var tmp8_voci = emptyList();
-      var tmp_18 = new Novita('2026-11-09-0032', '09/11/2026', tmp8_voci, '0.5.3', VOID, VOID, VOID, 'Il tablet spento per pi\xF9 di 2 minuti, quando torna, riprende la regia da solo; entrando col QR il telefono aspetta finch\xE9 il registro arriva, invece di chiedere di riprovare.', false);
+      var tmp_19 = new Novita('2026-11-09-0032', '09/11/2026', tmp8_voci, '0.5.3', VOID, VOID, VOID, 'Il tablet spento per pi\xF9 di 2 minuti, quando torna, riprende la regia da solo; entrando col QR il telefono aspetta finch\xE9 il registro arriva, invece di chiedere di riprovare.', false);
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$3 = emptyList();
-      var tmp_19 = new Novita('2026-11-08-2257', '08/11/2026, build 22:57', tmp$ret$3, VOID, VOID, listOf_0(["Il tablet spento pi\xF9 di 2 minuti, quando torna, riprende la regia da solo se nessuno l'ha presa e vede la maggioranza dei veterinari al lavoro: non serve pi\xF9 che il primo della lista la prenda e gliela ridia.", 'Entrando o rientrando col QR, il telefono aspetta finch\xE9 il registro arriva dalla Regia (fino a 2 minuti), dice quanti eventi sono arrivati e si pu\xF2 annullare: non dice pi\xF9 \xABriprova col QR\xBB a chi sta solo ricevendo il registro.', "Con la regia libera e il tablet di nuovo in rete, il primo della lista legge \xABla riprende Mario R, l'ultima Regia tornata in rete\xBB invece di \xABprendi tu la regia\xBB."]));
+      var tmp_20 = new Novita('2026-11-08-2257', '08/11/2026, build 22:57', tmp$ret$3, VOID, VOID, listOf_0(["Il tablet spento pi\xF9 di 2 minuti, quando torna, riprende la regia da solo se nessuno l'ha presa e vede la maggioranza dei veterinari al lavoro: non serve pi\xF9 che il primo della lista la prenda e gliela ridia.", 'Entrando o rientrando col QR, il telefono aspetta finch\xE9 il registro arriva dalla Regia (fino a 2 minuti), dice quanti eventi sono arrivati e si pu\xF2 annullare: non dice pi\xF9 \xABriprova col QR\xBB a chi sta solo ricevendo il registro.', "Con la regia libera e il tablet di nuovo in rete, il primo della lista legge \xABla riprende Mario R, l'ultima Regia tornata in rete\xBB invece di \xABprendi tu la regia\xBB."]));
       // Inline function 'kotlin.collections.listOf' call
       var tmp9_voci = emptyList();
-      var tmp_20 = new Novita('2026-11-08-1640', '08/11/2026', tmp9_voci, '0.5.2', VOID, VOID, VOID, "Ordine di priorit\xE0 per la regia d'emergenza deciso dalla Regia: se il tablet si spegne, la regia la prende il primo veterinario della lista al lavoro, e il suo telefono lo dice.", false);
-      var tmp_21 = new Novita('2026-11-08-1550', '08/11/2026, build 15:50', listOf("La Regia sceglie in Configurazione \u203A Sigle stabilimenti e veterinari un ordine di priorit\xE0 per la regia d'emergenza (per esempio il coordinatore, poi un secondo e un terzo veterinario dell'elenco). Se il tablet non risponde, la regia la prende il primo della lista al lavoro; il suo telefono lo dice (\xABprendi tu la regia\xBB), gli altri dicono a chi spetta. Esauriti quelli della lista vale il criterio di prima."));
+      var tmp_21 = new Novita('2026-11-08-1640', '08/11/2026', tmp9_voci, '0.5.2', VOID, VOID, VOID, "Ordine di priorit\xE0 per la regia d'emergenza deciso dalla Regia: se il tablet si spegne, la regia la prende il primo veterinario della lista al lavoro, e il suo telefono lo dice.", false);
+      var tmp_22 = new Novita('2026-11-08-1550', '08/11/2026, build 15:50', listOf("La Regia sceglie in Configurazione \u203A Sigle stabilimenti e veterinari un ordine di priorit\xE0 per la regia d'emergenza (per esempio il coordinatore, poi un secondo e un terzo veterinario dell'elenco). Se il tablet non risponde, la regia la prende il primo della lista al lavoro; il suo telefono lo dice (\xABprendi tu la regia\xBB), gli altri dicono a chi spetta. Esauriti quelli della lista vale il criterio di prima."));
       // Inline function 'kotlin.collections.listOf' call
       var tmp10_voci = emptyList();
-      var tmp_22 = new Novita('2026-11-08-1030', '08/11/2026', tmp10_voci, '0.5.1', VOID, VOID, VOID, 'Correzioni dalla prova della giornata di gioved\xEC: sigle dei veterinari anche nei progetti creati dai file BDN, proposte diverse nella rinomina obbligatoria, nessuna esclusione sbagliata alla riunione di una rete divisa.', false);
+      var tmp_23 = new Novita('2026-11-08-1030', '08/11/2026', tmp10_voci, '0.5.1', VOID, VOID, VOID, 'Correzioni dalla prova della giornata di gioved\xEC: sigle dei veterinari anche nei progetti creati dai file BDN, proposte diverse nella rinomina obbligatoria, nessuna esclusione sbagliata alla riunione di una rete divisa.', false);
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$6 = emptyList();
-      var tmp_23 = new Novita('2026-11-08-0915', '08/11/2026, build 09:15', tmp$ret$6, VOID, VOID, VOID, listOf_0(['Il progetto creato sul tablet dai file della BDN usa le sigle dei veterinari (\xAB125-UV\xBB, \xABUV-15\xBB), come quelli creati per le altre strade.', "Nella rinomina obbligatoria di due provette registrate insieme con la stessa etichetta ogni veterinario riceve una proposta diversa, che l'app accetta (\xAB\u24CB20-A\xBB, \xAB\u24CB20-B\xBB).", "Alla riunione di una rete divisa nessuno esclude pi\xF9 i veterinari dell'altro gruppo contando un telefono che porta gi\xE0 la propria esclusione."]));
+      var tmp_24 = new Novita('2026-11-08-0915', '08/11/2026, build 09:15', tmp$ret$6, VOID, VOID, VOID, listOf_0(['Il progetto creato sul tablet dai file della BDN usa le sigle dei veterinari (\xAB125-UV\xBB, \xABUV-15\xBB), come quelli creati per le altre strade.', "Nella rinomina obbligatoria di due provette registrate insieme con la stessa etichetta ogni veterinario riceve una proposta diversa, che l'app accetta (\xAB\u24CB20-A\xBB, \xAB\u24CB20-B\xBB).", "Alla riunione di una rete divisa nessuno esclude pi\xF9 i veterinari dell'altro gruppo contando un telefono che porta gi\xE0 la propria esclusione."]));
       // Inline function 'kotlin.collections.listOf' call
       var tmp11_voci = emptyList();
-      var tmp_24 = new Novita('2026-11-08-0630', '08/11/2026', tmp11_voci, '0.5.0', VOID, VOID, VOID, 'Rete con la Wi-Fi di Android e maggioranza pi\xF9 sicura, provette problematiche nel secchio, animali senza contrassegno, etichette da copiare cos\xEC come sono scritte, configurazione dal PC e telecomando nei fogli.', false);
-      var tmp_25 = new Novita('2026-11-08-0146', '08/11/2026, build 01:46', listOf("Il QR d'ingresso porta sempre il nome della rete: la Regia deve avere il permesso di posizione (avviso con tasto in Checklist e avvio e nella pagina del QR); se il nome non si legge, si sceglie \xABSei su \u2026\xBB fra le reti del progetto. L'impronta del registro \xE8 grande, in testa alla pagina del QR."), VOID, VOID, listOf_0(["Il pannello Wi-Fi di Android non si apre mai da solo: l'avviso di cambio rete ha un tasto per aprirlo.", 'Se \xABPrendi la regia\xBB \xE8 spento, la pagina dice il motivo vero; un palmare rifiutato per build diversa lo dice in rosso.']), listOf('Regia e palmari si ritrovano anche senza Regia attiva e dopo la cessione della regia; un collegamento rifiutato non conta pi\xF9 come riuscito.'));
-      var tmp_26 = new Novita('2026-11-08-0135', '08/11/2026, build 01:35', listOf_0(["Il QR d'ingresso porta sempre il nome della Wi-Fi: per la Regia la posizione \xE8 obbligatoria (Android fa leggere il nome della rete solo cos\xEC), con l'avviso e il tasto per concederla in Checklist e avvio e nella pagina del QR. Se il nome non si legge, la Regia tocca \xABSei su \u2026\xBB fra le reti del progetto.", "Nella pagina del QR l'impronta del registro \xE8 in testa, grande."]), VOID, VOID, VOID, listOf_0(["Senza Regia (regia libera dopo un'esclusione) i palmari della stessa Wi-Fi si ritrovano e si allineano fra loro; il tablet che aveva la regia ed \xE8 stato escluso torna palmare e si collega agli altri, invece di aspettarli.", 'Quando la regia passa a un altro device (presa o affidata), i palmari si collegano subito al nuovo regista invece di aspettarlo.', "Un device con un'altra build non viene pi\xF9 richiamato di continuo: i tentativi verso di lui si diradano e non impediscono agli altri di collegarsi fra loro.", 'Il router della Wi-Fi si prova come Regia solo per pochi tentativi; in Rete la scritta della Regia dice \xABregia libera\xBB o \xABindirizzo non ancora noto\xBB invece di un indirizzo sbagliato.', "Un palmare rifiutato dagli altri perch\xE9 ha un'altra build lo dice in rosso, con la build da installare, invece di \xABnon risponde\xBB.", "Il pannello Wi-Fi di Android non si apre pi\xF9 da solo (all'avviso \xABPassa tutti qui\xBB o nella guida d'ingresso): la banda vibra e ha il tasto \xABApri il pannello Wi-Fi\xBB.", 'Il tasto \xABPrendi la regia\xBB spento dice il motivo vero (per esempio: dispositivo escluso, da far rientrare), e il banner dice \xABsi pu\xF2 prendere\xBB solo se da qui si pu\xF2.']));
-      var tmp_27 = new Novita('2026-11-08-0104', '08/11/2026, build 01:04', listOf_0(['Nel foglio di conferma il riquadro contiene esattamente ci\xF2 che si copia sulla provetta; le istruzioni stanno sotto, in grassetto. Le provette prese da isolato si scrivono \xAB125-UV\xBB (non pi\xF9 con la barra).', '\xABTogli dalla rete\xBB chiede la conferma del regista (\xABHo verificato col veterinario: quel telefono non preleva\xBB): il device esce subito dal conto e tutti tornano verdi.']), VOID, VOID, listOf_0(['Telecomando BLE-M3: riconosciuto anche quando Android lo tratta come mouse; il volume non cambia pi\xF9; OK, Indietro e frecce nei fogli, nei dialoghi e nei risultati; la schermata non si ricarica quando il telecomando si collega o si addormenta.', "Maggioranza pi\xF9 sicura: chi entra, riprende o viene escluso conta solo quando lo sanno quelli di prima; prima della regia d'emergenza un controllo di chi risponde davvero.", "Dopo la regia d'emergenza i palmari collegati tornano verdi senza ricollegarsi.", 'Se nessuno ha pi\xF9 la regia e tutti risultano esclusi, chi \xE8 al lavoro rientra da solo e la regia si pu\xF2 riprendere.']), listOf('Dopo \xABRicollegati col QR\xBB il palmare non torna a cercare indirizzi vecchi.'));
-      var tmp_28 = new Novita('2026-11-07-2042', '07/11/2026, build 20:42', listOf_0(["Rete: una sola procedura. Prima del lavoro ogni telefono salva in Android le reti del progetto inquadrando il loro QR, mostrato in \xABRete del progetto\xBB; durante il lavoro la Wi-Fi la sceglie Android e Fejalog ritrova da solo la Regia sulla rete in cui \xE8, anche sull'hotspot del tablet. Niente pi\xF9 finestre \xABConnessione al dispositivo\xBB n\xE9 reti temporanee.", 'Reti del progetto: una collezione da ordinare, ognuna col suo QR Wi-Fi grande da inquadrare.', '\xABPassa tutti qui\xBB della Regia avvisa i palmari con banda e vibrazione e apre il pannello Wi-Fi: si tocca la rete e Fejalog ritrova la Regia.']), VOID, VOID, listOf_0(['Telecomando: su e gi\xF9 scelgono fra i capi trovati e OK apre quello evidenziato; nelle finestre di conferma OK conferma e Indietro annulla; un gesto risveglia lo schermo nero senza fare altro.', 'Ultime: sul palmare solo le proprie provette; la Regia sceglie tutte o di un veterinario.']), listOf_0(['Lo schermo del campionamento non si scurisce pi\xF9 mentre si lavora nel foglio di conferma o in una finestra di dialogo.', 'La Regia mostra il QR e si fa trovare subito sulla rete in cui \xE8, anche senza il permesso di posizione.']));
-      var tmp_29 = new Novita('2026-11-07-1752', '07/11/2026, build 17:52', listOf('La guida \xABCollegati alla Wi-Fi di sistema\xBB della Regia mostra anche il QR standard della Wi-Fi, da inquadrare con la fotocamera.'), VOID, VOID, listOf_0(['Nella checklist del telefono (Dispositivo, \xABEntra col QR\xBB e, sulla Regia, Checklist e avvio) ci sono anche i permessi: posizione o dispositivi Wi-Fi vicini, fotocamera, notifiche, con il tasto per concederli.', "La copia del registro sulla chiavetta, dopo una scrittura interrotta, riparte su un file nuovo e non si ferma pi\xF9; il file interrotto resta com'\xE8.", 'La ricostruzione da una cartella legge anche le copie ripartite e salta le righe rovinate, lasciando decidere alla verifica del registro.', '\xABMarca in campo\xBB si vede con una riga fissa e si chiude annullando, cambiando specie o dopo la registrazione.']), listOf_0(['Il cambio di rete della Regia si completa anche quando Android non lascia leggere il nome della Wi-Fi (senza permesso di posizione): prima restava \xABin attesa di verifica\xBB.', "\xABAggiungi da QR\xBB nelle Reti salvate non chiude pi\xF9 l'app.", "I palmari dei progetti gi\xE0 avviati non vengono pi\xF9 fermati all'ingresso per una configurazione \xABincompleta\xBB.", 'Nel Riordino la provetta di un animale senza contrassegno non ancora risolto dice di risolverla prima in Gestione.', "Il campionamento si avvia solo dal tablet; la pagina del PC via USB si spegne all'avvio."]));
-      var tmp_30 = new Novita('2026-11-07-1656', '07/11/2026, build 16:56', listOf_0(["Animali senza contrassegno: in campionamento si registrano come non identificati, senza scegliere un capo, con specie, sesso, classe d'et\xE0 dalla dentizione (tabella per pecora e capra), razza e un'identificazione provvisoria; tutto si scrive anche sulla provetta.", "Dopo la chiusura del campionamento, in Gestione: chi ha perso le marche si confronta coi non prelevati compatibili; chi non era mai stato identificato si assegna a una marca disponibile dell'allevamento, anche applicandola subito in campo. Ne esce lo schema per la registrazione in BDN da dare all'allevatore.", 'Conteggio degli animali sotto et\xE0 man mano che si marcano.', 'Problematici nel secchio: non si mettono nel plateau; nel Riordino si parte dalla provetta che si ha in mano.', "Creazione e configurazione del progetto dal PC via USB (anche dall'A55), poi la regia passa al tablet.", 'Ricostruzione del progetto da una cartella: chiavetta della Regia o specchi dei device, in \xABRiconcilia backup\xBB.', 'Reti salvate: \xABAggiungi da QR\xBB legge il QR standard di una Wi-Fi.', "Sotto il QR d'ingresso (di fianco, sul tablet) chi \xE8 entrato, l'ultimo in cima, e l'impronta del registro.", 'Regia: si passa fra le schermate della fase con uno swipe a destra o a sinistra (non sopra i plateau) e, sul tablet, con le schede in cima.']), VOID, VOID, listOf_0(["Letto un capo registrato dell'altra specie, l'app chiede sempre se passare alla sua specie o registrare l'errore di specie: un solo OK non basta pi\xF9.", "Nel cerchio in cima al menu c'\xE8 la tua sigla, senza ripeterla accanto al nome.", 'Nella pagina Regia, accanto a chi non ha provette da ricevere: \xABTutte ricevute\xBB, oppure \xABLe ultime provette arrivano al rientro\xBB per chi non risponde.']), listOf_0(['Un palmare rimasto nel progetto vecchio non legge pi\xF9 \xABbuild diversa\xBB: se trova la sua Regia in un altro progetto gli dice di uscire e inquadrare il QR.', '\xABManca 1 capo\xBB al singolare; la Regia non \xE8 pi\xF9 fra i destinatari dei propri messaggi.']));
+      var tmp_25 = new Novita('2026-11-08-0630', '08/11/2026', tmp11_voci, '0.5.0', VOID, VOID, VOID, 'Rete con la Wi-Fi di Android e maggioranza pi\xF9 sicura, provette problematiche nel secchio, animali senza contrassegno, etichette da copiare cos\xEC come sono scritte, configurazione dal PC e telecomando nei fogli.', false);
+      var tmp_26 = new Novita('2026-11-08-0146', '08/11/2026, build 01:46', listOf("Il QR d'ingresso porta sempre il nome della rete: la Regia deve avere il permesso di posizione (avviso con tasto in Checklist e avvio e nella pagina del QR); se il nome non si legge, si sceglie \xABSei su \u2026\xBB fra le reti del progetto. L'impronta del registro \xE8 grande, in testa alla pagina del QR."), VOID, VOID, listOf_0(["Il pannello Wi-Fi di Android non si apre mai da solo: l'avviso di cambio rete ha un tasto per aprirlo.", 'Se \xABPrendi la regia\xBB \xE8 spento, la pagina dice il motivo vero; un palmare rifiutato per build diversa lo dice in rosso.']), listOf('Regia e palmari si ritrovano anche senza Regia attiva e dopo la cessione della regia; un collegamento rifiutato non conta pi\xF9 come riuscito.'));
+      var tmp_27 = new Novita('2026-11-08-0135', '08/11/2026, build 01:35', listOf_0(["Il QR d'ingresso porta sempre il nome della Wi-Fi: per la Regia la posizione \xE8 obbligatoria (Android fa leggere il nome della rete solo cos\xEC), con l'avviso e il tasto per concederla in Checklist e avvio e nella pagina del QR. Se il nome non si legge, la Regia tocca \xABSei su \u2026\xBB fra le reti del progetto.", "Nella pagina del QR l'impronta del registro \xE8 in testa, grande."]), VOID, VOID, VOID, listOf_0(["Senza Regia (regia libera dopo un'esclusione) i palmari della stessa Wi-Fi si ritrovano e si allineano fra loro; il tablet che aveva la regia ed \xE8 stato escluso torna palmare e si collega agli altri, invece di aspettarli.", 'Quando la regia passa a un altro device (presa o affidata), i palmari si collegano subito al nuovo regista invece di aspettarlo.', "Un device con un'altra build non viene pi\xF9 richiamato di continuo: i tentativi verso di lui si diradano e non impediscono agli altri di collegarsi fra loro.", 'Il router della Wi-Fi si prova come Regia solo per pochi tentativi; in Rete la scritta della Regia dice \xABregia libera\xBB o \xABindirizzo non ancora noto\xBB invece di un indirizzo sbagliato.', "Un palmare rifiutato dagli altri perch\xE9 ha un'altra build lo dice in rosso, con la build da installare, invece di \xABnon risponde\xBB.", "Il pannello Wi-Fi di Android non si apre pi\xF9 da solo (all'avviso \xABPassa tutti qui\xBB o nella guida d'ingresso): la banda vibra e ha il tasto \xABApri il pannello Wi-Fi\xBB.", 'Il tasto \xABPrendi la regia\xBB spento dice il motivo vero (per esempio: dispositivo escluso, da far rientrare), e il banner dice \xABsi pu\xF2 prendere\xBB solo se da qui si pu\xF2.']));
+      var tmp_28 = new Novita('2026-11-08-0104', '08/11/2026, build 01:04', listOf_0(['Nel foglio di conferma il riquadro contiene esattamente ci\xF2 che si copia sulla provetta; le istruzioni stanno sotto, in grassetto. Le provette prese da isolato si scrivono \xAB125-UV\xBB (non pi\xF9 con la barra).', '\xABTogli dalla rete\xBB chiede la conferma del regista (\xABHo verificato col veterinario: quel telefono non preleva\xBB): il device esce subito dal conto e tutti tornano verdi.']), VOID, VOID, listOf_0(['Telecomando BLE-M3: riconosciuto anche quando Android lo tratta come mouse; il volume non cambia pi\xF9; OK, Indietro e frecce nei fogli, nei dialoghi e nei risultati; la schermata non si ricarica quando il telecomando si collega o si addormenta.', "Maggioranza pi\xF9 sicura: chi entra, riprende o viene escluso conta solo quando lo sanno quelli di prima; prima della regia d'emergenza un controllo di chi risponde davvero.", "Dopo la regia d'emergenza i palmari collegati tornano verdi senza ricollegarsi.", 'Se nessuno ha pi\xF9 la regia e tutti risultano esclusi, chi \xE8 al lavoro rientra da solo e la regia si pu\xF2 riprendere.']), listOf('Dopo \xABRicollegati col QR\xBB il palmare non torna a cercare indirizzi vecchi.'));
+      var tmp_29 = new Novita('2026-11-07-2042', '07/11/2026, build 20:42', listOf_0(["Rete: una sola procedura. Prima del lavoro ogni telefono salva in Android le reti del progetto inquadrando il loro QR, mostrato in \xABRete del progetto\xBB; durante il lavoro la Wi-Fi la sceglie Android e Fejalog ritrova da solo la Regia sulla rete in cui \xE8, anche sull'hotspot del tablet. Niente pi\xF9 finestre \xABConnessione al dispositivo\xBB n\xE9 reti temporanee.", 'Reti del progetto: una collezione da ordinare, ognuna col suo QR Wi-Fi grande da inquadrare.', '\xABPassa tutti qui\xBB della Regia avvisa i palmari con banda e vibrazione e apre il pannello Wi-Fi: si tocca la rete e Fejalog ritrova la Regia.']), VOID, VOID, listOf_0(['Telecomando: su e gi\xF9 scelgono fra i capi trovati e OK apre quello evidenziato; nelle finestre di conferma OK conferma e Indietro annulla; un gesto risveglia lo schermo nero senza fare altro.', 'Ultime: sul palmare solo le proprie provette; la Regia sceglie tutte o di un veterinario.']), listOf_0(['Lo schermo del campionamento non si scurisce pi\xF9 mentre si lavora nel foglio di conferma o in una finestra di dialogo.', 'La Regia mostra il QR e si fa trovare subito sulla rete in cui \xE8, anche senza il permesso di posizione.']));
+      var tmp_30 = new Novita('2026-11-07-1752', '07/11/2026, build 17:52', listOf('La guida \xABCollegati alla Wi-Fi di sistema\xBB della Regia mostra anche il QR standard della Wi-Fi, da inquadrare con la fotocamera.'), VOID, VOID, listOf_0(['Nella checklist del telefono (Dispositivo, \xABEntra col QR\xBB e, sulla Regia, Checklist e avvio) ci sono anche i permessi: posizione o dispositivi Wi-Fi vicini, fotocamera, notifiche, con il tasto per concederli.', "La copia del registro sulla chiavetta, dopo una scrittura interrotta, riparte su un file nuovo e non si ferma pi\xF9; il file interrotto resta com'\xE8.", 'La ricostruzione da una cartella legge anche le copie ripartite e salta le righe rovinate, lasciando decidere alla verifica del registro.', '\xABMarca in campo\xBB si vede con una riga fissa e si chiude annullando, cambiando specie o dopo la registrazione.']), listOf_0(['Il cambio di rete della Regia si completa anche quando Android non lascia leggere il nome della Wi-Fi (senza permesso di posizione): prima restava \xABin attesa di verifica\xBB.', "\xABAggiungi da QR\xBB nelle Reti salvate non chiude pi\xF9 l'app.", "I palmari dei progetti gi\xE0 avviati non vengono pi\xF9 fermati all'ingresso per una configurazione \xABincompleta\xBB.", 'Nel Riordino la provetta di un animale senza contrassegno non ancora risolto dice di risolverla prima in Gestione.', "Il campionamento si avvia solo dal tablet; la pagina del PC via USB si spegne all'avvio."]));
+      var tmp_31 = new Novita('2026-11-07-1656', '07/11/2026, build 16:56', listOf_0(["Animali senza contrassegno: in campionamento si registrano come non identificati, senza scegliere un capo, con specie, sesso, classe d'et\xE0 dalla dentizione (tabella per pecora e capra), razza e un'identificazione provvisoria; tutto si scrive anche sulla provetta.", "Dopo la chiusura del campionamento, in Gestione: chi ha perso le marche si confronta coi non prelevati compatibili; chi non era mai stato identificato si assegna a una marca disponibile dell'allevamento, anche applicandola subito in campo. Ne esce lo schema per la registrazione in BDN da dare all'allevatore.", 'Conteggio degli animali sotto et\xE0 man mano che si marcano.', 'Problematici nel secchio: non si mettono nel plateau; nel Riordino si parte dalla provetta che si ha in mano.', "Creazione e configurazione del progetto dal PC via USB (anche dall'A55), poi la regia passa al tablet.", 'Ricostruzione del progetto da una cartella: chiavetta della Regia o specchi dei device, in \xABRiconcilia backup\xBB.', 'Reti salvate: \xABAggiungi da QR\xBB legge il QR standard di una Wi-Fi.', "Sotto il QR d'ingresso (di fianco, sul tablet) chi \xE8 entrato, l'ultimo in cima, e l'impronta del registro.", 'Regia: si passa fra le schermate della fase con uno swipe a destra o a sinistra (non sopra i plateau) e, sul tablet, con le schede in cima.']), VOID, VOID, listOf_0(["Letto un capo registrato dell'altra specie, l'app chiede sempre se passare alla sua specie o registrare l'errore di specie: un solo OK non basta pi\xF9.", "Nel cerchio in cima al menu c'\xE8 la tua sigla, senza ripeterla accanto al nome.", 'Nella pagina Regia, accanto a chi non ha provette da ricevere: \xABTutte ricevute\xBB, oppure \xABLe ultime provette arrivano al rientro\xBB per chi non risponde.']), listOf_0(['Un palmare rimasto nel progetto vecchio non legge pi\xF9 \xABbuild diversa\xBB: se trova la sua Regia in un altro progetto gli dice di uscire e inquadrare il QR.', '\xABManca 1 capo\xBB al singolare; la Regia non \xE8 pi\xF9 fra i destinatari dei propri messaggi.']));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$8 = emptyList();
-      var tmp_31 = new Novita('2026-11-07-1500', '07/11/2026, build 15:00', tmp$ret$8, VOID, VOID, VOID, listOf("\xABRicollegati col QR\xBB e l'avviso per inquadrare il QR della Regia compaiono solo sul palmare: chi ha la regia o lavora da solo mostra il suo QR, non entra con quello di un altro."));
-      var tmp_32 = new Novita('2026-11-07-1430', '07/11/2026, build 14:30', listOf_0(['Il palmare si collega da solo alla Wi-Fi del QR, senza passare dalle impostazioni di Android; il collegamento a mano resta come ripiego.', "Se un device viene spostato a mano su un'altra Wi-Fi, l'app cerca l\xEC la Regia e gli altri palmari dello stesso progetto e ricostruisce la rete; chi ha cambiato rete a mano non viene riportato indietro.", 'Se la Regia non si trova n\xE9 sulla rete principale n\xE9 sulla riserva, dopo qualche minuto il palmare vibra una volta e chiede di inquadrare il QR della Regia.', 'Registro sulla chiavetta USB della Regia: ogni registrazione o modifica di provetta va subito sulla chiavetta, gli altri eventi a gruppi di dieci. Lo stato si legge in \xABNumerazioni e seconda copia\xBB.', "In configurazione la Regia assegna le sigle a tutti i veterinari dell'elenco dell'ASL; la tua sigla compare accanto al nome in cima al menu.", 'Colori di lavoro diversi: salvia sul palmare, blu sulla Regia, altri colori da soli e fuori dal progetto.']), VOID, VOID, listOf_0(['I palmari entrano solo a configurazione completa e con la stessa build della Regia: se la build \xE8 diversa, il messaggio dice quale installare.', 'Sul palmare il menu mostra solo campionamento, avanzamento con la classifica e rete; \xABCollegati alla riserva\xBB sposta il telefono da solo.', 'Fuori da un progetto il menu non mostra le fasi del lavoro.', 'Gli avvisi chiusi restano chiusi anche cambiando pagina; ricompaiono solo se la situazione peggiora.', 'Lo schermo nero del campionamento non rallenta pi\xF9 il telefono.', 'Le scelte su che cosa fare dei problematici si fanno solo in Gestione, dopo il campionamento.']), listOf_0(['Un palmare appena entrato aspetta la sigla dalla Regia e, con tutti collegati, le provette non escono pi\xF9 con la sigla in coda.', "La banda e l'icona della rete diventano gialle ogni volta che le provette escono con la sigla in coda (prima potevano restare verdi).", '\xABEsci dal progetto\xBB chiude il progetto in un solo passaggio.']));
+      var tmp_32 = new Novita('2026-11-07-1500', '07/11/2026, build 15:00', tmp$ret$8, VOID, VOID, VOID, listOf("\xABRicollegati col QR\xBB e l'avviso per inquadrare il QR della Regia compaiono solo sul palmare: chi ha la regia o lavora da solo mostra il suo QR, non entra con quello di un altro."));
+      var tmp_33 = new Novita('2026-11-07-1430', '07/11/2026, build 14:30', listOf_0(['Il palmare si collega da solo alla Wi-Fi del QR, senza passare dalle impostazioni di Android; il collegamento a mano resta come ripiego.', "Se un device viene spostato a mano su un'altra Wi-Fi, l'app cerca l\xEC la Regia e gli altri palmari dello stesso progetto e ricostruisce la rete; chi ha cambiato rete a mano non viene riportato indietro.", 'Se la Regia non si trova n\xE9 sulla rete principale n\xE9 sulla riserva, dopo qualche minuto il palmare vibra una volta e chiede di inquadrare il QR della Regia.', 'Registro sulla chiavetta USB della Regia: ogni registrazione o modifica di provetta va subito sulla chiavetta, gli altri eventi a gruppi di dieci. Lo stato si legge in \xABNumerazioni e seconda copia\xBB.', "In configurazione la Regia assegna le sigle a tutti i veterinari dell'elenco dell'ASL; la tua sigla compare accanto al nome in cima al menu.", 'Colori di lavoro diversi: salvia sul palmare, blu sulla Regia, altri colori da soli e fuori dal progetto.']), VOID, VOID, listOf_0(['I palmari entrano solo a configurazione completa e con la stessa build della Regia: se la build \xE8 diversa, il messaggio dice quale installare.', 'Sul palmare il menu mostra solo campionamento, avanzamento con la classifica e rete; \xABCollegati alla riserva\xBB sposta il telefono da solo.', 'Fuori da un progetto il menu non mostra le fasi del lavoro.', 'Gli avvisi chiusi restano chiusi anche cambiando pagina; ricompaiono solo se la situazione peggiora.', 'Lo schermo nero del campionamento non rallenta pi\xF9 il telefono.', 'Le scelte su che cosa fare dei problematici si fanno solo in Gestione, dopo il campionamento.']), listOf_0(['Un palmare appena entrato aspetta la sigla dalla Regia e, con tutti collegati, le provette non escono pi\xF9 con la sigla in coda.', "La banda e l'icona della rete diventano gialle ogni volta che le provette escono con la sigla in coda (prima potevano restare verdi).", '\xABEsci dal progetto\xBB chiude il progetto in un solo passaggio.']));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$9 = emptyList();
-      var tmp_33 = new Novita('2026-11-07-1130', '07/11/2026, build 11:30', tmp$ret$9, VOID, VOID, VOID, listOf_0(['\xABNuovo progetto \u203A Di prova\xBB crea sempre un progetto nuovo invece di riaprire quello di una prova precedente.', "Dopo \xABEsci dall'app\xBB, riaprendo l'app la rete riparte da sola anche se Android aveva tenuto l'app in memoria."]));
+      var tmp_34 = new Novita('2026-11-07-1130', '07/11/2026, build 11:30', tmp$ret$9, VOID, VOID, VOID, listOf_0(['\xABNuovo progetto \u203A Di prova\xBB crea sempre un progetto nuovo invece di riaprire quello di una prova precedente.', "Dopo \xABEsci dall'app\xBB, riaprendo l'app la rete riparte da sola anche se Android aveva tenuto l'app in memoria."]));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$10 = emptyList();
-      var tmp_34 = new Novita('2026-11-07-0845', '07/11/2026, build 08:45', tmp$ret$10, VOID, VOID, listOf('Rete del progetto: la password \xE8 facoltativa. Senza password il QR porta comunque il nome della rete, e i palmari usano la rete gi\xE0 salvata nel telefono.'), listOf('Dopo \xABChiedi di entrare\xBB il palmare apre davvero il progetto e pu\xF2 campionare (col progetto \xABDi prova\xBB restava senza progetto).'));
+      var tmp_35 = new Novita('2026-11-07-0845', '07/11/2026, build 08:45', tmp$ret$10, VOID, VOID, listOf('Rete del progetto: la password \xE8 facoltativa. Senza password il QR porta comunque il nome della rete, e i palmari usano la rete gi\xE0 salvata nel telefono.'), listOf('Dopo \xABChiedi di entrare\xBB il palmare apre davvero il progetto e pu\xF2 campionare (col progetto \xABDi prova\xBB restava senza progetto).'));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$11 = emptyList();
-      var tmp_35 = new Novita('2026-11-07-0615', '07/11/2026, build 06:15', tmp$ret$11, VOID, VOID, listOf_0(['Cambio di rete: resta \xABin corso\xBB finch\xE9 il telefono non \xE8 davvero sulla rete nuova, e solo allora il QR mostra il nuovo indirizzo; se Android non si sposta da solo, la guida compare anche sulla Regia (\xABCompleta il cambio rete\xBB).', 'Il palmare non fa pi\xF9 controlli ripetuti mentre aspetta la rete o la Regia: si muove quando la rete cambia o arrivano i dati.']), listOf_0(['\xABPassa tutti alla riserva\xBB e il cambio di rete principale o riserva non vanno pi\xF9 in timeout.', '\xABRicollegati col QR\xBB dice \xABRicollegato\xBB solo quando il rientro vale davvero, dopo aver ricevuto tutti i dati della Regia.', 'Un telefono tolto dalla rete, escluso, in pausa o che ha finito non pu\xF2 prendersi la regia, neanche quando \xE8 libera.', 'Un palmare tolto dalla rete torna al lavoro solo col QR, non con Pausa e Riprendi; finch\xE9 non rientra, i doppi si segnalano con prudenza.', "Se due regie si sono scambiate un'esclusione mentre erano separate, al ritorno la Regia giusta resta valida."]));
-      var tmp_36 = new Novita('2026-11-07-0230', '07/11/2026', listOf_0(['Rete \u203A \xABTogli dalla rete\xBB: la Regia toglie un telefono che non risponde da 2 minuti, anche senza la maggioranza; rientra solo col QR.', 'Cambio di rete coordinato: la Regia manda la nuova rete ai palmari collegati, che si spostano da soli; chi manca rientra con \xABRicollegati col QR\xBB in Rete.', 'La sigla del veterinario si assegna da sola (prima le iniziali di nome e cognome), senza fermare n\xE9 il palmare n\xE9 la Regia.']), VOID, VOID, listOf_0(["Il QR d'ingresso mostra sempre la rete in uso, con il nome della rete e l'indirizzo della Regia; il palmare usa la Wi-Fi del telefono e, se non \xE8 collegato, guida a collegarsi.", 'Un progetto alla volta: con un progetto aperto non si apre n\xE9 si crea un altro progetto e non si entra col QR di un altro; senza progetto le voci Nuovo, Apri, Recenti ed Entra col QR stanno al posto delle fasi.', 'Campionamento: Pecore e Capre sono due tasti grossi; la ricerca \xE8 solo per contrassegno, prima quelli che finiscono con le cifre digitate.', 'Gli avvisi stanno su una riga e si chiudono con la X (ricompaiono se la situazione peggiora); nel foglio di conferma scorre tutto tranne Conferma e Annulla.', '\xABStabilimenti e sigle\xBB si chiama \xABSigle stabilimenti e veterinari\xBB.']), listOf_0(["L'app non si blocca pi\xF9 quando arrivano dati dalla rete mentre si aggiorna una schermata: erano i blocchi della presentazione del 6/11, che facevano cadere anche le connessioni.", "Un telefono escluso, o che non vede la maggioranza, non pu\xF2 pi\xF9 prendersi la regia d'emergenza.", '\xABRicollegati col QR\xBB sostituisce davvero la rete vecchia e dice se il collegamento \xE8 riuscito.', "Con pecore e capre \xABNessuna\xBB lettera di specie non si pu\xF2 pi\xF9 scegliere; se la seconda specie arriva dopo l'avvio, prende la lettera da sola.", "Sulla Regia che fa da hotspot il QR porta l'indirizzo dell'hotspot."]));
+      var tmp_36 = new Novita('2026-11-07-0615', '07/11/2026, build 06:15', tmp$ret$11, VOID, VOID, listOf_0(['Cambio di rete: resta \xABin corso\xBB finch\xE9 il telefono non \xE8 davvero sulla rete nuova, e solo allora il QR mostra il nuovo indirizzo; se Android non si sposta da solo, la guida compare anche sulla Regia (\xABCompleta il cambio rete\xBB).', 'Il palmare non fa pi\xF9 controlli ripetuti mentre aspetta la rete o la Regia: si muove quando la rete cambia o arrivano i dati.']), listOf_0(['\xABPassa tutti alla riserva\xBB e il cambio di rete principale o riserva non vanno pi\xF9 in timeout.', '\xABRicollegati col QR\xBB dice \xABRicollegato\xBB solo quando il rientro vale davvero, dopo aver ricevuto tutti i dati della Regia.', 'Un telefono tolto dalla rete, escluso, in pausa o che ha finito non pu\xF2 prendersi la regia, neanche quando \xE8 libera.', 'Un palmare tolto dalla rete torna al lavoro solo col QR, non con Pausa e Riprendi; finch\xE9 non rientra, i doppi si segnalano con prudenza.', "Se due regie si sono scambiate un'esclusione mentre erano separate, al ritorno la Regia giusta resta valida."]));
+      var tmp_37 = new Novita('2026-11-07-0230', '07/11/2026', listOf_0(['Rete \u203A \xABTogli dalla rete\xBB: la Regia toglie un telefono che non risponde da 2 minuti, anche senza la maggioranza; rientra solo col QR.', 'Cambio di rete coordinato: la Regia manda la nuova rete ai palmari collegati, che si spostano da soli; chi manca rientra con \xABRicollegati col QR\xBB in Rete.', 'La sigla del veterinario si assegna da sola (prima le iniziali di nome e cognome), senza fermare n\xE9 il palmare n\xE9 la Regia.']), VOID, VOID, listOf_0(["Il QR d'ingresso mostra sempre la rete in uso, con il nome della rete e l'indirizzo della Regia; il palmare usa la Wi-Fi del telefono e, se non \xE8 collegato, guida a collegarsi.", 'Un progetto alla volta: con un progetto aperto non si apre n\xE9 si crea un altro progetto e non si entra col QR di un altro; senza progetto le voci Nuovo, Apri, Recenti ed Entra col QR stanno al posto delle fasi.', 'Campionamento: Pecore e Capre sono due tasti grossi; la ricerca \xE8 solo per contrassegno, prima quelli che finiscono con le cifre digitate.', 'Gli avvisi stanno su una riga e si chiudono con la X (ricompaiono se la situazione peggiora); nel foglio di conferma scorre tutto tranne Conferma e Annulla.', '\xABStabilimenti e sigle\xBB si chiama \xABSigle stabilimenti e veterinari\xBB.']), listOf_0(["L'app non si blocca pi\xF9 quando arrivano dati dalla rete mentre si aggiorna una schermata: erano i blocchi della presentazione del 6/11, che facevano cadere anche le connessioni.", "Un telefono escluso, o che non vede la maggioranza, non pu\xF2 pi\xF9 prendersi la regia d'emergenza.", '\xABRicollegati col QR\xBB sostituisce davvero la rete vecchia e dice se il collegamento \xE8 riuscito.', "Con pecore e capre \xABNessuna\xBB lettera di specie non si pu\xF2 pi\xF9 scegliere; se la seconda specie arriva dopo l'avvio, prende la lettera da sola.", "Sulla Regia che fa da hotspot il QR porta l'indirizzo dell'hotspot."]));
       var tmp12_voci = listOf("Diagnostica locale anche nella release: tempi, rete, batteria ed errori del telefono finiscono nei backup per migliorare l'app. \xC8 leggera e si spegne in Impostazioni \u203A App.");
       var tmp13_miglioramenti = listOf_0(["Menu: Progetto con \xABEntra col QR\xBB per tutti; Configurazione apribile dalla Regia anche a campionamento avviato, coi campi congelati in sola lettura; QR d'ingresso e Stampe come voci proprie; Gestione campioni divisa in \xABSul tablet\xBB, \xABDal PC via USB\xBB e \xABSul sito\xBB; Impostazioni divise in Utente, Dispositivo, App, Cartelle e Reti salvate; Aiuto con Informazioni (versione, autore, crediti, avvertenze); in fondo \xABEsci dal progetto\xBB ed \xABEsci dall'app\xBB.", 'Sul palmare: Rete \xE8 una voce diretta, sempre raggiungibile; la nuova pagina Campionamento \u203A Pausa e ripresa si apre solo dal menu. Chi si allontana dalla rete si mette in pausa: altrimenti tutti passano alla gestione provvisoria. La Regia pu\xF2 sempre metterlo in pausa.', 'Ultime sulla Regia: si scelgono le provette di tutti, le proprie o di un veterinario. Gli stabilimenti stanno in fondo ad Avanzamento.', 'Una sola cartella locale dei backup, anche in modalit\xE0 offline; la cartella offline scelta in passato resta come ripiego.', "Greggi grandi: registrazione e viste con un costo per evento che non cresce pi\xF9 durante la giornata (prove sul PC e sull'emulatore col gregge fittizio da 1800 capi e 12 palmari). Ricerca del capo circa 20 volte pi\xF9 veloce, elenco delle provette e istantanee pi\xF9 leggeri, foglio di conferma senza blocchi."]);
       var tmp14_correzioni = listOf_0(["Riordino: la guida non blocca pi\xF9 l'app con molti eventi, l'elenco resta al suo posto dopo ogni invio, il cambio di specie \xE8 immediato e un posto occupato si libera prima. La produttivit\xE0 della gestione distingue le provette in coda con ARVET a mano.", 'Fine lavori: una capra valida non esce pi\xF9 dagli snippet dopo lo scarto di una registrazione nella specie sbagliata; il CSV nello zip non ha pi\xF9 righe vuote; riepilogo per tipologia e bordi dei plateau corretti.']);
-      var tmp_37 = new Novita('2026-11-05-1813', '05/11/2026', tmp12_voci, '0.4.0', VOID, tmp13_miglioramenti, tmp14_correzioni, 'Menu riordinato, ogni funzione in un posto solo, e tenuta provata con greggi grandi e molti palmari.');
+      var tmp_38 = new Novita('2026-11-05-1813', '05/11/2026', tmp12_voci, '0.4.0', VOID, tmp13_miglioramenti, tmp14_correzioni, 'Menu riordinato, ogni funzione in un posto solo, e tenuta provata con greggi grandi e molti palmari.');
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$12 = emptyList();
-      var tmp_38 = new Novita('2026-10-30-2309', '30/10/2026, build 23:09', tmp$ret$12, VOID, VOID, listOf("La prova del telecomando dice da quale dispositivo arriva il volume e quanto dopo l'inizio del tocco."), listOf("Telecomando BLE-M3: il tasto dello scatto (che fa anche il volume) ora \xE8 sempre Indietro e non conferma pi\xF9, qualunque sia l'ordine in cui il telecomando manda tocco e volume. Il tasto centrale resta OK."));
+      var tmp_39 = new Novita('2026-10-30-2309', '30/10/2026, build 23:09', tmp$ret$12, VOID, VOID, listOf("La prova del telecomando dice da quale dispositivo arriva il volume e quanto dopo l'inizio del tocco."), listOf("Telecomando BLE-M3: il tasto dello scatto (che fa anche il volume) ora \xE8 sempre Indietro e non conferma pi\xF9, qualunque sia l'ordine in cui il telecomando manda tocco e volume. Il tasto centrale resta OK."));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$13 = emptyList();
-      var tmp_39 = new Novita('2026-10-30-2124', '30/10/2026, build 21:24', tmp$ret$13, VOID, VOID, listOf("Telecomando BLE-M3: frecce destra e sinistra cambiano specie; nel foglio su e gi\xF9 scorrono le opzioni, il tasto centrale attiva quella selezionata e l'altro annulla."), listOf('Il tocco che accompagna Indietro viene scartato; un OK premuto subito dopo funziona. I tasti riaccendono lo schermo nero e funzionano anche entrando in Ultime.'));
-      var tmp_40 = new Novita('2026-10-30-2109', '30/10/2026, build 21:09', listOf("Telecomando BLE-M3 (quello per i selfie con la croce): nel foglio di conferma e nella ricerca le frecce fanno da frecce, il tasto centrale \xE8 OK e l'altro \xE8 Indietro. I suoi tocchi non arrivano allo schermo."), VOID, VOID, listOf('La prova del telecomando dice in che cosa si traduce ogni gesto.'));
+      var tmp_40 = new Novita('2026-10-30-2124', '30/10/2026, build 21:24', tmp$ret$13, VOID, VOID, listOf("Telecomando BLE-M3: frecce destra e sinistra cambiano specie; nel foglio su e gi\xF9 scorrono le opzioni, il tasto centrale attiva quella selezionata e l'altro annulla."), listOf('Il tocco che accompagna Indietro viene scartato; un OK premuto subito dopo funziona. I tasti riaccendono lo schermo nero e funzionano anche entrando in Ultime.'));
+      var tmp_41 = new Novita('2026-10-30-2109', '30/10/2026, build 21:09', listOf("Telecomando BLE-M3 (quello per i selfie con la croce): nel foglio di conferma e nella ricerca le frecce fanno da frecce, il tasto centrale \xE8 OK e l'altro \xE8 Indietro. I suoi tocchi non arrivano allo schermo."), VOID, VOID, listOf('La prova del telecomando dice in che cosa si traduce ogni gesto.'));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$14 = emptyList();
-      var tmp_41 = new Novita('2026-10-30-2042', '30/10/2026, build 20:42', tmp$ret$14, VOID, VOID, listOf('Prova del telecomando: registra anche la rotella e il cursore, il punto dello schermo e la durata di ogni gesto; legge solo i tocchi del telecomando, cos\xEC \xABChiudi\xBB si tocca col dito.'));
+      var tmp_42 = new Novita('2026-10-30-2042', '30/10/2026, build 20:42', tmp$ret$14, VOID, VOID, listOf('Prova del telecomando: registra anche la rotella e il cursore, il punto dello schermo e la durata di ogni gesto; legge solo i tocchi del telecomando, cos\xEC \xABChiudi\xBB si tocca col dito.'));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$15 = emptyList();
-      var tmp_42 = new Novita('2026-10-30-1946', '30/10/2026, build 19:46', tmp$ret$15, VOID, VOID, listOf('Prova del telecomando a tutto schermo: mostra anche i clic e i trascinamenti dei telecomandi che fanno da mouse, come il BLE-M3, che non ha una modalit\xE0 tastiera.'));
-      var tmp_43 = new Novita('2026-10-30-1917', '30/10/2026, build 19:17', listOf_0(['Istantanee locali su tutti i device, anche sui palmari: ogni 10 eventi da soli, ogni N in rete, e sempre a pausa, ripresa e uscita.', 'Pagina Regia: \xABPausa\xBB e \xABRiattiva\xBB per ogni veterinario, anche per un palmare scollegato, cos\xEC gli altri escono dalla gestione provvisoria.', 'Foto del campione nel foglio di conferma (fino a 5) e in Ultime: arrivano alla Regia e vanno nei backup e nello zip di fine lavori.', "Kit di prova a cinque stabilimenti: 1200 capi nel principale, 10 nel piccolo, tutti i motivi d'uscita.", 'Impostazioni \u203A Telecomando e tastiera: la prova mostra il nome di ogni tasto di un telecomando Bluetooth e che cosa fa.']), VOID, VOID, listOf("Salva e uscita scrivono il backup nelle cartelle locale e remota scelte una volta in Impostazioni: all'uscita non si chiede pi\xF9 la cartella."), listOf_0(["Il motivo d'uscita Y3 (presunto morto) si legge intero dai registri della BDN.", 'Senza rete, un device rimasto senza lettera ne prende una libera; se una provetta non si pu\xF2 registrare, il foglio di conferma dice perch\xE9.']));
+      var tmp_43 = new Novita('2026-10-30-1946', '30/10/2026, build 19:46', tmp$ret$15, VOID, VOID, listOf('Prova del telecomando a tutto schermo: mostra anche i clic e i trascinamenti dei telecomandi che fanno da mouse, come il BLE-M3, che non ha una modalit\xE0 tastiera.'));
+      var tmp_44 = new Novita('2026-10-30-1917', '30/10/2026, build 19:17', listOf_0(['Istantanee locali su tutti i device, anche sui palmari: ogni 10 eventi da soli, ogni N in rete, e sempre a pausa, ripresa e uscita.', 'Pagina Regia: \xABPausa\xBB e \xABRiattiva\xBB per ogni veterinario, anche per un palmare scollegato, cos\xEC gli altri escono dalla gestione provvisoria.', 'Foto del campione nel foglio di conferma (fino a 5) e in Ultime: arrivano alla Regia e vanno nei backup e nello zip di fine lavori.', "Kit di prova a cinque stabilimenti: 1200 capi nel principale, 10 nel piccolo, tutti i motivi d'uscita.", 'Impostazioni \u203A Telecomando e tastiera: la prova mostra il nome di ogni tasto di un telecomando Bluetooth e che cosa fa.']), VOID, VOID, listOf("Salva e uscita scrivono il backup nelle cartelle locale e remota scelte una volta in Impostazioni: all'uscita non si chiede pi\xF9 la cartella."), listOf_0(["Il motivo d'uscita Y3 (presunto morto) si legge intero dai registri della BDN.", 'Senza rete, un device rimasto senza lettera ne prende una libera; se una provetta non si pu\xF2 registrare, il foglio di conferma dice perch\xE9.']));
       // Inline function 'kotlin.collections.listOf' call
       var tmp15_voci = emptyList();
       var tmp16_miglioramenti = listOf_0(['Sistemazione delle provette in ordine: prima i maschi problematici in testa (facendo spazio se serve), poi le femmine problematiche nei buchi, infine i buchi che restano si chiudono con le ultime provette ordinarie.', 'Controllo completo delle etichette con le sigle a due lettere: provette omonime non emesse in nessuna delle prove casuali (6.000 problematiche in 300 sedute).']);
       var tmp17_correzioni = listOf_0(['Riordino: annullando un passaggio si annulla tutta la catena dei passaggi collegati; le guide dei file ripartono sempre dal posto attuale della provetta.', 'Plateau: la ricerca trova anche il codice breve della provetta problematica (per esempio \xABUV-1\xBB), con o senza lettera dello stabilimento.']);
-      var tmp_44 = new Novita('2026-10-28-2258', '28/10/2026', tmp15_voci, '0.3.0', VOID, tmp16_miglioramenti, tmp17_correzioni, 'Prima del campo. Etichette con sigla di due lettere del veterinario e lettera dello stabilimento cerchiata, Regia a due pannelli, stampe e checklist prima del campo, gestione dei campioni dopo il campionamento e strumenti completi anche sul computer.');
+      var tmp_45 = new Novita('2026-10-28-2258', '28/10/2026', tmp15_voci, '0.3.0', VOID, tmp16_miglioramenti, tmp17_correzioni, 'Prima del campo. Etichette con sigla di due lettere del veterinario e lettera dello stabilimento cerchiata, Regia a due pannelli, stampe e checklist prima del campo, gestione dei campioni dopo il campionamento e strumenti completi anche sul computer.');
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$17 = emptyList();
-      var tmp_45 = new Novita('2026-10-28-1045', '28/10/2026, build 10:45', tmp$ret$17, VOID, VOID, listOf_0(['PIN di 8 cifre a gruppi di 4 per collegare il PC via USB, al posto del codice lungo; una conferma sul tablet per sessione, con registro delle modifiche ricevute e tasto Interrompi.', "Riordino: per ogni problematico si vede la fattispecie; la destinazione suggerita si pu\xF2 cambiare scrivendola (se il numero \xE8 occupato si propone lo scambio da confermare); ogni riga ha il suo Invia e la spunta serve solo per l'invio in blocco.", 'Plateau: niente pi\xF9 animazione storica, la posizione reale si aggiorna subito; ricerca per contrassegno e per posizione nella stessa schermata, plateau affiancati con zoom.', 'Gestione dei campioni dopo il campionamento: toccando una provetta nel plateau si copia il contrassegno, si modifica la registrazione, si sposta, si scarta (recuperabile) o si segna smarrita (ritrovabile); bordi dei plateau verde, giallo o rosso; riepilogo dei problematici e delle registrazioni tardive; produttivit\xE0 anche in gestione.', "Le stesse funzioni valgono nell'app, nella pagina via USB e nel sito aperto da un backup."]));
-      var tmp_46 = new Novita('2026-10-27-1032', '27/10/2026, build 10:32', listOf('Collegamento al PC via USB: nuova voce in Gestione campioni, con pulsante per le impostazioni del tethering, controllo USB e Avvia/Ferma server.'), VOID, VOID, listOf("La pagina mostra l'indirizzo effettivo con IP e porta, il codice monouso e Copia indirizzo; il ? apre la guida passo per passo per Windows."));
+      var tmp_46 = new Novita('2026-10-28-1045', '28/10/2026, build 10:45', tmp$ret$17, VOID, VOID, listOf_0(['PIN di 8 cifre a gruppi di 4 per collegare il PC via USB, al posto del codice lungo; una conferma sul tablet per sessione, con registro delle modifiche ricevute e tasto Interrompi.', "Riordino: per ogni problematico si vede la fattispecie; la destinazione suggerita si pu\xF2 cambiare scrivendola (se il numero \xE8 occupato si propone lo scambio da confermare); ogni riga ha il suo Invia e la spunta serve solo per l'invio in blocco.", 'Plateau: niente pi\xF9 animazione storica, la posizione reale si aggiorna subito; ricerca per contrassegno e per posizione nella stessa schermata, plateau affiancati con zoom.', 'Gestione dei campioni dopo il campionamento: toccando una provetta nel plateau si copia il contrassegno, si modifica la registrazione, si sposta, si scarta (recuperabile) o si segna smarrita (ritrovabile); bordi dei plateau verde, giallo o rosso; riepilogo dei problematici e delle registrazioni tardive; produttivit\xE0 anche in gestione.', "Le stesse funzioni valgono nell'app, nella pagina via USB e nel sito aperto da un backup."]));
+      var tmp_47 = new Novita('2026-10-27-1032', '27/10/2026, build 10:32', listOf('Collegamento al PC via USB: nuova voce in Gestione campioni, con pulsante per le impostazioni del tethering, controllo USB e Avvia/Ferma server.'), VOID, VOID, listOf("La pagina mostra l'indirizzo effettivo con IP e porta, il codice monouso e Copia indirizzo; il ? apre la guida passo per passo per Windows."));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$18 = emptyList();
-      var tmp_47 = new Novita('2026-10-27-0813', '27/10/2026, build 08:13', tmp$ret$18, VOID, VOID, listOf('Checklist del veterinario: aggiunti i tre passaggi per entrare, prelevare e consegnare le provette, con promemoria su conferme mancate, rete e batteria.'), listOf("Sigle dei veterinari: l'avviso compare solo quando almeno due veterinari hanno le stesse iniziali."));
-      var tmp_48 = new Novita('2026-10-26-1352', '26/10/2026, build 13:52', listOf_0(['Capo senza contrassegno: tasto \xABSenza contrassegno\xBB per attribuire la provetta a un presente non prelevato per sesso, razza ed et\xE0.', "Prima del campo: stampe (2/33 precompilato dai file di ARVET, foglio A3 provetta/contrassegno, foglio 1\u2013100, schema del tavolo, QR Wi-Fi), calcolo del materiale, checklist e briefing nell'app.", 'Fine lavori sul computer: pagina servita dal tablet via USB (tethering) con codice monouso e, sul sito, strumenti completi (provette e modifiche, statistiche, riconcilia backup, avvisi, 2/33 finale); le modifiche tornano al tablet nel file \xABImporta dal sito\xBB.']), VOID, VOID, listOf_0(['Regia: pagina \xABRegia\xBB a due pannelli (a sinistra i veterinari con \xABRicevi\xBB, a destra i plateau con zoom e \xABMetti qui\xBB); sul telefono sono due schede.', "Inserimento campioni: cambiando specie (swipe o frecce) il contrassegno letto o digitato resta nel campo, senza rileggerlo; con il foglio di conferma aperto il cambio lo chiude e la ricerca riparte nell'altra specie.", "Scritta da mettere sulla provetta: riquadro rosso per i problematici (scrivi sempre il contrassegno completo), blu per l'ordinario preso senza tutti collegati (solo l'etichetta).", 'Tasti (anche per il telecomando): nel foglio di conferma OK conferma subito; frecce su e gi\xF9 spostano il focus fra le opzioni, spazio o OK le attivano, frecce destra e sinistra cambiano specie, Esc annulla.', "Etichette nuove nei progetti nuovi: sigla di due lettere del veterinario (la conferma la Regia) e lettera dello stabilimento cerchiata in testa; la Regia sceglie le lettere prima dell'avvio.", "Plateau: verso di riempimento a scelta (dall'alto verso il basso, predefinito, o dal basso verso l'alto) e foglio generico 1\u2013100; i problematici stanno in un solo plateau alla volta, nel primo pozzetto libero.", "Testi: chi usa l'app \xE8 sempre chiamato veterinario (veterinario prelevatore in campo), chi alleva gli animali allevatore."]));
-      var tmp_49 = new Novita('2026-10-23-2246', '23/10/2026', listOf_0(["Riordino: l'interruttore \xABChiudi i buchi\xBB d\xE0 i numeri finali di fila, senza vuoti (provette perse, annullate, eliminate); vale per la guida e per lo zip di fine lavori. Si sceglie prima di spuntare.", 'Sito, strumenti on line: simulatore del riempimento dei plateau (rivede il backup provetta dopo provetta, con il cursore del tempo; si pu\xF2 aprire in una finestra a parte), \xABChiudi i buchi\xBB anche l\xEC, e il tasto per nascondere il menu del sito.']));
-      var tmp_50 = new Novita('2026-10-23-2140', '23/10/2026', listOf_0(['A campionamento chiuso: \xABNon trovati e tardive\xBB. La distinta dei capi non prelevati, col tasto per copiare ogni contrassegno, e il confronto che mette in ordine di somiglianza i capi che mancano per attribuire una provetta dal numero o dal contrassegno incompleto o illeggibile (\xAB5?\xBB per una cifra che non si legge).', "Registrazione tardiva (solo la Regia): una provetta scritta ma mai confermata si registra a campionamento chiuso, senza riaprirlo, con l'etichetta che c'\xE8 sulla provetta e una nota.", "\xABImporta dal sito\xBB: le modifiche fatte con gli strumenti on line del sito (fine lavori sul computer) tornano nell'app, con anteprima, come eventi nuovi."]), VOID, VOID, listOf_0(["Accanto al contrassegno delle provette problematiche c'\xE8 il tasto per copiarlo.", "Se il Wi-Fi resta perso per 45 secondi il palmare prova da solo l'altra rete del progetto; se la cartella cloud non risponde i salvataggi vanno in locale e si riprova da soli."]));
-      var tmp_51 = new Novita('2026-10-23-1640', '23/10/2026', listOf('La Regia sceglie le soglie della batteria dei palmari (avvisi e pausa automatica) dalla pagina Messaggi.'), VOID, VOID, listOf_0(['Alla Regia: se le lettere dei veterinari sono finite, una banda rossa dice quale telefono non pu\xF2 prelevare da isolato n\xE9 registrare problematiche.', "Wi-Fi persa da 45 secondi: il palmare prova da solo l'altra rete del progetto (principale o riserva), poi riprova ogni 90 secondi; il telefono pu\xF2 chiedere una conferma.", 'Se la cartella cloud non risponde, i salvataggi vanno in locale e in coda e il cloud si riprova da solo ogni minuto: al primo successo la coda si svuota.']));
-      var tmp_52 = new Novita('2026-10-23-1600', '23/10/2026', listOf('Esito a tutto schermo per un attimo: \u2713 verde \xABregistrata\xBB o \u2717 rossa \xABnon registrata\xBB, con vibrazioni diverse; il lampo si vede anche sopra il foglio di conferma.'), VOID, VOID, listOf_0(['Icona della rete spiegata: verde doppi controllati, giallo non controllati (lettera in coda), rosso problema, grigio senza rete; tacche del segnale Wi-Fi. Su ogni provetta il segno del controllo dei doppi.', "La Regia pu\xF2 escludere subito un telefono spento (solo lei, con la maggioranza); l'esclusione automatica a 2 minuti resta com'\xE8.", 'Batteria: avvisi al 20% e al 10%, pausa ordinata al 5% se non \xE8 in carica, ultimo segnale allo spegnimento.', 'Riconnessione rapida alla Regia mentre il palmare \xE8 scollegato, \xABEntra col QR\xBB sempre raggiungibile per cambiare rete senza reinstallare.', 'Questa build di debug si installa accanto alla release (\xABFejalog debug\xBB, cartelle Documenti/Fejalog-debug): non serve pi\xF9 disinstallare.', 'Dopo la prima prova in campo con tre telefoni: la lettera appartiene al telefono (la classifica resta della persona); chi cambia telefono ne prende una nuova, e un telefono non si presenta finch\xE9 non ha ricevuto il registro.']), listOf('Meno provette scritte ma non confermate: un capo gi\xE0 prelevato non si registra pi\xF9 due volte per sbaglio (\xABGi\xE0 fatto\xBB o \xABPreleva come doppio\xBB), le conferme mancate restano nelle Ultime con \xABRegistra adesso\xBB, e col foglio aperto una nuova lettura chiede prima di scartare.'));
+      var tmp_48 = new Novita('2026-10-27-0813', '27/10/2026, build 08:13', tmp$ret$18, VOID, VOID, listOf('Checklist del veterinario: aggiunti i tre passaggi per entrare, prelevare e consegnare le provette, con promemoria su conferme mancate, rete e batteria.'), listOf("Sigle dei veterinari: l'avviso compare solo quando almeno due veterinari hanno le stesse iniziali."));
+      var tmp_49 = new Novita('2026-10-26-1352', '26/10/2026, build 13:52', listOf_0(['Capo senza contrassegno: tasto \xABSenza contrassegno\xBB per attribuire la provetta a un presente non prelevato per sesso, razza ed et\xE0.', "Prima del campo: stampe (2/33 precompilato dai file di ARVET, foglio A3 provetta/contrassegno, foglio 1\u2013100, schema del tavolo, QR Wi-Fi), calcolo del materiale, checklist e briefing nell'app.", 'Fine lavori sul computer: pagina servita dal tablet via USB (tethering) con codice monouso e, sul sito, strumenti completi (provette e modifiche, statistiche, riconcilia backup, avvisi, 2/33 finale); le modifiche tornano al tablet nel file \xABImporta dal sito\xBB.']), VOID, VOID, listOf_0(['Regia: pagina \xABRegia\xBB a due pannelli (a sinistra i veterinari con \xABRicevi\xBB, a destra i plateau con zoom e \xABMetti qui\xBB); sul telefono sono due schede.', "Inserimento campioni: cambiando specie (swipe o frecce) il contrassegno letto o digitato resta nel campo, senza rileggerlo; con il foglio di conferma aperto il cambio lo chiude e la ricerca riparte nell'altra specie.", "Scritta da mettere sulla provetta: riquadro rosso per i problematici (scrivi sempre il contrassegno completo), blu per l'ordinario preso senza tutti collegati (solo l'etichetta).", 'Tasti (anche per il telecomando): nel foglio di conferma OK conferma subito; frecce su e gi\xF9 spostano il focus fra le opzioni, spazio o OK le attivano, frecce destra e sinistra cambiano specie, Esc annulla.', "Etichette nuove nei progetti nuovi: sigla di due lettere del veterinario (la conferma la Regia) e lettera dello stabilimento cerchiata in testa; la Regia sceglie le lettere prima dell'avvio.", "Plateau: verso di riempimento a scelta (dall'alto verso il basso, predefinito, o dal basso verso l'alto) e foglio generico 1\u2013100; i problematici stanno in un solo plateau alla volta, nel primo pozzetto libero.", "Testi: chi usa l'app \xE8 sempre chiamato veterinario (veterinario prelevatore in campo), chi alleva gli animali allevatore."]));
+      var tmp_50 = new Novita('2026-10-23-2246', '23/10/2026', listOf_0(["Riordino: l'interruttore \xABChiudi i buchi\xBB d\xE0 i numeri finali di fila, senza vuoti (provette perse, annullate, eliminate); vale per la guida e per lo zip di fine lavori. Si sceglie prima di spuntare.", 'Sito, strumenti on line: simulatore del riempimento dei plateau (rivede il backup provetta dopo provetta, con il cursore del tempo; si pu\xF2 aprire in una finestra a parte), \xABChiudi i buchi\xBB anche l\xEC, e il tasto per nascondere il menu del sito.']));
+      var tmp_51 = new Novita('2026-10-23-2140', '23/10/2026', listOf_0(['A campionamento chiuso: \xABNon trovati e tardive\xBB. La distinta dei capi non prelevati, col tasto per copiare ogni contrassegno, e il confronto che mette in ordine di somiglianza i capi che mancano per attribuire una provetta dal numero o dal contrassegno incompleto o illeggibile (\xAB5?\xBB per una cifra che non si legge).', "Registrazione tardiva (solo la Regia): una provetta scritta ma mai confermata si registra a campionamento chiuso, senza riaprirlo, con l'etichetta che c'\xE8 sulla provetta e una nota.", "\xABImporta dal sito\xBB: le modifiche fatte con gli strumenti on line del sito (fine lavori sul computer) tornano nell'app, con anteprima, come eventi nuovi."]), VOID, VOID, listOf_0(["Accanto al contrassegno delle provette problematiche c'\xE8 il tasto per copiarlo.", "Se il Wi-Fi resta perso per 45 secondi il palmare prova da solo l'altra rete del progetto; se la cartella cloud non risponde i salvataggi vanno in locale e si riprova da soli."]));
+      var tmp_52 = new Novita('2026-10-23-1640', '23/10/2026', listOf('La Regia sceglie le soglie della batteria dei palmari (avvisi e pausa automatica) dalla pagina Messaggi.'), VOID, VOID, listOf_0(['Alla Regia: se le lettere dei veterinari sono finite, una banda rossa dice quale telefono non pu\xF2 prelevare da isolato n\xE9 registrare problematiche.', "Wi-Fi persa da 45 secondi: il palmare prova da solo l'altra rete del progetto (principale o riserva), poi riprova ogni 90 secondi; il telefono pu\xF2 chiedere una conferma.", 'Se la cartella cloud non risponde, i salvataggi vanno in locale e in coda e il cloud si riprova da solo ogni minuto: al primo successo la coda si svuota.']));
+      var tmp_53 = new Novita('2026-10-23-1600', '23/10/2026', listOf('Esito a tutto schermo per un attimo: \u2713 verde \xABregistrata\xBB o \u2717 rossa \xABnon registrata\xBB, con vibrazioni diverse; il lampo si vede anche sopra il foglio di conferma.'), VOID, VOID, listOf_0(['Icona della rete spiegata: verde doppi controllati, giallo non controllati (lettera in coda), rosso problema, grigio senza rete; tacche del segnale Wi-Fi. Su ogni provetta il segno del controllo dei doppi.', "La Regia pu\xF2 escludere subito un telefono spento (solo lei, con la maggioranza); l'esclusione automatica a 2 minuti resta com'\xE8.", 'Batteria: avvisi al 20% e al 10%, pausa ordinata al 5% se non \xE8 in carica, ultimo segnale allo spegnimento.', 'Riconnessione rapida alla Regia mentre il palmare \xE8 scollegato, \xABEntra col QR\xBB sempre raggiungibile per cambiare rete senza reinstallare.', 'Questa build di debug si installa accanto alla release (\xABFejalog debug\xBB, cartelle Documenti/Fejalog-debug): non serve pi\xF9 disinstallare.', 'Dopo la prima prova in campo con tre telefoni: la lettera appartiene al telefono (la classifica resta della persona); chi cambia telefono ne prende una nuova, e un telefono non si presenta finch\xE9 non ha ricevuto il registro.']), listOf('Meno provette scritte ma non confermate: un capo gi\xE0 prelevato non si registra pi\xF9 due volte per sbaglio (\xABGi\xE0 fatto\xBB o \xABPreleva come doppio\xBB), le conferme mancate restano nelle Ultime con \xABRegistra adesso\xBB, e col foglio aperto una nuova lettura chiede prima di scartare.'));
       var tmp18_voci = listOf_0(['Fasi del progetto: configurazione, campionamento aperto, campionamento chiuso. I palmari prelevano solo a campionamento aperto e vedono solo ci\xF2 che serve; Gestione campioni si apre a campionamento chiuso.', 'Plateau della Regia: \xABRicevi\xBB le provette di ogni veterinario e lo schema dice in che pozzetto metterle (serie ordinaria o riga del veterinario nei problematici). Il posto, deciso alla consegna, non cambia pi\xF9 fino al riordino.', 'Stabilimenti secondari aggiungibili in corsa, con le loro lettere; provette spostabili fra stabilimenti; capi di altri stabilimenti fra i problematici.', 'Messaggi della Regia ai palmari e avvisi automatici di avanzamento (25%, 50%, 75%, 100%); statistiche con avanzamento, classifica e stabilimenti.']);
       var tmp19_miglioramenti = listOf_0(["Riordino solo a campionamento chiuso, con la guida che parte dal pozzetto vero di ogni provetta e ne mostra l'etichetta; dalla prima spunta il campionamento non si riapre pi\xF9.", 'Lettere dei veterinari fino a 15; la lettera, la classifica e gli avvisi seguono la persona (codice fiscale) anche cambiando device.', 'Et\xE0 diagnostica modificabile in corsa dalla Regia con doppia conferma, senza cambiare i numeri gi\xE0 assegnati.', 'Smarriti e rubati sempre fra le problematiche; modalit\xE0 offline con salvataggi locali e riconciliazione dei backup pi\xF9 rigorosa.']);
       var tmp20_correzioni = listOf('Mai due provette con la stessa scritta: con pecore e capre almeno una specie ha la lettera; le etichette delle provette annullate non si riusano; se un collega registra lo stesso capo mentre il foglio di conferma \xE8 aperto, avviso bloccante \xABControlla subito il capo\xBB.');
-      var tmp_53 = new Novita('2026-10-21-1704', '21/10/2026', tmp18_voci, '0.2.0', VOID, tmp19_miglioramenti, tmp20_correzioni, 'Fasi del lavoro, Plateau della Regia, riordino guidato dal posto vero delle provette e mai provette con la stessa scritta.');
+      var tmp_54 = new Novita('2026-10-21-1704', '21/10/2026', tmp18_voci, '0.2.0', VOID, tmp19_miglioramenti, tmp20_correzioni, 'Fasi del lavoro, Plateau della Regia, riordino guidato dal posto vero delle provette e mai provette con la stessa scritta.');
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$19 = emptyList();
-      var tmp_54 = new Novita('2026-10-20-1019', '20/10/2026, build 10:19', tmp$ret$19, VOID, VOID, VOID, listOf_0(["Lookup corsie esatte nel riordino: distinzione rigorosa tra corsie problematiche e ordinarie con estrazione puntuale delle cifre; eliminata ogni ambiguit\xE0 tra veterinari diversi (es. Anna CA1 vs Mario CM1) o numeri terminanti con la stessa cifra (1 vs 11). Spunta e 'Persa' agiscono sempre e solo sull'UID corretto senza alterare l'export.", "Rinumerazione e liberazione indici: aggiornamento dello stato provette prima del ripristino dell'uso; i vecchi indici vengono liberati correttamente anche in sequenze concatenate (1->2->3) o dopo annulli, prevenendo contese fantasma.", "Normalizzazione prefissi in 'Prima della guida': gestione esatta del prefisso corsia/stabilimento; etichette legittime come XP1 sono riconosciute e accettate, mentre prefissi duplicati spuri (XXP1) sono respinti.", "Stabilimenti secondari aggiunti in corsa: inclusione di tutti gli stabilimenti effettivi della seduta nel motore di riordino e nel riquadro dell'export selettivo."]));
+      var tmp_55 = new Novita('2026-10-20-1019', '20/10/2026, build 10:19', tmp$ret$19, VOID, VOID, VOID, listOf_0(["Lookup corsie esatte nel riordino: distinzione rigorosa tra corsie problematiche e ordinarie con estrazione puntuale delle cifre; eliminata ogni ambiguit\xE0 tra veterinari diversi (es. Anna CA1 vs Mario CM1) o numeri terminanti con la stessa cifra (1 vs 11). Spunta e 'Persa' agiscono sempre e solo sull'UID corretto senza alterare l'export.", "Rinumerazione e liberazione indici: aggiornamento dello stato provette prima del ripristino dell'uso; i vecchi indici vengono liberati correttamente anche in sequenze concatenate (1->2->3) o dopo annulli, prevenendo contese fantasma.", "Normalizzazione prefissi in 'Prima della guida': gestione esatta del prefisso corsia/stabilimento; etichette legittime come XP1 sono riconosciute e accettate, mentre prefissi duplicati spuri (XXP1) sono respinti.", "Stabilimenti secondari aggiunti in corsa: inclusione di tutti gli stabilimenti effettivi della seduta nel motore di riordino e nel riquadro dell'export selettivo."]));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$20 = emptyList();
-      var tmp_55 = new Novita('2026-10-19-2345', '19/10/2026, build 23:45', tmp$ret$20, VOID, VOID, VOID, listOf_0(["Guida posizionamento e identit\xE0 fisica delle provette: nei movimenti della guida e nello schema plateau l'etichetta fisica reale di campo (CM1, P70, XP1) \xE8 sempre preservata e ritrovabile nella ricerca rapida anche dopo spostamenti o compattazioni.", 'Rinumerazione idempotente e proiezione: la ripetizione di un evento di rinumerazione per il medesimo capo non crea pi\xF9 falsa autocontesa.', "Sicurezza e prevalidazione nei movimenti a mano: protezione completa da overflow numerico sui campi di input e validazione rigorosa dei limiti della serie (1..maxSerie, blocco maschi, rispetto dell'inizio coda problematici).", "Eliminazione spunta anticipata: rimossa la scrittura prematura dell'evento provetta spostata in 'A mano' prima della validazione del motore di calcolo.", 'Disambiguazione candidati e invalidazione cache: selezione guidata in caso di corrispondenze multiple con destinazioni discordanti e azzeramento automatico della cache al cambio di seduta.']));
-      var tmp_56 = new Novita('2026-10-19-2215', '19/10/2026, build 22:15', listOf_0(["Guida al posizionamento rapido e animazione: indicazione visiva immediata della destinazione ('Mettila QUI!') con pozzetto pulsante e ricerca rapida per codice provetta o contrassegno.", 'Tabella numerazioni CSV in preparazione: scaricabile e condivisibile fin dal caricamento dei registri BDN, e salvata automaticamente nelle cartelle di progetto.']), VOID, VOID, listOf_0(["Plateau a nido d'ape e origine in basso a sinistra: griglia con cellette esagonali/quinconce sfasate e pozzetti circolari per riprodurre fedelmente i rack fisici di stalla e laboratorio.", 'Vista affiancata su tablet in Riordino: lista provette a spunta a sinistra e schema plateau riordinato a destra per lavorare comodamente sul grande schermo della Regia.', 'Tasto ergonomico bifacciale Campionamento <-> Ultime: pulsante posizionato nella stessa esatta coordinata per commutare istantaneamente con un solo tocco del pollice senza muovere la mano.', 'Menu delle fasi operative nel Drawer: le voci e i gruppi delle fasi non in corso sono in grigio, protetti e non espandibili, guidando ordinatamente il veterinario.', "Distinzione ruoli all'avvio: 'Coordina come Regia' (Nuovo, Apri) ed 'Entra come Palmare' (QR, Wi-Fi) distinti in Inizio, con 'Recenti' accessibile a tutti.", "Condivisione universale aperta: invio diretto di Excel per l'allevatore e CSV numerazione verso WhatsApp, Telegram, email e cloud."]), listOf('Risoluzione integrale rilievi audit 91452f5: eliminazione collisioni da rinomina isolata su numeri automatici, plateau problematici allineati in anteprima e registrazione, e correzione associazione provetta in Messa altrove.'));
+      var tmp_56 = new Novita('2026-10-19-2345', '19/10/2026, build 23:45', tmp$ret$20, VOID, VOID, VOID, listOf_0(["Guida posizionamento e identit\xE0 fisica delle provette: nei movimenti della guida e nello schema plateau l'etichetta fisica reale di campo (CM1, P70, XP1) \xE8 sempre preservata e ritrovabile nella ricerca rapida anche dopo spostamenti o compattazioni.", 'Rinumerazione idempotente e proiezione: la ripetizione di un evento di rinumerazione per il medesimo capo non crea pi\xF9 falsa autocontesa.', "Sicurezza e prevalidazione nei movimenti a mano: protezione completa da overflow numerico sui campi di input e validazione rigorosa dei limiti della serie (1..maxSerie, blocco maschi, rispetto dell'inizio coda problematici).", "Eliminazione spunta anticipata: rimossa la scrittura prematura dell'evento provetta spostata in 'A mano' prima della validazione del motore di calcolo.", 'Disambiguazione candidati e invalidazione cache: selezione guidata in caso di corrispondenze multiple con destinazioni discordanti e azzeramento automatico della cache al cambio di seduta.']));
+      var tmp_57 = new Novita('2026-10-19-2215', '19/10/2026, build 22:15', listOf_0(["Guida al posizionamento rapido e animazione: indicazione visiva immediata della destinazione ('Mettila QUI!') con pozzetto pulsante e ricerca rapida per codice provetta o contrassegno.", 'Tabella numerazioni CSV in preparazione: scaricabile e condivisibile fin dal caricamento dei registri BDN, e salvata automaticamente nelle cartelle di progetto.']), VOID, VOID, listOf_0(["Plateau a nido d'ape e origine in basso a sinistra: griglia con cellette esagonali/quinconce sfasate e pozzetti circolari per riprodurre fedelmente i rack fisici di stalla e laboratorio.", 'Vista affiancata su tablet in Riordino: lista provette a spunta a sinistra e schema plateau riordinato a destra per lavorare comodamente sul grande schermo della Regia.', 'Tasto ergonomico bifacciale Campionamento <-> Ultime: pulsante posizionato nella stessa esatta coordinata per commutare istantaneamente con un solo tocco del pollice senza muovere la mano.', 'Menu delle fasi operative nel Drawer: le voci e i gruppi delle fasi non in corso sono in grigio, protetti e non espandibili, guidando ordinatamente il veterinario.', "Distinzione ruoli all'avvio: 'Coordina come Regia' (Nuovo, Apri) ed 'Entra come Palmare' (QR, Wi-Fi) distinti in Inizio, con 'Recenti' accessibile a tutti.", "Condivisione universale aperta: invio diretto di Excel per l'allevatore e CSV numerazione verso WhatsApp, Telegram, email e cloud."]), listOf('Risoluzione integrale rilievi audit 91452f5: eliminazione collisioni da rinomina isolata su numeri automatici, plateau problematici allineati in anteprima e registrazione, e correzione associazione provetta in Messa altrove.'));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$21 = emptyList();
-      var tmp_57 = new Novita('2026-10-19-1415', '19/10/2026, build 14:15', tmp$ret$21, VOID, VOID, VOID, listOf_0(['Protezione etichette automatiche e rinomine: la rinomina manuale non pu\xF2 pi\xF9 occupare numeri potenziali futuri o plateau problematici, prevenendo collisioni sequenziali.', 'Riordino multi-stabilimento: lookup rigoroso per stabilimento e origine fisica, proteggendo gli export di tutti gli stabilimenti anche in caso di provette ripetute.', 'Gestione collisioni simultanee: tracciamento deterministico degli episodi, permanenza del blocco finch\xE9 entrambi i veterinari non rinominano e persistenza storica delle note.', "Origine provetta spostata: l'evento di spunta nel riordino salva l'etichetta fisica effettiva visualizzata a video.", 'Uniformit\xE0 orari e interfaccia: formattazione uniforme in ora locale nella cronologia provetta e checklist allineata con et\xE0 diagnostica modificabile a due passaggi.']));
-      var tmp_58 = new Novita('2026-10-18-2105', '18/10/2026, build 21:05 (pre-release 0.2.0)', listOf('Vista Plateau e Note: celle con note e collisioni contrassegnate con pallino giallo; finestra modale Note plateau con collegamento diretto alla risoluzione.'), VOID, VOID, listOf_0(["Stabilimenti secondari e principale: principale congelato all'avvio, secondari cumulativi solo aggiungibili con lettere disgiunte.", 'Messaggistica Regia: messaggi generali o selettivi per singolo veterinario, orari in ora locale e notifiche automatiche alle soglie di avanzamento senza duplicati.', 'Fasi operative e sicurezza: prelievi consentiti solo a campionamento aperto; et\xE0 diagnostica protetta da conferma multipla con checkbox.']), listOf_0(['Collisioni simultanee e lavoro da isolato: prelievi offline con suffisso del veterinario; avviso modale obbligatorio di rinomina e nota esplicativa automatica in caso di riutilizzo simultaneo in rete.', "Copertura e statistiche: provette perse escluse dai capi fatti per prevenire falsi 100%, con ricampionamento 'ripetizione_persa'."]));
-      var tmp_59 = new Novita('2026-10-18-1038', '18/10/2026, build 10:38', listOf_0(['Nuova schermata Stabilimenti: quadro chiaro dello stabilimento principale e dei secondari con badge lettera, stato di congelamento e gestione degli stabilimenti secondari.', "Statistiche per palmari e Regia: nuove schede di Avanzamento totale complessivo e Classifica individuale dei veterinari (con medaglie \uD83E\uDD47\uD83E\uDD48\uD83E\uDD49, ritmi e badge 'Tu').", 'Statistiche multi-stabilimento: scheda dedicata con avanzamento, capi attesi/fatti e percentuali per ciascuno stabilimento di lavoro.']), VOID, VOID, listOf_0(["Stabilimento principale e secondari: stabilimento principale congelato definitivamente all'avvio del campionamento; stabilimenti secondari aggiungibili in corsa con lettere assegnate.", 'Capi di altri stabilimenti: gli animali dei registri aggiunti non presenti in uno stabilimento di lavoro in campionamento hanno banda viola (non verde) e vanno sempre nei problematici.', 'Riordino e plateau riservati alla Regia: schermata di riordino provette e scheda plateau accessibili e consultabili unicamente dalla Regia.', 'Menu palmari semplificato: navigazione ristretta a Campionamento, Rete, Impostazioni dispositivo e Guida, eliminando le voci riservate alla Regia.']));
-      var tmp_60 = new Novita('2026-10-18-0923', '18/10/2026, build 09:23', listOf("Barra superiore con doppio indicatore visivo: icona provetta colorata (verde quando il campionamento \xE8 attivo e pronto, rossa quando bloccato o chiuso) affiancata all'icona colorata dello stato di rete."), VOID, VOID, listOf_0(['Fasi operative vincolanti (Configurazione, Campionamento aperto, Campionamento chiuso): prelievi consentiti solo a campionamento aperto, con congelamento definitivo di et\xE0 diagnostica e lettera di specie dopo il primo avvio.', 'Palmari in campionamento: blocco automatico finch\xE9 non sono configurati e allineati con la Regia, e menu focalizzato su Campionamento e Rete.', 'Gestione campioni (Problemi da risolvere, Riordino e Fine lavori) sbloccata solo a campionamento chiuso, mentre la Regia pu\xF2 aggiornare in corsa registri BDN, ricercati, regole e rete.', 'Modalit\xE0 offline e copie locali: attivazione manuale anche dalla vista Rete o automatica in caso di caduta della rete/isolamento, con salvataggio immediato su cartella locale.', 'Riconciliazione backup: verifica crittografica integrale delle catene di eventi e rigenerazione della chiave di numerazione coi caricamenti in corsa.']));
-      var tmp_61 = new Novita('2026-10-17-1600', '17/10/2026, sviluppo', listOf_0(['Capi ricercati aggiungibili dalla Regia; reti principale e riserva condivise; impostazioni app esportabili.', 'Archivio delle numerazioni delle pecore dopo assegnazioni e scambi; seconda copia incrementale anche su USB, senza sovrascritture.']), VOID, VOID, listOf_0(['Fejalog: nuovo progetto vuoto, configurazione di cartelle e modalit\xE0, poi caricamento dei dati. Menu per fasi e Inizio con prossimo passo.', 'Acquisti con DDA dichiarati capo per capo, con verifica e ingresso confermati dalla Regia.', 'Sito organizzato per problemi risolti, caratteristiche e tutorial, con screenshot BDN di esempio.']));
-      var tmp_62 = new Novita('2026-10-17-0050', '17/10/2026, notte (build 00:50)', listOf('Filtro Annullate: nuovo filtro rapido per consultare e verificare separatamente le provette annullate ed escluse, con storico e motivazione.'), VOID, VOID, listOf('Sito e guida: arricchite le guide e il percorso operativo con le icone dei menu e diagrammi esplicativi.'), listOf_0(['Campionamento: risolto il bug per cui i campioni prelevati ed eliminati (annullati o esclusi) continuavano a comparire nella lista Ultime e nei filtri operativi.', 'Copertura e ricerca: i capi con provetta eliminata o esclusa non vengono pi\xF9 conteggiati come prelevati e possono essere regolarmente ricampionati.', 'Interfaccia Ultime provette: disabilitati i pulsanti di modifica/eliminazione sui campioni gi\xE0 annullati, con etichetta chiara di stato.']));
-      var tmp_63 = new Novita('2026-10-17-0030', '17/10/2026, notte', listOf('Codice univoco di creazione del progetto (es. 888TO999-20261016-D87A) per prevenire unioni errate e facilitare il riconoscimento della seduta attiva.'), VOID, VOID, listOf_0(['Palmare: riconoscimento immediato in Rete della seduta corrispondente al proprio progetto per riunire i dati in caso di caduta Wi-Fi.', 'Regia: unione backup superstiti con verifica di coerenza del codice di creazione tra i file selezionati.', 'Guida operativa: istruzioni di accoppiamento Bluetooth HID per lettore microchip Allflex AWR250 in dotazione ASL.', 'Salvataggio sicuro: condivisione dei backup e report limitata a memoria locale e cloud storage autorizzati (Drive, OneDrive, Dropbox, Nextcloud).', 'Provette problematiche: raccomandazione di annotare sulla provetta anche il contrassegno del capo oltre alla sigla problematica.', 'Icone dei menu integrate nelle citazioni delle guide per un rapido riconoscimento visivo.']), listOf('Campo note in campionamento: corretta la sovrapposizione della tastiera software con scorrimento automatico al campo e pulsante Fine.'));
+      var tmp_58 = new Novita('2026-10-19-1415', '19/10/2026, build 14:15', tmp$ret$21, VOID, VOID, VOID, listOf_0(['Protezione etichette automatiche e rinomine: la rinomina manuale non pu\xF2 pi\xF9 occupare numeri potenziali futuri o plateau problematici, prevenendo collisioni sequenziali.', 'Riordino multi-stabilimento: lookup rigoroso per stabilimento e origine fisica, proteggendo gli export di tutti gli stabilimenti anche in caso di provette ripetute.', 'Gestione collisioni simultanee: tracciamento deterministico degli episodi, permanenza del blocco finch\xE9 entrambi i veterinari non rinominano e persistenza storica delle note.', "Origine provetta spostata: l'evento di spunta nel riordino salva l'etichetta fisica effettiva visualizzata a video.", 'Uniformit\xE0 orari e interfaccia: formattazione uniforme in ora locale nella cronologia provetta e checklist allineata con et\xE0 diagnostica modificabile a due passaggi.']));
+      var tmp_59 = new Novita('2026-10-18-2105', '18/10/2026, build 21:05 (pre-release 0.2.0)', listOf('Vista Plateau e Note: celle con note e collisioni contrassegnate con pallino giallo; finestra modale Note plateau con collegamento diretto alla risoluzione.'), VOID, VOID, listOf_0(["Stabilimenti secondari e principale: principale congelato all'avvio, secondari cumulativi solo aggiungibili con lettere disgiunte.", 'Messaggistica Regia: messaggi generali o selettivi per singolo veterinario, orari in ora locale e notifiche automatiche alle soglie di avanzamento senza duplicati.', 'Fasi operative e sicurezza: prelievi consentiti solo a campionamento aperto; et\xE0 diagnostica protetta da conferma multipla con checkbox.']), listOf_0(['Collisioni simultanee e lavoro da isolato: prelievi offline con suffisso del veterinario; avviso modale obbligatorio di rinomina e nota esplicativa automatica in caso di riutilizzo simultaneo in rete.', "Copertura e statistiche: provette perse escluse dai capi fatti per prevenire falsi 100%, con ricampionamento 'ripetizione_persa'."]));
+      var tmp_60 = new Novita('2026-10-18-1038', '18/10/2026, build 10:38', listOf_0(['Nuova schermata Stabilimenti: quadro chiaro dello stabilimento principale e dei secondari con badge lettera, stato di congelamento e gestione degli stabilimenti secondari.', "Statistiche per palmari e Regia: nuove schede di Avanzamento totale complessivo e Classifica individuale dei veterinari (con medaglie \uD83E\uDD47\uD83E\uDD48\uD83E\uDD49, ritmi e badge 'Tu').", 'Statistiche multi-stabilimento: scheda dedicata con avanzamento, capi attesi/fatti e percentuali per ciascuno stabilimento di lavoro.']), VOID, VOID, listOf_0(["Stabilimento principale e secondari: stabilimento principale congelato definitivamente all'avvio del campionamento; stabilimenti secondari aggiungibili in corsa con lettere assegnate.", 'Capi di altri stabilimenti: gli animali dei registri aggiunti non presenti in uno stabilimento di lavoro in campionamento hanno banda viola (non verde) e vanno sempre nei problematici.', 'Riordino e plateau riservati alla Regia: schermata di riordino provette e scheda plateau accessibili e consultabili unicamente dalla Regia.', 'Menu palmari semplificato: navigazione ristretta a Campionamento, Rete, Impostazioni dispositivo e Guida, eliminando le voci riservate alla Regia.']));
+      var tmp_61 = new Novita('2026-10-18-0923', '18/10/2026, build 09:23', listOf("Barra superiore con doppio indicatore visivo: icona provetta colorata (verde quando il campionamento \xE8 attivo e pronto, rossa quando bloccato o chiuso) affiancata all'icona colorata dello stato di rete."), VOID, VOID, listOf_0(['Fasi operative vincolanti (Configurazione, Campionamento aperto, Campionamento chiuso): prelievi consentiti solo a campionamento aperto, con congelamento definitivo di et\xE0 diagnostica e lettera di specie dopo il primo avvio.', 'Palmari in campionamento: blocco automatico finch\xE9 non sono configurati e allineati con la Regia, e menu focalizzato su Campionamento e Rete.', 'Gestione campioni (Problemi da risolvere, Riordino e Fine lavori) sbloccata solo a campionamento chiuso, mentre la Regia pu\xF2 aggiornare in corsa registri BDN, ricercati, regole e rete.', 'Modalit\xE0 offline e copie locali: attivazione manuale anche dalla vista Rete o automatica in caso di caduta della rete/isolamento, con salvataggio immediato su cartella locale.', 'Riconciliazione backup: verifica crittografica integrale delle catene di eventi e rigenerazione della chiave di numerazione coi caricamenti in corsa.']));
+      var tmp_62 = new Novita('2026-10-17-1600', '17/10/2026, sviluppo', listOf_0(['Capi ricercati aggiungibili dalla Regia; reti principale e riserva condivise; impostazioni app esportabili.', 'Archivio delle numerazioni delle pecore dopo assegnazioni e scambi; seconda copia incrementale anche su USB, senza sovrascritture.']), VOID, VOID, listOf_0(['Fejalog: nuovo progetto vuoto, configurazione di cartelle e modalit\xE0, poi caricamento dei dati. Menu per fasi e Inizio con prossimo passo.', 'Acquisti con DDA dichiarati capo per capo, con verifica e ingresso confermati dalla Regia.', 'Sito organizzato per problemi risolti, caratteristiche e tutorial, con screenshot BDN di esempio.']));
+      var tmp_63 = new Novita('2026-10-17-0050', '17/10/2026, notte (build 00:50)', listOf('Filtro Annullate: nuovo filtro rapido per consultare e verificare separatamente le provette annullate ed escluse, con storico e motivazione.'), VOID, VOID, listOf('Sito e guida: arricchite le guide e il percorso operativo con le icone dei menu e diagrammi esplicativi.'), listOf_0(['Campionamento: risolto il bug per cui i campioni prelevati ed eliminati (annullati o esclusi) continuavano a comparire nella lista Ultime e nei filtri operativi.', 'Copertura e ricerca: i capi con provetta eliminata o esclusa non vengono pi\xF9 conteggiati come prelevati e possono essere regolarmente ricampionati.', 'Interfaccia Ultime provette: disabilitati i pulsanti di modifica/eliminazione sui campioni gi\xE0 annullati, con etichetta chiara di stato.']));
+      var tmp_64 = new Novita('2026-10-17-0030', '17/10/2026, notte', listOf('Codice univoco di creazione del progetto (es. 888TO999-20261016-D87A) per prevenire unioni errate e facilitare il riconoscimento della seduta attiva.'), VOID, VOID, listOf_0(['Palmare: riconoscimento immediato in Rete della seduta corrispondente al proprio progetto per riunire i dati in caso di caduta Wi-Fi.', 'Regia: unione backup superstiti con verifica di coerenza del codice di creazione tra i file selezionati.', 'Guida operativa: istruzioni di accoppiamento Bluetooth HID per lettore microchip Allflex AWR250 in dotazione ASL.', 'Salvataggio sicuro: condivisione dei backup e report limitata a memoria locale e cloud storage autorizzati (Drive, OneDrive, Dropbox, Nextcloud).', 'Provette problematiche: raccomandazione di annotare sulla provetta anche il contrassegno del capo oltre alla sigla problematica.', 'Icone dei menu integrate nelle citazioni delle guide per un rapido riconoscimento visivo.']), listOf('Campo note in campionamento: corretta la sovrapposizione della tastiera software con scorrimento automatico al campo e pulsante Fine.'));
       var tmp21_voci = listOf_0(['Numerazione assegnata al caricamento: i numeri da 1 a N sono assegnati in anticipo ai capi presenti in et\xE0 diagnostica, in ordine alfabetico (fra le pecore, i maschi per primi).', 'Et\xE0 diagnostica e lettera di specie configurabili alla creazione del progetto (profilo di rischio: 6 mesi vagante, 12 mesi stanziale, o tutti i presenti); di default lettera assegnata alla specie meno numerosa.', 'I capi non pre-numerati (fuori et\xE0, doppi, inserimenti forzati, altri stabilimenti) prendono il codice veterinario e vengono gestiti in rifinitura/fine lavori (i fuori et\xE0 esclusi di default).', "Libreria delle reti memorizzate (reti.csv) con compilazione rapida, cambio di modalit\xE0 di rete in corsa dalla Regia, regia d'emergenza se la regia cade, controllo versione build tra dispositivi, unione dei backup dei dispositivi superstiti ed esportazione tabella numerazione (CSV)."]);
       var tmp22_miglioramenti = listOf_0(['Chiusura buchi su prenumerati prima dei problematici; compattazione maschi ovini dopo i problematici maschi.', 'Snippet ARVET lineare da 1 a n con soli numeri interi sequenziali.', "Rilevamento all'avvio dell'eventuale versione di prova Fejalog e guardia anti-doppio tocco sulla conferma provetta."]);
-      var tmp_64 = new Novita('2026-10-16-2200', '16/10/2026', tmp21_voci, '0.1.0', VOID, tmp22_miglioramenti, VOID, 'Prima release pubblica di Fejalog.');
+      var tmp_65 = new Novita('2026-10-16-2200', '16/10/2026', tmp21_voci, '0.1.0', VOID, tmp22_miglioramenti, VOID, 'Prima release pubblica di Fejalog.');
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$22 = emptyList();
-      var tmp_65 = new Novita('2026-10-16-0650', '16/10/2026, mattina (build 06:50)', tmp$ret$22, VOID, VOID, listOf_0(['Tablet della Regia in orizzontale: le pagine usano tutta la larghezza, in due colonne affiancate. Nel foglio di conferma il capo e il numero a sinistra, le caselle SX, bolo e DX, il sesso e le note a destra; in Statistiche i conteggi a sinistra e i mancanti a destra; in Rete il QR a sinistra e i device a destra.', 'Sul tablet, Soluzione problemi mostra a sinistra le tipologie e \xABAltro da guardare\xBB, a destra le provette di quella toccata; il Riordino ha i filtri a sinistra e le provette da spostare a destra.', 'Sui telefoni le pagine restano come prima.']));
+      var tmp_66 = new Novita('2026-10-16-0650', '16/10/2026, mattina (build 06:50)', tmp$ret$22, VOID, VOID, listOf_0(['Tablet della Regia in orizzontale: le pagine usano tutta la larghezza, in due colonne affiancate. Nel foglio di conferma il capo e il numero a sinistra, le caselle SX, bolo e DX, il sesso e le note a destra; in Statistiche i conteggi a sinistra e i mancanti a destra; in Rete il QR a sinistra e i device a destra.', 'Sul tablet, Soluzione problemi mostra a sinistra le tipologie e \xABAltro da guardare\xBB, a destra le provette di quella toccata; il Riordino ha i filtri a sinistra e le provette da spostare a destra.', 'Sui telefoni le pagine restano come prima.']));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$23 = emptyList();
-      var tmp_66 = new Novita('2026-10-15-2201', '15/10/2026, sera (build 22:01)', tmp$ret$23, VOID, VOID, listOf_0(['Campionamento: il foglio di conferma si apre dal basso, sopra la ricerca. Annulla e Conferma restano sempre in fondo, anche con la tastiera delle note aperta; si chiude con Annulla, trascinandolo gi\xF9 o toccando fuori.', "Niente pi\xF9 barra in basso: Ultime (col numero delle provette) e Salva sono icone in cima, accanto al \xAB?\xBB; i risultati della ricerca hanno pi\xF9 spazio. Sui palmari, al posto di Salva, l'icona dell'allineamento del registro: verde se \xE8 uguale a quello dei collegati, gialla se si sta allineando.", 'Ultime provette \xE8 una pagina a s\xE9, con la freccia per tornare e le schede Pecore e Capre. Dopo ogni provetta registrata il messaggio in basso ha anche \xABModifica\xBB, che porta l\xEC.', "In Campionamento la Rete si apre dal menu o toccando la banda gialla o rossa (in cima c'\xE8 posto per Ultime e Salva)."]));
+      var tmp_67 = new Novita('2026-10-15-2201', '15/10/2026, sera (build 22:01)', tmp$ret$23, VOID, VOID, listOf_0(['Campionamento: il foglio di conferma si apre dal basso, sopra la ricerca. Annulla e Conferma restano sempre in fondo, anche con la tastiera delle note aperta; si chiude con Annulla, trascinandolo gi\xF9 o toccando fuori.', "Niente pi\xF9 barra in basso: Ultime (col numero delle provette) e Salva sono icone in cima, accanto al \xAB?\xBB; i risultati della ricerca hanno pi\xF9 spazio. Sui palmari, al posto di Salva, l'icona dell'allineamento del registro: verde se \xE8 uguale a quello dei collegati, gialla se si sta allineando.", 'Ultime provette \xE8 una pagina a s\xE9, con la freccia per tornare e le schede Pecore e Capre. Dopo ogni provetta registrata il messaggio in basso ha anche \xABModifica\xBB, che porta l\xEC.', "In Campionamento la Rete si apre dal menu o toccando la banda gialla o rossa (in cima c'\xE8 posto per Ultime e Salva)."]));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$24 = emptyList();
-      var tmp_67 = new Novita('2026-10-15-2146', '15/10/2026, sera (build 21:46)', tmp$ret$24, VOID, VOID, listOf_0(["Interfaccia pi\xF9 standard, seconda parte: le scelte che erano pulsanti con frasi intere sono righe d'elenco con un titolo corto, una riga di spiegazione e la freccia (Progetto \u203A Nuovo, Apri e Recenti; Import/Export; Impostazioni; la creazione dai file della BDN; gli strumenti della Rete).", "Le pagine spiegano in una riga; il resto \xE8 nella guida (il \xAB?\xBB in alto a destra). Nella guida sono passati, per esempio, la denuncia di ritrovamento e la causale \xABF\xBB per smarriti e rubati, il nome dell'export della BDN e dove mettere la cartella di lavoro se il cloud non c'\xE8.", "Import/Export: un riquadro per l'allevatore, uno per la fine lavori, uno per l'export per stabilimento e uno per backup e ripristino; i file si condividono toccando la loro riga.", 'Impostazioni: un riquadro per argomento; lo scorrimento fra pecore e capre e le statistiche in tempo reale sono interruttori come nelle impostazioni di Android.', 'Recenti: si tocca la riga per riaprire un progetto; quello aperto dice \xABAperto\xBB.']), listOf('Corretti testi rimasti coi nomi vecchi (\xABSessione \u203A Rete\xBB, \xABvai al Lavoro\xBB) e la frase che diceva \xABARVET a mano\xBB per le provette in coda.'));
+      var tmp_68 = new Novita('2026-10-15-2146', '15/10/2026, sera (build 21:46)', tmp$ret$24, VOID, VOID, listOf_0(["Interfaccia pi\xF9 standard, seconda parte: le scelte che erano pulsanti con frasi intere sono righe d'elenco con un titolo corto, una riga di spiegazione e la freccia (Progetto \u203A Nuovo, Apri e Recenti; Import/Export; Impostazioni; la creazione dai file della BDN; gli strumenti della Rete).", "Le pagine spiegano in una riga; il resto \xE8 nella guida (il \xAB?\xBB in alto a destra). Nella guida sono passati, per esempio, la denuncia di ritrovamento e la causale \xABF\xBB per smarriti e rubati, il nome dell'export della BDN e dove mettere la cartella di lavoro se il cloud non c'\xE8.", "Import/Export: un riquadro per l'allevatore, uno per la fine lavori, uno per l'export per stabilimento e uno per backup e ripristino; i file si condividono toccando la loro riga.", 'Impostazioni: un riquadro per argomento; lo scorrimento fra pecore e capre e le statistiche in tempo reale sono interruttori come nelle impostazioni di Android.', 'Recenti: si tocca la riga per riaprire un progetto; quello aperto dice \xABAperto\xBB.']), listOf('Corretti testi rimasti coi nomi vecchi (\xABSessione \u203A Rete\xBB, \xABvai al Lavoro\xBB) e la frase che diceva \xABARVET a mano\xBB per le provette in coda.'));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$25 = emptyList();
-      var tmp_68 = new Novita('2026-10-15-2122', '15/10/2026, sera (build 21:22)', tmp$ret$25, VOID, VOID, listOf_0(['Interfaccia pi\xF9 vicina a quella delle altre app Android (Material 3), prima parte.', 'Le schede sono schede vere, sotto la barra in cima, con una lineetta sotto quella aperta: Progetto, Statistiche e Pecore e Capre in Campionamento (l\xEC si cambia specie anche scorrendo di lato, come prima).', 'Le scelte fra poche voci sono pulsanti a segmenti (Nella serie o Problematici, Femmina o Maschio, ogni quanti eventi il backup\u2026); quelle con tante voci o voci lunghe sono \xABchip\xBB che vanno a capo (filtri delle provette, razze, ruolo di un registro).', "In cima, a destra, l'icona della Rete accanto al \xAB?\xBB: si tocca per aprire la Rete. Sotto il titolo resta lo stato della rete.", 'I messaggi (provetta registrata, backup salvato, errori) compaiono in basso per qualche secondo e si chiudono con la \xD7; quelli lunghi restano finch\xE9 non li chiudi. In Campionamento stanno sopra Salva e Ultime.', 'Soluzione problemi: \xABAltro da guardare\xBB \xE8 un elenco col numero a destra di ogni voce.', 'Niente maiuscole nei pulsanti e nelle etichette (Conferma, Pecore, Presente); i testi dicono \xABtasto Salva\xBB al posto del dischetto.']));
+      var tmp_69 = new Novita('2026-10-15-2122', '15/10/2026, sera (build 21:22)', tmp$ret$25, VOID, VOID, listOf_0(['Interfaccia pi\xF9 vicina a quella delle altre app Android (Material 3), prima parte.', 'Le schede sono schede vere, sotto la barra in cima, con una lineetta sotto quella aperta: Progetto, Statistiche e Pecore e Capre in Campionamento (l\xEC si cambia specie anche scorrendo di lato, come prima).', 'Le scelte fra poche voci sono pulsanti a segmenti (Nella serie o Problematici, Femmina o Maschio, ogni quanti eventi il backup\u2026); quelle con tante voci o voci lunghe sono \xABchip\xBB che vanno a capo (filtri delle provette, razze, ruolo di un registro).', "In cima, a destra, l'icona della Rete accanto al \xAB?\xBB: si tocca per aprire la Rete. Sotto il titolo resta lo stato della rete.", 'I messaggi (provetta registrata, backup salvato, errori) compaiono in basso per qualche secondo e si chiudono con la \xD7; quelli lunghi restano finch\xE9 non li chiudi. In Campionamento stanno sopra Salva e Ultime.', 'Soluzione problemi: \xABAltro da guardare\xBB \xE8 un elenco col numero a destra di ogni voce.', 'Niente maiuscole nei pulsanti e nelle etichette (Conferma, Pecore, Presente); i testi dicono \xABtasto Salva\xBB al posto del dischetto.']));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$26 = emptyList();
-      var tmp_69 = new Novita('2026-10-15-1205', '15/10/2026 (build 12:05)', tmp$ret$26, VOID, VOID, listOf_0(['Il foglio di conferma dice di quale stabilimento \xE8 un capo di un altro stabilimento (\xABALTRO STABILIMENTO 888TO888\xBB).', 'Il backup di chi lavora da solo finisce con \xABR\xBB, come quello della Regia.']), listOf_0(['Registri caricati in corsa: il registro aggiornato delle sole pecore di uno stabilimento non toglie pi\xF9 le sue capre (e viceversa). Prima le capre sparivano dalla ricerca e dalla copertura.', "Razza scritta a mano: l'elenco delle razze non ruba pi\xF9 la tastiera, si scrive tutta la parola e l'elenco si restringe.", 'Sul telefono: le schede del Progetto (\xABApertura\xBB, Registri, Impostazioni), i pulsanti del ruolo di un registro, \xABProblematici\xBB per smarriti e rubati e \xABPrima della guida\xBB in Riordino \u203A A mano non sono pi\xF9 tagliati; nella tabella dei registri \xABacquisto con DDA \u2192 \u2026\xBB va a capo per parole.', 'Tabella dei registri: \xAB\u2014\xBB anche dopo la creazione per uno stabilimento senza file di contrassegni.', 'Piccole correzioni di testo: \xAB1 provetta\xBB, \xAB1 capo\xBB negli acquisti con DDA, \xABil progetto intero\xBB.']));
+      var tmp_70 = new Novita('2026-10-15-1205', '15/10/2026 (build 12:05)', tmp$ret$26, VOID, VOID, listOf_0(['Il foglio di conferma dice di quale stabilimento \xE8 un capo di un altro stabilimento (\xABALTRO STABILIMENTO 888TO888\xBB).', 'Il backup di chi lavora da solo finisce con \xABR\xBB, come quello della Regia.']), listOf_0(['Registri caricati in corsa: il registro aggiornato delle sole pecore di uno stabilimento non toglie pi\xF9 le sue capre (e viceversa). Prima le capre sparivano dalla ricerca e dalla copertura.', "Razza scritta a mano: l'elenco delle razze non ruba pi\xF9 la tastiera, si scrive tutta la parola e l'elenco si restringe.", 'Sul telefono: le schede del Progetto (\xABApertura\xBB, Registri, Impostazioni), i pulsanti del ruolo di un registro, \xABProblematici\xBB per smarriti e rubati e \xABPrima della guida\xBB in Riordino \u203A A mano non sono pi\xF9 tagliati; nella tabella dei registri \xABacquisto con DDA \u2192 \u2026\xBB va a capo per parole.', 'Tabella dei registri: \xAB\u2014\xBB anche dopo la creazione per uno stabilimento senza file di contrassegni.', 'Piccole correzioni di testo: \xAB1 provetta\xBB, \xAB1 capo\xBB negli acquisti con DDA, \xABil progetto intero\xBB.']));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$27 = emptyList();
-      var tmp_70 = new Novita('2026-10-15-0940', '15/10/2026 (build 09:40)', tmp$ret$27, VOID, VOID, listOf('Versione 0.1.0, quella che uscir\xE0 come prima versione pubblica (in prova).'));
+      var tmp_71 = new Novita('2026-10-15-0940', '15/10/2026 (build 09:40)', tmp$ret$27, VOID, VOID, listOf('Versione 0.1.0, quella che uscir\xE0 come prima versione pubblica (in prova).'));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$28 = emptyList();
-      var tmp_71 = new Novita('2026-10-15-0907', '15/10/2026 (build 09:07)', tmp$ret$28, VOID, VOID, listOf_0(["Aggiornati il nome visibile Fejalog, l'icona e le cartelle di lavoro.", 'Le cartelle pubbliche diventano Documenti/Fejalog e Download/Fejalog; la cartella di lavoro sul cloud si sceglie di nuovo (Impostazioni).', "Il sito diventa uvesco.github.io/fejalog, e l'APK fejalog.apk."]));
-      var tmp_72 = new Novita('2026-10-14-2258', '14/10/2026, notte (build 22:58)', listOf('Gli stessi testi della guida, le novit\xE0 e il foglio per i veterinari sono anche nel sito di Fejalog (uvesco.github.io/fejalog-sito), col tutorial sul kit di prova.'), VOID, VOID, listOf("Come si usa: le pagine su registri, regole per i problematici, Soluzione problemi e fine lavori dicono che i capi che non sono nell'elenco di ARVET li aggiunge lo snippet (\xABInserisci capo\xBB); a mano restano i doppi."));
+      var tmp_72 = new Novita('2026-10-15-0907', '15/10/2026 (build 09:07)', tmp$ret$28, VOID, VOID, listOf_0(["Aggiornati il nome visibile Fejalog, l'icona e le cartelle di lavoro.", 'Le cartelle pubbliche diventano Documenti/Fejalog e Download/Fejalog; la cartella di lavoro sul cloud si sceglie di nuovo (Impostazioni).', "Il sito diventa uvesco.github.io/fejalog, e l'APK fejalog.apk."]));
+      var tmp_73 = new Novita('2026-10-14-2258', '14/10/2026, notte (build 22:58)', listOf('Gli stessi testi della guida, le novit\xE0 e il foglio per i veterinari sono anche nel sito di Fejalog (uvesco.github.io/fejalog-sito), col tutorial sul kit di prova.'), VOID, VOID, listOf("Come si usa: le pagine su registri, regole per i problematici, Soluzione problemi e fine lavori dicono che i capi che non sono nell'elenco di ARVET li aggiunge lo snippet (\xABInserisci capo\xBB); a mano restano i doppi."));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$29 = emptyList();
-      var tmp_73 = new Novita('2026-10-14-2200', '14/10/2026, sera (build 22:00)', tmp$ret$29, VOID, VOID, listOf('Fejalog si installa anche su Android 11 (prima serviva Android 12): lo stesso APK per tutti i device.'), listOf('Su Android 11 la vibrazione (capi ricercati, rete che peggiora) usa il vibratore di sempre.'));
+      var tmp_74 = new Novita('2026-10-14-2200', '14/10/2026, sera (build 22:00)', tmp$ret$29, VOID, VOID, listOf('Fejalog si installa anche su Android 11 (prima serviva Android 12): lo stesso APK per tutti i device.'), listOf('Su Android 11 la vibrazione (capi ricercati, rete che peggiora) usa il vibratore di sempre.'));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$30 = emptyList();
-      var tmp_74 = new Novita('2026-10-14-1924', '14/10/2026, sera (build 19:24)', tmp$ret$30, VOID, VOID, listOf("Anche per le capre la razza dell'anagrafica scritta in campo si sceglie dall'elenco di ARVET (74 razze caprine), prima quelle del gregge."), listOf('Le sigle della BDN si traducono per specie (GRG \xE8 GARFAGNINA fra le pecore e GIRGENTANA fra le capre), col codice della tabella di decodifica della BDN o con la sigla dei registri di stalla.'));
-      var tmp_75 = new Novita('2026-10-14-1914', '14/10/2026, sera (build 19:14)', listOf("Fine lavori: lo snippet ARVET aggiunge anche i capi che non sono nell'elenco del campionamento, come \xABInserisci capo\xBB (sesso, razza e nascita solo se ARVET non li conosce). Alla fine \xABRicarica la pagina coi capi aggiunti\xBB e si incolla di nuovo lo stesso snippet, che controlla i numeri. A mano restano solo i doppi di contrassegno."), VOID, VOID, listOf_0(["Anagrafica scritta in campo (marca disponibile, capo che non \xE8 in nessun registro, inserimento forzato): la razza si sceglie dall'elenco delle razze di ARVET della specie (109 ovine, 74 caprine). In testa quelle dei presenti dello stabilimento, dalla pi\xF9 numerosa, poi le altre in ordine alfabetico; una razza fuori elenco non si conferma.", 'Le sigle della BDN dei capi presenti (BLS, o BIE dei registri di stalla) si traducono nella razza di ARVET.', 'Fine lavori col motore aggiornato (snippet 2.0).']));
+      var tmp_75 = new Novita('2026-10-14-1924', '14/10/2026, sera (build 19:24)', tmp$ret$30, VOID, VOID, listOf("Anche per le capre la razza dell'anagrafica scritta in campo si sceglie dall'elenco di ARVET (74 razze caprine), prima quelle del gregge."), listOf('Le sigle della BDN si traducono per specie (GRG \xE8 GARFAGNINA fra le pecore e GIRGENTANA fra le capre), col codice della tabella di decodifica della BDN o con la sigla dei registri di stalla.'));
+      var tmp_76 = new Novita('2026-10-14-1914', '14/10/2026, sera (build 19:14)', listOf("Fine lavori: lo snippet ARVET aggiunge anche i capi che non sono nell'elenco del campionamento, come \xABInserisci capo\xBB (sesso, razza e nascita solo se ARVET non li conosce). Alla fine \xABRicarica la pagina coi capi aggiunti\xBB e si incolla di nuovo lo stesso snippet, che controlla i numeri. A mano restano solo i doppi di contrassegno."), VOID, VOID, listOf_0(["Anagrafica scritta in campo (marca disponibile, capo che non \xE8 in nessun registro, inserimento forzato): la razza si sceglie dall'elenco delle razze di ARVET della specie (109 ovine, 74 caprine). In testa quelle dei presenti dello stabilimento, dalla pi\xF9 numerosa, poi le altre in ordine alfabetico; una razza fuori elenco non si conferma.", 'Le sigle della BDN dei capi presenti (BLS, o BIE dei registri di stalla) si traducono nella razza di ARVET.', 'Fine lavori col motore aggiornato (snippet 2.0).']));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$31 = emptyList();
-      var tmp_76 = new Novita('2026-10-14-1205', '14/10/2026, mattina (build 12:05)', tmp$ret$31, VOID, VOID, listOf_0(['Progetto \u203A Impostazioni \u203A File del progetto: si sceglie la cartella di lavoro di questo progetto (senza, vale quella del device) e si vede se si raggiunge.', "Se la cartella non c'\xE8 o non si raggiunge, i file in uscita (fonti della BDN, backup, uscite di fine lavori) vanno in Download/Fejalog/<progetto>; per quelli in entrata Fejalog chiede di sceglierli (\xABScegli i file da dove sono\xBB).", 'Fine lavori col motore del commit c6249f0 (lo stesso di prima).']), listOf('Condividendo backup, file e testi, Fejalog non propone pi\xF9 s\xE9 stesso fra le app.'));
-      var tmp_77 = new Novita('2026-10-14-0901', '14/10/2026, mattina (build 09:01)', listOf('Progetto \u203A Impostazioni \u203A Cartella del progetto: la Regia sceglie se mettere nella cartella del progetto anche i backup (sottocartella backup) e le uscite di fine lavori (snippet, allevatore, fine_lavori).'), VOID, VOID, listOf_0(['Le copia il device che fa il backup o le uscite, se ha la cartella di lavoro; se la regia passa a un device senza, backup e uscite restano in Documenti/Fejalog come sempre.', 'Il messaggio del \uD83D\uDCBE, di Chiudi e di Esci dice se il backup \xE8 stato copiato anche l\xEC.']));
-      var tmp_78 = new Novita('2026-10-14-0713', '14/10/2026, mattina (build 07:13)', listOf_0(['Cartella di lavoro \xABFejalog\xBB (meglio sul cloud): Fejalog ci crea la cartella di ogni progetto, codice_data_ora/bdn/registri e bdn/contrassegni, e ci archivia i file della BDN usati per crearlo o caricati dopo.', 'Progetto \u203A Registri \u203A Fonti del progetto: ogni file con lo stato del caricamento (in uso, pi\xF9 recente da caricare, pi\xF9 vecchio, non caricato); quelli da caricare si spuntano e si caricano.']), VOID, VOID, listOf_0(['Nomi standard dei file: stabilimento, specie, \xABcontrassegni\xBB, data e ora (888TO999_pecore_2026-10-14_0930.txt); stabilimento e specie si leggono dentro il file. I file messi nella cartella del progetto, anche dal PC, prendono da soli il nome standard; gli zip si aprono.', 'I file presi dalla cartella di lavoro, una volta usati, si spostano nella cartella del progetto.', 'Contrassegni di un file che non dice la specie: Fejalog chiede di che specie sono (senza, non si usano); detta, la specie entra nel nome standard del file.', 'Elenco \xABda inserire a mano in ARVET\xBB: sesso, razza e nascita solo per i capi che la BDN non conosce (marca disponibile, non in nessun registro); degli altri ARVET li ha gi\xE0.', "Guida: un contrassegno non censito \xE8 sempre un problematico con l'anagrafica stimata obbligatoria."]));
+      var tmp_77 = new Novita('2026-10-14-1205', '14/10/2026, mattina (build 12:05)', tmp$ret$31, VOID, VOID, listOf_0(['Progetto \u203A Impostazioni \u203A File del progetto: si sceglie la cartella di lavoro di questo progetto (senza, vale quella del device) e si vede se si raggiunge.', "Se la cartella non c'\xE8 o non si raggiunge, i file in uscita (fonti della BDN, backup, uscite di fine lavori) vanno in Download/Fejalog/<progetto>; per quelli in entrata Fejalog chiede di sceglierli (\xABScegli i file da dove sono\xBB).", 'Fine lavori col motore del commit c6249f0 (lo stesso di prima).']), listOf('Condividendo backup, file e testi, Fejalog non propone pi\xF9 s\xE9 stesso fra le app.'));
+      var tmp_78 = new Novita('2026-10-14-0901', '14/10/2026, mattina (build 09:01)', listOf('Progetto \u203A Impostazioni \u203A Cartella del progetto: la Regia sceglie se mettere nella cartella del progetto anche i backup (sottocartella backup) e le uscite di fine lavori (snippet, allevatore, fine_lavori).'), VOID, VOID, listOf_0(['Le copia il device che fa il backup o le uscite, se ha la cartella di lavoro; se la regia passa a un device senza, backup e uscite restano in Documenti/Fejalog come sempre.', 'Il messaggio del \uD83D\uDCBE, di Chiudi e di Esci dice se il backup \xE8 stato copiato anche l\xEC.']));
+      var tmp_79 = new Novita('2026-10-14-0713', '14/10/2026, mattina (build 07:13)', listOf_0(['Cartella di lavoro \xABFejalog\xBB (meglio sul cloud): Fejalog ci crea la cartella di ogni progetto, codice_data_ora/bdn/registri e bdn/contrassegni, e ci archivia i file della BDN usati per crearlo o caricati dopo.', 'Progetto \u203A Registri \u203A Fonti del progetto: ogni file con lo stato del caricamento (in uso, pi\xF9 recente da caricare, pi\xF9 vecchio, non caricato); quelli da caricare si spuntano e si caricano.']), VOID, VOID, listOf_0(['Nomi standard dei file: stabilimento, specie, \xABcontrassegni\xBB, data e ora (888TO999_pecore_2026-10-14_0930.txt); stabilimento e specie si leggono dentro il file. I file messi nella cartella del progetto, anche dal PC, prendono da soli il nome standard; gli zip si aprono.', 'I file presi dalla cartella di lavoro, una volta usati, si spostano nella cartella del progetto.', 'Contrassegni di un file che non dice la specie: Fejalog chiede di che specie sono (senza, non si usano); detta, la specie entra nel nome standard del file.', 'Elenco \xABda inserire a mano in ARVET\xBB: sesso, razza e nascita solo per i capi che la BDN non conosce (marca disponibile, non in nessun registro); degli altri ARVET li ha gi\xE0.', "Guida: un contrassegno non censito \xE8 sempre un problematico con l'anagrafica stimata obbligatoria."]));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$32 = emptyList();
-      var tmp_79 = new Novita('2026-10-13-2355', '13/10/2026, notte (build 23:55)', tmp$ret$32, VOID, VOID, listOf_0(['Cartella di lavoro: detto che serve una sottocartella (Android non lascia scegliere tutta Download).', 'Messaggio in italiano quando Fejalog non ha il permesso di leggere un file condiviso.']), listOf("Fra le altre razze non compaiono quelle che si vedono solo nell'altra specie (niente razze di capre per una pecora)."));
-      var tmp_80 = new Novita('2026-10-13-2345', '13/10/2026, notte (build 23:45)', listOf_0(["Nascita di pi\xF9 di 6 mesi prima per una marca disponibile o un capo non in elenco: il foglio la segnala come anomalia (senza bloccare) e l'elenco delle provette lo dice.", 'Cartella di lavoro dei file della BDN (Impostazioni del device): i suoi file .txt e .zip compaiono in Nuovo e in Carica registri, dal pi\xF9 recente, da spuntare e caricare con un tocco.']), VOID, VOID, listOf_0(["Razza nel foglio di conferma: a un tocco quelle dello stabilimento; la freccia apre l'elenco, prima le razze dello stabilimento dalla pi\xF9 frequente, poi, dopo uno spazio, le altre in ordine alfabetico.", "Il numero grande del foglio \xE8 un po' pi\xF9 piccolo quando c'\xE8 l'anagrafica da scrivere, che resta a portata.", 'I file della BDN si possono condividere verso Fejalog da OneDrive, dalla posta o da un file manager.', "Il selettore dei file si apre nella cartella dell'ultimo file scelto.", 'Guida: come si procede con un contrassegno che non \xE8 in nessun registro.', 'Icona: provette pi\xF9 alte rispetto alla base del plateau.']));
+      var tmp_80 = new Novita('2026-10-13-2355', '13/10/2026, notte (build 23:55)', tmp$ret$32, VOID, VOID, listOf_0(['Cartella di lavoro: detto che serve una sottocartella (Android non lascia scegliere tutta Download).', 'Messaggio in italiano quando Fejalog non ha il permesso di leggere un file condiviso.']), listOf("Fra le altre razze non compaiono quelle che si vedono solo nell'altra specie (niente razze di capre per una pecora)."));
+      var tmp_81 = new Novita('2026-10-13-2345', '13/10/2026, notte (build 23:45)', listOf_0(["Nascita di pi\xF9 di 6 mesi prima per una marca disponibile o un capo non in elenco: il foglio la segnala come anomalia (senza bloccare) e l'elenco delle provette lo dice.", 'Cartella di lavoro dei file della BDN (Impostazioni del device): i suoi file .txt e .zip compaiono in Nuovo e in Carica registri, dal pi\xF9 recente, da spuntare e caricare con un tocco.']), VOID, VOID, listOf_0(["Razza nel foglio di conferma: a un tocco quelle dello stabilimento; la freccia apre l'elenco, prima le razze dello stabilimento dalla pi\xF9 frequente, poi, dopo uno spazio, le altre in ordine alfabetico.", "Il numero grande del foglio \xE8 un po' pi\xF9 piccolo quando c'\xE8 l'anagrafica da scrivere, che resta a portata.", 'I file della BDN si possono condividere verso Fejalog da OneDrive, dalla posta o da un file manager.', "Il selettore dei file si apre nella cartella dell'ultimo file scelto.", 'Guida: come si procede con un contrassegno che non \xE8 in nessun registro.', 'Icona: provette pi\xF9 alte rispetto alla base del plateau.']));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$33 = emptyList();
-      var tmp_81 = new Novita('2026-10-13-2320', '13/10/2026, sera (build 23:20)', tmp$ret$33, VOID, VOID, listOf_0(['Marca disponibile (contrassegno mai registrato su un capo) o capo che non \xE8 in nessun registro caricato: sesso, razza e data di nascita sono obbligatori nel foglio di conferma; senza, la provetta non si conferma.', 'Un capo non in elenco gi\xE0 prelevato riprende sesso, razza e nascita date la prima volta.']), listOf('Il sesso si sceglie (niente pi\xF9 \xABF\xBB gi\xE0 messo), la data si controlla (gg/mm/aaaa, non nel futuro) e sotto la razza ci sono le pi\xF9 frequenti dello stabilimento.'));
-      var tmp_82 = new Novita('2026-10-13-2313', '13/10/2026, sera (build 23:13)', listOf_0(['Ogni provetta registra come \xE8 stato identificato il capo: col lettore di microchip (codice elettronico intero) o col contrassegno intero \xE8 certo; scelto fra i contrassegni con le cifre digitate \xE8 meno certo, e si sa fra quanti.', "Il foglio di conferma lo dice: in verde se certo, in giallo se scelto fra pi\xF9 contrassegni (controlla l'orecchino).", 'Statistiche: la percentuale dei capi letti elettronicamente.', "Nell'export i campi \xABidentificazione\xBB e \xABcandidati\xBB."]), VOID, VOID, listOf("Nei doppi contrassegni e nei capi che non tornano, l'avviso e l'elenco delle provette dicono come era stato identificato ogni capo."));
+      var tmp_82 = new Novita('2026-10-13-2320', '13/10/2026, sera (build 23:20)', tmp$ret$33, VOID, VOID, listOf_0(['Marca disponibile (contrassegno mai registrato su un capo) o capo che non \xE8 in nessun registro caricato: sesso, razza e data di nascita sono obbligatori nel foglio di conferma; senza, la provetta non si conferma.', 'Un capo non in elenco gi\xE0 prelevato riprende sesso, razza e nascita date la prima volta.']), listOf('Il sesso si sceglie (niente pi\xF9 \xABF\xBB gi\xE0 messo), la data si controlla (gg/mm/aaaa, non nel futuro) e sotto la razza ci sono le pi\xF9 frequenti dello stabilimento.'));
+      var tmp_83 = new Novita('2026-10-13-2313', '13/10/2026, sera (build 23:13)', listOf_0(['Ogni provetta registra come \xE8 stato identificato il capo: col lettore di microchip (codice elettronico intero) o col contrassegno intero \xE8 certo; scelto fra i contrassegni con le cifre digitate \xE8 meno certo, e si sa fra quanti.', "Il foglio di conferma lo dice: in verde se certo, in giallo se scelto fra pi\xF9 contrassegni (controlla l'orecchino).", 'Statistiche: la percentuale dei capi letti elettronicamente.', "Nell'export i campi \xABidentificazione\xBB e \xABcandidati\xBB."]), VOID, VOID, listOf("Nei doppi contrassegni e nei capi che non tornano, l'avviso e l'elenco delle provette dicono come era stato identificato ogni capo."));
       // Inline function 'kotlin.collections.listOf' call
       var tmp$ret$34 = emptyList();
-      NOVITA = listOf_0([tmp, tmp_0, tmp_1, tmp_2, tmp_3, tmp_4, tmp_5, tmp_6, tmp_7, tmp_8, tmp_9, tmp_10, tmp_11, tmp_12, tmp_13, tmp_14, tmp_15, tmp_16, tmp_17, tmp_18, tmp_19, tmp_20, tmp_21, tmp_22, tmp_23, tmp_24, tmp_25, tmp_26, tmp_27, tmp_28, tmp_29, tmp_30, tmp_31, tmp_32, tmp_33, tmp_34, tmp_35, tmp_36, tmp_37, tmp_38, tmp_39, tmp_40, tmp_41, tmp_42, tmp_43, tmp_44, tmp_45, tmp_46, tmp_47, tmp_48, tmp_49, tmp_50, tmp_51, tmp_52, tmp_53, tmp_54, tmp_55, tmp_56, tmp_57, tmp_58, tmp_59, tmp_60, tmp_61, tmp_62, tmp_63, tmp_64, tmp_65, tmp_66, tmp_67, tmp_68, tmp_69, tmp_70, tmp_71, tmp_72, tmp_73, tmp_74, tmp_75, tmp_76, tmp_77, tmp_78, tmp_79, tmp_80, tmp_81, tmp_82, new Novita('2026-10-13-1947', '13/10/2026, sera (build 19:47)', tmp$ret$34, VOID, VOID, VOID, listOf('Correzioni di testo in Soluzione problemi.')), new Novita('2026-10-13-1943', '13/10/2026, sera (build 19:43)', listOf("Nello zip di fine lavori l'elenco delle provette da inserire a mano in ARVET, con sesso, razza e nascita."), VOID, VOID, listOf('Riordino e guida al riposizionamento: le provette eliminate sono elencate, da togliere dai plateau e mettere da parte.'), listOf('Fine lavori col motore aggiornato: le provette eliminate non hanno numero finale n\xE9 ARVET, i registri caricati in corsa e gli acquisti con DDA valgono anche l\xEC.')), new Novita('2026-10-13-1859', '13/10/2026, sera (build 18:59)', listOf_0(['Progetto \u203A Registri: la tabella riassuntiva dei registri di stalla, con gli allevamenti (o gli stabilimenti) in riga e in colonna pecore, capre, contrassegni pecore, contrassegni capre, e il totale.', "Soluzione problemi per tipologia (smarriti, rubati, usciti, altro stabilimento, marche disponibili, doppi\u2026): per ogni tipologia una regola (in coda con l'ARVET a mano, eliminate, normalizzate) e, provetta per provetta, le eccezioni.", "Regole per i problematici (Progetto \u203A Impostazioni): smarriti e rubati nella serie o fra i problematici e la soluzione di fine lavoro di ogni tipologia. Meglio sceglierle all'inizio; si possono cambiare anche dopo e le provette gi\xE0 fatte si spostano da sole in sistemazione.", 'Questa sezione: le novit\xE0 di ogni versione.']), VOID, VOID, listOf_0(["I file della BDN si scelgono tutti insieme, anche dentro uno zip: l'app riconosce da sola registri di stalla e contrassegni disponibili, con l'allevamento e la specie.", "La Regia carica registri in qualsiasi momento: il registro aggiornato di uno stabilimento di lavoro (sostituisce quello di prima), un altro stabilimento (i suoi capi fra i problematici) o un acquisto con DDA (i capi acquistati nella serie, con l'ARVET automatico). Arrivano a tutti i device.", 'Le provette gi\xE0 fatte seguono i registri nuovi: quelle che diventano problematiche restano al loro numero e in sistemazione vanno in coda; quelle che adesso sono in lista si possono normalizzare.', 'Export in formato 4: porta i registri caricati e le soluzioni scelte.', "Le cose da fare per l'allevatore dicono di registrare in BDN gli ingressi degli acquisti con DDA."]), listOf('Corretto: dopo la ripresa da un backup, le impostazioni del progetto cambiate da chi lavora da solo non valevano.')), new Novita('2026-10-13-1406', '13/10/2026, mattina e pomeriggio (build dalle 09:46 alle 14:06)', listOf_0(['Provette perse e ritrovate da Ultime, Soluzione problemi e Riordino; una persa non conta come doppio: si ripete il prelievo.', 'Crediti nella guida.']), VOID, VOID, listOf_0(['Aspetto nuovo: colori verde salvia, icone moderne, titolo della pagina nella barra in alto, menu a gruppi.', '\xABProgetto\xBB al posto di \xABseduta\xBB, \xABpalmare\xBB al posto di \xABPostazione\xBB, \xABCampionamento\xBB al posto di \xABLavoro\xBB, \xABAvvio rapido\xBB in fondo al menu.', 'Il progetto si gestisce come un file: Nuovo, Apri, Recenti, Chiudi. Porta con s\xE9 la rete: riaprendolo, la rete riparte uguale.', 'Pagina Rete semplice: QR per entrare, palmari collegati, Pausa, Riprendi, Esci; i palmari rientrano da soli.', "Esci chiude l'app lasciando aperto il progetto; Chiudi chiude il progetto. Il palmare che esce controlla di essere allineato con la Regia.", 'Elenco delle provette in parole, con tutti i dati al tocco.', 'Plateau uno alla volta, con le coordinate, due affiancati sul tablet.', 'Batterie dei device collegati, previsione della durata e avviso alla Regia; meno consumo (statistiche in tempo reale solo se si vuole, o sulla Regia in carica).']))]);
+      NOVITA = listOf_0([tmp, tmp_0, tmp_1, tmp_2, tmp_3, tmp_4, tmp_5, tmp_6, tmp_7, tmp_8, tmp_9, tmp_10, tmp_11, tmp_12, tmp_13, tmp_14, tmp_15, tmp_16, tmp_17, tmp_18, tmp_19, tmp_20, tmp_21, tmp_22, tmp_23, tmp_24, tmp_25, tmp_26, tmp_27, tmp_28, tmp_29, tmp_30, tmp_31, tmp_32, tmp_33, tmp_34, tmp_35, tmp_36, tmp_37, tmp_38, tmp_39, tmp_40, tmp_41, tmp_42, tmp_43, tmp_44, tmp_45, tmp_46, tmp_47, tmp_48, tmp_49, tmp_50, tmp_51, tmp_52, tmp_53, tmp_54, tmp_55, tmp_56, tmp_57, tmp_58, tmp_59, tmp_60, tmp_61, tmp_62, tmp_63, tmp_64, tmp_65, tmp_66, tmp_67, tmp_68, tmp_69, tmp_70, tmp_71, tmp_72, tmp_73, tmp_74, tmp_75, tmp_76, tmp_77, tmp_78, tmp_79, tmp_80, tmp_81, tmp_82, tmp_83, new Novita('2026-10-13-1947', '13/10/2026, sera (build 19:47)', tmp$ret$34, VOID, VOID, VOID, listOf('Correzioni di testo in Soluzione problemi.')), new Novita('2026-10-13-1943', '13/10/2026, sera (build 19:43)', listOf("Nello zip di fine lavori l'elenco delle provette da inserire a mano in ARVET, con sesso, razza e nascita."), VOID, VOID, listOf('Riordino e guida al riposizionamento: le provette eliminate sono elencate, da togliere dai plateau e mettere da parte.'), listOf('Fine lavori col motore aggiornato: le provette eliminate non hanno numero finale n\xE9 ARVET, i registri caricati in corsa e gli acquisti con DDA valgono anche l\xEC.')), new Novita('2026-10-13-1859', '13/10/2026, sera (build 18:59)', listOf_0(['Progetto \u203A Registri: la tabella riassuntiva dei registri di stalla, con gli allevamenti (o gli stabilimenti) in riga e in colonna pecore, capre, contrassegni pecore, contrassegni capre, e il totale.', "Soluzione problemi per tipologia (smarriti, rubati, usciti, altro stabilimento, marche disponibili, doppi\u2026): per ogni tipologia una regola (in coda con l'ARVET a mano, eliminate, normalizzate) e, provetta per provetta, le eccezioni.", "Regole per i problematici (Progetto \u203A Impostazioni): smarriti e rubati nella serie o fra i problematici e la soluzione di fine lavoro di ogni tipologia. Meglio sceglierle all'inizio; si possono cambiare anche dopo e le provette gi\xE0 fatte si spostano da sole in sistemazione.", 'Questa sezione: le novit\xE0 di ogni versione.']), VOID, VOID, listOf_0(["I file della BDN si scelgono tutti insieme, anche dentro uno zip: l'app riconosce da sola registri di stalla e contrassegni disponibili, con l'allevamento e la specie.", "La Regia carica registri in qualsiasi momento: il registro aggiornato di uno stabilimento di lavoro (sostituisce quello di prima), un altro stabilimento (i suoi capi fra i problematici) o un acquisto con DDA (i capi acquistati nella serie, con l'ARVET automatico). Arrivano a tutti i device.", 'Le provette gi\xE0 fatte seguono i registri nuovi: quelle che diventano problematiche restano al loro numero e in sistemazione vanno in coda; quelle che adesso sono in lista si possono normalizzare.', 'Export in formato 4: porta i registri caricati e le soluzioni scelte.', "Le cose da fare per l'allevatore dicono di registrare in BDN gli ingressi degli acquisti con DDA."]), listOf('Corretto: dopo la ripresa da un backup, le impostazioni del progetto cambiate da chi lavora da solo non valevano.')), new Novita('2026-10-13-1406', '13/10/2026, mattina e pomeriggio (build dalle 09:46 alle 14:06)', listOf_0(['Provette perse e ritrovate da Ultime, Soluzione problemi e Riordino; una persa non conta come doppio: si ripete il prelievo.', 'Crediti nella guida.']), VOID, VOID, listOf_0(['Aspetto nuovo: colori verde salvia, icone moderne, titolo della pagina nella barra in alto, menu a gruppi.', '\xABProgetto\xBB al posto di \xABseduta\xBB, \xABpalmare\xBB al posto di \xABPostazione\xBB, \xABCampionamento\xBB al posto di \xABLavoro\xBB, \xABAvvio rapido\xBB in fondo al menu.', 'Il progetto si gestisce come un file: Nuovo, Apri, Recenti, Chiudi. Porta con s\xE9 la rete: riaprendolo, la rete riparte uguale.', 'Pagina Rete semplice: QR per entrare, palmari collegati, Pausa, Riprendi, Esci; i palmari rientrano da soli.', "Esci chiude l'app lasciando aperto il progetto; Chiudi chiude il progetto. Il palmare che esce controlla di essere allineato con la Regia.", 'Elenco delle provette in parole, con tutti i dati al tocco.', 'Plateau uno alla volta, con le coordinate, due affiancati sul tablet.', 'Batterie dei device collegati, previsione della durata e avviso alla Regia; meno consumo (statistiche in tempo reale solo se si vuole, o sulla Regia in carica).']))]);
     }
   }
   function Lettura_0(voci, scartate) {
@@ -67066,15 +68493,15 @@ if (typeof String.prototype.startsWith === 'undefined') {
       // Inline function 'kotlin.comparisons.compareBy' call
       var tmp_0 = AssegnazioneNumeri$ordinaCapi$lambda;
       // Inline function 'kotlin.comparisons.thenBy' call
-      var this_0 = new sam$kotlin_Comparator$0_17(tmp_0);
+      var this_0 = new sam$kotlin_Comparator$0_18(tmp_0);
       var tmp_1 = AssegnazioneNumeri$ordinaCapi$lambda_0(this_0);
-      var tmp$ret$1 = new sam$kotlin_Comparator$0_17(tmp_1);
+      var tmp$ret$1 = new sam$kotlin_Comparator$0_18(tmp_1);
       tmp = sortedWith(capi, tmp$ret$1);
     } else {
       // Inline function 'kotlin.collections.sortedBy' call
       // Inline function 'kotlin.comparisons.compareBy' call
       var tmp_2 = AssegnazioneNumeri$ordinaCapi$lambda_1;
-      var tmp$ret$3 = new sam$kotlin_Comparator$0_17(tmp_2);
+      var tmp$ret$3 = new sam$kotlin_Comparator$0_18(tmp_2);
       tmp = sortedWith(capi, tmp$ret$3);
     }
     return tmp;
@@ -67202,19 +68629,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
         return 31;
     }
   }
-  function sam$kotlin_Comparator$0_17(function_0) {
+  function sam$kotlin_Comparator$0_18(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_17).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_18).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_17).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_18).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_17).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_18).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_17).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_18).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -67229,7 +68656,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_17).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_18).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function AssegnazioneNumeri$ordinaCapi$lambda(a, b) {
@@ -70046,19 +71473,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function conPrefissoEffettivo($this, s, imp, p) {
     return imp.usaSigleVeterinari_1 ? s.copy$default_clkdv2_k$(VOID, VOID, VOID, VOID, VOID, VOID, imp.cerchiettoStabilimento_mfl9ou_k$(s.get_stabilimento_353hxm_k$(), p)) : s;
   }
-  function sam$kotlin_Comparator$0_18(function_0) {
+  function sam$kotlin_Comparator$0_19(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_18).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_19).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_18).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_19).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_18).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_19).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_18).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_19).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -70073,7 +71500,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_18).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_19).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function SeriePacchetto$diEventi$lambda(it) {
@@ -70266,7 +71693,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
           var this_1 = item_2.numeriAssegnati_1.get_entries_p20ztl_k$();
           // Inline function 'kotlin.comparisons.compareBy' call
           var tmp_13 = SeriePacchetto$diEventi$lambda_2;
-          var tmp$ret$29 = new sam$kotlin_Comparator$0_18(tmp_13);
+          var tmp$ret$29 = new sam$kotlin_Comparator$0_19(tmp_13);
           // Inline function 'kotlin.collections.forEach' call
           var _iterator__ex2g4s_7 = sortedWith(this_1, tmp$ret$29).iterator_jk1svi_k$();
           while (_iterator__ex2g4s_7.hasNext_bitz1p_k$()) {
@@ -71518,10 +72945,10 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var tmp0_elvis_lhs = tmp_0;
     return tmp0_elvis_lhs == null ? emptyList() : tmp0_elvis_lhs;
   }
-  function di$lambda($passateDallaRegia$delegate) {
+  function di$lambda($posateDallaRegia$delegate) {
     // Inline function 'kotlin.getValue' call
-    getLocalDelegateReference('passateDallaRegia', KProperty0, false);
-    return $passateDallaRegia$delegate.get_value_j01efc_k$();
+    getLocalDelegateReference('posateDallaRegia', KProperty0, false);
+    return $posateDallaRegia$delegate.get_value_j01efc_k$();
   }
   function StatoNumeri$Companion$di$lambda($eventi) {
     return function () {
@@ -71550,45 +72977,70 @@ if (typeof String.prototype.startsWith === 'undefined') {
           destination_0.add_utx5q5_k$(tmp0_safe_receiver);
         }
       }
-      var posate = destination_0;
+      return destination_0;
+    };
+  }
+  function di$lambda_0($lamportConsegnaPerUid$delegate) {
+    // Inline function 'kotlin.getValue' call
+    getLocalDelegateReference('lamportConsegnaPerUid', KProperty0, false);
+    return $lamportConsegnaPerUid$delegate.get_value_j01efc_k$();
+  }
+  function StatoNumeri$Companion$di$lambda_0($eventi) {
+    return function () {
       var consegne = Consegne_instance.di_4dh1u9_k$($eventi);
-      // Inline function 'kotlin.collections.filter' call
-      var tmp0_0 = $eventi;
-      // Inline function 'kotlin.collections.filterTo' call
-      var destination_1 = ArrayList_init_$Create$();
-      var _iterator__ex2g4s_1 = tmp0_0.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
-        var element_1 = _iterator__ex2g4s_1.next_20eer_k$();
-        if (element_1.tipo_1 === 'PROVETTA_REGISTRATA' && consegne.eConsegnata_irjohq_k$(element_1.feed_1, element_1.seq_1)) {
-          destination_1.add_utx5q5_k$(element_1);
+      var m = HashMap_init_$Create$();
+      var _iterator__ex2g4s = $eventi.iterator_jk1svi_k$();
+      $l$loop_0: while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+        var r = _iterator__ex2g4s.next_20eer_k$();
+        if (!(r.tipo_1 === 'PROVETTA_REGISTRATA'))
+          continue $l$loop_0;
+        var tmp0_elvis_lhs = testo_9(Companion_getInstance_68(), r.dati_1, 'uid');
+        var tmp;
+        if (tmp0_elvis_lhs == null) {
+          continue $l$loop_0;
+        } else {
+          tmp = tmp0_elvis_lhs;
         }
-      }
-      // Inline function 'kotlin.collections.mapNotNullTo' call
-      // Inline function 'kotlin.collections.forEach' call
-      var _iterator__ex2g4s_2 = destination_1.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
-        var element_2 = _iterator__ex2g4s_2.next_20eer_k$();
-        var tmp0_safe_receiver_0 = testo_9(Companion_getInstance_68(), element_2.dati_1, 'uid');
-        if (tmp0_safe_receiver_0 == null)
+        var u = tmp;
+        var tmp1_safe_receiver = consegne.lamportConsegna_1bmi6h_k$(r.feed_1, r.seq_1);
+        if (tmp1_safe_receiver == null)
           null;
         else {
           // Inline function 'kotlin.let' call
-          posate.add_utx5q5_k$(tmp0_safe_receiver_0);
+          // Inline function 'kotlin.collections.set' call
+          m.put_4fpzoq_k$(u, tmp1_safe_receiver);
         }
       }
-      return posate;
+      return m;
     };
   }
-  function StatoNumeri$Companion$di$lambda_0(it) {
-    return it.lamport_1;
+  function di$passataPrima(posateDallaRegia$delegate, lamportConsegnaPerUid$delegate, uid, lamportAnnullo) {
+    var tmp;
+    if (di$lambda(posateDallaRegia$delegate).contains_aljjnj_k$(uid)) {
+      tmp = true;
+    } else {
+      var tmp0_safe_receiver = di$lambda_0(lamportConsegnaPerUid$delegate).get_wei43m_k$(uid);
+      var tmp_0;
+      if (tmp0_safe_receiver == null) {
+        tmp_0 = null;
+      } else {
+        // Inline function 'kotlin.let' call
+        tmp_0 = compare(tmp0_safe_receiver, lamportAnnullo) < 0;
+      }
+      tmp = tmp_0 === true;
+    }
+    return tmp;
   }
   function StatoNumeri$Companion$di$lambda_1(it) {
-    return it.ts_1;
+    return it.lamport_1;
   }
   function StatoNumeri$Companion$di$lambda_2(it) {
-    return it.feed_1;
+    return it.ts_1;
   }
   function StatoNumeri$Companion$di$lambda_3(it) {
+    return it.feed_1;
+  }
+  function StatoNumeri$Companion$di$lambda_4(it) {
     return it.seq_1;
   }
   function di$termine(e) {
@@ -71612,13 +73064,13 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var tmp3_elvis_lhs = tmp2_safe_receiver == null ? null : toLongOrNull(tmp2_safe_receiver);
     return tmp3_elvis_lhs == null ? new Long(0, 0) : tmp3_elvis_lhs;
   }
-  function StatoNumeri$Companion$di$lambda_4(it) {
+  function StatoNumeri$Companion$di$lambda_5(it) {
     return di$termine(it);
   }
-  function StatoNumeri$Companion$di$lambda_5(it) {
+  function StatoNumeri$Companion$di$lambda_6(it) {
     return it.lamport_1;
   }
-  function StatoNumeri$Companion$di$lambda_6(it) {
+  function StatoNumeri$Companion$di$lambda_7(it) {
     return it.feed_1;
   }
   function di$valida(ingressi, stop, feed, seq) {
@@ -71789,13 +73241,13 @@ if (typeof String.prototype.startsWith === 'undefined') {
       uso.remove_gppy8k_k$(n);
     }
   }
-  function StatoNumeri$Companion$di$lambda_7(it) {
+  function StatoNumeri$Companion$di$lambda_8(it) {
     return it.lamport_1;
   }
-  function StatoNumeri$Companion$di$lambda_8(it) {
+  function StatoNumeri$Companion$di$lambda_9(it) {
     return it.ts_1;
   }
-  function StatoNumeri$Companion$di$lambda_9(it) {
+  function StatoNumeri$Companion$di$lambda_10(it) {
     return it.feed_1;
   }
   function avanza$emettiEtichetta(etichetteEmesse, nuoveEtichetteEmesse, et) {
@@ -72137,7 +73589,8 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var annullateLibere = HashMap_init_$Create$();
     var uidLiberati = HashSet_init_$Create$();
     var capoCambiato = HashSet_init_$Create$();
-    var passateDallaRegia$delegate = lazy_0(StatoNumeri$Companion$di$lambda(eventi));
+    var posateDallaRegia$delegate = lazy_0(StatoNumeri$Companion$di$lambda(eventi));
+    var lamportConsegnaPerUid$delegate = lazy_0(StatoNumeri$Companion$di$lambda_0(eventi));
     var uidRegistrati = HashSet_init_$Create$();
     var capiConAnnullate = HashSet_init_$Create$();
     var capoPerUid = HashMap_init_$Create$();
@@ -72148,10 +73601,10 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var deviceCheHannoUsatoLettera = HashMap_init_$Create$();
     var primoUso = HashMap_init_$Create$();
     var primaProvettaDelDevice = HashMap_init_$Create$();
-    var tmp_2 = StatoNumeri$Companion$di$lambda_0;
-    var tmp_3 = StatoNumeri$Companion$di$lambda_1;
-    var tmp_4 = StatoNumeri$Companion$di$lambda_2;
-    var ordineUso = compareBy([tmp_2, tmp_3, tmp_4, StatoNumeri$Companion$di$lambda_3]);
+    var tmp_2 = StatoNumeri$Companion$di$lambda_1;
+    var tmp_3 = StatoNumeri$Companion$di$lambda_2;
+    var tmp_4 = StatoNumeri$Companion$di$lambda_3;
+    var ordineUso = compareBy([tmp_2, tmp_3, tmp_4, StatoNumeri$Companion$di$lambda_4]);
     var _iterator__ex2g4s_4 = eventi.iterator_jk1svi_k$();
     $l$loop_0: while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
       var e = _iterator__ex2g4s_4.next_20eer_k$();
@@ -72261,9 +73714,9 @@ if (typeof String.prototype.startsWith === 'undefined') {
           if (r == null) {
             tmp_9 = true;
           } else {
-            var tmp_10 = StatoNumeri$Companion$di$lambda_4;
-            var tmp_11 = StatoNumeri$Companion$di$lambda_5;
-            tmp_9 = compareValuesBy(e_2, r, [tmp_10, tmp_11, StatoNumeri$Companion$di$lambda_6]) > 0;
+            var tmp_10 = StatoNumeri$Companion$di$lambda_5;
+            var tmp_11 = StatoNumeri$Companion$di$lambda_6;
+            tmp_9 = compareValuesBy(e_2, r, [tmp_10, tmp_11, StatoNumeri$Companion$di$lambda_7]) > 0;
           }
 
           if (tmp_9)
@@ -72453,9 +73906,9 @@ if (typeof String.prototype.startsWith === 'undefined') {
                     if (presChi == null) {
                       tmp_28 = true;
                     } else {
-                      var tmp_29 = StatoNumeri$Companion$di$lambda_7;
-                      var tmp_30 = StatoNumeri$Companion$di$lambda_8;
-                      tmp_28 = compareValuesBy(e_3, presChi, [tmp_29, tmp_30, StatoNumeri$Companion$di$lambda_9]) < 0;
+                      var tmp_29 = StatoNumeri$Companion$di$lambda_8;
+                      var tmp_30 = StatoNumeri$Companion$di$lambda_9;
+                      tmp_28 = compareValuesBy(e_3, presChi, [tmp_29, tmp_30, StatoNumeri$Companion$di$lambda_10]) < 0;
                     }
                     tmp_27 = tmp_28;
                   }
@@ -72873,7 +74326,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
           }
 
           if (tmp_56) {
-            tmp_55 = vero(this, d_0, 'dalla_regia') || !di$lambda(passateDallaRegia$delegate).contains_aljjnj_k$(uid_1);
+            tmp_55 = vero(this, d_0, 'dalla_regia') || !di$passataPrima(posateDallaRegia$delegate, lamportConsegnaPerUid$delegate, uid_1, e_3.lamport_1);
           } else {
             tmp_55 = false;
           }
@@ -74844,19 +76297,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return false;
     return true;
   };
-  function sam$kotlin_Comparator$0_19(function_0) {
+  function sam$kotlin_Comparator$0_20(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_19).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_20).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_19).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_20).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_19).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_20).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_19).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_20).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -74871,7 +76324,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_19).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_20).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function TabellaNumerazione$righe$lambda(a, b) {
@@ -74925,7 +76378,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       var this_0 = serie.numeriAssegnati_1.get_entries_p20ztl_k$();
       // Inline function 'kotlin.comparisons.compareBy' call
       var tmp = TabellaNumerazione$righe$lambda;
-      var tmp$ret$8 = new sam$kotlin_Comparator$0_19(tmp);
+      var tmp$ret$8 = new sam$kotlin_Comparator$0_20(tmp);
       var _iterator__ex2g4s_2 = sortedWith(this_0, tmp$ret$8).iterator_jk1svi_k$();
       while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
         var _destruct__k2r9zo = _iterator__ex2g4s_2.next_20eer_k$();
@@ -77920,6 +79373,22 @@ if (typeof String.prototype.startsWith === 'undefined') {
     this.denominazione_1 = denominazione;
     this.presente_1 = presente;
   }
+  protoOf(RigaRegistro).copy_nv87mo_k$ = function (contrassegno, specieBdn, sesso, razza, dataNascita, dataUscita, motivoUscita, codiceStabilimento, denominazione, presente) {
+    return new RigaRegistro(contrassegno, specieBdn, sesso, razza, dataNascita, dataUscita, motivoUscita, codiceStabilimento, denominazione, presente);
+  };
+  protoOf(RigaRegistro).copy$default_1sbqoy_k$ = function (contrassegno, specieBdn, sesso, razza, dataNascita, dataUscita, motivoUscita, codiceStabilimento, denominazione, presente, $super) {
+    contrassegno = contrassegno === VOID ? this.contrassegno_1 : contrassegno;
+    specieBdn = specieBdn === VOID ? this.specieBdn_1 : specieBdn;
+    sesso = sesso === VOID ? this.sesso_1 : sesso;
+    razza = razza === VOID ? this.razza_1 : razza;
+    dataNascita = dataNascita === VOID ? this.dataNascita_1 : dataNascita;
+    dataUscita = dataUscita === VOID ? this.dataUscita_1 : dataUscita;
+    motivoUscita = motivoUscita === VOID ? this.motivoUscita_1 : motivoUscita;
+    codiceStabilimento = codiceStabilimento === VOID ? this.codiceStabilimento_1 : codiceStabilimento;
+    denominazione = denominazione === VOID ? this.denominazione_1 : denominazione;
+    presente = presente === VOID ? this.presente_1 : presente;
+    return $super === VOID ? this.copy_nv87mo_k$(contrassegno, specieBdn, sesso, razza, dataNascita, dataUscita, motivoUscita, codiceStabilimento, denominazione, presente) : $super.copy_nv87mo_k$.call(this, contrassegno, specieBdn, sesso, razza, dataNascita, dataUscita, motivoUscita, codiceStabilimento, denominazione, presente);
+  };
   protoOf(RigaRegistro).toString = function () {
     return 'RigaRegistro(contrassegno=' + this.contrassegno_1 + ', specieBdn=' + this.specieBdn_1 + ', sesso=' + this.sesso_1 + ', razza=' + this.razza_1 + ', dataNascita=' + this.dataNascita_1 + ', dataUscita=' + this.dataUscita_1 + ', motivoUscita=' + this.motivoUscita_1 + ', codiceStabilimento=' + this.codiceStabilimento_1 + ', denominazione=' + this.denominazione_1 + ', presente=' + this.presente_1 + ')';
   };
@@ -78400,19 +79869,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
   function Hash_getInstance() {
     return Hash_instance;
   }
-  function sam$kotlin_Comparator$0_20(function_0) {
+  function sam$kotlin_Comparator$0_21(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_20).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_21).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_20).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_21).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_20).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_21).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_20).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_21).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -78427,7 +79896,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_20).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_21).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function Impronta$Companion$di$lambda(a, b) {
@@ -78448,7 +79917,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var this_0 = teste.get_entries_p20ztl_k$();
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp_0 = Impronta$Companion$di$lambda;
-    var tmp$ret$1 = new sam$kotlin_Comparator$0_20(tmp_0);
+    var tmp$ret$1 = new sam$kotlin_Comparator$0_21(tmp_0);
     // Inline function 'kotlin.collections.map' call
     var this_1 = sortedWith(this_0, tmp$ret$1);
     // Inline function 'kotlin.collections.mapTo' call
@@ -80299,6 +81768,31 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var tmp0_elvis_lhs = tmp$ret$0;
     return tmp0_elvis_lhs == null ? '0.0.0' : tmp0_elvis_lhs;
   }
+  function conUscite($this, a, uscite) {
+    if (uscite.isEmpty_y1axqb_k$())
+      return a;
+    // Inline function 'kotlin.collections.map' call
+    var this_0 = a.registri_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
+    var _iterator__ex2g4s = this_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s.next_20eer_k$();
+      var u = uscite.get_wei43m_k$(FormatoContrassegno_getInstance().normalizza_nonmor_k$(item.contrassegno_1));
+      var tmp;
+      if (!(u == null) && item.presente_1 && isBlank(item.motivoUscita_1)) {
+        var tmp0_dataUscita = u.data_1;
+        var tmp1_motivoUscita = u.get_motivo_gqqdnd_k$();
+        tmp = item.copy$default_1sbqoy_k$(VOID, VOID, VOID, VOID, VOID, tmp0_dataUscita, tmp1_motivoUscita, VOID, VOID, false);
+      } else {
+        tmp = item;
+      }
+      var tmp$ret$2 = tmp;
+      destination.add_utx5q5_k$(tmp$ret$2);
+    }
+    var righe = destination;
+    return a.copy$default_zbxv7t_k$(righe, new SpecieDati(conUscite$dati(righe, a, Specie_PECORE_getInstance()), conUscite$dati(righe, a, Specie_CAPRE_getInstance())));
+  }
   function chiaveVeterinario($this, v) {
     return SigleVeterinari_getInstance().normalizzaChiavePersona_tp4shz_k$(v.codiceFiscale_1);
   }
@@ -80897,19 +82391,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
     this_0.append_22ad7x_k$(value_11).append_58al37_k$(_Char___init__impl__6a9atx(10));
     return this_0.toString();
   }
-  function sam$kotlin_Comparator$0_21(function_0) {
+  function sam$kotlin_Comparator$0_22(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_21).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_22).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_21).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_22).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_21).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_22).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_21).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_22).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -80924,7 +82418,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_21).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_22).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function CreazioneSito$jsonManifesto$lambda($this$Json) {
@@ -80948,6 +82442,31 @@ if (typeof String.prototype.startsWith === 'undefined') {
   }
   function CreazioneSito$crea$lambda_3(it) {
     return it.canonico_1uktq2_k$() + '\n';
+  }
+  function conUscite$dati(righe, $a, sp) {
+    var tmp = ImportatoreBdn_getInstance();
+    // Inline function 'kotlin.collections.filter' call
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination = ArrayList_init_$Create$();
+    var _iterator__ex2g4s = righe.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      if (equals(ImportatoreBdn_getInstance().specieDi_kwb7dm_k$(element), sp)) {
+        destination.add_utx5q5_k$(element);
+      }
+    }
+    var tmp_0 = destination;
+    // Inline function 'kotlin.collections.map' call
+    var this_0 = $a.dati_1.get_h9fx0k_k$(sp).disponibili_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
+    var _iterator__ex2g4s_0 = this_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s_0.next_20eer_k$();
+      var tmp$ret$5 = item.contrassegno_1;
+      destination_0.add_utx5q5_k$(tmp$ret$5);
+    }
+    return tmp.classifica_n8ycv8_k$(tmp_0, destination_0);
   }
   function CreazioneSito$manifesto$lambda($nome, $p) {
     return function ($this$putJsonObject) {
@@ -81088,507 +82607,615 @@ if (typeof String.prototype.startsWith === 'undefined') {
       }
     }
     var entrambe = marcheEntrambe(this, ingresso, utili);
-    var a = analisi(this, utili, entrambe);
     // Inline function 'kotlin.collections.filter' call
+    var tmp0 = testi(this, ingresso, 'uscite_modello');
     // Inline function 'kotlin.collections.filterTo' call
     var destination_1 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_1 = utili.iterator_jk1svi_k$();
+    var _iterator__ex2g4s_1 = tmp0.iterator_jk1svi_k$();
     while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
       var element_5 = _iterator__ex2g4s_1.next_20eer_k$();
-      if (element_5.tipo_1.equals(TipoFileBdn_MARCHE_getInstance()) && element_5.specie_1 == null && !entrambe.contains_aljjnj_k$(element_5.fonte_1.nome_1)) {
+      // Inline function 'kotlin.text.isNotBlank' call
+      if (!isBlank(element_5)) {
         destination_1.add_utx5q5_k$(element_5);
       }
     }
-    var marcheSenzaSpecie = destination_1;
-    var tmp$ret$19;
+    var testiUscite = destination_1;
+    var uscite = LinkedHashMap_init_$Create$();
+    // Inline function 'kotlin.collections.mutableListOf' call
+    var azioniUscite = ArrayList_init_$Create$();
+    // Inline function 'kotlin.collections.forEachIndexed' call
+    var index = 0;
+    var _iterator__ex2g4s_2 = testiUscite.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s_2.next_20eer_k$();
+      var _unary__edvuaz = index;
+      index = _unary__edvuaz + 1 | 0;
+      var i = checkIndexOverflow(_unary__edvuaz);
+      // Inline function 'kotlin.runCatching' call
+      var this_0 = CreazioneSito_getInstance();
+      var tmp;
+      try {
+        var tmp_0 = UsciteModello_getInstance();
+        // Inline function 'kotlin.text.trim' call
+        var this_1 = testo_10(this_0, ingresso, 'creato_il');
+        var tmp$ret$25 = toString_1(trim_0(isCharSequence(this_1) ? this_1 : THROW_CCE()));
+        // Inline function 'kotlin.Companion.success' call
+        var value = tmp_0.azione_icm9na_k$(item, tmp$ret$25);
+        tmp = _Result___init__impl__xyqfz8(value);
+      } catch ($p) {
+        var tmp_1;
+        if ($p instanceof Error) {
+          var e = $p;
+          // Inline function 'kotlin.Companion.failure' call
+          tmp_1 = _Result___init__impl__xyqfz8(createFailure(e));
+        } else {
+          throw $p;
+        }
+        tmp = tmp_1;
+      }
+      // Inline function 'kotlin.onSuccess' call
+      var this_2 = tmp;
+      if (_Result___get_isSuccess__impl__sndoy8(this_2)) {
+        var az = _Result___get_value__impl__bjfvqg(this_2);
+        // Inline function 'kotlin.collections.plusAssign' call
+        azioniUscite.add_utx5q5_k$(az);
+        var tmp_2 = UsciteModello_getInstance();
+        var tmp_3 = az.get_6bo4tg_k$('risultato');
+        // Inline function 'kotlin.collections.forEach' call
+        var _iterator__ex2g4s_3 = tmp_2.uscite_7g5js8_k$(tmp_3 instanceof JsonObject ? tmp_3 : THROW_CCE()).iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
+          var element_6 = _iterator__ex2g4s_3.next_20eer_k$();
+          // Inline function 'kotlin.collections.set' call
+          var key = element_6.contrassegno_1;
+          uscite.put_4fpzoq_k$(key, element_6);
+        }
+      }
+      // Inline function 'kotlin.onFailure' call
+      var tmp0_safe_receiver = Result__exceptionOrNull_impl_p6xea9(this_2);
+      if (tmp0_safe_receiver == null)
+        null;
+      else {
+        // Inline function 'kotlin.let' call
+        // Inline function 'kotlin.collections.plusAssign' call
+        var element_7 = 'Uscite per modello, file ' + (i + 1 | 0) + ': ' + tmp0_safe_receiver.message;
+        errori.add_utx5q5_k$(element_7);
+      }
+    }
+    var a = conUscite(this, analisi(this, utili, entrambe), uscite);
+    // Inline function 'kotlin.collections.filter' call
+    var tmp0_0 = a.registri_1;
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination_2 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_4 = tmp0_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
+      var element_8 = _iterator__ex2g4s_4.next_20eer_k$();
+      var tmp_4;
+      if (!element_8.presente_1) {
+        var tmp0_safe_receiver_0 = uscite.get_wei43m_k$(FormatoContrassegno_getInstance().normalizza_nonmor_k$(element_8.contrassegno_1));
+        tmp_4 = (tmp0_safe_receiver_0 == null ? null : tmp0_safe_receiver_0.data_1) === element_8.dataUscita_1;
+      } else {
+        tmp_4 = false;
+      }
+      if (tmp_4) {
+        destination_2.add_utx5q5_k$(element_8);
+      }
+    }
+    // Inline function 'kotlin.collections.map' call
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_3 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_2, 10));
+    var _iterator__ex2g4s_5 = destination_2.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_5.hasNext_bitz1p_k$()) {
+      var item_0 = _iterator__ex2g4s_5.next_20eer_k$();
+      var tmp$ret$44 = FormatoContrassegno_getInstance().normalizza_nonmor_k$(item_0.contrassegno_1);
+      destination_3.add_utx5q5_k$(tmp$ret$44);
+    }
+    var usciteApplicate = toSet_0(destination_3);
+    // Inline function 'kotlin.collections.isNotEmpty' call
+    if (!uscite.isEmpty_y1axqb_k$()) {
+      // Inline function 'kotlin.collections.plusAssign' call
+      var element_9 = 'Uscite per modello: ' + uscite.get_size_woubt6_k$() + ' capi nei file, ' + usciteApplicate.get_size_woubt6_k$() + ' erano presenti nei registri e non vengono numerati' + (uscite.get_size_woubt6_k$() > usciteApplicate.get_size_woubt6_k$() ? '; ' + (uscite.get_size_woubt6_k$() - usciteApplicate.get_size_woubt6_k$() | 0) + ' non sono fra i presenti dei registri caricati (gi\xE0 usciti, o di un altro stabilimento).' : '.');
+      avvisi.add_utx5q5_k$(element_9);
+    }
+    // Inline function 'kotlin.collections.filter' call
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination_4 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_6 = utili.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_6.hasNext_bitz1p_k$()) {
+      var element_10 = _iterator__ex2g4s_6.next_20eer_k$();
+      if (element_10.tipo_1.equals(TipoFileBdn_MARCHE_getInstance()) && element_10.specie_1 == null && !entrambe.contains_aljjnj_k$(element_10.fonte_1.nome_1)) {
+        destination_4.add_utx5q5_k$(element_10);
+      }
+    }
+    var marcheSenzaSpecie = destination_4;
+    var tmp$ret$50;
     $l$block_0: {
       // Inline function 'kotlin.collections.none' call
-      var tmp;
+      var tmp_5;
       if (isInterface(utili, Collection)) {
-        tmp = utili.isEmpty_y1axqb_k$();
+        tmp_5 = utili.isEmpty_y1axqb_k$();
       } else {
-        tmp = false;
+        tmp_5 = false;
       }
-      if (tmp) {
-        tmp$ret$19 = true;
+      if (tmp_5) {
+        tmp$ret$50 = true;
         break $l$block_0;
       }
-      var _iterator__ex2g4s_2 = utili.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
-        var element_6 = _iterator__ex2g4s_2.next_20eer_k$();
-        if (element_6.tipo_1.equals(TipoFileBdn_REGISTRO_getInstance())) {
-          tmp$ret$19 = false;
+      var _iterator__ex2g4s_7 = utili.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_7.hasNext_bitz1p_k$()) {
+        var element_11 = _iterator__ex2g4s_7.next_20eer_k$();
+        if (element_11.tipo_1.equals(TipoFileBdn_REGISTRO_getInstance())) {
+          tmp$ret$50 = false;
           break $l$block_0;
         }
       }
-      tmp$ret$19 = true;
+      tmp$ret$50 = true;
     }
-    if (tmp$ret$19) {
+    if (tmp$ret$50) {
       // Inline function 'kotlin.collections.plusAssign' call
-      var element_7 = 'Carica almeno un registro di stalla della BDN.';
-      errori.add_utx5q5_k$(element_7);
+      var element_12 = 'Carica almeno un registro di stalla della BDN.';
+      errori.add_utx5q5_k$(element_12);
     } else {
       // Inline function 'kotlin.collections.filter' call
-      var tmp0 = a.diagnostiche_1;
+      var tmp0_1 = a.diagnostiche_1;
       // Inline function 'kotlin.collections.filterTo' call
-      var destination_2 = ArrayList_init_$Create$();
-      var _iterator__ex2g4s_3 = tmp0.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
-        var element_8 = _iterator__ex2g4s_3.next_20eer_k$();
-        if (element_8.gravita_1.equals(GravitaBdn_ERRORE_getInstance())) {
-          destination_2.add_utx5q5_k$(element_8);
+      var destination_5 = ArrayList_init_$Create$();
+      var _iterator__ex2g4s_8 = tmp0_1.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_8.hasNext_bitz1p_k$()) {
+        var element_13 = _iterator__ex2g4s_8.next_20eer_k$();
+        if (element_13.gravita_1.equals(GravitaBdn_ERRORE_getInstance())) {
+          destination_5.add_utx5q5_k$(element_13);
         }
       }
       // Inline function 'kotlin.collections.forEach' call
-      var _iterator__ex2g4s_4 = destination_2.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
-        var element_9 = _iterator__ex2g4s_4.next_20eer_k$();
+      var _iterator__ex2g4s_9 = destination_5.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_9.hasNext_bitz1p_k$()) {
+        var element_14 = _iterator__ex2g4s_9.next_20eer_k$();
         // Inline function 'kotlin.collections.plusAssign' call
-        var element_10 = element_9.testo_1;
-        errori.add_utx5q5_k$(element_10);
+        var element_15 = element_14.testo_1;
+        errori.add_utx5q5_k$(element_15);
       }
     }
     // Inline function 'kotlin.collections.filter' call
-    var tmp0_0 = a.diagnostiche_1;
+    var tmp0_2 = a.diagnostiche_1;
     // Inline function 'kotlin.collections.filterTo' call
-    var destination_3 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_5 = tmp0_0.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_5.hasNext_bitz1p_k$()) {
-      var element_11 = _iterator__ex2g4s_5.next_20eer_k$();
-      if (!element_11.gravita_1.equals(GravitaBdn_ERRORE_getInstance())) {
-        destination_3.add_utx5q5_k$(element_11);
+    var destination_6 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_10 = tmp0_2.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_10.hasNext_bitz1p_k$()) {
+      var element_16 = _iterator__ex2g4s_10.next_20eer_k$();
+      if (!element_16.gravita_1.equals(GravitaBdn_ERRORE_getInstance())) {
+        destination_6.add_utx5q5_k$(element_16);
       }
     }
     // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_6 = destination_3.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_6.hasNext_bitz1p_k$()) {
-      var element_12 = _iterator__ex2g4s_6.next_20eer_k$();
-      var tmp_0;
+    var _iterator__ex2g4s_11 = destination_6.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_11.hasNext_bitz1p_k$()) {
+      var element_17 = _iterator__ex2g4s_11.next_20eer_k$();
+      var tmp_6;
       // Inline function 'kotlin.text.isNotBlank' call
-      var this_0 = element_12.file_1;
-      if (!isBlank(this_0)) {
-        tmp_0 = element_12.file_1 + ': ';
+      var this_3 = element_17.file_1;
+      if (!isBlank(this_3)) {
+        tmp_6 = element_17.file_1 + ': ';
       } else {
-        tmp_0 = '';
+        tmp_6 = '';
       }
       // Inline function 'kotlin.collections.plusAssign' call
-      var element_13 = tmp_0 + element_12.testo_1;
-      avvisi.add_utx5q5_k$(element_13);
+      var element_18 = tmp_6 + element_17.testo_1;
+      avvisi.add_utx5q5_k$(element_18);
     }
     // Inline function 'kotlin.collections.isNotEmpty' call
     if (!marcheSenzaSpecie.isEmpty_y1axqb_k$()) {
       // Inline function 'kotlin.collections.plusAssign' call
-      var element_14 = 'Scegli Pecore, Capre o Ambedue per i contrassegni senza specie: ' + joinToString_0(marcheSenzaSpecie, ', ', VOID, VOID, VOID, VOID, CreazioneSito$crea$lambda_0) + '.';
-      errori.add_utx5q5_k$(element_14);
+      var element_19 = 'Scegli Pecore, Capre o Ambedue per i contrassegni senza specie: ' + joinToString_0(marcheSenzaSpecie, ', ', VOID, VOID, VOID, VOID, CreazioneSito$crea$lambda_0) + '.';
+      errori.add_utx5q5_k$(element_19);
     }
     var codici = a.codiciStabilimento_1;
-    var tmp$ret$37;
+    var tmp$ret$68;
     $l$block_2: {
       // Inline function 'kotlin.collections.maxByOrNull' call
       var iterator = codici.iterator_jk1svi_k$();
       if (!iterator.hasNext_bitz1p_k$()) {
-        tmp$ret$37 = null;
+        tmp$ret$68 = null;
         break $l$block_2;
       }
       var maxElem = iterator.next_20eer_k$();
       if (!iterator.hasNext_bitz1p_k$()) {
-        tmp$ret$37 = maxElem;
+        tmp$ret$68 = maxElem;
         break $l$block_2;
       }
       var it = maxElem;
       var maxValue = presenti(CreazioneSito_getInstance(), a, it, null);
       do {
-        var e = iterator.next_20eer_k$();
-        var v = presenti(CreazioneSito_getInstance(), a, e, null);
+        var e_0 = iterator.next_20eer_k$();
+        var v = presenti(CreazioneSito_getInstance(), a, e_0, null);
         if (compareTo(maxValue, v) < 0) {
-          maxElem = e;
+          maxElem = e_0;
           maxValue = v;
         }
       }
        while (iterator.hasNext_bitz1p_k$());
-      tmp$ret$37 = maxElem;
+      tmp$ret$68 = maxElem;
     }
-    var piuPopoloso = tmp$ret$37;
+    var piuPopoloso = tmp$ret$68;
     // Inline function 'kotlin.collections.map' call
-    var this_1 = testi(this, ingresso, 'stabilimenti');
+    var this_4 = testi(this, ingresso, 'stabilimenti');
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_4 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_1, 10));
-    var _iterator__ex2g4s_7 = this_1.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_7.hasNext_bitz1p_k$()) {
-      var item = _iterator__ex2g4s_7.next_20eer_k$();
+    var destination_7 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_4, 10));
+    var _iterator__ex2g4s_12 = this_4.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_12.hasNext_bitz1p_k$()) {
+      var item_1 = _iterator__ex2g4s_12.next_20eer_k$();
       // Inline function 'kotlin.text.trim' call
       // Inline function 'kotlin.text.uppercase' call
       // Inline function 'kotlin.js.asDynamic' call
-      var tmp$ret$42 = toString_1(trim_0(isCharSequence(item) ? item : THROW_CCE())).toUpperCase();
-      destination_4.add_utx5q5_k$(tmp$ret$42);
+      var tmp$ret$73 = toString_1(trim_0(isCharSequence(item_1) ? item_1 : THROW_CCE())).toUpperCase();
+      destination_7.add_utx5q5_k$(tmp$ret$73);
     }
     // Inline function 'kotlin.collections.filter' call
     // Inline function 'kotlin.collections.filterTo' call
-    var destination_5 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_8 = destination_4.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_8.hasNext_bitz1p_k$()) {
-      var element_15 = _iterator__ex2g4s_8.next_20eer_k$();
+    var destination_8 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_13 = destination_7.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_13.hasNext_bitz1p_k$()) {
+      var element_20 = _iterator__ex2g4s_13.next_20eer_k$();
       // Inline function 'kotlin.text.isNotEmpty' call
-      if (charSequenceLength(element_15) > 0) {
-        destination_5.add_utx5q5_k$(element_15);
+      if (charSequenceLength(element_20) > 0) {
+        destination_8.add_utx5q5_k$(element_20);
       }
     }
     // Inline function 'kotlin.collections.ifEmpty' call
-    var this_2 = distinct(destination_5);
-    var tmp_1;
-    if (this_2.isEmpty_y1axqb_k$()) {
-      tmp_1 = listOfNotNull_0(piuPopoloso);
+    var this_5 = distinct(destination_8);
+    var tmp_7;
+    if (this_5.isEmpty_y1axqb_k$()) {
+      tmp_7 = listOfNotNull_0(piuPopoloso);
     } else {
-      tmp_1 = this_2;
+      tmp_7 = this_5;
     }
-    var scelti = tmp_1;
+    var scelti = tmp_7;
     // Inline function 'kotlin.collections.filter' call
     // Inline function 'kotlin.collections.filterTo' call
-    var destination_6 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_9 = scelti.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_9.hasNext_bitz1p_k$()) {
-      var element_16 = _iterator__ex2g4s_9.next_20eer_k$();
-      if (!codici.contains_aljjnj_k$(element_16)) {
-        destination_6.add_utx5q5_k$(element_16);
+    var destination_9 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_14 = scelti.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_14.hasNext_bitz1p_k$()) {
+      var element_21 = _iterator__ex2g4s_14.next_20eer_k$();
+      if (!codici.contains_aljjnj_k$(element_21)) {
+        destination_9.add_utx5q5_k$(element_21);
       }
     }
-    var nonNeiRegistri = destination_6;
-    var tmp_2;
+    var nonNeiRegistri = destination_9;
+    var tmp_8;
     // Inline function 'kotlin.collections.isNotEmpty' call
     if (!codici.isEmpty_y1axqb_k$()) {
       // Inline function 'kotlin.collections.isNotEmpty' call
-      tmp_2 = !nonNeiRegistri.isEmpty_y1axqb_k$();
+      tmp_8 = !nonNeiRegistri.isEmpty_y1axqb_k$();
     } else {
-      tmp_2 = false;
+      tmp_8 = false;
     }
-    if (tmp_2) {
+    if (tmp_8) {
       // Inline function 'kotlin.collections.plusAssign' call
-      var element_17 = 'Stabilimenti non presenti nei registri: ' + joinToString_0(nonNeiRegistri, ', ') + '.';
-      errori.add_utx5q5_k$(element_17);
+      var element_22 = 'Stabilimenti non presenti nei registri: ' + joinToString_0(nonNeiRegistri, ', ') + '.';
+      errori.add_utx5q5_k$(element_22);
     }
     // Inline function 'kotlin.text.trim' call
-    var this_3 = testo_10(this, ingresso, 'data');
-    var data = toString_1(trim_0(isCharSequence(this_3) ? this_3 : THROW_CCE()));
+    var this_6 = testo_10(this, ingresso, 'data');
+    var data = toString_1(trim_0(isCharSequence(this_6) ? this_6 : THROW_CCE()));
     if (!Regex_init_$Create$_0('[0-9]{4}-[0-9]{2}-[0-9]{2}').matches_evli6i_k$(data)) {
       // Inline function 'kotlin.collections.plusAssign' call
-      var element_18 = 'La data del progetto deve essere nel formato AAAA-MM-GG.';
-      errori.add_utx5q5_k$(element_18);
+      var element_23 = 'La data del progetto deve essere nel formato AAAA-MM-GG.';
+      errori.add_utx5q5_k$(element_23);
     }
     // Inline function 'kotlin.text.trim' call
-    var this_4 = testo_10(this, ingresso, 'id');
-    var id = toString_1(trim_0(isCharSequence(this_4) ? this_4 : THROW_CCE()));
+    var this_7 = testo_10(this, ingresso, 'id');
+    var id = toString_1(trim_0(isCharSequence(this_7) ? this_7 : THROW_CCE()));
     // Inline function 'kotlin.text.trim' call
-    var this_5 = testo_10(this, ingresso, 'creato_il');
-    var creatoIl = toString_1(trim_0(isCharSequence(this_5) ? this_5 : THROW_CCE()));
+    var this_8 = testo_10(this, ingresso, 'creato_il');
+    var creatoIl = toString_1(trim_0(isCharSequence(this_8) ? this_8 : THROW_CCE()));
     if (isBlank(id) || isBlank(creatoIl)) {
       // Inline function 'kotlin.collections.plusAssign' call
-      var element_19 = "Mancano l'identificativo o l'istante di creazione del progetto.";
-      errori.add_utx5q5_k$(element_19);
+      var element_24 = "Mancano l'identificativo o l'istante di creazione del progetto.";
+      errori.add_utx5q5_k$(element_24);
     }
-    var tmp0_safe_receiver = intero_6(this, ingresso, 'eta_mesi');
-    var tmp_3;
-    if (tmp0_safe_receiver == null) {
-      tmp_3 = null;
+    var tmp0_safe_receiver_1 = intero_6(this, ingresso, 'eta_mesi');
+    var tmp_9;
+    if (tmp0_safe_receiver_1 == null) {
+      tmp_9 = null;
     } else {
       // Inline function 'kotlin.takeIf' call
-      var tmp_4;
-      if (setOf_0([0, 6, 12]).contains_aljjnj_k$(tmp0_safe_receiver)) {
-        tmp_4 = tmp0_safe_receiver;
+      var tmp_10;
+      if (setOf_0([0, 6, 12]).contains_aljjnj_k$(tmp0_safe_receiver_1)) {
+        tmp_10 = tmp0_safe_receiver_1;
       } else {
-        tmp_4 = null;
+        tmp_10 = null;
       }
-      tmp_3 = tmp_4;
+      tmp_9 = tmp_10;
     }
-    var etaMesi = tmp_3;
+    var etaMesi = tmp_9;
     if (etaMesi == null) {
       // Inline function 'kotlin.collections.plusAssign' call
-      var element_20 = "L'et\xE0 diagnostica pu\xF2 essere 6 o 12 mesi, oppure 0 per tutti i presenti.";
-      errori.add_utx5q5_k$(element_20);
+      var element_25 = "L'et\xE0 diagnostica pu\xF2 essere 6 o 12 mesi, oppure 0 per tutti i presenti.";
+      errori.add_utx5q5_k$(element_25);
     }
-    var tmp_5;
+    var tmp_11;
     // Inline function 'kotlin.collections.isNotEmpty' call
     if (!a.dati_1.pecore_1.presenti_1.isEmpty_y1axqb_k$()) {
       // Inline function 'kotlin.collections.isNotEmpty' call
-      tmp_5 = !a.dati_1.capre_1.presenti_1.isEmpty_y1axqb_k$();
+      tmp_11 = !a.dati_1.capre_1.presenti_1.isEmpty_y1axqb_k$();
     } else {
-      tmp_5 = false;
+      tmp_11 = false;
     }
-    var dueSpecie = tmp_5;
-    var tmp_6 = Companion_getInstance_43();
+    var dueSpecie = tmp_11;
+    var tmp_12 = Companion_getInstance_43();
     // Inline function 'kotlin.text.trim' call
-    var this_6 = testo_10(this, ingresso, 'lettere_specie');
+    var this_9 = testo_10(this, ingresso, 'lettere_specie');
     // Inline function 'kotlin.text.lowercase' call
     // Inline function 'kotlin.js.asDynamic' call
-    var tmp$ret$69 = toString_1(trim_0(isCharSequence(this_6) ? this_6 : THROW_CCE())).toLowerCase();
-    var lettereScelte = tmp_6.di_j0pbpe_k$(tmp$ret$69);
-    var tmp_7;
+    var tmp$ret$100 = toString_1(trim_0(isCharSequence(this_9) ? this_9 : THROW_CCE())).toLowerCase();
+    var lettereScelte = tmp_12.di_j0pbpe_k$(tmp$ret$100);
+    var tmp_13;
     if (lettereScelte == null) {
-      tmp_7 = null;
+      tmp_13 = null;
     } else {
       // Inline function 'kotlin.takeUnless' call
-      var tmp_8;
+      var tmp_14;
       if (!(lettereScelte.equals(LettereSpecie_NESSUNA_getInstance()) && dueSpecie)) {
-        tmp_8 = lettereScelte;
+        tmp_14 = lettereScelte;
       } else {
-        tmp_8 = null;
+        tmp_14 = null;
       }
-      tmp_7 = tmp_8;
+      tmp_13 = tmp_14;
     }
-    var tmp2_elvis_lhs = tmp_7;
+    var tmp2_elvis_lhs = tmp_13;
     var lettere = tmp2_elvis_lhs == null ? Companion_getInstance_43().predefinita_5w9p6y_k$(a.dati_1) : tmp2_elvis_lhs;
     if (equals(lettereScelte, LettereSpecie_NESSUNA_getInstance()) && dueSpecie) {
       // Inline function 'kotlin.collections.plusAssign' call
-      var element_21 = 'Con pecore e capre nello stesso progetto almeno una specie ha la lettera: si usa \xAB' + lettere.nome_1 + '\xBB.';
-      avvisi.add_utx5q5_k$(element_21);
+      var element_26 = 'Con pecore e capre nello stesso progetto almeno una specie ha la lettera: si usa \xAB' + lettere.nome_1 + '\xBB.';
+      avvisi.add_utx5q5_k$(element_26);
     }
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
     var builder = new JsonObjectBuilder();
     // Inline function 'kotlin.collections.map' call
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_7 = ArrayList_init_$Create$_0(collectionSizeOrDefault(file, 10));
-    var _iterator__ex2g4s_10 = file.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_10.hasNext_bitz1p_k$()) {
-      var item_0 = _iterator__ex2g4s_10.next_20eer_k$();
+    var destination_10 = ArrayList_init_$Create$_0(collectionSizeOrDefault(file, 10));
+    var _iterator__ex2g4s_15 = file.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_15.hasNext_bitz1p_k$()) {
+      var item_2 = _iterator__ex2g4s_15.next_20eer_k$();
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
       var builder_0 = new JsonObjectBuilder();
-      put(builder_0, 'nome', item_0.fonte_1.nome_1);
+      put(builder_0, 'nome', item_2.fonte_1.nome_1);
       // Inline function 'kotlin.text.lowercase' call
       // Inline function 'kotlin.js.asDynamic' call
-      var tmp$ret$81 = item_0.tipo_1.name_1.toLowerCase();
-      put(builder_0, 'tipo', tmp$ret$81);
-      put(builder_0, 'specie', entrambe.contains_aljjnj_k$(item_0.fonte_1.nome_1) ? 'entrambe' : nomeSpecie(CreazioneSito_getInstance(), item_0.specie_1));
+      var tmp$ret$112 = item_2.tipo_1.name_1.toLowerCase();
+      put(builder_0, 'tipo', tmp$ret$112);
+      put(builder_0, 'specie', entrambe.contains_aljjnj_k$(item_2.fonte_1.nome_1) ? 'entrambe' : nomeSpecie(CreazioneSito_getInstance(), item_2.specie_1));
       // Inline function 'kotlin.collections.map' call
-      var this_7 = item_0.codici_1;
+      var this_10 = item_2.codici_1;
       // Inline function 'kotlin.collections.mapTo' call
-      var destination_8 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_7, 10));
-      var _iterator__ex2g4s_11 = this_7.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_11.hasNext_bitz1p_k$()) {
-        var item_1 = _iterator__ex2g4s_11.next_20eer_k$();
-        var tmp$ret$85 = JsonPrimitive_1(item_1);
-        destination_8.add_utx5q5_k$(tmp$ret$85);
+      var destination_11 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_10, 10));
+      var _iterator__ex2g4s_16 = this_10.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_16.hasNext_bitz1p_k$()) {
+        var item_3 = _iterator__ex2g4s_16.next_20eer_k$();
+        var tmp$ret$116 = JsonPrimitive_1(item_3);
+        destination_11.add_utx5q5_k$(tmp$ret$116);
       }
-      builder_0.put_mrde5n_k$('codici', new JsonArray(destination_8));
-      put_1(builder_0, 'capi', item_0.capi_1);
-      var tmp$ret$78 = builder_0.build_bkh6qh_k$();
-      destination_7.add_utx5q5_k$(tmp$ret$78);
+      builder_0.put_mrde5n_k$('codici', new JsonArray(destination_11));
+      put_1(builder_0, 'capi', item_2.capi_1);
+      var tmp$ret$109 = builder_0.build_bkh6qh_k$();
+      destination_10.add_utx5q5_k$(tmp$ret$109);
     }
-    builder.put_mrde5n_k$('file', new JsonArray(destination_7));
+    builder.put_mrde5n_k$('file', new JsonArray(destination_10));
     // Inline function 'kotlin.collections.map' call
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_9 = ArrayList_init_$Create$_0(collectionSizeOrDefault(codici, 10));
-    var _iterator__ex2g4s_12 = codici.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_12.hasNext_bitz1p_k$()) {
-      var item_2 = _iterator__ex2g4s_12.next_20eer_k$();
+    var destination_12 = ArrayList_init_$Create$_0(collectionSizeOrDefault(codici, 10));
+    var _iterator__ex2g4s_17 = codici.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_17.hasNext_bitz1p_k$()) {
+      var item_4 = _iterator__ex2g4s_17.next_20eer_k$();
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
       var builder_1 = new JsonObjectBuilder();
-      put(builder_1, 'codice', item_2);
-      put(builder_1, 'denominazione', denominazione(CreazioneSito_getInstance(), a, item_2));
-      put_1(builder_1, 'pecore', presenti(CreazioneSito_getInstance(), a, item_2, Specie_PECORE_getInstance()));
-      put_1(builder_1, 'capre', presenti(CreazioneSito_getInstance(), a, item_2, Specie_CAPRE_getInstance()));
-      put_1(builder_1, 'presenti', presenti(CreazioneSito_getInstance(), a, item_2, null));
-      var tmp$ret$88 = builder_1.build_bkh6qh_k$();
-      destination_9.add_utx5q5_k$(tmp$ret$88);
+      put(builder_1, 'codice', item_4);
+      put(builder_1, 'denominazione', denominazione(CreazioneSito_getInstance(), a, item_4));
+      put_1(builder_1, 'pecore', presenti(CreazioneSito_getInstance(), a, item_4, Specie_PECORE_getInstance()));
+      put_1(builder_1, 'capre', presenti(CreazioneSito_getInstance(), a, item_4, Specie_CAPRE_getInstance()));
+      put_1(builder_1, 'presenti', presenti(CreazioneSito_getInstance(), a, item_4, null));
+      var tmp$ret$119 = builder_1.build_bkh6qh_k$();
+      destination_12.add_utx5q5_k$(tmp$ret$119);
     }
-    builder.put_mrde5n_k$('codici', new JsonArray(destination_9));
+    builder.put_mrde5n_k$('codici', new JsonArray(destination_12));
     put_0(builder, 'due_specie', dueSpecie);
-    var tmp_9;
+    var tmp_15;
     if (piuPopoloso == null) {
-      tmp_9 = null;
+      tmp_15 = null;
     } else {
       // Inline function 'kotlin.let' call
-      tmp_9 = JsonPrimitive_1(piuPopoloso);
+      tmp_15 = JsonPrimitive_1(piuPopoloso);
     }
-    var tmp1_elvis_lhs = tmp_9;
+    var tmp1_elvis_lhs = tmp_15;
     builder.put_mrde5n_k$('piu_popoloso', tmp1_elvis_lhs == null ? JsonNull_getInstance() : tmp1_elvis_lhs);
     var proposte = proposteSigle(CreazioneSito_getInstance(), veterinari.voci_1, sigleAMano(CreazioneSito_getInstance(), ingresso, veterinari.voci_1));
     // Inline function 'kotlin.collections.map' call
-    var this_8 = veterinari.voci_1;
+    var this_11 = veterinari.voci_1;
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_10 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_8, 10));
-    var _iterator__ex2g4s_13 = this_8.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_13.hasNext_bitz1p_k$()) {
-      var item_3 = _iterator__ex2g4s_13.next_20eer_k$();
+    var destination_13 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_11, 10));
+    var _iterator__ex2g4s_18 = this_11.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_18.hasNext_bitz1p_k$()) {
+      var item_5 = _iterator__ex2g4s_18.next_20eer_k$();
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
       var builder_2 = new JsonObjectBuilder();
-      put(builder_2, 'id', item_3.id_1);
+      put(builder_2, 'id', item_5.id_1);
       // Inline function 'kotlin.text.trim' call
-      var this_9 = item_3.nome_1 + ' ' + item_3.cognome_1;
-      var tmp$ret$98 = toString_1(trim_0(isCharSequence(this_9) ? this_9 : THROW_CCE()));
-      put(builder_2, 'nome', tmp$ret$98);
+      var this_12 = item_5.nome_1 + ' ' + item_5.cognome_1;
+      var tmp$ret$129 = toString_1(trim_0(isCharSequence(this_12) ? this_12 : THROW_CCE()));
+      put(builder_2, 'nome', tmp$ret$129);
       // Inline function 'kotlin.text.orEmpty' call
-      var tmp0_elvis_lhs = proposte.get_wei43m_k$(item_3.id_1);
-      var tmp$ret$99 = tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
-      put(builder_2, 'proposta', tmp$ret$99);
-      var tmp$ret$95 = builder_2.build_bkh6qh_k$();
-      destination_10.add_utx5q5_k$(tmp$ret$95);
+      var tmp0_elvis_lhs = proposte.get_wei43m_k$(item_5.id_1);
+      var tmp$ret$130 = tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
+      put(builder_2, 'proposta', tmp$ret$130);
+      var tmp$ret$126 = builder_2.build_bkh6qh_k$();
+      destination_13.add_utx5q5_k$(tmp$ret$126);
     }
-    builder.put_mrde5n_k$('veterinari', new JsonArray(destination_10));
+    builder.put_mrde5n_k$('veterinari', new JsonArray(destination_13));
     put_1(builder, 'veterinari_scartati', veterinari.scartate_1.get_size_woubt6_k$());
     put(builder, 'lettere_predefinite', Companion_getInstance_43().predefinita_5w9p6y_k$(a.dati_1).codice_1);
     // Inline function 'kotlin.collections.map' call
-    var this_10 = get_entries_10();
+    var this_13 = get_entries_10();
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_11 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_10, 10));
-    var _iterator__ex2g4s_14 = this_10.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_14.hasNext_bitz1p_k$()) {
-      var item_4 = _iterator__ex2g4s_14.next_20eer_k$();
+    var destination_14 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_13, 10));
+    var _iterator__ex2g4s_19 = this_13.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_19.hasNext_bitz1p_k$()) {
+      var item_6 = _iterator__ex2g4s_19.next_20eer_k$();
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
       var builder_3 = new JsonObjectBuilder();
-      put(builder_3, 'codice', item_4.name_1);
-      put(builder_3, 'titolo', item_4.titolo_1);
+      put(builder_3, 'codice', item_6.name_1);
+      put(builder_3, 'titolo', item_6.titolo_1);
       // Inline function 'kotlin.collections.map' call
-      var this_11 = TipologieProblemi_getInstance().soluzioniPerTipo_eynt4s_k$(item_4);
+      var this_14 = TipologieProblemi_getInstance().soluzioniPerTipo_eynt4s_k$(item_6);
       // Inline function 'kotlin.collections.mapTo' call
-      var destination_12 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_11, 10));
-      var _iterator__ex2g4s_15 = this_11.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_15.hasNext_bitz1p_k$()) {
-        var item_5 = _iterator__ex2g4s_15.next_20eer_k$();
-        var tmp$ret$107 = new JsonArray(listOf_0([JsonPrimitive_1(item_5.codice_1), JsonPrimitive_1(item_5.nome_1)]));
-        destination_12.add_utx5q5_k$(tmp$ret$107);
+      var destination_15 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_14, 10));
+      var _iterator__ex2g4s_20 = this_14.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_20.hasNext_bitz1p_k$()) {
+        var item_7 = _iterator__ex2g4s_20.next_20eer_k$();
+        var tmp$ret$138 = new JsonArray(listOf_0([JsonPrimitive_1(item_7.codice_1), JsonPrimitive_1(item_7.nome_1)]));
+        destination_15.add_utx5q5_k$(tmp$ret$138);
       }
-      builder_3.put_mrde5n_k$('soluzioni', new JsonArray(destination_12));
-      var tmp$ret$102 = builder_3.build_bkh6qh_k$();
-      destination_11.add_utx5q5_k$(tmp$ret$102);
+      builder_3.put_mrde5n_k$('soluzioni', new JsonArray(destination_15));
+      var tmp$ret$133 = builder_3.build_bkh6qh_k$();
+      destination_14.add_utx5q5_k$(tmp$ret$133);
     }
-    builder.put_mrde5n_k$('tipologie', new JsonArray(destination_11));
+    builder.put_mrde5n_k$('tipologie', new JsonArray(destination_14));
     var base = builder.build_bkh6qh_k$();
-    var tmp_10;
+    var tmp_16;
     // Inline function 'kotlin.collections.isNotEmpty' call
     if (!errori.isEmpty_y1axqb_k$()) {
-      tmp_10 = true;
+      tmp_16 = true;
     } else {
-      tmp_10 = etaMesi == null;
+      tmp_16 = etaMesi == null;
     }
-    if (tmp_10) {
-      var tmp_11 = to('ok', JsonPrimitive_2(false));
+    if (tmp_16) {
+      var tmp_17 = to('ok', JsonPrimitive_2(false));
       // Inline function 'kotlin.collections.map' call
       // Inline function 'kotlin.collections.mapTo' call
-      var destination_13 = ArrayList_init_$Create$_0(collectionSizeOrDefault(errori, 10));
-      var _iterator__ex2g4s_16 = errori.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_16.hasNext_bitz1p_k$()) {
-        var item_6 = _iterator__ex2g4s_16.next_20eer_k$();
-        var tmp$ret$111 = JsonPrimitive_1(item_6);
-        destination_13.add_utx5q5_k$(tmp$ret$111);
+      var destination_16 = ArrayList_init_$Create$_0(collectionSizeOrDefault(errori, 10));
+      var _iterator__ex2g4s_21 = errori.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_21.hasNext_bitz1p_k$()) {
+        var item_8 = _iterator__ex2g4s_21.next_20eer_k$();
+        var tmp$ret$142 = JsonPrimitive_1(item_8);
+        destination_16.add_utx5q5_k$(tmp$ret$142);
       }
-      var tmp_12 = to('errori', new JsonArray(destination_13));
+      var tmp_18 = to('errori', new JsonArray(destination_16));
       // Inline function 'kotlin.collections.map' call
       // Inline function 'kotlin.collections.mapTo' call
-      var destination_14 = ArrayList_init_$Create$_0(collectionSizeOrDefault(avvisi, 10));
-      var _iterator__ex2g4s_17 = avvisi.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_17.hasNext_bitz1p_k$()) {
-        var item_7 = _iterator__ex2g4s_17.next_20eer_k$();
-        var tmp$ret$114 = JsonPrimitive_1(item_7);
-        destination_14.add_utx5q5_k$(tmp$ret$114);
+      var destination_17 = ArrayList_init_$Create$_0(collectionSizeOrDefault(avvisi, 10));
+      var _iterator__ex2g4s_22 = avvisi.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_22.hasNext_bitz1p_k$()) {
+        var item_9 = _iterator__ex2g4s_22.next_20eer_k$();
+        var tmp$ret$145 = JsonPrimitive_1(item_9);
+        destination_17.add_utx5q5_k$(tmp$ret$145);
       }
-      return new JsonObject(plus_4(base, mapOf_0([tmp_11, tmp_12, to('avvisi', new JsonArray(destination_14))])));
+      return new JsonObject(plus_4(base, mapOf_0([tmp_17, tmp_18, to('avvisi', new JsonArray(destination_17))])));
     }
     // Inline function 'kotlin.text.trim' call
-    var this_12 = testo_10(this, ingresso, 'descrizione');
+    var this_15 = testo_10(this, ingresso, 'descrizione');
     // Inline function 'kotlin.text.ifBlank' call
-    var this_13 = toString_1(trim_0(isCharSequence(this_12) ? this_12 : THROW_CCE()));
-    var tmp_13;
-    if (isBlank(this_13)) {
-      tmp_13 = denominazione(CreazioneSito_getInstance(), a, first(scelti));
+    var this_16 = toString_1(trim_0(isCharSequence(this_15) ? this_15 : THROW_CCE()));
+    var tmp_19;
+    if (isBlank(this_16)) {
+      tmp_19 = denominazione(CreazioneSito_getInstance(), a, first(scelti));
     } else {
-      tmp_13 = this_13;
+      tmp_19 = this_16;
     }
-    var descrizione = tmp_13;
+    var descrizione = tmp_19;
     var esito = ImportatoreBdn_getInstance().creaPacchetto_cjwwb6_k$(a, new ImpostazioniPacchettoBdn(id, creatoIl, data, descrizione, LinkedHashSet_init_$Create$_0(scelti), veterinari.voci_1, ricercatiCsv));
-    var tmp_14;
+    var tmp_20;
     if (esito instanceof Valido) {
-      tmp_14 = esito.creato_1;
+      tmp_20 = esito.creato_1;
     } else {
       if (esito instanceof Rifiutato) {
-        var tmp_15 = to('ok', JsonPrimitive_2(false));
+        var tmp_21 = to('ok', JsonPrimitive_2(false));
         // Inline function 'kotlin.collections.filter' call
-        var tmp0_1 = esito.diagnostiche_1;
+        var tmp0_3 = esito.diagnostiche_1;
         // Inline function 'kotlin.collections.filterTo' call
-        var destination_15 = ArrayList_init_$Create$();
-        var _iterator__ex2g4s_18 = tmp0_1.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_18.hasNext_bitz1p_k$()) {
-          var element_22 = _iterator__ex2g4s_18.next_20eer_k$();
-          if (element_22.gravita_1.equals(GravitaBdn_ERRORE_getInstance())) {
-            destination_15.add_utx5q5_k$(element_22);
+        var destination_18 = ArrayList_init_$Create$();
+        var _iterator__ex2g4s_23 = tmp0_3.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_23.hasNext_bitz1p_k$()) {
+          var element_27 = _iterator__ex2g4s_23.next_20eer_k$();
+          if (element_27.gravita_1.equals(GravitaBdn_ERRORE_getInstance())) {
+            destination_18.add_utx5q5_k$(element_27);
           }
         }
         // Inline function 'kotlin.collections.map' call
         // Inline function 'kotlin.collections.mapTo' call
-        var destination_16 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_15, 10));
-        var _iterator__ex2g4s_19 = destination_15.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_19.hasNext_bitz1p_k$()) {
-          var item_8 = _iterator__ex2g4s_19.next_20eer_k$();
-          var tmp$ret$123 = JsonPrimitive_1(item_8.testo_1);
-          destination_16.add_utx5q5_k$(tmp$ret$123);
+        var destination_19 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_18, 10));
+        var _iterator__ex2g4s_24 = destination_18.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_24.hasNext_bitz1p_k$()) {
+          var item_10 = _iterator__ex2g4s_24.next_20eer_k$();
+          var tmp$ret$154 = JsonPrimitive_1(item_10.testo_1);
+          destination_19.add_utx5q5_k$(tmp$ret$154);
         }
-        var tmp_16 = to('errori', new JsonArray(destination_16));
+        var tmp_22 = to('errori', new JsonArray(destination_19));
         // Inline function 'kotlin.collections.map' call
         // Inline function 'kotlin.collections.mapTo' call
-        var destination_17 = ArrayList_init_$Create$_0(collectionSizeOrDefault(avvisi, 10));
-        var _iterator__ex2g4s_20 = avvisi.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_20.hasNext_bitz1p_k$()) {
-          var item_9 = _iterator__ex2g4s_20.next_20eer_k$();
-          var tmp$ret$126 = JsonPrimitive_1(item_9);
-          destination_17.add_utx5q5_k$(tmp$ret$126);
+        var destination_20 = ArrayList_init_$Create$_0(collectionSizeOrDefault(avvisi, 10));
+        var _iterator__ex2g4s_25 = avvisi.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_25.hasNext_bitz1p_k$()) {
+          var item_11 = _iterator__ex2g4s_25.next_20eer_k$();
+          var tmp$ret$157 = JsonPrimitive_1(item_11);
+          destination_20.add_utx5q5_k$(tmp$ret$157);
         }
-        return new JsonObject(plus_4(base, mapOf_0([tmp_15, tmp_16, to('avvisi', new JsonArray(destination_17))])));
+        return new JsonObject(plus_4(base, mapOf_0([tmp_21, tmp_22, to('avvisi', new JsonArray(destination_20))])));
       } else {
         noWhenBranchMatchedException();
       }
     }
-    var creato = tmp_14;
+    var creato = tmp_20;
     // Inline function 'kotlin.collections.filter' call
-    var tmp0_2 = creato.diagnostiche_1;
+    var tmp0_4 = creato.diagnostiche_1;
     // Inline function 'kotlin.collections.filterTo' call
-    var destination_18 = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_21 = tmp0_2.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_21.hasNext_bitz1p_k$()) {
-      var element_23 = _iterator__ex2g4s_21.next_20eer_k$();
-      if (!element_23.gravita_1.equals(GravitaBdn_ERRORE_getInstance()) && element_23.codice_1 === 'RICERCATI_SCARTATI') {
-        destination_18.add_utx5q5_k$(element_23);
+    var destination_21 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_26 = tmp0_4.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_26.hasNext_bitz1p_k$()) {
+      var element_28 = _iterator__ex2g4s_26.next_20eer_k$();
+      if (!element_28.gravita_1.equals(GravitaBdn_ERRORE_getInstance()) && element_28.codice_1 === 'RICERCATI_SCARTATI') {
+        destination_21.add_utx5q5_k$(element_28);
       }
     }
     // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_22 = destination_18.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_22.hasNext_bitz1p_k$()) {
-      var element_24 = _iterator__ex2g4s_22.next_20eer_k$();
+    var _iterator__ex2g4s_27 = destination_21.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_27.hasNext_bitz1p_k$()) {
+      var element_29 = _iterator__ex2g4s_27.next_20eer_k$();
       // Inline function 'kotlin.collections.plusAssign' call
-      var element_25 = element_24.testo_1;
-      avvisi.add_utx5q5_k$(element_25);
+      var element_30 = element_29.testo_1;
+      avvisi.add_utx5q5_k$(element_30);
     }
     var pacchetto = creato.pacchetto_1;
     // Inline function 'kotlin.text.trim' call
-    var this_14 = testo_10(this, ingresso, 'feed');
+    var this_17 = testo_10(this, ingresso, 'feed');
     // Inline function 'kotlin.text.ifBlank' call
-    var this_15 = toString_1(trim_0(isCharSequence(this_14) ? this_14 : THROW_CCE()));
-    var tmp_17;
-    if (isBlank(this_15)) {
-      tmp_17 = 'sito-' + id;
+    var this_18 = toString_1(trim_0(isCharSequence(this_17) ? this_17 : THROW_CCE()));
+    var tmp_23;
+    if (isBlank(this_18)) {
+      tmp_23 = 'sito-' + id;
     } else {
-      tmp_17 = this_15;
+      tmp_23 = this_18;
     }
-    var feed = tmp_17;
+    var feed = tmp_23;
     // Inline function 'kotlin.text.trim' call
-    var this_16 = testo_10(this, ingresso, 'operatore');
+    var this_19 = testo_10(this, ingresso, 'operatore');
     // Inline function 'kotlin.text.ifBlank' call
-    var this_17 = toString_1(trim_0(isCharSequence(this_16) ? this_16 : THROW_CCE()));
-    var tmp_18;
-    if (isBlank(this_17)) {
-      tmp_18 = 'Sito';
+    var this_20 = toString_1(trim_0(isCharSequence(this_19) ? this_19 : THROW_CCE()));
+    var tmp_24;
+    if (isBlank(this_20)) {
+      tmp_24 = 'Sito';
     } else {
-      tmp_18 = this_17;
+      tmp_24 = this_20;
     }
-    var operatore = tmp_18;
+    var operatore = tmp_24;
     // Inline function 'kotlin.text.trim' call
-    var this_18 = testo_10(this, ingresso, 'ts');
+    var this_21 = testo_10(this, ingresso, 'ts');
     // Inline function 'kotlin.text.ifBlank' call
-    var this_19 = toString_1(trim_0(isCharSequence(this_18) ? this_18 : THROW_CCE()));
-    var tmp_19;
-    if (isBlank(this_19)) {
-      tmp_19 = creatoIl;
+    var this_22 = toString_1(trim_0(isCharSequence(this_21) ? this_21 : THROW_CCE()));
+    var tmp_25;
+    if (isBlank(this_22)) {
+      tmp_25 = creatoIl;
     } else {
-      tmp_19 = this_19;
+      tmp_25 = this_22;
     }
-    var ts = tmp_19;
+    var ts = tmp_25;
     var fonte = joinToString_0(utili, ', ', VOID, VOID, VOID, VOID, CreazioneSito$crea$lambda_1);
     var tmp4_elvis_lhs = booleano_1(this, ingresso, 'problematici_in_sequenza');
     var problematiciInSequenza = tmp4_elvis_lhs == null ? true : tmp4_elvis_lhs;
@@ -81597,124 +83224,132 @@ if (typeof String.prototype.startsWith === 'undefined') {
     // Inline function 'kotlin.collections.plusAssign' call
     var elements = CreazioneDaBdn_instance.eventi_n95q8m_k$(RegistriCaricati_getInstance().iniziali_8bhu7t_k$(a, toSet_0(scelti), fonte), etaMesi, lettere, problematiciInSequenza);
     addAll(eventi, elements);
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s_28 = azioniUscite.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_28.hasNext_bitz1p_k$()) {
+      var element_31 = _iterator__ex2g4s_28.next_20eer_k$();
+      // Inline function 'kotlin.collections.plusAssign' call
+      var element_32 = to('REGISTRO_CARICATO', UsciteModello_getInstance().dati_8tlcb_k$(element_31));
+      eventi.add_utx5q5_k$(element_32);
+    }
     var tmp5_elvis_lhs = Companion_getInstance_45().daCodice_uukfvt_k$(testo_10(this, ingresso, 'verso_riempimento'));
     var verso = tmp5_elvis_lhs == null ? Companion_getInstance_45().PREDEFINITO_1 : tmp5_elvis_lhs;
     // Inline function 'kotlin.collections.plusAssign' call
-    var element_26 = to('IMPOSTAZIONI_PROGETTO', Companion_getInstance_46().datiVersoRiempimento_96vf2n_k$(verso));
-    eventi.add_utx5q5_k$(element_26);
+    var element_33 = to('IMPOSTAZIONI_PROGETTO', Companion_getInstance_46().datiVersoRiempimento_96vf2n_k$(verso));
+    eventi.add_utx5q5_k$(element_33);
     // Inline function 'kotlin.collections.plusAssign' call
-    var element_27 = to('IMPOSTAZIONI_PROGETTO', Companion_getInstance_46().datiUsaSigleVeterinari_38bzv9_k$(true));
-    eventi.add_utx5q5_k$(element_27);
+    var element_34 = to('IMPOSTAZIONI_PROGETTO', Companion_getInstance_46().datiUsaSigleVeterinari_38bzv9_k$(true));
+    eventi.add_utx5q5_k$(element_34);
     // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_23 = configurazione(this, ingresso, pacchetto, veterinari.voci_1, errori, avvisi).iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_23.hasNext_bitz1p_k$()) {
-      var element_28 = _iterator__ex2g4s_23.next_20eer_k$();
+    var _iterator__ex2g4s_29 = configurazione(this, ingresso, pacchetto, veterinari.voci_1, errori, avvisi).iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_29.hasNext_bitz1p_k$()) {
+      var element_35 = _iterator__ex2g4s_29.next_20eer_k$();
       // Inline function 'kotlin.collections.plusAssign' call
-      var element_29 = to('IMPOSTAZIONI_PROGETTO', element_28);
-      eventi.add_utx5q5_k$(element_29);
+      var element_36 = to('IMPOSTAZIONI_PROGETTO', element_35);
+      eventi.add_utx5q5_k$(element_36);
     }
     // Inline function 'kotlin.collections.mapNotNull' call
-    var tmp0_3 = lista(this, ingresso, 'reti');
+    var tmp0_5 = lista(this, ingresso, 'reti');
     // Inline function 'kotlin.collections.mapNotNullTo' call
-    var destination_19 = ArrayList_init_$Create$();
+    var destination_22 = ArrayList_init_$Create$();
     // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_24 = tmp0_3.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_24.hasNext_bitz1p_k$()) {
-      var element_30 = _iterator__ex2g4s_24.next_20eer_k$();
+    var _iterator__ex2g4s_30 = tmp0_5.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_30.hasNext_bitz1p_k$()) {
+      var element_37 = _iterator__ex2g4s_30.next_20eer_k$();
       // Inline function 'kotlin.text.trim' call
-      var this_20 = testo_10(CreazioneSito_getInstance(), element_30, 'ssid');
-      var ssid = toString_1(trim_0(isCharSequence(this_20) ? this_20 : THROW_CCE()));
-      var tmp_20;
+      var this_23 = testo_10(CreazioneSito_getInstance(), element_37, 'ssid');
+      var ssid = toString_1(trim_0(isCharSequence(this_23) ? this_23 : THROW_CCE()));
+      var tmp_26;
       // Inline function 'kotlin.text.isEmpty' call
       if (charSequenceLength(ssid) === 0) {
-        tmp_20 = null;
+        tmp_26 = null;
       } else {
-        var tmp_21 = testo_10(CreazioneSito_getInstance(), element_30, 'password');
-        var tmp0_4 = get_entries_12();
-        var tmp$ret$156;
+        var tmp_27 = testo_10(CreazioneSito_getInstance(), element_37, 'password');
+        var tmp0_6 = get_entries_12();
+        var tmp$ret$190;
         $l$block_3: {
           // Inline function 'kotlin.collections.firstOrNull' call
-          var _iterator__ex2g4s_25 = tmp0_4.iterator_jk1svi_k$();
-          while (_iterator__ex2g4s_25.hasNext_bitz1p_k$()) {
-            var element_31 = _iterator__ex2g4s_25.next_20eer_k$();
-            var tmp_22;
+          var _iterator__ex2g4s_31 = tmp0_6.iterator_jk1svi_k$();
+          while (_iterator__ex2g4s_31.hasNext_bitz1p_k$()) {
+            var element_38 = _iterator__ex2g4s_31.next_20eer_k$();
+            var tmp_28;
             // Inline function 'kotlin.text.trim' call
-            var this_21 = testo_10(CreazioneSito_getInstance(), element_30, 'sicurezza');
+            var this_24 = testo_10(CreazioneSito_getInstance(), element_37, 'sicurezza');
             // Inline function 'kotlin.text.uppercase' call
             // Inline function 'kotlin.js.asDynamic' call
-            var tmp$ret$159 = toString_1(trim_0(isCharSequence(this_21) ? this_21 : THROW_CCE())).toUpperCase();
-            if (element_31.name_1 === tmp$ret$159) {
-              tmp_22 = true;
+            var tmp$ret$193 = toString_1(trim_0(isCharSequence(this_24) ? this_24 : THROW_CCE())).toUpperCase();
+            if (element_38.name_1 === tmp$ret$193) {
+              tmp_28 = true;
             } else {
               // Inline function 'kotlin.text.trim' call
-              var this_22 = testo_10(CreazioneSito_getInstance(), element_30, 'sicurezza');
-              var tmp$ret$161 = toString_1(trim_0(isCharSequence(this_22) ? this_22 : THROW_CCE()));
-              tmp_22 = element_31.codice_1 === tmp$ret$161;
+              var this_25 = testo_10(CreazioneSito_getInstance(), element_37, 'sicurezza');
+              var tmp$ret$195 = toString_1(trim_0(isCharSequence(this_25) ? this_25 : THROW_CCE()));
+              tmp_28 = element_38.codice_1 === tmp$ret$195;
             }
-            if (tmp_22) {
-              tmp$ret$156 = element_31;
+            if (tmp_28) {
+              tmp$ret$190 = element_38;
               break $l$block_3;
             }
           }
-          tmp$ret$156 = null;
+          tmp$ret$190 = null;
         }
-        var tmp0_elvis_lhs_0 = tmp$ret$156;
-        tmp_20 = new Rete(ssid, tmp_21, tmp0_elvis_lhs_0 == null ? SicurezzaWifi_WPA_getInstance() : tmp0_elvis_lhs_0);
+        var tmp0_elvis_lhs_0 = tmp$ret$190;
+        tmp_26 = new Rete(ssid, tmp_27, tmp0_elvis_lhs_0 == null ? SicurezzaWifi_WPA_getInstance() : tmp0_elvis_lhs_0);
       }
-      var tmp0_safe_receiver_0 = tmp_20;
-      if (tmp0_safe_receiver_0 == null)
+      var tmp0_safe_receiver_2 = tmp_26;
+      if (tmp0_safe_receiver_2 == null)
         null;
       else {
         // Inline function 'kotlin.let' call
-        destination_19.add_utx5q5_k$(tmp0_safe_receiver_0);
+        destination_22.add_utx5q5_k$(tmp0_safe_receiver_2);
       }
     }
-    var reti = destination_19;
+    var reti = destination_22;
     // Inline function 'kotlin.collections.isNotEmpty' call
     if (!reti.isEmpty_y1axqb_k$()) {
       // Inline function 'kotlin.collections.plusAssign' call
-      var element_32 = to('RETI_PROGETTO', RetiProgetto_instance.dati_kgump9_k$(Companion_instance_63.di_ch8wgo_k$(reti)));
-      eventi.add_utx5q5_k$(element_32);
+      var element_39 = to('RETI_PROGETTO', RetiProgetto_instance.dati_kgump9_k$(Companion_instance_63.di_ch8wgo_k$(reti)));
+      eventi.add_utx5q5_k$(element_39);
     }
     // Inline function 'kotlin.collections.isNotEmpty' call
     if (!errori.isEmpty_y1axqb_k$()) {
-      var tmp_23 = to('ok', JsonPrimitive_2(false));
+      var tmp_29 = to('ok', JsonPrimitive_2(false));
       // Inline function 'kotlin.collections.map' call
       // Inline function 'kotlin.collections.mapTo' call
-      var destination_20 = ArrayList_init_$Create$_0(collectionSizeOrDefault(errori, 10));
-      var _iterator__ex2g4s_26 = errori.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_26.hasNext_bitz1p_k$()) {
-        var item_10 = _iterator__ex2g4s_26.next_20eer_k$();
-        var tmp$ret$169 = JsonPrimitive_1(item_10);
-        destination_20.add_utx5q5_k$(tmp$ret$169);
+      var destination_23 = ArrayList_init_$Create$_0(collectionSizeOrDefault(errori, 10));
+      var _iterator__ex2g4s_32 = errori.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_32.hasNext_bitz1p_k$()) {
+        var item_12 = _iterator__ex2g4s_32.next_20eer_k$();
+        var tmp$ret$203 = JsonPrimitive_1(item_12);
+        destination_23.add_utx5q5_k$(tmp$ret$203);
       }
-      var tmp_24 = to('errori', new JsonArray(destination_20));
+      var tmp_30 = to('errori', new JsonArray(destination_23));
       // Inline function 'kotlin.collections.map' call
       // Inline function 'kotlin.collections.mapTo' call
-      var destination_21 = ArrayList_init_$Create$_0(collectionSizeOrDefault(avvisi, 10));
-      var _iterator__ex2g4s_27 = avvisi.iterator_jk1svi_k$();
-      while (_iterator__ex2g4s_27.hasNext_bitz1p_k$()) {
-        var item_11 = _iterator__ex2g4s_27.next_20eer_k$();
-        var tmp$ret$172 = JsonPrimitive_1(item_11);
-        destination_21.add_utx5q5_k$(tmp$ret$172);
+      var destination_24 = ArrayList_init_$Create$_0(collectionSizeOrDefault(avvisi, 10));
+      var _iterator__ex2g4s_33 = avvisi.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_33.hasNext_bitz1p_k$()) {
+        var item_13 = _iterator__ex2g4s_33.next_20eer_k$();
+        var tmp$ret$206 = JsonPrimitive_1(item_13);
+        destination_24.add_utx5q5_k$(tmp$ret$206);
       }
-      return new JsonObject(plus_4(base, mapOf_0([tmp_23, tmp_24, to('avvisi', new JsonArray(destination_21))])));
+      return new JsonObject(plus_4(base, mapOf_0([tmp_29, tmp_30, to('avvisi', new JsonArray(destination_24))])));
     }
     var registro = new Registro(feed, new ArchivioMemoria());
     // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_28 = eventi.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_28.hasNext_bitz1p_k$()) {
-      var element_33 = _iterator__ex2g4s_28.next_20eer_k$();
-      var tipo = element_33.component1_7eebsc_k$();
-      var dati = element_33.component2_7eebsb_k$();
+    var _iterator__ex2g4s_34 = eventi.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_34.hasNext_bitz1p_k$()) {
+      var element_40 = _iterator__ex2g4s_34.next_20eer_k$();
+      var tipo = element_40.component1_7eebsc_k$();
+      var dati = element_40.component2_7eebsb_k$();
       registro.scrivi_r1zfur_k$(tipo, dati, operatore, ts);
     }
     // Inline function 'kotlin.collections.sortedBy' call
-    var this_23 = registro.tutti_1txb60_k$();
+    var this_26 = registro.tutti_1txb60_k$();
     // Inline function 'kotlin.comparisons.compareBy' call
-    var tmp_25 = CreazioneSito$crea$lambda_2;
-    var tmp$ret$176 = new sam$kotlin_Comparator$0_21(tmp_25);
-    var tutti = sortedWith(this_23, tmp$ret$176);
+    var tmp_31 = CreazioneSito$crea$lambda_2;
+    var tmp$ret$210 = new sam$kotlin_Comparator$0_22(tmp_31);
+    var tutti = sortedWith(this_26, tmp$ret$210);
     var attuali = Companion_getInstance_48().di_55966q_k$(pacchetto, tutti);
     var imp = attuali.impostazioni_1;
     var serie = attuali.get_serie_iygor7_k$();
@@ -81729,16 +83364,16 @@ if (typeof String.prototype.startsWith === 'undefined') {
     put(builder_4, 'LEGGIMI.txt', leggimi_0(CreazioneSito_getInstance(), nomeSeduta, pacchetto, serie, creatoIl));
     put(builder_4, 'numerazione_chiave.csv', csv);
     put(builder_4, 'pacchetto.json', creato.json_1);
-    var tmp_26 = 'registro/' + feed + '.jsonl';
-    put(builder_4, tmp_26, joinToString_0(tutti, '', VOID, VOID, VOID, VOID, CreazioneSito$crea$lambda_3));
+    var tmp_32 = 'registro/' + feed + '.jsonl';
+    put(builder_4, tmp_32, joinToString_0(tutti, '', VOID, VOID, VOID, VOID, CreazioneSito$crea$lambda_3));
     var files = builder_4.build_bkh6qh_k$();
     // Inline function 'kotlin.collections.sumOf' call
     var sum = 0;
-    var _iterator__ex2g4s_29 = serie.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_29.hasNext_bitz1p_k$()) {
-      var element_34 = _iterator__ex2g4s_29.next_20eer_k$();
-      var tmp_27 = sum;
-      sum = tmp_27 + element_34.fuoriEta_1.get_size_woubt6_k$() | 0;
+    var _iterator__ex2g4s_35 = serie.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_35.hasNext_bitz1p_k$()) {
+      var element_41 = _iterator__ex2g4s_35.next_20eer_k$();
+      var tmp_33 = sum;
+      sum = tmp_33 + element_41.fuoriEta_1.get_size_woubt6_k$() | 0;
     }
     var fuoriEta = sum;
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
@@ -81747,14 +83382,14 @@ if (typeof String.prototype.startsWith === 'undefined') {
     builder_5.put_mrde5n_k$('errori', new JsonArray(emptyList()));
     // Inline function 'kotlin.collections.map' call
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_22 = ArrayList_init_$Create$_0(collectionSizeOrDefault(avvisi, 10));
-    var _iterator__ex2g4s_30 = avvisi.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_30.hasNext_bitz1p_k$()) {
-      var item_12 = _iterator__ex2g4s_30.next_20eer_k$();
-      var tmp$ret$185 = JsonPrimitive_1(item_12);
-      destination_22.add_utx5q5_k$(tmp$ret$185);
+    var destination_25 = ArrayList_init_$Create$_0(collectionSizeOrDefault(avvisi, 10));
+    var _iterator__ex2g4s_36 = avvisi.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_36.hasNext_bitz1p_k$()) {
+      var item_14 = _iterator__ex2g4s_36.next_20eer_k$();
+      var tmp$ret$219 = JsonPrimitive_1(item_14);
+      destination_25.add_utx5q5_k$(tmp$ret$219);
     }
-    builder_5.put_mrde5n_k$('avvisi', new JsonArray(destination_22));
+    builder_5.put_mrde5n_k$('avvisi', new JsonArray(destination_25));
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
     var builder_6 = new JsonObjectBuilder();
     put(builder_6, 'id', pacchetto.id_1);
@@ -81765,186 +83400,186 @@ if (typeof String.prototype.startsWith === 'undefined') {
     put(builder_6, 'data', pacchetto.sessione_1.data_1);
     put_1(builder_6, 'veterinari', pacchetto.operatori_1.get_size_woubt6_k$());
     put_1(builder_6, 'ricercati', pacchetto.ricercati_1.get_size_woubt6_k$());
-    var tmp$ret$186 = builder_6.build_bkh6qh_k$();
-    builder_5.put_mrde5n_k$('pacchetto', tmp$ret$186);
+    var tmp$ret$220 = builder_6.build_bkh6qh_k$();
+    builder_5.put_mrde5n_k$('pacchetto', tmp$ret$220);
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
     var builder_7 = new JsonObjectBuilder();
-    var tmp0_safe_receiver_1 = imp.etaDiagnosticaMesi_1;
-    var tmp_28;
-    if (tmp0_safe_receiver_1 == null) {
-      tmp_28 = null;
+    var tmp0_safe_receiver_3 = imp.etaDiagnosticaMesi_1;
+    var tmp_34;
+    if (tmp0_safe_receiver_3 == null) {
+      tmp_34 = null;
     } else {
       // Inline function 'kotlin.let' call
-      tmp_28 = JsonPrimitive_0(tmp0_safe_receiver_1);
+      tmp_34 = JsonPrimitive_0(tmp0_safe_receiver_3);
     }
-    var tmp1_elvis_lhs_0 = tmp_28;
+    var tmp1_elvis_lhs_0 = tmp_34;
     builder_7.put_mrde5n_k$('eta_diagnostica_mesi', tmp1_elvis_lhs_0 == null ? JsonNull_getInstance() : tmp1_elvis_lhs_0);
     var tmp2_safe_receiver = imp.lettereSpecie_1;
     // Inline function 'kotlin.text.orEmpty' call
     var tmp0_elvis_lhs_1 = tmp2_safe_receiver == null ? null : tmp2_safe_receiver.codice_1;
-    var tmp$ret$192 = tmp0_elvis_lhs_1 == null ? '' : tmp0_elvis_lhs_1;
-    put(builder_7, 'lettere_specie', tmp$ret$192);
+    var tmp$ret$226 = tmp0_elvis_lhs_1 == null ? '' : tmp0_elvis_lhs_1;
+    put(builder_7, 'lettere_specie', tmp$ret$226);
     put_0(builder_7, 'problematici_in_sequenza', imp.problematiciInSequenza_1);
     put(builder_7, 'verso_riempimento', imp.versoRiempimento_1.codice_1);
     put_0(builder_7, 'usa_sigle_veterinari', imp.usaSigleVeterinari_1);
     put(builder_7, 'fase', imp.faseOperativa_1.codice_1);
     put_0(builder_7, 'pronto_per_avvio', imp.prontoPerAvvio_j59r9b_k$(attuali));
     // Inline function 'kotlin.collections.map' call
-    var this_24 = imp.prioritaRegia_1;
-    // Inline function 'kotlin.collections.mapTo' call
-    var destination_23 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_24, 10));
-    var _iterator__ex2g4s_31 = this_24.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_31.hasNext_bitz1p_k$()) {
-      var item_13 = _iterator__ex2g4s_31.next_20eer_k$();
-      var tmp$ret$195 = JsonPrimitive_1(item_13);
-      destination_23.add_utx5q5_k$(tmp$ret$195);
-    }
-    builder_7.put_mrde5n_k$('priorita_regia', new JsonArray(destination_23));
-    // Inline function 'kotlin.collections.mapValues' call
-    var this_25 = imp.sigleVeterinari_1;
-    // Inline function 'kotlin.collections.mapValuesTo' call
-    var destination_24 = LinkedHashMap_init_$Create$_0(mapCapacity(this_25.get_size_woubt6_k$()));
-    // Inline function 'kotlin.collections.associateByTo' call
-    var _iterator__ex2g4s_32 = this_25.get_entries_p20ztl_k$().iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_32.hasNext_bitz1p_k$()) {
-      var element_35 = _iterator__ex2g4s_32.next_20eer_k$();
-      var tmp_29 = element_35.get_key_18j28a_k$();
-      var tmp$ret$200 = JsonPrimitive_1(element_35.get_value_j01efc_k$());
-      destination_24.put_4fpzoq_k$(tmp_29, tmp$ret$200);
-    }
-    builder_7.put_mrde5n_k$('sigle', new JsonObject(destination_24));
-    // Inline function 'kotlin.collections.associate' call
-    var this_26 = imp.soluzioniPerTipo_1.get_entries_p20ztl_k$();
-    var capacity = coerceAtLeast(mapCapacity(collectionSizeOrDefault(this_26, 10)), 16);
-    // Inline function 'kotlin.collections.associateTo' call
-    var destination_25 = LinkedHashMap_init_$Create$_0(capacity);
-    var _iterator__ex2g4s_33 = this_26.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_33.hasNext_bitz1p_k$()) {
-      var element_36 = _iterator__ex2g4s_33.next_20eer_k$();
-      // Inline function 'kotlin.collections.component1' call
-      var t = element_36.get_key_18j28a_k$();
-      // Inline function 'kotlin.collections.component2' call
-      var s = element_36.get_value_j01efc_k$();
-      // Inline function 'kotlin.collections.plusAssign' call
-      var pair = to(t.name_1, JsonPrimitive_1(s.codice_1));
-      destination_25.put_4fpzoq_k$(pair.first_1, pair.second_1);
-    }
-    builder_7.put_mrde5n_k$('regole', new JsonObject(destination_25));
-    // Inline function 'kotlin.collections.map' call
-    var this_27 = RetiProgetto_instance.di_4dh1u9_k$(tutti).tutte_1txb5w_k$();
+    var this_27 = imp.prioritaRegia_1;
     // Inline function 'kotlin.collections.mapTo' call
     var destination_26 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_27, 10));
-    var _iterator__ex2g4s_34 = this_27.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_34.hasNext_bitz1p_k$()) {
-      var item_14 = _iterator__ex2g4s_34.next_20eer_k$();
-      var tmp$ret$209 = JsonPrimitive_1(item_14.ssid_1);
-      destination_26.add_utx5q5_k$(tmp$ret$209);
+    var _iterator__ex2g4s_37 = this_27.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_37.hasNext_bitz1p_k$()) {
+      var item_15 = _iterator__ex2g4s_37.next_20eer_k$();
+      var tmp$ret$229 = JsonPrimitive_1(item_15);
+      destination_26.add_utx5q5_k$(tmp$ret$229);
     }
-    builder_7.put_mrde5n_k$('reti', new JsonArray(destination_26));
-    var tmp$ret$188 = builder_7.build_bkh6qh_k$();
-    builder_5.put_mrde5n_k$('impostazioni', tmp$ret$188);
+    builder_7.put_mrde5n_k$('priorita_regia', new JsonArray(destination_26));
+    // Inline function 'kotlin.collections.mapValues' call
+    var this_28 = imp.sigleVeterinari_1;
+    // Inline function 'kotlin.collections.mapValuesTo' call
+    var destination_27 = LinkedHashMap_init_$Create$_0(mapCapacity(this_28.get_size_woubt6_k$()));
+    // Inline function 'kotlin.collections.associateByTo' call
+    var _iterator__ex2g4s_38 = this_28.get_entries_p20ztl_k$().iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_38.hasNext_bitz1p_k$()) {
+      var element_42 = _iterator__ex2g4s_38.next_20eer_k$();
+      var tmp_35 = element_42.get_key_18j28a_k$();
+      var tmp$ret$234 = JsonPrimitive_1(element_42.get_value_j01efc_k$());
+      destination_27.put_4fpzoq_k$(tmp_35, tmp$ret$234);
+    }
+    builder_7.put_mrde5n_k$('sigle', new JsonObject(destination_27));
+    // Inline function 'kotlin.collections.associate' call
+    var this_29 = imp.soluzioniPerTipo_1.get_entries_p20ztl_k$();
+    var capacity = coerceAtLeast(mapCapacity(collectionSizeOrDefault(this_29, 10)), 16);
+    // Inline function 'kotlin.collections.associateTo' call
+    var destination_28 = LinkedHashMap_init_$Create$_0(capacity);
+    var _iterator__ex2g4s_39 = this_29.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_39.hasNext_bitz1p_k$()) {
+      var element_43 = _iterator__ex2g4s_39.next_20eer_k$();
+      // Inline function 'kotlin.collections.component1' call
+      var t = element_43.get_key_18j28a_k$();
+      // Inline function 'kotlin.collections.component2' call
+      var s = element_43.get_value_j01efc_k$();
+      // Inline function 'kotlin.collections.plusAssign' call
+      var pair = to(t.name_1, JsonPrimitive_1(s.codice_1));
+      destination_28.put_4fpzoq_k$(pair.first_1, pair.second_1);
+    }
+    builder_7.put_mrde5n_k$('regole', new JsonObject(destination_28));
     // Inline function 'kotlin.collections.map' call
-    var this_28 = pacchetto.config_1.stabilimentiLavoro_1;
+    var this_30 = RetiProgetto_instance.di_4dh1u9_k$(tutti).tutte_1txb5w_k$();
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_27 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_28, 10));
-    var _iterator__ex2g4s_35 = this_28.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_35.hasNext_bitz1p_k$()) {
-      var item_15 = _iterator__ex2g4s_35.next_20eer_k$();
+    var destination_29 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_30, 10));
+    var _iterator__ex2g4s_40 = this_30.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_40.hasNext_bitz1p_k$()) {
+      var item_16 = _iterator__ex2g4s_40.next_20eer_k$();
+      var tmp$ret$243 = JsonPrimitive_1(item_16.ssid_1);
+      destination_29.add_utx5q5_k$(tmp$ret$243);
+    }
+    builder_7.put_mrde5n_k$('reti', new JsonArray(destination_29));
+    var tmp$ret$222 = builder_7.build_bkh6qh_k$();
+    builder_5.put_mrde5n_k$('impostazioni', tmp$ret$222);
+    // Inline function 'kotlin.collections.map' call
+    var this_31 = pacchetto.config_1.stabilimentiLavoro_1;
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_30 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_31, 10));
+    var _iterator__ex2g4s_41 = this_31.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_41.hasNext_bitz1p_k$()) {
+      var item_17 = _iterator__ex2g4s_41.next_20eer_k$();
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
       var builder_8 = new JsonObjectBuilder();
-      put(builder_8, 'codice', item_15.codice_1);
-      put(builder_8, 'denominazione', item_15.denominazione_1);
-      put_1(builder_8, 'presenti', item_15.presenti_1);
-      put(builder_8, 'lettera', imp.letteraStabilimentoEffettiva_e74vkh_k$(item_15.codice_1, pacchetto));
-      put(builder_8, 'cerchietto', imp.cerchiettoStabilimento_mfl9ou_k$(item_15.codice_1, pacchetto));
-      put_0(builder_8, 'principale', item_15.codice_1 === principale);
-      var tmp$ret$212 = builder_8.build_bkh6qh_k$();
-      destination_27.add_utx5q5_k$(tmp$ret$212);
+      put(builder_8, 'codice', item_17.codice_1);
+      put(builder_8, 'denominazione', item_17.denominazione_1);
+      put_1(builder_8, 'presenti', item_17.presenti_1);
+      put(builder_8, 'lettera', imp.letteraStabilimentoEffettiva_e74vkh_k$(item_17.codice_1, pacchetto));
+      put(builder_8, 'cerchietto', imp.cerchiettoStabilimento_mfl9ou_k$(item_17.codice_1, pacchetto));
+      put_0(builder_8, 'principale', item_17.codice_1 === principale);
+      var tmp$ret$246 = builder_8.build_bkh6qh_k$();
+      destination_30.add_utx5q5_k$(tmp$ret$246);
     }
-    builder_5.put_mrde5n_k$('stabilimenti', new JsonArray(destination_27));
+    builder_5.put_mrde5n_k$('stabilimenti', new JsonArray(destination_30));
     // Inline function 'kotlin.collections.map' call
-    var this_29 = pacchetto.config_1.stabilimentiRiferimento_1;
+    var this_32 = pacchetto.config_1.stabilimentiRiferimento_1;
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_28 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_29, 10));
-    var _iterator__ex2g4s_36 = this_29.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_36.hasNext_bitz1p_k$()) {
-      var item_16 = _iterator__ex2g4s_36.next_20eer_k$();
+    var destination_31 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_32, 10));
+    var _iterator__ex2g4s_42 = this_32.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_42.hasNext_bitz1p_k$()) {
+      var item_18 = _iterator__ex2g4s_42.next_20eer_k$();
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
       var builder_9 = new JsonObjectBuilder();
-      put(builder_9, 'codice', item_16.codice_1);
-      put(builder_9, 'denominazione', item_16.denominazione_1);
-      put_1(builder_9, 'presenti', item_16.presenti_1);
-      var tmp$ret$217 = builder_9.build_bkh6qh_k$();
-      destination_28.add_utx5q5_k$(tmp$ret$217);
+      put(builder_9, 'codice', item_18.codice_1);
+      put(builder_9, 'denominazione', item_18.denominazione_1);
+      put_1(builder_9, 'presenti', item_18.presenti_1);
+      var tmp$ret$251 = builder_9.build_bkh6qh_k$();
+      destination_31.add_utx5q5_k$(tmp$ret$251);
     }
-    builder_5.put_mrde5n_k$('altri_stabilimenti', new JsonArray(destination_28));
+    builder_5.put_mrde5n_k$('altri_stabilimenti', new JsonArray(destination_31));
     // Inline function 'kotlin.collections.map' call
     // Inline function 'kotlin.collections.mapTo' call
-    var destination_29 = ArrayList_init_$Create$_0(collectionSizeOrDefault(serie, 10));
-    var _iterator__ex2g4s_37 = serie.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_37.hasNext_bitz1p_k$()) {
-      var item_17 = _iterator__ex2g4s_37.next_20eer_k$();
+    var destination_32 = ArrayList_init_$Create$_0(collectionSizeOrDefault(serie, 10));
+    var _iterator__ex2g4s_43 = serie.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_43.hasNext_bitz1p_k$()) {
+      var item_19 = _iterator__ex2g4s_43.next_20eer_k$();
       // Inline function 'kotlinx.serialization.json.buildJsonObject' call
       var builder_10 = new JsonObjectBuilder();
-      var numeri = item_17.numeriAssegnati_1.get_values_ksazhn_k$();
-      put(builder_10, 'id', item_17.id_1);
-      put(builder_10, 'stabilimento', item_17.get_stabilimento_353hxm_k$());
-      put(builder_10, 'specie', item_17.get_specie_jla71c_k$());
-      put(builder_10, 'prefisso', item_17.get_prefisso_hx09de_k$());
+      var numeri = item_19.numeriAssegnati_1.get_values_ksazhn_k$();
+      put(builder_10, 'id', item_19.id_1);
+      put(builder_10, 'stabilimento', item_19.get_stabilimento_353hxm_k$());
+      put(builder_10, 'specie', item_19.get_specie_jla71c_k$());
+      put(builder_10, 'prefisso', item_19.get_prefisso_hx09de_k$());
       put_1(builder_10, 'numerati', numeri.get_size_woubt6_k$());
-      put_1(builder_10, 'maschi', item_17.maschi_1);
-      var tmp0_safe_receiver_2 = minOrNull(numeri);
-      var tmp_30;
-      if (tmp0_safe_receiver_2 == null) {
-        tmp_30 = null;
+      put_1(builder_10, 'maschi', item_19.maschi_1);
+      var tmp0_safe_receiver_4 = minOrNull(numeri);
+      var tmp_36;
+      if (tmp0_safe_receiver_4 == null) {
+        tmp_36 = null;
       } else {
         // Inline function 'kotlin.let' call
-        tmp_30 = JsonPrimitive_0(tmp0_safe_receiver_2);
+        tmp_36 = JsonPrimitive_0(tmp0_safe_receiver_4);
       }
-      var tmp1_elvis_lhs_1 = tmp_30;
+      var tmp1_elvis_lhs_1 = tmp_36;
       builder_10.put_mrde5n_k$('da', tmp1_elvis_lhs_1 == null ? JsonNull_getInstance() : tmp1_elvis_lhs_1);
       var tmp2_safe_receiver_0 = maxOrNull(numeri);
-      var tmp_31;
+      var tmp_37;
       if (tmp2_safe_receiver_0 == null) {
-        tmp_31 = null;
+        tmp_37 = null;
       } else {
         // Inline function 'kotlin.let' call
-        tmp_31 = JsonPrimitive_0(tmp2_safe_receiver_0);
+        tmp_37 = JsonPrimitive_0(tmp2_safe_receiver_0);
       }
-      var tmp3_elvis_lhs = tmp_31;
+      var tmp3_elvis_lhs = tmp_37;
       builder_10.put_mrde5n_k$('a', tmp3_elvis_lhs == null ? JsonNull_getInstance() : tmp3_elvis_lhs);
-      put_1(builder_10, 'fuori_eta', item_17.fuoriEta_1.get_size_woubt6_k$());
-      var sp = item_17.get_specie_jla71c_k$() === 'capre' ? Specie_CAPRE_getInstance() : Specie_PECORE_getInstance();
-      var tmp0_5 = pacchetto.specieDati_1.get_h9fx0k_k$(sp).presenti_1;
-      var tmp$ret$229;
+      put_1(builder_10, 'fuori_eta', item_19.fuoriEta_1.get_size_woubt6_k$());
+      var sp = item_19.get_specie_jla71c_k$() === 'capre' ? Specie_CAPRE_getInstance() : Specie_PECORE_getInstance();
+      var tmp0_7 = pacchetto.specieDati_1.get_h9fx0k_k$(sp).presenti_1;
+      var tmp$ret$263;
       $l$block_4: {
         // Inline function 'kotlin.collections.count' call
-        var tmp_32;
-        if (isInterface(tmp0_5, Collection)) {
-          tmp_32 = tmp0_5.isEmpty_y1axqb_k$();
+        var tmp_38;
+        if (isInterface(tmp0_7, Collection)) {
+          tmp_38 = tmp0_7.isEmpty_y1axqb_k$();
         } else {
-          tmp_32 = false;
+          tmp_38 = false;
         }
-        if (tmp_32) {
-          tmp$ret$229 = 0;
+        if (tmp_38) {
+          tmp$ret$263 = 0;
           break $l$block_4;
         }
         var count = 0;
-        var _iterator__ex2g4s_38 = tmp0_5.iterator_jk1svi_k$();
-        while (_iterator__ex2g4s_38.hasNext_bitz1p_k$()) {
-          var element_37 = _iterator__ex2g4s_38.next_20eer_k$();
-          if (element_37.codiceStabilimento_1 === item_17.get_stabilimento_353hxm_k$()) {
+        var _iterator__ex2g4s_44 = tmp0_7.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_44.hasNext_bitz1p_k$()) {
+          var element_44 = _iterator__ex2g4s_44.next_20eer_k$();
+          if (element_44.codiceStabilimento_1 === item_19.get_stabilimento_353hxm_k$()) {
             count = count + 1 | 0;
             checkCountOverflow(count);
           }
         }
-        tmp$ret$229 = count;
+        tmp$ret$263 = count;
       }
-      put_1(builder_10, 'presenti', tmp$ret$229);
-      var tmp$ret$222 = builder_10.build_bkh6qh_k$();
-      destination_29.add_utx5q5_k$(tmp$ret$222);
+      put_1(builder_10, 'presenti', tmp$ret$263);
+      var tmp$ret$256 = builder_10.build_bkh6qh_k$();
+      destination_32.add_utx5q5_k$(tmp$ret$256);
     }
-    builder_5.put_mrde5n_k$('serie', new JsonArray(destination_29));
+    builder_5.put_mrde5n_k$('serie', new JsonArray(destination_32));
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
     var builder_11 = new JsonObjectBuilder();
     put_1(builder_11, 'presenti_pecore', pacchetto.specieDati_1.pecore_1.presenti_1.get_size_woubt6_k$());
@@ -81955,37 +83590,63 @@ if (typeof String.prototype.startsWith === 'undefined') {
     put_1(builder_11, 'marche_capre', pacchetto.specieDati_1.capre_1.disponibili_1.get_size_woubt6_k$());
     // Inline function 'kotlin.collections.sumOf' call
     var sum_0 = 0;
-    var _iterator__ex2g4s_39 = serie.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_39.hasNext_bitz1p_k$()) {
-      var element_38 = _iterator__ex2g4s_39.next_20eer_k$();
-      var tmp_33 = sum_0;
-      sum_0 = tmp_33 + element_38.numeriAssegnati_1.get_size_woubt6_k$() | 0;
+    var _iterator__ex2g4s_45 = serie.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_45.hasNext_bitz1p_k$()) {
+      var element_45 = _iterator__ex2g4s_45.next_20eer_k$();
+      var tmp_39 = sum_0;
+      sum_0 = tmp_39 + element_45.numeriAssegnati_1.get_size_woubt6_k$() | 0;
     }
-    var tmp$ret$233 = sum_0;
-    put_1(builder_11, 'numerati', tmp$ret$233);
+    var tmp$ret$267 = sum_0;
+    put_1(builder_11, 'numerati', tmp$ret$267);
     // Inline function 'kotlin.collections.sumOf' call
     var sum_1 = 0;
-    var _iterator__ex2g4s_40 = serie.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_40.hasNext_bitz1p_k$()) {
-      var element_39 = _iterator__ex2g4s_40.next_20eer_k$();
-      var tmp_34 = sum_1;
-      sum_1 = tmp_34 + element_39.maschi_1 | 0;
+    var _iterator__ex2g4s_46 = serie.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_46.hasNext_bitz1p_k$()) {
+      var element_46 = _iterator__ex2g4s_46.next_20eer_k$();
+      var tmp_40 = sum_1;
+      sum_1 = tmp_40 + element_46.maschi_1 | 0;
     }
-    var tmp$ret$235 = sum_1;
-    put_1(builder_11, 'maschi', tmp$ret$235);
+    var tmp$ret$269 = sum_1;
+    put_1(builder_11, 'maschi', tmp$ret$269);
     put_1(builder_11, 'fuori_eta', fuoriEta);
     // Inline function 'kotlin.collections.sumOf' call
     var sum_2 = 0;
-    var _iterator__ex2g4s_41 = pacchetto.config_1.stabilimentiRiferimento_1.iterator_jk1svi_k$();
-    while (_iterator__ex2g4s_41.hasNext_bitz1p_k$()) {
-      var element_40 = _iterator__ex2g4s_41.next_20eer_k$();
-      var tmp_35 = sum_2;
-      sum_2 = tmp_35 + element_40.presenti_1 | 0;
+    var _iterator__ex2g4s_47 = pacchetto.config_1.stabilimentiRiferimento_1.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_47.hasNext_bitz1p_k$()) {
+      var element_47 = _iterator__ex2g4s_47.next_20eer_k$();
+      var tmp_41 = sum_2;
+      sum_2 = tmp_41 + element_47.presenti_1 | 0;
     }
-    var tmp$ret$237 = sum_2;
-    put_1(builder_11, 'altri_stabilimenti', tmp$ret$237);
-    var tmp$ret$231 = builder_11.build_bkh6qh_k$();
-    builder_5.put_mrde5n_k$('riepilogo', tmp$ret$231);
+    var tmp$ret$271 = sum_2;
+    put_1(builder_11, 'altri_stabilimenti', tmp$ret$271);
+    var tmp$ret$265 = builder_11.build_bkh6qh_k$();
+    builder_5.put_mrde5n_k$('riepilogo', tmp$ret$265);
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder_12 = new JsonObjectBuilder();
+    put_1(builder_12, 'nei_file', uscite.get_size_woubt6_k$());
+    put_1(builder_12, 'applicate', usciteApplicate.get_size_woubt6_k$());
+    // Inline function 'kotlin.collections.map' call
+    var this_33 = uscite.get_values_ksazhn_k$();
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_33 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_33, 10));
+    var _iterator__ex2g4s_48 = this_33.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_48.hasNext_bitz1p_k$()) {
+      var item_20 = _iterator__ex2g4s_48.next_20eer_k$();
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder_13 = new JsonObjectBuilder();
+      put(builder_13, 'contrassegno', item_20.contrassegno_1);
+      put(builder_13, 'stabilimento', item_20.stabilimento_1);
+      put(builder_13, 'specie', item_20.specie_1);
+      put(builder_13, 'data', item_20.data_1);
+      put(builder_13, 'tipo', item_20.tipo_1);
+      put(builder_13, 'destinazione', item_20.destinazione_1);
+      put_0(builder_13, 'applicata', usciteApplicate.contains_aljjnj_k$(item_20.contrassegno_1));
+      var tmp$ret$277 = builder_13.build_bkh6qh_k$();
+      destination_33.add_utx5q5_k$(tmp$ret$277);
+    }
+    builder_12.put_mrde5n_k$('capi', new JsonArray(destination_33));
+    var tmp$ret$273 = builder_12.build_bkh6qh_k$();
+    builder_5.put_mrde5n_k$('uscite_modello', tmp$ret$273);
     put(builder_5, 'numerazione_csv', csv);
     put_1(builder_5, 'eventi', tutti.get_size_woubt6_k$());
     put(builder_5, 'feed', feed);
@@ -81993,8 +83654,8 @@ if (typeof String.prototype.startsWith === 'undefined') {
     put(builder_5, 'nome_file', CreazioneSito_getInstance().nomeFile_eolwl9_k$(principale, creatoIl));
     builder_5.put_mrde5n_k$('manifesto', manifesto_0);
     builder_5.put_mrde5n_k$('files', files);
-    var tmp$ret$181 = builder_5.build_bkh6qh_k$();
-    return new JsonObject(plus_4(base, tmp$ret$181));
+    var tmp$ret$215 = builder_5.build_bkh6qh_k$();
+    return new JsonObject(plus_4(base, tmp$ret$215));
   };
   var CreazioneSito_instance;
   function CreazioneSito_getInstance() {
@@ -82473,19 +84134,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
       new MaterialeCampo();
     return MaterialeCampo_instance;
   }
-  function sam$kotlin_Comparator$0_22(function_0) {
+  function sam$kotlin_Comparator$0_23(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_22).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_23).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_22).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_23).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_22).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_23).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_22).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_23).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -82500,7 +84161,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_22).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_23).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function NumerazioneStampe$prepara$lambda$lambda($p, $specie, $s, $mesi) {
@@ -82803,7 +84464,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
           // Inline function 'kotlin.collections.sortedBy' call
           // Inline function 'kotlin.comparisons.compareBy' call
           var tmp_2 = NumerazioneStampe$preparaFinale$lambda$lambda;
-          var tmp$ret$16 = new sam$kotlin_Comparator$0_22(tmp_2);
+          var tmp$ret$16 = new sam$kotlin_Comparator$0_23(tmp_2);
           var ordinati = sortedWith(numeri, tmp$ret$16);
           var tmp_3 = first(ordinati).provetta_1;
           var tmp$ret$13 = to(tmp_3, joinToString_0(ordinati, ', ', VOID, VOID, VOID, VOID, NumerazioneStampe$preparaFinale$lambda$lambda_0(element)));
@@ -82859,6 +84520,187 @@ if (typeof String.prototype.startsWith === 'undefined') {
   };
   function _get_verificaBdn__2s6u30($this) {
     return AnagrafeBdn_instance.risultati_7533y7_k$($this.s_1.eventi_1);
+  }
+  function Foto_0(assenti, voci, capi) {
+    this.assenti_1 = assenti;
+    this.voci_1 = voci;
+    this.capi_1 = capi;
+  }
+  function foto($this) {
+    var a = $this.s_1.attuali_b5qj86_k$();
+    var righe = $this.s_1.righe_1sls7h_k$();
+    var scelte = Soluzioni_instance.di_4dh1u9_k$($this.s_1.eventi_1);
+    var tmp0 = NonTrovati_instance.di_tjhwu7_k$(a, righe, a.impostazioni_1.etaDiagnosticaMesi_1);
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination = LinkedHashSet_init_$Create$();
+    var _iterator__ex2g4s = tmp0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s.next_20eer_k$();
+      var tmp$ret$1 = item.contrassegno_1;
+      destination.add_utx5q5_k$(tmp$ret$1);
+    }
+    var tmp = destination;
+    var tmp2_filter_this = Banco_getInstance();
+    // Inline function 'kotlin.collections.filter' call
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination_0 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_0 = righe.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s_0.next_20eer_k$();
+      if (tmp2_filter_this.nelBanco_t8qvla_k$(element)) {
+        destination_0.add_utx5q5_k$(element);
+      }
+    }
+    // Inline function 'kotlin.collections.associate' call
+    var capacity = coerceAtLeast(mapCapacity(collectionSizeOrDefault(destination_0, 10)), 16);
+    // Inline function 'kotlin.collections.associateTo' call
+    var destination_1 = LinkedHashMap_init_$Create$_0(capacity);
+    var _iterator__ex2g4s_1 = destination_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
+      var element_0 = _iterator__ex2g4s_1.next_20eer_k$();
+      // Inline function 'kotlin.collections.plusAssign' call
+      var pair = to(element_0.uid_1, Banco_getInstance().voce_cxeo19_k$(element_0, scelte));
+      destination_1.put_4fpzoq_k$(pair.first_1, pair.second_1);
+    }
+    return new Foto_0(tmp, destination_1, a.pacchetto_1.registri_1.pecore_1.get_size_woubt6_k$() + a.pacchetto_1.registri_1.capre_1.get_size_woubt6_k$() | 0);
+  }
+  function cambi($this, prima, dopo) {
+    // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+    var builder = new JsonObjectBuilder();
+    put_1(builder, 'assenti_prima', prima.assenti_1.get_size_woubt6_k$());
+    put_1(builder, 'assenti_dopo', dopo.assenti_1.get_size_woubt6_k$());
+    // Inline function 'kotlin.collections.map' call
+    var this_0 = minus_0(prima.assenti_1, dopo.assenti_1);
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
+    var _iterator__ex2g4s = this_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s.next_20eer_k$();
+      var tmp$ret$4 = JsonPrimitive_1(item);
+      destination.add_utx5q5_k$(tmp$ret$4);
+    }
+    builder.put_mrde5n_k$('non_piu_assenti', new JsonArray(destination));
+    // Inline function 'kotlin.collections.map' call
+    var this_1 = minus_0(dopo.assenti_1, prima.assenti_1);
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_1, 10));
+    var _iterator__ex2g4s_0 = this_1.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var item_0 = _iterator__ex2g4s_0.next_20eer_k$();
+      var tmp$ret$7 = JsonPrimitive_1(item_0);
+      destination_0.add_utx5q5_k$(tmp$ret$7);
+    }
+    builder.put_mrde5n_k$('nuovi_assenti', new JsonArray(destination_0));
+    put_1(builder, 'capi_aggiunti', coerceAtLeast(dopo.capi_1 - prima.capi_1 | 0, 0));
+    // Inline function 'kotlin.collections.filter' call
+    var tmp0 = dopo.voci_1.get_values_ksazhn_k$();
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination_1 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_1 = tmp0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s_1.next_20eer_k$();
+      var tmp0_0 = prima.voci_1;
+      // Inline function 'kotlin.collections.contains' call
+      // Inline function 'kotlin.collections.containsKey' call
+      var key = element.uid_1;
+      if (!(isInterface(tmp0_0, KtMap) ? tmp0_0 : THROW_CCE()).containsKey_aw81wo_k$(key)) {
+        destination_1.add_utx5q5_k$(element);
+      }
+    }
+    // Inline function 'kotlin.collections.map' call
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_2 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_1, 10));
+    var _iterator__ex2g4s_2 = destination_1.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
+      var item_1 = _iterator__ex2g4s_2.next_20eer_k$();
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder_0 = new JsonObjectBuilder();
+      put(builder_0, 'etichetta', cambi$et(item_1));
+      put(builder_0, 'dopo', cambi$descr(item_1));
+      var tmp$ret$15 = builder_0.build_bkh6qh_k$();
+      destination_2.add_utx5q5_k$(tmp$ret$15);
+    }
+    builder.put_mrde5n_k$('entrate', new JsonArray(destination_2));
+    // Inline function 'kotlin.collections.filter' call
+    var tmp0_1 = prima.voci_1.get_values_ksazhn_k$();
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination_3 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_3 = tmp0_1.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
+      var element_0 = _iterator__ex2g4s_3.next_20eer_k$();
+      var tmp0_2 = dopo.voci_1;
+      // Inline function 'kotlin.collections.contains' call
+      // Inline function 'kotlin.collections.containsKey' call
+      var key_0 = element_0.uid_1;
+      if (!(isInterface(tmp0_2, KtMap) ? tmp0_2 : THROW_CCE()).containsKey_aw81wo_k$(key_0)) {
+        destination_3.add_utx5q5_k$(element_0);
+      }
+    }
+    // Inline function 'kotlin.collections.map' call
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_4 = ArrayList_init_$Create$_0(collectionSizeOrDefault(destination_3, 10));
+    var _iterator__ex2g4s_4 = destination_3.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_4.hasNext_bitz1p_k$()) {
+      var item_2 = _iterator__ex2g4s_4.next_20eer_k$();
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder_1 = new JsonObjectBuilder();
+      put(builder_1, 'etichetta', cambi$et(item_2));
+      put(builder_1, 'prima', cambi$descr(item_2));
+      var tmp$ret$25 = builder_1.build_bkh6qh_k$();
+      destination_4.add_utx5q5_k$(tmp$ret$25);
+    }
+    builder.put_mrde5n_k$('uscite', new JsonArray(destination_4));
+    // Inline function 'kotlin.collections.mapNotNull' call
+    var tmp0_3 = dopo.voci_1.get_values_ksazhn_k$();
+    // Inline function 'kotlin.collections.mapNotNullTo' call
+    var destination_5 = ArrayList_init_$Create$();
+    // Inline function 'kotlin.collections.forEach' call
+    var _iterator__ex2g4s_5 = tmp0_3.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_5.hasNext_bitz1p_k$()) {
+      var element_1 = _iterator__ex2g4s_5.next_20eer_k$();
+      var tmp$ret$32;
+      $l$block: {
+        var tmp0_elvis_lhs = prima.voci_1.get_wei43m_k$(element_1.uid_1);
+        var tmp;
+        if (tmp0_elvis_lhs == null) {
+          tmp$ret$32 = null;
+          break $l$block;
+        } else {
+          tmp = tmp0_elvis_lhs;
+        }
+        var p = tmp;
+        var tmp_0;
+        if (p.tipo_1.equals(element_1.tipo_1) && p.stato_1.equals(element_1.stato_1) && p.esito_1 === element_1.esito_1 && p.capo_1 === element_1.capo_1) {
+          tmp_0 = null;
+        } else {
+          // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+          var builder_2 = new JsonObjectBuilder();
+          put(builder_2, 'etichetta', cambi$et(element_1));
+          put(builder_2, 'prima', cambi$descr(p));
+          put(builder_2, 'dopo', cambi$descr(element_1));
+          var tmp_1;
+          // Inline function 'kotlin.text.isNotBlank' call
+          var this_2 = p.capo_1;
+          if (!isBlank(this_2)) {
+            tmp_1 = isBlank(element_1.capo_1);
+          } else {
+            tmp_1 = false;
+          }
+          put_0(builder_2, 'attribuzione_caduta', tmp_1);
+          tmp_0 = builder_2.build_bkh6qh_k$();
+        }
+        tmp$ret$32 = tmp_0;
+      }
+      var tmp0_safe_receiver = tmp$ret$32;
+      if (tmp0_safe_receiver == null)
+        null;
+      else {
+        // Inline function 'kotlin.let' call
+        destination_5.add_utx5q5_k$(tmp0_safe_receiver);
+      }
+    }
+    builder.put_mrde5n_k$('cambiate', new JsonArray(destination_5));
+    return builder.build_bkh6qh_k$();
   }
   function diagnosiJson($this, contrassegno, specie, r) {
     var codice = FormatoContrassegno_getInstance().normalizza_nonmor_k$(contrassegno);
@@ -82955,6 +84797,12 @@ if (typeof String.prototype.startsWith === 'undefined') {
     put(builder, 'fase', v.fase_1.codice_1);
     return builder.build_bkh6qh_k$();
   }
+  function cambi$et(v) {
+    return substringBefore(v.etichetta_1, _Char___init__impl__6a9atx(32));
+  }
+  function cambi$descr(v) {
+    return v.tipo_1.titolo_1 + ' \xB7 ' + v.esito_1;
+  }
   function BancoSito(s) {
     this.s_1 = s;
   }
@@ -83008,6 +84856,88 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return (new JsonArray(destination)).toString();
   };
+  protoOf(BancoSito).interroga = function (query) {
+    // Inline function 'kotlin.collections.map' call
+    var this_0 = Interrogazione_instance.cerca$default_n2029q_k$(query, this.s_1.righe_1sls7h_k$(), this.s_1.attuali_b5qj86_k$(), this.s_1.eventi_1);
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
+    var _iterator__ex2g4s = this_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s.next_20eer_k$();
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder = new JsonObjectBuilder();
+      put(builder, 'contrassegno', item.contrassegno_1);
+      put(builder, 'specie', item.specie_1);
+      put(builder, 'stabilimento', item.stabilimento_1);
+      put(builder, 'sesso', item.sesso_1);
+      put(builder, 'razza', item.razza_1);
+      put(builder, 'nascita', item.nascita_1);
+      put(builder, 'stato', item.stato_1);
+      put(builder, 'descrizione', item.descrizione_1);
+      var tmp0_safe_receiver = item.numeroAssegnato_1;
+      var tmp;
+      if (tmp0_safe_receiver == null) {
+        tmp = null;
+      } else {
+        // Inline function 'kotlin.let' call
+        tmp = JsonPrimitive_0(tmp0_safe_receiver);
+      }
+      var tmp1_elvis_lhs = tmp;
+      builder.put_mrde5n_k$('numero', tmp1_elvis_lhs == null ? JsonNull_getInstance() : tmp1_elvis_lhs);
+      put(builder, 'per', item.per_1);
+      var tmp2_safe_receiver = item.uscita_1;
+      var tmp_0;
+      if (tmp2_safe_receiver == null) {
+        tmp_0 = null;
+      } else {
+        // Inline function 'kotlin.let' call
+        // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+        var builder_0 = new JsonObjectBuilder();
+        put(builder_0, 'data', tmp2_safe_receiver.data_1);
+        put(builder_0, 'tipo', tmp2_safe_receiver.tipo_1);
+        put(builder_0, 'modello', tmp2_safe_receiver.modello_1);
+        put(builder_0, 'destinazione_codice', tmp2_safe_receiver.destinazioneCodice_1);
+        put(builder_0, 'destinazione', tmp2_safe_receiver.destinazione_1);
+        tmp_0 = builder_0.build_bkh6qh_k$();
+      }
+      var tmp3_elvis_lhs = tmp_0;
+      builder.put_mrde5n_k$('uscita', tmp3_elvis_lhs == null ? JsonNull_getInstance() : tmp3_elvis_lhs);
+      // Inline function 'kotlin.collections.map' call
+      var this_1 = item.provette_1;
+      // Inline function 'kotlin.collections.mapTo' call
+      var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_1, 10));
+      var _iterator__ex2g4s_0 = this_1.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+        var item_0 = _iterator__ex2g4s_0.next_20eer_k$();
+        // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+        var builder_1 = new JsonObjectBuilder();
+        put(builder_1, 'uid', item_0.uid_1);
+        put(builder_1, 'etichetta', item_0.etichetta_1);
+        var tmp0_safe_receiver_0 = item_0.numero_1;
+        var tmp_1;
+        if (tmp0_safe_receiver_0 == null) {
+          tmp_1 = null;
+        } else {
+          // Inline function 'kotlin.let' call
+          tmp_1 = JsonPrimitive_0(tmp0_safe_receiver_0);
+        }
+        var tmp1_elvis_lhs_0 = tmp_1;
+        builder_1.put_mrde5n_k$('numero', tmp1_elvis_lhs_0 == null ? JsonNull_getInstance() : tmp1_elvis_lhs_0);
+        put(builder_1, 'stato', item_0.stato_1);
+        put(builder_1, 'operatore', item_0.operatore_1);
+        put(builder_1, 'ts', item_0.ts_1);
+        put(builder_1, 'letto_in_campo', item_0.lettoInCampo_1);
+        put(builder_1, 'capo', item_0.capo_1);
+        put(builder_1, 'serie', item_0.serie_1);
+        var tmp$ret$13 = builder_1.build_bkh6qh_k$();
+        destination_0.add_utx5q5_k$(tmp$ret$13);
+      }
+      builder.put_mrde5n_k$('provette', new JsonArray(destination_0));
+      var tmp$ret$2 = builder.build_bkh6qh_k$();
+      destination.add_utx5q5_k$(tmp$ret$2);
+    }
+    return (new JsonArray(destination)).toString();
+  };
   protoOf(BancoSito).caricaVerificaBdn = function (testo) {
     // Inline function 'kotlin.runCatching' call
     var tmp;
@@ -83018,6 +84948,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       var tmp0_elvis_lhs = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.ts_1;
       var tmp$ret$2 = tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
       var a = tmp_0.azione_icm9na_k$(testo, tmp$ret$2);
+      var prima = foto(this);
       // Inline function 'kotlin.check' call
       if (!this.s_1.applica_egrwec_k$(a, true)) {
         var tmp0_elvis_lhs_0 = this.s_1.ultimoRifiuto_1;
@@ -83028,6 +84959,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       var builder = new JsonObjectBuilder();
       put_1(builder, 'caricati', VerificaBdn_getInstance().leggi_ayxnue_k$(testo).get_size_woubt6_k$());
       put_1(builder, 'totale', _get_verificaBdn__2s6u30(this).get_size_woubt6_k$());
+      builder.put_mrde5n_k$('cambi', cambi(this, prima, foto(this)));
       // Inline function 'kotlin.Companion.success' call
       var value = builder.build_bkh6qh_k$();
       tmp = _Result___init__impl__xyqfz8(value);
@@ -83056,6 +84988,130 @@ if (typeof String.prototype.startsWith === 'undefined') {
       tmp_2 = builder_0.build_bkh6qh_k$();
     }
     return tmp_2.toString();
+  };
+  protoOf(BancoSito).caricaUsciteModello = function (testo) {
+    // Inline function 'kotlin.runCatching' call
+    var tmp;
+    try {
+      var tmp_0 = UsciteModello_getInstance();
+      var tmp0_safe_receiver = lastOrNull(this.s_1.eventi_1);
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.ts_1;
+      var tmp$ret$2 = tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
+      var a = tmp_0.azione_icm9na_k$(testo, tmp$ret$2);
+      var prima = foto(this);
+      // Inline function 'kotlin.check' call
+      if (!this.s_1.applica_egrwec_k$(a, true)) {
+        var tmp0_elvis_lhs_0 = this.s_1.ultimoRifiuto_1;
+        var message = tmp0_elvis_lhs_0 == null ? 'Uscite per modello non caricate' : tmp0_elvis_lhs_0;
+        throw IllegalStateException_init_$Create$_0(toString_1(message));
+      }
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder = new JsonObjectBuilder();
+      put_1(builder, 'caricate', UsciteModello_getInstance().uscite_7g5js8_k$(UsciteModello_getInstance().file_y21pj2_k$(testo)).get_size_woubt6_k$());
+      put_1(builder, 'totale', UsciteModello_getInstance().inVigore$default_ku6td_k$(this.s_1.eventi_1).get_size_woubt6_k$());
+      builder.put_mrde5n_k$('cambi', cambi(this, prima, foto(this)));
+      // Inline function 'kotlin.Companion.success' call
+      var value = builder.build_bkh6qh_k$();
+      tmp = _Result___init__impl__xyqfz8(value);
+    } catch ($p) {
+      var tmp_1;
+      if ($p instanceof Error) {
+        var e = $p;
+        // Inline function 'kotlin.Companion.failure' call
+        tmp_1 = _Result___init__impl__xyqfz8(createFailure(e));
+      } else {
+        throw $p;
+      }
+      tmp = tmp_1;
+    }
+    // Inline function 'kotlin.getOrElse' call
+    var this_0 = tmp;
+    var exception = Result__exceptionOrNull_impl_p6xea9(this_0);
+    var tmp_2;
+    if (exception == null) {
+      tmp_2 = _Result___get_value__impl__bjfvqg(this_0);
+    } else {
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder_0 = new JsonObjectBuilder();
+      var tmp0_elvis_lhs_1 = exception.message;
+      put(builder_0, 'errore', tmp0_elvis_lhs_1 == null ? 'file non leggibile' : tmp0_elvis_lhs_1);
+      tmp_2 = builder_0.build_bkh6qh_k$();
+    }
+    return tmp_2.toString();
+  };
+  protoOf(BancoSito).usciteModello = function () {
+    // Inline function 'kotlin.collections.filter' call
+    var tmp0 = this.s_1.righe_1sls7h_k$();
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination = ArrayList_init_$Create$();
+    var _iterator__ex2g4s = tmp0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      if (!element.annullata_1) {
+        destination.add_utx5q5_k$(element);
+      }
+    }
+    var righe = destination;
+    // Inline function 'kotlin.let' call
+    var p = this.s_1.attuali_b5qj86_k$().pacchetto_1;
+    // Inline function 'kotlin.collections.map' call
+    var this_0 = plus(p.registri_1.pecore_1, p.registri_1.capre_1);
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_0 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
+    var _iterator__ex2g4s_0 = this_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s_0.next_20eer_k$();
+      var tmp$ret$7 = FormatoContrassegno_getInstance().normalizza_nonmor_k$(item.contrassegno_1);
+      destination_0.add_utx5q5_k$(tmp$ret$7);
+    }
+    var registri = toSet_0(destination_0);
+    // Inline function 'kotlin.collections.map' call
+    var this_1 = UsciteModello_getInstance().inVigore$default_ku6td_k$(this.s_1.eventi_1).get_values_ksazhn_k$();
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_1 = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_1, 10));
+    var _iterator__ex2g4s_1 = this_1.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
+      var item_0 = _iterator__ex2g4s_1.next_20eer_k$();
+      var tmp$ret$11;
+      $l$block: {
+        // Inline function 'kotlin.collections.firstOrNull' call
+        var _iterator__ex2g4s_2 = righe.iterator_jk1svi_k$();
+        while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
+          var element_0 = _iterator__ex2g4s_2.next_20eer_k$();
+          var tmp = FormatoContrassegno_getInstance();
+          // Inline function 'kotlin.text.orEmpty' call
+          var tmp0_elvis_lhs = element_0.contrassegno_1;
+          var tmp$ret$13 = tmp0_elvis_lhs == null ? '' : tmp0_elvis_lhs;
+          if (tmp.normalizza_nonmor_k$(tmp$ret$13) === item_0.contrassegno_1) {
+            tmp$ret$11 = element_0;
+            break $l$block;
+          }
+        }
+        tmp$ret$11 = null;
+      }
+      var r = tmp$ret$11;
+      // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+      var builder = new JsonObjectBuilder();
+      put(builder, 'contrassegno', item_0.contrassegno_1);
+      put(builder, 'stabilimento', item_0.stabilimento_1);
+      put(builder, 'specie', item_0.specie_1);
+      put(builder, 'data', item_0.data_1);
+      put(builder, 'tipo', item_0.tipo_1);
+      put(builder, 'modello', item_0.modello_1);
+      put(builder, 'destinazione', item_0.destinazione_1);
+      put(builder, 'destinazione_codice', item_0.destinazioneCodice_1);
+      put(builder, 'testo', item_0.get_testo_iz0id0_k$());
+      put_0(builder, 'prelevato', !(r == null));
+      // Inline function 'kotlin.text.orEmpty' call
+      var tmp0_elvis_lhs_0 = r == null ? null : r.etichetta_1;
+      var tmp$ret$16 = tmp0_elvis_lhs_0 == null ? '' : tmp0_elvis_lhs_0;
+      put(builder, 'etichetta', tmp$ret$16);
+      put_0(builder, 'nei_registri', registri.contains_aljjnj_k$(item_0.contrassegno_1));
+      var tmp$ret$10 = builder.build_bkh6qh_k$();
+      destination_1.add_utx5q5_k$(tmp$ret$10);
+    }
+    return (new JsonArray(destination_1)).toString();
   };
   protoOf(BancoSito).verificheBdn = function () {
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
@@ -83925,7 +85981,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var this_5 = toList_1(destination_2);
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp_10 = riconciliaBackupSito$lambda;
-    var tmp$ret$26 = new sam$kotlin_Comparator$0_24(tmp_10);
+    var tmp$ret$26 = new sam$kotlin_Comparator$0_25(tmp_10);
     // Inline function 'kotlin.collections.forEach' call
     var _iterator__ex2g4s_3 = sortedWith(this_5, tmp$ret$26).iterator_jk1svi_k$();
     while (_iterator__ex2g4s_3.hasNext_bitz1p_k$()) {
@@ -83936,7 +85992,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       // Inline function 'kotlin.collections.sortedBy' call
       // Inline function 'kotlin.comparisons.compareBy' call
       var tmp_12 = riconciliaBackupSito$lambda_0;
-      var tmp$ret$30 = new sam$kotlin_Comparator$0_24(tmp_12);
+      var tmp$ret$30 = new sam$kotlin_Comparator$0_25(tmp_12);
       var tmp_13 = sortedWith(ev_0, tmp$ret$30);
       put(builder, tmp_11, joinToString_0(tmp_13, '', VOID, VOID, VOID, VOID, riconciliaBackupSito$lambda_1));
     }
@@ -85057,19 +87113,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
     getPropertyCallableRef('backupBase', 1, tmp, SessioneSito$_get_backupBase_$ref_4y65d7(), null);
     return tmp0.get_value_j01efc_k$();
   }
-  function sam$kotlin_Comparator$0_23(function_0) {
+  function sam$kotlin_Comparator$0_24(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_23).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_24).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_23).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_24).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_23).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_24).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_23).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_24).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -85084,7 +87140,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_23).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_24).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function SessioneSito$statisticheCampo$delegate$lambda(this$0) {
@@ -85333,7 +87389,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       var this_0 = toList_1(destination_1);
       // Inline function 'kotlin.comparisons.compareBy' call
       var tmp_7 = SessioneSito$backupBase$delegate$lambda$lambda_3;
-      var tmp$ret$26 = new sam$kotlin_Comparator$0_23(tmp_7);
+      var tmp$ret$26 = new sam$kotlin_Comparator$0_24(tmp_7);
       // Inline function 'kotlin.collections.forEach' call
       var _iterator__ex2g4s_2 = sortedWith(this_0, tmp$ret$26).iterator_jk1svi_k$();
       while (_iterator__ex2g4s_2.hasNext_bitz1p_k$()) {
@@ -85344,7 +87400,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
         // Inline function 'kotlin.collections.sortedBy' call
         // Inline function 'kotlin.comparisons.compareBy' call
         var tmp_9 = SessioneSito$backupBase$delegate$lambda$lambda_4;
-        var tmp$ret$30 = new sam$kotlin_Comparator$0_23(tmp_9);
+        var tmp$ret$30 = new sam$kotlin_Comparator$0_24(tmp_9);
         var tmp_10 = sortedWith(ev_0, tmp$ret$30);
         put(builder, tmp_8, joinToString_0(tmp_10, '', VOID, VOID, VOID, VOID, SessioneSito$backupBase$delegate$lambda$lambda_5));
       }
@@ -85530,7 +87586,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
       var feed = this.feedRegia_1;
       var r = this.reg_1;
       var tmp0_subject = testo_11(azione, 'tipo');
-      if (tmp0_subject === 'riordino' || tmp0_subject === 'anagrafe_bdn') {
+      if (tmp0_subject === 'riordino' || (tmp0_subject === 'anagrafe_bdn' || tmp0_subject === 'uscite_modello')) {
         var tmp0_0 = motoreRiordinoSito;
         var tmp$ret$12;
         $l$block_1: {
@@ -87349,19 +89405,19 @@ if (typeof String.prototype.startsWith === 'undefined') {
     builder.put_mrde5n_k$('backupFiles', backupFiles);
     return builder.build_bkh6qh_k$();
   };
-  function sam$kotlin_Comparator$0_24(function_0) {
+  function sam$kotlin_Comparator$0_25(function_0) {
     this.function_1 = function_0;
   }
-  protoOf(sam$kotlin_Comparator$0_24).compare_bczr_k$ = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_25).compare_bczr_k$ = function (a, b) {
     return this.function_1(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_24).compare = function (a, b) {
+  protoOf(sam$kotlin_Comparator$0_25).compare = function (a, b) {
     return this.compare_bczr_k$(a, b);
   };
-  protoOf(sam$kotlin_Comparator$0_24).getFunctionDelegate_jtodtf_k$ = function () {
+  protoOf(sam$kotlin_Comparator$0_25).getFunctionDelegate_jtodtf_k$ = function () {
     return this.function_1;
   };
-  protoOf(sam$kotlin_Comparator$0_24).equals = function (other) {
+  protoOf(sam$kotlin_Comparator$0_25).equals = function (other) {
     var tmp;
     if (!(other == null) ? isInterface(other, Comparator) : false) {
       var tmp_0;
@@ -87376,7 +89432,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
     }
     return tmp;
   };
-  protoOf(sam$kotlin_Comparator$0_24).hashCode = function () {
+  protoOf(sam$kotlin_Comparator$0_25).hashCode = function () {
     return hashCode_0(this.getFunctionDelegate_jtodtf_k$());
   };
   function riconciliaBackupSito$lambda(a, b) {
@@ -87535,6 +89591,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   Companion_instance_41 = new Companion_41();
   SessioneNome_instance = new SessioneNome();
   Companion_instance_44 = new Companion_44();
+  Interrogazione_instance = new Interrogazione();
   NomeSeduta_instance = new NomeSeduta();
   NonIdentificati_instance = new NonIdentificati();
   SottoEta_instance = new SottoEta();

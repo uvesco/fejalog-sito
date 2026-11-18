@@ -41,7 +41,12 @@ return {
       daVerificareBdn: function (tutte) { return JSON.parse(b.daVerificareBdn(!!tutte)); },
       caricaVerificaBdn: function (testo) { return JSON.parse(b.caricaVerificaBdn(String(testo || ''))); },
       avvisoFormato: function (codice) { return b.avvisoFormato(String(codice || '')) || null; },
-      verificheBdn: function () { return JSON.parse(b.verificheBdn()); }
+      verificheBdn: function () { return JSON.parse(b.verificheBdn()); },
+      /* Uscite per modello degli ultimi 7 giorni (2026-11-18): la BDN si aggiorna fino a 7 giorni dopo il modello. */
+      caricaUsciteModello: function (testo) { return JSON.parse(b.caricaUsciteModello(String(testo || ''))); },
+      usciteModello: function () { return JSON.parse(b.usciteModello()); },
+      /* Interrogazione (2026-11-18): per contrassegno con le provette collegate, o per provetta col contrassegno collegato. */
+      interroga: function (query) { return JSON.parse(b.interroga(String(query || ''))); }
     };
   },
   cercaPlateau: function (celle, query) { return JSON.parse(api.cercaPlateauSito(json(celle), String(query || ''))); },

@@ -12,6 +12,27 @@ per ARVET.
     resta al veterinario, che valuta la situazione complessiva. Ogni scelta si può cambiare o annullare dalla
     **Cronologia**, in fondo alla scheda.
 
+## Prima di toccare le provette: analisi e logica
+
+La scheda si apre su **«1 · Analisi e logica»**, in tre parti:
+
+1. **Analisi**: quante provette fuori registro ci sono per ogni fattispecie, che cosa propone il sito per ciascuna, quanti capi
+   sono assenti e quanti buchi ci sono da chiudere; dice anche se le uscite per modello dell'ultima settimana sono caricate.
+2. **Logica**: le regole con cui il sito propone (decide sempre il veterinario; un capo assente per una sola provetta; nei
+   doppi si segue il secondo animale prelevato; prima si decide, poi si spostano le provette; i buchi si chiudono sempre).
+3. **Esecuzione**: l'ordine delle fasi qui sotto, coi numeri di ognuna.
+
+!!! danger "Come si riscrive un numero"
+    **Non cancellare e non coprire mai il numero scritto in campo**: tiraci sopra una riga sola e scrivi il numero nuovo
+    accanto, **con la biro rossa**. L'originale deve restare leggibile: è la seconda copia, quella che permette di ricostruire
+    di chi è la provetta anche senza il computer.
+
+In testa alla scheda c'è sempre **«Cerca un capo o una provetta»**: scrivendo le cifre del contrassegno si vedono le sue
+provette; scrivendo la scritta o il numero di una provetta si vede il capo. Per ogni provetta dice **dove si trova adesso**
+(plateau e pozzetto, secondo gli spostamenti registrati) e permette di registrare subito uno **spostamento** o un
+**abbinamento a un altro capo**: sono azioni come le altre, nella cronologia, con «Annulla». Un capo uscito con un documento
+di accompagnamento non ancora nel registro si legge «Uscito il … verso … con documento …», col numero copiabile.
+
 ## L'ordine di lavoro
 
 | Fase | Che cosa si fa |
@@ -24,6 +45,15 @@ per ARVET.
 
 Le fasi si fanno in quest'ordine perché i posti dipendono dalle decisioni: prima si decide di chi è ogni provetta, poi si
 toccano i plateau, così ogni provetta si prende in mano una volta sola.
+
+## Prima di cominciare: le uscite dell'ultima settimana
+
+La BDN si aggiorna **fino a 7 giorni dopo il modello di accompagnamento**: un capo mandato via da pochi giorni può risultare
+ancora presente. Per non attribuire la provetta di un animale senza marche (o di un doppio) a un capo che non c'è più, nella
+scheda **Carica** si caricano le **uscite per modello degli ultimi 7 giorni** di ogni stabilimento (le estrae uno snippet
+dalla sezione Movimentazioni della BDN: il registro di stalla non è ancora aggiornato). Quei capi non sono più proposti come assenti compatibili, non compaiono fra gli assenti rimasti e il report per
+l'allevatore li elenca a parte. Meglio farlo prima della Sistemazione, o già nella preparazione. Se lo snippet non funziona, le stesse
+righe si copiano a mano dalla BDN nel [modello da compilare](../strumenti/modelli-da-compilare.md).
 
 ## Le fattispecie
 

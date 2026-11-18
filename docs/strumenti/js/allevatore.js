@@ -46,6 +46,10 @@ function crea(opz) {
   var mie = provette.filter(function (p) { return p.stabilimento === stab; });
   var mieVoci = (opz.voci || []).filter(function (v) { return v.stabilimento === stab; });
   var assenti = (opz.assenti || []).filter(function (a) { return a.stabilimento === stab; });
+  /* Usciti con modello negli ultimi 7 giorni (utente, 2026-11-18): la BDN non li aveva ancora aggiornati. Non sono né presenti né
+     assenti; se gli era stata attribuita la provetta di un altro animale l'attribuzione va rivista e per loro non si ordinano marche. */
+  var perModello = {}; (opz.usciteModello || []).forEach(function (u) { if (u.stabilimento === stab) perModello[maiusc(u.contrassegno)] = u; });
+  function uscito(c) { return perModello[maiusc(c)] || null; }
   var arvet = {};
   ['pecore', 'capre'].forEach(function (sp) {
     var r = opz.arvet && opz.arvet[sp]; if (!r || !r.length) return;
@@ -78,7 +82,7 @@ function crea(opz) {
   }
 
   var sez = [], specie = ['pecore', 'capre'].filter(function (sp) { return mie.some(function (p) { return p.specie === sp; }) || assenti.some(function (a) { return a.specie === sp; }); });
-  function nonConsiderato(a) { return !inArvet(a.specie, a.contrassegno); }
+  function nonConsiderato(a) { return !inArvet(a.specie, a.contrassegno) && !uscito(a.contrassegno); }
 
   // 1. riepilogo
   var riep = specie.map(function (sp) {
@@ -101,6 +105,8 @@ function crea(opz) {
     attribuiti.push({ 'Capo del registro': k, Specie: SP[sp], Sesso: a.sesso, Razza: a.razza, Nascita: a.nascita,
       'Animale prelevato al suo posto': pre.attribuzioneManuale || 'Attribuzione fatta in ufficio: animale da precisare (DA CONFERMARE)' });
   }); });
+  var attribuitiAUsciti = attribuiti.filter(function (a) { return uscito(a['Capo del registro']); });
+  attribuiti = attribuiti.filter(function (a) { return !uscito(a['Capo del registro']); });
   sez.push({ titolo: 'Capi del registro non trovati con le loro marche, considerati presenti',
     nota: 'Per ognuno di questi capi è stato inviato al laboratorio il sangue di un animale presente e compatibile (specie, sesso, età, razza), trovato senza marche o con una marca che non poteva essere la sua. L’animale si riconosce dalla sigla scritta in campo.',
     colonne: ['Capo del registro', 'Specie', 'Sesso', 'Razza', 'Nascita', 'Animale prelevato al suo posto'], righe: attribuiti });
@@ -175,6 +181,16 @@ function crea(opz) {
   var fuori = mieVoci.filter(function (v) { return v.tipo === 'FUORI_ETA'; }).map(function (v) { var d = dati(v.uid); return { Capo: maiusc(d.contrassegno), Specie: SP[v.specie], Sesso: d.sesso || '', Nascita: d.data_nascita || '' }; });
   sez.push({ titolo: 'Animali prelevati sotto l’età diagnostica', nota: '', colonne: ['Capo', 'Specie', 'Sesso', 'Nascita'], righe: fuori });
 
+  // 11. usciti con modello negli ultimi 7 giorni (in fondo: gli elenchi di prima tengono il loro numero)
+  var uscitiModello = Object.keys(perModello).sort().map(function (k) {
+    var u = perModello[k], att = attribuitiAUsciti.filter(function (a) { return a['Capo del registro'] === k; })[0];
+    return { Capo: k, Specie: SP[u.specie] || u.specie, 'Data del modello': u.data, Uscita: (u.tipo || '') + (u.destinazione ? ' · ' + u.destinazione : ''),
+      Nota: att ? 'Gli era stato attribuito il sangue di un altro animale (' + att['Animale prelevato al suo posto'] + '): attribuzione da rivedere; per questo capo non si ordinano marche'
+        : u.prelevato ? 'Risulta una provetta a suo nome (' + String(u.etichetta || '').split(' ')[0] + '): da verificare' : '' };
+  });
+  sez.push({ titolo: 'Capi usciti con un documento di accompagnamento nei giorni prima del risanamento', nota: 'Il registro di stalla della BDN non era ancora aggiornato (lo è entro 7 giorni dal modello): questi capi non sono considerati né presenti né assenti e per loro non si ordinano marche.',
+    colonne: ['Capo', 'Specie', 'Data del modello', 'Uscita', 'Nota'], righe: uscitiModello });
+
   // appendice per l'ufficio
   var note = pre.note || {};
   var app = mieVoci.map(function (v) {
@@ -221,6 +237,12 @@ function narrativa(z, DATA) {
   if (n(8)) P.push('<strong>Capi non prelevati.</strong> ' + quanti(n(8), 'Un capo presente in BDN non è stato trovato e non risulta controllato', 'capi presenti in BDN non sono stati trovati e non risultano controllati') +
     '. Va verificato se sono ancora nello stabilimento; se non ci sono più, la loro uscita va registrata in BDN (elenco 9).');
   if (n(9)) P.push('<strong>Animali giovani.</strong> ' + quanti(n(9), 'Un animale è stato prelevato', 'animali sono stati prelevati') + ' anche se sotto l’età prevista per il controllo (elenco 10).');
+  if (z[10] && n(10)) {
+    var daRivedere = z[10].righe.filter(function (r) { return /attribuzione da rivedere/.test(r.Nota || ''); }).length;
+    P.push('<strong>Capi usciti nei giorni prima.</strong> ' + quanti(n(10), 'Un capo risulta uscito', 'capi risultano usciti') +
+      ' con un documento di accompagnamento nei giorni prima del risanamento, quando il registro non era ancora aggiornato: non sono considerati mancanti e per loro non vanno ordinate marche' +
+      (daRivedere ? '; per ' + quanti(daRivedere, 'uno di loro', 'di loro') + ' l’attribuzione fatta va rivista dal Servizio veterinario' : '') + ' (elenco 11).');
+  }
   if (P.length === 1) P.push('Non è stata riscontrata nessuna situazione da segnalare.');
   P.push('Queste situazioni saranno valutate dal Servizio veterinario, a cui può rivolgersi per ogni chiarimento.');
   return '<section class="breve"><h2>In breve</h2>' + P.map(function (x) { return '<p>' + x + '</p>'; }).join('') + '</section><h2 class="elenchi">Elenchi, capo per capo</h2>';
