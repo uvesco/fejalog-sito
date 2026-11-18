@@ -2349,11 +2349,12 @@ function aggiornaBarra() {
    buchi»: i numeri più alti scendono nei buchi. Il sito propone, decide il veterinario; ogni scelta si annulla dalla
    cronologia. */
 var sistUI = { fase: null, inMano: '' };
-var FASI = [['analisi', '1 · Analisi e logica'], ['smista', '0 · Smista'], ['identita', 'A · Di chi è?'], ['posto', 'B · Al loro posto'], ['fondo', 'C · In fondo'], ['buchi', 'D · Chiudi i buchi'], ['fine', 'Fine']];
+var FASI = [['analisi', '1 · Analisi e logica'], ['smista', '0 · Smista'], ['identita', 'A · Di chi è?'], ['posto', 'B · Al loro posto'], ['fondo', 'C · In fondo'], ['buchi', 'D · Chiudi i buchi'], ['tabella', 'Tutte in tabella'], ['fine', 'Fine']];
 /* Come si riscrive un numero su una provetta (utente, 2026-11-18): l'originale deve restare sempre leggibile. */
 var REGOLA_SCRITTA = 'Non cancellare e non coprire mai il numero scritto in campo: tiraci sopra una riga sola e scrivi il numero nuovo accanto, con la biro rossa. L’originale deve restare leggibile.';
 var GUIDA_FASE = {
   analisi: 'Prima di toccare le provette: che cosa c’è da sistemare (analisi delle fattispecie), con quali regole (logica) e in che ordine (esecuzione). Il sito propone e spiega; decide sempre il veterinario, e ogni scelta si può annullare dalla cronologia.',
+  tabella: 'Tutte le provette fuori registro in una tabella: clicca un’intestazione per ordinare (anche per posto), filtra per testo, fattispecie o stato, clicca una riga per aprire la scheda con la scelta consigliata e quelle manuali.',
   smista: 'Prima di decidere, svuota il secchio una volta sola: ogni provetta fuori registro ha un posto fisso nel plateau dei fuori registro (numerazione unica, uguale per tutti i veterinari), in ordine di fattispecie e di lavoro. Scrivi o leggi la provetta che hai in mano: il sito dice il posto. Poi le fasi le chiamano per posto, nell’ordine giusto, senza cercarle.',
   identita: 'Provette di animali senza marche, con una marca già letta su un altro animale, o con la marca di un capo che in BDN risulta uscito. Per ognuna guarda i capi assenti compatibili e decidi: attribuirla a uno di loro, lasciarla com’è (ARVET a mano) o toglierla. Decidi tu: la proposta è solo un aiuto.',
   posto: 'Provette che vanno in ARVET da sole. Il sito dice il numero (di solito il buco lasciato dal capo assente): riscrivilo sulla provetta, mettila lì e premi «L’ho messa lì». ' + REGOLA_SCRITTA,
@@ -2435,11 +2436,29 @@ function salvaSmista(x) { try { localStorage.setItem(chiaveSmista(), JSON.string
 function smistamento(coda, posate) {
   var x = sistUI.smista && sistUI.smistaChiave === S.P.chiave ? sistUI.smista : leggiSmista();
   sistUI.smistaChiave = S.P.chiave;
+  // I posti dati dal regista sul tablet (utente, 2026-11-18): quelle provette stanno già nel plateau dei fuori registro e non si
+  // smistano. Le rimaste nel secchio si smistano come sempre, ma dopo l'ultimo posto mai usato sul tablet: l'ordine è solo in
+  // aggiunta e si conserva, così un posto detto una volta non cambia più (revisione del 18/11, P1).
+  var dati = coda.posti_fuori_registro || {}, base = coda.prossimo_posto_fuori_registro || 0;
+  if (base > 0) {
+    var notiT = {}; x.ordine.forEach(function (u) { notiT[u] = true; });
+    var nuoveT = coda.voci.filter(function (v) { return !dati[v.uid] && !notiT[v.uid] && v.fase !== 'fuori' && !posate[v.uid]; })
+      .sort(function (a, b) { return (ORDINE_FASE[a.fase] - ORDINE_FASE[b.fase]) || (a.priorita - b.priorita) || (a.etichetta < b.etichetta ? -1 : a.etichetta > b.etichetta ? 1 : 0); });
+    if (nuoveT.length) { x = { ordine: x.ordine.concat(nuoveT.map(function (v) { return v.uid; })), fatto: false }; salvaSmista(x); }
+    var postoT = {}, ordT = [];
+    Object.keys(dati).forEach(function (u) { postoT[u] = dati[u]; });
+    x.ordine.forEach(function (u, i) { if (!dati[u]) postoT[u] = base + i; });
+    Object.keys(postoT).sort(function (a, b) { return postoT[a] - postoT[b]; }).forEach(function (u) { ordT.push(u); });
+    var senzaT = x.ordine.filter(function (u) { return !dati[u]; }).length, fattoT = !senzaT || !!x.fatto;
+    sistUI.smista = { ordine: x.ordine, fatto: fattoT }; sistUI.smistaPosti = postoT;
+    return { posto: postoT, fatto: fattoT, ordine: ordT, dalTablet: true, senzaPosto: senzaT, daSalvare: x.ordine };
+  }
   var noti = {}; x.ordine.forEach(function (u) { noti[u] = true; });
   var nuove = coda.voci.filter(function (v) { return !noti[v.uid] && v.fase !== 'fuori' && !posate[v.uid]; })
     .sort(function (a, b) { return (ORDINE_FASE[a.fase] - ORDINE_FASE[b.fase]) || (a.priorita - b.priorita) || (a.etichetta < b.etichetta ? -1 : a.etichetta > b.etichetta ? 1 : 0); });
   if (nuove.length) { x = { ordine: x.ordine.concat(nuove.map(function (v) { return v.uid; })), fatto: x.fatto }; salvaSmista(x); } else sistUI.smista = x;
   var posto = {}; x.ordine.forEach(function (u, i) { posto[u] = i + 1; });
+  sistUI.smistaPosti = posto;
   return { posto: posto, fatto: !!x.fatto, ordine: x.ordine };
 }
 function testoPosto(n) { return n == null ? '' : (n > 100 ? 'plateau ' + (Math.floor((n - 1) / 100) + 1) + ', posto ' + ((n - 1) % 100 + 1) : 'posto ' + n); }
@@ -2447,17 +2466,88 @@ function statoSistemazione() {
   var coda = S.banco.coda(), posate = {};
   (coda.posate || []).forEach(function (u) { posate[u] = true; });
   var sm = smistamento(coda, posate);
-  var perPosto = function (a, b) { return (sm.posto[a.uid] || 1e9) - (sm.posto[b.uid] || 1e9); };
+  // coi posti del tablet (ordine di consegna) si lavora un tipo di problema alla volta, e dentro il tipo per posto
+  var perPosto = function (a, b) { return (sm.dalTablet ? (a.priorita - b.priorita) || (a.titolo < b.titolo ? -1 : a.titolo > b.titolo ? 1 : 0) : 0) || ((sm.posto[a.uid] || 1e9) - (sm.posto[b.uid] || 1e9)); };
   var daDecidere = function (v) { return v.stato === 'da_decidere'; };
   return { coda: coda, posate: posate, smista: sm,
     identita: coda.voci.filter(function (v) { return daDecidere(v) && v.fase === 'identita'; }).sort(perPosto),
     posto: coda.voci.filter(function (v) { return v.fase === 'posto' && (daDecidere(v) || (v.stato === 'decisa' && !posate[v.uid])); }).sort(perPosto),
     fondo: coda.voci.filter(function (v) { return daDecidere(v) && v.fase === 'fondo'; }).sort(perPosto) };
 }
+/* La tabella dei fuori registro (utente, 2026-11-18: «una tabella delle problematiche ordinabile (anche per posizione), filtrabile e
+   cliccabile per aprire la scheda e le opzioni di gestione, consigliata e manuali»). Tutte le provette fuori registro, anche le
+   decise; l'ordine e i filtri restano mentre si lavora; la scheda si apre sotto la tabella. */
+var tabellaUI = { ordina: 'posto', verso: 1, testo: '', tipo: '', stato: '' };
+var COLONNE_TABELLA = [['posto', 'Posto'], ['scritta', 'Scritta'], ['contrassegno', 'Contrassegno'], ['titolo', 'Fattispecie'], ['fase', 'Fase'], ['consigliata', 'Scelta consigliata'], ['esito', 'Stato'], ['operatore', 'Veterinario']];
+function vistaTabella(st) {
+  var d = h('div', { id: 'fej-tabella' }), nomiFase = { identita: 'A · Di chi è?', posto: 'B · Al loro posto', fondo: 'C · In fondo', fuori: '—' };
+  var righe = st.coda.voci.map(function (v) {
+    var posto = st.smista.posto[v.uid] || 0;
+    return { v: v, posto: st.posate[v.uid] ? 1e9 : (posto || 9e8), dove: st.posate[v.uid] ? 'al suo numero' : posto ? testoPosto(posto) : 'nel secchio',
+      scritta: v.etichetta.split(' ')[0], contrassegno: v.contrassegno || 'senza contrassegno', titolo: v.titolo, priorita: v.priorita, fase: nomiFase[v.fase] || '',
+      consigliata: v.stato === 'da_decidere' ? (COSA_PROPONE[v.tipo] || 'decide il veterinario') : '—', esito: v.esito, stato: v.stato, operatore: v.operatore || '' };
+  });
+  var tipi = righe.map(function (r) { return r.titolo; }).filter(function (x, i, a) { return a.indexOf(x) === i; }).sort();
+  var q = tabellaUI.testo.trim().toUpperCase();
+  var viste = righe.filter(function (r) {
+    if (tabellaUI.tipo && r.titolo !== tabellaUI.tipo) return false;
+    if (tabellaUI.stato === 'da_decidere' && r.stato !== 'da_decidere') return false;
+    if (tabellaUI.stato === 'decise' && (r.stato === 'da_decidere' || r.stato === 'accantonata')) return false;
+    if (tabellaUI.stato === 'accantonate' && r.stato !== 'accantonata') return false;
+    return !q || [r.scritta, r.contrassegno, r.titolo, r.esito, r.operatore, r.dove].join(' ').toUpperCase().indexOf(q) >= 0;
+  });
+  var k = tabellaUI.ordina, verso = tabellaUI.verso;
+  var valore = function (r) { return k === 'posto' ? r.posto : k === 'titolo' ? r.priorita * 1e6 + r.posto : String(r[k] || '').toUpperCase(); };
+  viste.sort(function (a, b) { var x = valore(a), y = valore(b); return (x < y ? -1 : x > y ? 1 : (a.posto - b.posto) || (a.scritta < b.scritta ? -1 : 1)) * verso; });
+  function ridisegna(fuoco) { disegna(); if (fuoco) { var c = document.getElementById(fuoco); if (c) { c.focus(); if (c.setSelectionRange) c.setSelectionRange(c.value.length, c.value.length); } } }
+  var scelta = function (id, valoreAttuale, voci, quando) {
+    return h('select', { id: id, onchange: function (ev) { quando(ev.target.value); ridisegna(id); } }, voci.map(function (x) { return h('option', { value: x[0], selected: x[0] === valoreAttuale }, x[1]); }));
+  };
+  d.appendChild(h('p', { class: 'fej-tabella-filtri' },
+    h('label', null, 'Cerca: ', h('input', { type: 'search', id: 'fej-tabella-cerca', value: tabellaUI.testo, autocomplete: 'off', placeholder: 'scritta, contrassegno, fattispecie…',
+      oninput: function (ev) { tabellaUI.testo = ev.target.value; ridisegna('fej-tabella-cerca'); } })), ' ',
+    h('label', null, 'Fattispecie: ', scelta('fej-tabella-tipo', tabellaUI.tipo, [['', 'tutte']].concat(tipi.map(function (t) { return [t, t]; })), function (x) { tabellaUI.tipo = x; })), ' ',
+    h('label', null, 'Stato: ', scelta('fej-tabella-stato', tabellaUI.stato, [['', 'tutte'], ['da_decidere', 'da decidere'], ['decise', 'decise'], ['accantonate', 'accantonate']], function (x) { tabellaUI.stato = x; })), ' ',
+    h('span', { class: 'fej-tenue', id: 'fej-tabella-conto', role: 'status' }, viste.length + ' di ' + righe.length)));
+  var t = h('table', { class: 'fej-banco-dati', id: 'fej-tabella-dati' }), tr = h('tr');
+  COLONNE_TABELLA.forEach(function (c) {
+    tr.appendChild(h('th', { scope: 'col', 'aria-sort': k === c[0] ? (verso > 0 ? 'ascending' : 'descending') : 'none' },
+      h('button', { type: 'button', class: 'fej-ordina', 'data-colonna': c[0], title: 'Ordina per ' + c[1].toLowerCase(), onclick: function () {
+        if (tabellaUI.ordina === c[0]) tabellaUI.verso = -tabellaUI.verso; else { tabellaUI.ordina = c[0]; tabellaUI.verso = 1; }
+        disegna();
+      } }, c[1] + (k === c[0] ? (verso > 0 ? ' ▲' : ' ▼') : ''))));
+  });
+  t.appendChild(h('thead', null, tr));
+  var tb = h('tbody');
+  viste.forEach(function (r) {
+    var apri = function () { tabellaUI.aperta = r.v.uid; bancoUI.uid = r.v.uid; bancoUI.aperto = r.v.fase === 'identita' && r.v.stato === 'da_decidere' ? 'ricolloca' : null; bancoUI.motivo = ''; bancoUI.cifre = ''; bancoUI.nelReport = null; bancoUI.tutti = false; disegna();
+      var s = document.getElementById('fej-tabella-scheda'); if (s && s.scrollIntoView) s.scrollIntoView({ block: 'start' }); };
+    tb.appendChild(h('tr', { class: 'fej-riga-cliccabile' + (tabellaUI.aperta === r.v.uid ? ' fej-smista-trovata' : ''), 'data-uid': r.v.uid, onclick: apri },
+      h('td', null, h('strong', null, r.dove)), h('td', null, h('button', { type: 'button', class: 'fej-copia', title: 'Apri la scheda', onclick: function (ev) { ev.stopPropagation(); apri(); } }, r.scritta)),
+      h('td', null, r.contrassegno), h('td', null, r.titolo), h('td', null, r.fase), h('td', null, r.consigliata), h('td', null, r.esito), h('td', null, r.operatore)));
+  });
+  t.appendChild(tb);
+  d.appendChild(h('div', { class: 'fej-tabella-scorre' }, t));
+  if (!viste.length) d.appendChild(h('p', { class: 'fej-tenue' }, righe.length ? 'Nessuna provetta con questi filtri.' : 'Nessuna provetta fuori registro.'));
+  d.appendChild(h('p', null, h('button', { type: 'button', onclick: function () { window.print(); } }, 'Stampa la tabella')));
+  var aperta = tabellaUI.aperta && st.coda.voci.filter(function (v) { return v.uid === tabellaUI.aperta; })[0];
+  if (aperta) {
+    var box = h('div', { id: 'fej-tabella-scheda' });
+    box.appendChild(h('p', null, h('button', { type: 'button', onclick: function () { tabellaUI.aperta = null; bancoUI.uid = null; disegna(); } }, 'Chiudi la scheda')));
+    if (st.smista.posto[aperta.uid] && !st.posate[aperta.uid]) box.appendChild(h('p', { class: 'fej-prendi', id: 'fej-prendi' }, 'Prendi la provetta al ', h('strong', null, testoPosto(st.smista.posto[aperta.uid])), ' del plateau dei fuori registro: ', h('strong', null, aperta.etichetta.split(' ')[0]), '.'));
+    if (bancoUI.uid !== aperta.uid) bancoUI.uid = aperta.uid;
+    box.appendChild(schedaProvettaBanco(aperta.uid));
+    d.appendChild(box);
+  }
+  return d;
+}
 /* La tabella dello smistamento: posto, scritta, fattispecie; la provetta in mano si cerca per scritta o cifre. */
 function vistaSmista(st) {
   var d = h('div', { id: 'fej-smista' }), voci = {}; st.coda.voci.forEach(function (v) { voci[v.uid] = v; });
   var righe = st.smista.ordine.map(function (u) { return voci[u]; }).filter(function (v) { return !!v; });
+  if (st.smista.dalTablet) d.appendChild(h('p', { class: 'fej-ok', id: 'fej-smista-tablet', role: 'status' }, 'I posti li ha dati la Regia sul tablet: le provette sono già nel plateau dei fuori registro, in ordine di consegna. ' +
+    (st.smista.senzaPosto ? st.smista.senzaPosto + ' non hanno ancora un posto: mettile dopo l’ultima, ai posti indicati qui sotto. ' : 'Non c’è niente da smistare. ') + 'Le fasi le richiamano per posto, un tipo di problema alla volta.'));
+  else d.appendChild(h('p', { class: 'fej-tenue' }, 'Se il regista ha già cominciato a dare i posti sul tablet, salva da lì un backup nuovo e carica quello: i posti dati qui restano solo in questo browser, e il tablet riparte dal suo primo posto libero.'));
   var q = String(sistUI.inMano || '').replace(/\s+/g, '').toUpperCase();
   var trovate = q ? righe.filter(function (v) { var et = v.etichetta.replace(/\s+/g, '').toUpperCase(), c = String(v.contrassegno || '').toUpperCase(); return et.indexOf(q) === 0 || (c && c.slice(-q.length) === q); }) : [];
   var campo = h('input', { type: 'search', id: 'fej-smista-in-mano', value: sistUI.inMano || '', autocomplete: 'off', placeholder: 'scritta della provetta o ultime cifre',
@@ -2476,7 +2566,7 @@ function vistaSmista(st) {
   t.appendChild(tb);
   d.appendChild(h('div', { class: 'fej-tabella-scorre' }, t));
   d.appendChild(h('p', null, h('button', { type: 'button', class: 'fej-primario', id: 'fej-smista-fatto', onclick: function () {
-      salvaSmista({ ordine: st.smista.ordine, fatto: true }); sistUI.fase = null; sistUI.inMano = ''; bancoUI.uid = null; disegna();
+      salvaSmista({ ordine: st.smista.daSalvare || st.smista.ordine, fatto: true }); sistUI.fase = null; sistUI.inMano = ''; bancoUI.uid = null; disegna();
     } }, st.smista.fatto ? 'Smistate: torna alle fasi' : 'Le ho smistate tutte: comincia'), ' ',
     h('button', { type: 'button', onclick: function () { window.print(); } }, 'Stampa l’elenco')));
   return d;
@@ -2543,8 +2633,8 @@ var interrogaUI = { q: '', azione: null, valore: '' };
 function doveSiTrova(uid) {
   if (S.apVecchio || !S.ap) aggiornaRisultato();
   var p = (S.ap.posizioniAttuali || []).filter(function (x) { return x.uid === uid; })[0];
-  var sm = sistUI.smista && sistUI.smista.ordine ? sistUI.smista.ordine.indexOf(uid) + 1 : 0;
-  var contenitore = 'non è ancora al suo numero: fuori registro' + (sm ? ', al posto ' + sm + ' dello smistamento' : ', nel contenitore dei fuori registro');
+  var sm = sistUI.smistaPosti ? (sistUI.smistaPosti[uid] || 0) : 0;
+  var contenitore = 'non è ancora al suo numero: fuori registro' + (sm ? ', al ' + testoPosto(sm) + ' del plateau dei fuori registro' : ', nel contenitore dei fuori registro');
   if (!p || !p.plateau || !p.pozzetto) return p && p.vista === 'serie' ? 'non ancora posata' : contenitore;
   if (p.vista === 'serie') return 'plateau ' + p.plateau + ', pozzetto ' + p.pozzetto + ' della serie ' + p.serie.replace(':', ' ') + ' (numero ' + ((p.plateau - 1) * 100 + p.pozzetto) + ')';
   return 'plateau dei fuori registro ' + p.plateau + ', posto ' + p.pozzetto;
@@ -2647,17 +2737,18 @@ function schedaSistemazione() {
   var fase = sistUI.fase || prima;
   var barraFasi = h('div', { class: 'fej-fasi', role: 'tablist', 'aria-label': 'Fasi della sistemazione' });
   FASI.forEach(function (f) {
-    var quanti = f[0] === 'buchi' ? (prima === 'buchi' || prima === 'fine' || fase === 'buchi' ? contaBuchi() : '…') : (f[0] === 'fine' || f[0] === 'analisi') ? '' : f[0] === 'smista' ? (st.smista.fatto ? 0 : st.smista.ordine.length) : n[f[0]];
+    var quanti = f[0] === 'buchi' ? (prima === 'buchi' || prima === 'fine' || fase === 'buchi' ? contaBuchi() : '…') : (f[0] === 'fine' || f[0] === 'analisi' || f[0] === 'tabella') ? '' : f[0] === 'smista' ? (st.smista.fatto ? 0 : st.smista.ordine.length) : n[f[0]];
     barraFasi.appendChild(h('button', { type: 'button', role: 'tab', 'aria-selected': fase === f[0] ? 'true' : 'false', 'data-fase': f[0],
       class: 'fej-fase' + (fase === f[0] ? ' fej-attiva' : '') + (quanti === 0 ? ' fej-fatta' : ''), onclick: function () { sistUI.fase = f[0]; bancoUI.uid = null; disegna(); } },
       f[1], quanti === '' ? null : h('span', { class: 'fej-fase-n' }, quanti === 0 ? ' ✓' : ' ' + quanti)));
   });
   d.appendChild(barraFasi);
-  if (fase !== prima && prima !== 'fine' && fase !== 'smista' && fase !== 'analisi') d.appendChild(h('p', { class: 'fej-avviso' }, 'Prima andrebbe finita la fase «' + FASI.filter(function (f) { return f[0] === prima; })[0][1] + '»: i posti e i buchi dipendono dalle decisioni che mancano. ',
+  if (fase !== prima && prima !== 'fine' && fase !== 'smista' && fase !== 'analisi' && fase !== 'tabella') d.appendChild(h('p', { class: 'fej-avviso' }, 'Prima andrebbe finita la fase «' + FASI.filter(function (f) { return f[0] === prima; })[0][1] + '»: i posti e i buchi dipendono dalle decisioni che mancano. ',
     h('button', { type: 'button', onclick: function () { sistUI.fase = null; bancoUI.uid = null; disegna(); } }, 'Torna lì')));
   d.appendChild(h('p', { class: 'fej-guida' }, GUIDA_FASE[fase]));
   if (fase === 'analisi') d.appendChild(vistaAnalisi(st, contaBuchi));
   else if (fase === 'smista') d.appendChild(vistaSmista(st));
+  else if (fase === 'tabella') d.appendChild(vistaTabella(st));
   else if (fase === 'buchi') d.appendChild(schedaRiordino());
   else if (fase === 'fine') {
     var c = st.coda.conteggi, resto = c.da_decidere + c.accantonata;

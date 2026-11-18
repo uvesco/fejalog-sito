@@ -29,5 +29,6 @@
 
 - Le ordinarie e le provette da isolato non doppie vanno al pozzetto del loro numero nella Serie ordinaria.
 - Fuori registro, doppie e collisioni vanno nel secchio: nessun posto e nessun ordine (nei progetti fatti con il plateau dei fuori registro restano nel plateau).
+- Se preferisci, il regista può dare un posto alle fuori registro nel loro plateau, una alla volta: nella vista «Secchio» tocca la provetta che ha in mano, la mette nel primo pozzetto libero indicato e conferma «L'ho messa al …». I posti seguono l'ordine in cui le prende; le altre restano nel secchio. Non è obbligatorio e si può fare anche dopo, in gestione campioni. La sistemazione le richiama poi per posto, un tipo di problema alla volta.
 - Il posto si decide alla consegna e poi non cambia più: né per una rinomina, né per un doppio scoperto dopo, né per una nota. Una provetta annullata o persa lascia vuoto il suo pozzetto, che non si riusa; nel Riordino ogni provetta fuori registro torna alla sua serie partendo dal secchio, o dal pozzetto registrato nei progetti più vecchi.
 - Cerca: numero, etichetta o cifre del contrassegno; lo schema va al plateau giusto e il pozzetto lampeggia. Toccando un pozzetto si vede la provetta.

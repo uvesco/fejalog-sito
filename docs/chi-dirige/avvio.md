@@ -57,6 +57,8 @@ Entrambi i versi seguono rigorosamente la numerazione ordinata riga per riga (ma
 ### Passo 6: Fuori registro nel secchio
 I campioni fuori registro, i doppi prelievi e i capi senza contrassegno confluiscono nel **secchio dedicato** (o vaschetta separata) sul tavolo, senza occupare pozzetti nei plateau ordinari. A fine lavori nel Riordino verranno ripresi uno alla volta dalla provetta fisica per assegnare l'esito o riempire i buchi.
 
+**In alternativa, a scelta del regista**: le fuori registro si possono mettere in un plateau a parte (uno o più), **nell'ordine in cui il regista le prende in mano**. Nella vista «Secchio» del tablet tocca la provetta, la mette nel primo pozzetto libero indicato e conferma: il posto resta registrato. Le altre restano nel secchio. Si può fare durante il campionamento o dopo, in gestione campioni, e non è obbligatorio. Dopo, la sistemazione le richiama per posto, un tipo di problema alla volta: prima quelle da attribuire ai capi assenti, poi quelle che riempiono i buchi.
+
 ### Passo 7: Capi ricercati
 
 - In **Configurazione › 3. Dati input** (sezione Capi ricercati), inserisci eventuali animali segnalati con il motivo e l'azione da compiere (compariranno evidenziati in viola sui telefoni con vibrazione dedicata). Le soluzioni per le varie tipologie di anomalie non si configurano in anticipo nelle impostazioni: si decideranno ex post in Gestione campioni (Problemi da risolvere).

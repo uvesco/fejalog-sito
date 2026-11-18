@@ -42,11 +42,18 @@ che cerca ogni contrassegno e completa l'anagrafica del progetto; se lo snippet 
 mano nel [modello da compilare](../strumenti/modelli-da-compilare.md). Finché l'anagrafica manca, in ARVET il capo va
 inserito a mano.
 
+## Tutte in tabella
+
+Accanto alle fasi c'è **«Tutte in tabella»**: ogni provetta fuori registro in una riga, col posto, la scritta, il contrassegno,
+la fattispecie, la fase, la scelta consigliata e lo stato. Si **ordina** cliccando un'intestazione (anche per posto), si
+**filtra** per testo, fattispecie o stato, e cliccando una riga si apre sotto la **scheda** con la scelta consigliata e quelle
+manuali. Serve per avere il quadro, per lavorare un tipo di problema alla volta e per tornare su una provetta già decisa.
+
 ## L'ordine di lavoro
 
 | Fase | Che cosa si fa |
 |---|---|
-| **0 · Smista** | Si svuota il secchio una volta sola: ogni provetta fuori registro ha un **posto fisso** (1, 2, 3…) nel plateau dei fuori registro, in ordine di lavoro. Si scrive la provetta che si ha in mano e il sito dice il posto. |
+| **0 · Smista** | Si svuota il secchio una volta sola: ogni provetta fuori registro ha un **posto fisso** (1, 2, 3…) nel plateau dei fuori registro, in ordine di lavoro. Si scrive la provetta che si ha in mano e il sito dice il posto. **Se il regista ha già dato i posti sul tablet** (plateau dei fuori registro, nell'ordine in cui le ha prese in mano) quelle non si smistano: le fasi le richiamano da lì, un tipo di problema alla volta; si smistano solo le rimaste nel secchio, dopo l'ultima. |
 | **A · Di chi è?** | Le provette di animali che probabilmente sono **un altro capo**: senza marche, con una marca già letta su un altro animale, con la marca di un capo che in BDN risulta uscito. Si guardano i capi assenti compatibili e si decide. |
 | **B · Al loro posto** | Le provette che vanno in ARVET da sole: il sito dice il numero (di solito il buco del capo assente), si riscrive sulla provetta, la si mette lì e si preme «L'ho messa lì». |
 | **C · In fondo** | Le provette che vanno in **ARVET a mano**: restano col loro contrassegno e prendono i numeri in fondo alla serie. |
