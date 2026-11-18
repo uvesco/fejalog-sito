@@ -124,8 +124,11 @@ function paginaSnippet(inp, invii, aMano) {
     var testa = '<h2>' + esc(v.titolo) + ' — ' + (v.righe.length + nn) + ' provette</h2><p class="nota">' + esc(v.cosa) +
       (nn ? ' Di queste <b>' + nn + '</b> non sono nell\'elenco di ARVET: lo snippet le aggiunge con «Inserisci capo» (elenco qui sotto).' : '') + '</p>';
     if (!v.righe.length && !nn) return '<section>' + testa + '<p>Nessuna provetta per questo invio.</p></section>';
-    if (v.errori.length) return '<section class="no">' + testa + '<p><b>Snippet non generato</b>: ' +
-      v.errori.map(esc).join(' · ') + '. Correggere prima in Fejalog.</p></section>';
+    if (v.errori.length) return '<section class="no">' + testa + '<p><b>⚠ SNIPPET NON CONFORME</b> alle regole di ARVET: ' +
+      v.errori.map(esc).join(' · ') + '. Si può usare lo stesso: porta solo le righe sicure (numero intero, numero e contrassegno non ripetuti); queste restano da completare a mano in ARVET: <b>' +
+      esc((v.aMano || []).map(function (r) { return str(r.provetta) + ' → ' + r.contrassegno; }).join(' · ')) + '</b>. Meglio correggere prima in Fejalog.</p>' +
+      '<button type="button" onclick="copia(\'s' + i + '\', this)">Copia lo snippet (non conforme)</button>' +
+      '<textarea id="s' + i + '" readonly>' + esc(v.snippet) + '</textarea></section>';
     return '<section>' + testa + '<button type="button" onclick="copia(\'s' + i + '\', this)">Copia lo snippet</button>' +
       ' <span class="nota">' + Math.round(v.snippet.length / 1024) + ' kB</span>' +
       '<textarea id="s' + i + '" readonly>' + esc(v.snippet) + '</textarea></section>';
@@ -364,7 +367,17 @@ function calcola(inp) {
   ];
   invii.forEach(function (v) {
     v.errori = controllaInvio(v.righe, v.nuovi);
-    v.snippet = v.errori.length || (!v.righe.length && !v.nuovi.length) ? '' : snippet(v.righe, inp.motoreArvet || '', v.nuovi);
+    // Lo snippet si dà sempre (utente, 2026-11-17: «uno snippet non conforme è meglio che niente»): se i controlli
+    // trovano errori è marcato NON CONFORME, con l'elenco, e porta le sole righe col numero intero; il resto si
+    // completa a mano in ARVET.
+    v.conforme = !v.errori.length;
+    // Nello snippet non conforme restano solo le righe sicure: numero intero e, fra tutte, numero e contrassegno unici.
+    // I membri di ogni gruppo ripetuto restano fuori e si completano a mano (revisione di Copilot, 17/11).
+    var tutte = v.righe.concat(v.nuovi), perNumero = {}, perCapo = {};
+    tutte.forEach(function (r) { perNumero[r.provetta] = (perNumero[r.provetta] || 0) + 1; perCapo[r.contrassegno] = (perCapo[r.contrassegno] || 0) + 1; });
+    var sicura = function (r) { return typeof r.provetta === 'number' && r.provetta === Math.floor(r.provetta) && r.provetta >= 1 && perNumero[r.provetta] === 1 && perCapo[r.contrassegno] === 1; };
+    v.aMano = v.conforme ? [] : tutte.filter(function (r) { return !sicura(r); });
+    v.snippet = (!v.righe.length && !v.nuovi.length) ? '' : snippet(v.conforme ? v.righe : v.righe.filter(sicura), inp.motoreArvet || '', v.conforme ? v.nuovi : v.nuovi.filter(sicura));
     if (v.righe.length) xlsx(v.file + suff + '.xlsx', [foglio('dati', COL_PC, v.righe, ['contrassegno'])]);
     // CSV provetta,contrassegno per uso fuori dal Piemonte (senza intestazione, UTF-8, CRLF)
     if (v.righe.length) {
@@ -372,7 +385,7 @@ function calcola(inp) {
       testo('provette_' + v.file + suff + '.csv', 'text/csv', csvRighe);
     }
     // lo snippet anche da solo, in .txt: si condivide dal telefono e non parte con un doppio clic (piano interfaccia §8)
-    if (v.snippet) testo('snippet_' + v.file + suff + '.txt', 'text/plain', v.snippet);
+    if (v.snippet) testo('snippet_' + v.file + (v.conforme ? '' : '_NON_CONFORME') + suff + '.txt', 'text/plain', v.snippet);
   });
   // i dati del capo come li ha la provetta: dalla BDN, o stimati in campo per i capi che la BDN non conosce
   var datiCapo = {};
@@ -511,7 +524,8 @@ function calcola(inp) {
   testo('anomalie' + suff + '.json', 'application/json', JSON.stringify(anomalie, null, 1));
 
   var riep = { stabilimento: cod, file: file.length, specie: {}, maschi: bo.length, problematici: aMano.length,
-    capi_senza_traccia: ignoti.length, invii: invii.map(function (v) { return { titolo: v.titolo, provette: v.righe.length + v.nuovi.length, nuovi: v.nuovi.length, errori: v.errori }; }) };
+    capi_senza_traccia: ignoti.length, invii: invii.map(function (v) { return { titolo: v.titolo, provette: v.righe.length + v.nuovi.length, nuovi: v.nuovi.length, errori: v.errori, conforme: v.conforme,
+      a_mano: (v.aMano || []).map(function (r) { return { provetta: r.provetta, contrassegno: r.contrassegno }; }) }; }) };
   SPECIE.forEach(function (sp) {
     if (!base.some(function (r) { return r.specie === sp; })) return;
     var r = M.riepilogoPost(base, sp);

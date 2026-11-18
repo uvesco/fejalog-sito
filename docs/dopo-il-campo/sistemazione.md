@@ -1,0 +1,80 @@
+# La sistemazione delle provette
+
+> **A chi serve**: chi dirige e chi sistema le provette dopo il campo · **Tempo di lettura**: 6 minuti
+
+Finito il campionamento, le provette **ordinarie** stanno già nei plateau al loro numero. Restano le provette **fuori
+registro** (quelle con la sigla del veterinario) e i **buchi** lasciati dai capi non prelevati. La scheda
+**Sistemazione** di [Fine lavori sul computer](../strumenti/fine-lavori.md) le porta, in ordine fisso, fino allo snippet
+per ARVET.
+
+!!! warning "Decide sempre il veterinario"
+    Le situazioni qui sotto sono non conformità dell'anagrafe, anche sanzionabili. Il sito **propone** e spiega; la scelta
+    resta al veterinario, che valuta la situazione complessiva. Ogni scelta si può cambiare o annullare dalla
+    **Cronologia**, in fondo alla scheda.
+
+## L'ordine di lavoro
+
+| Fase | Che cosa si fa |
+|---|---|
+| **0 · Smista** | Si svuota il secchio una volta sola: ogni provetta fuori registro ha un **posto fisso** (1, 2, 3…) nel plateau dei fuori registro, in ordine di lavoro. Si scrive la provetta che si ha in mano e il sito dice il posto. |
+| **A · Di chi è?** | Le provette di animali che probabilmente sono **un altro capo**: senza marche, con una marca già letta su un altro animale, con la marca di un capo che in BDN risulta uscito. Si guardano i capi assenti compatibili e si decide. |
+| **B · Al loro posto** | Le provette che vanno in ARVET da sole: il sito dice il numero (di solito il buco del capo assente), si riscrive sulla provetta, la si mette lì e si preme «L'ho messa lì». |
+| **C · In fondo** | Le provette che vanno in **ARVET a mano**: restano col loro contrassegno e prendono i numeri in fondo alla serie. |
+| **D · Chiudi i buchi** | I buchi rimasti si chiudono **abbassando i numeri più alti**: per ogni passo si riscrive il numero nuovo e si sposta la provetta. |
+
+Le fasi si fanno in quest'ordine perché i posti dipendono dalle decisioni: prima si decide di chi è ogni provetta, poi si
+toccano i plateau, così ogni provetta si prende in mano una volta sola.
+
+## Le fattispecie
+
+Per ognuna: che cosa vuol dire, che cosa propone il sito e quali altre scelte ha il veterinario. In tutte si può anche
+**rimandare** (la provetta va nel contenitore «Accantonate»), **togliere** la provetta (non va in ARVET; si può
+annullare) o segnarla **persa**.
+
+| Fattispecie | Che cosa vuol dire | Proposta del sito | Altre scelte |
+|---|---|---|---|
+| **Senza contrassegno** | Animale senza marche: in campo si sono scritti sesso, età dai denti, razza e la sigla sull'animale. | Il capo assente più simile (stesso sesso, razza compatibile, nascita nell'intervallo dei denti). Se non ce n'è nessuno: una marca disponibile dello stabilimento. | Un altro capo assente; una marca disponibile; ARVET a mano. |
+| **Doppi contrassegni** | La stessa marca letta su due animali («Preleva come doppio»). Il **numero di ristampa** stampato sull'auricolare dice chi è l'originale: 0. | Per l'animale non originale, il capo assente più simile. Se dalla ristampa l'originale è l'animale **di questa** provetta, la proposta è di attribuire **l'altra** provetta a un capo assente (con una nota per l'allevatore): questa tornerà al numero del capo. | «È l'unico campione» se l'altra provetta non esiste o era una lettura sbagliata; un altro capo; ARVET a mano. |
+| **Usciti: morti, macellati o ceduti** | L'animale porta la marca di un capo che in BDN risulta uscito. Di solito è una marca duplicata di cui una copia è uscita: l'animale presente è un altro capo. | Il capo assente più simile. | Lasciarla col suo contrassegno, in ARVET a mano, se il capo è davvero quello e la BDN è da correggere. |
+| **Smarriti o rubati ritrovati** | Il capo risultava smarrito o rubato ed è stato ritrovato. | Tiene la sua identità: ARVET a mano, in fondo. | Un capo assente, se la marca non è la sua. |
+| **Contrassegni non registrati** | Marca assegnata allo stabilimento ma mai registrata in BDN su un capo; l'anagrafica è quella rilevata in campo. | ARVET a mano, in fondo; il capo va registrato in BDN. | Un capo assente, se l'animale è un capo del registro con la marca sbagliata. |
+| **Nuove identificazioni in campo** | Animale senza marche a cui l'allevatore ha applicato subito una marca in giacenza. | ARVET a mano, in fondo; registrazione in BDN. | Normalizzare, se la verifica in BDN lo trova già registrato nello stabilimento. |
+| **Non in elenco** | Contrassegno che non è in nessun registro caricato. | Se differisce di una cifra da un capo assente: quel capo (probabile lettura sbagliata). Altrimenti ARVET a mano. | Correggere la marca letta; cercarla in BDN con lo snippet. |
+| **Altro stabilimento** | Capo di uno stabilimento che non è fra quelli in risanamento. | ARVET a mano. | Togliere la provetta, se l'animale non c'entra col risanamento. |
+| **Specie discordante** | Marca registrata in BDN per l'altra specie. | ARVET a mano. | Annullare la registrazione, se era una lettura sbagliata. |
+| **Ora in lista** | Il capo adesso è nel registro (registri aggiornati, verifica in BDN, o unico campione dopo un annullo). | Normalizzare: va in ARVET come gli altri, al numero del capo. | ARVET a mano. |
+| **Fuori età diagnostica** | Animale prelevato sotto l'età prevista. | Nessuna: decide il veterinario. | In coda (va in ARVET) o togliere. |
+
+### I capi assenti compatibili
+
+Sono i capi del registro, presenti in BDN e in età, **mai prelevati** e non già scelti per un'altra provetta, dello stesso
+stabilimento e della stessa specie. Di norma hanno lo stesso sesso e, per gli animali senza marche, razza compatibile ed
+età nell'intervallo dei denti (la scheda lo scrive: «nati fra 05/2021 e 05/2024»). Con **«Mostra anche i capi assenti di
+altro sesso, razza o età»** si vedono tutti, segnati con un avviso: serve quando il sesso registrato è quello del capo
+della marca e non quello dell'animale. Si può anche **scrivere il contrassegno** del capo a mano.
+
+Un capo assente vale per **una sola** provetta. Per i capi così considerati presenti il report per l'allevatore riporta
+l'animale prelevato al loro posto e le marche da ordinare.
+
+## Non si perde niente
+
+- **Cronologia**: ogni scelta e ogni spostamento è una riga, con «Annulla». Lo «Schema delle provette con le modifiche» è
+  una pagina sola, da stampare: dice quale provetta è andata al laboratorio con ciascun numero.
+- **Salva backup** è sempre in alto. Scelta una volta la **cartella di salvataggio** (Chrome o Edge), ogni azione viene
+  scritta su disco; lo zip completo si salva col tasto.
+- Se si ricarica la pagina, la sessione **riparte da sola** col backup e le azioni di prima.
+
+## Lo snippet per ARVET
+
+Lo snippet si può prendere **in ogni momento**. Se non rispetta ancora le regole di ARVET (buchi, numeri ripetuti,
+provette da decidere) porta la scritta **«NON CONFORME»** e l'elenco di che cosa manca: si può usare lo stesso e
+completare a mano in ARVET, ma è meglio finire prima la sistemazione.
+
+Per la **doppia accettazione dei maschi** con «Duplica accettazione» di ARVET: si duplica l'accettazione, si incolla lo
+snippet **«Svuota i numeri»** (toglie i numeri, lascia i capi e l'ordine), poi lo snippet dei maschi. Vedi
+[Gli snippet per ARVET](snippet-arvet.md).
+
+## Per l'allevatore
+
+Nella scheda **Uscite**, «Esito del risanamento»: una pagina per stabilimento con una parte discorsiva e gli elenchi capo
+per capo. Se si carica la pagina del campionamento salvata da ARVET, dove campo e ARVET differiscono vale ARVET.

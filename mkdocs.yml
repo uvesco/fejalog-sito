@@ -116,6 +116,7 @@ nav:
           - "In campo (scheda responsabile)": chi-dirige/scheda-responsabile.md
           - "Collegamento al PC Windows via USB": chi-dirige/tethering-pc.md
       - Dopo il campo:
+          - "La sistemazione delle provette": dopo-il-campo/sistemazione.md
           - "Riconciliazione dei backup": dopo-il-campo/riconcilia-backup.md
           - "Controllo provette e statistiche": dopo-il-campo/provette-statistiche.md
           - "Il 2/33 finale": dopo-il-campo/modello-233-finale.md

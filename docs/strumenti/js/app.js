@@ -104,6 +104,7 @@ function applicaSullaSessione(a) {
   S.stato.sostituisci(S.stato.azioni().concat([a]));
   S.dueTrentatreFinali = []; S.esito = null; S.riordinoCache = null; S.apVecchio = true;
   bancoUI.dest = {}; // con «chiudi i buchi» i posti delle altre provette possono cambiare
+  Disco.azione();
   return null;
 }
 function azione(tipo, dati) {
@@ -115,17 +116,21 @@ function azione(tipo, dati) {
   } catch (e) { S.messaggio = e.message; messaggio(); return false; }
 }
 /* Togliere un'azione già fatta riapre la sessione dalle azioni rimaste. */
-function togli(id) { S.stato.rimuovi(id); ricalcola(); }
+function togli(id) { S.stato.rimuovi(id); Disco.azione(); ricalcola(); }
 
 /* ---- schede ---- */
 /* Le schede (revisione dell'utente, 2026-11-13: «troppo complesso»; seconda revisione del 14/11: «Problemi» diventa
    «Tipologie», il colpo d'occhio, coi «Non trovati» come sezione «Assenti»; il Banco si chiama «Soluzioni»; Provette e
    Statistiche sotto «Altri strumenti»). Gli identificativi interni delle schede restano. */
-var SCHEDE = [['carica', 'Carica'], ['avvisi', 'Avvisi'], ['problemi', 'Tipologie'], ['banco', 'Soluzioni'], ['riordino', 'Riordino'], ['plateau', 'Plateau'], ['snippet', 'Snippet ARVET'], ['uscite', 'Uscite'], ['esporta', 'Esporta per l\'app']];
-var SCHEDE_ALTRE = [['provette', 'Provette'], ['statistiche', 'Statistiche']];
+/* Dopo il campo del 16/11 (utente, 2026-11-17: «troppe interfacce per fare la stessa cosa»): una sola scheda
+   «Sistemazione», in quattro fasi; Tipologie, Soluzioni, Riordino e Plateau restano fra gli altri strumenti durante la
+   prova. */
+var SCHEDE = [['carica', 'Carica'], ['avvisi', 'Avvisi'], ['sistema', 'Sistemazione'], ['snippet', 'Snippet ARVET'], ['uscite', 'Uscite'], ['esporta', 'Esporta per l\'app']];
+var SCHEDE_ALTRE = [['problemi', 'Tipologie'], ['banco', 'Soluzioni'], ['riordino', 'Riordino'], ['plateau', 'Plateau'], ['provette', 'Provette'], ['statistiche', 'Statistiche']];
 var tabs = h('div', { class: 'fej-tabs', role: 'tablist' });
 var corpo = h('div', { class: 'fej-corpo' });
-radice.appendChild(tabs); radice.appendChild(msgEl); radice.appendChild(corpo);
+var barra = h('div', { class: 'fej-barra', id: 'fej-barra' });
+radice.appendChild(tabs); radice.appendChild(barra); radice.appendChild(msgEl); radice.appendChild(corpo);
 
 function disegna() {
   preparaScheda();
@@ -151,7 +156,8 @@ function disegna() {
     corpo.appendChild(h('p', { class: 'fej-avviso', role: 'status', id: 'fej-campionamento-aperto' }, 'Nel backup il campionamento è ancora aperto: qui puoi lavorare lo stesso, come se fosse chiuso. ' +
       'Per riportare le modifiche nell’app il campionamento va chiuso sul tablet, con la sua conferma: dalla 0.5.7 te lo propone l’importazione. ' +
       'Se dopo questo backup qualcuno ha prelevato ancora, salva un backup nuovo dal tablet.'));
-  var f = { carica: schedaCarica, avvisi: schedaAvvisi, banco: schedaBanco, provette: schedaProvette, problemi: schedaProblemi, nontrovati: schedaNonTrovati, riordino: schedaRiordino, plateau: schedaPlateau, statistiche: schedaStatistiche, snippet: schedaSnippet, uscite: schedaUscite, esporta: schedaEsporta }[S.scheda];
+  aggiornaBarra();
+  var f = { carica: schedaCarica, avvisi: schedaAvvisi, sistema: schedaSistemazione, banco: schedaBanco, provette: schedaProvette, problemi: schedaProblemi, nontrovati: schedaNonTrovati, riordino: schedaRiordino, plateau: schedaPlateau, statistiche: schedaStatistiche, snippet: schedaSnippet, uscite: schedaUscite, esporta: schedaEsporta }[S.scheda];
   corpo.appendChild(f());
   if (plateauPrincipale) plateauPrincipale.monta();
   messaggio();
@@ -908,6 +914,7 @@ function formAnnulloProvetta(r) {
 function leggiBackup(byte) {
   S.resocontoRiconciliazione = null; S.backupRiconciliatoZip = null;
   return Progetto.leggiBackup(byte).then(function (P) {
+    if (!pc) Memoria.metti('backup', byte); // F5 non perde la sessione: il backup aperto resta nel browser
     apriProgetto(P); S.ignoraVerifica = false; S.messaggio = P.verifica.ok ? 'Backup letto e verificato.' : 'Backup letto, ma la verifica ha trovato problemi: per usarlo serve la conferma qui sotto.';
     if (P.verifica.ok) attendiMotore(); else { S.esito = null; S.ap = null; disegna(); }
   });
@@ -1482,8 +1489,48 @@ function paginaAllevatore(codice, cose, bdn) {
     '<h1>Profilassi della brucellosi ovicaprina · stabilimento ' + e(codice) + '</h1>' + (cose ? '<pre>' + e(cose) + '</pre>' : '') + (bdn ? '<pre>' + e(bdn) + '</pre>' : '') +
     (!cose && !bdn ? '<p>Nessuna cosa da fare.</p>' : '') + '</body></html>';
 }
+/* L'esito del risanamento per l'allevatore (utente, 2026-11-17): discorsivo e con gli elenchi, capo per capo; il modulo
+   è allevatore.js. La pagina di ARVET salvata dal browser è facoltativa: se c'è, dove campo e ARVET differiscono vale
+   ARVET. */
+var arvetPagine = {};
+function esitoPerAllevatore() {
+  var All = window.FejAllevatore, d = h('div', { id: 'fej-esito-allevatore' });
+  d.appendChild(h('h4', null, 'Esito del risanamento (da consegnare)'));
+  d.appendChild(h('p', { class: 'fej-guida' }, 'Una pagina per stabilimento: in testa, in parole semplici, che cosa è stato riscontrato; poi gli elenchi capo per capo (capi considerati presenti, marche da ordinare, marche non registrate, usciti, non prelevati). In fondo un’appendice solo per l’ufficio.'));
+  function costruisci(st) {
+    if (S.apVecchio || !S.ap) aggiornaRisultato();
+    var primo = (S.ap.eventiEfficaci || []).filter(function (e) { return e.tipo === 'PROVETTA_REGISTRATA'; })[0];
+    var g = primo ? String(primo.ts).slice(0, 10).split('-') : [];
+    return All.crea({ data: g.length === 3 ? g[2] + '/' + g[1] + '/' + g[0] : '', stabilimento: st, provette: S.ap.provette, eventi: S.ap.eventiEfficaci, voci: S.banco.coda().voci,
+      scheda: function (uid) { return S.banco.scheda(uid, ''); }, assenti: S.ap.nonPrelevati, arvet: arvetPagine[st.codice] || null });
+  }
+  ((S.ap && S.ap.stabilimenti) || []).forEach(function (st) {
+    var nome = 'esito_risanamento_' + String(st.codice).replace(/[^A-Za-z0-9_-]/g, '_');
+    var caricata = arvetPagine[st.codice] ? Object.keys(arvetPagine[st.codice]).map(function (sp) { return sp + ' ' + arvetPagine[st.codice][sp].length; }).join(', ') : '';
+    var file = h('input', { type: 'file', accept: '.html,.htm,text/html', 'aria-label': 'Pagina di ARVET salvata per ' + st.codice, onchange: function (ev) {
+      var f = ev.target.files && ev.target.files[0]; if (!f) return;
+      f.text().then(function (t) {
+        var r = All.leggiArvet(new DOMParser().parseFromString(t, 'text/html'));
+        if (!r.righe.length || !r.specie) { S.messaggio = 'In questo file non trovo l’elenco dei capi di un campionamento di ARVET.'; messaggio(); return; }
+        arvetPagine[st.codice] = arvetPagine[st.codice] || {}; arvetPagine[st.codice][r.specie] = r.righe;
+        S.messaggio = 'Pagina di ARVET letta: ' + r.righe.length + ' capi (' + r.specie + ').'; disegna();
+      });
+    } });
+    d.appendChild(h('div', { class: 'fej-riga', 'data-esito': st.codice }, h('strong', null, st.codice), ' ',
+      h('button', { type: 'button', class: 'fej-primario', onclick: function () {
+        var html = costruisci(st).html, u = URL.createObjectURL(new Blob([html], { type: 'text/html;charset=utf-8' })), w = window.open(u, '_blank');
+        if (!w) scarica(nome + '.html', 'text/html;charset=utf-8', html);
+        setTimeout(function () { URL.revokeObjectURL(u); }, 60000);
+      } }, 'Apri l’esito'), ' ',
+      h('button', { type: 'button', onclick: function () { scarica(nome + '.html', 'text/html;charset=utf-8', costruisci(st).html); } }, 'Scarica la pagina'), ' ',
+      h('button', { type: 'button', onclick: function () { scarica(nome + '.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', window.AccXlsx.xlsxBuild(costruisci(st).fogli)); } }, 'Excel'),
+      h('label', { class: 'fej-blocco fej-guida' }, 'Pagina di ARVET salvata (facoltativa, una per specie)' + (caricata ? ' · caricata: ' + caricata : '') + ' ', file)));
+  });
+  return d;
+}
 function sezioneAllevatore(primoStab) {
   var d = h('section', { id: 'fej-allevatore' }, h('h3', null, 'Per l\u2019allevatore'));
+  if (window.FejAllevatore && window.AccXlsx && S.ap && S.banco) d.appendChild(esitoPerAllevatore());
   d.appendChild(h('p', null, 'Da consegnare all\u2019allevatore e al suo delegato in BDN, una pagina per stabilimento: marche da sostituire, correzioni di sesso, smarriti ritrovati, capi non provati, ricercati e capi da registrare in BDN (animali senza contrassegno, marche applicate in campo).'));
   var cose = filesDi('.txt', 'cose_da_fare'), report = filesDi('.xlsx', 'report_allevatore'), codici = [];
   cose.concat(report).forEach(function (x) { if (codici.indexOf(x.u.codice) < 0) codici.push(x.u.codice); });
@@ -1523,10 +1570,22 @@ function schedaSnippet() {
   var snip = S.erroreMotore ? [] : filesDi('.txt', 'snippet_arvet_');
   if (!snip.length) d.appendChild(h('p', null, 'Nessuno snippet: non ci sono provette da inviare.'));
   snip.forEach(function (x) {
-    d.appendChild(h('h3', null, x.u.codice + ' · ' + x.f.nome.replace(/^snippet_arvet_/, '').replace(/_\d{4}-.*$/, '')));
+    var nonConforme = /_NON_CONFORME/.test(x.f.nome);
+    var invio = ((x.u.uscita.riepilogo && x.u.uscita.riepilogo.invii) || []).filter(function (v) { return v.conforme === false; });
+    d.appendChild(h('h3', null, x.u.codice + ' · ' + x.f.nome.replace(/^snippet_arvet_/, '').replace(/_NON_CONFORME/, '').replace(/_\d{4}-.*$/, ''), nonConforme ? h('span', { class: 'fej-non-conforme' }, ' ⚠ NON CONFORME') : null));
+    if (nonConforme) d.appendChild(h('p', { class: 'fej-avviso' }, 'Questo snippet non rispetta ancora le regole di ARVET (', invio.map(function (v) { return v.titolo + ': ' + v.errori.slice(0, 6).join(' · ') + (v.errori.length > 6 ? ' …' : ''); }).join('; ') || 'vedi la pagina degli snippet',
+      '). Si può usare lo stesso: porta solo le righe sicure; da completare a mano in ARVET: ',
+      h('strong', null, invio.map(function (v) { return (v.a_mano || []).map(function (r) { return r.provetta + ' → ' + r.contrassegno; }).join(' · '); }).filter(Boolean).join(' · ') || 'nessuna riga'), '.'));
     d.appendChild(h('p', null, h('button', { type: 'button', onclick: function () { copia(x.f.testo); } }, '⧉ Copia lo snippet'), ' ', h('button', { type: 'button', onclick: function () { scarica(x.f.nome, 'text/plain;charset=utf-8', x.f.testo); } }, 'Scarica .txt')));
     d.appendChild(h('textarea', { readonly: true, rows: 4, class: 'fej-snippet', 'aria-label': 'Snippet ' + x.f.nome }, x.f.testo.slice(0, 2000) + (x.f.testo.length > 2000 ? '…' : '')));
   });
+  // lo snippet generico di svet-tools: vuota tutti i «Numero campione» senza togliere i capi né cambiare l'ordine
+  d.appendChild(h('h3', null, 'Svuota i numeri (snippet generico)'));
+  d.appendChild(h('p', { class: 'fej-guida' }, 'Per la doppia accettazione dei maschi con «Duplica accettazione» di ARVET: 1) duplica l’accettazione; 2) incolla questo snippet, che svuota tutti i «Numero campione» lasciando i capi e l’ordine; 3) incolla lo snippet dei maschi, che riscrive i numeri sui capi già presenti. Non salva niente da solo.'));
+  d.appendChild(h('p', null, h('button', { type: 'button', id: 'fej-copia-svuota', onclick: function () {
+    fetch(base + 'vendor/arvet_clear.js').then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.text(); })
+      .then(function (t) { copia(t); }, function () { S.messaggio = 'Non riesco a caricare lo snippet «Svuota i numeri»: ricarica la pagina.'; messaggio(); });
+  } }, '⧉ Copia «Svuota i numeri»')));
   d.appendChild(h('h3', null, 'File per i 3 invii'));
   filesDi('', 'arvet_').concat(filesDi('.csv', 'provette_arvet_')).forEach(function (x) { d.appendChild(rigaFile(x.f)); });
   return d;
@@ -1772,8 +1831,9 @@ var STATI_BANCO = [['da_decidere', 'Da decidere'], ['accantonata', 'Accantonate'
 var SEP_ACCANTONATA = ' — ', PREFISSO_ACCANTONATA = 'Accantonata: ';
 
 function apriNelBanco(uid) {
-  bancoUI.uid = uid; bancoUI.aperto = null; bancoUI.motivo = ''; bancoUI.cifre = ''; bancoUI.nelReport = null; bancoUI.marca = '';
-  S.scheda = 'banco'; disegna();
+  bancoUI.uid = uid; bancoUI.aperto = null; bancoUI.motivo = ''; bancoUI.cifre = ''; bancoUI.nelReport = null; bancoUI.marca = ''; bancoUI.tutti = false;
+  if (S.scheda !== 'sistema') S.scheda = 'banco';
+  disegna();
   var t = document.getElementById('fej-banco-scheda'); if (t && t.scrollIntoView) t.scrollIntoView({ block: 'start' });
 }
 function cercaBanco(q) {
@@ -1799,7 +1859,7 @@ function sceltaBanco(uid, azioni, dopo) {
     if (no) { S.messaggio = 'Non applicata: ' + no; disegna(); return false; }
   }
   bancoUI.aperto = null; bancoUI.motivo = ''; bancoUI.dest = {};
-  try { bancoUI.dest[uid] = dopo === false ? null : S.banco.destinazione(uid); } catch (e) { bancoUI.dest[uid] = { cosa: 'Posto non calcolato: ' + e.message }; }
+  if (S.scheda !== 'sistema') { try { bancoUI.dest[uid] = dopo === false ? null : S.banco.destinazione(uid); } catch (e) { bancoUI.dest[uid] = { cosa: 'Posto non calcolato: ' + e.message }; } }
   S.messaggio = 'Scelta registrata.'; disegna(); return true;
 }
 function rigaDati(etichetta, campo, bdn) {
@@ -1837,7 +1897,7 @@ function schedaBanco() {
 }
 function schedaProvettaBanco(uid) {
   var s;
-  try { s = S.banco.scheda(uid, bancoUI.cifre); } catch (e) { return h('p', { class: 'fej-errore' }, 'Scheda non disponibile: ' + e.message); }
+  try { s = S.banco.scheda(uid, bancoUI.cifre, !!bancoUI.tutti); } catch (e) { return h('p', { class: 'fej-errore' }, 'Scheda non disponibile: ' + e.message); }
   if (s.errore) return h('p', { class: 'fej-errore' }, s.errore);
   var v = s.voce, r = s.registrato, b = s.bdn, box = h('section', { class: 'fej-banco-scheda', id: 'fej-banco-scheda', 'aria-label': 'Provetta ' + v.etichetta });
   box.appendChild(h('h3', null, 'Provetta ', h('span', { class: 'fej-banco-etichetta' }, v.etichetta), ' · ', s.fattispecie.titolo));
@@ -1849,7 +1909,7 @@ function schedaProvettaBanco(uid) {
   tb.appendChild(rigaDati('Contrassegno', r.contrassegno || 'nessuno (senza marche)', b ? b.contrassegno : (r.contrassegno ? 'non è nei registri caricati' : '')));
   tb.appendChild(rigaDati('Sesso', (r.sesso_corretto ? r.sesso_corretto + ' (corretto dal veterinario)' : r.sesso), b ? b.sesso : ''));
   tb.appendChild(rigaDati('Razza', r.razza, b ? b.razza : ''));
-  tb.appendChild(rigaDati(r.classe_eta ? 'Età dai denti' : 'Nascita', r.classe_eta || r.data_nascita, b ? b.nascita : ''));
+  tb.appendChild(rigaDati(r.classe_eta ? 'Età dai denti' : 'Nascita', r.classe_eta ? r.classe_eta + (r.nascita_dai_denti ? ' (' + r.nascita_dai_denti + ')' : '') : r.data_nascita, b ? b.nascita : ''));
   if (b) tb.appendChild(rigaDati('Stabilimento', s.voce.stabilimento, b.stabilimento));
   if (r.provvisoria) tb.appendChild(rigaDati('Identificazione provvisoria', r.provvisoria, ''));
   if (r.note) tb.appendChild(rigaDati('Note del veterinario', r.note, ''));
@@ -1875,7 +1935,9 @@ function schedaProvettaBanco(uid) {
   }
   if (r.doppio_in_campo) box.appendChild(h('p', null, 'In campo il veterinario ha scelto «Preleva come doppio»: ha visto un altro animale con la stessa marca.'));
   if (r.doppio_scoperto && !r.doppio_in_campo) box.appendChild(h('p', null, 'Doppio scoperto alla riunione dei device: di solito lo stesso animale preso due volte.'));
-  if (s.altre_provette.length) box.appendChild(h('p', null, 'Stesso contrassegno anche su: ', s.altre_provette.map(function (o) { return o.etichetta + ' (' + o.operatore + ')'; }).join(', '), '.'));
+  if (s.altre_provette.length) box.appendChild(h('p', null, 'Stesso contrassegno anche su: ', s.altre_provette.map(function (o) { return o.etichetta + ' (' + o.operatore + (o.ristampa ? ', ristampa ' + o.ristampa : '') + ')'; }).join(', '), '.',
+    r.ristampa ? ' Ristampa di questo animale: ' + r.ristampa + '.' : ''));
+  if (s.avviso_ristampa) box.appendChild(h('p', { class: 'fej-avviso', id: 'fej-banco-ristampa' }, s.avviso_ristampa));
   // esito già deciso: dove va e come tornare indietro
   if (v.stato !== 'da_decidere') box.appendChild(esitoBanco(uid, s));
   if (s.proposta && v.stato === 'da_decidere') box.appendChild(h('div', { class: 'fej-banco-proposta', id: 'fej-banco-proposta' },
@@ -1907,6 +1969,16 @@ function alternativeBanco(uid, s) {
   var tasti = h('div', { class: 'fej-banco-tasti' });
   function tasto(chiave, testo, fai) { if (alt.indexOf(chiave) >= 0) { tasti.appendChild(h('button', { type: 'button', 'aria-expanded': bancoUI.aperto === chiave ? 'true' : null, onclick: fai }, testo)); tasti.appendChild(document.createTextNode(' ')); } }
   function apri(k) { return function () { bancoUI.aperto = bancoUI.aperto === k ? null : k; bancoUI.motivo = ''; disegna(); }; }
+  // utente, 2026-11-17: un «doppio» la cui prima registrazione era un errore o una provetta mai esistita non è un doppio
+  if (s.unico_campione && s.unico_campione.length) {
+    tasti.appendChild(h('button', { type: 'button', id: 'fej-banco-unico', title: 'Annulla le altre registrazioni di questa marca: questa provetta resta l’unico campione del capo',
+      onclick: function () {
+        var altre = s.altre_provette.map(function (o) { return o.etichetta.split(' ')[0]; }).join(', ');
+        if (!confirm('La provetta ' + altre + ' non esiste (o era una lettura sbagliata)?\nLa sua registrazione viene annullata e questa provetta resta l’unico campione del capo.')) return;
+        sceltaBanco(uid, s.unico_campione, false);
+      } }, 'È l’unico campione: l’altra provetta non esiste'));
+    tasti.appendChild(document.createTextNode(' '));
+  }
   tasto('ricolloca', 'A un capo assente…', apri('ricolloca'));
   tasto('coda', 'In coda, ARVET a mano', function () { sceltaBanco(uid, [{ tipo: 'soluzione', uid: uid, soluzione: 'coda' }]); });
   tasto('normalizza', 'Normalizza', function () { sceltaBanco(uid, [{ tipo: 'soluzione', uid: uid, soluzione: 'normalizzata' }]); });
@@ -1949,16 +2021,33 @@ function pannelloCompatibili(uid, s) {
   p.appendChild(h('div', null, filtro, ' ', h('button', { type: 'button', onclick: function () { bancoUI.cifre = filtro.value; disegna(); } }, 'Filtra')));
   p.appendChild(h('label', null, h('input', { type: 'checkbox', checked: bancoUI.nelReport, onchange: function (ev) { bancoUI.nelReport = ev.target.checked; } }),
     ' Marche da rifare: va nelle cose da fare per l’allevatore'));
+  // decide il veterinario (utente, 2026-11-17): con una marca duplicata il sesso registrato è quello del capo della marca
+  p.appendChild(h('label', { class: 'fej-blocco' }, h('input', { type: 'checkbox', id: 'fej-banco-tutti', checked: !!bancoUI.tutti, onchange: function (ev) { bancoUI.tutti = ev.target.checked; disegna(); } }),
+    ' Mostra anche i capi assenti di altro sesso, razza o età (con l’avviso)'));
   if (!s.compatibili.length) p.appendChild(h('p', null, 'Nessun capo assente compatibile' + (bancoUI.cifre ? ' con queste cifre.' : '.')));
   var t = h('table', { class: 'fej-banco-dati' }, h('thead', null, h('tr', null, ['Contrassegno', 'Sesso', 'Razza', 'Età', 'Numero', 'Perché', ''].map(function (x) { return h('th', { scope: 'col' }, x); }))));
   var tb = h('tbody');
   s.compatibili.forEach(function (c) {
-    tb.appendChild(h('tr', null, h('td', null, h('code', null, c.contrassegno), ' ', bottoneCopia(c.contrassegno, '⧉')), h('td', null, c.sesso), h('td', null, c.razza), h('td', null, c.eta || c.nascita),
+    tb.appendChild(h('tr', { class: c.attenzione ? 'fej-attenzione' : null }, h('td', null, h('code', null, c.contrassegno), ' ', bottoneCopia(c.contrassegno, '⧉')), h('td', null, c.sesso), h('td', null, c.razza), h('td', null, (c.eta || '') + (c.nascita ? ' · ' + c.nascita : '')),
       h('td', null, c.numero == null ? '—' : String(c.numero)), h('td', null, c.motivi.join(' · ')),
       h('td', null, h('button', { type: 'button', onclick: function () { sceltaBanco(uid, [{ tipo: 'ricollocazione', uid: uid, capo: c.contrassegno, nel_report: !!bancoUI.nelReport }]); } }, 'Attribuisci'))));
   });
   t.appendChild(tb);
   if (s.compatibili.length) p.appendChild(h('div', { class: 'fej-tabella-scorre' }, t));
+  // un capo scritto a mano: qualunque capo assente del registro, o la marca giusta se la lettura era sbagliata
+  var mano = h('input', { type: 'text', id: 'fej-banco-capo-mano', autocomplete: 'off', placeholder: 'contrassegno completo', 'aria-label': 'Contrassegno completo scritto a mano' });
+  p.appendChild(h('div', { class: 'fej-banco-mano' }, h('label', { for: 'fej-banco-capo-mano' }, 'Oppure scrivi il contrassegno: '), mano, ' ',
+    h('button', { type: 'button', id: 'fej-banco-attribuisci-mano', onclick: function () {
+      var c = mano.value.replace(/\s+/g, '').toUpperCase(); if (!c) { S.messaggio = 'Scrivi il contrassegno completo.'; messaggio(); return; }
+      if (sceltaBanco(uid, [{ tipo: 'ricollocazione', uid: uid, capo: c, nel_report: !!bancoUI.nelReport }])) {
+        var v = S.banco.coda().voci.filter(function (x) { return x.uid === uid; })[0];
+        if (v && v.capo !== c) { S.messaggio = 'Non attribuita: ' + c + ' non è un capo assente di questo stabilimento e di questa specie (o vale già per un’altra provetta).'; messaggio(); }
+      }
+    } }, 'Attribuisci a questo capo assente'), ' ',
+    h('button', { type: 'button', id: 'fej-banco-correggi-mano', onclick: function () {
+      var c = mano.value.replace(/\s+/g, '').toUpperCase(); if (!c) { S.messaggio = 'Scrivi il contrassegno completo.'; messaggio(); return; }
+      sceltaBanco(uid, [{ tipo: 'riattribuzione', uid: uid, contrassegno: c }], false);
+    } }, 'La marca letta era sbagliata: è questa')));
   return p;
 }
 function elencoBanco(coda) {
@@ -1977,6 +2066,281 @@ function elencoBanco(coda) {
   return d;
 }
 
+/* ---- memoria del browser e salvataggio su disco (utente, 2026-11-17: «basta F5 per perdere traccia») ----
+   Memoria: il backup aperto resta in IndexedDB, così ricaricando la pagina la sessione riparte da sola (le azioni sono
+   già in localStorage, stato.js). Disco: scelta una cartella (Chrome, Edge), a ogni azione il file delle modifiche si
+   riscrive lì; lo zip completo con «Salva backup». Niente va su internet. */
+var Memoria = (function () {
+  var ok = typeof indexedDB !== 'undefined';
+  function db() {
+    return new Promise(function (si, no) {
+      if (!ok) { no(new Error('IndexedDB assente')); return; }
+      var r = indexedDB.open('fejalog-strumenti', 1);
+      r.onupgradeneeded = function () { r.result.createObjectStore('k'); };
+      r.onsuccess = function () { si(r.result); }; r.onerror = function () { no(r.error); };
+    });
+  }
+  function metti(k, v) {
+    return db().then(function (d) { return new Promise(function (si, no) {
+      var t = d.transaction('k', 'readwrite'); t.objectStore('k').put(v, k); t.oncomplete = function () { si(); }; t.onerror = function () { no(t.error); };
+    }); }).catch(function () { /* senza IndexedDB si lavora lo stesso */ });
+  }
+  function prendi(k) {
+    return db().then(function (d) { return new Promise(function (si, no) {
+      var q = d.transaction('k').objectStore('k').get(k); q.onsuccess = function () { si(q.result); }; q.onerror = function () { no(q.error); };
+    }); }).catch(function () { return null; });
+  }
+  return { metti: metti, prendi: prendi };
+})();
+var Disco = (function () {
+  var st = { cartella: null, nome: '', ultimo: null, pendenti: 0, errore: '', timer: null, permesso: false };
+  var puo = typeof window.showDirectoryPicker === 'function';
+  function scriviFile(nome, dati) {
+    return st.cartella.getFileHandle(nome, { create: true }).then(function (fh) { return fh.createWritable(); })
+      .then(function (w) { return Promise.resolve(w.write(dati)).then(function () { return w.close(); }); });
+  }
+  function modifiche() {
+    if (!S.P || !S.stato) return Promise.resolve();
+    if (!st.cartella || !st.permesso) return Promise.resolve();
+    var n = st.pendenti;
+    return scriviFile(Mod.nomeFile(S.P), JSON.stringify(Mod.esporta(S.P, S.stato.azioni(), nomeUtente()), null, 1)).then(function () {
+      st.pendenti = Math.max(0, st.pendenti - n); st.ultimo = new Date(); st.errore = ''; aggiornaBarra();
+    }, function (e) { st.errore = 'Non riesco a scrivere nella cartella: ' + e.message; aggiornaBarra(); });
+  }
+  return {
+    stato: st, puo: puo,
+    /** Un'azione fatta o annullata: il file delle modifiche si riscrive subito (se c'è la cartella). */
+    azione: function () {
+      st.pendenti++;
+      if (st.timer) clearTimeout(st.timer);
+      st.timer = setTimeout(function () { st.timer = null; modifiche(); }, 200);
+      aggiornaBarra();
+    },
+    scegli: function () {
+      return window.showDirectoryPicker({ mode: 'readwrite' }).then(function (c) {
+        st.cartella = c; st.nome = c.name; st.permesso = true; Memoria.metti('cartella', c); return modifiche();
+      }).then(aggiornaBarra, function (e) { if (e && e.name !== 'AbortError') { st.errore = e.message; aggiornaBarra(); } });
+    },
+    /** Dopo F5 la cartella è ricordata, ma il browser vuole di nuovo il permesso con un tocco. */
+    ripristina: function (c) { if (c) { st.cartella = c; st.nome = c.name; st.permesso = false; } },
+    riattiva: function () {
+      if (!st.cartella || st.permesso) return Promise.resolve(st.permesso);
+      return st.cartella.requestPermission({ mode: 'readwrite' }).then(function (p) { st.permesso = p === 'granted'; return st.permesso; }, function () { return false; });
+    },
+    /** Lo zip completo (backup + modifiche): nella cartella se c'è, altrimenti si scarica. */
+    zip: function () {
+      if (S.apVecchio || !S.ap) aggiornaRisultato();
+      var voci = Object.keys(S.ap.backupFiles).sort().map(function (k) { return { name: k, data: S.ap.backupFiles[k] }; });
+      var nomeZip = 'fejalog_backup_' + String((S.P.manifesto.seduta && S.P.manifesto.seduta.nome) || 'progetto').replace(/[^A-Za-z0-9_-]+/g, '_') + '_aggiornato.zip';
+      var dati = Zip.scrivi(voci);
+      return this.riattiva().then(function (si) {
+        if (!si) { scarica(nomeZip, 'application/zip', dati); st.pendenti = 0; st.ultimo = new Date(); return 'scaricato'; }
+        return scriviFile(nomeZip, dati).then(function () { return modifiche(); }).then(function () { st.pendenti = 0; st.ultimo = new Date(); return 'nella cartella ' + st.nome; });
+      });
+    }
+  };
+})();
+function ora(d) { return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }
+/* La barra sempre in vista: avanzamento, «Salva backup», la cartella e che cosa non è ancora su disco. */
+function aggiornaBarra() {
+  barra.textContent = '';
+  if (!S.P || !S.banco || !verificaAmmessa()) { barra.hidden = true; return; }
+  barra.hidden = false;
+  var st = Disco.stato, c;
+  try { c = S.banco.coda().conteggi; } catch (e) { c = null; }
+  if (c) barra.appendChild(h('span', { class: 'fej-barra-avanzamento' }, 'Fuori registro: ', h('strong', null, String(c.da_decidere)), ' da decidere · ' + c.decisa + ' decise · ' + S.stato.azioni().length + ' azioni'));
+  barra.appendChild(h('button', { type: 'button', class: 'fej-primario', id: 'fej-salva-backup', onclick: function () {
+    Disco.zip().then(function (dove) { S.messaggio = 'Backup e modifiche salvati (' + dove + ').'; aggiornaBarra(); messaggio(); },
+      function (e) { S.messaggio = 'Salvataggio non riuscito: ' + e.message; messaggio(); });
+  } }, 'Salva backup'));
+  if (Disco.puo) barra.appendChild(h('button', { type: 'button', id: 'fej-scegli-cartella', onclick: function () { Disco.scegli(); } },
+    st.cartella ? 'Cartella: ' + st.nome + (st.permesso ? '' : ' (tocca «Salva backup» per riattivarla)') : 'Scegli la cartella di salvataggio'));
+  barra.appendChild(h('span', { class: st.errore ? 'fej-errore' : 'fej-guida', id: 'fej-barra-stato', 'aria-live': 'polite' }, st.errore ||
+    ((st.ultimo ? 'salvato alle ' + ora(st.ultimo) : 'non ancora salvato su disco') + (st.pendenti ? ' · ' + st.pendenti + (st.pendenti === 1 ? ' azione' : ' azioni') + ' non ancora su disco' : '') +
+     (st.cartella && st.permesso ? ' · ogni azione va nella cartella' : ' · le azioni restano in questo browser'))));
+}
+
+/* ---- Sistemazione: quattro fasi in ordine fisso (utente, 2026-11-17) ----
+   A «Di chi è?»: le provette che nascondono un altro animale (senza marche, marche duplicate, marche di capi usciti);
+   B «Al loro posto»: quelle che vanno in ARVET da sole, al numero del capo; C «In fondo»: le ARVET a mano; D «Chiudi i
+   buchi»: i numeri più alti scendono nei buchi. Il sito propone, decide il veterinario; ogni scelta si annulla dalla
+   cronologia. */
+var sistUI = { fase: null, inMano: '' };
+var FASI = [['smista', '0 · Smista'], ['identita', 'A · Di chi è?'], ['posto', 'B · Al loro posto'], ['fondo', 'C · In fondo'], ['buchi', 'D · Chiudi i buchi'], ['fine', 'Fine']];
+var GUIDA_FASE = {
+  smista: 'Prima di decidere, svuota il secchio una volta sola: ogni provetta fuori registro ha un posto fisso nel plateau dei fuori registro (numerazione unica, uguale per tutti i veterinari), in ordine di fattispecie e di lavoro. Scrivi o leggi la provetta che hai in mano: il sito dice il posto. Poi le fasi le chiamano per posto, nell’ordine giusto, senza cercarle.',
+  identita: 'Provette di animali senza marche, con una marca già letta su un altro animale, o con la marca di un capo che in BDN risulta uscito. Per ognuna guarda i capi assenti compatibili e decidi: attribuirla a uno di loro, lasciarla com’è (ARVET a mano) o toglierla. Decidi tu: la proposta è solo un aiuto.',
+  posto: 'Provette che vanno in ARVET da sole. Il sito dice il numero (di solito il buco lasciato dal capo assente): riscrivilo sulla provetta, mettila lì e premi «L’ho messa lì».',
+  fondo: 'Provette che vanno in ARVET a mano (smarriti ritrovati, marche non registrate, non in elenco, altri stabilimenti). Vanno nel contenitore indicato, in fila: prendono i numeri in fondo alla serie.',
+  buchi: 'I buchi rimasti si chiudono abbassando i numeri più alti: per ogni riga riscrivi il numero nuovo sulla provetta, spostala e invia. Ogni passo resta nella cronologia.',
+  fine: 'Controlla che non resti niente da decidere, poi vai agli snippet e alle uscite.'
+};
+/* Lo smistamento (utente, 2026-11-17: «suddividere le problematiche per fattispecie e poi prenderle su nell'ordine
+   corretto», «una numerazione unica per tutti gli operatori»): l'ordine si fissa la prima volta, dallo stato di allora
+   (fase, fattispecie, scritta), e resta quello anche quando le decisioni cambiano la fase; una provetta arrivata dopo
+   (registrazione tardiva) va in fondo. Si conserva nel browser accanto alle azioni. */
+var ORDINE_FASE = { identita: 0, posto: 1, fondo: 2, fuori: 3 };
+function chiaveSmista() { return 'fejalog:smista:' + S.P.chiave; }
+function leggiSmista() { try { return JSON.parse(localStorage.getItem(chiaveSmista()) || 'null') || { ordine: [], fatto: false }; } catch (e) { return { ordine: [], fatto: false }; } }
+function salvaSmista(x) { try { localStorage.setItem(chiaveSmista(), JSON.stringify(x)); } catch (e) { /* in memoria */ } sistUI.smista = x; }
+function smistamento(coda, posate) {
+  var x = sistUI.smista && sistUI.smistaChiave === S.P.chiave ? sistUI.smista : leggiSmista();
+  sistUI.smistaChiave = S.P.chiave;
+  var noti = {}; x.ordine.forEach(function (u) { noti[u] = true; });
+  var nuove = coda.voci.filter(function (v) { return !noti[v.uid] && v.fase !== 'fuori' && !posate[v.uid]; })
+    .sort(function (a, b) { return (ORDINE_FASE[a.fase] - ORDINE_FASE[b.fase]) || (a.priorita - b.priorita) || (a.etichetta < b.etichetta ? -1 : a.etichetta > b.etichetta ? 1 : 0); });
+  if (nuove.length) { x = { ordine: x.ordine.concat(nuove.map(function (v) { return v.uid; })), fatto: x.fatto }; salvaSmista(x); } else sistUI.smista = x;
+  var posto = {}; x.ordine.forEach(function (u, i) { posto[u] = i + 1; });
+  return { posto: posto, fatto: !!x.fatto, ordine: x.ordine };
+}
+function testoPosto(n) { return n == null ? '' : (n > 100 ? 'plateau ' + (Math.floor((n - 1) / 100) + 1) + ', posto ' + ((n - 1) % 100 + 1) : 'posto ' + n); }
+function statoSistemazione() {
+  var coda = S.banco.coda(), posate = {};
+  (coda.posate || []).forEach(function (u) { posate[u] = true; });
+  var sm = smistamento(coda, posate);
+  var perPosto = function (a, b) { return (sm.posto[a.uid] || 1e9) - (sm.posto[b.uid] || 1e9); };
+  var daDecidere = function (v) { return v.stato === 'da_decidere'; };
+  return { coda: coda, posate: posate, smista: sm,
+    identita: coda.voci.filter(function (v) { return daDecidere(v) && v.fase === 'identita'; }).sort(perPosto),
+    posto: coda.voci.filter(function (v) { return v.fase === 'posto' && (daDecidere(v) || (v.stato === 'decisa' && !posate[v.uid])); }).sort(perPosto),
+    fondo: coda.voci.filter(function (v) { return daDecidere(v) && v.fase === 'fondo'; }).sort(perPosto) };
+}
+/* La tabella dello smistamento: posto, scritta, fattispecie; la provetta in mano si cerca per scritta o cifre. */
+function vistaSmista(st) {
+  var d = h('div', { id: 'fej-smista' }), voci = {}; st.coda.voci.forEach(function (v) { voci[v.uid] = v; });
+  var righe = st.smista.ordine.map(function (u) { return voci[u]; }).filter(function (v) { return !!v; });
+  var q = String(sistUI.inMano || '').replace(/\s+/g, '').toUpperCase();
+  var trovate = q ? righe.filter(function (v) { var et = v.etichetta.replace(/\s+/g, '').toUpperCase(), c = String(v.contrassegno || '').toUpperCase(); return et.indexOf(q) === 0 || (c && c.slice(-q.length) === q); }) : [];
+  var campo = h('input', { type: 'search', id: 'fej-smista-in-mano', value: sistUI.inMano || '', autocomplete: 'off', placeholder: 'scritta della provetta o ultime cifre',
+    oninput: function (ev) { sistUI.inMano = ev.target.value; disegna(); var c = document.getElementById('fej-smista-in-mano'); if (c) { c.focus(); c.setSelectionRange(c.value.length, c.value.length); } } });
+  d.appendChild(h('p', null, h('label', { for: 'fej-smista-in-mano' }, 'Provetta in mano: '), campo));
+  if (q) d.appendChild(h('p', { class: trovate.length === 1 ? 'fej-ok fej-smista-esito' : 'fej-avviso fej-smista-esito', id: 'fej-smista-esito', role: 'status' },
+    trovate.length === 1 ? 'Mettila al ' + testoPosto(st.smista.posto[trovate[0].uid]) + ' del plateau dei fuori registro (' + trovate[0].etichetta.split(' ')[0] + ' · ' + trovate[0].titolo + ').' :
+    trovate.length ? 'Più provette: ' + trovate.map(function (v) { return v.etichetta.split(' ')[0] + ' → ' + testoPosto(st.smista.posto[v.uid]); }).join('; ') + '.' :
+    'Nessuna provetta fuori registro con questa scritta: se è ordinaria resta nel suo plateau; se non è mai stata registrata, registrala da Tipologie › Assenti.'));
+  var t = h('table', { class: 'fej-banco-dati' }, h('thead', null, h('tr', null, ['Posto', 'Scritta sulla provetta', 'Contrassegno letto', 'Fattispecie', 'Fase', 'Stato'].map(function (x) { return h('th', { scope: 'col' }, x); }))));
+  var tb = h('tbody'), nomi = { identita: 'A · Di chi è?', posto: 'B · Al loro posto', fondo: 'C · In fondo', fuori: '—' };
+  righe.forEach(function (v) {
+    tb.appendChild(h('tr', { class: trovate.indexOf(v) >= 0 ? 'fej-smista-trovata' : null }, h('td', null, h('strong', null, String(st.smista.posto[v.uid]))), h('td', null, v.etichetta.split(' ')[0]),
+      h('td', null, v.contrassegno || 'senza contrassegno'), h('td', null, v.titolo), h('td', null, nomi[v.fase] || ''), h('td', null, st.posate[v.uid] ? 'già al suo numero' : v.esito)));
+  });
+  t.appendChild(tb);
+  d.appendChild(h('div', { class: 'fej-tabella-scorre' }, t));
+  d.appendChild(h('p', null, h('button', { type: 'button', class: 'fej-primario', id: 'fej-smista-fatto', onclick: function () {
+      salvaSmista({ ordine: st.smista.ordine, fatto: true }); sistUI.fase = null; sistUI.inMano = ''; bancoUI.uid = null; disegna();
+    } }, st.smista.fatto ? 'Smistate: torna alle fasi' : 'Le ho smistate tutte: comincia'), ' ',
+    h('button', { type: 'button', onclick: function () { window.print(); } }, 'Stampa l’elenco')));
+  return d;
+}
+function etichettaDi(uid, voci) { for (var i = 0; i < voci.length; i++) if (voci[i].uid === uid) return voci[i].etichetta.split(' ')[0]; return ''; }
+function descriviAzione(a, voci) {
+  var et = a.uid ? etichettaDi(a.uid, voci) : '';
+  switch (a.tipo) {
+    case 'ricollocazione': return 'Provetta ' + et + ' attribuita al capo ' + a.capo;
+    case 'soluzione': return 'Provetta ' + et + ': ' + ({ coda: 'in coda, ARVET a mano', normalizzata: 'normalizzata (va in ARVET da sola)', regola: 'rimessa da decidere', esclusa: 'tolta' }[a.soluzione] || a.soluzione);
+    case 'riattribuzione': return 'Provetta ' + et + ': marca corretta in ' + a.contrassegno;
+    case 'scarto': return 'Provetta ' + et + ' tolta: ' + (a.motivo || '');
+    case 'annulla_scarto': return 'Provetta ' + et + ' rimessa fra quelle da decidere';
+    case 'persa': return 'Provetta ' + et + ' persa: ' + (a.motivo || '');
+    case 'ritrovata': return 'Provetta ' + et + ' ritrovata';
+    case 'annulla_provetta': return 'Provetta ' + (a.etichetta || et) + ' annullata: ' + (a.motivo || '');
+    case 'modifica_provetta': return 'Provetta ' + et + ': nota aggiornata';
+    case 'riordino': return 'Provetta di ' + a.contrassegno + ' messa al numero ' + a.destinazione + (String(a.suggerita) !== String(a.destinazione) ? ' (proposto ' + a.suggerita + ')' : '');
+    case 'spostamento': return 'Spostamento: ' + a.contrassegno + ' al numero ' + a.provetta;
+    case 'scambio': return 'Scambio fra ' + a.a + ' e ' + a.b;
+    case 'chiudi_buchi': return 'Chiusura dei buchi: ' + (a.valore ? 'sì' : 'no');
+    case 'anagrafe_bdn': return 'Verifica in BDN caricata';
+    case 'tardiva': return 'Registrazione tardiva: ' + (a.etichetta || '') + ' al capo ' + (a.contrassegno || '');
+    default: return a.tipo;
+  }
+}
+function cronologia(voci) {
+  var az = S.stato.azioni(), d = h('details', { class: 'fej-cronologia', id: 'fej-cronologia' });
+  d.appendChild(h('summary', null, 'Cronologia: ' + az.length + (az.length === 1 ? ' azione' : ' azioni') + ' (ognuna si può annullare)'));
+  if (!az.length) d.appendChild(h('p', null, 'Ancora nessuna azione.'));
+  az.slice().reverse().forEach(function (a) {
+    d.appendChild(h('div', { class: 'fej-riga', 'data-azione': a.id }, h('span', { class: 'fej-tenue' }, String(a.ts || '').slice(11, 16) + ' '), descriviAzione(a, voci), ' ',
+      h('button', { type: 'button', onclick: function () { if (confirm('Annullare: ' + descriviAzione(a, voci) + '?\nLe azioni fatte dopo restano, se valgono ancora.')) togli(a.id); } }, 'Annulla')));
+  });
+  d.appendChild(h('p', null, h('button', { type: 'button', id: 'fej-pagina-spostamenti', onclick: paginaSpostamenti }, 'Schema delle provette con le modifiche (pagina da stampare)')));
+  return d;
+}
+/* Una pagina sola: quale provetta è andata al laboratorio con ciascun numero, e tutte le azioni in ordine. */
+function paginaSpostamenti() {
+  if (S.apVecchio || !S.ap) aggiornaRisultato();
+  var e = function (x) { return String(x == null ? '' : x).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
+  var voci = S.banco.coda().voci, perUid = {}; voci.forEach(function (v) { perUid[v.uid] = v; });
+  var righe = (S.ap.provette || []).filter(function (p) { return !p.annullata; }).map(function (p) {
+    var et = String(p.etichetta || '').split(' ')[0], v = perUid[p.uid];
+    return { numero: p.numero, et: et, capo: p.contrassegno || '', serie: p.serie, vet: p.operatore, note: p.note || '', cosa: v ? v.titolo + ' · ' + v.esito : (String(p.numero) !== et ? 'numero cambiato' : '') };
+  }).filter(function (r) { return r.cosa; }).sort(function (a, b) { return a.serie < b.serie ? -1 : a.serie > b.serie ? 1 : (Number(a.numero) || 1e9) - (Number(b.numero) || 1e9); });
+  var html = '<!doctype html><html lang="it"><head><meta charset="utf-8"><title>Sistemazione delle provette</title><style>body{font-family:system-ui,sans-serif;margin:1.2rem;font-size:11pt}table{border-collapse:collapse;width:100%}' +
+    'th,td{border:1px solid #999;padding:3px 6px;text-align:left}th{background:#e6efe6}h2{margin-top:1.4em}</style></head><body><h1>Sistemazione delle provette</h1><p>' +
+    e((S.P.manifesto.seduta && S.P.manifesto.seduta.nome) || '') + ' · stampato il ' + new Date().toLocaleString('it-IT') + '</p><h2>Provette con una modifica: che cosa è andato al laboratorio</h2>' +
+    '<table><thead><tr><th>Serie</th><th>Numero finale</th><th>Scritta in campo</th><th>Capo</th><th>Veterinario</th><th>Che cosa</th><th>Note</th></tr></thead><tbody>' +
+    righe.map(function (r) { return '<tr><td>' + e(r.serie) + '</td><td>' + e(r.numero == null ? 'ARVET a mano' : r.numero) + '</td><td>' + e(r.et) + '</td><td>' + e(r.capo) + '</td><td>' + e(r.vet) + '</td><td>' + e(r.cosa) + '</td><td>' + e(r.note) + '</td></tr>'; }).join('') +
+    '</tbody></table><h2>Cronologia delle azioni</h2><table><thead><tr><th>Ora</th><th>Azione</th><th>Chi</th></tr></thead><tbody>' +
+    S.stato.azioni().map(function (a) { return '<tr><td>' + e(String(a.ts || '').replace('T', ' ').slice(0, 16)) + '</td><td>' + e(descriviAzione(a, voci)) + '</td><td>' + e(a.nome || '') + '</td></tr>'; }).join('') +
+    '</tbody></table></body></html>';
+  var w = window.open('', '_blank');
+  if (!w) { scarica('sistemazione_provette.html', 'text/html;charset=utf-8', html); return; }
+  w.document.open(); w.document.write(html); w.document.close();
+}
+function schedaSistemazione() {
+  var d = h('div', { class: 'fej-sistemazione', id: 'fej-sistemazione' }), st;
+  // i buchi si chiudono sempre: si scrive una volta, all'inizio, prima di ogni spostamento
+  if (S.apVecchio || !S.ap) aggiornaRisultato();
+  if (!compattaAttuale() && !riordinoIniziato() && !occupatoPc) {
+    applicaSullaSessione({ id: Stato.uuid(), tipo: 'chiudi_buchi', ts: new Date().toISOString(), valore: true });
+    aggiornaRisultato();
+  }
+  try { st = statoSistemazione(); } catch (e) { d.appendChild(h('p', { class: 'fej-errore' }, 'Sistemazione non disponibile: ' + e.message)); return d; }
+  var buchi = null;
+  function contaBuchi() { if (buchi == null) { try { buchi = righeRiordino().filter(function (r) { return !r.g.fatta; }).length; } catch (e) { buchi = 0; } } return buchi; }
+  var n = { identita: st.identita.length, posto: st.posto.length, fondo: st.fondo.length };
+  var daSmistare = !st.smista.fatto && (n.identita + n.posto + n.fondo) > 1;
+  var prima = daSmistare ? 'smista' : n.identita ? 'identita' : n.posto ? 'posto' : n.fondo ? 'fondo' : contaBuchi() ? 'buchi' : 'fine';
+  var fase = sistUI.fase || prima;
+  var barraFasi = h('div', { class: 'fej-fasi', role: 'tablist', 'aria-label': 'Fasi della sistemazione' });
+  FASI.forEach(function (f) {
+    var quanti = f[0] === 'buchi' ? (prima === 'buchi' || prima === 'fine' || fase === 'buchi' ? contaBuchi() : '…') : f[0] === 'fine' ? '' : f[0] === 'smista' ? (st.smista.fatto ? 0 : st.smista.ordine.length) : n[f[0]];
+    barraFasi.appendChild(h('button', { type: 'button', role: 'tab', 'aria-selected': fase === f[0] ? 'true' : 'false', 'data-fase': f[0],
+      class: 'fej-fase' + (fase === f[0] ? ' fej-attiva' : '') + (quanti === 0 ? ' fej-fatta' : ''), onclick: function () { sistUI.fase = f[0]; bancoUI.uid = null; disegna(); } },
+      f[1], quanti === '' ? null : h('span', { class: 'fej-fase-n' }, quanti === 0 ? ' ✓' : ' ' + quanti)));
+  });
+  d.appendChild(barraFasi);
+  if (fase !== prima && prima !== 'fine' && fase !== 'smista') d.appendChild(h('p', { class: 'fej-avviso' }, 'Prima andrebbe finita la fase «' + FASI.filter(function (f) { return f[0] === prima; })[0][1] + '»: i posti e i buchi dipendono dalle decisioni che mancano. ',
+    h('button', { type: 'button', onclick: function () { sistUI.fase = null; bancoUI.uid = null; disegna(); } }, 'Torna lì')));
+  d.appendChild(h('p', { class: 'fej-guida' }, GUIDA_FASE[fase]));
+  if (fase === 'smista') d.appendChild(vistaSmista(st));
+  else if (fase === 'buchi') d.appendChild(schedaRiordino());
+  else if (fase === 'fine') {
+    var c = st.coda.conteggi, resto = c.da_decidere + c.accantonata;
+    d.appendChild(h('p', { class: resto || contaBuchi() ? 'fej-avviso' : 'fej-ok' }, resto ? 'Restano ' + c.da_decidere + ' provette da decidere e ' + c.accantonata + ' accantonate. ' : 'Tutte le provette fuori registro sono decise. ',
+      contaBuchi() ? 'Restano ' + contaBuchi() + ' passi per chiudere i buchi. ' : 'Nessun buco da chiudere. ', 'Gli snippet si possono prendere comunque: se non sono conformi lo dicono.'));
+    d.appendChild(h('p', null, h('button', { type: 'button', class: 'fej-primario', onclick: function () { S.scheda = 'snippet'; disegna(); } }, 'Snippet ARVET'), ' ',
+      h('button', { type: 'button', onclick: function () { S.scheda = 'uscite'; disegna(); } }, 'Uscite e pagina per l’allevatore')));
+  } else {
+    var lista = st[fase];
+    if (!lista.length) d.appendChild(h('p', { class: 'fej-ok' }, 'Niente da fare in questa fase. ', h('button', { type: 'button', class: 'fej-primario', onclick: function () { sistUI.fase = null; bancoUI.uid = null; disegna(); } }, 'Avanti')));
+    else {
+      var voluta = bancoUI.prossimo; bancoUI.prossimo = null;
+      var attuale = lista.filter(function (v) { return v.uid === (voluta || bancoUI.uid); })[0] || lista[0];
+      if (bancoUI.uid !== attuale.uid) { bancoUI.uid = attuale.uid; bancoUI.aperto = fase === 'identita' ? 'ricolloca' : null; bancoUI.motivo = ''; bancoUI.cifre = ''; bancoUI.nelReport = null; bancoUI.tutti = false; }
+      var chips = h('div', { class: 'fej-fase-provette', 'aria-label': 'Provette di questa fase' });
+      lista.forEach(function (v) {
+        chips.appendChild(h('button', { type: 'button', class: 'fej-chip' + (v.uid === attuale.uid ? ' fej-attiva' : ''), title: v.titolo + ' · ' + v.esito,
+          onclick: function () { bancoUI.uid = null; bancoUI.prossimo = v.uid; disegna(); } }, (st.smista.posto[v.uid] ? st.smista.posto[v.uid] + ' · ' : '') + v.etichetta.split(' ')[0]));
+      });
+      d.appendChild(chips);
+      if (st.smista.posto[attuale.uid]) d.appendChild(h('p', { class: 'fej-prendi', id: 'fej-prendi' }, 'Prendi la provetta al ', h('strong', null, testoPosto(st.smista.posto[attuale.uid])), ' del plateau dei fuori registro: ', h('strong', null, attuale.etichetta.split(' ')[0]), '.'));
+      d.appendChild(schedaProvettaBanco(attuale.uid));
+    }
+  }
+  d.appendChild(cronologia(st.coda.voci));
+  return d;
+}
+
 /* ---- avvio: carica il testo dello snippet (arvet_fill.min.js) dal sito e disegna ---- */
 var base = document.currentScript ? document.currentScript.src.replace(/[^/]*$/, '') : 'js/';
 var promessaMotore = (typeof fetch === 'function' ? fetch(base + 'vendor/arvet_fill.min.js').then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.text(); }) : Promise.reject(new Error('fetch assente')))
@@ -1984,5 +2348,8 @@ var promessaMotore = (typeof fetch === 'function' ? fetch(base + 'vendor/arvet_f
 /* Gli snippet si calcolano solo quando lo script di ARVET è caricato: se non lo è, si dice. */
 function attendiMotore() { promessaMotore.then(function () { if (S.erroreMotore) { S.messaggio = 'Non riesco a caricare lo script di ARVET: gli snippet non si possono preparare, ricarica la pagina.'; } ricalcola(); }); }
 disegna();
+if (!pc) Memoria.prendi('cartella').then(function (c) { Disco.ripristina(c); return Memoria.prendi('backup'); }).then(function (b) {
+  if (b && !S.P) leggiBackup(b).then(function () { if (S.P) { S.messaggio = 'Sessione ripresa: backup e azioni di prima.'; messaggio(); } }, function () { /* backup non più leggibile: si ricarica a mano */ });
+});
 if (pc) pc.stato().then(function () { collegatoPc = true; caricaDalTablet(); }, function () { /* primo accesso: chiede il codice */ });
 })();

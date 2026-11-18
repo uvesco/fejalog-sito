@@ -98,3 +98,61 @@ body.fej-regia-locale button:focus-visible, body.fej-regia-locale input:focus-vi
 .fej-banco-tolta strong, .fej-banco-persa strong { color: #c0392b; }
 .fej-banco-decisa strong { color: #1b8a3a; }
 .fej-primario { font-weight: 700; padding: .4rem 1rem; }
+
+/* Sistemazione (2026-11-17): barra sempre in vista, fasi, tasto principale e campi da compilare ben evidenti */
+.fej-barra { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; gap: .5rem .8rem; align-items: center; padding: .4rem .6rem; margin: .3rem 0; background: var(--md-default-bg-color, #fff); border: 1px solid var(--md-default-fg-color--lighter, #bbb); border-radius: .4rem; font-size: .85em; }
+.fej-barra[hidden] { display: none; }
+.fej-fasi { display: flex; flex-wrap: wrap; gap: .4rem; margin: .6rem 0; }
+.fej-fase { font: inherit; padding: .45rem .8rem; border: 2px solid var(--md-default-fg-color--lighter, #bbb); border-radius: .5rem; background: transparent; color: var(--md-default-fg-color); cursor: pointer; }
+.fej-fase.fej-attiva { border-color: #1b6b3a; background: rgba(27, 107, 58, .12); font-weight: 700; }
+.fej-fase.fej-fatta { opacity: .65; }
+.fej-fase-n { font-weight: 700; }
+.fej-fase-provette { display: flex; flex-wrap: wrap; gap: .3rem; margin: .4rem 0; }
+.fej-chip { font: inherit; font-size: .85em; padding: .15rem .5rem; border: 1px solid var(--md-default-fg-color--lighter, #bbb); border-radius: 1rem; background: transparent; color: var(--md-default-fg-color); cursor: pointer; }
+.fej-chip.fej-attiva { background: #1b6b3a; color: #fff; border-color: #1b6b3a; }
+.fej-sistemazione button.fej-primario, .fej-barra button.fej-primario { background: #1b6b3a; color: #fff; border: 2px solid #124a28; border-radius: .4rem; font-size: 1.05em; padding: .5rem 1.2rem; cursor: pointer; }
+.fej-sistemazione button:not(.fej-primario):not(.fej-fase):not(.fej-chip):not(.fej-copia) { border: 1px solid var(--md-default-fg-color--light, #888); border-radius: .35rem; padding: .3rem .7rem; background: var(--md-default-bg-color, #fff); color: var(--md-default-fg-color); cursor: pointer; }
+.fej-sistemazione input[type=text], .fej-sistemazione input[type=search], .fej-sistemazione textarea, .fej-sistemazione select { border: 2px solid #b26a00; border-radius: .3rem; padding: .3rem .4rem; background: rgba(255, 213, 128, .15); }
+.fej-sistemazione input:focus, .fej-sistemazione textarea:focus { outline: 3px solid rgba(27, 107, 58, .5); }
+.fej-attenzione td { background: rgba(255, 170, 0, .14); }
+.fej-non-conforme { color: #b00020; font-weight: 700; }
+.fej-banco-mano { margin: .5rem 0; }
+.fej-blocco { display: block; margin: .3rem 0; }
+.fej-cronologia { margin-top: 1rem; border-top: 1px solid var(--md-default-fg-color--lighter, #bbb); padding-top: .4rem; }
+.fej-smista-trovata td { background: rgba(27, 138, 58, .2); font-weight: 700; }
+.fej-smista-esito { font-size: 1.15em; }
+.fej-prendi { font-size: 1.1em; border-left: 4px solid #1b6b3a; padding: .3rem .7rem; background: rgba(27, 107, 58, .08); }
+@media print { .fej-tabs, .fej-barra, .fej-fasi, .fej-msg, .fej-cronologia, .md-header, .md-sidebar, .md-footer { display: none !important; } }
+
+/* Tasti e campi riconoscibili in tutti gli strumenti, in tema chiaro e scuro (utente, 2026-11-17: «non si distinguevano le
+   celle compilabili né i bottoni cliccabili»). Si appoggia alle variabili del tema, così vale anche sul tablet. */
+.fej-corpo button, .fej-barra button, .fej-fase, .fej-chip, .fej-corpo input[type=file]::file-selector-button {
+  cursor: pointer; font-weight: 600; color: var(--md-default-fg-color); background: var(--md-default-bg-color);
+  border: 2px solid var(--md-default-fg-color--light); border-radius: .4rem; padding: .35rem .85rem;
+  box-shadow: 0 2px 0 var(--md-default-fg-color--lighter);
+}
+.fej-corpo button:hover:not(:disabled), .fej-barra button:hover:not(:disabled), .fej-fase:hover, .fej-chip:hover,
+.fej-corpo input[type=file]::file-selector-button:hover { background: var(--md-default-fg-color--lightest); border-color: var(--md-accent-fg-color, #1b8a3a); }
+.fej-corpo button:active:not(:disabled), .fej-barra button:active:not(:disabled) { transform: translateY(1px); box-shadow: none; }
+.fej-corpo button:disabled, .fej-barra button:disabled { opacity: .45; cursor: not-allowed; box-shadow: none; }
+.fej-corpo button:focus-visible, .fej-barra button:focus-visible, .fej-corpo input:focus-visible, .fej-corpo select:focus-visible,
+.fej-corpo textarea:focus-visible { outline: 3px solid var(--md-accent-fg-color, #1b8a3a); outline-offset: 2px; }
+/* i tasti principali restano pieni di colore (hanno già le loro regole, qui solo per non perdere il rilievo) */
+.fej-corpo button.fej-primario, .fej-barra button.fej-primario { background: #1b6b3a; color: #fff; border-color: #124a28; box-shadow: 0 2px 0 #124a28; }
+.fej-corpo button.fej-primario:hover:not(:disabled), .fej-barra button.fej-primario:hover:not(:disabled) { background: #228048; }
+.fej-chip.fej-attiva { background: #1b6b3a; color: #fff; border-color: #124a28; }
+/* campi da compilare: bordo ambra e sfondo diverso dalla pagina */
+.fej-corpo input[type=text], .fej-corpo input[type=search], .fej-corpo input[type=number], .fej-corpo input[type=password],
+.fej-corpo input[type=email], .fej-corpo input[type=url], .fej-corpo input:not([type]), .fej-corpo textarea, .fej-corpo select,
+.fej-barra input[type=text] {
+  color: var(--md-default-fg-color); background: var(--md-code-bg-color, rgba(128, 128, 128, .15));
+  border: 2px solid #d9822b; border-radius: .35rem; padding: .35rem .6rem;
+}
+.fej-corpo input::placeholder, .fej-corpo textarea::placeholder { color: var(--md-default-fg-color--light); opacity: 1; font-style: italic; }
+.fej-corpo input[type=file] { border: 2px dashed #d9822b; border-radius: .4rem; padding: .5rem; background: var(--md-code-bg-color, rgba(128, 128, 128, .12)); max-width: 100%; }
+.fej-corpo input[type=checkbox], .fej-corpo input[type=radio] { width: 1.15rem; height: 1.15rem; accent-color: #1b6b3a; cursor: pointer; vertical-align: middle; }
+/* schede: si capisce che si toccano e quale è aperta */
+.fej-tab { border: 1px solid var(--md-default-fg-color--lighter); border-bottom: 3px solid transparent; border-radius: .45rem .45rem 0 0; background: var(--md-code-bg-color, transparent); font-weight: 600; }
+.fej-tab:hover:not(:disabled) { background: var(--md-default-fg-color--lightest); }
+.fej-tab.fej-attiva { background: var(--md-default-bg-color); border-color: var(--md-default-fg-color--light); border-bottom: 4px solid #1b8a3a; }
+.fej-tabs-altre .fej-tab { font-weight: 500; }

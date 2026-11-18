@@ -27,7 +27,7 @@ return {
     var b = api.apriBancoSito(json(P), json(az || []));
     return {
       coda: function () { return JSON.parse(b.coda()); },
-      scheda: function (uid, cifre) { return JSON.parse(b.scheda(String(uid), String(cifre || ''))); },
+      scheda: function (uid, cifre, tutti) { return JSON.parse(b.scheda(String(uid), String(cifre || ''), !!tutti)); },
       cerca: function (q) { return JSON.parse(b.cerca(String(q || ''))); },
       applica: function (a) { return JSON.parse(b.applica(json(a))); },
       notaAllevatore: function (uid, testo) { return JSON.parse(b.notaAllevatore(String(uid), String(testo || ''))); },
