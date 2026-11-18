@@ -66,6 +66,9 @@ function sceltaDaBackup(P) {
     eta_mesi: typeof imp.eta_diagnostica_mesi === 'number' ? imp.eta_diagnostica_mesi : 6, lettere: imp.lettere_specie || '',
     problematici_in_sequenza: imp.problematici_in_sequenza !== false, verso: imp.verso_riempimento === 'basso_alto' ? 'basso_alto' : 'alto_basso',
     sigle: sigle, priorita: String(imp.priorita_regia || '').split(',').map(function (x) { return x.trim(); }).filter(function (x) { return ids.indexOf(x) >= 0; }),
+    // le uscite per modello caricate alla creazione stanno nello snapshot: senza, i capi usciti tornerebbero numerati (revisione del 18/11, P2-3)
+    uscite_modello: ev.filter(function (e) { return e.tipo === 'REGISTRO_CARICATO' && e.dati && e.dati.uscite_modello; })
+      .map(function (e) { return { nome: 'dallo snapshot (' + (e.dati.uscite_modello.timbro || '') + ')', testo: JSON.stringify(e.dati.uscite_modello) }; }),
     reti: Reti.daEventi(ev), cerchietto_principale: typeof imp.cerchietto_principale === 'boolean' ? imp.cerchietto_principale : null
   }, riferimento: { id: p.id || '', creato_il: p.creato_il || '', impronta: P.verifica && P.verifica.impronta || '', numerazione_csv: P.numerazioneCsv || '' } };
 }
@@ -265,7 +268,7 @@ function monta(radice, deps) {
             var r = sceltaDaBackup(P);
             if (!r.ok) throw new Error(r.errore);
             riprendi(r.scelte, r.riferimento, f.name);
-            stato.messaggio = 'Ripreso da ' + f.name + ': veterinari, ricercati, stabilimenti, regole, sigle, priorità e reti. Lo snapshot non contiene i file della BDN: ricaricali al passo 1 (con gli stessi file la numerazione resta identica).';
+            stato.messaggio = 'Ripreso da ' + f.name + ': veterinari, ricercati, stabilimenti, regole, sigle, priorità, reti e uscite per modello. Lo snapshot non contiene i file della BDN: ricaricali al passo 1 (con gli stessi file e le stesse uscite la numerazione resta identica; l’anteprima lo controlla).';
           });
         }
         return leggiTesto(f).then(function (t) {
@@ -341,14 +344,15 @@ function monta(radice, deps) {
     // lo snippet per la BDN, con gli stabilimenti scelti e la finestra che finisce alla data del progetto
     var codici = (stato.stabilimenti && stato.stabilimenti.length ? stato.stabilimenti : (e.codici || []).map(function (x) { return x.codice || x; })).filter(Boolean);
     var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(stato.data || ''), al = m ? m[3] + '/' + m[2] + '/' + m[1] : '';
-    var oggi = new Date().toISOString().slice(0, 10), futuro = m && stato.data > oggi;
-    var cfg = { stabilimenti: codici, giorni: 7, al: futuro ? '' : al, data: oggi.replace(/-/g, ''), origine: (w.location && w.location.origin) || '' };
+    // in preparazione la finestra è 7 giorni indietro dal giorno in cui si interroga la BDN, qualunque sia la data del progetto (utente, 2026-11-18)
+    var oggi = new Date().toISOString().slice(0, 10);
+    var cfg = { stabilimenti: codici, giorni: 7, al: '', data: oggi.replace(/-/g, ''), origine: (w.location && w.location.origin) || '' };
     var urlMotore = (BASE_JS || '') + 'bdn-uscite-modello-motore.js', esito = h('span', { role: 'status' });
     if (codici.length) c.appendChild(h('p', null,
       bottone('Copia lo snippet per la BDN', function () {
         var t = 'window.__BDN_USCITE_MODELLO__ = ' + JSON.stringify(cfg) + ';\nfetch(' + JSON.stringify(urlMotore + '?v=' + cfg.data) + ').then(function (r) { if (!r.ok) throw new Error(\'HTTP \' + r.status); return r.text(); }).then(function (t) { new Function(t)(); }).catch(function (e) { console.log(\'Fejalog: non riesco a caricare lo snippet dal sito (\' + e.message + \')\'); });\n';
         w.navigator.clipboard.writeText(t).then(function () { esito.textContent = ' Copiato: incollalo nella console della BDN (F12 › Console), nella scheda dove hai fatto l’accesso.'; }, function () { esito.textContent = ' Non riesco a copiare.'; });
-      }, { class: 'md-button' }), ' ', h('span', { class: 'fej-tenue' }, 'Stabilimenti: ' + codici.join(', ') + ' · modelli dei 7 giorni prima ' + (cfg.al ? 'del ' + cfg.al : 'di oggi') + '.'), esito));
+      }, { class: 'md-button' }), ' ', h('span', { class: 'fej-tenue' }, 'Stabilimenti: ' + codici.join(', ') + ' · modelli dei 7 giorni prima di oggi (il giorno in cui interroghi la BDN).'), esito));
     else c.appendChild(h('p', { class: 'fej-tenue' }, 'Lo snippet per la BDN compare dopo aver caricato i registri e scelto gli stabilimenti.'));
     (stato.usciteModello || []).forEach(function (u) {
       c.appendChild(h('p', null, u.nome + ' ', bottone('Togli', function () { stato.usciteModello = stato.usciteModello.filter(function (x) { return x !== u; }); ricalcola(true); renderUscite(); })));

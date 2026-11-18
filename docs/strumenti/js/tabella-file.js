@@ -16,7 +16,7 @@ function xml(t) { return String(t).replace(/&lt;/g, '<').replace(/&gt;/g, '>').r
 
 /** Il numero seriale di Excel (giorni dal 1900) in «gg/mm/aaaa». */
 function serialeInData(n) {
-  var d = new Date(Date.UTC(1899, 11, 30) + Math.round(Number(n)) * 86400000);
+  var d = new Date(Date.UTC(1899, 11, 30) + Math.floor(Number(n)) * 86400000);
   return p2(d.getUTCDate()) + '/' + p2(d.getUTCMonth() + 1) + '/' + d.getUTCFullYear();
 }
 /** Una data scritta a mano o da Excel in «gg/mm/aaaa»; '' se non si legge. */

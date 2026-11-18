@@ -5,6 +5,7 @@
 ## Prima del campo
 
 - ☐ Crea il progetto sulla Regia e carica i registri BDN e i contrassegni necessari.
+- ☐ Carica anche le uscite per modello degli ultimi 7 giorni (sul sito, «Crea il progetto», passo 3 bis: lo snippet le legge dalle Movimentazioni della BDN). La BDN aggiorna il registro fino a 7 giorni dopo il documento di accompagnamento: senza, i capi appena venduti o macellati risultano presenti e si cercano inutilmente.
 - ☐ Controlla gli stabilimenti di lavoro, l'età diagnostica, le lettere di specie e le regole del progetto; con pecore e capre almeno una specie deve avere la lettera.
 - ☐ In Configurazione › Sigle stabilimenti e veterinari scegli la priorità per la regia d'emergenza (per esempio il tuo telefono, poi un secondo veterinario): se il tablet si spegne la prende il primo al lavoro della lista.
 - ☐ Scegli le reti del progetto (router, hotspot del tablet con nome e password fissi) in Rete del progetto e fai inquadrare a ogni telefono i loro QR Wi-Fi; configura le cartelle del progetto e dei backup e verifica che siano accessibili.

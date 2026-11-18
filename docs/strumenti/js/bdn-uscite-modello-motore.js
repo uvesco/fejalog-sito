@@ -41,10 +41,13 @@
     return '';
   }
   /** La finestra [dal, al] (gg/mm/aaaa) di `giorni` giorni che finisce in `al` (predefinito oggi). */
-  function finestra(al, giorni, oggi) {
+  function finestra(al, giorni, oggi, dal) {
     var f = normalizzaData(al), d;
     if (f) { var m = f.split('/'); d = new Date(+m[2], +m[1] - 1, +m[0]); } else d = oggi || new Date();
     var a = new Date(d.getFullYear(), d.getMonth(), d.getDate()), da = new Date(a.getTime()); da.setDate(da.getDate() - (giorni || 7));
+    // dopo il campionamento l'inizio è dato: 7 giorni prima della preparazione del pacchetto, che può precedere il campionamento
+    var d0 = normalizzaData(dal);
+    if (d0 && chiaveData(d0) <= chiaveData(dataIt(a))) return { dal: d0, al: dataIt(a) };
     return { dal: dataIt(da), al: dataIt(a) };
   }
   /** La causale del modello nel tipo di uscita di Fejalog: macello, vendita (o cessione) o altro. */
@@ -141,7 +144,7 @@
   }
   if (location.hostname.indexOf('vetinfo.it') < 0) { console.log('Fejalog: lo snippet va incollato nella BDN (vetinfo.it), nella scheda dove hai fatto l\'accesso.'); return; }
   cfg.timbro = cfg.timbro || timbroAdesso(); cfg.giorni = cfg.giorni || 7;
-  var fin = finestra(cfg.al, cfg.giorni);
+  var fin = finestra(cfg.al, cfg.giorni, null, cfg.dal);
 
   var attesa = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };
   var dec = function (b) { return new TextDecoder('latin1').decode(b); };
@@ -237,8 +240,12 @@
       var nonRegistrati = det.capi.filter(function (c) { return !c.uscitaRegistrata; }).length;
       riga('  modello ' + (det.rif || mod.estremi) + ' · ' + mod.tipologia.toLowerCase() + ' · uscita ' + (det.partenza || mod.uscita) + ' · ' + det.capi.length + ' capi (' + nonRegistrati + ' con l\'uscita non ancora registrata)');
       if (String(det.capi.length) !== String(mod.capi)) riga('  ATTENZIONE: la lista dice ' + mod.capi + ' capi, il dettaglio ne ha ' + det.capi.length);
+      // la partenza scritta nel modello dopo la fine della finestra (il giorno del campionamento): quei capi c'erano
+      var dataUscita = det.partenza || mod.uscita || mod.richiesta;
+      if (chiaveData(dataUscita) > chiaveData(al)) { riga('  modello ' + (det.rif || mod.estremi) + ': partenza il ' + dataUscita + ', dopo il ' + al + ': non vale'); continue; }
+      if (!det.partenza && !mod.uscita) riga('  ATTENZIONE: il modello ' + (det.rif || mod.estremi) + ' non ha la data d\'uscita: uso la data della richiesta (' + mod.richiesta + '), da verificare');
       det.capi.forEach(function (c) {
-        out.push({ specie: c.specie, contrassegno: c.contrassegno, data: det.partenza || mod.uscita || mod.richiesta, tipo: tipoDaDestinazione(mod.tipologia),
+        out.push({ specie: c.specie, contrassegno: c.contrassegno, data: dataUscita, tipo: tipoDaDestinazione(mod.tipologia),
           modello: det.rif || mod.estremi, destinazione_codice: det.destinazione, destinazione: pulisci(mod.tipologia.toLowerCase()) });
       });
     }

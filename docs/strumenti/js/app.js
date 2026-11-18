@@ -125,7 +125,7 @@ function togli(id) { S.stato.rimuovi(id); Disco.azione(); ricalcola(); }
 /* Dopo il campo del 16/11 (utente, 2026-11-17: «troppe interfacce per fare la stessa cosa»): una sola scheda
    «Sistemazione», in quattro fasi; Tipologie, Soluzioni, Riordino e Plateau restano fra gli altri strumenti durante la
    prova. */
-var SCHEDE = [['carica', 'Carica'], ['avvisi', 'Avvisi'], ['sistema', 'Sistemazione'], ['snippet', 'Snippet ARVET'], ['uscite', 'Uscite'], ['esporta', 'Esporta per l\'app']];
+var SCHEDE = [['carica', 'Carica'], ['avvisi', 'Avvisi'], ['sistema', 'Sistemazione'], ['fuori', 'Fuori progetto'], ['snippet', 'Snippet ARVET'], ['uscite', 'Uscite'], ['esporta', 'Esporta per l\'app']];
 var SCHEDE_ALTRE = [['problemi', 'Tipologie'], ['banco', 'Soluzioni'], ['riordino', 'Riordino'], ['plateau', 'Plateau'], ['provette', 'Provette'], ['statistiche', 'Statistiche']];
 var tabs = h('div', { class: 'fej-tabs', role: 'tablist' });
 var corpo = h('div', { class: 'fej-corpo' });
@@ -157,7 +157,7 @@ function disegna() {
       'Per riportare le modifiche nell’app il campionamento va chiuso sul tablet, con la sua conferma: dalla 0.5.7 te lo propone l’importazione. ' +
       'Se dopo questo backup qualcuno ha prelevato ancora, salva un backup nuovo dal tablet.'));
   aggiornaBarra();
-  var f = { carica: schedaCarica, avvisi: schedaAvvisi, sistema: schedaSistemazione, banco: schedaBanco, provette: schedaProvette, problemi: schedaProblemi, nontrovati: schedaNonTrovati, riordino: schedaRiordino, plateau: schedaPlateau, statistiche: schedaStatistiche, snippet: schedaSnippet, uscite: schedaUscite, esporta: schedaEsporta }[S.scheda];
+  var f = { carica: schedaCarica, avvisi: schedaAvvisi, sistema: schedaSistemazione, fuori: schedaFuoriProgetto, banco: schedaBanco, provette: schedaProvette, problemi: schedaProblemi, nontrovati: schedaNonTrovati, riordino: schedaRiordino, plateau: schedaPlateau, statistiche: schedaStatistiche, snippet: schedaSnippet, uscite: schedaUscite, esporta: schedaEsporta }[S.scheda];
   corpo.appendChild(f());
   if (plateauPrincipale) plateauPrincipale.monta();
   messaggio();
@@ -294,6 +294,16 @@ function schedaCarica() {
 
 /* Un file della BDN, qualunque dei due: si riconosce dal «formato» (uscite per modello o verifica dei contrassegni), così non
    importa in quale dei due campi lo si mette. */
+/* Il giorno del campionamento (gg/mm/aaaa): quello del primo prelievo registrato nel backup. */
+function giornoCampionamento() {
+  var ev = (S.P && S.P.eventi) || (S.ap && S.ap.eventiEfficaci) || [], primo = '';
+  ev.forEach(function (e) { if (e.tipo === 'PROVETTA_REGISTRATA' && e.ts && (!primo || String(e.ts) < primo)) primo = String(e.ts); });
+  var g = primo.slice(0, 10).split('-');
+  return g.length === 3 ? g[2] + '/' + g[1] + '/' + g[0] : '';
+}
+function dopoIlCampionamento(r) {
+  return r && r.dopo_il_campionamento ? ' ATTENZIONE: ' + r.dopo_il_campionamento + ' uscite hanno una data successiva al campionamento' + (r.giorno ? ' (' + r.giorno + ')' : '') + ' e non valgono: quei capi c’erano.' : '';
+}
 function caricaDallaBdn(t, daDove) {
   var formato = '';
   try { formato = JSON.parse(String(t).replace(/^\uFEFF/, '')).formato || ''; } catch (e) { /* lo dice il dominio */ }
@@ -303,7 +313,7 @@ function caricaDallaBdn(t, daDove) {
     if (r.errore) { S.messaggio = r.errore; messaggio(); return null; }
     aggiornaAnagrafeBdn();
     S.cambiBdn = { titolo: 'Uscite per modello ' + (daDove || 'caricate') + ' (' + r.caricate + ' capi): che cosa è cambiato', cambi: r.cambi, dove: 'uscite' };
-    S.messaggio = '✓ Uscite per modello caricate: ' + r.caricate + ' capi (in tutto ' + r.totale + ').';
+    S.messaggio = '✓ Uscite per modello caricate: ' + r.caricate + ' capi (in tutto ' + r.totale + ').' + dopoIlCampionamento(r);
   } else {
     r = S.banco.caricaVerificaBdn(t);
     if (r.errore) { S.messaggio = r.errore; messaggio(); return null; }
@@ -376,9 +386,15 @@ function sezioneUsciteModello() {
   // lo snippet per la BDN: legge la sezione Movimentazioni (modelli di accompagnamento in uscita), non il registro di stalla
   var stabilimenti = (S.P.pacchetto.config && S.P.pacchetto.config.stabilimenti_lavoro || []).map(function (x) { return x.codice; });
   if (!stabilimenti.length) stabilimenti = (S.P.esporti || []).map(function (x) { return x.codice; });
-  var cfgU = { stabilimenti: stabilimenti, giorni: 7, data: new Date().toISOString().slice(0, 10).replace(/-/g, ''), origine: location.origin };
+  // la finestra finisce il giorno del campionamento (primo prelievo), non oggi: un capo uscito dopo c'era ed è stato controllato
+  var giornoCamp = giornoCampionamento();
+  // dopo il campionamento si va indietro a 7 giorni dalla preparazione del pacchetto (i registri sono di quel giorno), che può
+  // essere precedente al campionamento (utente, 2026-11-18)
+  var prep = String(S.P.pacchetto.creato_il || '').slice(0, 10).split('-'), dalU = '';
+  if (prep.length === 3) { var dp = new Date(+prep[0], +prep[1] - 1, +prep[2]); dp.setDate(dp.getDate() - 7); dalU = ('0' + dp.getDate()).slice(-2) + '/' + ('0' + (dp.getMonth() + 1)).slice(-2) + '/' + dp.getFullYear(); }
+  var cfgU = { stabilimenti: stabilimenti, giorni: 7, dal: dalU, al: giornoCamp, data: new Date().toISOString().slice(0, 10).replace(/-/g, ''), origine: location.origin };
   var urlU = new URL(base + 'bdn-uscite-modello-motore.js', location.href).href, esitoU = h('span', { role: 'status' });
-  d.appendChild(h('p', { class: 'fej-guida' }, 'Il registro di stalla non è ancora aggiornato nemmeno dai modelli dell’ultima settimana: lo snippet legge la sezione Movimentazioni della BDN, uno stabilimento alla volta (' + (stabilimenti.join(', ') || 'nessuno') + ').'));
+  d.appendChild(h('p', { class: 'fej-guida' }, 'Il registro di stalla non è ancora aggiornato nemmeno dai modelli dell’ultima settimana: lo snippet legge la sezione Movimentazioni della BDN, uno stabilimento alla volta (' + (stabilimenti.join(', ') || 'nessuno') + '): i modelli ' + (dalU ? 'dal ' + dalU + ' (7 giorni prima della preparazione del pacchetto) ' : 'dei 7 giorni prima ') + (giornoCamp ? 'al giorno del campionamento (' + giornoCamp + ')' : 'a oggi') + '. Un’uscita con data successiva al campionamento non vale: quel capo c’era.'));
   d.appendChild(h('p', null,
     h('button', { type: 'button', class: 'md-button', id: 'fej-copia-snippet-uscite', onclick: function () {
       var t = 'window.__BDN_USCITE_MODELLO__ = ' + JSON.stringify(cfgU) + ';\nfetch(' + JSON.stringify(urlU + '?v=' + cfgU.data) + ').then(function (r) { if (!r.ok) throw new Error(\'HTTP \' + r.status); return r.text(); }).then(function (t) { new Function(t)(); }).catch(function (e) { console.log(\'Fejalog: non riesco a caricare lo snippet dal sito (\' + e.message + \')\'); });\n';
@@ -414,10 +430,47 @@ window.addEventListener('message', function (ev) {
   if (r.errore) { S.messaggio = r.errore; messaggio(); return; }
   aggiornaAnagrafeBdn();
   S.cambiBdn = { titolo: 'Uscite per modello arrivate dalla BDN (' + r.caricate + ' capi): che cosa è cambiato', cambi: r.cambi, dove: 'uscite' };
-  S.messaggio = '✓ Uscite per modello arrivate dalla BDN: ' + r.caricate + ' capi.';
+  S.messaggio = '✓ Uscite per modello arrivate dalla BDN: ' + r.caricate + ' capi.' + dopoIlCampionamento(r);
   try { ev.source.postMessage({ fejalog: 'uscite-modello-ricevute', caricate: r.caricate }, ev.origin); } catch (e) { /* la scheda può essere chiusa */ }
   disegna();
 });
+
+/* ---- Contrassegni fuori progetto (utente, 2026-11-18) ----
+   I campioni raccolti con un contrassegno che il progetto non conosce: non è fra i presenti, né fra gli usciti, né negli altri
+   stabilimenti caricati. Una tabella con ciò che è stato rilevato in campo e, sotto, lo snippet per completare l'anagrafica
+   dalla BDN (lo stesso della scheda Carica) col caricamento del risultato. */
+var TIPI_FUORI_PROGETTO = ['NON_IN_ELENCO', 'MARCHE', 'MARCATI_IN_CAMPO', 'ALTRE'];
+function schedaFuoriProgetto() {
+  var d = h('div', { id: 'fej-fuori-progetto' }), voci = [], ver = {};
+  d.appendChild(h('p', { class: 'fej-guida' }, 'Campioni raccolti con un contrassegno che il progetto non conosce: non è fra i presenti, né fra gli usciti, né negli altri stabilimenti caricati. ' +
+    'Qui c’è ciò che è stato rilevato in campo; lo snippet qui sotto cerca ogni contrassegno nella BDN e completa l’anagrafica del progetto. Finché l’anagrafica manca, in ARVET vanno inseriti a mano.'));
+  try { voci = S.banco.coda().voci.filter(function (v) { return TIPI_FUORI_PROGETTO.indexOf(v.tipo) >= 0 && v.contrassegno && v.stato !== 'tolta' && v.stato !== 'persa'; }); ver = S.banco.verificheBdn(); }
+  catch (e) { d.appendChild(h('p', { class: 'fej-errore' }, 'Elenco non disponibile: ' + e.message)); return d; }
+  var perCodice = {}, ordine = [];
+  voci.forEach(function (v) { var k = v.contrassegno; if (!perCodice[k]) { perCodice[k] = []; ordine.push(k); } perCodice[k].push(v); });
+  var cercati = ordine.filter(function (k) { return perCodice[k].some(function (v) { return ver[v.uid] && ver[v.uid].cercato; }); }).length;
+  d.appendChild(h('p', { id: 'fej-fuori-progetto-conto', role: 'status', class: ordine.length && cercati < ordine.length ? 'fej-avviso' : 'fej-ok' },
+    ordine.length ? ordine.length + ' contrassegni fuori progetto (' + voci.length + ' provette): ' + cercati + ' già cercati in BDN, ' + (ordine.length - cercati) + ' da cercare.' : 'Nessun contrassegno fuori progetto.'));
+  if (ordine.length) {
+    var t = h('table', { class: 'fej-banco-dati', id: 'fej-fuori-progetto-tabella' }, h('thead', null, h('tr', null, ['Contrassegno', 'Provette', 'Fattispecie', 'Rilevato in campo', 'In BDN', ''].map(function (x) { return h('th', { scope: 'col' }, x); }))));
+    var tb = h('tbody');
+    ordine.sort().forEach(function (k) {
+      var gruppo = perCodice[k], v = gruppo[0], rg = {};
+      try { rg = (S.banco.scheda(v.uid, '') || {}).registrato || {}; } catch (e) { rg = {}; }
+      var campo = [rg.sesso_corretto || rg.sesso, rg.razza, rg.data_nascita || rg.classe_eta, rg.note].filter(Boolean).join(' · ') || 'niente';
+      var esito = ver[v.uid], bdn = esito && esito.cercato ? esito.sintesi + (esito.discordanze && esito.discordanze.length ? ' — ' + esito.discordanze.join('; ') : '') : 'non ancora cercato';
+      tb.appendChild(h('tr', null,
+        h('td', null, h('code', null, k), ' ', h('button', { type: 'button', class: 'fej-copia', title: 'Copia il contrassegno', 'aria-label': 'Copia il contrassegno ' + k, onclick: function () { copia(k); } }, '⧉'),
+          esito && esito.formato ? h('div', { class: 'fej-avviso' }, esito.formato) : ''),
+        h('td', null, gruppo.map(function (x) { return x.etichetta.split(' ')[0]; }).join(', ')), h('td', null, gruppo.map(function (x) { return x.titolo; }).filter(function (x, i, a) { return a.indexOf(x) === i; }).join(', ')),
+        h('td', null, campo), h('td', { class: esito && esito.cercato ? null : 'fej-tenue' }, bdn),
+        h('td', null, h('button', { type: 'button', class: 'fej-copia', onclick: function () { S.scheda = 'banco'; bancoUI.uid = v.uid; bancoUI.aperto = null; disegna(); } }, 'Apri la scheda'))));
+    });
+    t.appendChild(tb); d.appendChild(h('div', { class: 'fej-tabella-scorre' }, t));
+  }
+  d.appendChild(sezioneVerificaBdn());
+  return d;
+}
 
 /* ---- Verifica dei contrassegni in BDN (utente, 2026-11-14) ----
    L'elenco dei contrassegni fuori registro senza anagrafica BDN nell'app, lo snippet da incollare nella console della BDN
@@ -2490,7 +2543,9 @@ var interrogaUI = { q: '', azione: null, valore: '' };
 function doveSiTrova(uid) {
   if (S.apVecchio || !S.ap) aggiornaRisultato();
   var p = (S.ap.posizioniAttuali || []).filter(function (x) { return x.uid === uid; })[0];
-  if (!p) return 'non è in nessun plateau (non posata, o nel contenitore dei fuori registro)';
+  var sm = sistUI.smista && sistUI.smista.ordine ? sistUI.smista.ordine.indexOf(uid) + 1 : 0;
+  var contenitore = 'non è ancora al suo numero: fuori registro' + (sm ? ', al posto ' + sm + ' dello smistamento' : ', nel contenitore dei fuori registro');
+  if (!p || !p.plateau || !p.pozzetto) return p && p.vista === 'serie' ? 'non ancora posata' : contenitore;
   if (p.vista === 'serie') return 'plateau ' + p.plateau + ', pozzetto ' + p.pozzetto + ' della serie ' + p.serie.replace(':', ' ') + ' (numero ' + ((p.plateau - 1) * 100 + p.pozzetto) + ')';
   return 'plateau dei fuori registro ' + p.plateau + ', posto ' + p.pozzetto;
 }
@@ -2500,7 +2555,18 @@ function azioneDaRicerca(pr) {
   if (!v) { S.messaggio = a.tipo === 'sposta' ? 'Scrivi il numero di destinazione.' : 'Scrivi il contrassegno del capo.'; messaggio(); return; }
   if (a.tipo === 'sposta') {
     if (!/^\d+$/.test(v)) { S.messaggio = 'Il numero di destinazione deve essere un numero.'; messaggio(); return; }
-    az = { tipo: 'riordino', uid: pr.uid, stabilimento: parti[0], specie: parti[1], contrassegno: pr.capo, suggerita: Number(v), destinazione: Number(v), batch: false, da_ricerca: true };
+    // come lo spostamento dal Plateau: la destinazione suggerita è quella della guida (o il numero che la provetta ha già), quella
+    // scritta è la destinazione; il numero occupato chiede lo scambio (revisione del 18/11, P2-2)
+    var numero = Number(v), serieG = null, gG = null, finaleG = null;
+    try { serieG = guidaRiordino().filter(function (s) { return s.codice + ':' + s.specie === pr.serie; })[0]; } catch (e9) { serieG = null; }
+    if (serieG) { gG = serieG.guida.filter(function (g) { return g.uid === pr.uid; })[0]; finaleG = serieG.numerazione.filter(function (n) { return n.uid === pr.uid; })[0]; }
+    if (!gG && !finaleG) { S.messaggio = 'Non registrata: la provetta non ha un numero nella serie (va prima decisa nella Sistemazione).'; messaggio(); return; }
+    var occ = (S.ap.posizioniAttuali || []).filter(function (p) { return p.uid !== pr.uid && p.serie === pr.serie && p.vista === 'serie' && (p.plateau - 1) * 100 + p.pozzetto === numero; })[0] ||
+      serieG.numerazione.filter(function (n) { return n.provetta === numero && n.uid !== pr.uid; })[0];
+    if (occ && !window.confirm('Il numero ' + numero + ' è occupato dalla provetta ' + String(occ.etichetta || '').split(' ')[0] + '. Confermi lo scambio?')) return;
+    az = { tipo: 'riordino', uid: pr.uid, stabilimento: parti[0], specie: parti[1], contrassegno: gG ? gG.contrassegno : finaleG.contrassegno,
+      suggerita: gG ? gG.a_n : finaleG.provetta, destinazione: numero, da_plateau: true, batch: false, da_ricerca: true };
+    if (occ && occ.uid) az.conferma_con = occ.uid;
   } else {
     // un capo uscito con un documento di accompagnamento non è presente: l'abbinamento si fa solo se chi decide lo conferma
     var usc = []; try { usc = S.banco.usciteModello(); } catch (e0) { usc = []; }

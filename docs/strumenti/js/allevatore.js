@@ -48,7 +48,7 @@ function crea(opz) {
   var assenti = (opz.assenti || []).filter(function (a) { return a.stabilimento === stab; });
   /* Usciti con modello negli ultimi 7 giorni (utente, 2026-11-18): la BDN non li aveva ancora aggiornati. Non sono né presenti né
      assenti; se gli era stata attribuita la provetta di un altro animale l'attribuzione va rivista e per loro non si ordinano marche. */
-  var perModello = {}; (opz.usciteModello || []).forEach(function (u) { if (u.stabilimento === stab) perModello[maiusc(u.contrassegno)] = u; });
+  var perModello = {}; (opz.usciteModello || []).forEach(function (u) { if (u.stabilimento === stab && u.nei_registri !== false) perModello[maiusc(u.contrassegno)] = u; });
   function uscito(c) { return perModello[maiusc(c)] || null; }
   var arvet = {};
   ['pecore', 'capre'].forEach(function (sp) {
@@ -82,7 +82,10 @@ function crea(opz) {
   }
 
   var sez = [], specie = ['pecore', 'capre'].filter(function (sp) { return mie.some(function (p) { return p.specie === sp; }) || assenti.some(function (a) { return a.specie === sp; }); });
-  function nonConsiderato(a) { return !inArvet(a.specie, a.contrassegno) && !uscito(a.contrassegno); }
+  var sceltiAlPosto = {};
+  Object.keys((opz.precisazioni || {}).alPostoDi || {}).forEach(function (k) { var sc = opz.precisazioni.alPostoDi[k]; if (uscito(k) && sc && sc.capo) sceltiAlPosto[maiusc(k)] = maiusc(sc.capo); });
+  function sceltoAlPosto(c) { return Object.keys(sceltiAlPosto).some(function (k) { return sceltiAlPosto[k] === maiusc(c); }); }
+  function nonConsiderato(a) { return !inArvet(a.specie, a.contrassegno) && !uscito(a.contrassegno) && !sceltoAlPosto(a.contrassegno); }
 
   // 1. riepilogo
   var riep = specie.map(function (sp) {
@@ -107,6 +110,14 @@ function crea(opz) {
   }); });
   var attribuitiAUsciti = attribuiti.filter(function (a) { return uscito(a['Capo del registro']); });
   attribuiti = attribuiti.filter(function (a) { return !uscito(a['Capo del registro']); });
+  /* Un campione intestato a un capo uscito (utente, 2026-11-18): all'allevatore si chiede il duplicato di un altro capo assente
+     compatibile, scelto dal veterinario (precisazioni.alPostoDi: { <capo uscito>: { capo, animale } }); senza la scelta la riga
+     non c'è e resta la nota per l'ufficio. L'errore dell'intestazione non si scrive all'allevatore. */
+  attribuitiAUsciti.forEach(function (a) {
+    var sc = (pre.alPostoDi || {})[a['Capo del registro']]; if (!sc || !sc.capo) return;
+    var sp = a.Specie === 'caprini' ? 'capre' : 'pecore', c = capo(sc.capo, sp);
+    attribuiti.push({ 'Capo del registro': c.contrassegno, Specie: a.Specie, Sesso: c.sesso, Razza: c.razza, Nascita: c.nascita, 'Animale prelevato al suo posto': sc.animale || a['Animale prelevato al suo posto'] });
+  });
   sez.push({ titolo: 'Capi del registro non trovati con le loro marche, considerati presenti',
     nota: 'Per ognuno di questi capi è stato inviato al laboratorio il sangue di un animale presente e compatibile (specie, sesso, età, razza), trovato senza marche o con una marca che non poteva essere la sua. L’animale si riconosce dalla sigla scritta in campo.',
     colonne: ['Capo del registro', 'Specie', 'Sesso', 'Razza', 'Nascita', 'Animale prelevato al suo posto'], righe: attribuiti });
@@ -185,8 +196,7 @@ function crea(opz) {
   var uscitiModello = Object.keys(perModello).sort().map(function (k) {
     var u = perModello[k], att = attribuitiAUsciti.filter(function (a) { return a['Capo del registro'] === k; })[0];
     return { Capo: k, Specie: SP[u.specie] || u.specie, 'Data del modello': u.data, Uscita: (u.tipo || '') + (u.destinazione ? ' · ' + u.destinazione : ''),
-      Nota: att ? 'Gli era stato attribuito il sangue di un altro animale (' + att['Animale prelevato al suo posto'] + '): attribuzione da rivedere; per questo capo non si ordinano marche'
-        : u.prelevato ? 'Risulta una provetta a suo nome (' + String(u.etichetta || '').split(' ')[0] + '): da verificare' : '' };
+      Nota: 'Non va cercato e per lui non si ordinano marche' };
   });
   sez.push({ titolo: 'Capi usciti con un documento di accompagnamento nei giorni prima del risanamento', nota: 'Il registro di stalla della BDN non era ancora aggiornato (lo è entro 7 giorni dal modello): questi capi non sono considerati né presenti né assenti e per loro non si ordinano marche.',
     colonne: ['Capo', 'Specie', 'Data del modello', 'Uscita', 'Nota'], righe: uscitiModello });
@@ -204,8 +214,12 @@ function crea(opz) {
     .map(function (p) { return { Capo: maiusc(p.contrassegno), 'Numero scritto in campo': p.etichetta, 'Numero in ARVET': inArvet(p.specie, p.contrassegno).numero }; })
     .sort(function (a, b) { return a['Numero in ARVET'] - b['Numero in ARVET']; });
 
-  return { sezioni: sez, ufficio: { provette: app, numeri: numeri, confrontato: Object.keys(arvet).map(function (sp) { return SP[sp]; }) },
-    html: pagina(opz.stabilimento, DATA, sez, app, numeri, Object.keys(arvet), pre.notaUfficio || ''), fogli: fogli(sez, app, numeri) };
+  // solo per l'ufficio (utente, 2026-11-18: all'allevatore non va indicato, al collega sì): campioni intestati a un capo uscito
+  var notaUsciti = attribuitiAUsciti.map(function (a) { return 'Il capo ' + a['Capo del registro'] + ' era uscito con un documento di accompagnamento (' + (uscito(a['Capo del registro']).data || '') + '): gli è stato intestato un campione (' + a['Animale prelevato al suo posto'] + '). Intestazione da rivedere' + (sceltiAlPosto[a['Capo del registro']] ? '; all’allevatore è chiesto il duplicato del capo ' + sceltiAlPosto[a['Capo del registro']] + '.' : ': va scelto un altro capo assente compatibile di cui chiedere il duplicato.'); })
+    .concat(Object.keys(perModello).filter(function (k) { return perModello[k].prelevato; }).map(function (k) { return 'Il capo ' + k + ', uscito con un documento di accompagnamento, ha una provetta a suo nome (' + String(perModello[k].etichetta || '').split(' ')[0] + '): da verificare.'; }));
+  var notaUfficioCompleta = [pre.notaUfficio || ''].concat(notaUsciti).filter(Boolean).join(' ');
+  return { sezioni: sez, ufficio: { provette: app, numeri: numeri, attribuitiAUsciti: notaUsciti, confrontato: Object.keys(arvet).map(function (sp) { return SP[sp]; }) },
+    html: pagina(opz.stabilimento, DATA, sez, app, numeri, Object.keys(arvet), notaUfficioCompleta), fogli: fogli(sez, app, numeri) };
 }
 
 /* La parte discorsiva: che cosa è emerso, in parole semplici, coi numeri e il rimando agli elenchi. */
@@ -238,10 +252,9 @@ function narrativa(z, DATA) {
     '. Va verificato se sono ancora nello stabilimento; se non ci sono più, la loro uscita va registrata in BDN (elenco 9).');
   if (n(9)) P.push('<strong>Animali giovani.</strong> ' + quanti(n(9), 'Un animale è stato prelevato', 'animali sono stati prelevati') + ' anche se sotto l’età prevista per il controllo (elenco 10).');
   if (z[10] && n(10)) {
-    var daRivedere = z[10].righe.filter(function (r) { return /attribuzione da rivedere/.test(r.Nota || ''); }).length;
     P.push('<strong>Capi usciti nei giorni prima.</strong> ' + quanti(n(10), 'Un capo risulta uscito', 'capi risultano usciti') +
       ' con un documento di accompagnamento nei giorni prima del risanamento, quando il registro non era ancora aggiornato: non sono considerati mancanti e per loro non vanno ordinate marche' +
-      (daRivedere ? '; per ' + quanti(daRivedere, 'uno di loro', 'di loro') + ' l’attribuzione fatta va rivista dal Servizio veterinario' : '') + ' (elenco 11).');
+      ' (elenco 11).');
   }
   if (P.length === 1) P.push('Non è stata riscontrata nessuna situazione da segnalare.');
   P.push('Queste situazioni saranno valutate dal Servizio veterinario, a cui può rivolgersi per ogni chiarimento.');

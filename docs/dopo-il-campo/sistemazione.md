@@ -33,6 +33,15 @@ provette; scrivendo la scritta o il numero di una provetta si vede il capo. Per 
 **abbinamento a un altro capo**: sono azioni come le altre, nella cronologia, con «Annulla». Un capo uscito con un documento
 di accompagnamento non ancora nel registro si legge «Uscito il … verso … con documento …», col numero copiabile.
 
+## I contrassegni fuori progetto
+
+La scheda **Fuori progetto** elenca i campioni raccolti con un contrassegno che il progetto non conosce: non è fra i
+presenti, né fra gli usciti, né negli altri stabilimenti caricati. Per ognuno c'è ciò che è stato rilevato in campo (sesso,
+razza, nascita, note) e l'esito della ricerca in BDN, se è già stata fatta. Sotto la tabella c'è lo **snippet per la BDN**,
+che cerca ogni contrassegno e completa l'anagrafica del progetto; se lo snippet non funziona, le stesse righe si copiano a
+mano nel [modello da compilare](../strumenti/modelli-da-compilare.md). Finché l'anagrafica manca, in ARVET il capo va
+inserito a mano.
+
 ## L'ordine di lavoro
 
 | Fase | Che cosa si fa |
@@ -52,7 +61,7 @@ La BDN si aggiorna **fino a 7 giorni dopo il modello di accompagnamento**: un ca
 ancora presente. Per non attribuire la provetta di un animale senza marche (o di un doppio) a un capo che non c'è più, nella
 scheda **Carica** si caricano le **uscite per modello degli ultimi 7 giorni** di ogni stabilimento (le estrae uno snippet
 dalla sezione Movimentazioni della BDN: il registro di stalla non è ancora aggiornato). Quei capi non sono più proposti come assenti compatibili, non compaiono fra gli assenti rimasti e il report per
-l'allevatore li elenca a parte. Meglio farlo prima della Sistemazione, o già nella preparazione. Se lo snippet non funziona, le stesse
+l'allevatore li elenca a parte. **Il momento giusto è la preparazione** («Crea il progetto», passo 3 bis: i 7 giorni prima del giorno in cui si interroga la BDN), così quei capi non prendono nemmeno un numero. Se si fa dopo il campionamento, lo snippet va indietro fino a 7 giorni prima della preparazione del pacchetto e si ferma al giorno del campionamento: un'uscita successiva non vale, perché quel capo c'era. Se lo snippet non funziona, le stesse
 righe si copiano a mano dalla BDN nel [modello da compilare](../strumenti/modelli-da-compilare.md).
 
 ## Le fattispecie

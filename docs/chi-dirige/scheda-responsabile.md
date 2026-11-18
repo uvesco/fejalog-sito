@@ -5,6 +5,7 @@
 ## Prima del campo
 
 - [ ] Crea il progetto e controlla i registri BDN degli stabilimenti di lavoro.
+- [ ] Carica le uscite per modello degli ultimi 7 giorni («Crea il progetto», passo 3 bis): i capi appena venduti o macellati non prendono un numero e non si cercano.
 - [ ] Scegli età diagnostica, lettere di specie e verso di riempimento. Con due specie, almeno una ha la lettera.
 - [ ] Calcola il materiale con margine e scorta; controlla le misure del tavolo.
 - [ ] Stampa il 2/33 precompilato, il foglio A3, il foglio 1–100 nel verso scelto e il QR Wi-Fi.
