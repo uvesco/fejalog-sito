@@ -159,7 +159,7 @@ function crea(opz) {
       Note: stesse.map(function (p) { return UNO[p.specie] + ' ' + (p.sesso || ''); }).join(' e ') + (stesse.some(function (p) { return p.specie !== stesse[0].specie; }) ? ' (specie diverse: in BDN ' + String(d.specie_bdn || '').toLowerCase() + ')' : ''),
       Esito: v.capo ? 'il secondo animale è stato considerato come il capo ' + v.capo : 'da valutare' });
   });
-  sez.push({ titolo: 'Marche trovate su due animali', nota: 'La stessa marca è stata letta su due animali diversi. Il numero di ristampa stampato sull’auricolare (0 per l’originale) dice quale dei due è il capo registrato.',
+  sez.push({ titolo: 'Marche trovate su due animali', nota: 'La stessa marca è stata letta su due animali diversi. Il secondo animale prelevato è stato marcato con un altro colore ed è quello da ritrovare: la marca si rifà a lui, anche se dal numero di ristampa stampato sull’auricolare (0 per l’originale) fosse l’originale.',
     colonne: ['Marca', 'Animali trovati con questa marca', 'Note', 'Esito'], righe: doppie });
 
   // 8. sesso da correggere
@@ -216,7 +216,7 @@ function narrativa(z, DATA) {
   if (n(5)) P.push('<strong>Capi che in BDN risultano usciti.</strong> ' + quanti(n(5), 'Un animale presente porta', 'animali presenti portano') +
     ' la marca di un capo che in BDN risulta uscito (morto, macellato, ceduto o smarrito). La posizione in BDN di questi capi va regolarizzata (elenco 6).');
   if (n(6)) P.push('<strong>Stessa marca su due animali.</strong> ' + quanti(n(6), 'Una marca è stata letta', 'marche sono state lette') +
-    ' su due animali diversi. Il numero di ristampa stampato sull’auricolare dice quale dei due è il capo registrato: 0 è l’originale (elenco 7).');
+    ' su due animali diversi. Il secondo animale prelevato è stato marcato con un altro colore ed è quello da ritrovare; il numero di ristampa stampato sull’auricolare (0 è l’originale) dice quale dei due è il capo registrato, ma la marca si rifà a quello recuperato (elenco 7).');
   if (n(7)) P.push('<strong>Sesso da correggere.</strong> Per ' + quanti(n(7), 'un capo', 'capi') + ' il sesso registrato in BDN è diverso da quello dell’animale (elenco 8).');
   if (n(8)) P.push('<strong>Capi non prelevati.</strong> ' + quanti(n(8), 'Un capo presente in BDN non è stato trovato e non risulta controllato', 'capi presenti in BDN non sono stati trovati e non risultano controllati') +
     '. Va verificato se sono ancora nello stabilimento; se non ci sono più, la loro uscita va registrata in BDN (elenco 9).');

@@ -1979,6 +1979,10 @@ function alternativeBanco(uid, s) {
       } }, 'È l’unico campione: l’altra provetta non esiste'));
     tasti.appendChild(document.createTextNode(' '));
   }
+  if (s.scambio) {
+    tasti.appendChild(h('button', { type: 'button', id: 'fej-banco-scambio', title: s.scambio.perche, onclick: function () { sceltaBanco(uid, s.scambio.azioni); } }, s.scambio.testo));
+    tasti.appendChild(document.createTextNode(' '));
+  }
   tasto('ricolloca', 'A un capo assente…', apri('ricolloca'));
   tasto('coda', 'In coda, ARVET a mano', function () { sceltaBanco(uid, [{ tipo: 'soluzione', uid: uid, soluzione: 'coda' }]); });
   tasto('normalizza', 'Normalizza', function () { sceltaBanco(uid, [{ tipo: 'soluzione', uid: uid, soluzione: 'normalizzata' }]); });
