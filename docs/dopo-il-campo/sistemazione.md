@@ -124,3 +124,16 @@ snippet **«Svuota i numeri»** (toglie i numeri, lascia i capi e l'ordine), poi
 
 Nella scheda **Uscite**, «Esito del risanamento»: una pagina per stabilimento con una parte discorsiva e gli elenchi capo
 per capo. Se si carica la pagina del campionamento salvata da ARVET, dove campo e ARVET differiscono vale ARVET.
+
+L'esito si compone da solo con ciò che è nel registro:
+
+- la marca letta su due provette, quando una delle due registrazioni non aveva la provetta: nella scheda della provetta
+  rimasta si sceglie **«L'altra provetta non esiste»** e la marca esce dall'elenco delle marche trovate su due animali;
+- la **nota per l'allevatore** scritta nella scheda di una provetta: va nell'elenco «Note del veterinario»;
+- le uscite per modello caricate nella scheda Carica e la pagina di ARVET.
+
+Ciò che il registro non sa si scrive in **«Precisazioni per l'esito»**, sotto ogni stabilimento: la nota per l'ufficio (va
+solo nell'appendice), gli animali presenti che non sono dello stabilimento e non sono stati registrati in Fejalog, e, se un
+campione è intestato in ARVET a un capo uscito con un modello, il capo assente per cui chiedere il duplicato. Le precisazioni
+restano nel browser, per progetto, anche caricando un backup più recente. «Scarica tutto (zip)» mette nello zip, nella
+cartella `allevatore`, l'esito di ogni stabilimento (pagina ed Excel) e le precisazioni.

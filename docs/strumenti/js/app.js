@@ -1672,19 +1672,91 @@ function paginaAllevatore(codice, cose, bdn) {
    è allevatore.js. La pagina di ARVET salvata dal browser è facoltativa: se c'è, dove campo e ARVET differiscono vale
    ARVET. */
 var arvetPagine = {};
+/* Le precisazioni dell'esito che il registro non ha (utente, 2026-11-19: l'esito rivisto «deve poter essere prodotto
+   automaticamente»): nota per l'ufficio, animali mai registrati in Fejalog, capo scelto al posto di un capo uscito a cui è
+   intestato un campione. Per progetto (il pacchetto, non il backup: restano anche caricando un backup più recente) e per
+   stabilimento; stanno nel browser e viaggiano nello zip di fine lavori. Il resto l'esito lo ricava dal registro. */
+var precisazioniMem = null;
+function chiavePrecisazioni() { return 'fejalog:precisazioni:' + String(S.P.chiave).split(':')[0]; }
+function tuttePrecisazioni() {
+  var k = chiavePrecisazioni();
+  if (precisazioniMem && precisazioniMem.k === k) return precisazioniMem.v;
+  var v = {}; try { v = JSON.parse(localStorage.getItem(k) || '{}') || {}; } catch (e) { v = {}; }
+  precisazioniMem = { k: k, v: v }; return v;
+}
+function precisazioniDi(cod) { var t = tuttePrecisazioni(); return t[cod] || (t[cod] = { notaUfficio: '', attribuzioneManuale: '', altri: [], alPostoDi: {} }); }
+function salvaPrecisazioni() { try { localStorage.setItem(chiavePrecisazioni(), JSON.stringify(tuttePrecisazioni())); } catch (e) { /* in memoria */ } }
+function precisazioniPiene(cod) {
+  var p = (tuttePrecisazioni()[cod]) || {};
+  return (p.notaUfficio ? 1 : 0) + (p.attribuzioneManuale ? 1 : 0) + (p.altri || []).length + Object.keys(p.alPostoDi || {}).filter(function (k) { return p.alPostoDi[k] && p.alPostoDi[k].capo; }).length;
+}
+/* L'esito di uno stabilimento coi dati della sessione e le precisazioni scritte nella pagina. */
+function esitoDi(st) {
+  if (S.apVecchio || !S.ap) aggiornaRisultato();
+  var primo = (S.ap.eventiEfficaci || []).filter(function (e) { return e.tipo === 'PROVETTA_REGISTRATA'; })[0];
+  var g = primo ? String(primo.ts).slice(0, 10).split('-') : [], p = precisazioniDi(st.codice), pre = { altri: p.altri || [], alPostoDi: p.alPostoDi || {} };
+  if (p.notaUfficio) pre.notaUfficio = p.notaUfficio;
+  if (p.attribuzioneManuale) pre.attribuzioneManuale = p.attribuzioneManuale;
+  return window.FejAllevatore.crea({ data: g.length === 3 ? g[2] + '/' + g[1] + '/' + g[0] : '', stabilimento: st, provette: S.ap.provette, eventi: S.ap.eventiEfficaci, voci: S.banco.coda().voci,
+    scheda: function (uid) { return S.banco.scheda(uid, ''); }, assenti: S.ap.nonPrelevati, usciteModello: (function () { try { return S.banco.usciteModello(); } catch (e) { return []; } })(),
+    arvet: arvetPagine[st.codice] || null, precisazioni: pre });
+}
+function nomeEsito(st) { return 'esito_risanamento_' + String(st.codice).replace(/[^A-Za-z0-9_-]/g, '_'); }
+/* Il riquadro delle precisazioni di uno stabilimento: si apre solo se serve. */
+function riquadroPrecisazioni(st) {
+  var cod = st.codice, p = precisazioniDi(cod), n = precisazioniPiene(cod);
+  var box = h('details', { class: 'fej-blocco fej-precisazioni', 'data-precisazioni': cod }, h('summary', null, 'Precisazioni per l’esito (ciò che il registro non sa)' + (n ? ' · ' + n : '')));
+  box.appendChild(h('p', { class: 'fej-guida' }, 'Il resto l’esito lo prende da solo dal registro: il doppio rimasto unico campione («L’altra provetta non esiste» nella scheda della provetta), la nota per l’allevatore scritta nella scheda, le uscite per modello, la pagina di ARVET.'));
+  var nota = h('textarea', { rows: 2, id: 'fej-pre-nota-' + cod, onchange: function () { p.notaUfficio = nota.value.trim(); salvaPrecisazioni(); } }, p.notaUfficio || '');
+  box.appendChild(h('label', { class: 'fej-blocco' }, 'Nota per l’ufficio (va solo nell’appendice, non all’allevatore)', nota));
+  if (arvetPagine[cod]) {
+    var man = h('input', { type: 'text', id: 'fej-pre-manuale-' + cod, value: p.attribuzioneManuale || '', onchange: function () { p.attribuzioneManuale = man.value.trim(); salvaPrecisazioni(); } });
+    box.appendChild(h('label', { class: 'fej-blocco' }, 'Capi in ARVET senza una provetta in Fejalog: come si riconosce l’animale prelevato al loro posto', man));
+    // un campione intestato in ARVET a un capo uscito con modello: all'allevatore si chiede il duplicato di un altro capo assente
+    var intestati = []; try { intestati = esitoDi(st).ufficio.intestatiAUsciti || []; } catch (e) { intestati = []; }
+    intestati.forEach(function (x) {
+      var sc = (p.alPostoDi = p.alPostoDi || {})[x.capo] || { capo: '', animale: '' };
+      var sel = h('select', { 'data-al-posto': x.capo, onchange: function () { sc.capo = sel.value; p.alPostoDi[x.capo] = sc; salvaPrecisazioni(); disegna(); } },
+        h('option', { value: '' }, '— da scegliere —'));
+      x.candidati.forEach(function (c) {
+        var o = h('option', { value: c.contrassegno }, [c.contrassegno, c.sesso, c.razza, c.nascita].filter(Boolean).join(' · '));
+        if (c.contrassegno === sc.capo) o.selected = true; sel.appendChild(o);
+      });
+      var an = h('input', { type: 'text', value: sc.animale || '', placeholder: x.animale, onchange: function () { sc.animale = an.value.trim(); p.alPostoDi[x.capo] = sc; salvaPrecisazioni(); } });
+      box.appendChild(h('div', { class: 'fej-blocco' }, h('strong', null, 'Campione intestato in ARVET a ' + x.capo + ', uscito con un modello.'),
+        h('label', { class: 'fej-blocco' }, 'Capo assente compatibile per cui chiedere il duplicato' + (x.sesso ? ' (il capo uscito è ' + x.sesso + ': guarda il sesso dell’animale prelevato)' : ''), sel),
+        h('label', { class: 'fej-blocco' }, 'Come si riconosce l’animale prelevato', an)));
+    });
+  }
+  // animali presenti che non sono dello stabilimento e non sono stati registrati in Fejalog (campione non inviato, marca non letta…)
+  box.appendChild(h('h5', null, 'Animali non dello stabilimento, mai registrati in Fejalog'));
+  (p.altri || []).forEach(function (r, i) {
+    box.appendChild(h('div', { class: 'fej-riga', 'data-pre-altro': String(i) }, [r.Marca, r.Specie, r.Sesso, r.Razza, r.Nascita, r.Situazione, r['Stabilimento in BDN']].filter(Boolean).join(' · '), ' ',
+      h('button', { type: 'button', onclick: function () { p.altri.splice(i, 1); salvaPrecisazioni(); disegna(); } }, 'Togli')));
+  });
+  var campi = {};
+  function campo(nome, etichetta, segnaposto) { campi[nome] = h('input', { type: 'text', 'data-pre-campo': nome, placeholder: segnaposto || '' }); return h('label', null, etichetta + ' ', campi[nome]); }
+  var specie = h('select', { 'data-pre-campo': 'Specie' }, h('option', { value: 'ovini' }, 'ovini'), h('option', { value: 'caprini' }, 'caprini'));
+  box.appendChild(h('div', { class: 'fej-riga' }, campo('Marca', 'Marca', 'se non si sa: DA CONFERMARE'), ' ', h('label', null, 'Specie ', specie), ' ', campo('Sesso', 'Sesso', 'F o M'), ' ',
+    campo('Razza', 'Razza'), ' ', campo('Nascita', 'Nascita'), ' ', campo('Stabilimento in BDN', 'Stabilimento in BDN'), h('label', { class: 'fej-blocco' }, 'Situazione ', (campi.Situazione = h('input', { type: 'text', 'data-pre-campo': 'Situazione', placeholder: 'per esempio: rimasta nel gregge dalla demonticazione, campione non inviato' }))),
+    h('button', { type: 'button', 'data-pre-aggiungi': cod, onclick: function () {
+      if (!campi.Situazione.value.trim() && !campi.Marca.value.trim()) { S.messaggio = 'Scrivi almeno la marca o la situazione dell’animale.'; messaggio(); return; }
+      (p.altri = p.altri || []).push({ Marca: campi.Marca.value.trim().toUpperCase() || 'DA CONFERMARE', Specie: specie.value, Sesso: campi.Sesso.value.trim().toUpperCase(), Razza: campi.Razza.value.trim(),
+        Nascita: campi.Nascita.value.trim(), Situazione: campi.Situazione.value.trim(), 'Stabilimento in BDN': campi['Stabilimento in BDN'].value.trim().toUpperCase() });
+      salvaPrecisazioni(); precisazioniAperte[cod] = true; disegna();
+    } }, 'Aggiungi')));
+  if (precisazioniAperte[cod]) box.open = true;
+  box.addEventListener('toggle', function () { precisazioniAperte[cod] = box.open; });
+  return box;
+}
+var precisazioniAperte = {};
 function esitoPerAllevatore() {
   var All = window.FejAllevatore, d = h('div', { id: 'fej-esito-allevatore' });
   d.appendChild(h('h4', null, 'Esito del risanamento (da consegnare)'));
   d.appendChild(h('p', { class: 'fej-guida' }, 'Una pagina per stabilimento: in testa, in parole semplici, che cosa è stato riscontrato; poi gli elenchi capo per capo (capi considerati presenti, marche da ordinare, marche non registrate, usciti, non prelevati). In fondo un’appendice solo per l’ufficio.'));
-  function costruisci(st) {
-    if (S.apVecchio || !S.ap) aggiornaRisultato();
-    var primo = (S.ap.eventiEfficaci || []).filter(function (e) { return e.tipo === 'PROVETTA_REGISTRATA'; })[0];
-    var g = primo ? String(primo.ts).slice(0, 10).split('-') : [];
-    return All.crea({ data: g.length === 3 ? g[2] + '/' + g[1] + '/' + g[0] : '', stabilimento: st, provette: S.ap.provette, eventi: S.ap.eventiEfficaci, voci: S.banco.coda().voci,
-      scheda: function (uid) { return S.banco.scheda(uid, ''); }, assenti: S.ap.nonPrelevati, usciteModello: (function () { try { return S.banco.usciteModello(); } catch (e) { return []; } })(), arvet: arvetPagine[st.codice] || null });
-  }
+  var costruisci = esitoDi;
   ((S.ap && S.ap.stabilimenti) || []).forEach(function (st) {
-    var nome = 'esito_risanamento_' + String(st.codice).replace(/[^A-Za-z0-9_-]/g, '_');
+    var nome = nomeEsito(st);
     var caricata = arvetPagine[st.codice] ? Object.keys(arvetPagine[st.codice]).map(function (sp) { return sp + ' ' + arvetPagine[st.codice][sp].length; }).join(', ') : '';
     var file = h('input', { type: 'file', accept: '.html,.htm,text/html', 'aria-label': 'Pagina di ARVET salvata per ' + st.codice, onchange: function (ev) {
       var f = ev.target.files && ev.target.files[0]; if (!f) return;
@@ -1703,7 +1775,8 @@ function esitoPerAllevatore() {
       } }, 'Apri l’esito'), ' ',
       h('button', { type: 'button', onclick: function () { scarica(nome + '.html', 'text/html;charset=utf-8', costruisci(st).html); } }, 'Scarica la pagina'), ' ',
       h('button', { type: 'button', onclick: function () { scarica(nome + '.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', window.AccXlsx.xlsxBuild(costruisci(st).fogli)); } }, 'Excel'),
-      h('label', { class: 'fej-blocco fej-guida' }, 'Pagina di ARVET salvata (facoltativa, una per specie)' + (caricata ? ' · caricata: ' + caricata : '') + ' ', file)));
+      h('label', { class: 'fej-blocco fej-guida' }, 'Pagina di ARVET salvata (facoltativa, una per specie)' + (caricata ? ' · caricata: ' + caricata : '') + ' ', file),
+      riquadroPrecisazioni(st)));
   });
   return d;
 }
@@ -1816,6 +1889,15 @@ function schedaUscite() {
         }
       });
       voci.push({ name: 'numerazione_chiave.csv', data: S.P.numerazioneCsv });
+      // l'esito del risanamento per l'allevatore, uno per stabilimento, e le precisazioni con cui è stato fatto
+      if (window.FejAllevatore && window.AccXlsx && S.banco) try {
+        ((S.ap && S.ap.stabilimenti) || []).forEach(function (st) {
+          var r = esitoDi(st);
+          voci.push({ name: 'allevatore/' + nomeEsito(st) + '.html', data: r.html });
+          voci.push({ name: 'allevatore/' + nomeEsito(st) + '.xlsx', data: window.AccXlsx.xlsxBuild(r.fogli) });
+        });
+        if (Object.keys(tuttePrecisazioni()).some(precisazioniPiene)) voci.push({ name: 'allevatore/precisazioni_esito.json', data: JSON.stringify(tuttePrecisazioni(), null, 1) });
+      } catch (eEsito) { voci.push({ name: 'allevatore/ERRORE.txt', data: 'Esito per l\u2019allevatore non calcolato: ' + eEsito.message }); }
       voci.push({
         name: 'LEGGIMI.txt',
         data: 'Fine lavori calcolata dagli strumenti on line di Fejalog (dal backup ' + (S.P.manifesto ? S.P.manifesto.seduta.nome : 'seduta') + ', impronta ' + (S.P.verifica ? S.P.verifica.impronta.slice(0, 6).toUpperCase() : '') + ').\r\nIl backup originale resta quello della Regia.\r\n'

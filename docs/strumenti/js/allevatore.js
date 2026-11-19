@@ -2,7 +2,12 @@
    discorsiva, in parole semplici, e gli elenchi capo per capo. Parla degli animali, non delle provette (provette e
    numeri stanno solo nell'appendice per l'ufficio); non parla apertamente di cambiare orecchini; toni neutri: le non
    conformità le valuta il veterinario. Se c'è la pagina di ARVET salvata, dove campo e ARVET differiscono vale ARVET.
-   Modulo puro (browser e Node): riceve i dati già calcolati dal dominio. Niente ?. e ?? */
+   Modulo puro (browser e Node): riceve i dati già calcolati dal dominio. Niente ?. e ??
+   Tutto ciò che si può sapere dal registro si ricava da lì (utente, 2026-11-19: la struttura dell'esito rivisto del 16/11
+   «deve poter essere prodotto automaticamente»): il doppio rimasto unico campione dopo «L'altra provetta non esiste», le note
+   per l'allevatore scritte nella scheda della provetta, le note del veterinario nell'appendice. Solo ciò che il registro non
+   ha arriva dalle precisazioni scritte nella pagina (nota per l'ufficio, animali mai registrati, capo scelto al posto di un
+   capo uscito). */
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) module.exports = factory();
   else root.FejAllevatore = factory();
@@ -12,6 +17,12 @@
 var SP = { pecore: 'ovini', capre: 'caprini' }, UNO = { pecore: 'pecora', capre: 'capra' };
 function maiusc(c) { return String(c == null ? '' : c).replace(/\s+/g, '').toUpperCase(); }
 function sigla(v) { return String(v.etichetta || '').split(' ')[0]; }
+/* Come nel dominio (ElencoProvette.MOTIVO_NON_ESISTE, NoteAllevatore): la dichiarazione «la provetta non esiste» e la nota per l'allevatore. */
+var MOTIVO_NON_ESISTE = 'la provetta non esiste', PER_ALLEVATORE = 'Per l\'allevatore: ', SEP_NOTE = ' \u2014 ';
+function notaPerAllevatore(note) {
+  var p = String(note || '').split(SEP_NOTE).filter(function (x) { return x.indexOf(PER_ALLEVATORE) === 0; });
+  return p.length ? p[p.length - 1].slice(PER_ALLEVATORE.length) : '';
+}
 function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
 /* La tabella dei capi di una pagina «Campionamento per profilassi» di ARVET salvata dal browser: contrassegno, razza,
@@ -36,14 +47,27 @@ function leggiArvet(doc) {
   return { righe: out || [], specie: /\bCAPRINI\b/.test(testo) && !/\bOVINI\b/.test(testo) ? 'capre' : /\bOVINI\b/.test(testo) ? 'pecore' : '' };
 }
 
-/* opz: { data, stabilimento: {codice, denominazione}, provette, eventi, voci, scheda(uid), assenti,
-          arvet: {pecore: [righe]|null, capre: [righe]|null}, precisazioni: {solaProvetta: [sigle], note: {sigla: testo},
-          altri: [righe della sezione 5], attribuzioneManuale: testo} } */
+/* opz: { data, stabilimento: {codice, denominazione}, provette, eventi, voci, scheda(uid), assenti, usciteModello,
+          arvet: {pecore: [righe]|null, capre: [righe]|null},
+          precisazioni: { notaUfficio: testo, altri: [righe della sezione 5], attribuzioneManuale: testo,
+            alPostoDi: { <capo uscito>: { capo, animale } },
+            // solo per rifare a mano un esito vecchio: oggi si ricavano dal registro
+            solaProvetta: [sigle], note: {sigla: testo} } }
+   Il risultato dice anche che cosa resta da precisare nella pagina: ufficio.intestatiAUsciti (campioni intestati a un capo
+   uscito, coi capi assenti fra cui scegliere). */
 function crea(opz) {
   var stab = opz.stabilimento.codice, DATA = opz.data || '', pre = opz.precisazioni || {};
   var reg = {}; (opz.eventi || []).forEach(function (e) { if (e.tipo === 'PROVETTA_REGISTRATA' && e.dati) reg[e.dati.uid] = e.dati; });
   var provette = (opz.provette || []).filter(function (p) { return !p.annullata; });
   var mie = provette.filter(function (p) { return p.stabilimento === stab; });
+  // «L'altra provetta non esiste» (dichiarazione nel registro): per marca, le registrazioni annullate così
+  var nonEsistono = {}, dichiarate = {};
+  (opz.eventi || []).forEach(function (e) {
+    if (e.tipo !== 'PROVETTA_ANNULLATA' || !e.dati || String(e.dati.motivo || '').indexOf(MOTIVO_NON_ESISTE) !== 0) return;
+    dichiarate[e.dati.uid] = true;
+    var d = reg[e.dati.uid] || {}, k = maiusc(d.contrassegno); if (!k) return;
+    (nonEsistono[k] = nonEsistono[k] || []).push(String(e.dati.etichetta || d.etichetta_campo || '').split(' ')[0]);
+  });
   var mieVoci = (opz.voci || []).filter(function (v) { return v.stabilimento === stab; });
   var assenti = (opz.assenti || []).filter(function (a) { return a.stabilimento === stab; });
   /* Usciti con modello negli ultimi 7 giorni (utente, 2026-11-18): la BDN non li aveva ancora aggiornati. Non sono né presenti né
@@ -133,6 +157,11 @@ function crea(opz) {
   }
   attribuiti.forEach(function (a) { metti(a['Capo del registro'], a.Specie === 'caprini' ? 'capre' : 'pecore', true, true, false, 'capo considerato presente (vedi sopra)'); });
   mie.forEach(function (p) { if (p.orecchino_dx || p.orecchino_sx || p.bolo) metti(p.contrassegno, p.specie, p.orecchino_dx, p.orecchino_sx, p.bolo, 'segnalato in campo: manca o non si legge'); });
+  // una registrazione senza provetta («L'altra provetta non esiste») descriveva lo stesso animale: ciò che segnalava resta
+  (opz.provette || []).forEach(function (p) {
+    if (p.annullata && dichiarate[p.uid] && p.stabilimento === stab && (p.orecchino_dx || p.orecchino_sx || p.bolo))
+      metti(p.contrassegno, p.specie, p.orecchino_dx, p.orecchino_sx, p.bolo, 'segnalato in campo: manca o non si legge');
+  });
   var ordinati = chiaviOrdine.sort().map(function (k) { var o = ordine[k], r = {}; Object.keys(o).forEach(function (x) { r[x] = x === 'Motivo' ? o.Motivo.join('; ') : o[x]; }); return r; });
   sez.push({ titolo: 'Marche da ordinare', nota: 'Per ogni capo, quali identificativi ordinare (destro elettronico, sinistro, bolo).',
     colonne: ['Capo', 'Specie', 'Destro (elettronico)', 'Sinistro', 'Bolo', 'Motivo'], righe: ordinati });
@@ -201,13 +230,24 @@ function crea(opz) {
   sez.push({ titolo: 'Capi usciti con un documento di accompagnamento nei giorni prima del risanamento', nota: 'Il registro di stalla della BDN non era ancora aggiornato (lo è entro 7 giorni dal modello): questi capi non sono considerati né presenti né assenti e per loro non si ordinano marche.',
     colonne: ['Capo', 'Specie', 'Data del modello', 'Uscita', 'Nota'], righe: uscitiModello });
 
-  // appendice per l'ufficio
+  // 12. note del veterinario per l'allevatore, scritte nella scheda della provetta (in fondo: gli elenchi di prima tengono il numero)
+  var notePer = mie.map(function (p) { return { p: p, nota: notaPerAllevatore(p.note) }; }).filter(function (x) { return x.nota; })
+    .map(function (x) { return { Capo: maiusc(x.p.contrassegno) || 'animale senza marca (sigla ' + String(x.p.etichetta || '').split(' ')[0] + ')', Specie: SP[x.p.specie] || x.p.specie, Nota: x.nota }; });
+  sez.push({ titolo: 'Note del veterinario', nota: 'Annotazioni su singoli animali, scritte dal veterinario.', colonne: ['Capo', 'Specie', 'Nota'], righe: notePer });
+
+  // appendice per l'ufficio: la precisazione si ricava dal registro (unico campione, note della provetta); una scritta a mano la sostituisce
   var note = pre.note || {};
+  function precisazione(v, d) {
+    if (note[sigla(v)]) return note[sigla(v)];
+    var altre = nonEsistono[maiusc(d.contrassegno)] || [], rg = scheda(v.uid).registrato || {};
+    return [altre.length ? 'unico campione del capo: l’altra registrazione' + (altre.filter(Boolean).length ? ' (' + altre.filter(Boolean).join(', ') + ')' : '') + ' non aveva la provetta' : '',
+      rg.note ? 'note: ' + rg.note : ''].filter(Boolean).join('; ');
+  }
   var app = mieVoci.map(function (v) {
     var d = dati(v.uid), p = provette.filter(function (x) { return x.uid === v.uid; })[0], fin = p ? maiusc(p.contrassegno) : '', a = inArvet(v.specie, fin);
     var r = { Provetta: v.etichetta, Veterinario: v.operatore, Tipologia: v.titolo, 'Marca letta': maiusc(d.contrassegno), 'Esito in Fejalog': v.esito, 'Capo finale': fin };
     if (opz.arvet) r['Numero in ARVET'] = a ? a.numero : (arvet[v.specie] ? 'non in ARVET' : 'non confrontato');
-    r.Precisazione = note[sigla(v)] || '';
+    r.Precisazione = precisazione(v, d);
     return r;
   });
   var numeri = mie.filter(function (p) { var a = inArvet(p.specie, p.contrassegno); return a && p.numero != null && Number(p.numero) !== a.numero; })
@@ -218,7 +258,14 @@ function crea(opz) {
   var notaUsciti = attribuitiAUsciti.map(function (a) { return 'Il capo ' + a['Capo del registro'] + ' era uscito con un documento di accompagnamento (' + (uscito(a['Capo del registro']).data || '') + '): gli è stato intestato un campione (' + a['Animale prelevato al suo posto'] + '). Intestazione da rivedere' + (sceltiAlPosto[a['Capo del registro']] ? '; all’allevatore è chiesto il duplicato del capo ' + sceltiAlPosto[a['Capo del registro']] + '.' : ': va scelto un altro capo assente compatibile di cui chiedere il duplicato.'); })
     .concat(Object.keys(perModello).filter(function (k) { return perModello[k].prelevato; }).map(function (k) { return 'Il capo ' + k + ', uscito con un documento di accompagnamento, ha una provetta a suo nome (' + String(perModello[k].etichetta || '').split(' ')[0] + '): da verificare.'; }));
   var notaUfficioCompleta = [pre.notaUfficio || ''].concat(notaUsciti).filter(Boolean).join(' ');
-  return { sezioni: sez, ufficio: { provette: app, numeri: numeri, attribuitiAUsciti: notaUsciti, confrontato: Object.keys(arvet).map(function (sp) { return SP[sp]; }) },
+  // ciò che resta da precisare nella pagina: per ogni campione intestato a un capo uscito, i capi assenti fra cui scegliere
+  var intestati = attribuitiAUsciti.map(function (a) {
+    var sp = a.Specie === 'caprini' ? 'capre' : 'pecore', k = a['Capo del registro'], u = capo(k, sp);
+    return { capo: k, specie: sp, sesso: u.sesso, animale: a['Animale prelevato al suo posto'], scelto: sceltiAlPosto[k] || '',
+      candidati: assenti.filter(function (x) { return x.specie === sp && !inArvet(sp, x.contrassegno) && !uscito(x.contrassegno) && (!sceltoAlPosto(x.contrassegno) || sceltiAlPosto[k] === maiusc(x.contrassegno)); })
+        .map(function (x) { return { contrassegno: maiusc(x.contrassegno), sesso: x.sesso, razza: x.razza, nascita: x.dataNascita }; }) };
+  });
+  return { sezioni: sez, ufficio: { provette: app, numeri: numeri, attribuitiAUsciti: notaUsciti, intestatiAUsciti: intestati, confrontato: Object.keys(arvet).map(function (sp) { return SP[sp]; }) },
     html: pagina(opz.stabilimento, DATA, sez, app, numeri, Object.keys(arvet), notaUfficioCompleta), fogli: fogli(sez, app, numeri) };
 }
 
@@ -256,6 +303,7 @@ function narrativa(z, DATA) {
       ' con un documento di accompagnamento nei giorni prima del risanamento, quando il registro non era ancora aggiornato: non sono considerati mancanti e per loro non vanno ordinate marche' +
       ' (elenco 11).');
   }
+  if (z[11] && n(11)) P.push('<strong>Note del veterinario.</strong> Per ' + quanti(n(11), 'un animale', 'animali') + ' il veterinario ha lasciato una nota (elenco 12).');
   if (P.length === 1) P.push('Non è stata riscontrata nessuna situazione da segnalare.');
   P.push('Queste situazioni saranno valutate dal Servizio veterinario, a cui può rivolgersi per ogni chiarimento.');
   return '<section class="breve"><h2>In breve</h2>' + P.map(function (x) { return '<p>' + x + '</p>'; }).join('') + '</section><h2 class="elenchi">Elenchi, capo per capo</h2>';
@@ -266,6 +314,7 @@ function tabella(colonne, righe) {
 }
 function pagina(st, DATA, sez, app, numeri, confrontate, notaUfficio) {
   var corpo = sez.map(function (s, i) {
+    if (i >= 11 && !s.righe.length) return '';
     return '<section><h2>' + (i + 1) + '. ' + esc(s.titolo) + (s.righe.length && i > 0 ? ' <span class="n">(' + s.righe.length + ')</span>' : '') + '</h2>' +
       (s.nota ? '<p class="nota">' + esc(s.nota) + '</p>' : '') + (s.righe.length ? tabella(s.colonne, s.righe) : '<p class="vuoto">Nessuno.</p>') + '</section>';
   }).join('\n');

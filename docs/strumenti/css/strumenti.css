@@ -118,6 +118,11 @@ body.fej-regia-locale button:focus-visible, body.fej-regia-locale input:focus-vi
 .fej-non-conforme { color: #b00020; font-weight: 700; }
 .fej-banco-mano { margin: .5rem 0; }
 .fej-blocco { display: block; margin: .3rem 0; }
+/* le precisazioni dell'esito per l'allevatore: un riquadro che si apre solo se serve */
+.fej-precisazioni { border: 1px solid var(--md-default-fg-color--lighter, #bbb); border-radius: 4px; padding: .3rem .6rem; }
+.fej-precisazioni > summary { cursor: pointer; font-weight: 700; }
+.fej-precisazioni textarea, .fej-precisazioni input[type="text"], .fej-precisazioni select { max-width: 100%; }
+.fej-precisazioni label.fej-blocco textarea, .fej-precisazioni label.fej-blocco > input[type="text"] { display: block; width: 100%; }
 .fej-cronologia { margin-top: 1rem; border-top: 1px solid var(--md-default-fg-color--lighter, #bbb); padding-top: .4rem; }
 .fej-smista-trovata td { background: rgba(27, 138, 58, .2); font-weight: 700; }
 /* la tabella dei fuori registro: intestazioni che ordinano, righe che aprono la scheda */
