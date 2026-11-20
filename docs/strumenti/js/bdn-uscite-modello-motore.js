@@ -27,6 +27,9 @@
   var BM = '/ovicaprini/documento_accompagnamento/singoli/';
   var PAUSA = 600;
   var FORMATO = 'fejalog-uscite-modello';
+  /* Gli ingressi per modello (utente, 2026-11-20: «manca lo snippet per gli ingressi, non solo le uscite»): la stessa ricerca
+     dei modelli, dalla parte della destinazione; i capi arrivati negli ultimi giorni che il registro non ha ancora. */
+  var FORMATO_INGRESSI = 'fejalog-ingressi-modello';
 
   /* ---------- funzioni pure (provate in Node: sito/prove/bdn-uscite-modello.cjs) ---------- */
   function norma(c) { return String(c == null ? '' : c).replace(/\s+/g, '').toUpperCase(); }
@@ -75,6 +78,23 @@
     return { formato: FORMATO, versione: 1, timbro: cfg.timbro, giorni: cfg.giorni || 7, dal: fin ? fin.dal : '', al: fin ? fin.al : '', uscite: Object.keys(perCapo).map(function (k) { return perCapo[k]; }) };
   }
 
+  /** Un capo arrivato con un modello, nell'ingresso del file; null se manca il contrassegno o la data non si legge. */
+  function ingresso(stabilimento, r) {
+    var c = norma(r && r.contrassegno), d = normalizzaData(r && r.data);
+    if (!c || !d) return null;
+    return { stabilimento: String(stabilimento).trim().toUpperCase(), specie: r.specie === 'capre' ? 'capre' : 'pecore', contrassegno: c,
+      elettronico: norma(r.elettronico), sesso: /^[FM]$/.test(String(r.sesso || '')) ? r.sesso : '', razza: String(r.razza || '').trim().slice(0, 60),
+      nascita: normalizzaData(r.nascita), data: d, modello: String(r.modello || '').trim(), origine_codice: norma(r.origine_codice) };
+  }
+  /** Il file `fejalog-ingressi-modello` v1: ingressi ripetuti (stesso capo e stabilimento) tolti, tenendo il più recente. */
+  function costruisciFileIngressi(cfg, ingressi, fin) {
+    var perCapo = {};
+    ingressi.forEach(function (u) {
+      var k = u.stabilimento + '|' + u.contrassegno, g = u.data.split('/').reverse().join('');
+      if (!perCapo[k] || g > perCapo[k].data.split('/').reverse().join('')) perCapo[k] = u;
+    });
+    return { formato: FORMATO_INGRESSI, versione: 1, timbro: cfg.timbro, giorni: cfg.giorni || 7, dal: fin ? fin.dal : '', al: fin ? fin.al : '', ingressi: Object.keys(perCapo).map(function (k) { return perCapo[k]; }) };
+  }
   function pulisci(t) { return String(t == null ? '' : t).replace(/\s+/g, ' ').trim(); }
   function chiaveData(g) { var d = normalizzaData(g); return d ? d.split('/').reverse().join('') : ''; }
   /** La tipologia di destinazione del modello nel tipo d'uscita (il pascolo è «altro»: il capo non è in allevamento). */
@@ -121,23 +141,31 @@
     var capi = [];
     if (t) {
       var int = Array.prototype.map.call(t.rows[0].cells, function (c) { return pulisci(c.textContent); });
-      var iCapo = 0, iSpecie = -1, iUscita = -1;
-      int.forEach(function (x, k) { if (/^Codice Capo/i.test(x)) iCapo = k; if (/^Specie/i.test(x)) iSpecie = k; if (/^Uscita/i.test(x)) iUscita = k; });
+      var iCapo = 0, iSpecie = -1, iUscita = -1, iEl = -1, iNascita = -1, iSesso = -1, iRazza = -1;
+      int.forEach(function (x, k) {
+        if (/^Codice Capo/i.test(x)) iCapo = k; if (/^Specie/i.test(x)) iSpecie = k; if (/^Uscita/i.test(x)) iUscita = k;
+        if (/elettronico/i.test(x)) iEl = k; if (/nascita/i.test(x)) iNascita = k; if (/^Sesso/i.test(x)) iSesso = k; if (/^Razza/i.test(x)) iRazza = k;
+      });
       Array.prototype.slice.call(t.rows, 1).forEach(function (r) {
         var c = norma(r.cells[iCapo] ? r.cells[iCapo].textContent : '');
         if (!c) return;
-        var sp = iSpecie >= 0 && r.cells[iSpecie] ? pulisci(r.cells[iSpecie].textContent).toUpperCase() : '';
-        capi.push({ contrassegno: c, specie: /CAPR/.test(sp) ? 'capre' : 'pecore', uscitaRegistrata: iUscita >= 0 && r.cells[iUscita] ? pulisci(r.cells[iUscita].textContent) : '' });
+        var v = function (k) { return k >= 0 && r.cells[k] ? pulisci(r.cells[k].textContent) : ''; };
+        var sp = v(iSpecie).toUpperCase();
+        capi.push({ contrassegno: c, specie: /CAPR/.test(sp) ? 'capre' : 'pecore', uscitaRegistrata: v(iUscita),
+          elettronico: norma(v(iEl)), nascita: normalizzaData(v(iNascita)), sesso: v(iSesso).toUpperCase().charAt(0), razza: v(iRazza) });
       });
     }
     return { rif: val('P_RIF_MODELLO'), partenza: val('P_DT_PARTENZA'), destinazione: val('P_DEST_AZIENDA_CODICE'), capi: capi };
   }
 
-  var puro = { norma: norma, normalizzaData: normalizzaData, tipoDaCausale: tipoDaCausale, uscita: uscita, finestra: finestra, costruisciFile: costruisciFile, tipoDaDestinazione: tipoDaDestinazione, modelliDa: modelliDa, scegliModelli: scegliModelli, capiDelModello: capiDelModello, timbroAdesso: timbroAdesso, dataIt: dataIt, FORMATO: FORMATO };
+  var puro = { norma: norma, normalizzaData: normalizzaData, tipoDaCausale: tipoDaCausale, uscita: uscita, ingresso: ingresso, finestra: finestra, costruisciFile: costruisciFile,
+    costruisciFileIngressi: costruisciFileIngressi, tipoDaDestinazione: tipoDaDestinazione, modelliDa: modelliDa, scegliModelli: scegliModelli,
+    capiDelModello: capiDelModello, timbroAdesso: timbroAdesso, dataIt: dataIt, FORMATO: FORMATO, FORMATO_INGRESSI: FORMATO_INGRESSI };
+  globale.FejBdnModelli = puro;
   if (typeof module === 'object' && module.exports) { module.exports = puro; return; }
 
   /* ---------- nella BDN ---------- */
-  var cfg = globale.__BDN_USCITE_MODELLO__;
+  var cfg = globale.__BDN_USCITE_MODELLO__, ingressi = !!(cfg && cfg.verso === 'ingressi');
   if (!cfg || !(cfg.stabilimenti || []).length) {
     console.log('Fejalog: manca l\'elenco degli stabilimenti (window.__BDN_USCITE_MODELLO__). Prepara lo snippet dalla pagina del sito.');
     return;
@@ -177,12 +205,14 @@
   pannello.style.cssText = 'position:fixed;top:8px;right:8px;z-index:99999;background:#fff;border:2px solid #2e5e3e;border-radius:8px;' +
     'padding:10px 12px;font:13px system-ui,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.25);width:440px;max-width:92vw;color:#222';
   pannello.innerHTML = '<button type="button" data-f="chiudi" title="Chiudi" style="position:absolute;top:2px;right:6px;border:0;background:none;' +
-    'font-size:22px;line-height:1;cursor:pointer;color:#444;padding:2px 4px">×</button><b>Fejalog · uscite per modello (' + fin.dal + ' – ' + fin.al + ')</b>' +
+    'font-size:22px;line-height:1;cursor:pointer;color:#444;padding:2px 4px">×</button><b>Fejalog · ' + (ingressi ? 'ingressi' : 'uscite') + ' per modello (' + fin.dal + ' – ' + fin.al + ')</b>' +
     '<div data-f="fase" style="margin-top:6px;font-weight:600"></div>' +
     '<div style="background:#e6ece7;border-radius:4px;height:10px;margin:6px 0;overflow:hidden"><div data-f="barra" style="background:#2e5e3e;height:10px;width:0"></div></div>' +
     '<div data-f="tempo" style="color:#666"></div>' +
     '<div data-f="righe" style="margin-top:6px;font:12px ui-monospace,monospace;max-height:14em;overflow:auto;white-space:pre-wrap"></div>' +
     '<div data-f="nota" style="color:#666;margin-top:6px">Non cambiare pagina in questa scheda finché non arriva il file.</div>';
+  pannello.setAttribute('data-fejalog-pannello', ingressi ? 'ingressi' : 'uscite');
+  if (cfg.pannelloAlto) pannello.style.top = cfg.pannelloAlto + 'px';
   document.body.appendChild(pannello);
   var q = function (n) { return pannello.querySelector('[data-f="' + n + '"]'); };
   q('chiudi').onclick = function () { pannello.remove(); };
@@ -200,7 +230,7 @@
   }
   function inviaAllaPagina(file) {
     var dest = globale.opener;
-    if (!dest || dest.closed || !cfg.origine) return false;
+    if (cfg.senzaInvio || !dest || dest.closed || !cfg.origine) return false;
     try { dest.postMessage({ fejalog: 'uscite-modello', file: file }, cfg.origine); } catch (e) { return false; }
     globale.addEventListener('message', function (ev) {
       if (ev.origin !== cfg.origine || !ev.data || ev.data.fejalog !== 'uscite-modello-ricevute') return;
@@ -224,12 +254,15 @@
     }
     // la richiesta di solito precede l'uscita di pochi giorni: si cerca largo e si sceglie sulla data d'uscita
     var m = dal.split('/'), inizio = new Date(+m[2], +m[1] - 1, +m[0]); inizio.setDate(inizio.getDate() - 30);
-    var lista = leggiDoc(await inviaModulo(BM + 'int_doc_acc_ric.pl', imposta(formRicerca, {
-      P_SUBMIT: 'ON', P_FLAG_MOVIMENTO: 'ORIGINE', P_COD_AZIENDA: stabilimento, P_TIPO_DESTINAZIONE: 'ALL',
+    // gli ingressi dalla parte della destinazione (provato sulla BDN il 20/11): allevamento di destinazione, senza il filtro per
+    // data d'uscita, che vale per l'allevamento d'origine; la data si sceglie qui sotto
+    var valori = ingressi ? { P_SUBMIT: 'ON', P_FLAG_MOVIMENTO: 'DESTINAZIONE', P_FLAG_DESTINAZIONE: 'ALLEVAMENTO', P_COD_AZIENDA_DEST: stabilimento, P_TIPO_DESTINAZIONE: 'ALL',
+      P_DT_RICHIESTA_INIZIO: dataIt(inizio), P_DT_RICHIESTA_FINE: dataIt(new Date()) } :
+      { P_SUBMIT: 'ON', P_FLAG_MOVIMENTO: 'ORIGINE', P_COD_AZIENDA: stabilimento, P_TIPO_DESTINAZIONE: 'ALL',
       P_DT_RICHIESTA_INIZIO: dataIt(inizio), P_DT_RICHIESTA_FINE: dataIt(new Date()),
       // il filtro della BDN per data d'uscita dall'allevamento (la casella e le due date)
-      P_ABILITA: 'on', P_DT_USCITA_INIZIO: dal, P_DT_USCITA_FINE: al,
-    })));
+      P_ABILITA: 'on', P_DT_USCITA_INIZIO: dal, P_DT_USCITA_FINE: al };
+    var lista = leggiDoc(await inviaModulo(BM + 'int_doc_acc_ric.pl', imposta(formRicerca, valori)));
     var scelta = scegliModelli(modelliDa(lista), dal, al);
     scelta.scartati.forEach(function (x) { riga('  modello ' + x.modello.estremi + ' (' + x.modello.tipologia.toLowerCase() + ', ' + (x.modello.uscita || x.modello.richiesta) + '): ' + x.perche); });
     var moduloLista = lista.forms.formPrincipale ? coppie(lista.forms.formPrincipale) : formRicerca, out = [];
@@ -245,7 +278,9 @@
       if (chiaveData(dataUscita) > chiaveData(al)) { riga('  modello ' + (det.rif || mod.estremi) + ': partenza il ' + dataUscita + ', dopo il ' + al + ': non vale'); continue; }
       if (!det.partenza && !mod.uscita) riga('  ATTENZIONE: il modello ' + (det.rif || mod.estremi) + ' non ha la data d\'uscita: uso la data della richiesta (' + mod.richiesta + '), da verificare');
       det.capi.forEach(function (c) {
-        out.push({ specie: c.specie, contrassegno: c.contrassegno, data: dataUscita, tipo: tipoDaDestinazione(mod.tipologia),
+        if (ingressi) out.push({ specie: c.specie, contrassegno: c.contrassegno, elettronico: c.elettronico, sesso: c.sesso, razza: c.razza, nascita: c.nascita,
+          data: dataUscita, modello: det.rif || mod.estremi, origine_codice: '' });
+        else out.push({ specie: c.specie, contrassegno: c.contrassegno, data: dataUscita, tipo: tipoDaDestinazione(mod.tipologia),
           modello: det.rif || mod.estremi, destinazione_codice: det.destinazione, destinazione: pulisci(mod.tipologia.toLowerCase()) });
       });
     }
@@ -260,8 +295,8 @@
       q('barra').style.width = Math.round(100 * n / st.length) + '%';
       try {
         var lette = await leggiUscite(st[n], fin.dal, fin.al);
-        var buone = lette.map(function (r) { return uscita(st[n], r); }).filter(Boolean);
-        riga(st[n] + ' · ' + buone.length + ' capi usciti con modello (' + (lette.length - buone.length) + ' righe scartate)');
+        var buone = lette.map(function (r) { return ingressi ? ingresso(st[n], r) : uscita(st[n], r); }).filter(Boolean);
+        riga(st[n] + ' · ' + buone.length + (ingressi ? ' capi arrivati' : ' capi usciti') + ' con modello (' + (lette.length - buone.length) + ' righe scartate)');
         tutte = tutte.concat(buone);
       } catch (e) {
         var m = e && e.message ? e.message : String(e);
@@ -272,12 +307,15 @@
     }
     finito = true; clearInterval(orologio);
     q('barra').style.width = '100%';
-    var file = costruisciFile(cfg, tutte, fin);
-    globale.__BDN_USCITE_MODELLO_ESITO__ = file;
-    var testo = JSON.stringify(file, null, 1), nomeJson = 'fejalog_uscite_modello_' + cfg.timbro + '.json';
+    var file = ingressi ? costruisciFileIngressi(cfg, tutte, fin) : costruisciFile(cfg, tutte, fin);
+    file.errori = errori;
+    if (ingressi) globale.__BDN_INGRESSI_MODELLO_ESITO__ = file; else globale.__BDN_USCITE_MODELLO_ESITO__ = file;
+    var elenco = ingressi ? file.ingressi : file.uscite;
+    var testo = JSON.stringify(file, null, 1), nomeJson = 'fejalog_' + (ingressi ? 'ingressi' : 'uscite') + '_modello_' + cfg.timbro + '.json';
     if (errori.length) { fase('Finito con errori: ' + errori.length + ' stabilimenti non letti. Il file contiene solo quelli riusciti.'); }
-    else fase('Fatto: ' + file.uscite.length + ' capi usciti con modello in ' + st.length + ' stabilimenti.');
-    if (!file.uscite.length && errori.length) return; // niente da consegnare
+    else fase('Fatto: ' + elenco.length + (ingressi ? ' capi arrivati' : ' capi usciti') + ' con modello in ' + st.length + ' stabilimenti.');
+    if (cfg.senzaInvio && cfg.senzaFile) return; // lo snippet unico raccoglie lui il risultato
+    if (!elenco.length && errori.length) return; // niente da consegnare
     var inviato = inviaAllaPagina(file);
     if (!cfg.senzaFile) scarica(nomeJson, testo, 'application/json');
     // se lo scaricamento non parte o il risultato non arriva alla pagina: si scarica di nuovo o si copia e si incolla

@@ -69,6 +69,9 @@ function sceltaDaBackup(P) {
     // le uscite per modello caricate alla creazione stanno nello snapshot: senza, i capi usciti tornerebbero numerati (revisione del 18/11, P2-3)
     uscite_modello: ev.filter(function (e) { return e.tipo === 'REGISTRO_CARICATO' && e.dati && e.dati.uscite_modello; })
       .map(function (e) { return { nome: 'dallo snapshot (' + (e.dati.uscite_modello.timbro || '') + ')', testo: JSON.stringify(e.dati.uscite_modello) }; }),
+    // e così gli ingressi per modello (utente, 2026-11-20): senza, i capi arrivati non avrebbero più il loro numero
+    anagrafe_bdn: ev.filter(function (e) { return e.tipo === 'REGISTRO_CARICATO' && e.dati && e.dati.anagrafe_bdn; })
+      .map(function (e) { return { nome: 'dallo snapshot (' + (e.dati.anagrafe_bdn.timbro || '') + ')', testo: JSON.stringify(e.dati.anagrafe_bdn) }; }),
     reti: Reti.daEventi(ev), cerchietto_principale: typeof imp.cerchietto_principale === 'boolean' ? imp.cerchietto_principale : null
   }, riferimento: { id: p.id || '', creato_il: p.creato_il || '', impronta: P.verifica && P.verifica.impronta || '', numerazione_csv: P.numerazioneCsv || '' } };
 }
@@ -87,7 +90,7 @@ function monta(radice, deps) {
   var Dominio = deps.dominio, Zip = deps.zip, Progetto = deps.progetto || w.FejProgetto;
   var adesso = deps.adesso ? deps.adesso() : new Date();
   var stato = {
-    file: [], specieFile: {}, veterinariCsv: '', veterinariNome: '', ricercatiCsv: '', ricercatiNome: '', usciteModello: [],
+    file: [], specieFile: {}, veterinariCsv: '', veterinariNome: '', ricercatiCsv: '', ricercatiNome: '', usciteModello: [], anagrafeBdn: [],
     stabilimenti: null, principale: '', descrizione: '', data: oggi(adesso), etaMesi: 6, lettere: '',
     problematiciInSequenza: true, verso: 'alto_basso', sigle: {}, priorita: [], reti: [], regole: {}, cerchiettoPrincipale: null,
     id: deps.id || uuid(w), creatoIl: deps.creatoIl || isoSenzaMillisecondi(adesso), messaggio: '', esito: null, occupato: false,
@@ -160,6 +163,7 @@ function monta(radice, deps) {
     return {
       file: stato.file, specie_file: stato.specieFile, veterinari_csv: stato.veterinariCsv, ricercati_csv: stato.ricercatiCsv,
       uscite_modello: (stato.usciteModello || []).map(function (u) { return u.testo; }),
+      anagrafe_bdn: (stato.anagrafeBdn || []).map(function (u) { return u.testo; }),
       id: stato.id, creato_il: stato.creatoIl, data: stato.data, descrizione: stato.descrizione,
       stabilimenti: stato.stabilimenti || [], principale: stato.principale,
       eta_mesi: stato.etaMesi, lettere_specie: stato.lettere, problematici_in_sequenza: stato.problematiciInSequenza,
@@ -231,7 +235,7 @@ function monta(radice, deps) {
   function scelteCorrenti() {
     return {
       file: stato.file, specie_file: stato.specieFile, veterinari_csv: stato.veterinariCsv, veterinari_nome: stato.veterinariNome,
-      ricercati_csv: stato.ricercatiCsv, ricercati_nome: stato.ricercatiNome, uscite_modello: stato.usciteModello || [], stabilimenti: stato.stabilimenti || [], principale: stato.principale,
+      ricercati_csv: stato.ricercatiCsv, ricercati_nome: stato.ricercatiNome, uscite_modello: stato.usciteModello || [], anagrafe_bdn: stato.anagrafeBdn || [], stabilimenti: stato.stabilimenti || [], principale: stato.principale,
       descrizione: stato.descrizione, data: stato.data, eta_mesi: stato.etaMesi, lettere: stato.lettere, problematici_in_sequenza: stato.problematiciInSequenza,
       verso: stato.verso, sigle: stato.sigle, priorita: stato.priorita, reti: stato.reti, cerchietto_principale: stato.cerchiettoPrincipale
     };
@@ -241,7 +245,7 @@ function monta(radice, deps) {
       file: (sc.file || []).map(function (f) { return { nome: String(f.nome), contenuto: String(f.contenuto) }; }), specieFile: sc.specie_file || {},
       veterinariCsv: sc.veterinari_csv || '', veterinariNome: sc.veterinari_csv ? sc.veterinari_nome || 'elenco del progetto ripreso' : '',
       ricercatiCsv: sc.ricercati_csv || '', ricercatiNome: sc.ricercati_csv ? sc.ricercati_nome || 'ricercati del progetto ripreso' : '',
-      usciteModello: Array.isArray(sc.uscite_modello) ? sc.uscite_modello : [],
+      usciteModello: Array.isArray(sc.uscite_modello) ? sc.uscite_modello : [], anagrafeBdn: Array.isArray(sc.anagrafe_bdn) ? sc.anagrafe_bdn : [],
       stabilimenti: sc.stabilimenti && sc.stabilimenti.length ? sc.stabilimenti.slice() : null, principale: sc.principale || '',
       descrizione: sc.descrizione || '', data: sc.data || stato.data, etaMesi: typeof sc.eta_mesi === 'number' ? sc.eta_mesi : 6, lettere: sc.lettere || '',
       problematiciInSequenza: sc.problematici_in_sequenza !== false, verso: sc.verso === 'basso_alto' ? 'basso_alto' : 'alto_basso',
@@ -321,14 +325,35 @@ function monta(radice, deps) {
   function renderUscite() {
     var c = sez.uscite; if (!c) return; svuota(c);
     var Tab = deps.tabella || w.FejTabella, X = deps.xlsx || w.AccXlsx, e = stato.esito || {};
-    c.appendChild(h('p', null, 'La BDN aggiorna il registro di stalla fino a 7 giorni dopo il documento di accompagnamento: un capo venduto o macellato da pochi giorni risulta ancora presente, prende un numero e in campo lo si cerca per niente. ' +
-      'Carica qui le uscite per modello dell’ultima settimana (lo snippet le legge dalle Movimentazioni della BDN): quei capi non vengono numerati. Si possono aggiungere anche dopo, in Fine lavori › Carica.'));
+    c.appendChild(h('p', null, 'La BDN aggiorna il registro di stalla fino a 7 giorni dopo il documento di accompagnamento: un capo venduto o macellato da pochi giorni risulta ancora presente, prende un numero e in campo lo si cerca per niente; ' +
+      'uno comprato da pochi giorni non c’è ancora. Lo snippet unico legge dalle Movimentazioni della BDN le uscite e gli ingressi per modello dell’ultima settimana: i capi usciti non vengono numerati, quelli arrivati sì (in fondo alla loro serie). Si possono aggiungere anche dopo, in Fine lavori › Carica.'));
     var inp = h('input', { type: 'file', id: 'crea-uscite-file', accept: '.json,.xlsx,.csv,application/json', multiple: true });
     function aggiungi(nome, testo) { stato.usciteModello = (stato.usciteModello || []).filter(function (u) { return u.testo !== testo; }).concat([{ nome: nome, testo: testo }]); }
+    function aggiungiIngressi(nome, testo) { stato.anagrafeBdn = (stato.anagrafeBdn || []).filter(function (u) { return u.testo !== testo; }).concat([{ nome: nome, testo: testo }]); }
+    /* il file dello snippet unico: le uscite come prima, gli ingressi come capi vivi nello stabilimento d'arrivo (bdn-file.js) */
+    function aggiungiJson(nome, t) {
+      var F = w.FejBdnFile, parti;
+      if (!F) { aggiungi(nome, t); return; }
+      parti = F.scomponi(t);
+      if (parti.formato !== F.FORMATO && !parti.ingressi) { aggiungi(nome, t); return; }
+      if (parti.uscite && (parti.uscite.uscite || []).length) aggiungi(nome + ' (uscite)', JSON.stringify(parti.uscite));
+      var vi = F.verificaConIngressi({ verifica: null, uscite: parti.uscite, ingressi: parti.ingressi }, []);
+      if (vi.file) aggiungiIngressi(nome + ' (ingressi: ' + vi.ingressi + ' capi)', JSON.stringify(vi.file));
+    }
+    if (!w.__fejCreaAscoltaBdn && w.addEventListener) {
+      w.__fejCreaAscoltaBdn = true;
+      w.addEventListener('message', function (ev) {
+        if (ev.origin !== 'https://www.vetinfo.it' || !ev.data || ev.data.fejalog !== 'bdn-unico' || !ev.data.file) return;
+        try { aggiungiJson('dalla BDN (' + (ev.data.file.timbro || '') + ')', JSON.stringify(ev.data.file)); stato.messaggio = 'Uscite e ingressi per modello arrivati dalla BDN.'; }
+        catch (e) { stato.messaggio = 'Uscite e ingressi non caricati: ' + e.message; }
+        try { ev.source.postMessage({ fejalog: 'bdn-unico-ricevuto', testo: 'Uscite e ingressi nella creazione del progetto.' }, ev.origin); } catch (e2) { /* scheda chiusa */ }
+        ricalcola(true); renderUscite();
+      });
+    }
     inp.addEventListener('change', function () {
       var lista = Array.prototype.slice.call(inp.files || []);
       Promise.all(lista.map(function (f) {
-        if (/\.json$/i.test(f.name)) return leggiTesto(f).then(function (t) { aggiungi(f.name, t); });
+        if (/\.json$/i.test(f.name)) return leggiTesto(f).then(function (t) { aggiungiJson(f.name, t); });
         if (!Tab) throw new Error('la lettura dei modelli compilati a mano non è disponibile');
         return f.arrayBuffer().then(function (b) { return Tab.leggi(f.name, b); }).then(function (righe) {
           var r = Tab.usciteModello(righe, new Date().toISOString().slice(0, 19).replace(/[-:T]/g, ''));
@@ -339,24 +364,29 @@ function monta(radice, deps) {
       })).catch(function (err) { stato.messaggio = 'Uscite per modello non caricate: ' + err.message; })
         .then(function () { inp.value = ''; ricalcola(true); renderUscite(); });
     });
-    c.appendChild(h('p', null, h('label', null, 'Uscite per modello (il .json dello snippet, oppure il modello .xlsx o .csv compilato a mano) ', inp), ' ',
+    c.appendChild(h('p', null, h('label', null, 'Uscite e ingressi per modello (il .json dello snippet, oppure il modello delle uscite .xlsx o .csv compilato a mano) ', inp), ' ',
       Tab && X ? bottone('Scarica il modello da compilare a mano (.xlsx)', function () { scarica(Tab.MODELLI.uscite.nome + '.xlsx', X.xlsxBuild(Tab.fogliModello('uscite')), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'); }) : ''));
     // lo snippet per la BDN, con gli stabilimenti scelti e la finestra che finisce alla data del progetto
     var codici = (stato.stabilimenti && stato.stabilimenti.length ? stato.stabilimenti : (e.codici || []).map(function (x) { return x.codice || x; })).filter(Boolean);
     var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(stato.data || ''), al = m ? m[3] + '/' + m[2] + '/' + m[1] : '';
     // in preparazione la finestra è 7 giorni indietro dal giorno in cui si interroga la BDN, qualunque sia la data del progetto (utente, 2026-11-18)
     var oggi = new Date().toISOString().slice(0, 10);
-    var cfg = { stabilimenti: codici, giorni: 7, al: '', data: oggi.replace(/-/g, ''), origine: (w.location && w.location.origin) || '' };
-    var urlMotore = (BASE_JS || '') + 'bdn-uscite-modello-motore.js', esito = h('span', { role: 'status' });
+    var cfg = { stabilimenti: codici, giorni: 7, al: '', codici: [], base: BASE_JS || '', data: oggi.replace(/-/g, ''), origine: (w.location && w.location.origin) || '' };
+    var urlMotore = (BASE_JS || '') + 'bdn-unico-motore.js', esito = h('span', { role: 'status' });
     if (codici.length) c.appendChild(h('p', null,
+      bottone('Apri la BDN in una scheda', function () { w.open('https://www.vetinfo.it/ovicaprini/home2.pl', 'fejalog_bdn'); }, { class: 'md-button' }), ' ',
       bottone('Copia lo snippet per la BDN', function () {
-        var t = 'window.__BDN_USCITE_MODELLO__ = ' + JSON.stringify(cfg) + ';\nfetch(' + JSON.stringify(urlMotore + '?v=' + cfg.data) + ').then(function (r) { if (!r.ok) throw new Error(\'HTTP \' + r.status); return r.text(); }).then(function (t) { new Function(t)(); }).catch(function (e) { console.log(\'Fejalog: non riesco a caricare lo snippet dal sito (\' + e.message + \')\'); });\n';
+        var t = 'window.__BDN_UNICO__ = ' + JSON.stringify(cfg) + ';\nfetch(' + JSON.stringify(urlMotore + '?v=' + cfg.data) + ').then(function (r) { if (!r.ok) throw new Error(\'HTTP \' + r.status); return r.text(); }).then(function (t) { new Function(t)(); }).catch(function (e) { console.log(\'Fejalog: non riesco a caricare lo snippet dal sito (\' + e.message + \')\'); });\n';
         w.navigator.clipboard.writeText(t).then(function () { esito.textContent = ' Copiato: incollalo nella console della BDN (F12 › Console), nella scheda dove hai fatto l’accesso.'; }, function () { esito.textContent = ' Non riesco a copiare.'; });
-      }, { class: 'md-button' }), ' ', h('span', { class: 'fej-tenue' }, 'Stabilimenti: ' + codici.join(', ') + ' · modelli dei 7 giorni prima di oggi (il giorno in cui interroghi la BDN).'), esito));
+      }, { class: 'md-button' }), ' ', h('span', { class: 'fej-tenue' }, 'Stabilimenti: ' + codici.join(', ') + ' · uscite e ingressi per modello dei 7 giorni prima di oggi (il giorno in cui interroghi la BDN). Aperta da qui, la BDN rimanda il risultato da sola.'), esito));
     else c.appendChild(h('p', { class: 'fej-tenue' }, 'Lo snippet per la BDN compare dopo aver caricato i registri e scelto gli stabilimenti.'));
     (stato.usciteModello || []).forEach(function (u) {
       c.appendChild(h('p', null, u.nome + ' ', bottone('Togli', function () { stato.usciteModello = stato.usciteModello.filter(function (x) { return x !== u; }); ricalcola(true); renderUscite(); })));
     });
+    (stato.anagrafeBdn || []).forEach(function (u) {
+      c.appendChild(h('p', null, u.nome + ' ', bottone('Togli', function () { stato.anagrafeBdn = stato.anagrafeBdn.filter(function (x) { return x !== u; }); ricalcola(true); renderUscite(); })));
+    });
+    if ((stato.anagrafeBdn || []).length) c.appendChild(h('p', { class: 'fej-ok', id: 'crea-ingressi-esito' }, '✓ I capi arrivati per modello che i registri non hanno ancora entrano nel progetto, coi dati della BDN, e prendono un numero in fondo alla loro serie (nella chiave della numerazione e nelle stampe).'));
     var um = e.uscite_modello;
     if (um && um.nei_file) {
       c.appendChild(h('p', { class: 'fej-ok', role: 'status', id: 'crea-uscite-esito' }, '✓ ' + um.nei_file + ' capi usciti con modello nei file: ' + um.applicate + ' erano presenti nei registri e non vengono numerati' +
@@ -365,7 +395,7 @@ function monta(radice, deps) {
       var tb = h('tbody');
       um.capi.slice(0, 80).forEach(function (u) { tb.appendChild(h('tr', null, h('td', null, u.contrassegno), h('td', null, u.stabilimento), h('td', null, u.specie), h('td', null, u.data), h('td', null, u.tipo + (u.destinazione ? ' · ' + u.destinazione : '')), h('td', null, u.applicata ? 'tolto dai presenti: non numerato' : 'non era fra i presenti'))); });
       t.appendChild(tb); c.appendChild(h('div', { class: 'fej-tabella-scorre' }, t));
-    } else if (!(stato.usciteModello || []).length) c.appendChild(h('p', { class: 'fej-tenue' }, 'Nessuna uscita per modello caricata.'));
+    } else if (!(stato.usciteModello || []).length && !(stato.anagrafeBdn || []).length) c.appendChild(h('p', { class: 'fej-tenue' }, 'Nessuna uscita per modello caricata.'));
   }
 
   function renderStabilimenti() {
@@ -601,7 +631,7 @@ function monta(radice, deps) {
       if (i) i.setAttribute('placeholder', v.proposta);
       if (t) t.textContent = 'vuota: la Regia assegna ' + v.proposta;
     });
-    var usc = JSON.stringify(e.uscite_modello || null) + '|' + codici + '|' + stato.data + '|' + (stato.usciteModello || []).length;
+    var usc = JSON.stringify(e.uscite_modello || null) + '|' + codici + '|' + stato.data + '|' + (stato.usciteModello || []).length + '|' + (stato.anagrafeBdn || []).length;
     if (usc !== usciteViste) { usciteViste = usc; renderUscite(); }
     renderScelte();
     renderAnteprima(); renderSnapshot(); renderSalva(); aggiornaStampe();
@@ -645,7 +675,7 @@ function monta(radice, deps) {
   } else radice.appendChild(pannelloCrea);
   pannelloCrea.appendChild(msg);
   function ricomincia() {
-    Object.assign(stato, { file: [], specieFile: {}, veterinariCsv: '', veterinariNome: '', ricercatiCsv: '', ricercatiNome: '', usciteModello: [], stabilimenti: null, principale: '', descrizione: '',
+    Object.assign(stato, { file: [], specieFile: {}, veterinariCsv: '', veterinariNome: '', ricercatiCsv: '', ricercatiNome: '', usciteModello: [], anagrafeBdn: [], stabilimenti: null, principale: '', descrizione: '',
       etaMesi: 6, lettere: '', problematiciInSequenza: true, verso: 'alto_basso', sigle: {}, priorita: [], reti: [], regole: {}, cerchiettoPrincipale: null, id: uuid(w),
       creatoIl: isoSenzaMillisecondi(deps.adesso ? deps.adesso() : new Date()), messaggio: '', esito: null,
       riferimento: null, numerazioneRipresa: '', ripresoDa: '', avvisoIdentita: '' });

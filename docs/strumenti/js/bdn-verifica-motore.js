@@ -204,6 +204,8 @@
     '<div data-f="tempo" style="color:#666"></div>' +
     '<div data-f="righe" style="margin-top:6px;font:12px ui-monospace,monospace;max-height:14em;overflow:auto;white-space:pre-wrap"></div>' +
     '<div data-f="nota" style="color:#666;margin-top:6px">Non cambiare pagina in questa scheda finché non arriva il file.</div>';
+  pannello.setAttribute('data-fejalog-pannello', 'verifica');
+  if (cfg.pannelloAlto) pannello.style.top = cfg.pannelloAlto + 'px';
   document.body.appendChild(pannello);
   var q = function (n) { return pannello.querySelector('[data-f="' + n + '"]'); };
   q('chiudi').onclick = function () { pannello.remove(); };
@@ -273,7 +275,7 @@
   /** Manda il risultato alla pagina di Fejalog che ha aperto questa scheda (stessa origine data dallo snippet). */
   function inviaAllaPagina(file) {
     var dest = globale.opener;
-    if (!dest || dest.closed || !cfg.origine) return false;
+    if (cfg.senzaInvio || !dest || dest.closed || !cfg.origine) return false;
     try { dest.postMessage({ fejalog: 'verifica-bdn', file: file }, cfg.origine); } catch (e) { return false; }
     globale.addEventListener('message', function (ev) {
       if (ev.origin !== cfg.origine || !ev.data || ev.data.fejalog !== 'verifica-bdn-ricevuta') return;
@@ -313,6 +315,7 @@
     q('barra').style.width = '100%';
     var file = { formato: FORMATO, versione: 1, timbro: cfg.timbro, cercati: codici.length, risultati: risultati };
     globale.__BDN_VERIFICA_ESITO__ = file;
+    if (cfg.senzaInvio && cfg.senzaFile) { fase('Fatto: ' + risultati.length + ' di ' + codici.length + ' contrassegni.'); return; } // lo raccoglie lo snippet unico
     var testo = JSON.stringify(file, null, 1), nomeJson = 'fejalog_verifica_bdn_' + cfg.timbro + '.json';
     // Caricamento diretto (utente, 14/11): se la BDN è stata aperta dalla pagina di Fejalog («Apri la BDN»), il risultato
     // torna da solo a quella pagina; la pagina risponde «ricevuto». Altrimenti restano il file e «Copia il risultato».

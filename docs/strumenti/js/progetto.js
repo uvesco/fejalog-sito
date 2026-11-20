@@ -20,12 +20,16 @@ function costruisciProgetto(manifesto, pacchetto, eventi, esporti, files) {
     modifichePendenti: files && files['fejalog-modifiche.json'] ? JSON.parse(typeof files['fejalog-modifiche.json'] === 'string' ? files['fejalog-modifiche.json'] : Zip.testo(files['fejalog-modifiche.json'])) : null,
     chiave: String(pacchetto.sha256) + ':' + String(manifesto.registro && manifesto.registro.impronta),
   };
-  var stato = Dominio.applica(P, []);
+  // La sessione aperta qui per leggere il backup resta per le schede (dopo il campo del 16/11, utente 2026-11-20: «F5 molto
+  // lento»): prima il backup si apriva due volte, qui e nella pagina. Non va nel JSON del progetto.
+  var banco = Dominio.apriBanco(P, []), stato = banco.risultato();
+  Object.defineProperty(P, '_banco', { value: banco, writable: true, configurable: true, enumerable: false });
   P.esporti = stato.esporti;
   P.etaMesi = stato.impostazioni.eta_diagnostica_mesi;
   P.chiudiBuchi = stato.impostazioni.chiudi_buchi;
   P.riordinoIniziato = stato.impostazioni.riordino_iniziato;
   P.regole = stato.impostazioni.regole;
+  P.impostazioniIniziali = stato.impostazioni;
   P.eventiEfficaci = stato.eventiEfficaci;
   P.etichetteStoriche = {};
   stato.etichette.forEach(function (et) { P.etichetteStoriche[et.toUpperCase()] = true; });
