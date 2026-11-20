@@ -196,7 +196,9 @@ function crea(opz) {
 
   // 7. marche trovate su due animali
   var doppie = [], sola = pre.solaProvetta || [];
-  mieVoci.filter(function (v) { return (v.tipo === 'DOPPI' || v.tipo === 'DA_RIATTRIBUIRE' || v.tipo === 'SPECIE') && sola.indexOf(sigla(v)) < 0; }).forEach(function (v) {
+  // prima le voci attribuite a un capo: l'esito della marca viene da quella decisa, non da un'altra provetta della stessa marca
+  mieVoci.filter(function (v) { return (v.tipo === 'DOPPI' || v.tipo === 'DA_RIATTRIBUIRE' || v.tipo === 'SPECIE') && sola.indexOf(sigla(v)) < 0; })
+    .sort(function (a, b) { return (b.capo ? 1 : 0) - (a.capo ? 1 : 0); }).forEach(function (v) {
     var d = dati(v.uid), k = maiusc(d.contrassegno);
     if (!k || doppie.some(function (x) { return x.Marca === k; })) return;
     var stesse = provette.filter(function (p) { return maiusc(dati(p.uid).contrassegno) === k; });

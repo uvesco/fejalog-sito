@@ -120,6 +120,13 @@ Per la **doppia accettazione dei maschi** con «Duplica accettazione» di ARVET:
 snippet **«Svuota i numeri»** (toglie i numeri, lascia i capi e l'ordine), poi lo snippet dei maschi. Vedi
 [Gli snippet per ARVET](snippet-arvet.md).
 
+## Il doppio che porta già il numero del capo
+
+Due veterinari, senza vedersi, registrano lo stesso capo: la seconda provetta, presa da isolato, porta il numero del capo e la
+sigla (per esempio `5-VP`) ed è un doppio. Se l'altra registrazione non aveva la provetta, nella scheda si sceglie **«L'altra
+provetta non esiste»**. La provetta rimasta tiene la sua scritta e non c'è altro da decidere: compare subito nella fase **«Al
+loro posto»** e va al numero del suo contrassegno («L'ho messa lì»).
+
 ## Per l'allevatore
 
 Nella scheda **Uscite**, «Esito del risanamento»: una pagina per stabilimento con una parte discorsiva e gli elenchi capo
