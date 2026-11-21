@@ -8,6 +8,9 @@
   {% if config.extra.aggiornato %}
     <div class="md-copyright__highlight">Ultimo aggiornamento del sito: {{ config.extra.aggiornato }}</div>
   {% endif %}
+  {% if config.extra.goatcounter %}
+    <div class="md-copyright__highlight">Visite contate in forma anonima con GoatCounter, senza cookie; mai nelle pagine degli strumenti</div>
+  {% endif %}
   {% if not config.extra.generator == false %}
     Made with
     <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">

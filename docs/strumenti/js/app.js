@@ -29,6 +29,10 @@ function impostazioneAttuale(k) {
 var radice = document.getElementById('fejalog-strumenti');
 if (!radice) return;
 var pc = radice.getAttribute('data-regia-locale') === 'true' ? window.FejRegiaPc.crea(window.fetch.bind(window)) : null;
+/* Sul tablet stesso (Gestione campioni › Sistemazione, ponte-tablet.js): passi e decisioni restano nella pagina e vanno alla
+   Regia tutti insieme con «Invia alla Regia»; mandarli uno a uno ricaricava il backup a ogni passo (15–18 s, 21/11). */
+var suTablet = !!window.FejalogTablet;
+window.FejAzioniDaInviare = function () { return S && S.stato ? S.stato.azioni().length : 0; };
 var collegatoPc = false, occupatoPc = false;
 function errorePc(e) {
   if (e.statoHttp === 403) { collegatoPc = false; S.scheda = 'carica'; }
@@ -96,6 +100,7 @@ function ricalcola(completo) {
     if (scartate.length) S.messaggio = scartate.length === 1 ? 'Un\'azione salvata non si applica più a questo backup.' : scartate.length + ' azioni salvate non si applicano più a questo backup.';
     // in Sistemazione e Soluzioni il risultato completo si rifà solo quando una scheda lo chiede (preparaScheda), salvo che
     // l'azione tolta cambiasse le impostazioni lette da qui
+    S.apSoloImpostazione = false;
     if (!completo && SENZA_RISULTATO[S.scheda]) { S.apVecchio = !!S.ap; S.esito = null; S.riordinoCache = null; plateauStaccatoAggiornato(); }
     else aggiornaRisultato();
     sistUI.doveMov = {};
@@ -103,7 +108,7 @@ function ricalcola(completo) {
   disegna();
 }
 function aggiornaRisultato() {
-  S.ap = S.banco.risultato(); S.apVecchio = false; S.esito = null; S.riordinoCache = null;
+  S.ap = S.banco.risultato(); S.apVecchio = false; S.apSoloImpostazione = false; S.esito = null; S.riordinoCache = null;
   modelloPlateau.aggiorna(S.ap.plateauAttuale || [], {serie: S.ap.seriePlateau, verso: S.ap.impostazioni.verso_riempimento, sequenza: S.ap.impostazioni.problematici_in_sequenza});
 }
 /* La finestra del plateau staccata (secondo schermo) mostra le posizioni attuali anche mentre si lavora in Sistemazione:
@@ -118,7 +123,8 @@ function preparaScheda() {
   try {
     // Carica, Soluzioni e Sistemazione lavorano sulla sessione aperta: il risultato completo (secondi sul PC dell'ASL) solo
     // quando serve, e le altre schede lo rifanno se è vecchio o non c'è
-    if ((S.apVecchio || !S.ap) && !SENZA_RISULTATO[S.scheda]) aggiornaRisultato();
+    // dopo un'impostazione che non cambia i file (i prelevatori) la scheda degli snippet non rifà tutto
+    if ((S.apVecchio || !S.ap) && !SENZA_RISULTATO[S.scheda] && !(S.apSoloImpostazione && S.esito && S.scheda === 'snippet')) aggiornaRisultato();
     if (!S.esito && S.ap && ['snippet', 'uscite', 'esporta'].indexOf(S.scheda) >= 0)
       S.esito = Az.calcola(S.P, S.stato.azioni(), { FineLavori: FL, M: M, motoreArvet: S.motoreArvet, proiezione: S.ap });
   } catch (e) { S.messaggio = 'Calcolo non riuscito: ' + e.message; S.esito = null; }
@@ -132,7 +138,7 @@ function applicaSullaSessione(a) {
   var r = S.banco.applica(a);
   if (!r.ok) return r.motivo || 'azione rifiutata';
   S.stato.sostituisci(S.stato.azioni().concat([a]));
-  S.dueTrentatreFinali = []; S.esito = null; S.riordinoCache = null; S.apVecchio = true;
+  S.dueTrentatreFinali = []; S.esito = null; S.riordinoCache = null; S.apVecchio = true; S.apSoloImpostazione = false;
   bancoUI.dest = {}; // con «chiudi i buchi» i posti delle altre provette possono cambiare
   sistUI.doveMov = {};
   plateauStaccatoAggiornato();
@@ -145,6 +151,19 @@ function azione(tipo, dati) {
     var no = applicaSullaSessione(a);
     if (no) { S.messaggio = no; messaggio(); return false; }
     disegna(); return true;
+  } catch (e) { S.messaggio = e.message; messaggio(); return false; }
+}
+/* Un'impostazione che non tocca provette né file di fine lavori (i prelevatori per ARVET): entra nel registro della sessione
+   e nelle azioni come le altre, ma gli snippet già calcolati restano (rifarli costa secondi sul PC dell'ASL). Il risultato
+   completo si rifà quando serve (il backup aggiornato, le altre schede). */
+function applicaImpostazione(tipo, dati) {
+  var a = Object.assign({ id: Stato.uuid(), tipo: tipo, ts: new Date().toISOString() }, dati);
+  try {
+    var r = S.banco.applica(a);
+    if (!r.ok) { S.messaggio = r.motivo || 'azione rifiutata'; messaggio(); return false; }
+    S.stato.sostituisci(S.stato.azioni().concat([a]));
+    if (S.ap && !S.apVecchio) { S.apVecchio = true; S.apSoloImpostazione = true; }
+    Disco.azione(); disegna(); return true;
   } catch (e) { S.messaggio = e.message; messaggio(); return false; }
 }
 /* Togliere un'azione già fatta riapre la sessione dalle azioni rimaste. */
@@ -166,6 +185,7 @@ var SCHEDE_ALTRE = [['problemi', 'Tipologie'], ['banco', 'Soluzioni'], ['riordin
 var tabs = h('div', { class: 'fej-tabs', role: 'tablist' });
 var corpo = h('div', { class: 'fej-corpo' });
 var barra = h('div', { class: 'fej-barra', id: 'fej-barra' });
+radice.textContent = ''; // via il «Caricamento…» della pagina, che restava scritto in testa (simulazione del 21/11)
 radice.appendChild(tabs); radice.appendChild(barra); radice.appendChild(msgEl); radice.appendChild(corpo);
 
 function disegna() {
@@ -217,6 +237,7 @@ function apriProgetto(P) {
     modelloPlateau = Plateau.modelloAttuale();
   }
   S.P = P; S.stato = Stato.crea(P.chiave);
+  var intro = document.querySelector('.fej-intro'); if (intro) intro.hidden = true; // il lavoro comincia in cima (simulazione del 21/11)
   if (pc) {
     var importate = Object.create(null), unite = [], viste = Object.create(null);
     P.eventi.forEach(function (e) { if (e.dati && e.dati.id_modifica) importate[e.dati.id_modifica] = true; });
@@ -245,7 +266,8 @@ function apriProgetto(P) {
 function schedaCarica() {
   var d = h('div');
   if (pc) {
-    d.appendChild(h('p', null, 'Pagina dal tablet: carica il backup corrente e invia le modifiche alla Regia. Dopo il PIN, accetta le modifiche per questa sessione sul tablet.'));
+    d.appendChild(h('p', null, suTablet ? 'Sistemazione sul tablet: il backup si carica da solo. Le decisioni restano qui finché non le mandi alla Regia con «Esporta per l’app › Invia alla Regia sul tablet».'
+      : 'Pagina dal tablet: carica il backup corrente e invia le modifiche alla Regia. Dopo il PIN, accetta le modifiche per questa sessione sul tablet.'));
     if (!collegatoPc) {
       var pin = window.FejRegiaPc.campiPin(document);
       d.appendChild(h('form', { onsubmit: function (ev) {
@@ -279,6 +301,9 @@ function schedaCarica() {
       }).catch(function (e) { S.messaggio = 'Riconciliazione non riuscita: ' + e.message; messaggio(); });
     }
   } }));
+  if (!pc) d.appendChild(h('details', { class: 'fej-pulizia-box', open: false }, h('summary', null, 'Un altro progetto, o un PC usato da altri: pulisci il browser'),
+    h('p', { class: 'fej-guida' }, 'La pagina tiene nel browser il backup aperto e le azioni, per riprendere dopo F5 o la chiusura. Prima di lavorare a un altro progetto chiudi e cancella quello finito (dopo averne scaricato backup e modifiche): così il browser non lo riapre e su un PC condiviso non restano dati.'),
+    bottoniPulizia(!!S.P)));
   d.appendChild(h('p', null, h('label', null, 'Il tuo nome (firma le registrazioni tardive e le azioni): ', h('input', { type: 'text', value: nomeUtente(), oninput: function (ev) { salvaNome(ev.target.value); } }))));
   
   if (S.resocontoRiconciliazione && S.backupRiconciliatoZip) {
@@ -1381,7 +1406,7 @@ function azioneRiordino(r, batch) {
 }
 function inviaRiordino(azioni) {
   if (occupatoPc || !azioni.length) return;
-  if (!pc) {
+  if (!pc || suTablet) {
     azioni.forEach(function (a) {
       try {
         var no = applicaSullaSessione(a);
@@ -1407,6 +1432,9 @@ function inviaRiordino(azioni) {
   }).then(function () { occupatoPc = false; disegna(); });
 }
 function inviaSingolaRiordino(r) {
+  // le posizioni fisiche e i bordi dei plateau vengono dal risultato completo, che la Sistemazione non rifà a ogni azione:
+  // vecchio, dava per occupato un numero appena liberato e chiedeva uno scambio sbagliato (simulazione del 21/11)
+  if (S.apVecchio || !S.ap) aggiornaRisultato();
   var a = azioneRiordino(r, false);
   var fisica = (S.ap.posizioniAttuali || []).filter(function (p) { return p.uid !== a.uid && p.serie === a.stabilimento + ':' + a.specie && p.vista === 'serie' && (p.plateau - 1) * 100 + p.pozzetto === a.destinazione; })[0];
   var occupante = fisica || r.serie.numerazione.filter(function (n) { return n.provetta === a.destinazione && n.contrassegno !== a.contrassegno; })[0];
@@ -1426,6 +1454,115 @@ function inviaSingolaRiordino(r) {
     disegna(); return;
   }
   inviaRiordino([a]);
+}
+/* Fase D una provetta alla volta (simulazione del 21/11: la tabella fitta mescolava gli stabilimenti e le righe si spostavano
+   a ogni «Applica»). In cima il passo da fare: da dove prenderla, che numero scriverle, dove metterla e perché; «Fatto»
+   (o Invio) lo applica; lo scambio da confermare sta nello stesso riquadro. La tabella resta sotto, chiusa. */
+function prefissoSerie(serie) {
+  var conta = {};
+  (serie.numerazione || []).forEach(function (n) { var m = /^(\D*)(\d+)$/.exec(String(n.etichetta || '')); if (m && Number(m[2]) === n.provetta) conta[m[1]] = (conta[m[1]] || 0) + 1; });
+  var migliore = '', quanti = 0; Object.keys(conta).forEach(function (k) { if (conta[k] > quanti) { migliore = k; quanti = conta[k]; } });
+  return migliore;
+}
+function etichettaCorta(g) { return String(g.da || '').split(' ')[0]; }
+/* La provetta sta nella serie (al suo numero) solo se non è nel secchio e la sua scritta è un numero: quelle nei plateau dei
+   fuori registro hanno un posto che non è un numero della serie (revisione 9, P2-3). */
+function nellaSerie(g) { if (g.secchio) return null; var m = /^\D*(\d+)$/.exec(etichettaCorta(g)), n = (g.plateau_da - 1) * 100 + g.pos_da; return m && Number(m[1]) === n ? n : null; }
+function perchePasso(r, tutte) {
+  var g = r.g, daN = nellaSerie(g);
+  var dopo = daN == null ? null : tutte.filter(function (x) { return x !== r && !x.g.fatta && x.serie === r.serie && x.g.a_n === daN; })[0];
+  if (dopo) return 'Libera il numero ' + daN + ': ci va la provetta ' + etichettaCorta(dopo.g) + ' in un passo successivo.';
+  var max = Math.max.apply(null, (r.serie.numerazione || []).map(function (n) { return n.provetta; }).concat([0]));
+  if (g.a_n >= max && (daN == null || g.a_n > daN)) return 'Va in fondo alla serie, al ' + g.a_n + '.';
+  if (daN != null && g.a_n < daN) return 'Scende dal ' + daN + ' al ' + g.a_n + ': i buchi si chiudono coi numeri più alti.';
+  if (daN == null) return (g.secchio ? 'Dal secchio' : 'Dai fuori registro') + ' al numero ' + g.a_n + ' della serie.';
+  return '';
+}
+function nomeSerie(serie) { return serie.specie + ' di ' + serie.codice; }
+function vistaBuchi() {
+  var d = h('div', { id: 'fej-buchi' });
+  var tutte;
+  try { tutte = righeRiordino(); } catch (e) { return h('p', { role: 'alert' }, e.message); }
+  var daFare = tutte.filter(function (r) { return !r.g.fatta && !(sistUI.saltati || {})[r.g.uid]; });
+  var saltati = tutte.filter(function (r) { return !r.g.fatta && (sistUI.saltati || {})[r.g.uid]; });
+  var fatte = tutte.filter(function (r) { return r.g.fatta; }).length;
+  var piuSerie = tutte.map(function (r) { return r.serie; }).filter(function (x, i, a) { return a.indexOf(x) === i; }).length > 1;
+  d.appendChild(h('p', { role: 'status', id: 'fej-buchi-conto' }, 'Passi fatti ' + fatte + ' di ' + tutte.length + (saltati.length ? ' · saltati per ora ' + saltati.length : '') + '.'));
+  if (!daFare.length && saltati.length) { sistUI.saltati = {}; return vistaBuchi(); }
+  if (!daFare.length) { d.appendChild(h('p', { class: 'fej-ok' }, 'Nessun buco da chiudere: la serie va da 1 in su senza salti.')); return d; }
+  // la provetta in mano porta al suo passo
+  var q = String(sistUI.buchiInMano || '').replace(/\s+/g, '').toUpperCase(), esitoInMano = '';
+  var r = daFare[0];
+  if (q) {
+    var cand = daFare.concat(saltati), esatte = cand.filter(function (x) { return etichettaCorta(x.g).toUpperCase() === q || String(x.g.contrassegno || '').toUpperCase() === q; });
+    var trovata = esatte.length ? esatte : cand.filter(function (x) { return q.length >= 4 && String(x.g.contrassegno || '').toUpperCase().slice(-q.length) === q; });
+    if (trovata.length === 1) r = trovata[0];
+    var esitoInMano = trovata.length === 1 ? '' : trovata.length > 1 ? 'Più provette con queste cifre: scrivi l’etichetta o il contrassegno intero.' : 'Non è fra i passi da fare: rimettila dov’era.';
+  }
+  var g = r.g, pref = prefissoSerie(r.serie), nuovo = pref + g.a_n, cambia = String(g.da || '').replace(/\s+/g, '') !== nuovo;
+  var box = h('div', { class: 'fej-dove fej-passo', id: 'fej-passo', 'data-uid': g.uid });
+  box.appendChild(h('p', { class: 'fej-dove-riga' }, h('span', { class: 'fej-dove-et' }, 'Passo'), (fatte + 1) + ' di ' + tutte.length + (piuSerie ? ' · ' + nomeSerie(r.serie) : '')));
+  box.appendChild(h('p', { class: 'fej-dove-riga' }, h('span', { class: 'fej-dove-et' }, 'Prendi'), h('strong', null, etichettaCorta(g)), ' ',
+    h('small', null, g.secchio ? 'dal secchio' : nellaSerie(g) != null ? 'dal ' + testoPosto(nellaSerie(g)) : 'dai fuori registro, plateau ' + g.plateau_da + ', posto ' + g.pos_da), ' · ', h('code', null, g.contrassegno)));
+  box.appendChild(h('p', { class: 'fej-dove-riga' }, h('span', { class: 'fej-dove-et' }, cambia ? 'Riscrivi' : 'Numero'), h('strong', { class: 'fej-dove-a' }, nuovo), cambia ? h('small', null, ' (riga sul vecchio, numero nuovo accanto)') : null));
+  box.appendChild(h('p', { class: 'fej-dove-riga' }, h('span', { class: 'fej-dove-et' }, 'Mettila'), h('strong', { class: 'fej-dove-a' }, testoPosto(g.a_n)), ' ', h('small', null, '(numero ' + g.a_n + ')')));
+  var perche = perchePasso(r, tutte);
+  if (perche) box.appendChild(h('p', { class: 'fej-dove-riga fej-perche' }, h('span', { class: 'fej-dove-et' }, 'Perché'), perche));
+  if (riordinoUI.esiti[g.uid] && !/^Applicata/.test(riordinoUI.esiti[g.uid])) box.appendChild(h('p', { class: 'fej-avviso' }, riordinoUI.esiti[g.uid]));
+  var c = riordinoUI.conferma;
+  if (c && c.azione.uid === g.uid) {
+    box.appendChild(h('div', { role: 'alertdialog', 'aria-label': 'Conferma scambio', class: 'fej-avviso' }, h('p', null, c.testo),
+      h('button', { type: 'button', class: 'fej-primario', id: 'fej-conferma-scambio', onclick: function () { riordinoUI.conferma = null; conAttesa('Applico lo scambio…', function () { inviaRiordino([c.azione]); }); } }, 'Conferma scambio'), ' ',
+      h('button', { type: 'button', onclick: function () { riordinoUI.conferma = null; disegna(); } }, 'Annulla')));
+  } else {
+    box.appendChild(h('p', null,
+      h('button', { type: 'button', class: 'fej-primario', id: 'fej-passo-fatto', disabled: occupatoPc || !!(q && esitoInMano), title: q && esitoInMano ? 'La provetta che hai in mano non è questa: svuota il campo sotto' : '', onclick: function () { sistUI.buchiInMano = ''; conAttesa('Applico il passo…', function () { inviaPassoVeloce(r); }); } }, 'Fatto: l’ho messa lì'), ' ',
+      h('button', { type: 'button', id: 'fej-passo-salta', onclick: function () { sistUI.saltati = sistUI.saltati || {}; sistUI.saltati[g.uid] = true; sistUI.buchiInMano = ''; disegna(); } }, 'Salta per ora')));
+  }
+  d.appendChild(box);
+  var campo = h('input', { type: 'text', id: 'fej-buchi-in-mano', value: sistUI.buchiInMano || '', maxlength: 40, autocomplete: 'off', 'aria-label': 'Provetta in mano: etichetta o contrassegno',
+    onkeydown: function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); sistUI.buchiInMano = ev.target.value; disegna(); var n = document.getElementById('fej-buchi-in-mano'); if (n) n.focus(); } } });
+  d.appendChild(h('p', null, h('label', null, 'Hai in mano un’altra provetta? Scrivi etichetta o contrassegno e premi Invio: ', campo),
+    q && esitoInMano ? h('small', { role: 'status', id: 'fej-buchi-esito-in-mano' }, ' ' + esitoInMano, ' ', h('button', { type: 'button', onclick: function () { sistUI.buchiInMano = ''; disegna(); } }, 'Svuota')) : null));
+  var prossimi = daFare.filter(function (x) { return x !== r; }).slice(0, 5);
+  if (prossimi.length) d.appendChild(h('details', { class: 'fej-prossimi' }, h('summary', null, 'I prossimi passi'),
+    h('ol', null, prossimi.map(function (x) { return h('li', null, String(x.g.da).split(' ')[0] + ' → ' + prefissoSerie(x.serie) + x.g.a_n + ' (' + testoPosto(x.g.a_n) + ')' + (piuSerie ? ' · ' + nomeSerie(x.serie) : '')); }))));
+  d.appendChild(h('details', { class: 'fej-tabella-passi' }, h('summary', null, 'Tutti i passi in tabella (invio in gruppo, destinazione a mano)'), schedaRiordino()));
+  return d;
+}
+/* «Sto lavorando…» prima dei calcoli lunghi (sul PC dell'ASL 2–3 s a passo): il browser lo disegna, poi parte il calcolo. */
+var attesaEl = null;
+function mostraAttesa(testo) {
+  if (!attesaEl) { attesaEl = document.createElement('div'); attesaEl.className = 'fej-attesa'; attesaEl.setAttribute('role', 'status'); document.body.appendChild(attesaEl); }
+  attesaEl.textContent = testo || 'Sto lavorando…'; attesaEl.hidden = false; document.body.style.cursor = 'progress';
+}
+function nascondiAttesa() { if (attesaEl) attesaEl.hidden = true; document.body.style.cursor = ''; }
+function conAttesa(testo, fn) {
+  if (attesaEl && !attesaEl.hidden) return; // un calcolo alla volta
+  mostraAttesa(testo);
+  var via = function () { try { fn(); } finally { nascondiAttesa(); } };
+  if (typeof requestAnimationFrame === 'function') requestAnimationFrame(function () { setTimeout(via, 0); }); else setTimeout(via, 0);
+}
+/* Il passo della fase D senza rifare il risultato completo (sul PC dell'ASL 10–15 s): la guida è in ordine, quindi il posto
+   di norma è libero; il dominio controlla comunque tutto. Se risponde che il posto è occupato si passa alla strada lunga, che
+   rifà le posizioni e chiede lo scambio; se tocca un plateau completo lo chiede una volta per sessione. */
+function inviaPassoVeloce(r) {
+  if (pc && !suTablet) { inviaSingolaRiordino(r); return; }
+  var a = azioneRiordino(r, false), no;
+  if (riordinoUI.plateauCompletoOk) a.conferma_plateau_completo = true;
+  function prova() { try { return applicaSullaSessione(a); } catch (e) { return e.message || String(e); } }
+  no = prova();
+  if (no && /plateau completo/i.test(no) && !riordinoUI.plateauCompletoOk) {
+    if (!window.confirm('Chiudere i buchi sposta provette anche dentro plateau già completi. Confermi? (Non te lo chiedo più in questa sessione.)')) { disegna(); return; }
+    riordinoUI.plateauCompletoOk = true; a.conferma_plateau_completo = true; no = prova();
+  }
+  if (no && /occupat|scambio/i.test(no)) {
+    // si scambiano solo provette della serie: dal secchio o dai fuori registro il posto va prima liberato (revisione 9, P2-6)
+    if (nellaSerie(r.g) == null) { riordinoUI.esiti[a.uid] = 'Il posto ' + a.destinazione + ' è ancora occupato: fai prima il passo della provetta che ci sta (o «Salta per ora» questo).'; disegna(); return; }
+    inviaSingolaRiordino(r); return;
+  }
+  riordinoUI.esiti[a.uid] = no ? 'Scartata: ' + no : 'Applicata';
+  disegna();
 }
 function schedaRiordino() {
   var d = h('div');
@@ -1960,8 +2097,66 @@ function schedaSnippet() {
     fetch(base + 'vendor/arvet_clear.js').then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.text(); })
       .then(function (t) { copia(t); }, function () { S.messaggio = 'Non riesco a caricare lo snippet «Svuota i numeri»: ricarica la pagina.'; messaggio(); });
   } }, '⧉ Copia «Svuota i numeri»')));
+  d.appendChild(sezionePrelevatori());
   d.appendChild(h('h3', null, 'File per i 3 invii'));
   filesDi('', 'arvet_').concat(filesDi('.csv', 'provette_arvet_')).forEach(function (x) { d.appendChild(rigaFile(x.f)); });
+  return d;
+}
+/* «Prelievo effettuato da» in ARVET (utente, 2026-11-21): dall'elenco dei veterinari del progetto si spuntano tutti quelli
+   intervenuti, anche senza telefono; spuntati in partenza quelli entrati con un device. Lo snippet li seleziona nella pagina
+   «Inserimento campionamento» di ARVET, uguale per i tre invii. La scelta sta nel registro del progetto (utente, stesso giorno:
+   «L'impostazione dei vet del progetto per accettazione deve andare nel registro del progetto»): ogni cambio è un'azione
+   «prelevatori» della Sistemazione, va nel file delle modifiche e nella cronologia, e si annulla da lì. */
+function sceltaPrelevatori(voci, chiave, scelto, nuovo) {
+  var veterinari = [], aMano = [];
+  voci.forEach(function (v) {
+    var si = v.chiave === chiave ? scelto : v.scelto;
+    if (!si) return;
+    if (v.nell_elenco) veterinari.push(v.id); else aMano.push({ cognome: v.cognome, nome: v.nome });
+  });
+  if (nuovo) aMano.push(nuovo);
+  return { veterinari: veterinari, a_mano: aMano };
+}
+function sezionePrelevatori() {
+  var d = h('section', { id: 'fej-prelevatori' }, h('h3', null, 'Veterinari prelevatori («Prelievo effettuato da»)'));
+  var pv;
+  try { pv = S.banco.prelevatori(); } catch (e) { d.appendChild(h('p', { class: 'fej-errore' }, 'Non riesco a leggere i prelevatori: ' + e.message)); return d; }
+  var voci = pv.voci || [];
+  d.appendChild(h('p', { class: 'fej-guida' }, 'Spunta tutti i veterinari intervenuti, anche chi non ha usato un telefono (spuntati in partenza quelli entrati con l’app). ' +
+    'La scelta resta nel progetto: va nel file delle modifiche per il tablet e si annulla dalla cronologia della Sistemazione. ' +
+    'In ARVET apri il nuovo campionamento, scrivi la Data prova, poi incolla lo snippet nella console (F12 › Console): seleziona i nomi in «Prelievo effettuato da» e dice chi non trova. Non salva niente. Lo stesso snippet vale per tutti gli invii (pecore, capre, maschi).'));
+  d.appendChild(h('p', { class: 'fej-tenue', id: 'fej-prelevatori-stato' }, pv.scelta_fatta ? 'Scelta fatta: ' + (pv.per_snippet || []).length + ' spuntati.' : 'Ancora nessuna scelta: valgono quelli entrati con l’app.'));
+  if (!voci.length) d.appendChild(h('p', null, 'Il progetto non ha l’elenco dei veterinari: aggiungili qui sotto, o in ARVET scegli i prelevatori a mano.'));
+  var lista = h('div', { class: 'fej-prelevatori-lista' });
+  voci.forEach(function (v) {
+    var testo = ' ' + v.cognome + ' ' + v.nome + (v.con_app ? ' · con l’app' : '') + (v.aggiunto_a_mano ? ' · aggiunto a mano' : '');
+    if (v.aggiunto_a_mano) {
+      lista.appendChild(h('div', { class: 'fej-blocco', 'data-prelevatore': v.chiave }, testo + ' ', h('button', { type: 'button', 'data-togli-prelevatore': v.chiave, onclick: function () {
+        applicaImpostazione('prelevatori', sceltaPrelevatori(voci, v.chiave, false));
+      } }, 'Togli')));
+      return;
+    }
+    lista.appendChild(h('label', { class: 'fej-blocco', 'data-prelevatore': v.chiave }, h('input', { type: 'checkbox', checked: !!v.scelto, onchange: function (ev) {
+      applicaImpostazione('prelevatori', sceltaPrelevatori(voci, v.chiave, ev.target.checked));
+    } }), testo));
+  });
+  d.appendChild(lista);
+  var cog = h('input', { type: 'text', placeholder: 'Cognome', id: 'fej-prelevatore-cognome', 'aria-label': 'Cognome del veterinario da aggiungere' }), nom = h('input', { type: 'text', placeholder: 'Nome', id: 'fej-prelevatore-nome', 'aria-label': 'Nome del veterinario da aggiungere' });
+  d.appendChild(h('p', { class: 'fej-riga' }, 'Non è nell’elenco: ', cog, ' ', nom, ' ', h('button', { type: 'button', id: 'fej-aggiungi-prelevatore', onclick: function () {
+    if (!cog.value.trim()) { S.messaggio = 'Scrivi almeno il cognome.'; messaggio(); return; }
+    applicaImpostazione('prelevatori', sceltaPrelevatori(voci, null, false, { cognome: cog.value.trim().toUpperCase(), nome: nom.value.trim().toUpperCase() }));
+  } }, 'Aggiungi')));
+  var soloQuesti = h('input', { type: 'checkbox', id: 'fej-prelevatori-solo' });
+  d.appendChild(h('p', null, h('label', null, soloQuesti, ' Togli in ARVET le selezioni che non sono in questo elenco')));
+  var esito = h('span', { role: 'status' });
+  d.appendChild(h('p', null, h('button', { type: 'button', class: 'md-button md-button--primary', id: 'fej-copia-prelevatori', onclick: function () {
+    var vet = (S.banco.prelevatori().per_snippet || []).map(function (v) { return { cognome: v.cognome, nome: v.nome }; });
+    if (!vet.length) { S.messaggio = 'Spunta almeno un veterinario.'; messaggio(); return; }
+    fetch(base + 'arvet-prelevatori-motore.js').then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.text(); }).then(function (t) {
+      copia('window.__ARVET_PRELEVATORI__ = ' + JSON.stringify({ veterinari: vet, soloQuesti: soloQuesti.checked }) + ';\n' + t);
+      esito.textContent = ' Copiato lo snippet con ' + vet.length + ' veterinari: incollalo nella console di ARVET dopo aver scritto la Data prova.';
+    }, function () { S.messaggio = 'Non riesco a caricare lo snippet dei prelevatori: ricarica la pagina.'; messaggio(); });
+  } }, '⧉ Copia lo snippet dei prelevatori'), esito));
   return d;
 }
 function rigaFile(f) { return h('div', { class: 'fej-riga' }, h('code', null, f.nome), ' ', h('button', { type: 'button', onclick: function () { scarica(f.nome, f.mime, datiFile(f)); } }, 'Scarica')); }
@@ -2261,7 +2456,8 @@ function riquadroDove(uid, dest, prendi, idTasto) {
   var d = h('div', { class: 'fej-dove' });
   if (prendi) d.appendChild(h('p', { class: 'fej-dove-riga' }, h('span', { class: 'fej-dove-et' }, 'Prendi'), prendi));
   if (dest) {
-    d.appendChild(h('p', { class: 'fej-dove-riga fej-dove-a', id: idTasto === 'fej-banco-messa' ? 'fej-banco-dove' : null }, h('span', { class: 'fej-dove-et' }, 'Mettila'), dest.cosa));
+    // la frase del dominio comincia già con «Mettila…» o «Va in…»: niente etichetta ripetuta
+    d.appendChild(h('p', { class: 'fej-dove-riga fej-dove-a', id: idTasto === 'fej-banco-messa' ? 'fej-banco-dove' : null }, dest.cosa));
     if (dest.azione) d.appendChild(h('button', { type: 'button', class: 'fej-primario', id: idTasto, onclick: function () { sceltaBanco(uid, [dest.azione], false); } },
       'L’ho messa lì (numero ' + dest.numero + ')'));
   }
@@ -2529,8 +2725,52 @@ var Memoria = (function () {
       var q = d.transaction('k').objectStore('k').get(k); q.onsuccess = function () { si(q.result); }; q.onerror = function () { no(q.error); };
     }); }).catch(function () { return null; });
   }
-  return { metti: metti, prendi: prendi };
+  function togli(k) {
+    return db().then(function (d) { return new Promise(function (si, no) {
+      var t = d.transaction('k', 'readwrite'); t.objectStore('k').delete(k); t.oncomplete = function () { si(); }; t.onerror = function () { no(t.error); };
+    }); }).catch(function () { /* niente da togliere */ });
+  }
+  function cancellaTutto() {
+    return new Promise(function (si) {
+      if (!ok) { si(); return; }
+      var r = indexedDB.deleteDatabase('fejalog-strumenti');
+      r.onsuccess = r.onerror = r.onblocked = function () { si(); };
+    });
+  }
+  return { metti: metti, prendi: prendi, togli: togli, cancellaTutto: cancellaTutto };
 })();
+/* Pulizia del browser (utente, 2026-11-21: «su un pc su cui si è già lavorato» ripulire la sessione; «serve tra un progetto
+   e l'altro»). Questo backup: il backup tenuto per F5, le azioni (anche i prelevatori), lo smistamento, le precisazioni e la
+   cartella di salvataggio. Tutto: ogni dato di Fejalog nel browser (restano solo le preferenze della pagina). I file già
+   salvati su disco non si toccano. */
+var PREFERENZE = { 'fejalog:senza-menu': true, 'fejalog:barra-chiusa': true };
+function chiaviFejalog(filtro) {
+  var out = [];
+  try { for (var i = 0; i < localStorage.length; i++) { var k = localStorage.key(i); if (k && k.indexOf('fejalog:') === 0 && !PREFERENZE[k] && (!filtro || filtro(k))) out.push(k); } } catch (e) { /* niente */ }
+  return out;
+}
+function pulisciBrowser(tutto) {
+  var chiave = S.P ? String(S.P.chiave) : '', id = S.P && S.P.pacchetto ? String(S.P.pacchetto.id) : '';
+  var chiavi = tutto ? chiaviFejalog() : chiaviFejalog(function (k) { return (chiave && k.indexOf(chiave) >= 0) || (id && k.indexOf(id) >= 0) || (chiave && k.indexOf(chiave.split(':')[0]) >= 0); });
+  chiavi.forEach(function (k) { try { localStorage.removeItem(k); } catch (e) { /* niente */ } });
+  try { sessionStorage.clear(); } catch (e) { /* niente */ }
+  var fatto = tutto ? Memoria.cancellaTutto() : Promise.all([Memoria.togli('backup'), Memoria.togli('cartella')]);
+  return fatto.then(function () { return chiavi.length; });
+}
+function bottoniPulizia(conBackup) {
+  var p = h('div', { class: 'fej-pulizia', id: 'fej-pulizia' });
+  if (conBackup) p.appendChild(h('button', { type: 'button', id: 'fej-pulisci-backup', onclick: function () {
+    if (!confirm('Chiudere questo backup e cancellarlo dal browser?\n\nSi tolgono il backup, le azioni fatte qui, lo smistamento e le scelte di questo progetto. Prima scarica «backup e modifiche (zip)» se non l’hai già salvato. I file già salvati su disco restano.')) return;
+    pulisciBrowser(false).then(function () { location.reload(); });
+  } }, 'Chiudi e cancella questo backup dal browser'));
+  p.appendChild(h('button', { type: 'button', id: 'fej-pulisci-tutto', onclick: function () {
+    if (!confirm('Cancellare tutti i dati di Fejalog da questo browser?\n\nSi tolgono i backup tenuti per la ripresa, le azioni e le scelte di tutti i progetti lavorati su questo PC. I file già salvati su disco restano.')) return;
+    pulisciBrowser(true).then(function () { location.reload(); });
+  } }, 'Cancella tutti i dati di Fejalog da questo browser'));
+  p.appendChild(h('details', { class: 'fej-guida' }, h('summary', null, 'A mano, da Chrome o Edge'),
+    h('p', null, 'Clic sul simbolo a sinistra dell’indirizzo › «Impostazioni sito» (o «Autorizzazioni per il sito») › «Elimina dati». Oppure apri chrome://settings/content/all (Edge: edge://settings/siteData), cerca uvesco.github.io ed elimina. Cancella solo i dati di questo sito; i file scaricati restano nella cartella dei download.')));
+  return p;
+}
 var Disco = (function () {
   var st = { cartella: null, nome: '', ultimo: null, pendenti: 0, errore: '', timer: null, permesso: false };
   var puo = typeof window.showDirectoryPicker === 'function';
@@ -2628,7 +2868,7 @@ var GUIDA_FASE = {
   identita: 'Provette di animali senza marche, con una marca già letta su un altro animale, o con la marca di un capo che in BDN risulta uscito. Per ognuna guarda i capi assenti compatibili e decidi: attribuirla a uno di loro, lasciarla com’è (ARVET a mano) o toglierla. Decidi tu: la proposta è solo un aiuto. Dopo la conferma il riquadro in cima dice dove va: attribuita a un capo assente, va al numero di quel capo, che è un buco.',
   posto: 'Provette che vanno in ARVET da sole. In cima c’è dove prenderla e dove metterla (di solito il buco lasciato dal capo assente): riscrivi il numero sulla provetta, mettila lì e premi «L’ho messa lì». ' + REGOLA_SCRITTA,
   fondo: 'Provette che vanno in ARVET a mano (smarriti ritrovati, marche non registrate, non in elenco, altri stabilimenti). Dopo la conferma il riquadro in cima dice il contenitore e il posto in fila. Non vanno nei buchi: i buchi li chiudono le ultime provette ordinarie, nella fase D. Queste restano in fondo alla serie, nell’ordine del contenitore, e il numero lo prendono alla fine, una volta sola (si vede già in «Tutte in tabella» › «Mostra i numeri definitivi»).',
-  buchi: 'I buchi rimasti si chiudono abbassando i numeri più alti: per ogni riga riscrivi il numero nuovo sulla provetta, spostala e invia. Ogni passo resta nella cronologia. ' + REGOLA_SCRITTA,
+  buchi: 'I buchi rimasti si chiudono abbassando i numeri più alti, un passo alla volta: prendi la provetta, riscrivi il numero nuovo, mettila al suo posto e premi «Fatto» (o Invio). Il riquadro dice anche perché si sposta. Ogni passo resta nella cronologia e si annulla. ' + REGOLA_SCRITTA,
   fine: 'Controlla che non resti niente da decidere, poi vai agli snippet e alle uscite.'
 };
 /* Lo smistamento (utente, 2026-11-17: «suddividere le problematiche per fattispecie e poi prenderle su nell'ordine
@@ -2703,6 +2943,10 @@ function vistaAnalisi(st, contaBuchi) {
     analisiVista() ? 'Torna al lavoro' : 'Ho letto: comincia'), ' ', h('button', { type: 'button', onclick: function () { window.print(); } }, 'Stampa')));
   return d;
 }
+/* Le provette di «Al loro posto» che il regista ha messo in un contenitore (il numero lo dà la fase D): nel browser, come lo
+   smistamento. */
+function daParte() { try { return JSON.parse(localStorage.getItem(chiaveSmista() + ':daparte') || '{}'); } catch (e) { return sistUI.daParte || {}; } }
+function segnaDaParte(uid) { var x = daParte(); x[uid] = true; sistUI.daParte = x; try { localStorage.setItem(chiaveSmista() + ':daparte', JSON.stringify(x)); } catch (e) { /* in memoria */ } }
 function salvaSmista(x) { try { localStorage.setItem(chiaveSmista(), JSON.stringify(x)); } catch (e) { /* in memoria */ } sistUI.smista = x; }
 function smistamento(coda, posate) {
   var x = sistUI.smista && sistUI.smistaChiave === S.P.chiave ? sistUI.smista : leggiSmista();
@@ -2742,7 +2986,7 @@ function statoSistemazione() {
   var daDecidere = function (v) { return v.stato === 'da_decidere'; };
   return { coda: coda, posate: posate, smista: sm,
     identita: coda.voci.filter(function (v) { return daDecidere(v) && v.fase === 'identita'; }).sort(perPosto),
-    posto: coda.voci.filter(function (v) { return v.fase === 'posto' && (daDecidere(v) || (v.stato === 'decisa' && !posate[v.uid])); }).sort(perPosto),
+    posto: (function (dp) { return coda.voci.filter(function (v) { return v.fase === 'posto' && (daDecidere(v) || (v.stato === 'decisa' && !posate[v.uid] && !dp[v.uid])); }); })(daParte()).sort(perPosto),
     fondo: coda.voci.filter(function (v) { return daDecidere(v) && v.fase === 'fondo'; }).sort(perPosto) };
 }
 /* La tabella dei fuori registro (utente, 2026-11-18: «una tabella delle problematiche ordinabile (anche per posizione), filtrabile e
@@ -2873,6 +3117,7 @@ function descriviAzione(a, voci) {
     case 'chiudi_buchi': return 'Chiusura dei buchi: ' + (a.valore ? 'sì' : 'no');
     case 'anagrafe_bdn': return 'Verifica in BDN caricata';
     case 'uscite_modello': return 'Uscite per modello (ultimi 7 giorni) caricate';
+    case 'prelevatori': return 'Prelevatori per ARVET: ' + ((a.veterinari || []).length + (a.a_mano || []).length) + ' scelti' + ((a.a_mano || []).length ? ' (' + a.a_mano.map(function (n) { return n.cognome; }).join(', ') + ' a mano)' : '');
     case 'tardiva': return 'Registrazione tardiva: ' + (a.etichetta || '') + ' al capo ' + (a.contrassegno || '');
     default: return a.tipo;
   }
@@ -2950,6 +3195,7 @@ function doveSiTrova(uid) {
 }
 /* Uno spostamento o un abbinamento a un altro capo registrato dalla ricerca: un'azione come le altre, nella cronologia, con «Annulla». */
 function azioneDaRicerca(pr) {
+  if (S.apVecchio || !S.ap) aggiornaRisultato(); // posizioni attuali per il numero occupato
   var a = interrogaUI.azione, v = String(interrogaUI.valore || '').replace(/\s+/g, '').toUpperCase(), az, parti = String(pr.serie || '').split(':');
   if (!v) { S.messaggio = a.tipo === 'sposta' ? 'Scrivi il numero di destinazione.' : 'Scrivi il contrassegno del capo.'; messaggio(); return; }
   if (a.tipo === 'sposta') {
@@ -3060,7 +3306,7 @@ function schedaSistemazione() {
   if (fase === 'analisi') d.appendChild(vistaAnalisi(st, contaBuchi));
   else if (fase === 'smista') d.appendChild(vistaSmista(st));
   else if (fase === 'tabella') d.appendChild(vistaTabella(st));
-  else if (fase === 'buchi') d.appendChild(schedaRiordino());
+  else if (fase === 'buchi') d.appendChild(vistaBuchi());
   else if (fase === 'fine') {
     var c = st.coda.conteggi, resto = c.da_decidere + c.accantonata;
     d.appendChild(h('p', { class: resto || contaBuchi() ? 'fej-avviso' : 'fej-ok' }, resto ? 'Restano ' + c.da_decidere + ' provette da decidere e ' + c.accantonata + ' accantonate. ' : 'Tutte le provette fuori registro sono decise. ',
@@ -3087,6 +3333,10 @@ function schedaSistemazione() {
         if (destB === undefined) { try { destB = bancoUI.dest[attuale.uid] = S.banco.destinazione(attuale.uid); } catch (e) { destB = { cosa: 'Posto non calcolato: ' + e.message }; } }
         doveInCima = attuale.uid;
         d.appendChild(riquadroDove(attuale.uid, destB, null, 'fej-banco-messa'));
+        // il motore non può tenerla a quel numero: va nel contenitore «Da posare» e il numero lo dà la fase D. Il regista lo
+        // dice e la provetta esce da questa fase (simulazione del 21/11: «Al loro posto 1» restava per sempre)
+        if (destB && !destB.azione && destB.da_parte) d.appendChild(h('p', null, h('button', { type: 'button', class: 'fej-primario', id: 'fej-messa-da-parte',
+          onclick: function () { segnaDaParte(attuale.uid); sistUI.ultima = null; bancoUI.uid = null; disegna(); } }, 'L’ho messa nel contenitore')));
         d.appendChild(h('details', { class: 'fej-dettagli-provetta' }, h('summary', null, 'Dati della provetta ' + attuale.etichetta.split(' ')[0] + ' · ' + attuale.titolo + ' · ' + attuale.esito),
           schedaProvettaBanco(attuale.uid, { senzaDove: true })));
       } else d.appendChild(schedaProvettaBanco(attuale.uid));
@@ -3098,6 +3348,16 @@ function schedaSistemazione() {
   return d;
 }
 
+/* Invio fuori dai campi: nella fase D è «Fatto»; mai tenuto premuto, mai sullo scambio, mai durante un calcolo (revisione 9). */
+document.addEventListener('keydown', function (ev) {
+  if (ev.key !== 'Enter' || ev.repeat || ev.defaultPrevented || ev.ctrlKey || ev.altKey || ev.metaKey) return;
+  if (attesaEl && !attesaEl.hidden) { ev.preventDefault(); return; }
+  var t = ev.target, tag = t && t.tagName;
+  if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'BUTTON' || tag === 'A' || (t && t.isContentEditable)) return;
+  if (document.getElementById('fej-conferma-scambio')) return; // lo scambio si conferma solo col tasto
+  var b = document.getElementById('fej-passo-fatto');
+  if (b && !b.disabled) { ev.preventDefault(); b.click(); }
+});
 /* ---- avvio: carica il testo dello snippet (arvet_fill.min.js) dal sito e disegna ---- */
 var base = document.currentScript ? document.currentScript.src.replace(/[^/]*$/, '') : 'js/';
 var promessaMotore = (typeof fetch === 'function' ? fetch(base + 'vendor/arvet_fill.min.js').then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.text(); }) : Promise.reject(new Error('fetch assente')))
@@ -3106,7 +3366,15 @@ var promessaMotore = (typeof fetch === 'function' ? fetch(base + 'vendor/arvet_f
 function attendiMotore() { promessaMotore.then(function () { if (S.erroreMotore) { S.messaggio = 'Non riesco a caricare lo script di ARVET: gli snippet non si possono preparare, ricarica la pagina.'; } ricalcola(); }); }
 disegna();
 if (!pc) Memoria.prendi('cartella').then(function (c) { Disco.ripristina(c); return Memoria.prendi('backup'); }).then(function (b) {
-  if (b && !S.P) leggiBackup(b).then(function () { if (S.P) { S.messaggio = 'Sessione ripresa: backup e azioni di prima.'; messaggio(); } }, function () { /* backup non più leggibile: si ricarica a mano */ });
+  if (b && !S.P) {
+    // la ripresa rifà tutte le azioni: con molte (fase D) ci vuole tempo, e la pagina lo dice (giro di prove del 21/11)
+    mostraAttesa('Riprendo la sessione di prima: backup e azioni già fatte. Con molte azioni ci vuole fino a un minuto…');
+    var riprendi = function () {
+      leggiBackup(b).then(function () { nascondiAttesa(); if (S.P) { S.messaggio = 'Sessione ripresa: backup e azioni di prima.'; messaggio(); } }, function () { nascondiAttesa(); /* backup non più leggibile: si ricarica a mano */ });
+    };
+    // l'avviso si disegna prima del calcolo, che blocca la pagina
+    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(function () { setTimeout(riprendi, 30); }); else setTimeout(riprendi, 50);
+  }
 });
 if (pc) pc.stato().then(function () { collegatoPc = true; caricaDalTablet(); }, function () { /* primo accesso: chiede il codice */ });
 })();

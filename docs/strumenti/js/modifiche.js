@@ -9,12 +9,13 @@
 var FORMATO = 'fejalog-modifiche', VERSIONE = 5;
 /* le sole azioni che l'app sa tradurre in eventi del registro; le spunte della guida restano avanzamento locale del sito (le spunte
    si fanno nell'app, che sa quale passo della guida giustificano) */
-var TIPI = ['anagrafe_bdn', 'uscite_modello', 'riattribuzione', 'scarto', 'annulla_scarto', 'riordino', 'soluzione', 'tardiva', 'spostamento', 'scambio', 'chiudi_buchi', 'modifica_provetta', 'annulla_provetta', 'rinomina_provetta', 'sposta_stabilimento', 'visto_doppio', 'visto_ricercato', 'persa', 'ritrovata', 'verifica_dda', 'ricollocazione', 'regola_problemi'];
+var TIPI = ['anagrafe_bdn', 'uscite_modello', 'riattribuzione', 'scarto', 'annulla_scarto', 'riordino', 'soluzione', 'tardiva', 'spostamento', 'scambio', 'chiudi_buchi', 'modifica_provetta', 'annulla_provetta', 'rinomina_provetta', 'sposta_stabilimento', 'visto_doppio', 'visto_ricercato', 'persa', 'ritrovata', 'verifica_dda', 'ricollocazione', 'regola_problemi', 'prelevatori'];
 
 function esporta(P, azioni, nome, ora) {
   var tenute = azioni.filter(function (a) { return TIPI.indexOf(a.tipo) >= 0; });
-  // la versione 5 solo quando serve (l'anagrafe della BDN, 14/11): un tablet con l'app di prima legge ancora gli altri file
-  var versione = tenute.some(function (a) { return a.tipo === 'anagrafe_bdn' || a.tipo === 'uscite_modello'; }) ? VERSIONE : 4;
+  // la versione 5 solo quando serve (l'anagrafe della BDN, 14/11; uscite per modello, 18/11; prelevatori per ARVET, 21/11):
+  // un tablet con l'app di prima legge ancora gli altri file
+  var versione = tenute.some(function (a) { return ['anagrafe_bdn', 'uscite_modello', 'prelevatori'].indexOf(a.tipo) >= 0; }) ? VERSIONE : 4;
   return {
     formato: FORMATO, versione: versione,
     origine: {

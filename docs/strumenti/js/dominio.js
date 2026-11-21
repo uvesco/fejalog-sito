@@ -53,6 +53,8 @@ function avvolgiBanco(b) {
       /* Uscite per modello degli ultimi 7 giorni (2026-11-18): la BDN si aggiorna fino a 7 giorni dopo il modello. */
       caricaUsciteModello: function (testo) { return scrive(JSON.parse(b.caricaUsciteModello(String(testo || '')))); },
       usciteModello: function () { return ricorda('uscite', function () { return JSON.parse(b.usciteModello()); }); },
+      /* I veterinari prelevatori per ARVET (2026-11-21), letti dal registro della sessione: si cambiano con l'azione «prelevatori». */
+      prelevatori: function () { return ricorda('prelevatori', function () { return JSON.parse(b.prelevatori()); }); },
       /* Interrogazione (2026-11-18): per contrassegno con le provette collegate, o per provetta col contrassegno collegato. */
       interroga: function (query) { return ricorda('interroga|' + (query || ''), function () { return JSON.parse(b.interroga(String(query || ''))); }); },
       /* Una sessione nuova sullo stesso backup con altre azioni (Annulla), senza rileggere il progetto. */

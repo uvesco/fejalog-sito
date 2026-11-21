@@ -19,6 +19,8 @@ Nello zip di fine lavori trovi gli snippet `.txt` e la pagina `snippet_arvet_…
 
 1. Completa le verifiche e il Riordino in Fejalog. Se hai lavorato sul sito, [riporta le azioni alla Regia](../strumenti/index.md) e controlla l'esito.
 2. Apri in ARVET il campionamento e la profilassi dell'invio corretto. Non usare lo snippet di una specie nella pagina dell'altra.
+   Nel **nuovo campionamento**, dopo la «Data prova», lo snippet dei **veterinari prelevatori** (scheda Snippet ARVET del
+   sito) seleziona in «Prelievo effettuato da» tutti i veterinari intervenuti, anche chi non ha usato un telefono.
 3. Apri la pagina HTML degli snippet e copia quello dell'invio, oppure apri il corrispondente `.txt` con un editor di testo e copialo tutto.
 4. In Chrome premi **F12**, scegli **Console**, incolla lo snippet e premi Invio. Nelle prove imposta prima la variabile indicata sopra.
 5. Leggi il resoconto: lo snippet compila i numeri e tratta gli eventuali capi da aggiungere. Segui le richieste che mostra; i casi non risolti richiedono il tuo controllo.

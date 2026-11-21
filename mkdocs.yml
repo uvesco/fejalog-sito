@@ -46,6 +46,13 @@ extra_css:
 
 extra_javascript:
   - strumenti/js/barra.js
+  - js/statistiche.js
+
+# Statistiche del sito (utente, 2026-11-21: «un contatore di click e di download»; poi: «funzioni migliori si possono usare
+# al posto di Google Analytics»): GoatCounter, open source, senza cookie né dati personali, quindi senza banner. Il codice è
+# il sottodominio dell'account (CODICE.goatcounter.com). Mai nelle pagine degli strumenti: js/statistiche.js.
+extra:
+  goatcounter: uvesco
 
 hooks:
   - hooks/aggiornato.py

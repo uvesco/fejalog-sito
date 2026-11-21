@@ -16,6 +16,11 @@ elettronico (`380`/`0380` più 12 cifre, anche di altri paesi).
 **Dove vanno i dati?** Restano sui device del progetto, passano solo sulla Wi-Fi locale e finiscono nei backup che
 salva chi li fa. Fejalog non manda niente su internet, non ha pubblicità né statistiche d'uso.
 
+**E il sito?** Conta in forma anonima le visite alle pagine e gli scaricamenti con [GoatCounter](https://www.goatcounter.com/),
+un contatore open source senza cookie che non conserva dati personali, per sapere che cosa serve ai colleghi. Le pagine degli
+**strumenti** (scarico dalla BDN, crea il progetto, fine lavori) non lo caricano: lì backup e dati restano nel tuo browser e
+non parte nessuna richiesta.
+
 **Il codice fiscale?** Serve a riconoscere il veterinario e sta nel nome dei backup. Non va sulle provette né negli
 export.
 

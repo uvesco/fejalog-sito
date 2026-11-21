@@ -57,7 +57,7 @@ manuali. Serve per avere il quadro, per lavorare un tipo di problema alla volta 
 | **A · Di chi è?** | Le provette di animali che probabilmente sono **un altro capo**: senza marche, con una marca già letta su un altro animale, con la marca di un capo che in BDN risulta uscito. Si guardano i capi assenti compatibili e si decide. |
 | **B · Al loro posto** | Le provette che vanno in ARVET da sole: il sito dice il numero (di solito il buco del capo assente), si riscrive sulla provetta, la si mette lì e si preme «L'ho messa lì». |
 | **C · In fondo** | Le provette che vanno in **ARVET a mano**: restano col loro contrassegno e prendono i numeri in fondo alla serie. |
-| **D · Chiudi i buchi** | I buchi rimasti si chiudono **abbassando i numeri più alti**: per ogni passo si riscrive il numero nuovo e si sposta la provetta. |
+| **D · Chiudi i buchi** | I buchi rimasti si chiudono **abbassando i numeri più alti**, **un passo alla volta**: il riquadro dice quale provetta prendere e da dove, che numero scriverle, dove metterla e perché (per esempio «libera l'11 per il maschio PC-2»); «Fatto» o Invio, e si passa al passo dopo. «Salta per ora» lo rimanda; la tabella di tutti i passi resta sotto, chiusa. |
 
 Le fasi si fanno in quest'ordine perché i posti dipendono dalle decisioni: prima si decide di chi è ogni provetta, poi si
 toccano i plateau, così ogni provetta si prende in mano una volta sola.
@@ -109,6 +109,11 @@ l'animale prelevato al loro posto e le marche da ordinare.
 - **Salva backup** è sempre in alto. Scelta una volta la **cartella di salvataggio** (Chrome o Edge), ogni azione viene
   scritta su disco; lo zip completo si salva col tasto.
 - Se si ricarica la pagina, la sessione **riparte da sola** col backup e le azioni di prima.
+- **Fra un progetto e l'altro, o su un PC usato da altri**: finito un progetto (backup e modifiche scaricati), nella scheda
+  Carica, «Un altro progetto, o un PC usato da altri: pulisci il browser»:
+  **«Chiudi e cancella questo backup dal browser»** (prima scarica backup e modifiche) o **«Cancella tutti i dati di
+  Fejalog da questo browser»**. A mano: in Chrome o Edge, simbolo a sinistra dell'indirizzo › Impostazioni sito › Elimina
+  dati. I file già salvati su disco restano.
 
 ## Lo snippet per ARVET
 
@@ -119,6 +124,11 @@ completare a mano in ARVET, ma è meglio finire prima la sistemazione.
 Per la **doppia accettazione dei maschi** con «Duplica accettazione» di ARVET: si duplica l'accettazione, si incolla lo
 snippet **«Svuota i numeri»** (toglie i numeri, lascia i capi e l'ordine), poi lo snippet dei maschi. Vedi
 [Gli snippet per ARVET](snippet-arvet.md).
+
+**Chi ha prelevato.** Nella scheda Snippet ARVET, «Veterinari prelevatori»: l'elenco dei veterinari del progetto, già
+spuntati quelli entrati con l'app; si spuntano anche gli altri intervenuti (o si aggiungono a mano). Lo snippet, incollato in
+ARVET nel nuovo campionamento **dopo la Data prova**, seleziona quei nomi in «Prelievo effettuato da» e dice chi non trova;
+non preme «Continua». Lo stesso snippet per tutti gli invii.
 
 ## Il doppio che porta già il numero del capo
 

@@ -1,0 +1,8 @@
+{#- Statistiche del sito con GoatCounter (utente, 2026-11-21) al posto delle integrazioni di Material: il codice dell'account
+    lo legge js/statistiche.js, che carica il contatore solo fuori dalle pagine degli strumenti. -#}
+{% extends "base.html" %}
+{% block analytics %}
+  {% if config.extra.goatcounter %}
+    <script>window.FEJALOG_GOATCOUNTER = {{ config.extra.goatcounter | tojson }};</script>
+  {% endif %}
+{% endblock %}
