@@ -3311,9 +3311,9 @@ function schedaSistemazione() {
       class: 'fej-fase' + (fase === f[0] ? ' fej-attiva' : '') + (quanti === 0 ? ' fej-fatta' : ''), onclick: function () { sistUI.fase = f[0]; bancoUI.uid = null; disegna(); } },
       f[1], quanti === '' ? null : h('span', { class: 'fej-fase-n' }, quanti === 0 ? ' ✓' : ' ' + quanti)));
   });
-  d.appendChild(barraFasi);
-  d.appendChild(h('p', { class: 'fej-sist-strumenti' }, h('button', { type: 'button', id: 'fej-apri-movimenti', 'aria-expanded': sistUI.movimenti ? 'true' : 'false',
-    onclick: function () { sistUI.movimenti = !sistUI.movimenti; disegna(); } }, 'Movimentazioni (' + S.stato.azioni().length + ')')));
+  // fasi e «Movimentazioni» sulla stessa riga (schermo piccolo del PC dell'ASL, 21/11)
+  d.appendChild(h('div', { class: 'fej-fasi-riga' }, barraFasi, h('span', { class: 'fej-sist-strumenti' }, h('button', { type: 'button', id: 'fej-apri-movimenti', 'aria-expanded': sistUI.movimenti ? 'true' : 'false',
+    onclick: function () { sistUI.movimenti = !sistUI.movimenti; disegna(); } }, 'Movimentazioni (' + S.stato.azioni().length + ')'))));
   if (sistUI.movimenti) d.appendChild(pannelloMovimentazioni(st.coda.voci));
   var postoUltima = h('div'), doveInCima = null; d.appendChild(postoUltima);
   if (fase !== prima && prima !== 'fine' && fase !== 'smista' && fase !== 'analisi' && fase !== 'tabella') d.appendChild(h('p', { class: 'fej-avviso' }, 'Prima andrebbe finita la fase «' + FASI.filter(function (f) { return f[0] === prima; })[0][1] + '»: i posti e i buchi dipendono dalle decisioni che mancano. ',
