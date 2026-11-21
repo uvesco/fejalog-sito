@@ -238,6 +238,7 @@ function apriProgetto(P) {
   }
   S.P = P; S.stato = Stato.crea(P.chiave);
   var intro = document.querySelector('.fej-intro'); if (intro) intro.hidden = true; // il lavoro comincia in cima (simulazione del 21/11)
+  document.body.classList.add('fej-con-backup'); // schermo piccolo del PC dell'ASL: via il titolo e i margini (21/11)
   if (pc) {
     var importate = Object.create(null), unite = [], viste = Object.create(null);
     P.eventi.forEach(function (e) { if (e.dati && e.dati.id_modifica) importate[e.dati.id_modifica] = true; });
@@ -2441,7 +2442,12 @@ function sceltaBanco(uid, azioni, dopo) {
   bancoUI.aperto = null; bancoUI.motivo = ''; bancoUI.dest = {};
   if (S.scheda !== 'sistema') { try { bancoUI.dest[uid] = dopo === false ? null : S.banco.destinazione(uid); } catch (e) { bancoUI.dest[uid] = { cosa: 'Posto non calcolato: ' + e.message }; } }
   else ricordaUltima(uid, ids);
-  S.messaggio = 'Scelta registrata.'; disegna(); return true;
+  S.messaggio = 'Scelta registrata.'; disegna();
+  if (S.scheda === 'sistema') {
+    var prossima = document.getElementById('fej-ultima') || document.getElementById('fej-prendi') || document.getElementById('fej-banco-scheda');
+    if (prossima && prossima.scrollIntoView) { var rr = prossima.getBoundingClientRect(); if (rr.top < 0 || rr.top > window.innerHeight * 0.45) prossima.scrollIntoView({ block: 'start' }); }
+  }
+  return true;
 }
 /* Dopo ogni decisione della Sistemazione, in cima: che cosa si è deciso e dove va adesso quella provetta (utente, 2026-11-20:
    «quando si sistema una provetta deve essere chiaro dove posizionarla»; «dopo Conferma non dice la posizione»). */
@@ -2529,6 +2535,11 @@ function schedaProvettaBanco(uid, opz) {
   box.appendChild(h('p', { class: 'fej-banco-stato fej-banco-' + v.stato }, 'Stato: ', h('strong', null, v.esito)));
   box.appendChild(h('div', { class: 'fej-banco-scritta' }, h('span', { class: 'fej-guida' }, 'Sulla provetta c’è scritto:'), h('pre', null, s.scritta.join('\n'))));
   box.appendChild(h('p', { class: 'fej-guida' }, s.fattispecie.spiegazione));
+  // prima la decisione, poi i dati (schermo piccolo del PC dell'ASL, 21/11): una riga col capo registrato, il resto apribile
+  var riassunto = [r.contrassegno || 'senza marche', r.sesso_corretto || r.sesso, r.razza, r.classe_eta ? r.classe_eta + (r.nascita_dai_denti ? ' (' + r.nascita_dai_denti + ')' : '') : (r.data_nascita ? 'nata/o ' + r.data_nascita : '')].filter(Boolean).join(' · ');
+  box.appendChild(h('p', { class: 'fej-banco-riassunto' }, h('strong', null, 'Registrato in campo: '), riassunto));
+  var corpoScheda = box;
+  box = h('div', { class: 'fej-dati-provetta-corpo' });
   var tab = h('table', { class: 'fej-banco-dati' }, h('thead', null, h('tr', null, h('th', null, ''), h('th', { scope: 'col' }, 'Registrato in campo'), h('th', { scope: 'col' }, b ? 'BDN della marca letta' : 'BDN'))));
   var tb = h('tbody');
   tb.appendChild(rigaDati('Contrassegno', r.contrassegno || 'nessuno (senza marche)', b ? b.contrassegno : (r.contrassegno ? 'non è nei registri caricati' : '')));
@@ -2568,6 +2579,10 @@ function schedaProvettaBanco(uid, opz) {
   if (s.altre_provette.length) box.appendChild(h('p', null, 'Stesso contrassegno anche su: ', s.altre_provette.map(function (o) { return o.etichetta + ' (' + o.operatore + (o.ristampa ? ', ristampa ' + o.ristampa : '') + ')'; }).join(', '), '.',
     r.ristampa ? ' Ristampa di questo animale: ' + r.ristampa + '.' : ''));
   if (s.avviso_ristampa) box.appendChild(h('p', { class: 'fej-avviso', id: 'fej-banco-ristampa' }, s.avviso_ristampa));
+  var dati = box; box = corpoScheda;
+  var datiAperti = bancoUI.datiAperti === uid;
+  var riquadroDati = h('details', { class: 'fej-dati-provetta', open: datiAperti }, h('summary', null, 'Dati della provetta, verifica in BDN, note'), dati);
+  riquadroDati.addEventListener('toggle', function () { bancoUI.datiAperti = riquadroDati.open ? uid : null; });
   // esito già deciso: dove va e come tornare indietro
   if (v.stato !== 'da_decidere' && !(opz && opz.senzaDove)) box.appendChild(esitoBanco(uid, s));
   else if (v.stato !== 'da_decidere') box.appendChild(esitoBanco(uid, s, true));
@@ -2575,6 +2590,7 @@ function schedaProvettaBanco(uid, opz) {
     h('p', null, h('strong', null, 'Proposta: '), s.proposta.testo), h('p', { class: 'fej-guida' }, s.proposta.perche),
     h('button', { type: 'button', class: 'fej-primario', id: 'fej-banco-conferma', onclick: function () { sceltaBanco(uid, s.proposta.azioni); } }, 'Conferma')));
   if (v.stato === 'da_decidere') box.appendChild(alternativeBanco(uid, s));
+  box.appendChild(riquadroDati);
   return box;
 }
 function esitoBanco(uid, s, senzaDove) {
@@ -3302,7 +3318,10 @@ function schedaSistemazione() {
   var postoUltima = h('div'), doveInCima = null; d.appendChild(postoUltima);
   if (fase !== prima && prima !== 'fine' && fase !== 'smista' && fase !== 'analisi' && fase !== 'tabella') d.appendChild(h('p', { class: 'fej-avviso' }, 'Prima andrebbe finita la fase «' + FASI.filter(function (f) { return f[0] === prima; })[0][1] + '»: i posti e i buchi dipendono dalle decisioni che mancano. ',
     h('button', { type: 'button', onclick: function () { sistUI.fase = null; bancoUI.uid = null; disegna(); } }, 'Torna lì')));
-  d.appendChild(h('p', { class: 'fej-guida' }, GUIDA_FASE[fase]));
+  // la spiegazione aperta la prima volta, poi chiusa: sullo schermo del PC dell'ASL il lavoro stava sotto il bordo (21/11)
+  sistUI.guideViste = sistUI.guideViste || {};
+  var guidaAperta = !sistUI.guideViste[fase]; sistUI.guideViste[fase] = true;
+  d.appendChild(h('details', { class: 'fej-guida-fase', open: guidaAperta }, h('summary', null, 'Come si fa questa fase'), h('p', { class: 'fej-guida' }, GUIDA_FASE[fase])));
   if (fase === 'analisi') d.appendChild(vistaAnalisi(st, contaBuchi));
   else if (fase === 'smista') d.appendChild(vistaSmista(st));
   else if (fase === 'tabella') d.appendChild(vistaTabella(st));

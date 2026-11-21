@@ -194,3 +194,18 @@ td.fej-definitivo { text-align: right; }
 .fej-pulizia button { margin: .2rem .3rem .2rem 0; }
 .fej-prelevatori-lista { columns: 2 16rem; margin: .4rem 0; }
 .fej-prelevatori-lista label { break-inside: avoid; }
+
+/* schermo piccolo del PC dell'ASL (1280×1024, 21/11): tutto lo schermo, niente titolo col backup aperto, barra su una riga */
+body:has(#fejalog-strumenti) .md-grid { max-width: 100%; }
+.fej-con-backup .md-content__inner > h1 { display: none; }
+.fej-con-backup .md-content__inner { margin-top: .4rem; padding-top: 0; }
+@media (min-width: 900px) {
+  .fej-barra:not(.fej-barra-chiusa) { flex-wrap: nowrap; }
+  #fej-barra-stato { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}
+.fej-fase { padding: .3rem .6rem; }
+.fej-guida-fase { margin: .3rem 0; }
+.fej-guida-fase > summary { cursor: pointer; font-size: .85em; color: var(--md-default-fg-color--light); }
+.fej-banco-riassunto { margin: .3rem 0; }
+.fej-dati-provetta { margin: .6rem 0; }
+.fej-dati-provetta > summary { cursor: pointer; font-weight: 600; }
