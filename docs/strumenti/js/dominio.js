@@ -41,6 +41,8 @@ function avvolgiBanco(b) {
       notaAllevatore: function (uid, testo) { return scrive(JSON.parse(b.notaAllevatore(String(uid), String(testo || '')))); },
       destinazione: function (uid) { return ricorda('dest|' + uid, function () { return JSON.parse(b.destinazione(String(uid))); }); },
       risultato: function () { return ricorda('risultato', function () { return JSON.parse(b.risultato()); }); },
+      /* Il minimo per aprire il progetto e la Sistemazione, senza il risultato completo (lettura sul PC dell'ASL, 21/11). */
+      riassunto: function () { return ricorda('riassunto', function () { return JSON.parse(b.riassunto()); }); },
       riordino: function () { return ricorda('riordino', function () { return JSON.parse(b.riordino()); }); },
       cercaCapi: function (specie, query) { return JSON.parse(b.cercaCapi(String(specie), String(query || ''))); },
       numerazioneFinale: function (sistemazioni) { return JSON.parse(b.numerazioneFinale(json(sistemazioni || {}))); },
@@ -60,7 +62,11 @@ function avvolgiBanco(b) {
       /* Una sessione nuova sullo stesso backup con altre azioni (Annulla), senza rileggere il progetto. */
       riparti: function (az) { return avvolgiBanco(b.riparti(json(az || []))); },
       /* Le azioni salvate applicate alla sessione appena aperta dal caricamento del backup. */
-      applicaSalvate: function (az) { if (az && az.length) { memo = {}; b.applicaSalvate(json(az)); } }
+      applicaSalvate: function (az) { if (az && az.length) { memo = {}; b.applicaSalvate(json(az)); } },
+      /* Ciò che le azioni hanno prodotto, da tenere nel browser per riprendere senza rigiocarle (21/11: F5 di 50 s all'ASL). */
+      memoria: function () { return b.memoria ? JSON.parse(b.memoria()) : null; },
+      /* La sessione appena aperta allo stato della memoria; false se non vale per queste azioni (allora applicaSalvate). */
+      ripristina: function (az, mem) { if (!b.ripristina || !mem) return false; var ok = !!b.ripristina(json(az || []), json(mem)); if (ok) memo = {}; return ok; }
     };
 }
 return Object.assign(D, {

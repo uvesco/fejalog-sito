@@ -90,7 +90,13 @@ function ricalcola(completo) {
     // la sessione aperta leggendo il backup si usa una volta; dopo un «Annulla» se ne apre una nuova sullo stesso backup,
     // senza rileggere il progetto
     var az = S.stato.azioni();
-    if (S.P._banco) { S.banco = S.P._banco; S.P._banco = null; S.banco.applicaSalvate(az); }
+    if (S.P._banco) {
+      S.banco = S.P._banco; S.P._banco = null;
+      // alla ripresa gli eventi già prodotti dalle azioni si ricaricano dalla memoria; se non vale si rigiocano le azioni
+      var ms = S.memoriaSessione, mem = ms && ms.chiave === S.P.chiave && ms.impronta && ms.impronta === S.improntaCodice ? ms.dati : null;
+      S.memoriaSessione = null;
+      if (!(az.length && mem && S.banco.ripristina && S.banco.ripristina(az, mem))) S.banco.applicaSalvate(az);
+    }
     else if (S.banco && S.bancoDi === S.P) S.banco = S.banco.riparti(az);
     else S.banco = Dominio.apriBanco(S.P, az);
     S.bancoDi = S.P;
@@ -104,8 +110,35 @@ function ricalcola(completo) {
     if (!completo && SENZA_RISULTATO[S.scheda]) { S.apVecchio = !!S.ap; S.esito = null; S.riordinoCache = null; plateauStaccatoAggiornato(); }
     else aggiornaRisultato();
     sistUI.doveMov = {};
+    ricordaSessione();
   } catch (e) { S.messaggio = 'Calcolo non riuscito: ' + e.message; S.esito = null; }
   disegna();
+}
+/* La memoria della sessione nel browser (vedi Dominio.memoria): dopo ogni cambio, un poco dopo, per non rallentare il clic. */
+var tempoMemoria = null;
+function ricordaSessione() {
+  if (!S.banco || !S.banco.memoria || !S.P || !S.improntaCodice) return;
+  var chiave = S.P.chiave, banco = S.banco, impronta = S.improntaCodice;
+  if (tempoMemoria) clearTimeout(tempoMemoria);
+  tempoMemoria = setTimeout(function () {
+    tempoMemoria = null;
+    if (S.banco !== banco || !S.P || S.P.chiave !== chiave) return;
+    try { Memoria.metti('sessione', { chiave: chiave, impronta: impronta, dati: banco.memoria() }); } catch (e) { /* senza memoria si rigiocano le azioni */ }
+  }, 200);
+}
+/* L'impronta del codice che produce gli eventi delle azioni (dominio e motore di fine lavori): la memoria vale solo con lo
+   stesso codice, perché il sito si pubblica anche senza una build nuova dell'app (revisione del 21/11). Senza impronta,
+   niente memoria: si rigioca come prima. */
+var promessaImpronta = null;
+function fnv(t) { var x = 0x811c9dc5; for (var i = 0; i < t.length; i++) { x ^= t.charCodeAt(i); x = Math.imul(x, 0x01000193) >>> 0; } return t.length + ':' + x.toString(16); }
+function improntaCodice() {
+  if (!promessaImpronta) {
+    var leggi = function (f) { return fetch(base + 'vendor/' + f).then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.text(); }); };
+    promessaImpronta = typeof fetch !== 'function' ? Promise.resolve(null) :
+      Promise.all(['fejalog-shared.js.sha256', 'motore.js', 'fine_lavori.js'].map(leggi))
+        .then(function (t) { return t[0].trim().split(/\s+/)[0] + '/' + fnv(t[1]) + '/' + fnv(t[2]); }, function () { return null; });
+  }
+  return promessaImpronta;
 }
 function aggiornaRisultato() {
   S.ap = S.banco.risultato(); S.apVecchio = false; S.apSoloImpostazione = false; S.esito = null; S.riordinoCache = null;
@@ -142,7 +175,7 @@ function applicaSullaSessione(a) {
   bancoUI.dest = {}; // con «chiudi i buchi» i posti delle altre provette possono cambiare
   sistUI.doveMov = {};
   plateauStaccatoAggiornato();
-  Disco.azione();
+  Disco.azione(); ricordaSessione();
   return null;
 }
 function azione(tipo, dati) {
@@ -163,7 +196,7 @@ function applicaImpostazione(tipo, dati) {
     if (!r.ok) { S.messaggio = r.motivo || 'azione rifiutata'; messaggio(); return false; }
     S.stato.sostituisci(S.stato.azioni().concat([a]));
     if (S.ap && !S.apVecchio) { S.apVecchio = true; S.apSoloImpostazione = true; }
-    Disco.azione(); disegna(); return true;
+    Disco.azione(); ricordaSessione(); disegna(); return true;
   } catch (e) { S.messaggio = e.message; messaggio(); return false; }
 }
 /* Togliere un'azione già fatta riapre la sessione dalle azioni rimaste. */
@@ -628,6 +661,7 @@ function aggiornaAnagrafeBdn() {
   S.stato.sostituisci(S.banco.azioni());
   S.dueTrentatreFinali = []; bancoUI.dest = {};
   aggiornaRisultato();
+  Disco.azione(); ricordaSessione(); // il caricamento è l'azione più lenta da rigiocare: la memoria serve proprio qui
 }
 function sezioneVerificaBdn() {
   var d = h('div');
@@ -1236,7 +1270,10 @@ function formAnnulloProvetta(r) {
 
 function leggiBackup(byte) {
   S.resocontoRiconciliazione = null; S.backupRiconciliatoZip = null;
-  return Progetto.leggiBackup(byte).then(function (P) {
+  return Promise.all([Progetto.leggiBackup(byte), Memoria.prendi('sessione'), improntaCodice()]).then(function (lette) {
+    var P = lette[0];
+    S.memoriaSessione = lette[1] || null; // usata una volta, al primo calcolo (ricalcola)
+    S.improntaCodice = lette[2] || null;
     if (!pc) Memoria.metti('backup', byte); // F5 non perde la sessione: il backup aperto resta nel browser
     apriProgetto(P); S.ignoraVerifica = false; S.messaggio = P.verifica.ok ? 'Backup letto e verificato.' : 'Backup letto, ma la verifica ha trovato problemi: per usarlo serve la conferma qui sotto.';
     if (P.verifica.ok) attendiMotore(); else { S.esito = null; S.ap = null; disegna(); }
@@ -2733,17 +2770,17 @@ var Memoria = (function () {
   }
   function metti(k, v) {
     return db().then(function (d) { return new Promise(function (si, no) {
-      var t = d.transaction('k', 'readwrite'); t.objectStore('k').put(v, k); t.oncomplete = function () { si(); }; t.onerror = function () { no(t.error); };
+      var t = d.transaction('k', 'readwrite'); t.objectStore('k').put(v, k); t.oncomplete = function () { d.close(); si(); }; t.onerror = function () { d.close(); no(t.error); };
     }); }).catch(function () { /* senza IndexedDB si lavora lo stesso */ });
   }
   function prendi(k) {
     return db().then(function (d) { return new Promise(function (si, no) {
-      var q = d.transaction('k').objectStore('k').get(k); q.onsuccess = function () { si(q.result); }; q.onerror = function () { no(q.error); };
+      var q = d.transaction('k').objectStore('k').get(k); q.onsuccess = function () { d.close(); si(q.result); }; q.onerror = function () { d.close(); no(q.error); };
     }); }).catch(function () { return null; });
   }
   function togli(k) {
     return db().then(function (d) { return new Promise(function (si, no) {
-      var t = d.transaction('k', 'readwrite'); t.objectStore('k').delete(k); t.oncomplete = function () { si(); }; t.onerror = function () { no(t.error); };
+      var t = d.transaction('k', 'readwrite'); t.objectStore('k').delete(k); t.oncomplete = function () { d.close(); si(); }; t.onerror = function () { d.close(); no(t.error); };
     }); }).catch(function () { /* niente da togliere */ });
   }
   function cancellaTutto() {
@@ -2766,11 +2803,12 @@ function chiaviFejalog(filtro) {
   return out;
 }
 function pulisciBrowser(tutto) {
+  if (tempoMemoria) { clearTimeout(tempoMemoria); tempoMemoria = null; } // niente memoria scritta dopo la pulizia
   var chiave = S.P ? String(S.P.chiave) : '', id = S.P && S.P.pacchetto ? String(S.P.pacchetto.id) : '';
   var chiavi = tutto ? chiaviFejalog() : chiaviFejalog(function (k) { return (chiave && k.indexOf(chiave) >= 0) || (id && k.indexOf(id) >= 0) || (chiave && k.indexOf(chiave.split(':')[0]) >= 0); });
   chiavi.forEach(function (k) { try { localStorage.removeItem(k); } catch (e) { /* niente */ } });
   try { sessionStorage.clear(); } catch (e) { /* niente */ }
-  var fatto = tutto ? Memoria.cancellaTutto() : Promise.all([Memoria.togli('backup'), Memoria.togli('cartella')]);
+  var fatto = tutto ? Memoria.cancellaTutto() : Promise.all([Memoria.togli('backup'), Memoria.togli('cartella'), Memoria.togli('sessione')]);
   return fatto.then(function () { return chiavi.length; });
 }
 function bottoniPulizia(conBackup) {
@@ -2932,8 +2970,7 @@ function vistaAnalisi(st, contaBuchi) {
     t.appendChild(tb); d.appendChild(h('div', { class: 'fej-tabella-scorre' }, t));
   }
   // gli assenti del risultato di prima: il conto cambia di poco con le attribuzioni, e rifarlo costa secondi sul PC dell'ASL
-  if (!S.ap) aggiornaRisultato();
-  var assenti = (S.ap && S.ap.nonPrelevati || []).length, usc = [];
+  var assenti = S.ap ? (S.ap.nonPrelevati || []).length : (S.banco.riassunto ? S.banco.riassunto().assenti : 0), usc = [];
   try { usc = S.banco.usciteModello(); } catch (e) { usc = []; }
   d.appendChild(h('p', null, 'Capi del registro non prelevati (assenti): ', h('strong', null, String(assenti)), '. I buchi da chiudere si contano nella fase D, quando le provette sono decise.'));
   d.appendChild(h('p', { class: usc.length ? 'fej-ok' : 'fej-avviso', id: 'fej-analisi-uscite' }, usc.length ? '✓ Uscite per modello degli ultimi 7 giorni caricate: ' + usc.length + ' capi non sono più proposti come assenti.' :
@@ -3386,8 +3423,8 @@ function attendiMotore() { promessaMotore.then(function () { if (S.erroreMotore)
 disegna();
 if (!pc) Memoria.prendi('cartella').then(function (c) { Disco.ripristina(c); return Memoria.prendi('backup'); }).then(function (b) {
   if (b && !S.P) {
-    // la ripresa rifà tutte le azioni: con molte (fase D) ci vuole tempo, e la pagina lo dice (giro di prove del 21/11)
-    mostraAttesa('Riprendo la sessione di prima: backup e azioni già fatte. Con molte azioni ci vuole fino a un minuto…');
+    // la ripresa ricarica gli eventi già prodotti (Dominio.memoria); senza memoria rifà le azioni e ci vuole di più
+    mostraAttesa('Riprendo la sessione di prima: backup e azioni già fatte…');
     var riprendi = function () {
       leggiBackup(b).then(function () { nascondiAttesa(); if (S.P) { S.messaggio = 'Sessione ripresa: backup e azioni di prima.'; messaggio(); } }, function () { nascondiAttesa(); /* backup non più leggibile: si ricarica a mano */ });
     };

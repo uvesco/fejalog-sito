@@ -22,7 +22,9 @@ function costruisciProgetto(manifesto, pacchetto, eventi, esporti, files) {
   };
   // La sessione aperta qui per leggere il backup resta per le schede (dopo il campo del 16/11, utente 2026-11-20: «F5 molto
   // lento»): prima il backup si apriva due volte, qui e nella pagina. Non va nel JSON del progetto.
-  var banco = Dominio.apriBanco(P, []), stato = banco.risultato();
+  // il riassunto, non il risultato completo: due terzi della lettura sul PC dell'ASL (21/11); gli export ricostruiti dal
+  // registro ci sono anche lì
+  var banco = Dominio.apriBanco(P, []), stato = banco.riassunto ? banco.riassunto() : banco.risultato();
   Object.defineProperty(P, '_banco', { value: banco, writable: true, configurable: true, enumerable: false });
   P.esporti = stato.esporti;
   P.etaMesi = stato.impostazioni.eta_diagnostica_mesi;
