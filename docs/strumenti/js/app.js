@@ -100,6 +100,7 @@ function ricalcola(completo) {
     else if (S.banco && S.bancoDi === S.P) S.banco = S.banco.riparti(az);
     else S.banco = Dominio.apriBanco(S.P, az);
     S.bancoDi = S.P;
+    ricordaSessione(); // subito: se il calcolo qui sotto si ferma, la memoria è comunque quella della sessione nuova
     bancoUI.dest = {}; // la sessione è nuova: i posti calcolati prima non valgono più
     var tenute = S.banco.azioni().map(function (a) { return a.id; });
     var scartate = S.stato.azioni().filter(function (a) { return tenute.indexOf(a.id) < 0; });
@@ -110,20 +111,20 @@ function ricalcola(completo) {
     if (!completo && SENZA_RISULTATO[S.scheda]) { S.apVecchio = !!S.ap; S.esito = null; S.riordinoCache = null; plateauStaccatoAggiornato(); }
     else aggiornaRisultato();
     sistUI.doveMov = {};
-    ricordaSessione();
   } catch (e) { S.messaggio = 'Calcolo non riuscito: ' + e.message; S.esito = null; }
   disegna();
 }
-/* La memoria della sessione nel browser (vedi Dominio.memoria): dopo ogni cambio, un poco dopo, per non rallentare il clic. */
+/* La memoria della sessione nel browser (vedi Dominio.memoria): dopo ogni cambio, un poco dopo, per non rallentare il clic;
+   si scrive la sessione di quel momento (sessioni casuali del 21/11: con la sessione rifatta nel frattempo restava la vecchia). */
 var tempoMemoria = null;
 function ricordaSessione() {
   if (!S.banco || !S.banco.memoria || !S.P || !S.improntaCodice) return;
-  var chiave = S.P.chiave, banco = S.banco, impronta = S.improntaCodice;
+  var chiave = S.P.chiave, impronta = S.improntaCodice;
   if (tempoMemoria) clearTimeout(tempoMemoria);
   tempoMemoria = setTimeout(function () {
     tempoMemoria = null;
-    if (S.banco !== banco || !S.P || S.P.chiave !== chiave) return;
-    try { Memoria.metti('sessione', { chiave: chiave, impronta: impronta, dati: banco.memoria() }); } catch (e) { /* senza memoria si rigiocano le azioni */ }
+    if (!S.banco || !S.banco.memoria || !S.P || S.P.chiave !== chiave || S.improntaCodice !== impronta) return;
+    try { Memoria.metti('sessione', { chiave: chiave, impronta: impronta, dati: S.banco.memoria() }); } catch (e) { /* senza memoria si rigiocano le azioni */ }
   }, 200);
 }
 /* L'impronta del codice che produce gli eventi delle azioni (dominio e motore di fine lavori): la memoria vale solo con lo
@@ -269,7 +270,13 @@ function apriProgetto(P) {
     plateauPrincipale = null; plateauStaccato = null; finestraPlateau = null;
     modelloPlateau = Plateau.modelloAttuale();
   }
-  S.P = P; S.stato = Stato.crea(P.chiave);
+  // Nella pagina servita dal tablet (e al PC via USB) il backup arriva sempre dal tablet, ed è sempre il più recente: il
+  // registro cambia a ogni ricezione o riavvio dell'app. Le azioni non ancora inviate si tengono allora per progetto, non per
+  // versione del backup, così riaprendo la pagina si ritrovano (prove del 21/11 sul tablet: sparivano dalla pagina). Quelle
+  // già entrate nel registro si tolgono qui sotto; quelle che non si applicano più lo dice la pagina. Sul sito coi file zip
+  // resta una lista per backup.
+  S.P = P; S.stato = Stato.crea(pc ? 'regia:' + P.pacchetto.id + ':' + P.pacchetto.sha256 : P.chiave);
+  if (pc && !S.stato.azioni().length) { var perBackup = Stato.crea(P.chiave).azioni(); if (perBackup.length) S.stato.sostituisci(perBackup); }
   var intro = document.querySelector('.fej-intro'); if (intro) intro.hidden = true; // il lavoro comincia in cima (simulazione del 21/11)
   document.body.classList.add('fej-con-backup'); // schermo piccolo del PC dell'ASL: via il titolo e i margini (21/11)
   if (pc) {
@@ -658,7 +665,19 @@ function schedaFuoriProgetto() {
    (bdn-verifica-motore.js: Interrogazioni › Capi e › Identificativi, uno alla volta, sola lettura) e il caricamento del
    file che scarica. I dati compaiono nella scheda di ogni provetta, accanto a quelli scritti in campo. */
 function aggiornaAnagrafeBdn() {
-  S.stato.sostituisci(S.banco.azioni());
+  // il caricamento aggiunge un'azione in fondo alla sessione: si salva in fondo alle azioni di prima, comprese quelle che non
+  // si applicano più (sessioni casuali del 21/11: sostituirle con le sole applicate staccava la memoria dalle azioni salvate)
+  var prima = S.stato.azioni(), gia = {};
+  prima.forEach(function (a) { gia[a.id] = true; });
+  // un file già caricato la cui azione non si applicava più (dopo un Annulla) ora si applica in fondo alla sessione: anche fra
+  // le azioni salvate va in fondo, e la sessione si rifà da lì (seconda revisione del 21/11, P2-4)
+  var ps = S.banco.memoria ? S.banco.memoria().passi : [], ultimo = ps[ps.length - 1];
+  if (ultimo && ultimo.applicata && gia[ultimo.id] && prima.length && prima[prima.length - 1].id !== ultimo.id) {
+    S.stato.sostituisci(prima.filter(function (a) { return a.id !== ultimo.id; }).concat([ultimo.azione]));
+    S.dueTrentatreFinali = []; bancoUI.dest = {};
+    Disco.azione(); ricalcola(true); return;
+  }
+  S.stato.sostituisci(prima.concat(S.banco.azioni().filter(function (a) { return !gia[a.id]; })));
   S.dueTrentatreFinali = []; bancoUI.dest = {};
   aggiornaRisultato();
   Disco.azione(); ricordaSessione(); // il caricamento è l'azione più lenta da rigiocare: la memoria serve proprio qui
