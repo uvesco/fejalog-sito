@@ -15,7 +15,7 @@ Funziona interamente su rete Wi-Fi locale senza internet: i dati sono sincronizz
 ## 1 · Configurazione iniziale (una volta sola)
 
 1. ☰ Menu → Impostazioni › Utente: nome, cognome e codice fiscale, poi «Salva». Valgono per tutti i progetti.
-2. Impostazioni › Dispositivo: il nome del telefono (es. «A55 Mario»), poi «Salva».
+2. Impostazioni › Dispositivo: il nome del telefono (es. «A55 Mario»), poi «Salva». Lì anche i Caratteri (normali o grandi) e, se preferisci, «Elenco con +».
 
 ## 2 · Impostazioni del telefono («Prima di cominciare»)
 
@@ -27,6 +27,7 @@ Sotto il nome del telefono, in Impostazioni › Dispositivo, c'è il riquadro «
 4. Risparmio energetico SPENTO durante il lavoro.
 5. Impostazioni → App → Fejalog → Batteria → «Senza restrizioni» (Samsung: non inserire fra le «App in sospensione»).
 6. Notifiche di Fejalog consentite: la notifica «progetto in corso» mantiene attivo il servizio e la Wi-Fi.
+7. Altre marche (i nomi cambiano con la versione): Xiaomi, Redmi, POCO: Fejalog con «Avvio automatico» acceso e risparmio batteria «Nessuna restrizione», «Assistente Wi-Fi» spento. Huawei, Honor: Batteria › Avvio app › Fejalog in gestione manuale con tutto acceso, «Wi-Fi+» spento. Oppo, Realme, OnePlus: «Consenti attività in background» per Fejalog.
 
 ## 3 · Lettore di microchip Bluetooth (Allflex AWR250 in uso ai Servizi Veterinari)
 
@@ -50,7 +51,7 @@ Se Android notifica «Questa rete non ha accesso a internet»: rispondere «Sì,
 ## 5 · Entrare nel progetto
 
 1. ☰ Menu → Progetto → «Entra col QR» e inquadra il QR della Regia: se il telefono è già sulla sua Wi-Fi riceve subito il progetto; altrimenti tocca nel pannello la Wi-Fi indicata.
-2. Se la versione dell'app è diversa da quella della Regia: sotto il QR d'ingresso la Regia mostra il QR per scaricare l'app aggiornata.
+2. Se la versione dell'app è diversa da quella della Regia: sotto il QR d'ingresso la Regia mostra il QR per scaricare l'app aggiornata. La prima volta Android chiede di consentire a Fejalog di installare app sconosciute; se il telefono blocca le app scaricate (Samsung «Blocco automatico», Huawei e Honor «Modalità pura») spegni il blocco per installare.
 3. Dopo un riavvio o riaprendo l'app: si rientra automaticamente. Quello che hai registrato resta sul telefono e arriva alla Regia appena ti ricolleghi.
 
 ## 6 · Durante il campionamento: cosa scrivere sulla provetta
@@ -59,6 +60,8 @@ Se Android notifica «Questa rete non ha accesso a internet»: rispondere «Sì,
 - Riquadro blu (squadra non allineata): scrivi solo numero e sigla (es. 125-UV).
 - Riquadro rosso (fuori registro): scrivi numero e contrassegno completo (es. UV-15 C, a capo IT066000000113).
 - Senza contrassegno: tocca «Senza contrassegno», inserisci sesso, denti, razza e scrivi numero provvisorio e dati somatici (es. UV-16 C, a capo senza marca · F · bocca piena · Sarda). Non cercare animali in anagrafe: l'abbinamento si farà a fine lavori.
+- Lo stesso contrassegno due volte: «Già fatto: non prelevare» se è lo stesso animale; «Preleva come doppio», toccando la ristampa dell'auricolare (0 = originale), se è un altro animale con la stessa marca. «L'HAI APPENA REGISTRATO»: l'hai fatto tu poco fa, quasi sempre è lo stesso.
+- Animale o specie sbagliati, provetta vuota: Ultime → «Elimina»; il capo torna da fare col suo numero e la provetta già scritta va buttata (se è già consegnata la elimina la Regia).
 - Consegna provette: le ordinarie vanno nei plateau della Regia, i fuori registro nel secchio.
 - Non spegnere la Wi-Fi. Se compare la banda ROSSA «Wi-Fi PERSA»: tocca «Ricollegati». Puoi continuare a prelevare; al rientro attendi l'allineamento.
 - Se ti allontani dalla rete: mettiti in pausa da Campionamento › Pausa e ripresa. Se vieni escluso, rientri da solo quando il telefono rivede la Regia; solo dopo «Togli dalla rete» o «Escludi definitivamente» serve di nuovo il QR d'ingresso.
@@ -67,4 +70,4 @@ Se Android notifica «Questa rete non ha accesso a internet»: rispondere «Sì,
 ## 7 · Alla fine del lavoro
 
 - ☰ Menu → 📶 Rete → verifica che tutti i prelievi siano allineati con la Regia.
-- ☰ Menu → 🚪 Esci: chiude l'app lasciando il progetto aperto; alla riapertura riprende dallo stesso punto.
+- ☰ Menu → Esci dal progetto a fine lavoro. «Esci dall'app» invece lascia il progetto aperto: alla riapertura riprende dallo stesso punto.

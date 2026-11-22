@@ -1,55 +1,56 @@
 # In campo: scheda pratica per il veterinario
 
-> **A chi serve**: chi preleva con il palmare · **Tempo di lettura**: 3 minuti
+> **A chi serve**: chi preleva con il palmare · **Tempo di lettura**: 3 minuti · Stampa su A4
 
 <div class="fej-scheda-stampa" markdown>
 
-Stampa questa pagina con **Stampa** nel browser. Per il materiale: [scheda del veterinario](../checklist-veterinari.md).
+## 1. Entra
 
-## 1. Entra nella seduta
+Sulla Wi-Fi del progetto: ☰ Menu › Progetto › **Entra col QR** e il QR della Regia. Pronto con provetta e rete **verdi**.
 
-Configura prima il tuo nome in **Impostazioni › Utente**. Collegati alla Wi-Fi del progetto (inquadra il QR Wi-Fi cartaceo con la fotocamera). In Fejalog apri **Progetto › Entra col QR** e inquadra il QR sullo schermo della Regia. Verifica l'allineamento e che il campionamento sia aperto.
+## 2. Cerca il capo
 
-![Il menu del palmare a campionamento aperto](../img/menu/menu_palmare_campionamento.png)
-*Menu del palmare: Progetto (Entra col QR), Campionamento con Pausa e ripresa, e Rete.*
+Leggi il microchip o digita le **ultime cifre** del contrassegno. Controlla il contrassegno **completo** e tocca il capo.
+Cambiando specie il codice resta; a «Nei registri è una pecora… È proprio questo?» ricontrolla specie e capo.
 
-## 2. Cerca e controlla il capo
+## 3. Scrivi la provetta e conferma
 
-Leggi il microchip col lettore Bluetooth, oppure digita le ultime cifre sul tastierino. I risultati mostrano prima «finisce con», poi «contiene». Controlla il contrassegno completo e tocca il capo; la lettura automatica con Invio lo seleziona se è unico.
+Copia **esattamente** quello che c'è nel riquadro:
 
-**Cambio specie**: schede o swipe conservano il codice digitato. Se la conferma è aperta, si chiude e ricerca nell'altra specie.
-
-## 3. Scrivi sulla provetta e conferma
-
-Controlla il riquadro della scritta e copia esattamente ciò che vedi:
-
-| Riquadro dell'app | Cosa scrivere sulla provetta | Esempio |
+| Riquadro | Cosa scrivere | Esempio |
 |---|---|---|
-| **Neutro** (ordinario, controllo completo) | Scrivi **solo il numero** (e la lettera dello stabilimento se secondario) | `125` oppure `Ⓧ125` |
-| **Blu** (ordinario, squadra non allineata) | Scrivi **solo numero e sigla** | `125-UV` |
-| **Rosso** (fuori registro: uscito, doppio, altro stab.) | Scrivi **numero e contrassegno completo** | `UV-15 C`<br>`IT066000000113` |
-| **Senza contrassegno** (animale senza marche) | Scrivi **numero provvisorio e dati dell'animale** | `UV-16 C`<br>`senza marca · F · bocca piena · Sarda` |
+| **Neutro** | solo il numero (col cerchietto dello stabilimento, se c'è) | `125` · `Ⓧ125` |
+| **Blu** (doppi non controllati da tutti) | numero e sigla | `125-UV` |
+| **Rosso** (fuori registro) | progressivo e contrassegno completo, a capo | `UV-15 C`<br>`IT066000000113` |
+| **Senza contrassegno** | progressivo e dati dell'animale | `UV-16 C`<br>`senza marca · F · bocca piena · Sarda` |
 
-Controlla orecchini DX/SX, bolo ed eventuali note. Premi **Conferma** e attendi l'esito verde **Registrata**. Un esito rosso non conferma il salvataggio: leggi il motivo e verifica nelle **Ultime** prima di riprovare.
+Segna orecchini **DX**/**SX** o bolo **da sostituire**, poi **Conferma**: vale solo l'esito verde **Registrata** (se è
+rosso, guarda in **Ultime** prima di riprovare). Col telecomando OK conferma; spostato il focus con su/giù, OK attiva l'opzione.
 
-## Comandi rapidi e telecomando da dito
+## 4. Lo stesso contrassegno due volte
 
-- **OK/Invio**: conferma col focus iniziale su **Conferma**; se lo sposti con su/giù, attiva l'opzione in focus.
-- **Esc/Indietro**: chiudono la schermata senza salvare.
-- I telecomandi Bluetooth (BLE-M3) sono supportati (frecce, tasto OK centrale, Indietro).
+- Lo stesso animale (ha il colore dei prelevati): **Già fatto: non prelevare**. «**L'HAI APPENA REGISTRATO**» (l'hai
+  fatto tu poco fa): quasi sempre è lo stesso, **È lo stesso: non prelevare**.
+- Un altro animale con la stessa marca: **Preleva come doppio**, tocca la **ristampa** dell'auricolare (0 = originale),
+  nelle note che cosa lo distingue; marcalo col colore dei fuori registro.
 
-## Senza contrassegno
+## 5. Animali senza un capo nei registri
 
-Per un animale privo di marche auricolari e bolo: tocca **Senza contrassegno**. **Non si cerca e non si sceglie alcun capo in anagrafe** durante il campionamento (si farà in ufficio a fine lavori per evitare doppi prelievi).
+- **Senza contrassegno**: sesso, denti, razza; la sigla anche sulla schiena. Il capo lo si attribuisce in ufficio.
+- **Nuova identificazione** (l'allevatore lo marca adesso): sesso, denti, razza, poi la marca applicata.
+- **Non è nel progetto: inseriscilo** (in nessun registro): sesso, razza, nascita (`gg.mm.aaaa`).
 
-1. Inserisci sesso, età stimata dai denti (denti da latte, 2, 4, 6 denti, bocca piena, bocca consumata), razza stimata («Meticcio» vale per tutte) e come segno provvisorio la sigla della provetta, scritta anche sulla schiena: [i fuori registro in campo](fuori-registro.md).
-2. L'app genera il codice provvisorio: scrivi numero e dati somatici sul tubo.
-3. Consegna la provetta alla Regia: andrà nel secchio dei fuori registro.
+## 6. Se sbagli
+
+In **Ultime**: **Modifica** (note, orecchini, sesso, ristampa); **Persa…** (provetta rotta, poi si ripete);
+**Elimina** (animale o specie sbagliati, provetta vuota): il capo torna **col suo numero**, la provetta scritta si butta
+(se consegnata la elimina la Regia). Scritta ma non confermata: **Registra adesso** e confronta le due scritte.
 
 ## Consegna e imprevisti
 
-Porta le provette alla Regia, che registra **Ricevi (N)** e le ripone: le ordinarie nei plateau, i fuori registro nel secchio. Non cambiare le scritte da solo. Se la Wi-Fi cade, tocca **Ricollegati** e segui la banda; puoi continuare se il campionamento è abilitato. Se ti allontani dalla rete, mettiti in pausa da **Campionamento › Pausa e ripresa**. Se il palmare viene escluso dalla Regia, per rientrare inquadra di nuovo il QR d'ingresso. Prima di uscire attendi l'allineamento e usa **menu › Esci dal progetto**.
-
-[Fasi di lavoro e ruoli](../inizia-qui/fasi-e-ruoli.md) · [Imprevisti e conferme mancate](cosa-succede-se.md) · [Domande](domande.md) · [Guarda i micro-video operativi](../inizia-qui/video.md#2-micro-video-operativi)
+Provette alla Regia (ordinarie nei plateau, fuori registro nel secchio). «Wi-Fi PERSA»: **Ricollegati** e continua. Ti
+allontani: **Pausa e ripresa**. Escluso: rientri da solo; tolto dalla rete: di nuovo il QR. Fine: rete allineata, poi **Esci dal progetto**.
 
 </div>
+
+[Se qualcosa va storto](cosa-succede-se.md) · [I fuori registro in campo](fuori-registro.md) · [Domande](domande.md)

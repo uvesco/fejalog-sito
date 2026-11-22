@@ -17,6 +17,12 @@
 - «Attribuisci» registra la provetta tardi (solo la Regia): scrivi l'etichetta com'è sulla provetta e una nota su come hai riconosciuto il capo. Il campionamento non si riapre e la distinta si aggiorna.
 - «Importa dal sito» riporta qui le modifiche fatte con gli strumenti on line: anteprima, poi eventi nuovi nel registro.
 
+## Presenze dalla carta
+
+- Se si è prelevato a carta (il numero del foglio dei numeri assegnati scritto sulla provetta, la riga spuntata), «Presenze dalla carta» riporta i capi spuntati in blocco (solo la Regia): a campionamento aperto fa l'anteprima, si registra a campionamento chiuso. Righe rifiutate (un capo preso nel frattempo in app) restano elencate.
+- Per ogni serie scrivi i numeri NON prelevati (es. 12, 47, 103-105): gli altri diventano provette col loro numero, come registrazioni tardive. «Elenco» corregge riga per riga. I capi già registrati in app non si toccano e stanno a parte: se sulla carta sono spuntati, controlla che non sia lo stesso animale preso due volte.
+- Prima di chiudere il campionamento: tutti i telefoni allineati e usciti (così le etichette sono il numero), l'anteprima della pagina per confrontare la carta coi capi già in app, poi in Campionamento come un prelievo normale i fuori registro e i senza marche presi a carta e, per ogni doppio, prima il capo della riga col suo numero e poi il doppio con «Preleva come doppio». Sulla provetta si aggiunge la scritta che dà l'app. Poi si chiude e si riporta la carta, prima delle Soluzioni e del Riordino: dopo, il campionamento non si riapre.
+
 ## Altro da guardare
 
 - Accantonate: «Cerca e registra» trova il capo e registra la provetta; «Scarta» se non va registrata.

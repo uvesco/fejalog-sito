@@ -1,68 +1,82 @@
-# Cosa succede se…
+# Se qualcosa va storto
 
-> **A chi serve**: veterinari prelevatori con palmare · **Tempo di lettura**: 2 minuti
+> **A chi serve**: veterinari prelevatori con palmare · **Tempo di lettura**: 3 minuti
 
-## 1. Il telefono si spegne
+Una regola vale sempre: **quello che ha avuto l'esito verde «Registrata» è salvato sul telefono** e arriva alla Regia
+appena il telefono la rivede. Non scrivere mai numeri a memoria.
 
-**Cosa fai:** riaccendilo e riapri Fejalog; verifica progetto e rete. Se devi cambiarlo, avvisa la Regia e chiedi di entrare col nuovo telefono: la tua sigla resta la stessa e le statistiche restano legate al tuo codice fiscale. Conserva il vecchio per recuperarne i dati.
-**Cosa resta:** i prelievi con esito verde sono salvati localmente (con istantanee automatiche frequenti); quelli già replicati sono anche sui colleghi. Un telefono distrutto con dati mai replicati né copiati può perderli. L'esclusione del telefono da parte della Regia non ne recupera il registro.
+## 1. La rete
 
-## 2. La Wi-Fi cade: «Wi-Fi PERSA»
+**Banda rossa «Wi-Fi PERSA».** Tocca **Ricollegati**. Puoi continuare a prelevare: le provette escono col riquadro blu
+(`125-UV`) perché i doppi non sono controllati in diretta con tutti. Al rientro attendi che la rete torni verde.
 
-**Cosa fai:** tocca **Ricollegati** nella banda rossa. Se il campionamento resta abilitato puoi continuare seguendo la scritta mostrata; al rientro attendi l'allineamento.
-**Cosa resta:** le nuove conferme si salvano sul telefono. I doppi non sono controllati in diretta con tutti; la verifica completa richiede di riunire i dati di ogni palmare.
+**Ti allontani dalla rete** (un recinto lontano, una pausa). Campionamento › **Pausa e ripresa** › Pausa: così gli altri
+non restano in attesa di te. Al ritorno, **Riprendi**.
 
-## 3. Provetta scritta ma non confermata: «Registra adesso»
+**Sei stato escluso.** Dopo 2 minuti senza rete la squadra va avanti senza di te: quando il telefono rivede la Regia
+rientri da solo. Se la Regia ti ha **tolto dalla rete** o **escluso definitivamente**: ☰ Menu › Progetto › **Entra col
+QR** e inquadra di nuovo il suo QR. Niente di quello che hai registrato si perde: si unisce al rientro.
 
-**Cosa fai:** apri **Ultime**, trova la conferma mancata e tocca **Registra adesso**: riapre la ricerca, non salva da solo. Controlla capo ed etichetta nel nuovo foglio di conferma, confrontandola con quella già scritta. Se differisce, chiedi alla Regia prima di registrare.
-**Cosa resta:** una conferma mancata non è un prelievo registrato. A campionamento chiuso la registrazione tardiva compete alla Regia, con l'etichetta fisica verificata e un capo non prelevato; non serve riaprire.
+**La versione dell'app è diversa da quella della Regia.** Non entri. La Regia, sotto il QR d'ingresso, tocca «Mostra il
+QR per scaricare l'app»: lo inquadri, installi e rientri.
 
-## 4. Compare un precedente prelievo
+## 2. Il telefono
 
-**Cosa fai:** controlla il capo. Se già fatto, scegli **Già fatto: non prelevare**; se è un altro animale con lo stesso contrassegno, **Preleva come doppio** e copia tutta la scritta del riquadro rosso.
-**Cosa resta:** il precedente non viene sovrascritto. Se due conferme simultanee hanno prodotto un'omonimia, l'allarme richiede verifica e rinomina fisica di entrambe prima di continuare.
+**Si spegne o si blocca.** Riaccendi e riapri Fejalog: riprende dallo stesso punto e si ricollega da solo. Se devi
+cambiare telefono, avvisa la Regia ed entra col QR dal nuovo: la sigla resta la tua. Il vecchio non si butta finché i
+suoi dati non sono arrivati alla Regia.
 
-## 5. Il capo è senza contrassegno
+**Batteria.** Avvisi al 20% e al 10%: collega il power bank. Al 5%, se non è in carica, il telefono si mette in pausa da
+solo; collegato il caricatore tocca **Riprendi sessione**. Le soglie le può cambiare la Regia.
 
-**Cosa fai:** tocca **Senza contrassegno**. Non cercare e non selezionare alcun animale in anagrafe durante il campionamento (si farà in ufficio a fine giornata per non rischiare prelievi doppi). Inserisci sesso, età stimata dai denti, razza stimata e un eventuale segno provvisorio (orecchino ASL, numero sulla schiena). L'app genera il codice provvisorio: scrivi numero e dati somatici sulla provetta e consegnala alla Regia (andrà nel secchio dei fuori registro).
-**Cosa resta:** l'animale è registrato come non identificato. L'attribuzione al capo anagrafico o l'assegnazione a una marca disponibile avverrà con calma dopo la chiusura del campionamento.
+**Il lettore di microchip si scollega.** Premi il tasto di lettura per risvegliarlo; intanto digita le ultime cifre
+sul tastierino, senza fermare la corsia.
 
-## 6. La batteria è scarica
+## 3. Le provette
 
-**Cosa fai:** collega il power bank al primo avviso. Le soglie predefinite sono **20% e 10%**, con pausa al **5% se non in carica**; la Regia può cambiare le soglie (pagina Campionamento › Messaggi). Dopo aver collegato il caricatore apri **Campionamento › Pausa e ripresa** e tocca **Riprendi sessione**.
-**Cosa resta:** il lavoro salvato rimane; la pausa viene comunicata sulla rete quando raggiungibile. Non aspettare lo spegnimento.
+**Scritta ma non confermata.** Ultime › **Registra adesso**: riapre la ricerca, non salva da sola. Controlla capo ed
+etichetta nel nuovo foglio di conferma e confrontala con quella sulla provetta; se sono diverse chiedi alla Regia. A campionamento chiuso la registra solo la Regia.
 
-## 7. Il capo è di uno stabilimento non campionato
+**Esito rosso.** Non è registrata: leggi il motivo, guarda in **Ultime** e solo dopo riprova.
 
-**Cosa fai:** leggi l'avviso viola e il codice dello stabilimento. Se procedi nel progetto corrente, controlla la destinazione e copia l'etichetta fuori registro col contrassegno completo. Se è dichiarato acquistato, spunta il DDA solo per quel capo e avvisa la Regia.
-**Cosa resta:** caricare il registro serve a riconoscere il capo; non lo rende ordinario nel risanamento corrente. Il DDA resta da verificare e l'ingresso da registrare fuori dall'app prima della normalizzazione.
+**Animale o specie sbagliati, provetta vuota.** Ultime › **Elimina**: il capo torna da fare col suo numero e una provetta
+già scritta va buttata. Se l'hai già consegnata, la elimina la Regia. Quando poi riprendi lo stesso capo, il foglio lo
+ricorda.
 
-## 8. Si campiona un altro stabilimento in contemporanea
+**Provetta rotta o caduta.** Ultime › **Persa…**, poi si ripete il prelievo.
 
-**Cosa fai:** segnalalo alla Regia. Solo lei aggiunge uno stabilimento di lavoro per un altro risanamento in contemporanea, dopo averne caricato il registro. Un singolo capo acquistato non richiede un nuovo stabilimento di lavoro.
-**Cosa resta:** i numeri già assegnati restano invariati. Le serie e gli invii restano distinti; controlla sempre la destinazione nel foglio di conferma.
+**Pennarello che non scrive, provetta bagnata.** Asciuga la plastica e usa il pennarello di scorta.
 
-## 9. Il capo risulta smarrito, rubato, morto o trasferito
+## 4. Il capo
 
-**Cosa fai:** verifica contrassegno, data e causale di uscita. Se lo prelevi, segui il riquadro rosso e segnala la discordanza alla Regia.
-**Cosa resta:** anche smarriti e rubati ritrovati sono sempre fuori registro finché i dati non ne consentono la normalizzazione. Il prelievo non corregge la BDN.
+**Compare un prelievo precedente dello stesso contrassegno.** È lo stesso animale (ha il colore dei prelevati)? **Già
+fatto: non prelevare.** È un altro animale con la stessa marca? **Preleva come doppio**, tocca la ristampa
+dell'auricolare e scrivi nelle note che cosa lo distingue. Se l'avevi registrato tu poco prima, l'app lo dice in rosso
+(«L'HAI APPENA REGISTRATO»): quasi sempre è lo stesso.
 
-## 10. Il contrassegno non è registrato su un capo
+**Due conferme dello stesso capo nello stesso istante** da due telefoni: un avviso che non si chiude chiede a entrambi di
+controllare il capo e di cambiare la scritta della provetta, che è ancora in mano.
 
-**Cosa fai:** sia per una **marca disponibile** sia per un capo **in nessun registro caricato** (forzato), il riquadro dell'etichetta è rosso (fuori registro). Servono obbligatoriamente sesso, razza e data di nascita; per il forzato digita il contrassegno completo. Scrivi tutta la dicitura del riquadro rosso sulla provetta. Se il problema era solo la specie sbagliata, cambia specie prima di confermare.
-**Cosa resta:** è una provetta fuori registro che andrà nel secchio dei fuori registro. A fine seduta la Regia deciderà la sistemazione.
+**Il capo è di un altro stabilimento** (banda viola) **o risulta uscito, smarrito, rubato, morto.** Si preleva lo stesso:
+riquadro rosso, contrassegno completo sulla provetta, e avvisa la Regia. Per un capo comprato con il DDA spunta il DDA solo
+per lui. Il prelievo non corregge la BDN: lo si sistema in ufficio.
 
-## 11. La Regia mette in pausa il tuo palmare o ti allontani dalla rete
+**Il contrassegno non è in nessun registro** o è una marca mai applicata: riquadro rosso, servono sesso, razza e data di
+nascita (`gg.mm.aaaa`). Se avevi solo la specie sbagliata, cambia specie prima di confermare.
 
-**Cosa fai:** se ti allontani dalla rete, mettiti in pausa da **Campionamento › Pausa e ripresa**: altrimenti per tutta la squadra i doppi non sono controllati in diretta. La Regia può comunque metterti in pausa o escluderti se il telefono non risponde da più di 2 minuti. Per riprendere da una pausa tocca **Riprendi** in Pausa e ripresa (o attendi la riattivazione della Regia). Se invece la Regia ti ha escluso definitivamente, per rientrare devi inquadrare di nuovo il QR d'ingresso della Regia con **menu › Progetto › Entra col QR**.
-**Cosa resta:** tutti i prelievi salvati in precedenza restano conservati sul dispositivo e si sincronizzano al rientro.
+**Nessuna marca.** **Senza contrassegno**: sesso, denti, razza, e la sigla della provetta scritta anche sulla schiena
+dell'animale. In campo non si sceglie nessun capo: lo si attribuisce in ufficio. Caso per caso: [i fuori registro in
+campo](fuori-registro.md).
 
-## 12. Il lettore di microchip Bluetooth si scollega
+## 5. Si passa alla carta
 
-**Cosa fai:** controlla che sia acceso e tocca il tasto di lettura per riattivare la connessione Bluetooth. Se non si riconnette subito, non bloccare la corsia: digita a mano le ultime cifre del codice sul tastierino a schermo di Fejalog e seleziona il capo trovato.
+Se l'app è troppo lenta o non va, si continua sul **foglio dei numeri assegnati** (A3: numero ↔ contrassegno):
 
-## 13. Il pennarello non scrive o la provetta è bagnata
+- capo sul foglio: scrivi sulla provetta **il suo numero** (col cerchietto dello stabilimento, se c'è) e **spunta la riga**;
+- capo che non c'è sul foglio, o riga già spuntata (doppio): sulla provetta il **contrassegno completo**, e consegnala a parte
+  alla Regia;
+- senza marche: come in app, sesso, denti, razza sulla provetta e la sigla sulla schiena.
 
-**Cosa fai:** asciuga la plastica della provetta con carta assorbente prima di scrivere. Tieni sempre nello zaino o in tasca un secondo pennarello indelebile nero di scorta.
+Il foglio spuntato va alla Regia: lo riporta in app a fine giornata (Gestione campioni › **Presenze dalla carta**).
 
-[Tutte le anomalie e le soluzioni](../anomalie.md) · [In campo](in-campo.md) · [Domande](domande.md) · [Checklist](../checklist-veterinari.md)
+[In campo](in-campo.md) · [Prima del campo](primo-avvio.md) · [Tutte le anomalie](../anomalie.md) · [Domande](domande.md)

@@ -8,7 +8,8 @@ Ogni versione elenca ciò che è cambiato dalla precedente pubblicata, comprese 
 
 | Versione | Data | Scarica |
 |---|---|---|
-| [0.5.8](#v0-5-8) · ultima | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/schede_kit_cinque_stabilimenti.pdf) |
+| [0.5.9](#v0-5-9) · ultima | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/schede_kit_cinque_stabilimenti.pdf) |
+| [0.5.8](#v0-5-8) | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/schede_kit_cinque_stabilimenti.pdf) |
 | [0.5.7](#v0-5-7) | 15/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/schede_kit_cinque_stabilimenti.pdf) |
 | [0.5.5](#v0-5-5) | 11/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/schede_kit_cinque_stabilimenti.pdf) |
 | [0.4.0](#v0-4-0) | 05/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/schede_kit_cinque_stabilimenti.pdf) |
@@ -17,6 +18,24 @@ Ogni versione elenca ciò che è cambiato dalla precedente pubblicata, comprese 
 | [0.1.0](#v0-1-0) | 16/10/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/kit_prova_888TO999.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/schede_kit_prova_888TO999.pdf) |
 
 Una versione precedente non si installa sopra una più recente: prima salva un backup, poi disinstalla l'app (i progetti nel telefono si perdono), infine installa la versione scelta. Per installare: [Scarica](scarica.md).
+
+## Versione 0.5.9 · 22/11/2026 { #v0-5-9 }
+
+Per lavorare anche a carta: la Regia riporta in blocco sul tablet i capi spuntati sul foglio dei numeri assegnati, con l'anteprima a campionamento aperto; istruzioni per chi preleva più brevi e complete, con le impostazioni per marca di telefono.
+
+[Scarica l'app](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/fejalog.apk){ .md-button .md-button--primary }
+[Kit di prova](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/kit_prova_cinque_stabilimenti.zip){ .md-button }
+[Schede da stampare](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/schede_kit_cinque_stabilimenti.pdf){ .md-button }
+
+[Pagina della release su GitHub](https://github.com/uvesco/fejalog-sito/releases/tag/v0.5.9)
+
+### Novità
+
+- Gestione campioni › Sul tablet › «Presenze dalla carta» (solo la Regia, a campionamento chiuso): se si è prelevato a carta sul foglio dei numeri assegnati, per ogni serie si scrivono i numeri NON prelevati (es. 12, 47, 103-105) e gli altri diventano provette col loro numero, in blocco. «Elenco» corregge riga per riga; i capi già registrati in app non si toccano e si vedono a parte.
+
+### Miglioramenti
+
+- Istruzioni per chi preleva e foglio per i veterinari: le impostazioni delle varie marche di telefono (installazione, lavoro in secondo piano, Wi-Fi senza internet), i doppi, «Elimina», come si passa alla carta.
 
 ## Versione 0.5.8 · 22/11/2026 { #v0-5-8 }
 

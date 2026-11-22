@@ -12,6 +12,26 @@ per ARVET.
     resta al veterinario, che valuta la situazione complessiva. Ogni scelta si può cambiare o annullare dalla
     **Cronologia**, in fondo alla scheda.
 
+## Se si è prelevato a carta
+
+Sul tablet della Regia, nell'ordine (dopo il passo 3 il campionamento non si riapre):
+
+1. **A campionamento ancora aperto**: in Rete tutti i telefoni allineati, poi fatti uscire («Ho finito» o Esci dal
+   progetto), così le etichette sono il numero e non «125-UV». Gestione campioni › Sul tablet › **Presenze dalla carta**
+   fa già l'anteprima: confronta la carta coi capi già in app. Poi, in Campionamento come un prelievo normale, le provette
+   col **contrassegno completo** (fuori registro presi a carta), i **senza marche** e i numeri spuntati che la pagina non
+   ha (capi usciti o fuori età). Per un **doppio** prima il capo della riga col suo numero, poi il doppio con «Preleva come
+   doppio». Sulla provetta si aggiunge la scritta che dà l'app, dopo averla confrontata con quella scritta.
+2. **Chiudi il campionamento** dalla Checklist.
+3. Gestione campioni › Sul tablet › **Presenze dalla carta**: per ogni serie i numeri **non** spuntati sul foglio (es.
+   `12, 47, 103-105`); gli altri diventano provette col loro numero. «Elenco» corregge riga per riga. I capi già
+   registrati in app non si toccano e stanno a parte: se sul foglio sono spuntati, controlla che non sia lo stesso animale
+   preso due volte. Le righe rifiutate (per esempio un capo preso nel frattempo in app) restano elencate, da vedere una per
+   una.
+
+Solo dopo le Soluzioni, il Riordino e il resto della sistemazione: riportare la carta dopo sarebbe molto più lento, e le
+Soluzioni proporrebbero come assenti capi presi a carta.
+
 ## Prima di toccare le provette: analisi e logica
 
 La scheda si apre su **«1 · Analisi e logica»**, in tre parti:
