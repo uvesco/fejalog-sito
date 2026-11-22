@@ -8,7 +8,8 @@ Ogni versione elenca ciò che è cambiato dalla precedente pubblicata, comprese 
 
 | Versione | Data | Scarica |
 |---|---|---|
-| [0.5.7](#v0-5-7) · ultima | 15/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/schede_kit_cinque_stabilimenti.pdf) |
+| [0.5.8](#v0-5-8) · ultima | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/schede_kit_cinque_stabilimenti.pdf) |
+| [0.5.7](#v0-5-7) | 15/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/schede_kit_cinque_stabilimenti.pdf) |
 | [0.5.5](#v0-5-5) | 11/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/schede_kit_cinque_stabilimenti.pdf) |
 | [0.4.0](#v0-4-0) | 05/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.4.0/schede_kit_cinque_stabilimenti.pdf) |
 | [0.3.0](#v0-3-0) | 28/10/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.3.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.3.0/kit_prova_888TO999.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.3.0/schede_kit_prova_888TO999.pdf) |
@@ -16,6 +17,89 @@ Ogni versione elenca ciò che è cambiato dalla precedente pubblicata, comprese 
 | [0.1.0](#v0-1-0) | 16/10/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/kit_prova_888TO999.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/schede_kit_prova_888TO999.pdf) |
 
 Una versione precedente non si installa sopra una più recente: prima salva un backup, poi disinstalla l'app (i progetti nel telefono si perdono), infine installa la versione scelta. Per installare: [Scarica](scarica.md).
+
+## Versione 0.5.8 · 22/11/2026 { #v0-5-8 }
+
+Dopo il primo risanamento vero del 16/11: la sistemazione delle provette fuori registro si fa in quattro fasi, sul sito e direttamente sul tablet, con la cronologia che annulla ogni scelta, il lavoro che riprende in pochi secondi dopo una chiusura e l'esito per l'allevatore che si compone da solo; uno snippet unico per la BDN (verifica, uscite e ingressi per modello) e uno per i veterinari prelevatori in ARVET; in campo, doppi più chiari (ristampa dell'auricolare, avviso per il capo appena registrato, numero che torna dopo un annullo), tastierino più grande e caratteri indipendenti dal telefono; la Regia vede dove va ogni provetta e riprende il lavoro dopo l'uscita dal progetto.
+
+[Scarica l'app](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/fejalog.apk){ .md-button .md-button--primary }
+[Kit di prova](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/kit_prova_cinque_stabilimenti.zip){ .md-button }
+[Schede da stampare](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/schede_kit_cinque_stabilimenti.pdf){ .md-button }
+
+[Pagina della release su GitHub](https://github.com/uvesco/fejalog-sito/releases/tag/v0.5.8)
+
+### Novità
+
+- Gestione campioni › Sul tablet › Sistemazione: la sistemazione del sito direttamente sul tablet, senza PC (le stesse fasi, la fase D un passo alla volta, gli snippet, l'esito per l'allevatore). Le decisioni restano nella pagina e vanno nel registro con «Esporta per l'app › Invia alla Regia sul tablet»; i file si salvano nella cartella del progetto.
+- Veterinari prelevatori per ARVET: la scelta sta nel registro del progetto, uguale sul sito e sul tablet (Snippet ARVET e fine lavori); dal tablet si condivide anche lo snippet.
+- Sul sito, Snippet ARVET: «Veterinari prelevatori». Si spuntano tutti i veterinari intervenuti (già spuntati quelli entrati con l'app); lo snippet, incollato in ARVET nel nuovo campionamento dopo la Data prova, li seleziona in «Prelievo effettuato da» e dice chi non trova. Non salva niente.
+- Sul sito, scheda Carica: «Un altro progetto, o un PC usato da altri: pulisci il browser» chiude e cancella dal browser il backup aperto, o tutti i dati di Fejalog.
+- Regia: «Dove va una provetta?» cerca fra le provette fatte per la scritta sulla provetta (125, 13-PR, UV-15) o per le ultime cifre del contrassegno e dice chi l'ha presa, se è già ricevuta e il suo posto (numero, plateau e pozzetto, o i fuori registro); per un doppio anche dove sta l'altra copia. Serve quando le provette di più consegne si mescolano nel secchio o un posto si trova già occupato. C'è anche nella conferma della ricezione.
+- Regia, «Ricevi»: prima della conferma l'elenco delle provette con il posto di ognuna (il numero col plateau e il pozzetto, o i fuori registro); i doppi stanno in cima, in rosso, con il posto dell'altra copia: così si sa quale provetta va al numero e quale fra i fuori registro, anche quando un telefono che lavorava da isolato si ricollega o i backup si uniscono.
+- Se il telefono non è collegato adesso, la conferma lo dice: le provette prese dopo l'ultimo collegamento non sono ancora arrivate; vanno tenute da parte, fuori dai plateau, finché il telefono non si ricollega.
+- Sul sito: Sistemazione più veloce, posto della provetta in cima dopo ogni decisione, «Movimentazioni», numero definitivo in tabella e uno snippet solo per la BDN (verifica, uscite e ingressi per modello).
+- Il doppio che porta già il numero del capo (preso da isolato, per esempio «5-VP»): quando l'altra registrazione viene annullata, in Soluzioni compare subito fra le provette da mettere al loro posto e va al numero del suo contrassegno, con «L'ho messa lì». La scritta sulla provetta resta com'è.
+- Sul sito, l'esito del risanamento per l'allevatore si compone da solo: la marca rimasta unico campione dopo «L'altra provetta non esiste» esce dalle marche trovate su due animali, la nota per l'allevatore scritta nella scheda va in un elenco «Note del veterinario», e ciò che il registro non sa (nota per l'ufficio, animali mai registrati, capo scelto al posto di un capo uscito) si scrive in «Precisazioni per l'esito». Pagina ed Excel entrano nello zip di fine lavori.
+- Ogni posto dato dal regista a una fuori registro si può togliere o cambiare: nella vista «Secchio» (e in gestione campioni) tocca la provetta sotto «Nel plateau dei fuori registro» e scegli «Togli: torna nel secchio» o «Cambia posto». Se il posto nuovo è occupato l'app propone lo scambio, da confermare.
+- «In un altro posto…»: una fuori registro si può mettere in un pozzetto scelto, non solo nel primo libero.
+- Lo snippet di verifica in BDN cerca anche i capi che il registro dà usciti (morti, macellati, trasferiti; non smarriti e rubati): la scheda della provetta dice se oggi in BDN il capo è vivo, e dove, o morto.
+- Il regista può dare un posto alle fuori registro nel loro plateau, una alla volta, nell'ordine in cui le prende in mano: nella vista «Secchio» tocca la provetta e conferma «L'ho messa al …». Durante il campionamento o dopo, in gestione campioni; non è obbligatorio e le altre restano nel secchio.
+- Checklist del responsabile: le uscite per modello degli ultimi 7 giorni fra i preparativi.
+- Sul sito, scheda «Fuori progetto»: i campioni raccolti con un contrassegno che il progetto non conosce, in una tabella, con lo snippet per completare l'anagrafica dalla BDN.
+- Sul sito, «Cerca un capo o una provetta» in testa alla Sistemazione: dice dove si trova adesso la provetta e registra uno spostamento o un abbinamento a un altro capo.
+- Dopo un annullo il numero torna al capo anche se la consegna alla Regia è venuta dopo l'annullo (una consegna copre per intervallo anche le provette annullate).
+- Sul sito, scheda Carica: «Uscite per modello negli ultimi 7 giorni». La BDN si aggiorna fino a 7 giorni dopo il modello: quei capi non sono più proposti come assenti e il report per l'allevatore li elenca a parte.
+- Elimina una provetta registrata per errore (animale o specie sbagliati, provetta vuota): la casella «Registrata per errore» toglie il doppio dall'altra registrazione dello stesso capo.
+- La Regia può eliminare anche una provetta già consegnata o posata: il numero torna al capo, e il foglio ricorda di buttare la provetta già scritta.
+- Doppi: se il capo l'hai appena registrato tu (ultimi 5 prelievi o 10 minuti) una conferma in più, col tasto principale su «È lo stesso: non prelevare».
+- Doppi: nel foglio di «Preleva come doppio» si tocca il numero di ristampa dell'auricolare (0 = originale); per il primo animale, se si ritrova, da Ultime › Modifica.
+- Dopo un annullo il capo torna da prelevare col suo numero, se la provetta annullata non era stata consegnata; il foglio ricorda di buttare la provetta già scritta.
+- Campionamento con l'elenco dei propri prelievi e un tasto «+», a scelta in Impostazioni › Dispositivo.
+- Sul sito, «Fine lavori sul computer»: una sola scheda Sistemazione, in ordine fisso (smista, di chi è, al loro posto, in fondo, chiudi i buchi), con la cronologia e «Annulla», il salvataggio su disco a ogni azione e la ripresa dopo aver ricaricato la pagina.
+- Sul sito, «Esito del risanamento» per l'allevatore: una pagina discorsiva con gli elenchi capo per capo e l'Excel.
+
+### Miglioramenti
+
+- Sistemazione (sul tablet e sul sito): le singole decisioni e i passi di «Chiudi i buchi» sono più veloci (sul PC di prova un passo da 4 a 2,5 secondi).
+- Sistemazione (sul tablet e sul sito): il backup si apre più in fretta e, riaprendo la pagina, il lavoro riprende in pochi secondi invece di rifare tutte le azioni già fatte (sul PC dell'ASL da circa 50 a 5–8 secondi).
+- Sul sito, «Chiudi i buchi» una provetta alla volta: da dove prenderla, che numero scriverle, dove metterla e perché; «Fatto» o Invio, «Salta per ora». Più veloce, con l'avviso «sto lavorando» durante i calcoli.
+- Sul sito, con un backup aperto l'introduzione della pagina si chiude: il lavoro comincia in cima.
+- Regia: le provette prese sul tablet stanno in fondo all'elenco, come «Questo tablet», con «Ricevi le provette del tablet»: non si confondono più con quelle dei palmari.
+- Rete: «Attiva offline e salva» si chiama ora «Salva in locale (senza cloud)» e «Torna online» «Riprendi il cloud»: riguardano solo dove vanno backup e istantanee, la rete con la Regia resta.
+- Nelle conferme («Sono partito dal gregge», età diagnostica, «Ho verificato col veterinario» e simili) si spunta la casella toccando anche la scritta.
+- «Togli» su una provetta che nel frattempo non è più una fuori registro (per esempio dopo un cambio dell'età diagnostica): l'app dice che va al suo numero nella serie e lo registra solo dopo «L'ho messa al …»; non scrive più «di nuovo nel secchio» mentre le dà un posto da sola.
+- Sul sito, dopo una posa tolta sul tablet, le provette rimaste nel secchio prendono i posti dopo l'ultimo usato.
+- Il posto dato a una fuori registro si registra fuori dal thread principale e dice l'esito; in gestione campioni «Dai un posto» c'è solo per le provette ancora da decidere.
+- Sul sito la Sistemazione usa i posti dati dal tablet al posto dello smistamento e richiama le provette un tipo di problema alla volta.
+- Sul sito, nella Sistemazione, «Tutte in tabella»: le provette fuori registro in una tabella ordinabile (anche per posto) e filtrabile; una riga apre la scheda con la scelta consigliata e quelle manuali.
+- Lo snippet delle uscite per modello: in preparazione 7 giorni indietro da oggi; dopo il campionamento da 7 giorni prima della preparazione del pacchetto al giorno del campionamento.
+- Le uscite per modello valgono per lo stabilimento di partenza: un capo passato a un altro stabilimento del progetto lì resta presente.
+- Riprendendo un progetto dallo snapshot in «Crea il progetto» restano anche le uscite per modello caricate.
+- Il tablet importa dal file delle modifiche v5 anche le uscite per modello.
+- Nei doppi, accanto alla proposta, un tasto «Scambio» a un clic (sito e tablet): l'allevatore tiene la marca al secondo animale e si corregge l'etichetta dell'altra provetta.
+- I doppi: la ristampa è un indizio. La proposta segue il secondo animale prelevato, l'unico marcato in un altro colore e recuperato dall'allevatore.
+- Sul sito, in «Fine lavori sul computer» e negli altri strumenti, i tasti hanno bordo e rilievo, i campi da compilare un bordo arancione e le schede si riconoscono come schede.
+- I caratteri non seguono più le impostazioni del telefono: il tastierino resta intero; «Caratteri: Normali / Grandi» in Impostazioni › Dispositivo.
+- Tastierino più grande: via la scritta sotto, i comandi in una riga.
+- La data di nascita si suggerisce come gg.mm.aaaa: punto, trattino e barra vanno tutti bene.
+- Scelto fra più candidati un capo dell'altra specie, l'app chiede conferma («Nei registri è una pecora…»).
+- Lo snippet ARVET si ottiene sempre: se non è conforme lo dice e porta solo le righe sicure; accanto, «Svuota i numeri» per la doppia accettazione dei maschi.
+- Sul sito le pose delle provette sono molto più rapide.
+
+### Correzioni
+
+- Sistemazione sul tablet: le decisioni non ancora inviate alla Regia sparivano dalla pagina se, nel frattempo, il registro del tablet era cambiato (una ricezione, l'app riaperta). Ora restano finché non si inviano.
+- Sistemazione: lo stesso file della BDN caricato due volte (arriva da solo e poi lo si carica anche a mano) spegneva la ripresa veloce; ricaricato dopo un «Annulla», alla riapertura della pagina i suoi dati potevano sparire.
+- Sistemazione: dopo un file della BDN caricato su una sessione con azioni che non si applicano più, la ripresa veloce restava spenta fino all'azione successiva.
+- Uscito dal progetto e riaperto dai Recenti, il tablet torna al lavoro e riprende la regia se nessun altro è presente; altrimenti «Prendi la regia», anche senza rete (in Checklist e in Rete). «Riapri campionamento» ora funziona davvero, e se il registro non accetta un'azione della Regia l'app lo dice invece di dire «fatto».
+- Pagina della Regia per il PC via USB: i file delle modifiche con l'anagrafe della BDN o le uscite per modello non venivano più accettati («File non valido»).
+- Con il tablet da solo, in un progetto senza Regia, il posto dato a una fuori registro non si registrava («la situazione è cambiata»): ora si registra.
+- Un'uscita per modello con data successiva al campionamento non vale più: quel capo c'era ed è stato controllato. Lo snippet prende i 7 giorni prima del campionamento, non prima di oggi.
+- «Sposta…» dalla ricerca del sito veniva rifiutato quasi sempre: ora funziona come lo spostamento dal Plateau, con la conferma dello scambio se il numero è occupato.
+- Una provetta già consegnata non si elimina più da un palmare: la elimina la Regia.
+- Un capo riattribuito o spostato e poi annullato prima della consegna non riapre più il numero al capo di partenza.
+- Sul sito, nei doppi la ristampa è un indizio: la proposta resta di attribuire a un capo assente il secondo animale prelevato (l'unico marcato in un altro colore e recuperato), anche se è l'originale; se l'allevatore fa il contrario si attribuisce l'altra provetta.
+- Un capo registrato, annullato e poi prelevato davvero non finisce più fra i doppi.
 
 ## Versione 0.5.7 · 15/11/2026 { #v0-5-7 }
 
