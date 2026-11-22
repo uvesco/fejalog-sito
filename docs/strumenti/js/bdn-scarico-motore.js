@@ -5,7 +5,7 @@
  * Dati › Interrogazioni › Stabilimenti. La pagina «Scarica i registri dalla BDN» del sito di Fejalog antepone
  * window.__BDN_SCARICO__ = { campionare: [codici], aggiuntivi: [{codice, specie, cf}], data: 'AAAAMMGG' }.
  *
- * Per ogni allevamento (stabilimento + specie + codice fiscale dell'operatore):
+ * Per ogni allevamento (ogni riga dell'elenco della BDN: lo stesso operatore può averne più d'uno della stessa specie):
  *  - il registro storico dei capi identificati singolarmente, dall'apertura dell'allevamento a oggi, in ASCII:
  *    <stabilimento>_<specie>_<cf>_<AAAAMMGG_HHMMSS>.txt (righe da 700 caratteri, quelle che Fejalog legge);
  *  - le marche disponibili (contrassegni a magazzino), solo se ce ne sono: marche_<stabilimento>_<specie>_<cf>_<data>.txt.
@@ -37,7 +37,14 @@
   }
   function ovicaprino(specie) { var s = specieBreve(specie); return s === 'ovini' || s === 'caprini'; }
   function chiave(codice, specie, cf) { return pulisci(codice).toUpperCase() + '|' + specieBreve(specie) + '|' + pulisci(cf).toUpperCase(); }
-  function nomeRegistro(a, data) { return pulisci(a.codice).toUpperCase() + '_' + specieBreve(a.specie) + '_' + pulisci(a.cf).toUpperCase() + '_' + data + '.txt'; }
+  /* `a.suffisso` distingue due allevamenti con lo stesso stabilimento, specie e operatore (proprietari o periodi diversi): lo dà daScaricare */
+  function nomeRegistro(a, data) { return pulisci(a.codice).toUpperCase() + '_' + specieBreve(a.specie) + '_' + pulisci(a.cf).toUpperCase() + (a.suffisso || '') + '_' + data + '.txt'; }
+  /** gg/mm/aaaa → aaaammgg (vuoto se non è una data) */
+  function dataCompatta(g) { var m = pulisci(g).match(/^(\d{2})\/(\d{2})\/(\d{4})$/); return m ? m[3] + m[2] + m[1] : ''; }
+  /** L'identità di un allevamento della BDN: la sua riga nell'elenco; se manca, tutto ciò che lo distingue. */
+  function identita(a) {
+    return a.scelta ? 'riga:' + a.scelta : [chiave(a.codice, a.specie, a.cf), pulisci(a.proprietario).toUpperCase(), pulisci(a.apertura), pulisci(a.chiusura)].join('|');
+  }
   function nomeMarche(a, data) { return 'marche_' + nomeRegistro(a, data); }
   function oggiAAAAMMGG(d) {
     d = d || new Date();
@@ -91,6 +98,8 @@
         codice: campo(o, /^Codice Aziendale/).toUpperCase(),
         specie: specieBreve(campo(o, /^Specie/)),
         cf: campo(o, /Codice Fiscale Operato/).toUpperCase(),
+        // il proprietario (colonna «Codice Fiscale»): lo stesso operatore può avere più allevamenti della stessa specie
+        proprietario: campo(o, /^Codice Fiscale$/).toUpperCase(),
         apertura: campo(o, /Data Apertura/),
         chiusura: campo(o, /Data Chiusura/),
         scelta: o._scelta,
@@ -103,23 +112,53 @@
     return righe.filter(function (o) { return campo(o, /^Codice Aziendale/).toUpperCase() === codice.toUpperCase() && o._scelta; })
       .map(function (o) { return o._scelta; });
   }
-  /** Gli allevamenti da scaricare: tutti quelli degli stabilimenti da campionare, più gli aggiuntivi che esistono. */
+  /**
+   * Gli allevamenti da scaricare: tutti quelli degli stabilimenti da campionare, più gli aggiuntivi che esistono.
+   * Ogni riga dell'elenco della BDN è un allevamento a sé: lo stesso operatore può averne più d'uno della stessa specie
+   * nello stesso stabilimento (proprietari diversi, o uno chiuso e uno riaperto). Fino al 22/11 se ne teneva uno solo
+   * per stabilimento, specie e operatore, il primo dell'elenco: in uno stabilimento vero erano quelli chiusi, e gli
+   * allevamenti aperti col gregge restavano fuori senza avvisi. Un aggiuntivo si riconosce dal codice fiscale
+   * dell'operatore o del proprietario. Prima gli aperti, così il file col nome semplice è quello dell'allevamento attivo.
+   */
   function daScaricare(cfg, perStabilimento) {
     var scelti = [], visti = {}, avvisi = [];
     function aggiungi(a, motivo) {
-      var k = chiave(a.codice, a.specie, a.cf);
+      var k = identita(a);
       if (visti[k]) return;
       visti[k] = true;
       scelti.push(Object.assign({ motivo: motivo }, a));
     }
+    function apertiPrima(el) { return el.filter(function (a) { return !pulisci(a.chiusura); }).concat(el.filter(function (a) { return !!pulisci(a.chiusura); })); }
     (cfg.campionare || []).forEach(function (c) {
-      (perStabilimento[c.toUpperCase()] || []).forEach(function (a) { aggiungi(a, 'da campionare'); });
+      apertiPrima(perStabilimento[c.toUpperCase()] || []).forEach(function (a) { aggiungi(a, 'da campionare'); });
     });
     (cfg.aggiuntivi || []).forEach(function (x) {
       var elenco = perStabilimento[pulisci(x.codice).toUpperCase()] || [];
-      var trovato = elenco.filter(function (a) { return chiave(a.codice, a.specie, a.cf) === chiave(x.codice, x.specie, x.cf); });
+      var trovato = apertiPrima(elenco.filter(function (a) {
+        return chiave(a.codice, a.specie, a.cf) === chiave(x.codice, x.specie, x.cf) ||
+          (pulisci(a.proprietario) && chiave(a.codice, a.specie, a.proprietario) === chiave(x.codice, x.specie, x.cf));
+      }));
       if (!trovato.length) avvisi.push('non trovato in BDN: ' + chiave(x.codice, x.specie, x.cf).replace(/\|/g, ' · '));
       trovato.forEach(function (a) { aggiungi(a, 'aggiuntivo'); });
+    });
+    // nomi dei file mai uguali: al secondo allevamento con lo stesso stabilimento, specie e operatore si aggiunge il
+    // proprietario, poi la data d'apertura, poi un numero
+    var nomi = {};
+    scelti.forEach(function (a) {
+      var base = chiave(a.codice, a.specie, a.cf), prop = pulisci(a.proprietario).toUpperCase();
+      var prove = ['', prop && prop !== pulisci(a.cf).toUpperCase() ? '-p' + prop : null,
+        (prop && prop !== pulisci(a.cf).toUpperCase() ? '-p' + prop : '') + (dataCompatta(a.apertura) ? '-a' + dataCompatta(a.apertura) : '')];
+      var suff = null;
+      for (var i = 0; i < prove.length && suff == null; i++) if (prove[i] != null && !nomi[base + prove[i]]) suff = prove[i];
+      for (var n = 2; suff == null; n++) if (!nomi[base + '-' + n]) suff = '-' + n;
+      nomi[base + suff] = true;
+      if (suff) a.suffisso = suff;
+    });
+    var perChiave = {};
+    scelti.forEach(function (a) { var k = chiave(a.codice, a.specie, a.cf); (perChiave[k] = perChiave[k] || []).push(a); });
+    Object.keys(perChiave).forEach(function (k) {
+      if (perChiave[k].length > 1) avvisi.push(k.replace(/\|/g, ' · ') + ': ' + perChiave[k].length + ' allevamenti con lo stesso operatore (' +
+        perChiave[k].map(function (a) { return a.chiusura ? 'chiuso il ' + a.chiusura : 'aperto dal ' + a.apertura; }).join(', ') + '): scaricati tutti, in file distinti');
     });
     return { allevamenti: scelti, avvisi: avvisi };
   }
@@ -167,17 +206,27 @@
       'Stabilimenti da campionare: ' + (cfg.campionare || []).join(', '),
       'Allevamenti aggiuntivi chiesti: ' + (cfg.aggiuntivi || []).length, ''];
     esiti.forEach(function (e) {
-      r.push([e.codice, e.specie, e.cf, e.chiusura ? 'chiuso il ' + e.chiusura : 'aperto', e.motivo,
-        'registro: ' + (e.righeRegistro != null ? e.righeRegistro + ' righe' : e.nota ? e.nota : 'NON SCARICATO'),
+      r.push([e.codice, e.specie, e.cf, e.proprietario && e.proprietario !== e.cf ? 'proprietario ' + e.proprietario : '',
+        e.chiusura ? 'chiuso il ' + e.chiusura : 'aperto' + (e.apertura ? ' dal ' + e.apertura : ''), e.motivo,
+        'registro: ' + (e.righeRegistro === 0 ? 'vuoto (0 righe, nessun file)' : e.righeRegistro != null ? e.righeRegistro + ' righe' : e.nota ? e.nota : 'NON SCARICATO'),
         'marche: ' + (e.marche == null ? 'NON SCARICATE' : e.marche === 0 ? 'nessuna a magazzino' : e.marche),
         e.errore ? 'ERRORE: ' + e.errore : ''].filter(Boolean).join(' · '));
     });
+    // uno stabilimento da campionare senza un solo capo nei registri è quasi sempre un errore: lo si dice in testa agli avvisi
+    var gravi = [];
+    (cfg.campionare || []).forEach(function (c) {
+      var suoi = esiti.filter(function (e) { return pulisci(e.codice).toUpperCase() === pulisci(c).toUpperCase(); });
+      if (!suoi.some(function (e) { return e.righeRegistro > 0; })) gravi.push('ATTENZIONE: per lo stabilimento da campionare ' + c + ' non è arrivato nessun capo (' +
+        (suoi.length ? suoi.length + ' allevamenti, tutti vuoti o non scaricati' : 'nessun allevamento ovicaprino trovato') + '): controlla il codice in BDN prima di creare il progetto');
+      else if (!suoi.some(function (e) { return !e.chiusura && e.righeRegistro > 0; })) gravi.push('ATTENZIONE: per lo stabilimento da campionare ' + c + ' i registri scaricati sono solo di allevamenti CHIUSI');
+    });
+    avvisi = gravi.concat(avvisi);
     if (avvisi.length) { r.push('', 'Avvisi:'); avvisi.forEach(function (a) { r.push('- ' + a); }); }
     return r.join('\r\n') + '\r\n';
   }
 
   var puro = {
-    fineStorico: fineStorico, specieBreve: specieBreve, ovicaprino: ovicaprino, chiave: chiave, nomeRegistro: nomeRegistro, nomeMarche: nomeMarche, oggiAAAAMMGG: oggiAAAAMMGG, timbroAdesso: timbroAdesso,
+    fineStorico: fineStorico, specieBreve: specieBreve, ovicaprino: ovicaprino, chiave: chiave, identita: identita, dataCompatta: dataCompatta, nomeRegistro: nomeRegistro, nomeMarche: nomeMarche, oggiAAAAMMGG: oggiAAAAMMGG, timbroAdesso: timbroAdesso,
     percorsoTmp: percorsoTmp, sceltaRiga: sceltaRiga, allevamentiDa: allevamentiDa, stabilimentiDa: stabilimentiDa,
     daScaricare: daScaricare, stabilimentiDaInterrogare: stabilimentiDaInterrogare, zip: zip, crc32: crc32, latin1: latin1,
     riepilogo: riepilogo,
@@ -399,10 +448,10 @@
     fase('Fase 2 di 2 · scarico registri storici e marche di ' + d.allevamenti.length + ' allevamenti');
     stato.fatti = 0; stato.totale = d.allevamenti.length; stato.unita = 'allevamenti';
     return d.allevamenti.reduce(function (p, a, i) {
-      var e = { codice: a.codice, specie: a.specie, cf: a.cf, chiusura: a.chiusura, motivo: a.motivo };
+      var e = { codice: a.codice, specie: a.specie, cf: a.cf, proprietario: a.proprietario, apertura: a.apertura, chiusura: a.chiusura, motivo: a.motivo };
       esiti.push(e);
       return p.then(function () {
-        msg(a.codice + ' ' + a.specie + (a.chiusura ? ' (chiuso)' : '') + ': apro la scheda dell\'allevamento…');
+        msg(a.codice + ' ' + a.specie + (a.chiusura ? ' (chiuso il ' + a.chiusura + ')' : ' (aperto)') + ': apro la scheda dell\'allevamento…');
         return carica(B + 'int_allevamenti.pl', imposta(a.formLista.map(function (x) { return x.slice(); }), 'P_RECORD_ID', a.scelta));
       }).then(function () {
         var scheda = riquadro.contentDocument.forms.formPrincipale;
@@ -413,7 +462,14 @@
           if (m.righe) { voci.push({ nome: nomeMarche(a, cfg.timbro), dati: latin1(m.testo) }); arrivato(nomeMarche(a, cfg.timbro), m.righe); }
         }).catch(function (err) { e.errore = 'marche: ' + err.message; })
           .then(function () { msg(a.codice + ' ' + a.specie + ': registro storico (può volerci qualche secondo)…'); return storico(); })
-          .then(function (r) { if (r.righe == null) { e.nota = r.nota; return; } e.righeRegistro = r.righe; voci.push({ nome: nomeRegistro(a, cfg.timbro), dati: latin1(r.testo) }); arrivato(nomeRegistro(a, cfg.timbro), r.righe); });
+          .then(function (r) {
+            if (r.righe == null) { e.nota = r.nota; return; }
+            e.righeRegistro = r.righe;
+            // un registro senza righe non diventa un file vuoto (in «Crea il progetto» risultava «non riconosciuto»): lo dice il riepilogo
+            if (r.righe > 0) voci.push({ nome: nomeRegistro(a, cfg.timbro), dati: latin1(r.testo) });
+            if (r.righe > 0) arrivato(nomeRegistro(a, cfg.timbro), r.righe);
+            else msg(a.codice + ' ' + a.specie + (a.chiusura ? ' (chiuso il ' + a.chiusura + ')' : '') + ': registro vuoto, nessun file');
+          });
       }).catch(function (err) { e.errore = (e.errore ? e.errore + '; ' : '') + err.message; if (/sessione/.test(err.message)) throw err; })
         .then(function () { stato.fatti = i + 1; ridisegna(); return attesa(PAUSA); });
     }, Promise.resolve());

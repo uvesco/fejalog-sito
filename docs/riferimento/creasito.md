@@ -9,7 +9,7 @@
 
 ## I passi, in ordine
 
-- 0. Riprendi un progetto, se ne hai già preparato uno: il progetto salvato al passo 9 riporta tutto, file della BDN compresi; lo snapshot tutto tranne i file della BDN, da ricaricare al passo 1. Un backup col campionamento già avviato non si riprende.
+- 0. Riprendi un progetto, se ne hai già preparato uno: lo snapshot scaricato dalla pagina e il progetto salvato al passo 9 riportano tutto, file della BDN compresi (solo gli snapshot di prima del 22/11/2026 no: i file si ricaricano al passo 1). Un backup col campionamento già avviato non si riprende.
 - 1. File della BDN: registri di stalla e contrassegni disponibili di pecore e capre, anche più file per stabilimento e allevamento, anche in uno zip. Fejalog li riconosce dal contenuto; per i contrassegni senza specie scegli Pecore o Capre.
 - 2. Elenco dei veterinari (CSV id;cognome;nome;codice\_fiscale): entra nel pacchetto, mai nel registro.
 - 3. Capi ricercati, se servono (CSV codice;nota;azione;segno): la Regia ne aggiunge anche durante il lavoro.

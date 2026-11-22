@@ -148,6 +148,8 @@
         aggiornaMateriale();
         el('stato').textContent='Numerazione caricata: '+dati.serie.length+' serie.';
         avvisi(el('avvisi'),dati.avvisi);
+        // i 2/33 già caricati valgono anche per la numerazione nuova: si rifanno, dopo le altre stampe
+        if(ultimi233)setTimeout(function(){if(v===versione)elabora233();},0);
         var a3=Stampe.foglioA3(dati);
         if(a3.ok){scarica(el('a3'),'provette_contrassegni_A3.html',a3.html);var p=document.createElement('p');p.textContent=a3.fogli+' fogli A3 orizzontali · '+a3.colonne+' colonne. Apri il file scaricato per stamparlo o salvarlo come PDF.';el('a3').appendChild(p);}
         else el('a3').textContent=a3.errore;
@@ -157,12 +159,13 @@
        UTF-8, e se non lo è windows-1252. */
     function testoDa(u){var t=new TextDecoder('utf-8').decode(u);return t.indexOf('\ufffd')>=0?new TextDecoder('windows-1252').decode(u):t;}
     function byte(file){return new Promise(function(resolve,reject){var r=new FileReader();r.onerror=function(){reject(new Error('File non leggibile: '+file.name));};r.onload=function(){resolve(new Uint8Array(r.result));};r.readAsArrayBuffer(file);});}
-    function voci233(file){
-      if(!/\.zip$/i.test(file.name))return leggi(file).then(function(t){return [{nome:file.name,testo:t}];});
-      return byte(file).then(function(u){return window.FejZip.leggi(u);}).then(function(vv){
+    /* Un file caricato (nome e byte): così i 2/33 si possono tenere e ridare, dopo F5 o quando il progetto cambia. */
+    function voci233(f){
+      if(!/\.zip$/i.test(f.nome))return Promise.resolve([{nome:f.nome,testo:testoDa(f.dati)}]);
+      return Promise.resolve(f.dati).then(function(u){return window.FejZip.leggi(u);}).then(function(vv){
         var nomi=Object.keys(vv).filter(function(n){return /\.html?$/i.test(n)&&n.indexOf('__MACOSX')<0;}).sort();
         if(!nomi.length)throw new Error('Nello zip non ci sono file .htm del 2/33.');
-        return nomi.map(function(n){return {nome:file.name+' › '+n.replace(/^.*\//,''),testo:testoDa(vv[n])};});
+        return nomi.map(function(n){return {nome:f.nome+' › '+n.replace(/^.*\//,''),testo:testoDa(vv[n])};});
       });
     }
     function scaricaZip(nodo,nome,voci){
@@ -170,12 +173,21 @@
       b.onclick=function(){var u=URL.createObjectURL(new Blob([window.FejZip.scrivi(voci)],{type:'application/zip'})),a=document.createElement('a');a.href=u;a.download=nome;a.click();setTimeout(function(){URL.revokeObjectURL(u);},30000);};
       nodo.appendChild(b);
     }
+    /* Gli ultimi 2/33 caricati (nome e byte): si rifanno da soli quando arriva una numerazione nuova. */
+    var ultimi233=null;
     el('htm').onchange=function(){
-      var files=Array.prototype.slice.call(this.files), v=++versione, dd=dati;
+      var files=Array.prototype.slice.call(this.files);
+      if(!files.length||!dati)return;
+      Promise.all(files.map(function(file){return byte(file).then(function(u){return {nome:file.name,dati:u};});})).then(function(ff){
+        ultimi233=ff;if(opz.su233)opz.su233(ff);elabora233();
+      },function(e){el('stato').textContent=e.message;});
+    };
+    function elabora233(){
+      var files=ultimi233||[], v=++versione, dd=dati;
       el('esiti').textContent='';
-      if(!dd)return;
+      if(!dd||!files.length)return;
       el('stato').textContent='Lettura dei 2/33…';
-      Promise.all(files.map(function(file){return voci233(file).then(function(vv){return vv.map(function(x){return {nome:x.nome,r:Stampe.precompila(x.testo,dd)};});},function(e){return [{nome:file.name,r:{ok:false,errore:e.message,avvisi:[]}}];});})).then(function(gruppi){
+      Promise.all(files.map(function(file){return voci233(file).then(function(vv){return vv.map(function(x){return {nome:x.nome,r:Stampe.precompila(x.testo,dd)};});},function(e){return [{nome:file.nome,r:{ok:false,errore:e.message,avvisi:[]}}];});})).then(function(gruppi){
         var rr=[].concat.apply([],gruppi);
         if(v!==versione)return;
         var ok=0, conti=Object.create(null);
@@ -195,12 +207,14 @@
           el('esiti').insertBefore(cima,el('esiti').firstChild);}
         el('stato').textContent=ok+' file riconosciuti · '+(rr.length-ok)+' rifiutati.';
       });
-    };
+    }
     if(opz.progetto){var pc=el('csv').closest('p');if(pc)pc.hidden=true;el('stato').textContent='Crea prima il progetto nella scheda «Crea il progetto»: la numerazione arriva da lì.';}
     return {
       /** Le reti del progetto creato nella pagina (con le password scritte là): sostituiscono quelle arrivate prima dal progetto. */
       impostaReti: function(lista){unisciReti(lista||[],'progetto');},
       /** La numerazione dallo snapshot creato nella pagina (byte dello zip fejalog-backup), al posto del CSV o del backup scelto a mano. */
+      /** I 2/33 caricati prima ([{nome, dati: Uint8Array}], .htm o zip): si precompilano appena c'è la numerazione. */
+      carica233: function(ff){ultimi233=ff&&ff.length?ff:null;if(dati)elabora233();},
       caricaBackup: function(byteZip){
         var v=++versione;
         dati=null;el('htm').disabled=true;el('htm').value='';el('esiti').textContent='';el('a3').textContent='';el('avvisi').textContent='';el('verso').disabled=false;el('verso-nota').textContent='';aggiornaMateriale();

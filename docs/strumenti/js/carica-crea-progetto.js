@@ -5,7 +5,7 @@
   if (!root) return;
   var base = document.currentScript.src.replace(/[^/]*$/, '');
   var elenco = ['vendor/fejalog-shared.js', 'dominio.js', 'vendor/xlsx.js', 'zip.js', 'tabella-file.js', 'vendor/qrcode.js', 'vendor/stampe.js', 'registro.js', 'progetto.js', 'reti.js',
-    'prima-del-campo.js', 'bdn-file.js', 'crea-progetto.js'];
+    'prima-del-campo.js', 'bdn-file.js', 'memoria.js', 'crea-progetto.js'];
   (function avanti(i) {
     if (i >= elenco.length) {
       try { window.FejCreaProgetto.monta(root, { dominio: window.FejDominio, zip: window.FejZip }); }

@@ -33,6 +33,11 @@ function eZip(u8) { return u8.length > 4 && u8[0] === 0x50 && u8[1] === 0x4b && 
    pagina riporta tutto; uno snapshot (o un backup del tablet ancora in configurazione) tutto tranne i file della BDN, che
    non contiene. Un backup col campionamento avviato non si riprende: un progetto in corso si cambia solo sul tablet. */
 var FORMATO_SALVATO = 'fejalog-progetto-sito';
+/* Dentro lo zip dello snapshot, accanto al backup: il progetto salvato (file della BDN e scelte), per ripartire dallo zip
+   senza ricaricare niente (utente, 2026-11-22). Il tablet e gli altri lettori del backup ignorano le voci che non conoscono. */
+var VOCE_PROGETTO = 'sito/progetto_sito.json';
+/* Il lavoro in corso tenuto nel browser (IndexedDB): F5, un link sbagliato o la scheda chiusa non fanno perdere niente. */
+var CHIAVE_MEMORIA = 'crea-progetto';
 function campiCsv(v) { v = String(v == null ? '' : v); return /[;"\r\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
 /** La chiave di una persona come la scrivono le sigle nel registro (SigleVeterinari.normalizzaChiavePersona). */
 function chiavePersona(cf) {
@@ -88,6 +93,7 @@ function confrontaNumerazione(prima, ora) {
 function monta(radice, deps) {
   var d = radice.ownerDocument, w = deps.finestra || d.defaultView;
   var Dominio = deps.dominio, Zip = deps.zip, Progetto = deps.progetto || w.FejProgetto;
+  var Memoria = deps.memoria || (w.FejMemoria ? w.FejMemoria.crea(w.indexedDB || null) : { ok: false, metti: function () { return Promise.resolve(false); }, prendi: function () { return Promise.resolve(null); }, togli: function () { return Promise.resolve(false); } });
   var adesso = deps.adesso ? deps.adesso() : new Date();
   var stato = {
     file: [], specieFile: {}, veterinariCsv: '', veterinariNome: '', ricercatiCsv: '', ricercatiNome: '', usciteModello: [], anagrafeBdn: [],
@@ -135,6 +141,7 @@ function monta(radice, deps) {
       r.readAsArrayBuffer(file);
     });
   }
+  function utf8(u8) { var T = w.TextDecoder || (typeof TextDecoder !== 'undefined' ? TextDecoder : null); if (!T) throw new Error('TextDecoder assente'); return new T('utf-8').decode(u8); }
   function leggiTesto(file) {
     return new Promise(function (resolve, reject) {
       var r = new w.FileReader();
@@ -212,7 +219,10 @@ function monta(radice, deps) {
     if (e && e.file && e.file.length) {
       var ul = h('ul');
       e.file.forEach(function (f) {
-        var li = h('li', null, f.nome + ' · ' + (f.tipo === 'registro' ? 'registro' : f.tipo === 'marche' ? 'contrassegni' : 'non riconosciuto') +
+        // un file senza contenuto non è «non riconosciuto»: è il registro vuoto di un allevamento senza capi (22/11)
+        var vuoto = stato.file.some(function (g) { return g.nome === f.nome && !String(g.contenuto || '').trim(); });
+        var li = h('li', null, f.nome + ' · ' + (f.tipo === 'registro' ? 'registro' : f.tipo === 'marche' ? 'contrassegni' :
+          vuoto ? 'file vuoto (0 righe: la BDN non ha capi per questo allevamento; se è quello del gregge, rifai lo scarico)' : 'non riconosciuto') +
           (f.specie ? ' · ' + (f.specie === 'entrambe' ? 'pecore e capre' : f.specie) : '') + (f.codici.length ? ' · ' + f.codici.join(', ') : '') + (f.tipo !== 'sconosciuto' ? ' · ' + f.capi + ' righe' : '') + ' ');
         if (f.tipo === 'marche' && !f.specie) {
           var sp = scelta('Specie', [['', 'Da scegliere'], ['entrambe', 'Ambedue'], ['pecore', 'Pecore'], ['capre', 'Capre']], stato.specieFile[f.nome] || '');
@@ -271,8 +281,17 @@ function monta(radice, deps) {
             if (!P.verifica.ok) throw new Error('Lo zip non è un backup integro di Fejalog: ' + (P.verifica.errori || []).join('; '));
             var r = sceltaDaBackup(P);
             if (!r.ok) throw new Error(r.errore);
-            riprendi(r.scelte, r.riferimento, f.name);
-            stato.messaggio = 'Ripreso da ' + f.name + ': veterinari, ricercati, stabilimenti, regole, sigle, priorità, reti e uscite per modello. Lo snapshot non contiene i file della BDN: ricaricali al passo 1 (con gli stessi file e le stesse uscite la numerazione resta identica; l’anteprima lo controlla).';
+            return Zip.leggi(u8).then(function (voci) { return voci[VOCE_PROGETTO] ? utf8(voci[VOCE_PROGETTO]) : ''; }, function () { return ''; }).then(function (t) {
+              var o = null;
+              try { o = t ? JSON.parse(t.replace(/^\uFEFF/, '')) : null; } catch (e) { o = null; }
+              // il progetto che viaggia nello zip vale solo se è proprio quello di questo snapshot (stessa impronta)
+              if (o && o.formato === FORMATO_SALVATO && o.versione === 1 && o.scelte && o.riferimento && o.riferimento.impronta && o.riferimento.impronta === r.riferimento.impronta) {
+                riprendi(o.scelte, Object.assign({}, o.riferimento, { numerazione_csv: o.riferimento.numerazione_csv || r.riferimento.numerazione_csv }), f.name);
+                stato.messaggio = 'Ripreso da ' + f.name + ', con i file della BDN che erano nello snapshot: cambia ciò che serve e scarica di nuovo lo snapshot.';
+                return;
+              }
+              riprendiSenzaFile(r, f.name);
+            });
           });
         }
         return leggiTesto(f).then(function (t) {
@@ -286,9 +305,13 @@ function monta(radice, deps) {
       }).then(null, function (e) { stato.messaggio = e && e.message ? e.message : String(e); })
         .then(function () { stato.occupato = false; input.value = ''; aggiornaMessaggio(); });
     });
+    function riprendiSenzaFile(r, nome) {
+      riprendi(r.scelte, r.riferimento, nome);
+      stato.messaggio = 'Ripreso da ' + nome + ': veterinari, ricercati, stabilimenti, regole, sigle, priorità, reti e uscite per modello. Questo snapshot è di prima del 22/11 e non contiene i file della BDN: ricaricali al passo 1 (con gli stessi file e le stesse uscite la numerazione resta identica; l’anteprima lo controlla).';
+    }
     c.appendChild(h('p', null, h('label', null, 'Progetto salvato (JSON) o snapshot per la Regia (zip) ', input)));
     if (stato.ripresoDa) c.appendChild(h('p', null, 'Ripreso da ' + stato.ripresoDa + '. ', bottone('Togli e ricomincia da capo', ricomincia)));
-    c.appendChild(h('p', { class: 'fej-tenue' }, 'Per cambiare un progetto già preparato (reti, veterinari, scelte, file della BDN): il file salvato al passo 9 riporta tutto, file della BDN compresi; lo snapshot riporta tutto tranne i file della BDN, da ricaricare al passo 1. Un backup del tablet col campionamento già avviato non si riprende qui.'));
+    c.appendChild(h('p', { class: 'fej-tenue' }, 'Per cambiare un progetto già preparato (reti, veterinari, scelte, file della BDN): lo snapshot scaricato da questa pagina (zip) e il file salvato al passo 9 (JSON) riportano tutto, file della BDN compresi. Uno snapshot scaricato prima del 22/11 riporta tutto tranne i file della BDN, da ricaricare al passo 1. Un backup del tablet col campionamento già avviato non si riprende qui.'));
   }
 
   function renderElenco() {
@@ -577,17 +600,21 @@ function monta(radice, deps) {
       aggiorna();
     }
     stato.riferimento = { impronta: e.impronta };
+    salvaInMemoria(); // dopo un F5 la pagina deve sapere quale snapshot è già uscito, o un progetto cambiato terrebbe il codice di prima
     return e;
   }
-  function salvaProgetto() {
-    var e = stato.esito && stato.esito.ok ? fissaIdentita() : null;
-    var nome = e ? e.nome_file.replace(/^fejalog_backup_/, 'fejalog_progetto_').replace(/_sito_R\.zip$/, '.json') : 'fejalog_progetto_bozza_' + stato.data + '.json';
-    var o = { formato: FORMATO_SALVATO, versione: 1, salvato_il: isoSenzaMillisecondi(deps.adesso ? deps.adesso() : new Date()),
+  /** Il progetto da riprendere al passo 0: file della BDN, scelte e l'identità dello snapshot [e] (se c'è). */
+  function progettoSalvato(e) {
+    return { formato: FORMATO_SALVATO, versione: 1, salvato_il: isoSenzaMillisecondi(deps.adesso ? deps.adesso() : new Date()),
       nota: 'Da riaprire in «Crea il progetto» sul sito di Fejalog. Contiene i file della BDN, l’elenco dei veterinari coi codici fiscali e le password delle reti: tienilo per te.',
       scelte: scelteCorrenti(),
       riferimento: { id: stato.id, creato_il: stato.creatoIl, impronta: e ? e.impronta : (stato.riferimento ? stato.riferimento.impronta : ''),
         numerazione_csv: e ? e.numerazione_csv : stato.numerazioneRipresa } };
-    scarica(nome, JSON.stringify(o), 'application/json');
+  }
+  function salvaProgetto() {
+    var e = stato.esito && stato.esito.ok ? fissaIdentita() : null;
+    var nome = e ? e.nome_file.replace(/^fejalog_backup_/, 'fejalog_progetto_').replace(/_sito_R\.zip$/, '.json') : 'fejalog_progetto_bozza_' + stato.data + '.json';
+    scarica(nome, JSON.stringify(progettoSalvato(e)), 'application/json');
     stato.messaggio = 'Progetto salvato: ' + nome + '. Per cambiarlo, riprendilo al passo 0.'; aggiornaMessaggio();
   }
 
@@ -598,6 +625,8 @@ function monta(radice, deps) {
       var x = fissaIdentita();
       if (!x) return;
       var files = Object.keys(x.files).sort().map(function (n) { return { name: n, data: x.files[n] }; });
+      // con lo snapshot viaggiano i file della BDN e le scelte: ripartendo dallo zip (passo 0) torna tutto
+      files.push({ name: VOCE_PROGETTO, data: JSON.stringify(progettoSalvato(x)) });
       scarica(x.nome_file, Zip.scrivi(files), 'application/zip');
       stato.messaggio = 'Snapshot scaricato: ' + x.nome_file + '. Aprilo sul tablet della Regia con Progetto › Apri.'; aggiornaMessaggio();
     }, { disabled: !ok, class: 'md-button md-button--primary', id: 'crea-scarica' }), ok ? ' ' + e.nome_file : ''));
@@ -618,7 +647,32 @@ function monta(radice, deps) {
 
   var msg = h('div', { role: 'status', class: 'fej-msg', 'aria-live': 'polite' });
   function aggiornaMessaggio() { msg.textContent = stato.messaggio || (stato.occupato ? 'Operazione in corso…' : ''); }
+  /* ---- il lavoro in corso nel browser ---- */
+  var memoriaPronta = false, attesaMemoria = null, file233 = null;
+  function lavoroIn(sc) {
+    return !!((sc.file || []).length || sc.veterinari_csv || sc.ricercati_csv || (sc.uscite_modello || []).length || (sc.anagrafe_bdn || []).length ||
+      (sc.reti || []).some(function (r) { return String(r.ssid || '').trim(); }));
+  }
+  function scriviMemoria() {
+    if (!memoriaPronta) return Promise.resolve(false);
+    var sc = scelteCorrenti();
+    if (!lavoroIn(sc) && !file233) return Memoria.togli(CHIAVE_MEMORIA);
+    var ora = isoLocale(new Date());
+    return Memoria.metti(CHIAVE_MEMORIA, { versione: 1, salvato_il: ora, scelte: sc, scheda: schedaAttiva, file233: file233, ripreso_da: stato.ripresoDa,
+      riferimento: { id: stato.id, creato_il: stato.creatoIl, impronta: stato.riferimento ? stato.riferimento.impronta : '', numerazione_csv: stato.numerazioneRipresa } })
+      .then(function (ok) {
+        if (notaMemoria) notaMemoria.textContent = ok ? 'Lavoro tenuto in questo browser (ultimo salvataggio alle ' + ora.slice(11, 16) + '): ricaricando la pagina riparte da qui. «Ricomincia da capo» lo toglie.' : '';
+        return ok;
+      });
+  }
+  function isoLocale(g) { var p = function (n) { return (n < 10 ? '0' : '') + n; }; return g.getFullYear() + '-' + p(g.getMonth() + 1) + '-' + p(g.getDate()) + 'T' + p(g.getHours()) + ':' + p(g.getMinutes()) + ':' + p(g.getSeconds()); }
+  function salvaInMemoria() {
+    if (!memoriaPronta || !Memoria.ok) return;
+    if (attesaMemoria) w.clearTimeout(attesaMemoria);
+    attesaMemoria = w.setTimeout(function () { attesaMemoria = null; scriviMemoria(); }, 600);
+  }
   function aggiorna() {
+    salvaInMemoria();
     aggiornaMessaggio();
     var e = stato.esito || {};
     var codici = JSON.stringify((e.codici || []).map(function (c) { return c.codice; })) + '|' + JSON.stringify(stato.stabilimenti) + '|' + stato.principale;
@@ -656,8 +710,10 @@ function monta(radice, deps) {
 
   svuota(radice);
   var pannelloCrea = h('div', { id: 'crea-scheda-progetto' }), pannelloStampe = h('div', { id: 'crea-scheda-stampe', hidden: 'hidden' });
-  var tastoCrea, tastoStampe;
-  function scheda(quale) {
+  var tastoCrea, tastoStampe, schedaAttiva = 'crea';
+  function scheda(quale, inCima) {
+    schedaAttiva = quale; salvaInMemoria();
+    if (inCima && radice.scrollIntoView) radice.scrollIntoView();
     pannelloCrea.hidden = quale !== 'crea'; pannelloStampe.hidden = quale !== 'stampe';
     tastoCrea.className = 'md-button' + (quale === 'crea' ? ' md-button--primary' : ''); tastoCrea.setAttribute('aria-selected', String(quale === 'crea'));
     tastoStampe.className = 'md-button' + (quale === 'stampe' ? ' md-button--primary' : ''); tastoStampe.setAttribute('aria-selected', String(quale === 'stampe'));
@@ -670,7 +726,9 @@ function monta(radice, deps) {
     var contenitore = h('div', { id: 'fejalog-prima-incorporata' });
     pannelloStampe.appendChild(h('p', { class: 'fej-tenue' }, 'Le stampe usano il progetto creato nella scheda 1: chiave della numerazione, foglio A3, materiale, QR Wi-Fi e i 2/33 precompilati (carica i .htm o lo zip dello snippet per ARVET).'));
     pannelloStampe.appendChild(contenitore);
-    apiStampe = Stampe.monta(contenitore, { progetto: true });
+    apiStampe = Stampe.monta(contenitore, { progetto: true, su233: function (ff) { file233 = ff; salvaInMemoria(); } });
+    // in fondo alle stampe si torna al progetto senza cercare la scheda in cima (utente, 2026-11-22)
+    pannelloStampe.appendChild(h('p', { class: 'fej-fondo' }, bottone('‹ Torna al progetto (scheda 1)', function () { scheda('crea', true); }, { class: 'md-button', id: 'crea-torna-progetto' })));
     scheda('crea');
   } else radice.appendChild(pannelloCrea);
   pannelloCrea.appendChild(msg);
@@ -679,9 +737,11 @@ function monta(radice, deps) {
       etaMesi: 6, lettere: '', problematiciInSequenza: true, verso: 'alto_basso', sigle: {}, priorita: [], reti: [], regole: {}, cerchiettoPrincipale: null, id: uuid(w),
       creatoIl: isoSenzaMillisecondi(deps.adesso ? deps.adesso() : new Date()), messaggio: '', esito: null,
       riferimento: null, numerazioneRipresa: '', ripresoDa: '', avvisoIdentita: '' });
+    file233 = null; if (apiStampe && apiStampe.carica233) apiStampe.carica233(null);
     codiciVisti = veterinariVisti = ''; calcola(); aggiorna(); renderFile(); renderElenco(); renderRicercati(); renderUscite(); renderRiprendi();
+    Memoria.togli(CHIAVE_MEMORIA); notaMemoria.textContent = '';
   }
-  pannelloCrea.appendChild(h('p', null, bottone('Ricomincia da capo', ricomincia)));
+  pannelloCrea.appendChild(h('p', null, bottone('Ricomincia da capo', ricomincia, { id: 'crea-ricomincia' })));
   pannelloCrea.appendChild(sezione('riprendi', '0 · Riprendi un progetto (facoltativo)'));
   pannelloCrea.appendChild(sezione('file', '1 · File della BDN'));
   pannelloCrea.appendChild(sezione('elenco', '2 · Elenco dei veterinari'));
@@ -693,8 +753,29 @@ function monta(radice, deps) {
   pannelloCrea.appendChild(sezione('anteprima', '7 · Anteprima della numerazione'));
   pannelloCrea.appendChild(sezione('snapshot', '8 · Snapshot per la Regia'));
   pannelloCrea.appendChild(sezione('salva', '9 · Salva il progetto per cambiarlo dopo'));
+  /* In fondo alla scheda il tasto per le stampe: il «successivo» del sito portava a un'altra pagina e i dati caricati si
+     perdevano (utente, 2026-11-22); da questa pagina quel collegamento è tolto. */
+  if (Stampe) pannelloCrea.appendChild(h('p', { class: 'fej-fondo' }, bottone('Vai alle stampe (scheda 2) ›', function () { scheda('stampe', true); }, { class: 'md-button md-button--primary', id: 'crea-vai-stampe' }),
+    h('span', { class: 'fej-tenue' }, ' Foglio A3, materiale, QR Wi-Fi e 2/33 precompilati, col progetto di questa scheda.')));
+  var notaMemoria = h('p', { class: 'fej-tenue', id: 'crea-memoria' });
+  pannelloCrea.appendChild(notaMemoria);
   calcola(); aggiorna(); renderFile(); renderElenco(); renderRicercati(); renderUscite(); renderRiprendi();
-  return { stato: stato, ricalcola: function () { ricalcola(true); } };
+  /* Il lavoro di prima, se c'è: riparte da solo dov'era. Finché non si è guardato in memoria non si salva niente, per
+     non coprire il lavoro di prima con la pagina vuota. */
+  var pronta = Memoria.prendi(CHIAVE_MEMORIA).then(function (m) {
+    if (m && m.versione === 1 && m.scelte && lavoroIn(m.scelte)) {
+      riprendi(m.scelte, m.riferimento || {}, m.ripreso_da || '');
+      renderUscite();
+      if (m.file233 && m.file233.length && apiStampe && apiStampe.carica233) { file233 = m.file233; apiStampe.carica233(file233); }
+      if (m.scheda === 'stampe' && Stampe) scheda('stampe');
+      stato.messaggio = 'Riprendo il lavoro di prima' + (m.salvato_il ? ' (salvato alle ' + String(m.salvato_il).slice(11, 16) + ' del ' + String(m.salvato_il).slice(8, 10) + '/' + String(m.salvato_il).slice(5, 7) + ')' : '') +
+        ': file della BDN, scelte' + (file233 ? ' e 2/33 caricati' : '') + ' sono quelli di prima. Per partire da zero: «Ricomincia da capo».';
+      aggiornaMessaggio();
+    }
+  }).then(null, function () { /* memoria illeggibile: si parte da zero */ }).then(function () { memoriaPronta = true; });
+  // senza memoria del browser resta l'avviso prima di lasciare la pagina coi dati caricati
+  if (!Memoria.ok && w.addEventListener) w.addEventListener('beforeunload', function (ev) { if (lavoroIn(scelteCorrenti())) { ev.preventDefault(); ev.returnValue = ''; } });
+  return { stato: stato, ricalcola: function () { ricalcola(true); }, pronta: pronta, scheda: scheda, salvaOra: function () { return scriviMemoria(); } };
 }
 
 return { monta: monta, latin1: latin1, eZip: eZip, sceltaDaBackup: sceltaDaBackup, confrontaNumerazione: confrontaNumerazione, chiavePersona: chiavePersona, FORMATO_SALVATO: FORMATO_SALVATO };

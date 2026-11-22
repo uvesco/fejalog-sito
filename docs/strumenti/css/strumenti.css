@@ -99,6 +99,11 @@ body.fej-regia-locale button:focus-visible, body.fej-regia-locale input:focus-vi
 .fej-banco-decisa strong { color: #1b8a3a; }
 .fej-primario { font-weight: 700; padding: .4rem 1rem; }
 
+/* «Crea il progetto»: le due schede restano in vista scorrendo, i tasti in fondo portano all'altra scheda (2026-11-22) */
+.fej-schede { position: sticky; top: 2.4rem; z-index: 3; padding: .35rem 0; margin: .3rem 0; background: var(--md-default-bg-color, #fff); border-bottom: 1px solid var(--md-default-fg-color--lighter, #bbb); }
+.fej-fondo { margin-top: 1.2rem; padding-top: .8rem; border-top: 2px solid var(--md-default-fg-color--lighter, #bbb); }
+@media print { .fej-schede, .fej-fondo { display: none !important; } }
+
 /* Sistemazione (2026-11-17): barra sempre in vista, fasi, tasto principale e campi da compilare ben evidenti */
 .fej-barra { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; gap: .5rem .8rem; align-items: center; padding: .4rem .6rem; margin: .3rem 0; background: var(--md-default-bg-color, #fff); border: 1px solid var(--md-default-fg-color--lighter, #bbb); border-radius: .4rem; font-size: .85em; }
 .fej-barra[hidden] { display: none; }

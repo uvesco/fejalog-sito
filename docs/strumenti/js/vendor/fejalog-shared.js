@@ -106,8 +106,8 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForInterface(Entry, 'Entry');
   initMetadataForInterface(KtMap, 'Map');
   initMetadataForInterface(MutableIterable, 'MutableIterable');
-  initMetadataForInterface(KtMutableSet, 'MutableSet', VOID, VOID, [KtSet, MutableIterable, Collection]);
-  initMetadataForInterface(KtMutableList, 'MutableList', VOID, VOID, [KtList, MutableIterable, Collection]);
+  initMetadataForInterface(KtMutableSet, 'MutableSet', VOID, VOID, [KtSet, Collection, MutableIterable]);
+  initMetadataForInterface(KtMutableList, 'MutableList', VOID, VOID, [KtList, Collection, MutableIterable]);
   initMetadataForInterface(KtMutableMap, 'MutableMap', VOID, VOID, [KtMap]);
   initMetadataForCompanion(Companion_0);
   initMetadataForClass(Enum, 'Enum', VOID, VOID, [Comparable]);
@@ -127,7 +127,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForInterface(Comparator, 'Comparator');
   initMetadataForObject(Unit, 'Unit');
   initMetadataForClass(AbstractCollection, 'AbstractCollection', VOID, VOID, [Collection]);
-  initMetadataForClass(AbstractMutableCollection, 'AbstractMutableCollection', VOID, AbstractCollection, [MutableIterable, Collection]);
+  initMetadataForClass(AbstractMutableCollection, 'AbstractMutableCollection', VOID, AbstractCollection, [Collection, MutableIterable]);
   initMetadataForClass(IteratorImpl, 'IteratorImpl');
   initMetadataForClass(ListIteratorImpl, 'ListIteratorImpl', VOID, IteratorImpl);
   initMetadataForClass(AbstractMutableList, 'AbstractMutableList', VOID, AbstractMutableCollection, [KtMutableList]);
@@ -140,7 +140,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
   initMetadataForClass(ArrayList, 'ArrayList', ArrayList_init_$Create$, AbstractMutableList, [KtMutableList, RandomAccess]);
   initMetadataForClass(HashMap, 'HashMap', HashMap_init_$Create$, AbstractMutableMap, [KtMutableMap]);
   initMetadataForClass(HashMapKeys, 'HashMapKeys', VOID, AbstractMutableSet, [KtMutableSet]);
-  initMetadataForClass(HashMapValues, 'HashMapValues', VOID, AbstractMutableCollection, [MutableIterable, Collection]);
+  initMetadataForClass(HashMapValues, 'HashMapValues', VOID, AbstractMutableCollection, [Collection, MutableIterable]);
   initMetadataForClass(HashMapEntrySetBase, 'HashMapEntrySetBase', VOID, AbstractMutableSet, [KtMutableSet]);
   initMetadataForClass(HashMapEntrySet, 'HashMapEntrySet', VOID, HashMapEntrySetBase);
   initMetadataForClass(HashMapKeysDefault$iterator$1);
@@ -85911,7 +85911,36 @@ if (typeof String.prototype.startsWith === 'undefined') {
       return Unit_instance;
     };
   }
-  function NumerazioneStampe$prepara$lambda($attuali, $p, $mesi) {
+  function NumerazioneStampe$prepara$lambda$lambda_0($p, $specie, $s, $perModello) {
+    return function ($this$putJsonArray) {
+      // Inline function 'kotlin.collections.filter' call
+      var tmp0 = $p.specieDati_1.get_h9fx0k_k$($specie).usciti_1;
+      // Inline function 'kotlin.collections.filterTo' call
+      var destination = ArrayList_init_$Create$();
+      var _iterator__ex2g4s = tmp0.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+        var element = _iterator__ex2g4s.next_20eer_k$();
+        if (element.codiceStabilimento_1 === $s.get_stabilimento_353hxm_k$()) {
+          destination.add_utx5q5_k$(element);
+        }
+      }
+      // Inline function 'kotlin.collections.forEach' call
+      var _iterator__ex2g4s_0 = destination.iterator_jk1svi_k$();
+      while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+        var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
+        // Inline function 'kotlinx.serialization.json.buildJsonObject' call
+        var builder = new JsonObjectBuilder();
+        put(builder, 'contrassegno', element_0.contrassegno_1);
+        put(builder, 'data', element_0.dataUscita_1);
+        put(builder, 'motivo', element_0.motivoUscita_1);
+        put_0(builder, 'modello', $perModello.contains_aljjnj_k$(UsciteModello_getInstance().chiave_qpmsto_k$(element_0.codiceStabilimento_1, element_0.contrassegno_1)));
+        var tmp$ret$5 = builder.build_bkh6qh_k$();
+        $this$putJsonArray.add_i0x14v_k$(tmp$ret$5);
+      }
+      return Unit_instance;
+    };
+  }
+  function NumerazioneStampe$prepara$lambda($attuali, $p, $mesi, $perModello) {
     return function ($this$putJsonArray) {
       // Inline function 'kotlin.collections.forEach' call
       var _iterator__ex2g4s = $attuali.get_serie_iygor7_k$().iterator_jk1svi_k$();
@@ -85925,6 +85954,7 @@ if (typeof String.prototype.startsWith === 'undefined') {
         put(builder, 'lettera', element.prefissoStabilimento_1);
         put_0(builder, 'registroCompleto', true);
         putJsonArray(builder, 'capi', NumerazioneStampe$prepara$lambda$lambda($p, specie, element, $mesi));
+        putJsonArray(builder, 'usciti', NumerazioneStampe$prepara$lambda$lambda_0($p, specie, element, $perModello));
         var tmp$ret$2 = builder.build_bkh6qh_k$();
         $this$putJsonArray.add_i0x14v_k$(tmp$ret$2);
       }
@@ -86173,9 +86203,40 @@ if (typeof String.prototype.startsWith === 'undefined') {
     var tmp0_elvis_lhs = attuali.impostazioni_1.etaDiagnosticaMesi_1;
     var tmp1_elvis_lhs = tmp0_elvis_lhs == null ? p.config_1.etaDiagnosticaMesi_1 : tmp0_elvis_lhs;
     var mesi = tmp1_elvis_lhs == null ? 0 : tmp1_elvis_lhs;
+    // Inline function 'kotlin.collections.filter' call
+    var tmp0 = attuali.stato_1.get_inVigore_yifpuk_k$();
+    // Inline function 'kotlin.collections.filterTo' call
+    var destination = ArrayList_init_$Create$();
+    var _iterator__ex2g4s = tmp0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s.hasNext_bitz1p_k$()) {
+      var element = _iterator__ex2g4s.next_20eer_k$();
+      if (element.usciteRecenti_1) {
+        destination.add_utx5q5_k$(element);
+      }
+    }
+    // Inline function 'kotlin.collections.flatMap' call
+    // Inline function 'kotlin.collections.flatMapTo' call
+    var destination_0 = ArrayList_init_$Create$();
+    var _iterator__ex2g4s_0 = destination.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_0.hasNext_bitz1p_k$()) {
+      var element_0 = _iterator__ex2g4s_0.next_20eer_k$();
+      // Inline function 'kotlin.collections.orEmpty' call
+      var tmp0_elvis_lhs_0 = element_0.righe_1;
+      var list = tmp0_elvis_lhs_0 == null ? emptyList() : tmp0_elvis_lhs_0;
+      addAll(destination_0, list);
+    }
+    // Inline function 'kotlin.collections.mapTo' call
+    var destination_1 = HashSet_init_$Create$();
+    var _iterator__ex2g4s_1 = destination_0.iterator_jk1svi_k$();
+    while (_iterator__ex2g4s_1.hasNext_bitz1p_k$()) {
+      var item = _iterator__ex2g4s_1.next_20eer_k$();
+      var tmp$ret$8 = UsciteModello_getInstance().chiave_qpmsto_k$(item.codiceStabilimento_1, item.contrassegno_1);
+      destination_1.add_utx5q5_k$(tmp$ret$8);
+    }
+    var perModello = destination_1;
     // Inline function 'kotlinx.serialization.json.buildJsonObject' call
     var builder = new JsonObjectBuilder();
-    putJsonArray(builder, 'serie', NumerazioneStampe$prepara$lambda(attuali, p, mesi));
+    putJsonArray(builder, 'serie', NumerazioneStampe$prepara$lambda(attuali, p, mesi, perModello));
     builder.put_mrde5n_k$('avvisi', new JsonArray(emptyList()));
     return builder.build_bkh6qh_k$();
   };

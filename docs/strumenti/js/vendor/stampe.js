@@ -3,7 +3,7 @@
  *   di ARVET; ritorna {ok, avvisi, righe, errore?} (9 celle: N., Provetta, Contrassegno, Razza, Sesso, Nascita,
  *   Proprietario, Detentore, Genotipo). Gli indici servono a cambiare solo le celle.
  * precompila(html, dati): {ok, stabilimento, specie, html, avvisi, errore?}.
- * foglioA3(dati): {ok, html, avvisi, fogli, colonne} (8 colonne × 52 righe).
+ * foglioA3(dati): {ok, html, avvisi, fogli, colonne} (10 colonne × 60 righe).
  * daCsv(csv): dati da numerazione_chiave.csv UTF-8, separatore ;, anche quotato.
  * eseguiJson(stringa): ponte WebView {azione:'233'|'a3', html?, dati} → JSON.
  * dati = {serie:[{stabilimento, specie:'pecore'|'capre', lettera:'',
@@ -11,6 +11,9 @@
  *   avvisi:[]}. I capi comprendono TUTTI i presenti BDN; solo quelli in età hanno
  *   numero/etichetta. Non si ricalcolano numeri in JS. Nel CSV ci sono solo i numerati:
  *   le assenze si segnalano come non verificabili, senza dichiararle assenti dalla BDN.
+ *   Facoltativo per serie: usciti:[{contrassegno, data, motivo, modello:true|false}], gli usciti dello stabilimento
+ *   (modello = uscita per modello non ancora scaricata dal registro): il 2/33 dice perché la Provetta resta vuota.
+ * impagina(html): il 2/33 pronto per la stampa (tabella dei capi unica con intestazione ripetuta, margini di 8 mm).
  * Le uscite si salvano in UTF-8: si aggiorna solo l’eventuale dichiarazione di codifica.
  * Un formato diverso viene rifiutato. Non si aggiungono righe se le bianche non bastano:
  *   il file è rifiutato con l'elenco dei capi che non vi entrerebbero.
@@ -22,6 +25,11 @@
 }(this, function (QR) {
   'use strict';
   var GRIGIO = '<style>tr.maschio td { background-color: #c8c8c8; -webkit-print-color-adjust: exact; print-color-adjust: exact; }</style>';
+  // Stampa del 2/33 fuori da ARVET (utente, 2026-11-22): i fogli di stile di ARVET non ci sono più, le sue tabelle da
+  // 40 righe cadevano a metà pagina e i bordi uscivano dai margini. Margini veri, intestazione ripetuta, righe intere.
+  var STAMPA = '<style id="fej-stampa-233">@page { size: A4 portrait !important; margin: 8mm !important; } table.caccia { width: 100% !important; } ' +
+    'table.caccia thead { display: table-header-group; } table.caccia tr { break-inside: avoid; page-break-inside: avoid; } ' +
+    '@media print { table.caccia td { padding-top: 2px !important; padding-bottom: 2px !important; } }</style>';
   function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
   // L'etichetta intera, come sta sulla provetta: col cerchietto dello stabilimento (Ⓧ125). Serve al foglio A3, dove
   // gli stabilimenti stanno uno dopo l'altro (utente, 2026-11-12: «le provette degli stabilimenti secondari devono avere
@@ -120,6 +128,43 @@
     });
     return h;
   }
+  var TAB_CAPI = /<table\b[^>]*\bclass\s*=\s*["'][^"']*\bcaccia\b[^"']*["'][^>]*>/gi;
+  var TESTA_CAPI = /^(\s*<tbody\b[^>]*>)?(\s*<tr\b[^>]*>\s*<th\b[\s\S]*?<\/tr\s*>(?:\s*<tr\b[^>]*>\s*<\/tr\s*>)*)/i;
+  var FRA_TABELLE = /^\s*(?:<\/tbody\s*>\s*)?<\/table\s*>(?:\s|<br\b[^>]*>|&nbsp;|<!--[\s\S]*?-->)*$/i;
+  /**
+   * Il 2/33 pronto per la stampa: le tabelle dei capi di ARVET (una ogni 40 righe, comprese le righe bianche) diventano
+   * una tabella sola con l'intestazione in <thead>, che il browser ripete in cima a ogni pagina; in testa lo stile di
+   * stampa. Stesse righe, stesso ordine, stessa colonna N. Se la struttura non è quella attesa, o se dopo l'unione le
+   * righe lette non sono le stesse, le tabelle restano com'erano (mai un file rotto). Rifatta, non cambia niente.
+   */
+  function impagina(html) {
+    var h = html;
+    try {
+      var prima = leggiInterno(html), aperture = [], m;
+      TAB_CAPI.lastIndex = 0;
+      while ((m = TAB_CAPI.exec(html))) aperture.push({da: m.index, a: m.index + m[0].length});
+      for (var k = aperture.length - 1; k >= 1; k--) {
+        var fra = h.slice(aperture[k-1].a, aperture[k].da);
+        if (/<table\b/i.test(fra)) continue; // in mezzo c'è un'altra tabella: non sono consecutive
+        var fine = fra.search(/<\/tr\s*>(?![\s\S]*<\/tr\s*>)/i);
+        if (fine < 0) continue;
+        fine = aperture[k-1].a + fine + fra.slice(fine).match(/^<\/tr\s*>/i)[0].length;
+        var testa = TESTA_CAPI.exec(h.slice(aperture[k].a));
+        if (!testa || !FRA_TABELLE.test(h.slice(fine, aperture[k].da))) continue;
+        h = h.slice(0, fine) + h.slice(aperture[k].a + testa[0].length);
+      }
+      if (aperture.length) {
+        var dopoPrima = h.slice(aperture[0].a), t1 = /^\s*<thead\b/i.test(dopoPrima) ? null : TESTA_CAPI.exec(dopoPrima);
+        if (t1) h = h.slice(0, aperture[0].a) + '<thead>' + t1[2] + '</thead>' + (t1[1] || '') + h.slice(aperture[0].a + t1[0].length);
+      }
+      var dopo = leggiInterno(h);
+      if (dopo.righe.length !== prima.righe.length) throw new Error('righe diverse');
+      for (var i = 0; i < dopo.righe.length; i++) if (dopo.righe[i].originale !== prima.righe[i].originale) throw new Error('riga diversa');
+    } catch (e) { h = html; }
+    if (h.indexOf('id="fej-stampa-233"') < 0 && /<\/head\s*>/i.test(h)) h = h.replace(/<\/head\s*>/i, STAMPA + '\n</head>');
+    return h;
+  }
+  function gma(d) { var x = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(d || '')); return x ? x[3] + '/' + x[2] + '/' + x[1] : String(d || ''); }
   function precompila(html, dati) {
     var avvisi = (dati && dati.avvisi || []).slice(), p;
     try {
@@ -128,12 +173,31 @@
       if (!s) throw new Error('Stabilimento o specie non presenti nel progetto: ' + p.stabilimento + ' · ' + p.specie + '.');
       var indice = Object.create(null), presenti = Object.create(null), vuote = [], modifiche = [];
       s.capi.forEach(function(c){indice[chiave(c.contrassegno)] = c;});
+      // gli usciti dello stabilimento (dal backup): per dire perché la Provetta resta vuota
+      var usciti = Object.create(null), conta = {senza:0, modello:0, usciti:0, assenti:0}, perCapo = [];
+      (s.usciti || []).forEach(function(u){usciti[chiave(u.contrassegno)] = u;});
       p.righe.forEach(function (r) {
         if (!r.contrassegno) { vuote.push(r); return; }
         var k = chiave(r.contrassegno), c = indice[k]; presenti[k] = true;
-        if (!c) avvisi.push(s.registroCompleto === false ? r.contrassegno + ': senza numero nella chiave CSV; verifica nel registro BDN.' : r.contrassegno + ': assente dal registro BDN caricato; Provetta vuota.');
+        var u = !c && usciti[k];
+        if (!c && s.registroCompleto === false) perCapo.push(r.contrassegno + ': senza numero nella chiave CSV; verifica nel registro BDN.');
+        else if (u && u.modello) { conta.modello++; perCapo.push(r.contrassegno + ': uscito con un modello' + (u.data ? ' il ' + gma(u.data) : '') + ' (non ancora scaricato dal registro di stalla); Provetta vuota.'); }
+        else if (u) { conta.usciti++; perCapo.push(r.contrassegno + ': uscito nel registro BDN' + (u.data ? ' il ' + gma(u.data) : '') + (u.motivo ? ' (motivo ' + u.motivo + ')' : '') + '; Provetta vuota.'); }
+        else if (!c) { conta.assenti++; perCapo.push(r.contrassegno + ': assente dal registro BDN caricato; Provetta vuota.'); }
+        else if (c.numero == null) conta.senza++;
         modifiche.push({r:r, h:cambia(r, {1:c && c.numero != null ? '<b style="font-size: 16px;">'+esc(etStampa(c))+'</b>' : '&nbsp;'}, p.specie === 'pecore' && r.sesso === 'M')});
       });
+      // una riga di riepilogo prima dei capi: i fuori età si contano, senza una riga ciascuno
+      // solo nel 2/33 pre-campo (il dominio dà gli usciti): in quello finale i capi senza numero sono i non prelevati
+      if (s.registroCompleto !== false && Array.isArray(s.usciti) && conta.senza + conta.modello + conta.usciti + conta.assenti) {
+        var parti = [];
+        if (conta.senza) parti.push(conta.senza + ' fuori età (presenti, senza numero)');
+        if (conta.modello) parti.push(conta.modello + ' usciti con un modello');
+        if (conta.usciti) parti.push(conta.usciti + ' usciti nel registro BDN');
+        if (conta.assenti) parti.push(conta.assenti + ' non nel registro BDN caricato');
+        avvisi.push('Capi del 2/33 con la Provetta vuota: ' + (conta.senza + conta.modello + conta.usciti + conta.assenti) + ' (' + parti.join(', ') + ').');
+      }
+      avvisi = avvisi.concat(perCapo);
       var mancanti = numerati(s).filter(function(c){return !presenti[chiave(c.contrassegno)];});
       mancanti.forEach(function(c){avvisi.push(c.contrassegno + ': assente dal 2/33; aggiunto nelle righe bianche con provetta ' + etStampa(c) + '.');});
       if (mancanti.length > vuote.length) {
@@ -151,9 +215,10 @@
       html = html.replace(/<meta\b[^>]*>/gi, function(tag) {
         return tag.replace(/(\bcharset\s*=\s*["']?)[a-z0-9_-]+/i, '$1UTF-8');
       });
-      return {ok:true,stabilimento:p.stabilimento,specie:p.specie,html:html,avvisi:avvisi};
+      return {ok:true,stabilimento:p.stabilimento,specie:p.specie,html:impagina(html),avvisi:avvisi};
     } catch(e) { return {ok:false,stabilimento:p && p.stabilimento,specie:p && p.specie,html:null,avvisi:avvisi,errore:e.message}; }
   }
+  var COLONNE_A3 = 10, RIGHE_A3 = 60;
   function foglioA3(dati) {
     var avvisi = (dati && dati.avvisi || []).slice();
     try {
@@ -162,10 +227,10 @@
       ss.forEach(function(s){
         var nn=numerati(s); if(!nn.length) return;
         var titolo=s.stabilimento+(s.lettera ? ' ('+s.lettera+')' : '')+' · '+(s.specie==='pecore'?'OVINI':'CAPRINI')+' · '+nn.length;
-        if(cur.length>=51) chiudi(); cur.push('<tr class="tit"><td colspan="2">'+esc(titolo)+'</td></tr>');
+        // 10 colonne da 60 righe per foglio (utente, 2026-11-22: più contrassegni per foglio, niente «segue»)
+        if(cur.length>=RIGHE_A3-1) chiudi(); cur.push('<tr class="tit"><td colspan="2">'+esc(titolo)+'</td></tr>');
         nn.forEach(function(c){
-          if(cur.length>=52) chiudi();
-          if(!cur.length) cur.push('<tr class="tit"><td colspan="2">'+esc(titolo)+' (segue)</td></tr>');
+          if(cur.length>=RIGHE_A3) chiudi();
           cur.push('<tr'+(s.specie==='pecore' && c.sesso==='M'?' class="maschio"':'')+'><td class="p">'+esc(etIntera(c))+'</td><td class="c">'+esc(c.contrassegno)+'</td></tr>');
         });
       });
@@ -176,13 +241,13 @@
           (s.capi && s.capi.some(function(c) { return c.etichetta && /[Ⓐ-Ⓩ]/.test(c.etichetta); }));
       });
       var legendaCerchietto = haCerchietto ? ' · il cerchietto identifica lo stabilimento' : '';
-      var fogli=Math.ceil(colonne.length/8), pagine=[];
-      for(var k=0;k<fogli;k++) pagine.push('<div class="pagina"><div class="testa"><span><b>Provette e contrassegni</b> · ovini: maschi in grigio'+legendaCerchietto+'</span><span>pagina '+(k+1)+' di '+fogli+'</span></div><div class="colonne">'+colonne.slice(k*8,k*8+8).map(function(c){return '<table class="col"><thead><tr><th>Provetta</th><th>Contrassegno</th></tr></thead><tbody>'+c.join('')+'</tbody></table>';}).join('')+'</div></div>');
+      var fogli=Math.ceil(colonne.length/COLONNE_A3), pagine=[];
+      for(var k=0;k<fogli;k++) pagine.push('<div class="pagina"><div class="testa"><span><b>Provette e contrassegni</b> · ovini: maschi in grigio'+legendaCerchietto+'</span><span>pagina '+(k+1)+' di '+fogli+'</span></div><div class="colonne">'+colonne.slice(k*COLONNE_A3,k*COLONNE_A3+COLONNE_A3).map(function(c){return '<table class="col"><thead><tr><th>Provetta</th><th>Contrassegno</th></tr></thead><tbody>'+c.join('')+'</tbody></table>';}).join('')+'</div></div>');
       var css='@page{size:A3 landscape;margin:8mm}body{font-family:Verdana,Arial,sans-serif;margin:0;color:#222}'+
         '.pagina{break-after:page}.pagina:last-child{break-after:auto}.testa{display:flex;justify-content:space-between;font-size:10pt;margin-bottom:2mm}'+
-        '.colonne{display:flex;gap:3mm;align-items:flex-start}table.col{border-collapse:collapse;width:47mm;font-size:9pt}'+
-        'table.col th{background:#b5cfd2;border:1px solid #999;padding:.5mm 1mm;font-size:8pt}table.col td{border:1px solid #999;padding:.3mm 1mm;height:4.2mm;white-space:nowrap}'+
-        'td.p{font-weight:bold;text-align:right;width:12mm}td.c{font-family:"DejaVu Sans Mono",monospace}tr.tit td{background:#eee;font-weight:bold;font-size:7.5pt}'+
+        '.colonne{display:flex;gap:1.5mm;align-items:flex-start}table.col{border-collapse:collapse;font-size:8.5pt;line-height:1}'+
+        'table.col th{background:#b5cfd2;border:1px solid #999;padding:.3mm .5mm;font-size:7pt}table.col td{border:1px solid #999;padding:0 .6mm;height:4.1mm;line-height:1;white-space:nowrap}'+
+        'td.p{font-weight:bold;text-align:right}td.c{font-family:"DejaVu Sans Mono",monospace}tr.tit td{background:#eee;font-weight:bold;font-size:6.5pt;white-space:normal;max-width:36mm}'+
         'tr.maschio td{background-color:#c8c8c8;-webkit-print-color-adjust:exact;print-color-adjust:exact}';
       return {ok:true,html:'<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><title>Provette e contrassegni</title><style>'+css+'</style></head><body>'+pagine.join('')+'</body></html>',avvisi:avvisi,fogli:fogli,colonne:colonne.length};
     } catch(e){return {ok:false,html:null,avvisi:avvisi,errore:e.message};}
@@ -341,6 +406,6 @@
         i.azione==='tavolo'?schemaTavolo(i.materiale,i.verso):{ok:false,avvisi:[],errore:'Azione non riconosciuta.'});
     }catch(e){return JSON.stringify(fallimento(e));}
   }
-  return {leggi:leggi,precompila:precompila,foglioA3:foglioA3,daCsv:daCsv,eseguiJson:eseguiJson,
+  return {leggi:leggi,precompila:precompila,impagina:impagina,foglioA3:foglioA3,daCsv:daCsv,eseguiJson:eseguiJson,
     foglioRiempimento:foglioRiempimento,stringaWifi:stringaWifi,qrWifi:qrWifi,foglioWifi:foglioWifi,schemaTavolo:schemaTavolo};
 }));
