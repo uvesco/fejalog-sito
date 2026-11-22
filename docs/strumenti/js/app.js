@@ -14,6 +14,20 @@ var S = { P: null, stato: null, ap: null, esito: null, motoreArvet: '', scheda: 
   dueTrentatreFinali: [], backupRiconciliatoZip: null, resocontoRiconciliazione: null };
 function compattaAttuale() { return impostazioneAttuale('chiudi_buchi'); }
 function riordinoIniziato() { return impostazioneAttuale('riordino_iniziato'); }
+/* «riordino_iniziato» dice che la GESTIONE è cominciata: lo diventa anche con una registrazione tardiva (quindi dopo ogni
+   «Presenze dalla carta»), una modifica o un annullo a campionamento chiuso. «Chiudi i buchi» invece si può scrivere finché
+   non c'è uno SPOSTAMENTO del Riordino: è la regola del dominio (ImportaModifiche, ImpostazioniProgetto). Fino al 22/11 la
+   Sistemazione guardava la gestione: dopo una tardiva non attivava più la chiusura dei buchi e la fase D li lasciava aperti. */
+var TIPI_SPOSTAMENTO = { PROVETTA_SPOSTATA: 1, SISTEMAZIONE_SPOSTAMENTO: 1, SISTEMAZIONE_SCAMBIO: 1, SISTEMAZIONE_SCAMBIO_ANNULLATO: 1 };
+function spostamentiIniziati() {
+  var P = S.P, az = [];
+  if (!P) return false;
+  if (P._spostamentiNelBackup == null) Object.defineProperty(P, '_spostamentiNelBackup', { enumerable: false, writable: true, configurable: true,
+    value: (P.eventi || []).some(function (e) { return TIPI_SPOSTAMENTO[e.tipo] === 1; }) });
+  if (P._spostamentiNelBackup) return true;
+  try { az = S.banco ? S.banco.azioni() : []; } catch (e) { az = []; }
+  return az.some(function (a) { return ['riordino', 'spostamento', 'scambio', 'spunta', 'annullo_scambio'].indexOf(a.tipo) >= 0; });
+}
 /* Dal risultato completo se è aggiornato, altrimenti dalle impostazioni lette col backup e dalle azioni applicate: così la
    Sistemazione non rifà il risultato (secondi sul PC dell'ASL) per sapere due impostazioni. */
 function impostazioneAttuale(k) {
@@ -1624,7 +1638,7 @@ function inviaPassoVeloce(r) {
 function schedaRiordino() {
   var d = h('div');
   d.appendChild(h('p', null, 'Ogni riga ha un invio singolo. La selezione serve solo per inviare in gruppo alle destinazioni suggerite; lo stato fatta viene dalle azioni applicate.'));
-  var bloccata = riordinoIniziato();
+  var bloccata = spostamentiIniziati();
   d.appendChild(h('p', null, h('label', null, h('input', { type: 'checkbox', checked: compattaAttuale(), disabled: bloccata || occupatoPc, onchange: function (ev) {
     azione('chiudi_buchi', { valore: ev.target.checked });
   } }), ' Chiudi i buchi' + (bloccata ? ': il Riordino è cominciato.' : ': si sceglie prima degli invii.'))));
@@ -3349,8 +3363,12 @@ function schedaSistemazione() {
   var d = h('div', { class: 'fej-sistemazione', id: 'fej-sistemazione' }), st;
   // i buchi si chiudono sempre: si scrive una volta, all'inizio, prima di ogni spostamento. Il risultato completo non si rifà
   // a ogni azione: la scheda legge solo la sessione (coda, scheda della provetta, guida dei buchi)
-  if (!compattaAttuale() && !riordinoIniziato() && !occupatoPc)
+  if (!compattaAttuale() && !spostamentiIniziati() && !occupatoPc)
     applicaSullaSessione({ id: Stato.uuid(), tipo: 'chiudi_buchi', ts: new Date().toISOString(), valore: true });
+  // mai in silenzio: se la chiusura non è attiva (spostamenti cominciati senza, sul tablet o con le schede vecchie) lo si dice
+  if (S.banco && !compattaAttuale()) d.appendChild(h('p', { class: 'fej-errore', id: 'fej-buchi-non-chiusi' },
+    'Attenzione: la chiusura dei buchi non è attiva' + (spostamentiIniziati() ? ', perché gli spostamenti sono cominciati senza' : occupatoPc ? ' (il tablet sta applicando le modifiche: riprova fra poco)' : '') +
+    '. La fase D non li chiude: i numeri rimasti vuoti vanno chiusi a mano («Sposta…» dalla ricerca) prima degli snippet.'));
   if (S.banco) d.appendChild(riquadroInterroga());
   try { st = statoSistemazione(); } catch (e) { d.appendChild(h('p', { class: 'fej-errore' }, 'Sistemazione non disponibile: ' + e.message)); return d; }
   var buchi = null;

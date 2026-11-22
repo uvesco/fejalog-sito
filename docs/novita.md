@@ -8,7 +8,8 @@ Ogni versione elenca ciò che è cambiato dalla precedente pubblicata, comprese 
 
 | Versione | Data | Scarica |
 |---|---|---|
-| [0.5.9](#v0-5-9) · ultima | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/schede_kit_cinque_stabilimenti.pdf) |
+| [0.5.10](#v0-5-10) · ultima | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.10/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.10/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.10/schede_kit_cinque_stabilimenti.pdf) |
+| [0.5.9](#v0-5-9) | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/schede_kit_cinque_stabilimenti.pdf) |
 | [0.5.8](#v0-5-8) | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/schede_kit_cinque_stabilimenti.pdf) |
 | [0.5.7](#v0-5-7) | 15/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/schede_kit_cinque_stabilimenti.pdf) |
 | [0.5.5](#v0-5-5) | 11/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.5/schede_kit_cinque_stabilimenti.pdf) |
@@ -18,6 +19,32 @@ Ogni versione elenca ciò che è cambiato dalla precedente pubblicata, comprese 
 | [0.1.0](#v0-1-0) | 16/10/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/kit_prova_888TO999.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/schede_kit_prova_888TO999.pdf) |
 
 Una versione precedente non si installa sopra una più recente: prima salva un backup, poi disinstalla l'app (i progetti nel telefono si perdono), infine installa la versione scelta. Per installare: [Scarica](scarica.md).
+
+## Versione 0.5.10 · 22/11/2026 { #v0-5-10 }
+
+La carta si riporta anche durante il campionamento; in Sistemazione i buchi si chiudono anche dopo aver riportato la carta e il doppio attribuito a un capo assente va in ARVET da solo; meno lavoro per la rete quando i telefoni sono tanti. Tablet e telefoni vanno aggiornati tutti.
+
+[Scarica l'app](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.10/fejalog.apk){ .md-button .md-button--primary }
+[Kit di prova](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.10/kit_prova_cinque_stabilimenti.zip){ .md-button }
+[Schede da stampare](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.10/schede_kit_cinque_stabilimenti.pdf){ .md-button }
+
+[Pagina della release su GitHub](https://github.com/uvesco/fejalog-sito/releases/tag/v0.5.10)
+
+### Novità
+
+- Campionamento › «Presenze dalla carta» (solo la Regia, a campionamento aperto): per ogni serie si scrivono i numeri PRESI A CARTA (es. 1-200, 350) e, fra questi, quelli non spuntati; ogni capo diventa un prelievo normale col numero del foglio, una riga alla volta al passo della rete, e i telefoni lo vedono subito come già fatto. Gli altri capi restano da prelevare. Se un telefono non risponde il riporto si ferma senza scrivere niente «da isolato» e si riprende dopo. Si può riportare più volte, un foglio alla volta.
+
+### Miglioramenti
+
+- Presenze dalla carta a campionamento chiuso: si può riportare un foglio alla volta, scrivendo i numeri di quel foglio in «Numeri presi a carta» (vuoto = tutta la serie).
+- Rete con molti telefoni: il tablet prepara ogni messaggio una volta sola e i telefoni ricalcolano più in fretta gli eventi arrivati fuori ordine.
+- Avanzamento e classifica: le provette riportate dalla carta contano fra i capi fatti e stanno a parte («Dalla carta»), non fra i prelievi di chi le riporta.
+
+### Correzioni
+
+- Sistemazione: dopo una registrazione tardiva, e quindi dopo aver riportato la carta, la chiusura dei buchi non si attivava e la fase «Chiudi i buchi» li lasciava aperti. Ora si attiva; se non può, perché gli spostamenti sono cominciati senza, la pagina lo scrive in rosso.
+- Il «Preleva come doppio» attribuito a un capo assente va in ARVET da solo, al numero di quel capo: prima finiva fra le provette da inserire a mano e il numero restava un buco.
+- Presenze dalla carta: due tocchi di fila non fanno partire due riporti; l'avviso «carta già riportata» resta anche dopo le modifiche importate dal sito.
 
 ## Versione 0.5.9 · 22/11/2026 { #v0-5-9 }
 

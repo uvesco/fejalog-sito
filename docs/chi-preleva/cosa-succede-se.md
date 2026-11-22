@@ -77,6 +77,7 @@ Se l'app è troppo lenta o non va, si continua sul **foglio dei numeri assegnati
   alla Regia;
 - senza marche: come in app, sesso, denti, razza sulla provetta e la sigla sulla schiena.
 
-Il foglio spuntato va alla Regia: lo riporta in app a fine giornata (Gestione campioni › **Presenze dalla carta**).
+Il foglio spuntato va alla Regia, che lo riporta in app con **Presenze dalla carta**: durante il campionamento, un foglio
+pieno alla volta (così i telefoni vedono quei capi come già fatti), o a fine giornata dopo la chiusura.
 
 [In campo](in-campo.md) · [Prima del campo](primo-avvio.md) · [Tutte le anomalie](../anomalie.md) · [Domande](domande.md)

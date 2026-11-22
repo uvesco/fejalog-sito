@@ -14,23 +14,37 @@ per ARVET.
 
 ## Se si è prelevato a carta
 
-Sul tablet della Regia, nell'ordine (dopo il passo 3 il campionamento non si riapre):
+Chi preleva a carta scrive sulla provetta il **numero del foglio** dei numeri assegnati e **spunta la riga**. Il foglio lo
+riporta in app la Regia, sul tablet, con **Presenze dalla carta**: si può fare **durante il campionamento** (anche più volte,
+un foglio pieno alla volta) e **dopo la chiusura**. Nei due casi cambia che cosa si scrive e che cosa diventa ogni riga.
 
-1. **A campionamento ancora aperto**: in Rete tutti i telefoni allineati, poi fatti uscire («Ho finito» o Esci dal
-   progetto), così le etichette sono il numero e non «125-UV». Gestione campioni › Sul tablet › **Presenze dalla carta**
-   fa già l'anteprima: confronta la carta coi capi già in app. Poi, in Campionamento come un prelievo normale, le provette
-   col **contrassegno completo** (fuori registro presi a carta), i **senza marche** e i numeri spuntati che la pagina non
-   ha (capi usciti o fuori età). Per un **doppio** prima il capo della riga col suo numero, poi il doppio con «Preleva come
-   doppio». Sulla provetta si aggiunge la scritta che dà l'app, dopo averla confrontata con quella scritta.
-2. **Chiudi il campionamento** dalla Checklist.
-3. Gestione campioni › Sul tablet › **Presenze dalla carta**: per ogni serie i numeri **non** spuntati sul foglio (es.
-   `12, 47, 103-105`); gli altri diventano provette col loro numero. «Elenco» corregge riga per riga. I capi già
-   registrati in app non si toccano e stanno a parte: se sul foglio sono spuntati, controlla che non sia lo stesso animale
-   preso due volte. Le righe rifiutate (per esempio un capo preso nel frattempo in app) restano elencate, da vedere una per
-   una.
+| | A campionamento **aperto** | A campionamento **chiuso** |
+|---|---|---|
+| **Dove** | menu Campionamento › Presenze dalla carta | Gestione campioni › Sul tablet › Presenze dalla carta |
+| **Che cosa si scrive, per serie** | i numeri **presi a carta** (`1-200, 350`) e, fra questi, quelli **non spuntati** (`12, 47`) | i numeri **non spuntati** (`12, 47, 103-105`); riportando un foglio alla volta, anche i numeri di quel foglio in «Numeri presi a carta» (vuoto = tutta la serie) |
+| **Che cosa si registra** | solo i presi a carta meno gli assenti: gli altri capi **restano da prelevare** | tutti i capi rimasti meno gli assenti |
+| **Che cosa diventa ogni riga** | un **prelievo normale** col numero del foglio | una **registrazione tardiva** col numero del foglio |
+| **Rete** | una riga alla volta, **al passo della rete**: se un telefono non risponde il riporto **si ferma** e non scrive niente «da isolato»; si riprende con l'icona di rete verde, o dopo aver messo in pausa quel telefono (Gestione dispositivi) | non serve |
+| **Dopo** | il campionamento resta aperto; i telefoni vedono subito il capo come **già fatto** e l'avanzamento è quello vero | la chiusura diventa **definitiva**: il campionamento non si riapre |
 
-Solo dopo le Soluzioni, il Riordino e il resto della sistemazione: riportare la carta dopo sarebbe molto più lento, e le
-Soluzioni proporrebbero come assenti capi presi a carta.
+Vale sempre:
+
+- la scritta registrata è **il numero del foglio**, quello che c'è già sulla provetta. Se in quel momento l'app darebbe
+  un'altra scritta (capo prelevato nel frattempo in app, una sua provetta annullata già consegnata o persa) la riga è
+  **rifiutata prima di scrivere** e resta elencata nella serie, da vedere una per una;
+- i capi **già registrati in app** non si toccano e stanno a parte. Se sul foglio sono spuntati sono due provette per lo
+  stesso contrassegno: la seconda si registra in Campionamento con «Preleva come doppio»;
+- **«Elenco»** mostra le righe una per una e permette di aggiungere o togliere una spunta;
+- in Campionamento, **come un prelievo normale e prima di chiudere**, vanno registrate le provette col **contrassegno
+  completo** (fuori registro presi a carta), i **senza marche** e i numeri spuntati che la pagina non ha (capi usciti o
+  fuori età). Per un **doppio** prima il capo della riga col suo numero, poi il doppio con «Preleva come doppio». Sulla
+  provetta si aggiunge la scritta che dà l'app, dopo averla confrontata con quella scritta;
+- tablet e telefoni devono avere **la stessa versione** dell'app (dalla 0.5.10).
+
+**Quando conviene.** Riportare ogni foglio appena è pieno, o a una pausa: da quel momento i doppi fra carta e telefoni
+sono controllati e l'avanzamento conta anche la carta. Ciò che resta si riporta dopo la chiusura, **prima** delle Soluzioni
+e del Riordino: riportare la carta dopo sarebbe molto più lento, e le Soluzioni proporrebbero come assenti capi presi a
+carta.
 
 ## Prima di toccare le provette: analisi e logica
 
@@ -82,6 +96,29 @@ manuali. Serve per avere il quadro, per lavorare un tipo di problema alla volta 
 Le fasi si fanno in quest'ordine perché i posti dipendono dalle decisioni: prima si decide di chi è ogni provetta, poi si
 toccano i plateau, così ogni provetta si prende in mano una volta sola.
 
+### Come si chiudono i buchi
+
+Un **buco** è un numero della serie senza provetta: un capo assente, una provetta tolta o persa. ARVET vuole la serie
+**da 1 a n senza buchi**, quindi:
+
+1. **prima le fuori registro**: la provetta attribuita a un capo assente va **al numero di quel capo**, che è un buco (fase
+   B). Vale anche per il «Preleva come doppio» attribuito a un assente: da quel momento è l'unica provetta di quel capo e
+   va **in ARVET da sola**, non più fra quelle da inserire a mano;
+2. **poi le ultime ordinarie**: i buchi rimasti si chiudono abbassando i numeri più alti ai numeri dei buchi, un passo alla
+   volta (fase D). Ogni passo è una provetta sola: quale prendere e da dove, che numero scriverle accanto in rosso, dove
+   metterla;
+3. le provette **in ARVET a mano** (fase C) non entrano nei buchi: restano in fondo, dopo l'ultima della serie, nell'ordine
+   del contenitore.
+
+La chiusura dei buchi è **sempre attiva**: la attiva la pagina da sola aprendo la Sistemazione, anche se dopo la chiusura
+del campionamento si sono già fatte registrazioni tardive o si è riportata la carta. Non si può più attivare soltanto se
+gli **spostamenti sono cominciati senza** (per esempio dal Riordino del tablet): in quel caso la pagina lo scrive in rosso
+in testa alla scheda, «**la chiusura dei buchi non è attiva**», la fase D non li chiude e ogni buco va chiuso a mano con
+«Sposta…» dalla ricerca, prima degli snippet.
+
+Alla fine lo **snippet per ARVET** dice se la serie è conforme: se resta un buco o un numero ripetuto è marcato
+«**NON CONFORME**» con l'elenco di che cosa manca. Lo snippet si dà comunque, ma va completato prima di accettare.
+
 ## Prima di cominciare: le uscite dell'ultima settimana
 
 La BDN si aggiorna **fino a 7 giorni dopo il modello di accompagnamento**: un capo mandato via da pochi giorni può risultare
@@ -100,7 +137,7 @@ annullare) o segnarla **persa**.
 | Fattispecie | Che cosa vuol dire | Proposta del sito | Altre scelte |
 |---|---|---|---|
 | **Senza contrassegno** | Animale senza marche: in campo si sono scritti sesso, età dai denti, razza e la sigla sull'animale. | Il capo assente più simile (stesso sesso, razza compatibile, nascita nell'intervallo dei denti). Se non ce n'è nessuno: una marca disponibile dello stabilimento. | Un altro capo assente; una marca disponibile; ARVET a mano. |
-| **Doppi contrassegni** | La stessa marca letta su due animali («Preleva come doppio»). Si marca in un altro colore solo il **secondo** animale, e di solito è recuperato solo quello. Il **numero di ristampa** stampato sull'auricolare (0 = originale) è un indizio. | Il capo assente più simile per la provetta del **secondo** animale, anche se dalla ristampa è l'originale: la marca si rifà a lui (dipende dall'allevatore). Un avviso lo ricorda. | Se l'allevatore tiene la marca al secondo e rifà quella del primo, si attribuisce l'altra provetta; «È l'unico campione» se l'altra provetta non esiste o era una lettura sbagliata; un altro capo; ARVET a mano. |
+| **Doppi contrassegni** | La stessa marca letta su due animali («Preleva come doppio»). Si marca in un altro colore solo il **secondo** animale, e di solito è recuperato solo quello. Il **numero di ristampa** stampato sull'auricolare (0 = originale) è un indizio. | Il capo assente più simile per la provetta del **secondo** animale, anche se dalla ristampa è l'originale: la marca si rifà a lui (dipende dall'allevatore). Un avviso lo ricorda. | La provetta attribuita va al numero del capo assente e in ARVET da sola. Se l'allevatore tiene la marca al secondo e rifà quella del primo, si attribuisce l'altra provetta; «È l'unico campione» se l'altra provetta non esiste o era una lettura sbagliata; un altro capo; ARVET a mano. |
 | **Usciti: morti, macellati o ceduti** | L'animale porta la marca di un capo che in BDN risulta uscito. Di solito è una marca duplicata di cui una copia è uscita: l'animale presente è un altro capo. | Il capo assente più simile. | Lasciarla col suo contrassegno, in ARVET a mano, se il capo è davvero quello e la BDN è da correggere. |
 | **Smarriti o rubati ritrovati** | Il capo risultava smarrito o rubato ed è stato ritrovato. | Tiene la sua identità: ARVET a mano, in fondo. | Un capo assente, se la marca non è la sua. |
 | **Contrassegni non registrati** | Marca assegnata allo stabilimento ma mai registrata in BDN su un capo; l'anagrafica è quella rilevata in campo. | ARVET a mano, in fondo; il capo va registrato in BDN. | Un capo assente, se l'animale è un capo del registro con la marca sbagliata. |
