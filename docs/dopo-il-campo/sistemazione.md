@@ -116,8 +116,13 @@ gli **spostamenti sono cominciati senza** (per esempio dal Riordino del tablet):
 in testa alla scheda, «**la chiusura dei buchi non è attiva**», la fase D non li chiude e ogni buco va chiuso a mano con
 «Sposta…» dalla ricerca, prima degli snippet.
 
-Alla fine lo **snippet per ARVET** dice se la serie è conforme: se resta un buco o un numero ripetuto è marcato
-«**NON CONFORME**» con l'elenco di che cosa manca. Lo snippet si dà comunque, ma va completato prima di accettare.
+Alla fine lo **snippet per ARVET** controlla i numeri: se ce n'è uno ripetuto, non valido, o lo stesso contrassegno su due
+provette, è marcato «**NON CONFORME**» con l'elenco. **Non controlla i buchi**: prima di accettare guarda che la serie
+cominci da 1 e arrivi in fondo senza salti.
+
+Anche il **numero 1** è un buco, se il primo capo della serie non è stato prelevato (dalla 0.5.11; prima la serie restava
+da 2 in su): nelle pecore lo prende il **maschio col numero più alto**, così i maschi restano in testa, e il posto che
+lascia si chiude come gli altri; nelle capre una fuori registro o l'ultima ordinaria.
 
 ## Prima di cominciare: le uscite dell'ultima settimana
 

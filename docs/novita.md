@@ -8,7 +8,8 @@ Ogni versione elenca ciò che è cambiato dalla precedente pubblicata, comprese 
 
 | Versione | Data | Scarica |
 |---|---|---|
-| [0.5.10](#v0-5-10) · ultima | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.10/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.10/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.10/schede_kit_cinque_stabilimenti.pdf) |
+| [0.5.11](#v0-5-11) · ultima | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.11/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.11/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.11/schede_kit_cinque_stabilimenti.pdf) |
+| [0.5.10](#v0-5-10) | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.10/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.10/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.10/schede_kit_cinque_stabilimenti.pdf) |
 | [0.5.9](#v0-5-9) | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/schede_kit_cinque_stabilimenti.pdf) |
 | [0.5.8](#v0-5-8) | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/schede_kit_cinque_stabilimenti.pdf) |
 | [0.5.7](#v0-5-7) | 15/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.7/schede_kit_cinque_stabilimenti.pdf) |
@@ -19,6 +20,28 @@ Ogni versione elenca ciò che è cambiato dalla precedente pubblicata, comprese 
 | [0.1.0](#v0-1-0) | 16/10/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/kit_prova_888TO999.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/schede_kit_prova_888TO999.pdf) |
 
 Una versione precedente non si installa sopra una più recente: prima salva un backup, poi disinstalla l'app (i progetti nel telefono si perdono), infine installa la versione scelta. Per installare: [Scarica](scarica.md).
+
+## Versione 0.5.11 · 22/11/2026 { #v0-5-11 }
+
+La serie finale comincia sempre da 1, anche se il capo col numero 1 non è stato prelevato; il riporto dalla carta a campionamento aperto non si ferma più a ogni ritardo dei telefoni. Tablet e telefoni vanno aggiornati tutti.
+
+[Scarica l'app](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.11/fejalog.apk){ .md-button .md-button--primary }
+[Kit di prova](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.11/kit_prova_cinque_stabilimenti.zip){ .md-button }
+[Schede da stampare](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.11/schede_kit_cinque_stabilimenti.pdf){ .md-button }
+
+[Pagina della release su GitHub](https://github.com/uvesco/fejalog-sito/releases/tag/v0.5.11)
+
+### Novità
+
+- Presenze dalla carta a campionamento aperto: il tasto «Ferma» interrompe un riporto in corso; le righe già scritte restano, le altre si riportano dopo.
+
+### Miglioramenti
+
+- Presenze dalla carta a campionamento aperto: se un telefono è solo un po' in ritardo con l'allineamento il riporto lo aspetta (fino a 20 secondi) invece di fermarsi. Si ferma ancora subito se un telefono non risponde: va messo in pausa.
+
+### Correzioni
+
+- Chiusura dei buchi: se il capo col numero 1 non era stato prelevato (nelle pecore, il primo maschio) la serie finale restava da 2 in su, anche nello snippet per ARVET, senza nessun avviso. Ora il numero 1 è un buco come gli altri: lo prende il maschio col numero più alto (o una fuori registro, o l'ultima ordinaria) e la serie va da 1 in su. Corretto nel motore di fine lavori, anche in svet-tools.
 
 ## Versione 0.5.10 · 22/11/2026 { #v0-5-10 }
 

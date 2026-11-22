@@ -304,7 +304,9 @@ function calcola(inp) {
   var cod = inp.stabilimento.codice;
   var suff = '_' + cod.replace(/[^A-Za-z0-9_-]+/g, '_') + '_' + inp.stamp;
   var ordine = inp.ordine && inp.ordine.length ? inp.ordine : M.ORDINE_DEFAULT;
-  var compatta = !!inp.compatta;
+  /* In Fejalog ogni serie è numerata da 1: con «chiudi i buchi» è un buco anche il numero 1 non prelevato (prima il motore
+     contava solo i vuoti fra il primo e l'ultimo numero occupato, e la serie restava da 2 in su: 2026-11-22). */
+  var compatta = inp.compatta ? { inizio: 1 } : false;
   var regs = { pecore: inp.regs && inp.regs.pecore && inp.regs.pecore.length ? inp.regs.pecore : null,
                capre: inp.regs && inp.regs.capre && inp.regs.capre.length ? inp.regs.capre : null };
   var marche = { pecore: (inp.marche && inp.marche.pecore) || [], capre: (inp.marche && inp.marche.capre) || [] };

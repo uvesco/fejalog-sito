@@ -312,7 +312,7 @@ function normalizzaRecords(recs, src) {
 function leggiExport(text, nome) {
   const t = str(text);
   const isJson = /\.json$/i.test(nome || '') || /^\s*\{/.test(t.slice(0, 256));
-  let recs, spostamenti = { pecore: [], capre: [] }, registriCaricati = [];
+  let recs, spostamenti = { pecore: [], capre: [] }, registriCaricati = [], daFejalog = false;
   if (isJson) {
     let obj;
     try { obj = JSON.parse(t.replace(/^﻿/, '')); } catch (e) { throw new Error('JSON non valido'); }
@@ -320,6 +320,7 @@ function leggiExport(text, nome) {
     if (!recs || !recs.length) throw new Error('Backup JSON senza record.');
     spostamenti = normalizzaSpostamenti(obj && obj.spostamenti);
     registriCaricati = normalizzaRegistriCaricati(obj && obj.registri_caricati);
+    daFejalog = !!(obj && !Array.isArray(obj) && obj.fejalog && typeof obj.fejalog === 'object');
   } else {
     const { head, rows } = parseCsv(t);
     const col = (c) => pickCol(head, [].concat(c));
@@ -341,7 +342,8 @@ function leggiExport(text, nome) {
       return o;
     });
   }
-  return { records: normalizzaRecords(recs, nome || 'export'), json: isJson, spostamenti, registri_caricati: registriCaricati };
+  /* `fejalog`: l'export viene da Fejalog, dove ogni serie è numerata da 1 (la chiusura dei buchi parte da lì) */
+  return { records: normalizzaRecords(recs, nome || 'export'), json: isJson, spostamenti, registri_caricati: registriCaricati, fejalog: daFejalog };
 }
 
 /* ---------- registri di stalla caricati in corsa (Fejalog, export formato 4; 2026-10-13) ----------------------
@@ -900,8 +902,19 @@ function correggiContrassegni(canon, correzioni, regs, codiceLavoro, decodifica)
 }
 
 /* ---------- numerazione finale -------------------------------------------- */
+/* `compatta` è true/false oppure { inizio: n } (Fejalog, 2026-11-22). Con `true` si chiudono i soli vuoti INTERNI (una
+   serie che parte da un numero alto non viene traslata); con { inizio: n } la serie deve cominciare da n (di norma 1):
+   contano come buchi anche i numeri liberi PRIMA del primo occupato (il capo col numero 1 non prelevato). */
+function inizioCompatta(compatta) {
+  if (!compatta || typeof compatta !== 'object' || compatta.inizio == null) return null;
+  const v = Math.floor(Number(compatta.inizio));
+  return isFinite(v) ? v : null;
+}
 function riordinaScambi(canon, specie, ordine, compatta) {
   ordine = ordine && ordine.length ? ordine : ORDINE_DEFAULT;
+  const inizioSerie = inizioCompatta(compatta);
+  /* da dove si contano i buchi: dal primo numero occupato, o da `inizio` se viene prima */
+  const primoDi = (occ) => (inizioSerie != null && inizioSerie < occ[0] ? inizioSerie : occ[0]);
   const sub = canon.filter((r) => r.specie === specie && r.progressivo != null).map((r) => Object.assign({}, r));
   if (!sub.length) return { mapping: [] };
   const n = sub.length;
@@ -953,7 +966,7 @@ function riordinaScambi(canon, specie, ordine, compatta) {
     const gapsAmmessi = () => {
       const occ = occNums(), k = nMaschi();
       if (!occ.length) return [];
-      if (compatta) return setdiff(range(occ[0], occ[occ.length - 1]), occ);
+      if (compatta) return setdiff(range(primoDi(occ), occ[occ.length - 1]), occ);
       if (k > 0) {
         const dopo = occ.filter((v) => v > occ[k - 1]);
         if (dopo.length) return setdiff(range(occ[k - 1] + 1, Math.min.apply(null, dopo) - 1), occ);
@@ -968,7 +981,7 @@ function riordinaScambi(canon, specie, ordine, compatta) {
       const mx = occ.length ? occ[occ.length - 1] : 0;
       const nonM = serie.filter((i) => !isM[i]);
       const lowNon = nonM.length ? Math.min.apply(null, nonM.map((i) => prov[i])) : Infinity;
-      const holesM = occ.length ? setdiff(range(occ[0], Math.min(lowNon - 1, mx)), occ) : [];
+      const holesM = occ.length ? setdiff(range(primoDi(occ), Math.min(lowNon - 1, mx)), occ) : [];
       if (holesM.length) {
         prov[e] = numSort(holesM)[0];
       } else if (nonM.length) {
@@ -988,7 +1001,7 @@ function riordinaScambi(canon, specie, ordine, compatta) {
         if (!m.length) break;
         const occ = occNums();
         const mxM = Math.max.apply(null, m.map((i) => prov[i]));
-        const h = setdiff(range(occ[0], mxM), occ);
+        const h = setdiff(range(primoDi(occ), mxM), occ);
         if (!h.length) break;
         prov[m.find((i) => prov[i] === mxM)] = numSort(h)[0];
       }
