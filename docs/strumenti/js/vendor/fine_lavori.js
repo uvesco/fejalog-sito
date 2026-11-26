@@ -7,13 +7,14 @@
    Gira nella WebView dell'app (AccMotore, AccXlsx globali) e in Node per i test (require).
 
    Ingresso (oggetto):
-     stabilimento {codice, lettera, denominazione}, export (formato 4, un solo stabilimento: porta anche gli
+     stabilimento {codice, lettera, denominazione}, export (formato 4–6, un solo stabilimento: porta anche gli
      spostamenti fatti a mano della pagina Riordino), regs {pecore, capre} (righe dei registri del pacchetto),
      marche {pecore, capre} (contrassegni), decodifica, ordine (fattispecie, null = predefinito), compatta (chiudi tutti
      i buchi), stamp, data (gg/mm/aaaa), motoreArvet (testo di arvet_fill.min.js), soloDati (niente file: per la pagina
      Riordino e per le cose da fare in campo), ricercati [{contrassegno, specie, provetta, cosa}] (i ricercati trovati,
      per le cose da fare), generatoIl (ora ISO del file delle anomalie),
-     partenze {uid: {specie, etichetta, vista: "serie" | "problematici" | "secchio", plateau, pozzetto}}
+     partenze {uid: {specie, etichetta, vista: "serie" | "problematici" | "secchio", plateau, pozzetto}}, partenzeSerie
+     (le stesse prima degli spostamenti fatti a mano: i posti della serie per il motore, 25/11)
      (il «secchio» è senza posto: plateau e pozzetto valgono 0 e la partenza è «dal secchio»):
      posti fisici dal dominio Kotlin (StatoPosati/SchemaPlateau), anche per le escluse. Se presenti devono coprire
      tutte le provette della numerazione. Senza questo ingresso resta la guida del motore per i chiamanti pregressi.
@@ -70,6 +71,46 @@ function guidaFisica(inp, numerazione, guidaMotore) {
         plateau_da: p.plateau, pos_da: p.pozzetto, motivo: p.tipologia || (p.vista !== 'serie' ? r.fattispecie : 'Ordinaria'), fattispecie: p.tipologia || r.fattispecie
       });
   }).filter(function (g) { return g != null; });
+}
+/* {uid: numero} delle provette posate nella serie (uid come stringa, gli stessi dell'export). */
+function postiDallePartenze(partenze) {
+  var posti = {};
+  Object.keys(partenze).forEach(function (uid) {
+    var p = partenze[uid];
+    if (!uid || !p || p.vista !== 'serie') return;
+    if (typeof p.plateau !== 'number' || typeof p.pozzetto !== 'number' || p.plateau < 1 || p.pozzetto < 1 ||
+        p.pozzetto > M.PLATEAU_SIZE || p.plateau !== Math.floor(p.plateau) || p.pozzetto !== Math.floor(p.pozzetto)) return;
+    posti[String(uid)] = (p.plateau - 1) * M.PLATEAU_SIZE + p.pozzetto;
+  });
+  return posti;
+}
+/* {uid: numero} dal campo `posti` dell'export formato 6: solo numeri interi positivi. */
+function postiDellExport(posti) {
+  var out = {};
+  Object.keys(posti).forEach(function (uid) {
+    var v = posti[uid];
+    if (uid && typeof v === 'number' && v >= 1 && v === Math.floor(v)) out[String(uid)] = v;
+  });
+  return out;
+}
+/* P3-2 della revisione del motore (24/11): due provette di questo stabilimento posate nello stesso pozzetto della serie. In
+   Fejalog non dovrebbe succedere («L'ho messa lì» solo su un posto libero); se succede il motore ignora tutte e due quei
+   posti e la guida lo dice: quel numero va controllato a mano sul plateau. */
+function postiRipetuti(partenze, records) {
+  var visti = {}, out = [];
+  (records || []).forEach(function (r) {
+    if (!r || r.uid == null || !Object.prototype.hasOwnProperty.call(partenze, r.uid)) return;
+    var p = partenze[r.uid];
+    if (!p || p.vista !== 'serie' || !(p.plateau >= 1) || !(p.pozzetto >= 1)) return;
+    var k = r.specie + '|' + ((p.plateau - 1) * M.PLATEAU_SIZE + p.pozzetto);
+    (visti[k] = visti[k] || []).push(p.etichetta || '');
+  });
+  Object.keys(visti).forEach(function (k) {
+    if (visti[k].length < 2) return;
+    var i = k.indexOf('|');
+    out.push({ specie: k.slice(0, i), numero: Number(k.slice(i + 1)), etichette: visti[k] });
+  });
+  return out.sort(function (a, b) { return a.specie < b.specie ? -1 : a.specie > b.specie ? 1 : a.numero - b.numero; });
 }
 function daTesto(r, lettera) {
   return (r.fisica || r.da) ? r.da : r.da_n == null ? '' : (r.coda_da === 'prob' ? r.corsia_da : (lettera || '')) + r.da_n;
@@ -182,9 +223,15 @@ function paginaSnippet(inp, invii, aMano) {
 /* La guida al riposizionamento in HTML, **a spunta**: ogni riga si spunta quando la provetta è riscritta e messa al
    suo posto; le spunte restano nel browser (localStorage, per stabilimento e data) e un contatore dice quante mancano.
    Si stampa anche (le caselle vuote si spuntano a penna). */
-function paginaGuida(inp, guida, escluse) {
+function paginaGuida(inp, guida, escluse, ripetuti) {
   var s = inp.stabilimento, L = s.lettera || '';
   var tot = 0, corpo = '';
+  if (ripetuti && ripetuti.length) corpo += '<div class="allarme"><b>Controlla a mano questi posti: due provette risultano nello stesso pozzetto.</b> ' +
+    'La guida non le tiene ferme lì: guarda sul plateau quale c\'è davvero e correggi la posa.<ul>' +
+    ripetuti.map(function (x) {
+      return '<li>' + esc(x.specie) + ', n. ' + esc(L) + x.numero + ' (plateau ' + (Math.floor((x.numero - 1) / M.PLATEAU_SIZE) + 1) + ', pos ' +
+        ((x.numero - 1) % M.PLATEAU_SIZE + 1) + '): ' + x.etichette.map(esc).join(', ') + '</li>';
+    }).join('') + '</ul></div>';
   function chiaveRiga(sp, r, esclusa) {
     return esc(JSON.stringify([s.codice, sp, esclusa ? 'esclusa' : 'spostamento', r.uid || r.contrassegno,
       esclusa ? r.provetta_campo : r.a_n, r.vista_da || '', r.plateau_da, r.pos_da]));
@@ -226,7 +273,7 @@ function paginaGuida(inp, guida, escluse) {
     'table{border-collapse:collapse;width:100%;font-size:14px}th,td{border-bottom:1px solid #ccc;padding:4px 6px;text-align:left;vertical-align:top}' +
     'th{background:#f4f5f7}.spunta{width:34px}.spunta input{width:26px;height:26px}tr.fatta td{color:#888;text-decoration:line-through}' +
     'tr.fatta td.spunta{text-decoration:none}#barra{position:sticky;top:0;background:#e8eaf6;padding:8px;margin:8px 0;font-weight:700;color:#283593}' +
-    '.nascosta tr.fatta{display:none}@media print{tr{page-break-inside:avoid}#barra{position:static}}</style></head><body>' +
+    '.allarme{border:2px solid #b3261e;background:#fdecea;color:#5f1410;padding:8px;margin:8px 0}.nascosta tr.fatta{display:none}@media print{tr{page-break-inside:avoid}#barra{position:static}}</style></head><body>' +
     '<h1>Guida al riposizionamento — ' + esc(s.codice) + (L ? ' (lettera ' + esc(L) + ')' : '') + '</h1>' +
     '<div class="nota">' + esc(s.denominazione) + ' · ' + esc(inp.data) + ' · ' + tot + ' provette da spostare. Ogni provetta va ' +
     '<b>direttamente al numero finale, una volta sola</b>: non cancellare e non coprire il numero di campo, barralo con una riga sola ' +
@@ -307,6 +354,19 @@ function calcola(inp) {
   /* In Fejalog ogni serie è numerata da 1: con «chiudi i buchi» è un buco anche il numero 1 non prelevato (prima il motore
      contava solo i vuoti fra il primo e l'ultimo numero occupato, e la serie restava da 2 in su: 2026-11-22). */
   var compatta = inp.compatta ? { inizio: 1 } : false;
+  /* D8, «Livello 1» (utente, 2026-11-24): le provette del fondo (fuori da ARVET) già posate nella serie tengono il loro
+     numero; il buco che resta in fondo lo prende la più alta. I posti sono fatti fisici: vengono dalle partenze, vista
+     «serie», numero = (plateau − 1) · 100 + pozzetto. Il motore tiene solo i posti validi del fondo (oltre la serie,
+     non ripetuti); gli altri li ignora. */
+  if (compatta && inp.partenze != null) compatta.posti = postiDallePartenze(inp.partenze);
+  /* Export formato 6 (25/11): senza partenze (un export letto da solo) i posti vengono dal campo facoltativo `posti`
+     dell'export, scritto da Fejalog con le stesse partenze; un formato 5 non lo ha e resta com'era. */
+  else if (compatta && inp.export && inp.export.posti && typeof inp.export.posti === 'object') compatta.posti = postiDellExport(inp.export.posti);
+  /* Punto 49 (25/11): i posti della serie in ARVET, dalle partenze prima degli spostamenti fatti a mano (il motore li
+     applica dopo); senza, dall'export formato 6 (`posti_serie`). Senza tutti e due la serie si numera come prima. */
+  if (compatta && inp.partenzeSerie != null) compatta.posti_serie = postiDallePartenze(inp.partenzeSerie);
+  else if (compatta && inp.partenze == null && inp.export && inp.export.posti_serie && typeof inp.export.posti_serie === 'object')
+    compatta.posti_serie = postiDellExport(inp.export.posti_serie);
   var regs = { pecore: inp.regs && inp.regs.pecore && inp.regs.pecore.length ? inp.regs.pecore : null,
                capre: inp.regs && inp.regs.capre && inp.regs.capre.length ? inp.regs.capre : null };
   var marche = { pecore: (inp.marche && inp.marche.pecore) || [], capre: (inp.marche && inp.marche.capre) || [] };
@@ -321,6 +381,9 @@ function calcola(inp) {
   regs = ar.regs; marche = ar.marche;
   var P = M.pipeline(base, { regs: regs, codiceLavoro: cod, decodifica: decod, correzioni: [], rimuovi: [], aggiungi: [] });
   var fin = P.fin, escluse = M.reportEscluse(P.escluse);
+  /* Solo le provette che il motore numera: una scartata o persa tiene il suo ultimo posto nelle partenze, ma la guida la
+     mette da parte da quel pozzetto; contarla darebbe un allarme falso dopo il passo che richiude il buco (revisione D8). */
+  var ripetuti = inp.partenze != null ? postiRipetuti(inp.partenze, fin) : [];
   var presenti = { pecore: M.presentiDiLavoro(regs.pecore, cod), capre: M.presentiDiLavoro(regs.capre, cod) };
   var nf = {}, arvet = {}, definitivo = {}, guida = {}, schede = [], esitiSp = [];
   SPECIE.forEach(function (sp) {
@@ -436,7 +499,7 @@ function calcola(inp) {
   if (escluse.length) fogliGuida.push(foglio('da_mettere_da_parte', ['fatta', 'uid', 'specie', 'provetta_campo', 'vista_da', 'plateau_da', 'pos_da', 'contrassegno', 'fattispecie'],
     escluse.map(function (r) { return Object.assign({ fatta: '☐' }, r); }), ['uid', 'provetta_campo', 'contrassegno']));
   if (fogliGuida.length) xlsx('guida_riposizionamento' + suff + '.xlsx', fogliGuida);
-  testo('guida_riposizionamento' + suff + '.html', 'text/html', paginaGuida(inp, guida, escluse));
+  testo('guida_riposizionamento' + suff + '.html', 'text/html', paginaGuida(inp, guida, escluse, ripetuti));
   if (schede.length) testo('schede_problematici' + suff + '.html', 'text/html', M.renderSchedeProblematici(schede,
     { codice_stabilimento: cod, denominazione: inp.stabilimento.denominazione }, new Date()));
 
@@ -526,7 +589,7 @@ function calcola(inp) {
   testo('anomalie' + suff + '.json', 'application/json', JSON.stringify(anomalie, null, 1));
 
   var riep = { stabilimento: cod, file: file.length, specie: {}, maschi: bo.length, problematici: aMano.length,
-    capi_senza_traccia: ignoti.length, invii: invii.map(function (v) { return { titolo: v.titolo, provette: v.righe.length + v.nuovi.length, nuovi: v.nuovi.length, errori: v.errori, conforme: v.conforme,
+    capi_senza_traccia: ignoti.length, posti_ripetuti: ripetuti, invii: invii.map(function (v) { return { titolo: v.titolo, provette: v.righe.length + v.nuovi.length, nuovi: v.nuovi.length, errori: v.errori, conforme: v.conforme,
       a_mano: (v.aMano || []).map(function (r) { return { provetta: r.provetta, contrassegno: r.contrassegno }; }) }; }) };
   SPECIE.forEach(function (sp) {
     if (!base.some(function (r) { return r.specie === sp; })) return;
@@ -539,7 +602,7 @@ function calcola(inp) {
     registrazioni_tardive: gestione.totaleRegistrazioniTardive, modifiche_tardive: gestione.totaleModificheTardive};
   // i dati della sistemazione, per l'app (guida a spunta) e per i test di parità con «Dopo il campo» di svet-tools
   var dati = { specie: {}, maschi: bo.map(function (r) { return { provetta: r.provetta, contrassegno: r.contrassegno }; }),
-    spostamenti: esitiSp, allevatore: allevatore, anomalie: anomalie, escluse: escluse };
+    spostamenti: esitiSp, allevatore: allevatore, anomalie: anomalie, escluse: escluse, posti_ripetuti: ripetuti };
   SPECIE.forEach(function (sp) {
     if (!nf[sp].length) return;
     dati.specie[sp] = {
@@ -564,5 +627,5 @@ function calcola(inp) {
 function calcolaJson(testo) { return JSON.stringify(calcola(JSON.parse(testo))); }
 
 return { calcola: calcola, calcolaJson: calcolaJson, base64: base64, controllaInvio: controllaInvio, snippet: snippet,
-  testoAllevatore: testoAllevatore };
+  testoAllevatore: testoAllevatore, postiRipetuti: postiRipetuti, paginaGuida: paginaGuida, postiDallePartenze: postiDallePartenze, postiDellExport: postiDellExport };
 });

@@ -8,7 +8,9 @@ Ogni versione elenca ciò che è cambiato dalla precedente pubblicata, comprese 
 
 | Versione | Data | Scarica |
 |---|---|---|
-| [0.5.11](#v0-5-11) · ultima | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.11/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.11/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.11/schede_kit_cinque_stabilimenti.pdf) |
+| [0.6.0](#v0-6-0) · ultima | 26/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.6.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.6.0/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.6.0/schede_kit_cinque_stabilimenti.pdf) |
+| [0.5.12](#v0-5-12) | 24/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.12/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.12/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.12/schede_kit_cinque_stabilimenti.pdf) |
+| [0.5.11](#v0-5-11) | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.11/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.11/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.11/schede_kit_cinque_stabilimenti.pdf) |
 | [0.5.10](#v0-5-10) | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.10/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.10/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.10/schede_kit_cinque_stabilimenti.pdf) |
 | [0.5.9](#v0-5-9) | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.9/schede_kit_cinque_stabilimenti.pdf) |
 | [0.5.8](#v0-5-8) | 22/11/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/kit_prova_cinque_stabilimenti.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.8/schede_kit_cinque_stabilimenti.pdf) |
@@ -20,6 +22,72 @@ Ogni versione elenca ciò che è cambiato dalla precedente pubblicata, comprese 
 | [0.1.0](#v0-1-0) | 16/10/2026 | [App](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/fejalog.apk) · [Kit](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/kit_prova_888TO999.zip) · [Schede](https://github.com/uvesco/fejalog-sito/releases/download/v0.1.0/schede_kit_prova_888TO999.pdf) |
 
 Una versione precedente non si installa sopra una più recente: prima salva un backup, poi disinstalla l'app (i progetti nel telefono si perdono), infine installa la versione scelta. Per installare: [Scarica](scarica.md).
+
+## Versione 0.6.0 · 26/11/2026 { #v0-6-0 }
+
+Lettore più sicuro e censimento più veloce: una lettura non si accoda più a cifre rimaste, a foglio aperto rileggere non conferma (si può accendere nelle Impostazioni) e una lettura di un altro animale non conferma mai, nei progetti di censimento le letture regolari si registrano da sole con la rete verde; suoni, età d'allerta impostabile e tempo trascorso dal prelievo; ogni dispositivo ha la sua sigla; sul telefono tastierino più grande, chiuso col lettore, e conferma lontana dal tasto Indietro. Tablet e telefoni vanno aggiornati tutti.
+
+[Scarica l'app](https://github.com/uvesco/fejalog-sito/releases/download/v0.6.0/fejalog.apk){ .md-button .md-button--primary }
+[Kit di prova](https://github.com/uvesco/fejalog-sito/releases/download/v0.6.0/kit_prova_cinque_stabilimenti.zip){ .md-button }
+[Schede da stampare](https://github.com/uvesco/fejalog-sito/releases/download/v0.6.0/schede_kit_cinque_stabilimenti.pdf){ .md-button }
+
+[Pagina della release su GitHub](https://github.com/uvesco/fejalog-sito/releases/tag/v0.6.0)
+
+### Novità
+
+- Progetti di censimento (la Regia lo sceglie in Parametri): con il lettore e la rete verde le letture dei capi regolari si registrano da sole, con un suono e «Annulla l'ultima» per 10 secondi; ricercati, doppi, usciti, altri stabilimenti, contrassegni non registrati, più capi o cifre digitate si fermano col foglio e la spiegazione. Con la rete gialla o rossa ogni lettura chiede conferma. Lo snippet ARVET non si prepara.
+- Suoni di conferma, errore e avviso sul volume dei contenuti multimediali (si sentono anche col telefono in silenzioso); si spengono nelle Impostazioni dell'app.
+- Età d'allerta impostabile dalla Regia (predefinito 10 anni): oltre, banda arancione e suono, ma il capo si registra.
+- Accanto all'ora del prelievo il tempo trascorso («4 min fa», «1 h 20 min fa»): nell'avviso del doppio, in Ultime e nelle schede delle provette.
+- Impostazioni › Dispositivo › «Conferma rileggendo lo stesso animale» (spenta di base): accesa, col foglio aperto la seconda lettura dello stesso capo regolare conferma; spenta, rileggere non conferma (un breve suono d'avviso) e si conferma col tocco o con OK.
+- Capo sotto l'età diagnostica letto in campionamento: il foglio dice «SOTTO ETÀ: non prelevare» e il tasto principale ne registra la presenza (conta fra i sotto età, col contrassegno letto), senza provetta né scritta da fare; un capo già contato non si conta due volte. Chi vuole prelevarlo lo stesso tocca «Preleva comunque»: solo allora il foglio mostra la scritta della provetta e va fra i fuori registro come prima.
+- Sigla per dispositivo: lo stesso veterinario con due dispositivi ha due sigle (per esempio UV sul tablet e UM sul telefono), così i fuori registro e le provette da isolato hanno etichette diverse (se due coincidono, perché uno lavorava senza la Regia, l'app le segnala). La assegna la Regia; il dispositivo unico della persona lavora con la sua sigla anche da isolato.
+
+### Miglioramenti
+
+- Campionamento sul telefono: tasti del tastierino più grandi, il rosso svuota e il giallo cancella l'ultima cifra; la riga del codice è tutta per le cifre e le 15 del microchip si leggono intere. Col lettore il tastierino resta chiuso (un tocco sullo schermo non aggiunge cifre) e si apre con «Digita a mano» per il capo che non si legge.
+- Foglio di conferma sul telefono: «Conferma» grande e staccato dal bordo in basso, «Annulla» in alto. L'Indietro del telefono la prima volta avvisa soltanto, la seconda annulla. Il foglio non si chiude più trascinandolo giù o toccando fuori, e appena aperto non prende i tocchi per un attimo: un doppio tocco sulla riga del capo non registra la provetta.
+- Chiusura guidata del campionamento: se un telefono che può avere provette non arrivate è scollegato, la Regia lo vede con l'ultimo contatto e deve confermare per chiudere; poi i telefoni collegati salvano da sé un backup locale, la Regia il suo, e lo zip per il sito si condivide subito.
+- Scarto, persa e «Rimanda»: il motivo è facoltativo; una provetta rimandata senza motivo si legge «Accantonata».
+- Diagnostica locale: per migliorare l'app si misurano il tempo fra l'apertura del foglio e la conferma e l'esito delle letture del lettore, mai il contrassegno.
+- Sistemazione più veloce (misurata sul sito): ogni azione in circa metà del tempo, l'annullo dell'ultima in poco più di un secondo. Dopo un aggiornamento del sito la pagina riparte dal lavoro salvato e lo ricontrolla in sottofondo; intanto lo scarico dei file è fermo. Il rigioco da capo non blocca più la pagina.
+- Tablet della Regia più veloce con i registri pieni di capi usciti: l'apertura del progetto e il passaggio alla rete non rifanno più l'ordine degli usciti a ogni confronto.
+- Chiusura dei buchi: le provette già messe in fondo restano al loro numero. Se si toglie una provetta a lavoro finito il buco lo prende l'ultima in fondo, con un solo spostamento (prima scalavano tutte di uno).
+- Chiusura dei buchi anche nella serie: le provette già messe a posto contano dove sono. Se dopo si toglie una provetta, il buco lo chiude quella posata più in alto, con un solo spostamento (prima a volte due); vale anche per le fuori registro che vanno in ARVET da sole già posate.
+- Sul telefono, mentre si scorrono i risultati della ricerca, il tastierino si chiude per lasciare spazio all'elenco; si riapre con «Digita a mano». Sul tablet resta sempre aperto.
+- L'export per svet-tools (formato 6) porta i posti delle provette già posate: «Dopo il campo» potrà numerare come Fejalog.
+- Attese lunghe con la barra: aprire un progetto o un backup, avviare o chiudere il campionamento, aprire la rete, prendere la regia e uscire dal progetto mostrano subito che cosa sta facendo l'app, finché non ha finito. Anche la pagina della sistemazione sul tablet ha la barra mentre si carica.
+- Ingresso col QR: su qualunque pagina si sia, in alto si vede a che punto è («In attesa della Regia: collegati a …») con «Vai a Rete», «Apri pannello Wi-Fi» e «Annulla».
+- Android 17: Fejalog chiede il permesso «rete locale» insieme agli altri permessi di rete, all'ingresso del telefono e all'apertura della rete della Regia; in «Prima di cominciare» c'è la voce «Rete locale consentita a Fejalog» con «Consenti». Senza, a ogni collegamento Android chiedeva «Scegli un dispositivo da connettere» e l'ingresso col QR scadeva. Se lo si nega, l'ingresso lo dice e non lo richiede una seconda volta.
+
+### Correzioni
+
+- Lettore: una lettura dopo cifre rimaste nel campo dava 16 cifre e nessun capo; ora la lettura sostituisce le cifre di prima. E l'Invio del lettore cerca il codice appena letto, non quello della ricerca di prima.
+- Foglio di conferma aperto: leggere un altro animale non conferma più il capo del foglio; suona l'errore e si sceglie se restare o passare all'animale letto.
+- Sistemazione: uno scarto o una persa che accorcia la serie non è più rifiutato se una provetta posata «L'ho messa lì» deve scendere a chiudere il buco (anche nel blocco dei maschi): torna fra i passi della fase D. E dopo, le nuove «L'ho messa lì» hanno di nuovo il loro posto invece di andare da parte.
+- Tablet e telefono della stessa persona non allineati potevano scrivere la stessa etichetta «UV-n» (23/11): ora il secondo dispositivo, finché non ha la sua sigla, aspetta il collegamento con la Regia. Se la sigla cambia proprio mentre si conferma, la registrazione si ferma e chiede di controllare l'etichetta.
+- Nei secondi in cui la rete si chiude o si riapre, aprire il foglio di conferma, «Prendi la regia», Pausa, Riattiva o «Togli dalla rete» potevano chiudere l'app: ora il foglio si apre e gli altri tasti dicono «La rete di questa seduta è chiusa: riprova fra qualche secondo». Uscendo in quei secondi l'app dice che la rete era già chiusa e che gli altri vedranno il telefono fermo dopo 2 minuti.
+- Un dispositivo escluso mentre era senza rete, rientrando da solo, poteva escludere subito un collega che si stava ricollegando: ora i 2 minuti ripartono dal rientro.
+- «Prima di cominciare»: «Consenti» sulla posizione chiede insieme precisa e approssimata, come vuole Android 12 e successivi (da sola la richiesta era ignorata).
+
+## Versione 0.5.12 · 24/11/2026 { #v0-5-12 }
+
+Per il censimento col lettore: il numero da scrivere sull'animale per i fuori registro e i ricercati, l'allerta per i capi di più di 10 anni e il tasto per cancellare l'ultima cifra. Tablet e telefoni vanno aggiornati tutti.
+
+[Scarica l'app](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.12/fejalog.apk){ .md-button .md-button--primary }
+[Kit di prova](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.12/kit_prova_cinque_stabilimenti.zip){ .md-button }
+[Schede da stampare](https://github.com/uvesco/fejalog-sito/releases/download/v0.5.12/schede_kit_cinque_stabilimenti.pdf){ .md-button }
+
+[Pagina della release su GitHub](https://github.com/uvesco/fejalog-sito/releases/tag/v0.5.12)
+
+### Novità
+
+- Foglio di conferma: per una registrazione fuori registro o un capo ricercato «Sull'animale scrivi: …» col numero da segnare sull'animale (oppure un orecchino provvisorio, col suo numero nelle note); lo stesso nel lampo di conferma.
+- Capi di più di 10 anni: nella ricerca l'età in evidenza, nel foglio di conferma una banda arancione con età e data di nascita e una vibrazione.
+
+### Miglioramenti
+
+- Ricerca sul telefono: un tasto cancella l'ultima cifra e riapre il tastierino anche dopo la sesta cifra (prima si poteva solo cancellare tutto).
 
 ## Versione 0.5.11 · 22/11/2026 { #v0-5-11 }
 

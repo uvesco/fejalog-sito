@@ -21,7 +21,7 @@ Funziona interamente su rete Wi-Fi locale senza internet: i dati sono sincronizz
 
 Sotto il nome del telefono, in Impostazioni › Dispositivo, c'è il riquadro «Prima di cominciare»: ✓ verde a posto, ✗ rossa da sistemare, ? gialla da controllare a mano.
 
-1. «Concedi i permessi che mancano»: posizione precisa (Android la chiede per far leggere il nome della Wi-Fi), dispositivi Wi-Fi vicini, notifiche, fotocamera. Tieni accesa la posizione.
+1. «Concedi i permessi che mancano»: posizione precisa (Android la chiede per far leggere il nome della Wi-Fi), dispositivi Wi-Fi vicini, rete locale (Android 17), notifiche, fotocamera. Tieni accesa la posizione. Su Android 17, senza «Rete locale consentita», a ogni collegamento compare «Scegli un dispositivo da connettere» e l'ingresso col QR può scadere: tocca «Consenti» nella voce, o «Apri le impostazioni» se l'avevi negato.
 2. Wi-Fi accesa. Dati mobili: possono restare accesi.
 3. Samsung: Impostazioni → Connessioni → Wi-Fi → ⋮ → Intelligent Wi-Fi → «Passa a dati mobili» SPENTO. Altri telefoni: spegnere il passaggio automatico ai dati mobili o la «connettività adattiva».
 4. Risparmio energetico SPENTO durante il lavoro.

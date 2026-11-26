@@ -15,7 +15,7 @@ Un registro condiviso da tutti i telefoni tiene insieme i prelievi dello stabili
 
 Nei progetti nuovi la Regia assegna automaticamente una sigla di due lettere per ogni veterinario, per esempio UV.
 
-- La sigla e il progressivo dei fuori registro sono condivisi fra i tuoi telefoni. La Regia può modificarla solo prima che sia scritta sulla prima provetta.
+- Ogni tuo telefono ha la sua sigla: il primo quella della persona (UV), un altro una che la richiama (UM). Sigla e progressivo dei fuori registro sono del telefono, così due telefoni hanno etichette diverse; se due coincidono (uno lavorava senza la Regia), l'app le segnala. La Regia può modificarla solo prima che sia scritta sulla prima provetta.
 - La classifica resta tua e somma i tuoi telefoni.
 
 ## 3. L'icona della rete
@@ -33,6 +33,8 @@ Dopo la conferma, controlla sempre l'esito della registrazione.
 
 - Verde «Registrata» o rosso «Non registrata», con vibrazioni diverse.
 - Non scrivere la provetta finché non vedi l'esito verde.
+- Con il foglio aperto, una lettura di un altro animale non conferma: suona l'errore e scegli tu.
+- Nei censimenti, con la rete verde, le letture regolari si registrano da sole: ascolta il suono e guarda la banda.
 
 ## 5. Come si scrive l'etichetta sulla provetta
 
@@ -42,7 +44,7 @@ Scrivi con il pennarello l'etichetta completa mostrata dall'app, comprese tutte 
 - Riquadro rosso (fuori registro): copia tutte le righe mostrate; sotto, in grassetto, «Scrivi tutto: progressivo e contrassegno completo» (con i dati, se la BDN non li ha).
 - Riquadro blu (preso senza tutti collegati) e riquadro neutro (collegato): «Scrivi solo il progressivo», per esempio 125-UV o 125.
 - Cambiando specie con le schede, uno swipe o destra/sinistra, il codice resta: non serve rileggerlo. Il foglio si chiude e si riapre solo se c'è un unico capo compatibile; altrimenti scegli dall'elenco. Sullo stesso capo restano note e scelte.
-- Tastiera o telecomando: il focus parte da Conferma; un solo Invio/OK registra. Su/giù scorrono circolarmente i controlli; Invio/OK o spazio attivano quello col bordo evidenziato. Per registrare torna su Conferma o toccalo. Nelle note spazio scrive; esci con su/giù o Tab. Esc e Indietro annullano.
+- Tastiera o telecomando: il focus parte da Conferma; un solo Invio/OK registra. Su/giù scorrono circolarmente i controlli; Invio/OK o spazio attivano quello col bordo evidenziato. Per registrare torna su Conferma o toccalo. Nelle note spazio scrive; esci con su/giù o Tab. Esc e Indietro del telecomando annullano subito; l'Indietro del telefono la prima volta avvisa soltanto, la seconda annulla. Col lettore il tastierino resta chiuso: «Digita a mano» lo apre per il capo che non si legge.
 
 ## 6. Un capo già prelevato
 
@@ -57,7 +59,7 @@ Per un animale senza nessuna marca usa «Senza contrassegno» nel Campionamento,
 
 - Scegli sesso, età dai denti e razza («Meticcio» vale per tutte). Come identificazione provvisoria scrivi la sigla della provetta (per esempio UV-16) e scrivila anche sulla schiena dell'animale. Non si sceglie nessun capo.
 - Scrivi sulla provetta tutte le righe suggerite: sono la copia di riserva dei dati. Il capo si sceglie dopo la chiusura del campionamento.
-- Se l'allevatore lo marca subito con una marca in giacenza: «Nuova identificazione», con sesso, età e razza scritti anche sulla provetta. Gli animali sotto età si contano a parte con +1 e −1, mentre li marchi col colore: così non si contano due volte.
+- Se l'allevatore lo marca subito con una marca in giacenza: «Nuova identificazione», con sesso, età e razza scritti anche sulla provetta. Gli animali sotto età si contano a parte con +1 e −1, mentre li marchi col colore: così non si contano due volte. Se leggi un capo del registro sotto età, il foglio dice «SOTTO ETÀ: non prelevare»: registra solo la presenza.
 
 ## 8. Marcare i fuori registro
 

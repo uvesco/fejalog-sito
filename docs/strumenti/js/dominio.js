@@ -66,7 +66,7 @@ function avvolgiBanco(b) {
       /* Ciò che le azioni hanno prodotto, da tenere nel browser per riprendere senza rigiocarle (21/11: F5 di 50 s all'ASL). */
       memoria: function () { return b.memoria ? JSON.parse(b.memoria()) : null; },
       /* La sessione appena aperta allo stato della memoria; false se non vale per queste azioni (allora applicaSalvate). */
-      ripristina: function (az, mem) { if (!b.ripristina || !mem) return false; var ok = !!b.ripristina(json(az || []), json(mem)); if (ok) memo = {}; return ok; }
+      ripristina: function (az, mem, altraBuild) { if (!b.ripristina || !mem) return false; var ok = !!b.ripristina(json(az || []), json(mem), !!altraBuild); if (ok) memo = {}; return ok; }
     };
 }
 return Object.assign(D, {

@@ -321,7 +321,8 @@ function creaAttuale(doc, radice, celle, opzioni) {
         form.addEventListener('submit', function (e) {
           e.preventDefault();
           var nuovo = codice.value.trim().toUpperCase().replace(/\s+/g, '');
-          if (!nuovo || nuovo === c.contrassegno) return;
+          if (!nuovo) { m.messaggio = 'Scrivi il nuovo contrassegno.'; m.notifica(); return; }
+          if (nuovo === c.contrassegno) { m.messaggio = 'Il contrassegno è uguale a quello attuale: per cambiare solo sesso o note usa la scheda Provette.'; m.notifica(); return; }
           var gia = m.celle.filter(function (x) { return x.uid !== c.uid && x.attiva && x.contrassegno === nuovo; })[0];
           if (gia && !doppio.checked) { m.messaggio = 'Il capo ha già una provetta valida: conferma il doppio prelievo.'; m.notifica(); return; }
           opzioni.applicaAzione({tipo: 'riattribuzione', uid: c.uid, contrassegno: nuovo, conferma_doppio: doppio.checked,
@@ -343,8 +344,8 @@ function creaAttuale(doc, radice, celle, opzioni) {
         }));
       } else {
         d.appendChild(bottone('Scarto definitivo', function () {
-          var mot = (finestra.prompt('Motivo dello scarto definitivo (obbligatorio):') || '').trim();
-          if (mot) opzioni.applicaAzione({ tipo: 'scarto', uid: c.uid, motivo: mot });
+          var mot = finestra.prompt('Motivo dello scarto (facoltativo):', '');
+          if (mot !== null) opzioni.applicaAzione({ tipo: 'scarto', uid: c.uid, motivo: mot.trim() });
         }));
       }
       if (c.tipo === 'persa' || c.stato === 'persa') {
@@ -353,8 +354,8 @@ function creaAttuale(doc, radice, celle, opzioni) {
         }));
       } else {
         d.appendChild(bottone('Smarrimento', function () {
-          var mot = (finestra.prompt('Motivo dello smarrimento (obbligatorio):') || '').trim();
-          if (mot) opzioni.applicaAzione({ tipo: 'persa', uid: c.uid, motivo: mot });
+          var mot = finestra.prompt('Motivo dello smarrimento (facoltativo):', '');
+          if (mot !== null) opzioni.applicaAzione({ tipo: 'persa', uid: c.uid, motivo: mot.trim() });
         }));
       }
     }

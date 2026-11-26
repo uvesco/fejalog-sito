@@ -44,7 +44,7 @@ function calcola(P, azioni, opz) {
       marche: { pecore: (P.pacchetto.specie_dati.pecore.disponibili || []).map(function (m) { return m.contrassegno; }),
         capre: (P.pacchetto.specie_dati.capre.disponibili || []).map(function (m) { return m.contrassegno; }) },
       decodifica: P.pacchetto.decodifica_uscite, ordine: null, compatta: ap.impostazioni.chiudi_buchi, stamp: stampDi(adesso), data: dataDi(adesso),
-      partenze: ap.partenze,
+      partenze: ap.partenze, partenzeSerie: ap.partenzeSerie,
       riepilogoGestione: ap.riepilogoProblematici,
       motoreArvet: opz.motoreArvet || '', soloDati: !!opz.soloDati,
       ricercati: (ap.ricercatiPerStabilimento && ap.ricercatiPerStabilimento[x.codice]) || [],

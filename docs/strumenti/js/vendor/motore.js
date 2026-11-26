@@ -312,7 +312,7 @@ function normalizzaRecords(recs, src) {
 function leggiExport(text, nome) {
   const t = str(text);
   const isJson = /\.json$/i.test(nome || '') || /^\s*\{/.test(t.slice(0, 256));
-  let recs, spostamenti = { pecore: [], capre: [] }, registriCaricati = [], daFejalog = false;
+  let recs, spostamenti = { pecore: [], capre: [] }, registriCaricati = [], daFejalog = false, posti = null, postiSerie = null;
   if (isJson) {
     let obj;
     try { obj = JSON.parse(t.replace(/^﻿/, '')); } catch (e) { throw new Error('JSON non valido'); }
@@ -321,6 +321,7 @@ function leggiExport(text, nome) {
     spostamenti = normalizzaSpostamenti(obj && obj.spostamenti);
     registriCaricati = normalizzaRegistriCaricati(obj && obj.registri_caricati);
     daFejalog = !!(obj && !Array.isArray(obj) && obj.fejalog && typeof obj.fejalog === 'object');
+    if (daFejalog) { posti = postiCompatta({ posti: obj.posti }); postiSerie = postiCompatta({ posti: obj.posti_serie }); }
   } else {
     const { head, rows } = parseCsv(t);
     const col = (c) => pickCol(head, [].concat(c));
@@ -343,7 +344,16 @@ function leggiExport(text, nome) {
     });
   }
   /* `fejalog`: l'export viene da Fejalog, dove ogni serie è numerata da 1 (la chiusura dei buchi parte da lì) */
-  return { records: normalizzaRecords(recs, nome || 'export'), json: isJson, spostamenti, registri_caricati: registriCaricati, fejalog: daFejalog };
+  /* `posti`, `posti_serie` (export formato 6 di Fejalog, 2026-11-26, revisione R-1): dove le provette del fondo e della
+     serie in ARVET sono già posate, per uid; null senza. Vanno in `compatta` accanto a `inizio: 1` (unisciPostiExport). */
+  return { records: normalizzaRecords(recs, nome || 'export'), json: isJson, spostamenti, registri_caricati: registriCaricati, fejalog: daFejalog,
+    posti, posti_serie: postiSerie };
+}
+/* I posti di più export (gli uid sono di una provetta sola): { posti, posti_serie }, null dove mancano. Gemella:
+   unisci_posti_export() in R/parse_bdn.R. */
+function unisciPostiExport(letti) {
+  const un = (k) => { const out = {}; let n = 0; (letti || []).forEach((x) => { const p = x && x[k]; if (p) Object.keys(p).forEach((u) => { out[u] = p[u]; n++; }); }); return n ? out : null; };
+  return { posti: un('posti'), posti_serie: un('posti_serie') };
 }
 
 /* ---------- registri di stalla caricati in corsa (Fejalog, export formato 4; 2026-10-13) ----------------------
@@ -910,6 +920,18 @@ function inizioCompatta(compatta) {
   const v = Math.floor(Number(compatta.inizio));
   return isFinite(v) ? v : null;
 }
+/* `compatta.posti` = { uid: numero } (Fejalog, 2026-11-24, «Livello 1»): i numeri dove le provette del fondo (fuori da
+   ARVET) sono già posate. Si tengono solo i numeri interi; il resto si ignora. Senza posti il risultato è quello di
+   sempre. Gemello di `.compatta_posti` in R/parse_bdn.R. */
+function postiCompatta(compatta) {
+  if (!compatta || typeof compatta !== 'object' || !compatta.posti || typeof compatta.posti !== 'object') return null;
+  const out = Object.create(null); let n = 0;
+  Object.keys(compatta.posti).forEach((u) => {
+    const v = compatta.posti[u];
+    if (u !== '' && typeof v === 'number' && Number.isInteger(v)) { out[u] = v; n++; }
+  });
+  return n ? out : null;
+}
 function riordinaScambi(canon, specie, ordine, compatta) {
   ordine = ordine && ordine.length ? ordine : ORDINE_DEFAULT;
   const inizioSerie = inizioCompatta(compatta);
@@ -948,14 +970,57 @@ function riordinaScambi(canon, specie, ordine, compatta) {
     const mainr = [];
     sub.forEach((r, i) => { if (!toTail[i] && !entra[i]) mainr.push(i); });
     const serie = mainr.slice();                   // chi occupa numeri della serie
+    /* Con `compatta.posti_serie` (Fejalog, 2026-11-25, «Livello 1» esteso alla serie in ARVET; i posti prima degli
+       spostamenti fatti a mano, che il motore applica dopo coi loro esiti): le provette della serie già
+       posate contano dove sono (non al numero di campo), se quel numero dentro la serie non lo tiene ancora la provetta
+       che lo ha di campo; una fuori registro in ARVET già posata in un buco lo tiene. Così un buco nuovo lo chiude la
+       provetta posata più in alto, con un solo spostamento. Un posto ripetuto fra le provette della specie non vale.
+       Senza posti tutto come prima. Gemello in R/parse_bdn.R. */
+    const postiS = compatta && typeof compatta === 'object' ? postiCompatta({ posti: compatta.posti_serie }) : null;
+    const postoS = postiS ? sub.map((r) => (r.uid != null && Object.prototype.hasOwnProperty.call(postiS, String(r.uid)) ? postiS[String(r.uid)] : null)) : null;
+    let nelBuco = () => false;
+    let dentroSerie = () => Infinity;
+    if (postoS) {
+      const quanti = {}; postoS.forEach((v) => { if (v != null) quanti[v] = (quanti[v] || 0) + 1; });
+      /* senza `inizio` la serie non si trasla: un posto sotto il primo numero occupato non vale (revisione R-8) */
+      const minimo = inizioSerie != null ? inizioSerie : (mainr.length ? Math.min.apply(null, mainr.map((i) => nums[i])) : 1);
+      const valido = (i) => postoS[i] != null && quanti[postoS[i]] === 1 && postoS[i] >= minimo;
+      /* chi resta al numero di campo (senza un posto valido) tiene quel numero: un posto lì non vale, e chi perde il
+         posto resta a sua volta al suo numero (si ripete finché niente cambia) */
+      const sposta = new Set(mainr.filter(valido));
+      for (let cambiato = true; cambiato;) {
+        cambiato = false;
+        const fermi = new Set(mainr.filter((i) => !sposta.has(i)).map((i) => nums[i]));
+        sposta.forEach((i) => { if (fermi.has(postoS[i])) { sposta.delete(i); cambiato = true; } });
+      }
+      sposta.forEach((i) => { prov[i] = postoS[i]; });
+      /* una fuori registro in ARVET: un buco vero, un numero che nessuna provetta della serie occupa */
+      const occupati = new Set(mainr.map((i) => prov[i]));
+      nelBuco = (i) => valido(i) && !occupati.has(postoS[i]);
+      /* l'ultimo numero della serie in ARVET quando sarà chiusa: un posto oltre non vale per una fuori registro */
+      const quantiInSerie = mainr.length + entra.filter((x) => x).length;
+      dentroSerie = () => { const occ = occNums(); return (occ.length ? primoDi(occ) : minimo) + quantiInSerie - 1; };
+    }
     const occNums = () => numSort(serie.map((i) => prov[i]));
     const nMaschi = () => serie.filter((i) => isM[i]).length;
     if (mainr.length) {
       /* a) maschi della serie in testa, con scambio 1-a-1 */
       const slots = numSort(mainr.map((i) => prov[i]));
       const male = orderIdx(mainr.length, (k) => nums[mainr[k]]).map((k) => mainr[k]).filter((i) => isM[i]);
-      male.forEach((r, i) => {
-        const target = slots[i];
+      let mete = slots.slice(0, male.length);
+      let daPosare = male;
+      if (postoS) {
+        /* con `posti_serie` (2026-11-26, revisione R-2): un maschio già spostato in uno dei posti della testa lo tiene;
+           gli altri, in ordine di numero di campo, prendono i posti della testa rimasti. Così un passo fatto come dice
+           la guida non cambia la guida. Senza posti: come prima. */
+        const testa = new Set(mete);
+        const tiene = male.filter((i) => prov[i] !== nums[i] && testa.has(prov[i]));
+        const presi = new Set(tiene.map((i) => prov[i]));
+        mete = mete.filter((v) => !presi.has(v));
+        daPosare = male.filter((i) => tiene.indexOf(i) < 0);
+      }
+      daPosare.forEach((r, i) => {
+        const target = mete[i];
         if (prov[r] === target) return;
         const other = mainr.filter((j) => prov[j] === target);
         other.forEach((o) => { prov[o] = prov[r]; });
@@ -976,7 +1041,19 @@ function riordinaScambi(canon, specie, ordine, compatta) {
     const perGravita = (lista) => orderIdx(lista.length, (k) => grav[lista[k]], (k) => nums[lista[k]]).map((k) => lista[k]);
     const idx = sub.map((r, i) => i);
     /* FASE 1: problematici maschi in ARVET, nel blocco dei maschi in testa */
-    perGravita(idx.filter((i) => entra[i] && isM[i])).forEach((e) => {
+    let entraM = perGravita(idx.filter((i) => entra[i] && isM[i]));
+    if (postoS) {
+      /* quelli già posati in un buco del blocco dei maschi (prima della prima femmina) lo tengono */
+      let lowNon = Infinity; serie.forEach((i) => { if (!isM[i] && prov[i] < lowNon) lowNon = prov[i]; });
+      const occ = new Set(serie.map((i) => prov[i]));
+      const fineSerie = dentroSerie();
+      entraM = entraM.filter((e) => {
+        if (!nelBuco(e) || postoS[e] >= lowNon || postoS[e] > fineSerie || occ.has(postoS[e])) return true;
+        prov[e] = postoS[e]; occ.add(postoS[e]); serie.push(e);
+        return false;
+      });
+    }
+    entraM.forEach((e) => {
       const occ = occNums();
       const mx = occ.length ? occ[occ.length - 1] : 0;
       const nonM = serie.filter((i) => !isM[i]);
@@ -1008,6 +1085,16 @@ function riordinaScambi(canon, specie, ordine, compatta) {
     }
     /* FASE 2: problematici femmine (e capre) in ARVET, nei buchi della serie */
     let restano = perGravita(idx.filter((i) => entra[i] && !isM[i]));
+    if (postoS) {
+      /* le fuori registro in ARVET già posate in un buco ancora libero lo tengono */
+      const liberi = new Set(gapsAmmessi());
+      const fineSerie = dentroSerie();
+      restano = restano.filter((f) => {
+        if (!nelBuco(f) || !liberi.has(postoS[f]) || postoS[f] > fineSerie) return true;
+        prov[f] = postoS[f]; liberi.delete(postoS[f]); serie.push(f);
+        return false;
+      });
+    }
     const bucoLibero = numSort(gapsAmmessi());
     while (restano.length && bucoLibero.length) {
       const f = restano.shift();
@@ -1023,13 +1110,63 @@ function riordinaScambi(canon, specie, ordine, compatta) {
     }
     /* i problematici in ARVET senza buco si accodano alla serie */
     let fine = 0; serie.forEach((i) => { if (prov[i] > fine) fine = prov[i]; });
-    restano.forEach((f, pos) => { prov[f] = fine + pos + 1; serie.push(f); });
-    /* problematici fuori da ARVET in fondo, per gravità */
+    if (!postoS) restano.forEach((f, pos) => { prov[f] = fine + pos + 1; serie.push(f); });
+    else {
+      /* con i posti, come il fondo: quelle già posate dopo la serie tengono il numero, le altre si accodano saltando i
+         numeri presi, poi un buco lo prende la più alta */
+      const quanti = {}; postoS.forEach((v) => { if (v != null) quanti[v] = (quanti[v] || 0) + 1; });
+      const fis = {};
+      restano.forEach((f) => { const v = postoS[f]; if (v != null && quanti[v] === 1 && v > fine) fis[f] = v; });
+      const usati = new Set(Object.values(fis));
+      let nx = fine;
+      restano.forEach((f) => {
+        if (fis[f] != null) prov[f] = fis[f];
+        else { do { nx++; } while (usati.has(nx)); prov[f] = nx; usati.add(nx); }
+        serie.push(f);
+      });
+      const fineCoda = fine + restano.length;
+      for (;;) {
+        let mx = -Infinity; restano.forEach((f) => { if (prov[f] > mx) mx = prov[f]; });
+        if (mx <= fineCoda) break;
+        const occ = new Set(restano.map((f) => prov[f]));
+        let libero = fine + 1; while (occ.has(libero)) libero++;
+        prov[restano.find((f) => prov[f] === mx)] = libero;
+      }
+    }
+    /* problematici fuori da ARVET in fondo, per gravità. Con `compatta.posti` (Fejalog, 2026-11-24, «Livello 1»)
+       quelle già posate con un numero valido (maggiore di `base`, non ripetuto) lo tengono, le altre si accodano
+       saltando i numeri presi; poi un buco nel fondo lo prende la provetta col numero più alto. */
     let base = 0; serie.forEach((i) => { if (prov[i] > base) base = prov[i]; });
     const tail = []; toTail.forEach((t, i) => { if (t) tail.push(i); });
     if (tail.length) {
       const op = orderIdx(tail.length, (k) => grav[tail[k]], (k) => nums[tail[k]]);
-      op.forEach((k, pos) => { prov[tail[k]] = base + pos + 1; });
+      const posti = postiCompatta(compatta);
+      if (!posti) {
+        op.forEach((k, pos) => { prov[tail[k]] = base + pos + 1; });
+      } else {
+        const fis = {}; const conta = {};
+        tail.forEach((i) => {
+          const v = sub[i].uid != null ? posti[String(sub[i].uid)] : undefined;
+          if (v != null && v > base) { fis[i] = v; conta[v] = (conta[v] || 0) + 1; }
+        });
+        Object.keys(fis).forEach((i) => { if (conta[fis[i]] > 1) delete fis[i]; });
+        const usati = new Set(Object.values(fis));
+        let nx = base;
+        op.forEach((k) => {
+          const i = tail[k];
+          if (fis[i] != null) { prov[i] = fis[i]; return; }
+          do { nx++; } while (usati.has(nx));
+          prov[i] = nx; usati.add(nx);
+        });
+        const fineFondo = base + tail.length;      // il fondo senza buchi va da base+1 a fineFondo
+        for (;;) {
+          let mx = -Infinity; tail.forEach((i) => { if (prov[i] > mx) mx = prov[i]; });
+          if (mx <= fineFondo) break;
+          const occ = new Set(tail.map((i) => prov[i]));
+          let libero = base + 1; while (occ.has(libero)) libero++;
+          prov[tail.find((i) => prov[i] === mx)] = libero;
+        }
+      }
     }
     return chiudi(prov);
   }
@@ -1625,7 +1762,7 @@ return {
   PLATEAU_SIZE, DECODIFICA_DEFAULT, DECODIFICA_INGRESSI, USCITA_FATTISPECIE, USCITE_SMARRITO, ORDINE_DEFAULT, LABEL, AZIONE, COLONNE_DEFINITIVO, COLONNE_SCHEDE, PAGINA_REC_COLS,
   truthy, toInt, normCoda, normCorsia, codaOf, corsiaOf, laneOf, numLabel, hasCorsie, effInArvet, sessoEff,
   fattispecie, fattispecieKey, gravita,
-  parseCsv, leggiExport, mergeConcatRecords, mergeAnomalie, mergeRisolviNumeri, mergePagina, mergeToBackupJson,
+  parseCsv, leggiExport, unisciPostiExport, mergeConcatRecords, mergeAnomalie, mergeRisolviNumeri, mergePagina, mergeToBackupJson,
   arricchisciCanon, applicaModifiche, suggerisciCorrezioni, correggiContrassegni, levenshtein,
   riordinaScambi, numerazioneFinale, arvetDfFinale, brucellaOvisArvet, arvetNuoviFinale, guidaRiposizionamento, exportDefinitivo,
   normalizzaSpostamenti, unisciSpostamenti, parseSpostamenti, applicaSpostamenti, applicaSpostamentiPrima, esitiSpostamenti,

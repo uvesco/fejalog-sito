@@ -170,7 +170,10 @@ l'animale prelevato al loro posto e le marche da ordinare.
   una pagina sola, da stampare: dice quale provetta è andata al laboratorio con ciascun numero.
 - **Salva backup** è sempre in alto. Scelta una volta la **cartella di salvataggio** (Chrome o Edge), ogni azione viene
   scritta su disco; lo zip completo si salva col tasto.
-- Se si ricarica la pagina, la sessione **riparte da sola** col backup e le azioni di prima.
+- Se si ricarica la pagina, la sessione **riparte da sola** col backup e le azioni di prima, anche dopo un aggiornamento
+  del sito: in questo caso una banda in alto dice che le azioni salvate si stanno **verificando col codice nuovo**. Intanto
+  si lavora, ma modifiche e snippet si scaricano solo alla fine; se un'azione non passa più, la pagina lo dice e riparte
+  dalle altre. Se le azioni si devono rifare da capo, la banda mostra l'avanzamento e ha **«Ferma»** e poi «Riprendi».
 - **Fra un progetto e l'altro, o su un PC usato da altri**: finito un progetto (backup e modifiche scaricati), nella scheda
   Carica, «Un altro progetto, o un PC usato da altri: pulisci il browser»:
   **«Chiudi e cancella questo backup dal browser»** (prima scarica backup e modifiche) o **«Cancella tutti i dati di
